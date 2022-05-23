@@ -28,7 +28,8 @@
           "extractLicenses": false,
           "optimization": false,
           "sourceMap": true,
-          "vendorChunk": true
+          "vendorChunk": true,
+          "watch": true
         },
         "production": {
           "fileReplacements": [
