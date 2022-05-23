@@ -1,6 +1,6 @@
 ## Overview:
 
-## Related Github Issues:
+## Related JIRA Issues:
 
 - [TUP-1234](https://jira.tacc.utexas.edu/browse/TUP-1234)
 
