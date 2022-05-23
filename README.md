@@ -7,7 +7,7 @@ Services API and clients for TACC User Portal functions
 The client has been built using [Vite](https://vitejs.dev/guide/#trying-vite-online) and [React (TypeScript)](https://reactjs.org/). It was configured with [NodeJS v16.15.0 (LTS)](https://nodejs.org/en/). To run it, you may use the following shell commands from within the [`tup-ui`](./tup-ui) directory:
 
 ```
-npm install
+npm ci
 npm run dev
 ```
 
