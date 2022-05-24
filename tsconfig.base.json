@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@tacc/core-components": ["libs/core-components/src/index.ts"],
-      "@tacc/core-styles": ["libs/core-styles/src/index.ts"]
+      "@tacc/core-styles": ["libs/core-styles/src/"]
     }
   },
   "exclude": ["node_modules", "tmp"]

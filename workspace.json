@@ -4,7 +4,6 @@
   "projects": {
     "core-components": "libs/core-components",
     "core-styles": "libs/core-styles",
-    "nx-core-demo": "apps/nx-core-demo",
-    "nx-core-demo-e2e": "apps/nx-core-demo-e2e"
+    "tup-ui": "apps/tup-ui"
   }
 }
