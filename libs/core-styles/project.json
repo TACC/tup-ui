@@ -21,8 +21,7 @@
     "build": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "npm ci && npm run build",
-        "cwd": "libs/core-styles"
+        "command": "npm ci && npm run build"
       }
     }
   },
