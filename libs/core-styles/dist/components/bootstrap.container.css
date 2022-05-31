@@ -1,0 +1,2 @@
+/*! @tacc/core-styles 0.5.1+ | MIT | github.com/TACC/Core-Styles */
+@media (min-width:1400px){.container{max-width:var(--global-max-width--x-wide)}}@media (min-width:1680px){.container{max-width:var(--global-max-width--xx-wide)}}

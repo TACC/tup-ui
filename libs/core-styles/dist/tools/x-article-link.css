@@ -1,0 +1,2 @@
+/*! @tacc/core-styles 0.5.1+ | MIT | github.com/TACC/Core-Styles */
+.x-article-link-stretch{position:absolute;height:100%;width:100%;top:0;left:0;overflow:hidden}.x-article-link-stretch--gapless{width:calc(100% + 30px);left:-15px}.x-article-link-hover{--outline-offset:1em;outline:1px solid var(--global-color-accent--normal);outline-offset:var(--outline-offset)}.x-article-link-hover--gapless{--outline-offset:0}

@@ -1,0 +1,2 @@
+/*! @tacc/core-styles 0.5.1+ | MIT | github.com/TACC/Core-Styles */
+.s-blockquote{margin-top:1.25em;margin-bottom:1.25em}.s-blockquote blockquote{margin-bottom:0;font-size:1.125em;font-style:italic}.s-blockquote blockquote p{margin:0;white-space:pre-wrap}.s-blockquote blockquote p:before{content:"“"}.s-blockquote blockquote p:after{content:"”"}.s-blockquote figcaption{margin-top:.3em;font-size:1em}.s-blockquote figcaption:before{content:"— "}.s-blockquote cite{font-style:normal}
