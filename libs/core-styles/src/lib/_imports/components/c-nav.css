@@ -1,0 +1,164 @@
+/*
+Nav
+
+Navigation links that flows inline on narrow screens.
+
+To enforce appropriate semantic HTML, a `<nav>` is required.
+
+For list-like navigation, use `<ul>` or `<ol>` (with children `<li>`). Inside this kind of nav, markup whitespace is __not__ rendered.
+
+To support a navigation not as a list and with direct `<a>` children, add class `c-nav--no-list`. Inside this kind of nav, markup whitespace __is__ rendered.﹡
+
+﹡ To remove whitespace with CSS would break or complicate font-size cascade.
+
+- c-nav--boxed - Surrounded by a box
+
+Markup: c-nav.html
+
+Styleguide Components.Nav
+*/
+@import url("_imports/tools/media-queries.css");
+
+
+
+
+
+/* Block */
+
+nav.c-nav {
+  --link-padding: 0.5em;
+}
+
+
+
+
+
+/* Modifiers */
+
+
+
+/* Modifiers: Boxed */
+
+nav.c-nav--boxed {
+  --indent-small: calc(var(--global-space--list-indent) / 4);
+  --indent-medium: calc(var(--global-space--list-indent) / 2);
+  --indent-large: var(--global-space--list-indent);
+
+  width: fit-content;
+
+  border: var(--global-border--normal);
+}
+
+/* any list */
+nav.c-nav--boxed :is(ul,ol) {
+  margin: 0;
+}
+
+/* Modifiers: Boxed: Padding */
+
+/* unordered list */
+nav.c-nav--boxed ul {
+  list-style-type: none; /* to remove bullets (must then reduce padding left) */
+  padding-left: var(--indent-medium);
+  padding-right: var(--indent-large);
+}
+
+/* wide screen */
+@media (--medium-and-above) {
+  nav.c-nav--boxed {
+    /* Normal vertical padding */
+    padding-block: var(--indent-medium);
+  }
+
+  nav.c-nav--boxed ol {
+    /* We retain bullets, which (wide screen) need large padding (so keep it) */
+    padding-left: var(--indent-large);
+    padding-right: calc( var(--indent-large) - var(--link-padding) );
+  }
+}
+
+/* narrow screen */
+@media (--medium-and-below) {
+  nav.c-nav--boxed {
+    /* Reduced vertical padding because of narrow screen link line-height */
+    padding-block: var(--indent-small);
+  }
+
+  nav.c-nav--boxed ol {
+    /* We retain bullets, which (narrow screen) don't need large padding left */
+    padding-left: calc( var(--indent-medium) - var(--link-padding) );
+    padding-right: calc( var(--indent-large) - var(--link-padding) );
+  }
+}
+
+/* no list */
+nav.c-nav--boxed.c-nav--no-list {
+  /* Has no bullets, thus smaller padding left */
+  padding-left: var(--indent-medium);
+  padding-right: var(--indent-large);
+}
+
+
+
+/* Modifiers: No List */
+
+/* This is not a true modifier. It is required to support certain markup. */
+/* SEE: stylesheet docblock, "no list" comments, `...--no-list` selectors */
+
+
+
+
+
+/* Elements */
+
+
+
+nav.c-nav {
+  --space-between-inline-items: 0.5em;
+}
+nav.c-nav a {
+  display: inline-block; /* to let line-height define clickable area */
+  padding-inline: var(--link-padding);
+}
+
+/* no list */
+nav.c-nav--no-list {
+  display: flex; /* to remove whitespace between items */
+  flex-wrap: wrap;
+}
+nav.c-nav--no-list > a {
+  /* To space items via margin (use `-right` to not increase left indent) */
+  margin-right: var(--space-between-inline-items);
+}
+
+
+
+/* Elements: Narrow Screen */
+
+@media (--medium-and-below) {
+
+  nav.c-nav a {
+    line-height: 2.5;
+  }
+
+  /* any list */
+  nav.c-nav :is(ul,ol) {
+    display: flex;
+    flex-wrap: wrap;
+
+    /* To prevent overlap of any lists' decorators (when items are inline) */
+    list-style-position: inside;
+  }
+  nav.c-nav :is(ul,ol):not(.c-nav--boxed :is(ul,ol)) {
+    /* To remove padding because list decorators are `...position: inside` */
+    padding-left: unset;
+  }
+  nav.c-nav :is(ul,ol) li {
+    /* To space items via margin (use `-right` to not increase left indent) */
+    margin-right: var(--space-between-inline-items);
+  }
+
+  /* unordered list */
+  nav.c-nav ul { list-style-type: none; }
+
+}

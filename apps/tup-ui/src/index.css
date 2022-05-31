@@ -1,14 +1,23 @@
-@import '@tacc/core-styles/lib/core-styles.scss';
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* SETTINGS */
+@import url('@tacc/core-styles/lib/_imports/settings/border.css');
+/* below, import local styles (if any) */
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* GENERIC */
+/* @import url('@tacc/core-styles/lib/_imports/generics/*.css'); */
+/* below, import local styles (if any) */
+
+/* ELEMENTS */
+/* @import url('@tacc/core-styles/lib/_imports/elements/*.css'); */
+/* below, import local styles (if any) */
+
+/* OBJECTS */
+@import url('@tacc/core-styles/lib/_imports/objects/o-flex-item-table-wrap.css');
+/* below, import local styles (if any) */
+
+/* COMPONENTS */
+/* @import url('@tacc/core-styles/lib/_imports/components/*.css'); */
+/* below, import local styles (if any) */
+
+/* TRUMPS */
+/* @import url('@tacc/core-styles/lib/_imports/trumps/*.css'); */
+/* below, import local styles (if any) */

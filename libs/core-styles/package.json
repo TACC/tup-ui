@@ -1,4 +1,49 @@
 {
   "name": "@tacc/core-styles",
-  "version": "0.0.1"
+  "version": "0.5.1",
+  "license": "MIT",
+  "author": "TACC ACI WMA <wma-portals@gmail.com>",
+  "description": "CSS source and processor for TACC Core-CMS and Core-Portal.",
+  "files": [
+    "bin",
+    "dist",
+    "src/lib",
+    ".postcssrc.base.yml",
+    "settings.json"
+  ],
+  "main": "src/index.js",
+  "bin": "src/cli.js",
+  "scripts": {
+    "build": "node src/cli.js build -i \"./src/lib/_imports/**/*!(README).css\" -o \"./dist\" -m \"src/lib/_imports\"",
+    "test": "node src/cli.js build -i \"./src/lib/_tests\" -o \"./dist\" -m \"src/lib\" && echo \"Test output at 'dist/_tests' (compare to test input)\""
+  },
+  "engines": {
+    "node": ">=15.x",
+    "npm": ">=7.x"
+  },
+  "homepage": "https://github.com/TACC/Core-Styles",
+  "repository": "git@github.com:TACC/Core-Styles.git",
+  "dependencies": {
+    "commander": "^9.0.0",
+    "cssnano": "^4.1.10",
+    "js-yaml": "^3.13.1",
+    "merge-lite": "^1.0.2",
+    "node-cmd": "^5.0.0",
+    "postcss-banner": "^3.0.1",
+    "postcss-cli": "^7.1.2",
+    "postcss-extend": "^1.0.5",
+    "postcss-import": "^12.0.1",
+    "postcss-preset-env": "^6.7.0"
+  },
+  "// dependencies": {
+    "commander": "To create CLI",
+    "cssnano": "To minify CSS",
+    "node-cmd": "To run `postcss-cli` from script",
+    "postcss-banner": "To prepend version comment to built stylesheets",
+    "postcss-cli": "To process CSS",
+    "postcss-cli:note": "This is the simplest and cheapest 'PostCSS Runner'",
+    "postcss-import": "To import CSS files at build-time",
+    "postcss-extend": "To import/extend CSS rule sets at build-time",
+    "postcss-preset-env": "To use future CSS features now"
+  }
 }

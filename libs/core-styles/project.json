@@ -7,7 +7,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/core-styles/**/*.ts"]
+        "lintFilePatterns": ["libs/core-styles/**/*.js"]
       }
     },
     "test": {
@@ -19,14 +19,11 @@
       }
     },
     "build": {
-      "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "outputPath": "dist/libs/core-styles",
-        "tsConfig": "libs/core-styles/tsconfig.lib.json",
-        "packageJson": "libs/core-styles/package.json",
-        "main": "libs/core-styles/src/index.ts",
-        "assets": ["libs/core-styles/*.md", "libs/core-styles/**/*.scss"]
+        "commands": [
+          "npm run build"
+        ]
       }
     }
   },
