@@ -5,9 +5,11 @@
 This project was generated using [Nx](https://nx.dev).
 
 Things to try:
-- `npx nx serve tup-ui` to run the app
-- `npx nx build core-components` to create a distributable library for the core components.
-- `npx nx build core-styles` to build the style library.
+- `nx serve tup-ui` (`npm run start tup-ui`) to run the app
+- `nx build core-components` (`npm run build core-components`) to create a distributable library for the core components.
+- `nx build core-styles` (`npm run build core-styles`) to build the style library.
+
+<sub>To use `nx` commands, install `nx` globally.</sub>
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
