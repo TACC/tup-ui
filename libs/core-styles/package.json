@@ -5,17 +5,16 @@
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "description": "CSS source and processor for TACC Core-CMS and Core-Portal.",
   "files": [
-    "bin",
     "dist",
+    "src/bin",
     "src/lib",
-    ".postcssrc.base.yml",
-    "settings.json"
+    ".postcssrc.base.yml"
   ],
   "main": "src/index.js",
   "bin": "src/cli.js",
   "scripts": {
-    "build": "node src/cli.js build -i \"./src/lib/_imports/**/*!(README).css\" -o \"./dist\" -m \"src/lib/_imports\"",
-    "test": "node src/cli.js build -i \"./src/lib/_tests\" -o \"./dist\" -m \"src/lib\" && echo \"Test output at 'dist/_tests' (compare to test input)\""
+    "build": "node src/cli.js build -i \"src/lib/_imports/**/*!(README).css\" -o \"./dist\" -m \"src/lib/_imports\"",
+    "test": "node src/cli.js build -i \"src/lib/_tests\" -o \"./dist\" -m \"src/lib\" && echo \"Test output at 'dist/_tests' (compare to test input)\""
   },
   "engines": {
     "node": ">=15.x",
