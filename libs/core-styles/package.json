@@ -10,7 +10,7 @@
     "src/lib",
     ".postcssrc.base.yml"
   ],
-  "main": "src/index.js",
+  "main": "src/main.js",
   "bin": "src/cli.js",
   "scripts": {
     "build": "node src/cli.js build -i \"src/lib/_imports/**/*!(README).css\" -o \"./dist\" -m \"src/lib/_imports\"",

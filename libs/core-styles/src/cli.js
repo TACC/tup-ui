@@ -6,7 +6,7 @@ const { program } = require('commander');
 
 const package = require(process.env.npm_package_json || './package.json');
 
-const { buildStylesheets } = require('./index.js');
+const { buildStylesheets } = require('./main.js');
 
 
 
