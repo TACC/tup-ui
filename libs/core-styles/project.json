@@ -30,11 +30,12 @@
         "packageJson": "libs/core-styles/package.json",
         "main": "libs/core-styles/src/index.js",
         "assets": [
-          "libs/core-styles/*.md",
+          "libs/core-styles/README.md",
           "libs/core-styles/**/*.js",
-          "libs/core-styles/**/_imports/**/*.css",
-          "libs/core-styles/src/.postcssrc.base.yml",
-          "libs/core-styles/**/*.json"
+          "libs/core-styles/dist/**/*.css",
+          "libs/core-styles/src/lib/_imports/**/*.css",
+          "libs/core-styles/src/lib/_themes/*.json",
+          "libs/core-styles/src/.postcssrc.base.yml"
         ]
       }
     }
