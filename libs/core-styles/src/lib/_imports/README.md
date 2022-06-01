@@ -1,4 +1,4 @@
-# TACC Styles - Imports
+# TACC Core Styles - Library - Imports
 
 Styles here should be isolated UI patterns and be imported by other stylesheets.
 
