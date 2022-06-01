@@ -1,0 +1,34 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/core-styles/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/core-styles/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/core-styles"],
+      "options": {
+        "jestConfig": "libs/core-styles/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/core-styles",
+        "tsConfig": "libs/core-styles/tsconfig.lib.json",
+        "packageJson": "libs/core-styles/package.json",
+        "main": "libs/core-styles/src/index.ts",
+        "assets": ["libs/core-styles/*.md", "libs/core-styles/**/*.scss"]
+      }
+    }
+  },
+  "tags": []
+}

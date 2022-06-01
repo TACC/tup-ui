@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "core-components": "libs/core-components",
+    "core-styles": "libs/core-styles",
+    "tup-ui": "apps/tup-ui"
+  }
+}
