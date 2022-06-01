@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-/** Functions to custom build stylesheets and create a version stylesheet */
+/** Functions to build, to configure build of, and to version stylesheets */
 
 const { resolve } = require('path');
 
