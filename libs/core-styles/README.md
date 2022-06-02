@@ -82,8 +82,8 @@ Notes:
 ### Module
 
 1. Install the package with any package manager e.g.:
-  - `npm install TACC/Core-Styles`
-  - `yarn add TACC/Core-Styles`
+  - `npm install @tacc/core-styles`
+  - `yarn add @tacc/core-styles`
 
 2. Import stylesheets of either type:
     - pre-compiled, from `/dist`
