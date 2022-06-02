@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0-alpha] - 2022-06-01: Migrate to Monorepo
+
+### Changed
+
+- refactor: moved to https://github.com/TACC/tup-ui:/libs/core-styles
+- refactor!: moved `/source` to `/src/lib`
+- feat: support TypeScript and Jest
+
 ## [0.5.1] - 2022-05-26: Version Rewrite
 
 ### Changed
@@ -109,7 +117,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial working code. (This code may not work on all environments.)
 
-[unreleased]: https://github.com/TACC/Core-Styles/compare/v0.5.1...HEAD
+[unreleased]: https://github.com/TACC/Core-Styles/compare/v0.6.1-alpha...HEAD
+[0.6.1-alpha]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.1-alpha
 [0.5.1]: https://github.com/TACC/Core-Styles/releases/tag/v0.5.1
 [0.5.0]: https://github.com/TACC/Core-Styles/releases/tag/v0.5.0
 [0.4.0]: https://github.com/TACC/Core-Styles/releases/tag/v0.4.0
