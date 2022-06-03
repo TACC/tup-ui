@@ -5,8 +5,6 @@ These project stylesheets should:
 1. be imported by global or component stylesheet(s)
 2. follow [ITCSS organization](https://confluence.tacc.utexas.edu/x/IAA9Cw) and [CSS style guide](https://confluence.tacc.utexas.edu/x/ZQALBg)
 
-[Core-Styles]: https://github.com/TACC/tup-ui/tree/main/libs/core-styles
-
 ## Usage Options
 
 ### Import from Global Stylesheets
@@ -14,6 +12,7 @@ These project stylesheets should:
 Global stylesheets may `@import` project stylesheets, e.g.:
 
 **`index.css`**
+
 ```
 @import url('styles/.../settings/color.css');
 ```
@@ -23,6 +22,7 @@ Global stylesheets may `@import` project stylesheets, e.g.:
 Component stylesheets may `@import` project stylesheets, e.g.:
 
 **`components/(.../)SomeProjectComponent.module.css`**
+
 ```
 @import url('styles/tools/media-queries.css');
 
@@ -38,6 +38,7 @@ Component stylesheets may `@import` project stylesheets, e.g.:
 Project stylesheets may `@import`—then append to—[Core-Styles], e.g.:
 
 **`styles/(.../)some-project-stylesheet.css`**
+
 ```
 @import url('@tacc/core-styles/.../settings/color.css');
 
@@ -49,6 +50,7 @@ Project stylesheets may `@import`—then append to—[Core-Styles], e.g.:
 Project stylesheets may `@extend` [Core-Styles], e.g.:
 
 **`styles/(.../)some-project-stylesheet.css`**
+
 ```
 @import url('@tacc/core-styles/.../tools/x-truncate.css');
 
@@ -64,6 +66,7 @@ selector {
 Global stylesheets may directly `@import` [Core-Styles], e.g.:
 
 **`index.css`**
+
 ```
 @import url('@tacc/core-styles/.../settings/border.css');
 ```
@@ -71,6 +74,7 @@ Global stylesheets may directly `@import` [Core-Styles], e.g.:
 Component stylesheets may directly `compose…` from [Core-Styles], e.g.:
 
 **`components/(.../)SomeProjectComponent.module.css`**
+
 ```
 selector {
   composes: x-truncate--many-lines from '@tacc/core-styles/.../tools/x-truncate.css';
