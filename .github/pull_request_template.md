@@ -1,15 +1,15 @@
 ## Overview:
 
-## Related Github Issues:
+## Related:
 
 - [TUP-1234](https://jira.tacc.utexas.edu/browse/TUP-1234)
 
-## Summary of Changes:
+## Changes:
 
-## Testing Steps:
+## Testing:
 
 1.
 
-## UI Photos:
+## UI:
 
 ## Notes:
