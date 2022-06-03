@@ -13,7 +13,17 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "regenerator-runtime": "0.13.7",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "commander": "^9.0.0",
+    "cssnano": "^4.1.10",
+    "js-yaml": "^3.13.1",
+    "merge-lite": "^1.0.2",
+    "node-cmd": "^5.0.0",
+    "postcss-banner": "^3.0.1",
+    "postcss-cli": "^7.1.2",
+    "postcss-extend": "^1.0.5",
+    "postcss-import": "^12.0.1",
+    "postcss-preset-env": "^6.7.0"
   },
   "devDependencies": {
     "@nrwl/cli": "14.1.7",
