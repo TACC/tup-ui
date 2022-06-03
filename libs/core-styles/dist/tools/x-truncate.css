@@ -1,2 +1,0 @@
-/*! @tacc/core-styles 0.6.0-alpha+ | MIT | github.com/TACC/Core-Styles */
-.x-truncate--many-lines{--lines:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;-webkit-line-clamp:var(--lines)}.x-untruncate--many-lines{overflow:visible;-webkit-line-clamp:inherit}.x-truncate--one-line{text-overflow:var(--text-overflow,ellipsis);overflow:hidden;white-space:nowrap}.x-untruncate--one-line{overflow:visible;white-space:normal}

@@ -2,4 +2,4 @@
 ## config
 .postcssrc.yml
 ## assets for manual testing of plugins
-dist/_tests
+dist

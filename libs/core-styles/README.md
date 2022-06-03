@@ -224,12 +224,17 @@ Sign your commits ([see this link](https://help.github.com/en/github/authenticat
 
 ### Publishing Workflow
 
+Only authorized team members may publish.
+
+1. (one time) Login to npm i.e. `npm login`.
 1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
 1. Update version in `package.json`.
-1. Update version in `package-lock.json` by running `npm i --package-lock-only`.
+1. Update version in `package-lock.json` (e.g. `npm i --package-lock-only`).
 1. Commit, push, PR, review, merge.
-1. Create new GitHub Release.
+1. Publish to NPM via `npm publish --access public`.
+
+> __Notice__: Project build will automatically occur before publish.
 
 ### Resources
 
