@@ -107,7 +107,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Quick: Stable Package.json Calls … (https://github.com/TACC/Core-Styles/pull/3)
 - Fix: Require NPM7+ … (37466e2)
-- chore(version): del & ignore runtime _version.css (dab87e7)
+- chore(version): del & ignore runtime \_version.css (dab87e7)
 - fix(refactor): config script (1d6dacd)
 
 ## [0.2.0] - 2022-03-14: Changelog, Easy Git Ref, Version CLI, Readme Tweak

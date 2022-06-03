@@ -15,7 +15,7 @@
   "scripts": {
     "build": "node src/cli.js build -i \"src/lib/_imports/**/*!(README).css\" -o \"./dist\" -m \"src/lib/_imports\"",
     "test": "node src/cli.js build -i \"src/lib/_tests\" -o \"./dist\" -m \"src/lib\" && echo \"Test output at 'dist/_tests' (compare to test input)\"",
-    "prepublishOnly" : "npm run build # && npm test && npm run lint"
+    "prepublishOnly": "npm run build # && npm test && npm run lint"
   },
   "engines": {
     "node": ">=15.x",

@@ -24,19 +24,14 @@
     "build": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": [
-          "nx build-local core-styles",
-          "nx build-root core-styles"
-        ],
+        "commands": ["nx build-local core-styles", "nx build-root core-styles"],
         "parallel": false
       }
     },
     "build-local": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": [
-          "npm run build"
-        ],
+        "commands": ["npm run build"],
         "cwd": "libs/core-styles",
         "parallel": false
       }

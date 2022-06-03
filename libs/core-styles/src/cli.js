@@ -8,39 +8,46 @@ const package = require(process.env.npm_package_json || './package.json');
 
 const { buildStylesheets } = require('./main.js');
 
-
-
-// Setup
+/*
+  Setup
+*/
 program
-    .name('core-styles')
-    .version(package.version)
-    .showHelpAfterError('(add --help for additional information)');
+  .name('core-styles')
+  .version(package.version)
+  .showHelpAfterError('(add --help for additional information)');
 
-
-
-// Build Command
+/*
+  Build Command
+*/
 program
-    .command('build')
-    .description(`build stylesheets with TACC standard process:
+  .command('build')
+  .description(
+    `build stylesheets with TACC standard process:
 - "post-css" plugins
 - custom input path
 - custom output path
 - custom configs
 - prepend build id
-    `)
-    .requiredOption('-i, --input <path>',
-        'parse source at which path¹')
-    .requiredOption('-o, --output <path>',
-        'output CSS files to which path¹')
-    .option('-v, --verbose',
-        'print more info during build process')
-    .option('-c, --custom-configs <paths...>',
-        `extend base config with YAML files²³`)
-    .option('-b, --build-id <identifier>',
-        'any value to identify the build (default: version of app)')
-    .option('-m, --base-mirror-dir <path>',
-        'if input folder structure is mirrored, this path is not⁴')
-    .addHelpText('after', `
+    `
+  )
+  .requiredOption('-i, --input <path>', 'parse source at which path¹')
+  .requiredOption('-o, --output <path>', 'output CSS files to which path¹')
+  .option('-v, --verbose', 'print more info during build process')
+  .option(
+    '-c, --custom-configs <paths...>',
+    `extend base config with YAML files²³`
+  )
+  .option(
+    '-b, --build-id <identifier>',
+    'any value to identify the build (default: version of app)'
+  )
+  .option(
+    '-m, --base-mirror-dir <path>',
+    'if input folder structure is mirrored, this path is not⁴'
+  )
+  .addHelpText(
+    'after',
+    `
 Notes:
   ¹ Folder structure of "--input-dir" mirrored in "--output-dir" i.e.
 
@@ -65,13 +72,15 @@ Notes:
   ⁴ Given '-i "a/b*" -o "x/" -m "a/"' output is "x/b/...".
     Given '-i "a/b*" -o "x/" -m "a/b/"' output is "x/...".
     Given '-i "a/b*" -o "x/" -m "not-a/"' output is "x/abs-path-to-input/...".
-    `).action( programOpts => {
-        const { input, output, ...opts } = programOpts;
+    `
+  )
+  .action((programOpts) => {
+    const { input, output, ...opts } = programOpts;
 
-        buildStylesheets( input, output, opts );
-    });
+    buildStylesheets(input, output, opts);
+  });
 
-
-
-// Parse
+/*
+  Parse
+*/
 program.parse(process.argv);

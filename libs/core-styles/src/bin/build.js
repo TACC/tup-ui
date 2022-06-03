@@ -5,9 +5,7 @@
 const cmd = require('node-cmd');
 
 // SEE: https://stackoverflow.com/a/63530170
-process.env.FORCE_COLOR = true
-
-
+process.env.FORCE_COLOR = true;
 
 /**
  * Build stylesheets from source CSS
@@ -22,8 +20,8 @@ process.env.FORCE_COLOR = true
 function build(input, output, opts = {}) {
   // Get data
   const configDir = opts.configDir || `${__dirname}/../`;
-  const verbose = (opts.verbose === true) ? '--verbose' : '';
-  const base = (opts.baseMirrorDir) ? `--base "${opts.baseMirrorDir}"` : '';
+  const verbose = opts.verbose === true ? '--verbose' : '';
+  const base = opts.baseMirrorDir ? `--base "${opts.baseMirrorDir}"` : '';
 
   // Build command
   const command = `postcss "${input}" --dir "${output}" ${verbose} --config "${configDir}" ${base}`;
@@ -34,7 +32,7 @@ function build(input, output, opts = {}) {
   cmd.runSync(command);
 }
 
-
-
-// Export
+/*
+  Export
+*/
 module.exports = build;

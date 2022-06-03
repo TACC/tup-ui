@@ -8,8 +8,6 @@ const build = require('./bin/build.js');
 const config = require('./bin/config.js');
 const version = require('./bin/version.js');
 
-
-
 /**
  * Build stylesheets from source CSS
  * @param {string} input - Parse CSS files from which directory
@@ -23,23 +21,24 @@ const version = require('./bin/version.js');
  * @param {boolean} [opts.verbose=false] - Print more in log output
  */
 function buildStylesheets(input, output, opts = {}) {
-    const buildOpts = {
-        verbose: opts.verbose || null,
-        baseMirrorDir: opts.baseMirrorDir || null,
-    };
+  const buildOpts = {
+    verbose: opts.verbose || null,
+    baseMirrorDir: opts.baseMirrorDir || null,
+  };
 
-    const inputResolved = resolve(input);
-    const outputResolved = resolve(output);
-    const customConfigs = (opts.customConfigs) ?
-        opts.customConfigs.map(filePath =>
-            (filePath) ? resolve(filePath) : null
-        ) : undefined;
+  const inputResolved = resolve(input);
+  const outputResolved = resolve(output);
+  const customConfigs = opts.customConfigs
+    ? opts.customConfigs.map((filePath) =>
+        filePath ? resolve(filePath) : null
+      )
+    : undefined;
 
-    config(customConfigs, version(opts.buildId));
-    build(inputResolved, outputResolved, buildOpts);
+  config(customConfigs, version(opts.buildId));
+  build(inputResolved, outputResolved, buildOpts);
 }
 
-
-
-// Export
+/*
+  Export
+*/
 module.exports = { buildStylesheets };

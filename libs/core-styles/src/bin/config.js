@@ -9,8 +9,6 @@ const yaml = require('js-yaml');
 const BASE_CONFIG_FILE = `${__dirname}/../.postcssrc.base.yml`;
 const NEW_CONFIG_FILE = `${__dirname}/../.postcssrc.yml`;
 
-
-
 /**
  * Save base config as auto-loaded file (also can overwrite with custom values)
  * @param {array.string} [customConfigFiles=[]] - List of YAML config file paths
@@ -20,30 +18,28 @@ const NEW_CONFIG_FILE = `${__dirname}/../.postcssrc.yml`;
  * @see https://github.com/postcss/postcss-load-config#postcssrc
  */
 function config(customConfigFiles = [], cssVersion) {
-    // Prepare data
-    const configFiles = [ BASE_CONFIG_FILE, ...customConfigFiles ];
-    const configObjects = [];
-    let newJson;
+  // Prepare data
+  const configFiles = [BASE_CONFIG_FILE, ...customConfigFiles];
+  const configObjects = [];
+  let newJson;
 
-    // Initialize final config file
-    emptyOrCreateFile( NEW_CONFIG_FILE );
+  // Initialize final config file
+  emptyOrCreateFile(NEW_CONFIG_FILE);
 
-    // Merge configs in order
-    configFiles.forEach( nextFile => {
-        newJson = getConfigObject( nextFile );
-        configObjects.push( newJson );
-    });
-    mergedJson = merge( ...configObjects );
+  // Merge configs in order
+  configFiles.forEach((nextFile) => {
+    newJson = getConfigObject(nextFile);
+    configObjects.push(newJson);
+  });
+  mergedJson = merge(...configObjects);
 
-    // Update version property
-    const updatedJson = updateVersion( mergedJson, cssVersion );
-    const configYaml = yaml.dump( updatedJson );
+  // Update version property
+  const updatedJson = updateVersion(mergedJson, cssVersion);
+  const configYaml = yaml.dump(updatedJson);
 
-    // Write final config file
-    fs.writeFileSync( NEW_CONFIG_FILE, configYaml, 'utf8');
+  // Write final config file
+  fs.writeFileSync(NEW_CONFIG_FILE, configYaml, 'utf8');
 }
-
-
 
 /**
  * Update the value for the CSS version in given config data
@@ -51,40 +47,36 @@ function config(customConfigFiles = [], cssVersion) {
  * @param {string} version - The version identifier
  * @return {object} - Updated config
  */
-function updateVersion( config, version ) {
-    console.log(`Tagging CSS version as ${version}`);
+function updateVersion(config, version) {
+  console.log(`Tagging CSS version as ${version}`);
 
-    config['plugins']['postcss-banner']['banner'] = version;
+  config['plugins']['postcss-banner']['banner'] = version;
 
-    return config;
+  return config;
 }
-
-
 
 /**
  * Get JSON from YAML config file
  * @param {string} filePath - YAML config file
  * @return {object} - Config as JSON
  */
- function getConfigObject( filePath ) {
-    const config = fs.readFileSync( filePath, 'utf8');
-    const json = yaml.load( config );
+function getConfigObject(filePath) {
+  const config = fs.readFileSync(filePath, 'utf8');
+  const json = yaml.load(config);
 
-    return json;
+  return json;
 }
-
-
 
 /**
  * If file exists, empty it; otherwise, create it
  * @param {string} [filePath] - The file to empty or create
  * @see https://stackoverflow.com/a/29016268/11817077
  */
-function emptyOrCreateFile( filePath ) {
-    fs.closeSync( fs.openSync( filePath, 'w') );
+function emptyOrCreateFile(filePath) {
+  fs.closeSync(fs.openSync(filePath, 'w'));
 }
 
-
-
-// Export
+/*
+  Export
+*/
 module.exports = config;
