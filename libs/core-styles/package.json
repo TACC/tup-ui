@@ -8,7 +8,7 @@
     "dist",
     "src/bin",
     "src/lib",
-    ".postcssrc.base.yml"
+    "src/.postcssrc.base.yml"
   ],
   "main": "src/main.js",
   "bin": "src/cli.js",
