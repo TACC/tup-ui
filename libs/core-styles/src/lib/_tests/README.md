@@ -13,7 +13,7 @@ _This allows developers to confirm whether CSS plugins are working._
 
 ## Example
 
-__Input:__
+**Input:**
 
 ```css
 /*! Custom Media Narrow: */
@@ -26,8 +26,13 @@ __Input:__
 }
 ```
 
-__Output__:
+**Output**:
 
 ```css
-/*! Custom Media Narrow: */@media (max-width:30em){._test{background-color:red}}
+/*! Custom Media Narrow: */
+@media (max-width: 30em) {
+  ._test {
+    background-color: red;
+  }
+}
 ```

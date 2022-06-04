@@ -4,11 +4,11 @@ Styles here should be isolated UI patterns and be imported by other stylesheets.
 
 ## Rules
 
-1. Files __must__ be [organized appropriately](#directory-organization).
-1. Files __must__ be [documented appropriately](#documentation-format).
-1. Files __must__ follow the [style guide][tacc-style-guide].
+1. Files **must** be [organized appropriately](#directory-organization).
+1. Files **must** be [documented appropriately](#documentation-format).
+1. Files **must** follow the [style guide][tacc-style-guide].
 
-- Styles __should__ be for [structure](#structure-vs-skin) and __may__ be for [skin](#structure-vs-skin).
+- Styles **should** be for [structure](#structure-vs-skin) and **may** be for [skin](#structure-vs-skin).
 
 ## Directory Organization
 
@@ -40,8 +40,8 @@ See [TACC: CSS Style Guide][tacc-style-guide].
 
 ## Structure vs. Skin
 
-- Most Core styles will be _only __or__ mostly_ for [structure][tacc-oocss].
+- Most Core styles will be _only **or** mostly_ for [structure][tacc-oocss].
 - Some core styles may be [skin][tacc-oocss].
 
-[tacc-oocss]: https://confluence.tacc.utexas.edu/x/VwALBg "TACC: Object-Oriented CSS"
-[tacc-style-guide]: https://confluence.tacc.utexas.edu/x/ZQALBg "TACC: CSS Style Guide"
+[tacc-oocss]: https://confluence.tacc.utexas.edu/x/VwALBg 'TACC: Object-Oriented CSS'
+[tacc-style-guide]: https://confluence.tacc.utexas.edu/x/ZQALBg 'TACC: CSS Style Guide'
