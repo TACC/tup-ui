@@ -44,7 +44,7 @@
     "build-local": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": ["npm run build"],
+        "commands": ["npm ci", "npm run build"],
         "cwd": "libs/core-styles",
         "parallel": false
       }
