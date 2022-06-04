@@ -4,12 +4,27 @@
   "projectType": "library",
   "targets": {
     "lint": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "nx lint-scripts core-styles",
+          "nx lint-styles core-styles"
+        ],
+        "parallel": false
+      }
+    },
+    "lint-scripts": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/core-styles/**/*.ts",
-          "libs/core-styles/**/*.js"
+        "lintFilePatterns": ["libs/core-components/**/*.{ts,js}"]
+      }
+    },
+    "lint-styles": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "npx stylelint libs/core-styles/**"
         ]
       }
     },
