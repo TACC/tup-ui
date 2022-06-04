@@ -1,5 +1,4 @@
 {
-  "extends": ["stylelint-config-recommended"],
   "rules": {
     "max-empty-lines": 5
   }
