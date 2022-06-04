@@ -2,3 +2,7 @@
 
 /dist
 /coverage
+
+# do not format stylesheets until `nx format` ignores multiple blank lines
+# https://prettier.io/docs/en/rationale.html#empty-lines
+*.css
