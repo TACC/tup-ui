@@ -1,0 +1,5 @@
+# Add files here to ignore them from prettier formatting WHEN CWD IS THIS FOLDER
+
+# do not format stylesheets until `nx format` ignores multiple blank lines
+# https://prettier.io/docs/en/rationale.html#empty-lines
+*.css
