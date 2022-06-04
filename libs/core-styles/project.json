@@ -23,7 +23,7 @@
     "lint-styles": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": ["npx stylelint libs/core-styles/**"]
+        "commands": ["npx stylelint libs/core-styles/**/*.css"]
       }
     },
     "test": {
