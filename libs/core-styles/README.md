@@ -91,7 +91,7 @@ Notes:
 #### Build Script
 
 ```js
-const buildStylesheets = require('core-styles');
+const buildStylesheets = require('core-styles').buildStylesheets;
 
 buildStylesheets(
   // Parse CSS files from which directory (required)
@@ -112,8 +112,6 @@ buildStylesheets(
     verbose: true,
     // Print version of this software (optional, default: false)
     version: true,
-    // Extension of CSS files to parse (optional, default: "css")
-    fileExt: 'css',
     // Any value to help identify the build (optional, default: app version)
     buildId: process.env.npm_package_version + someUniqueId,
   }
