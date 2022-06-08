@@ -1,0 +1,17 @@
+/*
+Figure (Bootstrap)
+
+Add to Bootstrap styles. See:
+
+- [Bootstrap Figures](https://getbootstrap.com/docs/4.0/content/figures/)
+
+Styleguide Components.Bootstrap.Figure
+*/
+@import url("_imports/elements/figure.css");
+
+.figure {
+  @extend figure;
+}
+.figure-caption {
+  @extend figcaption;
+}

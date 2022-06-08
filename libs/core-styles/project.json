@@ -4,10 +4,26 @@
   "projectType": "library",
   "targets": {
     "lint": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "nx lint-scripts core-styles",
+          "nx lint-styles core-styles"
+        ],
+        "parallel": false
+      }
+    },
+    "lint-scripts": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/core-styles/**/*.ts"]
+        "lintFilePatterns": ["libs/core-components/**/*.{ts,js}"]
+      }
+    },
+    "lint-styles": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["npx stylelint libs/core-styles/**/*.css"]
       }
     },
     "test": {
@@ -19,14 +35,36 @@
       }
     },
     "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx build-local core-styles", "nx build-root core-styles"],
+        "parallel": false
+      }
+    },
+    "build-local": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["npm ci", "npm run build"],
+        "cwd": "libs/core-styles",
+        "parallel": false
+      }
+    },
+    "build-root": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/core-styles",
         "tsConfig": "libs/core-styles/tsconfig.lib.json",
         "packageJson": "libs/core-styles/package.json",
-        "main": "libs/core-styles/src/index.ts",
-        "assets": ["libs/core-styles/*.md", "libs/core-styles/**/*.scss"]
+        "main": "libs/core-styles/src/index.js",
+        "assets": [
+          "libs/core-styles/README.md",
+          "libs/core-styles/**/*.js",
+          "libs/core-styles/dist/**/*.css",
+          "libs/core-styles/src/lib/_imports/**/*.css",
+          "libs/core-styles/src/lib/_themes/*.json",
+          "libs/core-styles/src/.postcssrc.base.yml"
+        ]
       }
     }
   },

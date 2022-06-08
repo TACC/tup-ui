@@ -1,1 +1,1 @@
-export * from './lib/core-styles';
+export * from './main.js';

@@ -1,4 +1,4 @@
-import styles from './core-components.module.scss';
+import styles from './core-components.module.css';
 
 /* eslint-disable-next-line */
 export interface CoreComponentsProps {}
