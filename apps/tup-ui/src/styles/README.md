@@ -14,7 +14,7 @@ Global stylesheets may `@import` project stylesheets, e.g.:
 **`index.css`**
 
 ```
-@import url('styles/.../settings/color.css');
+@import url('@tacc/core-styles/src/libs/_imports/settings/color.css');
 ```
 
 ### Import from Component Stylesheets
@@ -24,7 +24,7 @@ Component stylesheets may `@import` project stylesheets, e.g.:
 **`components/(.../)SomeProjectComponent.module.css`**
 
 ```
-@import url('styles/tools/media-queries.css');
+@import url('@tacc/core-styles/src/libs/_imports/tools/media-queries.css');
 
 @media screen and (--short-and-above) and (--medium-and-above) {
   selector {
