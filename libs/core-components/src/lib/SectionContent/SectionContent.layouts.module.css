@@ -1,0 +1,91 @@
+/* Base */
+
+.root {
+  /* … */
+}
+
+/* Debug */
+/* FAQ: To color-code panels, ucncomment the code in this section */
+
+/* Color-code panels to easily track movement of multiple panels */
+/*
+.root::before          { background-color: dimgray; }
+.root > *:nth-child(1) { background-color: deeppink; }
+.root > *:nth-child(2) { background-color: deepskyblue; }
+.root > *:nth-child(3) { background-color: gold; }
+.root > *:nth-child(4) { background-color: springgreen; }
+.root::after           { background-color: lavender; }
+*/
+
+/* Has Sidebar */
+
+/* CAVEAT: No sidebar styles provided (until a <SectionSidebar> exists) */
+.has-sidebar {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+/* 1 Column */
+
+.one-column {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+/* 2 Columns */
+
+/* Always */
+.two-column,
+.multi-column {
+  --vertical-buffer: 2.5rem; /* 40px (~32px design * 1.2 design-to-app ratio) (rounded) */
+  --column-gap: calc(var(--global-space--section-left) * 2);
+}
+.two-column > *,
+.multi-column > * {
+  break-inside: avoid;
+}
+
+/* Narrow */
+@media only screen and (max-width: 991px) {
+  .two-column > *,
+  .multi-column > * {
+    margin-bottom: var(--vertical-buffer);
+  }
+}
+
+/* Wide */
+@media only screen and (min-width: 992px) {
+  .two-column,
+  .multi-column {
+    column-gap: var(--column-gap);
+    column-rule: 1px solid rgb(112 112 112 / 25%);
+    column-fill: auto;
+  }
+  .two-column > *:not(:last-child),
+  .multi-column > *:not(:last-child) {
+    margin-bottom: var(--vertical-buffer);
+  }
+}
+
+/* Tall & Wide */
+@media only screen and (min-height: 634px) and (min-width: 992px) {
+  .two-column,
+  .multi-column {
+    column-count: 2;
+  }
+}
+
+/* Short & Wide */
+@media only screen and (max-height: 633px) and (min-width: 992px) and (max-width: 1199px) {
+  .two-column {
+    column-count: 2;
+  }
+}
+@media only screen and (max-height: 633px) and (min-width: 1200px) {
+  .two-column {
+    column-count: 2;
+  }
+  .multi-column {
+    column-count: 3;
+  }
+}

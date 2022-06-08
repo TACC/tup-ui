@@ -1,0 +1,30 @@
+.root {
+  composes: c-page-list from '../../../styles/components/c-page.css';
+}
+.endcap {
+  composes: c-page-end from '../../../styles/components/c-page.css';
+}
+.endcap:global(.btn) {
+  padding-left: 12px;
+  font-size: inherit;
+}
+
+.etcetera {
+  composes: c-page-item--etcetera from '../../../styles/components/c-page.css';
+}
+
+.page-root {
+  composes: c-page-item from '../../../styles/components/c-page.css';
+}
+
+.page {
+  composes: c-page-link from '../../../styles/components/c-page.css';
+  composes: c-page-link--always-click from '../../../styles/components/c-page.css';
+
+  /* To show `c-page-link--always-click` pseudo elements */
+  overflow: visible; /* overwrite <Button>'s `c-button` */
+}
+.page:global(.btn) {
+  border-radius: 0;
+  font-size: inherit;
+}
