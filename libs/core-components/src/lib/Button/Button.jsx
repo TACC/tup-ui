@@ -1,47 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { Icon, LoadingSpinner } from '../';
+import Icon from '../Icon';
 
 import styles from './Button.module.css';
+import LoadingSpinner from '_common/LoadingSpinner';
 
-export const KINDS = ['', 'primary', 'secondary', 'active', 'link'];
+export const TYPES = ['', 'primary', 'secondary', 'tertiary', 'active', 'link'];
 
 export const SIZES = ['', 'short', 'medium', 'long', 'small'];
 
 export const ATTRIBUTES = ['button', 'submit', 'reset'];
+
+function isNotEmptyString(props, propName, componentName) {
+  if (!props[propName] || props[propName].replace(/ /g, '') === '') {
+    return new Error(`No text passed to ${componentName}. Validation failed.`);
+  }
+  return null;
+}
 
 const Button = ({
   children,
   className,
   iconNameBefore,
   iconNameAfter,
-  kind,
+  type,
   size,
   disabled,
+  onClick,
+  attr,
   isLoading,
 }) => {
+  function onclick(e) {
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
+    if (onClick) {
+      return onClick(e);
+    }
+  }
 
   // Manage prop warnings
   /* eslint-disable no-console */
-  if (kind === 'link' && size) {
+  if (type === 'link' && size) {
     size = '';
     // Component will work, except `size` is ineffectual
-    console.warn('A <Button kind="link"> ignores `size` prop.');
+    console.warn('A <Button type="link"> ignores `size` prop.');
   }
-  if (kind === 'primary' && size === 'small') {
-    kind = 'secondary';
-    // Component will work, except `kind` is overridden
+  if (type === 'primary' && size === 'small') {
+    type = 'secondary';
+    // Component will work, except `type` is overridden
     console.error(
-      'A <Button kind="primary" size="small"> is not allowed. ' +
-        'Using `kind="secondary"` instead.'
+      'A <Button type="primary" size="small"> is not allowed. ' +
+        'Using `type="secondary"` instead.'
     );
   }
-  if (kind !== 'link' && !size) {
+  if (type !== 'link' && !size) {
     size = 'short';
     // Component will work, except `size` is auto-set
     console.debug(
-      'A <Button> that is not `kind="link"` and has no `size` ' +
+      'A <Button> that is not `type="link"` and has no `size` ' +
         'is automatically assigned `size="short"`.'
     );
   }
@@ -50,12 +68,12 @@ const Button = ({
   const buttonRootClass = styles['root'];
 
   let buttonTypeClass;
-  if (kind === 'link') {
+  if (type === 'link') {
     buttonTypeClass = styles['as-link'];
-  } else if (kind === 'primary' || kind === 'secondary' || kind === 'active') {
-    buttonTypeClass = styles[`${kind}`];
-  } else if (kind === '') {
-    buttonTypeClass = kind;
+  } else if (['primary', 'secondary', 'tertiary', 'active'].includes(type)) {
+    buttonTypeClass = styles[`${type}`];
+  } else if (type === '') {
+    buttonTypeClass = type;
   }
 
   let buttonSizeClass;
@@ -65,60 +83,66 @@ const Button = ({
     buttonSizeClass = styles[`width-${size}`];
   }
 
+  const buttonLoadingClass = isLoading ? styles['loading'] : '';
+
   return (
     <button
       className={`
-        ${buttonRootClass} ${buttonTypeClass} ${buttonSizeClass} ${className}
+        ${buttonRootClass}
+        ${buttonTypeClass}
+        ${buttonSizeClass}
+        ${buttonLoadingClass}
+        ${className}
       `}
       disabled={disabled || isLoading}
-      // So users can pass `type` or global attributes
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...props}
+      type={attr}
+      onClick={onclick}
     >
       {isLoading && (
-        loadingSpinner
+        <LoadingSpinner
+          placement="inline"
+          className={styles['loading-over-button']}
+        />
       )}
       {iconNameBefore ? (
         <Icon
           name={iconNameBefore}
           className={iconNameBefore ? styles['icon--before'] : ''}
-        ></Icon>
+        />
       ) : (
         ''
       )}
-      <span className={isLoading ? styles['loading-text'] : ''}>
-        {children}
-      </span>
-      {iconNameAfter ? (
+      <span className={styles['text']}>{children}</span>
+      {iconNameAfter && (
         <Icon
           name={iconNameAfter}
           className={iconNameAfter ? styles['icon--after'] : ''}
-        ></Icon>
-      ) : (
-        ''
+        />
       )}
     </button>
   );
 };
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
+  children: isNotEmptyString,
+  className: isNotEmptyString,
   iconNameBefore: PropTypes.string,
   iconNameAfter: PropTypes.string,
-  kind: PropTypes.oneOf(KINDS),
+  type: PropTypes.oneOf(TYPES),
   size: PropTypes.oneOf(SIZES),
   disabled: PropTypes.bool,
-  loadingSpinner: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
+  attr: PropTypes.oneOf(ATTRIBUTES),
   isLoading: PropTypes.bool,
 };
 Button.defaultProps = {
   className: '',
   iconNameBefore: '',
   iconNameAfter: '',
-  kind: 'secondary',
-  loadingSpinner: undefined,
-  size: '', // unless `kind="link", defaults to `short` after `propTypes`
+  type: 'secondary',
+  size: '', // unless `type="link", defaults to `short` after `propTypes`
   disabled: false,
+  onClick: null,
+  attr: 'button',
   isLoading: false,
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-
 import Paginator from './Paginator';
 
 describe('Paginator', () => {

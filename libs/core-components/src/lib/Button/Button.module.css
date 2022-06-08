@@ -8,8 +8,10 @@
 .secondary {
   composes: c-button--secondary from '../../../styles/components/c-button--new.css';
 }
+.tertiary {
+  composes: c-button--tertiary from '../../../styles/components/c-button--new.css';
+}
 .active {
-  composes: c-button--secondary from '../../../styles/components/c-button--new.css';
   composes: c-button--is-active from '../../../styles/components/c-button--new.css';
 }
 
@@ -37,8 +39,8 @@
   composes: c-button__icon--after from '../../../styles/components/c-button--new.css';
 }
 
-.loading-text {
-  opacity: 0.3;
+.loading {
+  composes: c-button--is-busy from '../../../styles/components/c-button--new.css';
 }
 .root {
   position: relative;
@@ -48,4 +50,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.text {
+  composes: c-button__text from '../../../styles/components/c-button--new.css';
 }

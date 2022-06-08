@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Icon from '../Icon';
+import { Fade } from 'reactstrap';
+import Icon from '_common/Icon';
 
 import styles from './Message.module.scss';
 
@@ -121,12 +121,26 @@ const Message = ({
     .map((s) => styles[s])
     .join(' ');
 
-  const TagName = tagName;
+  // Manage disappearance
+  // FAQ: Design does not want fade, but we still use <Fade> to manage dismissal
+  // TODO: Consider replacing <Fade> with a replication of `unmountOnExit: true`
+  const shouldFade = false;
+  const fadeProps = {
+    ...Fade.defaultProps,
+    unmountOnExit: true,
+    baseClass: shouldFade ? Fade.defaultProps.baseClass : '',
+    timeout: shouldFade ? Fade.defaultProps.timeout : 0,
+  };
+
   return (
-    <TagName
+    <Fade
+      // Avoid manually syncing Reactstrap <Fade>'s default props
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...fadeProps}
+      tag={tagName}
       className={`${className} ${containerStyleNames}`}
       role={role}
-      hidden={!isVisible}
+      in={isVisible}
       aria-label={ariaLabel}
       data-testid={dataTestid}
     >
@@ -152,7 +166,7 @@ const Message = ({
           />
         </button>
       ) : null}
-    </TagName>
+    </Fade>
   );
 };
 Message.propTypes = {
@@ -161,7 +175,8 @@ Message.propTypes = {
   /** Whether an action can be dismissed (requires scope equals `section`) */
   canDismiss: PropTypes.bool,
   /** Message text (as child node) */
-  children: PropTypes.node.isRequired,
+  /* FAQ: We can support any values, even a component */
+  children: PropTypes.node.isRequired, // This checks for any render-able value
   /** Additional className for the root element */
   className: PropTypes.string,
   /** ID for test case element selection */
@@ -171,7 +186,7 @@ Message.propTypes = {
   /** Action on message dismissal (pair with `isVisible`) */
   onDismiss: PropTypes.func,
   /** How to place the message within the layout */
-  scope: PropTypes.oneOf(SCOPES).isRequired,
+  scope: PropTypes.oneOf(SCOPES), // RFE: Require scope; change all instances
   /** Message type or severity */
   type: PropTypes.oneOf(TYPES).isRequired,
 };
@@ -182,6 +197,7 @@ Message.defaultProps = {
   dataTestid: '',
   isVisible: true,
   onDismiss: () => {},
+  scope: '', // RFE: Require scope; remove this line
 };
 
 export default Message;

@@ -1,9 +1,7 @@
 import React from 'react';
+import { Button } from '_common';
 import PropTypes from 'prop-types';
-
-import Button from '../Button';
-
-import styles from './Paginator.module.css';
+import styles from './Paginator.module.scss';
 
 const PaginatorEtc = () => {
   return <span className={styles.etcetera}>...</span>;
