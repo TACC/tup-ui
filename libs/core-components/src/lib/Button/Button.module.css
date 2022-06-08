@@ -1,46 +1,46 @@
 .root {
-  composes: c-button from '../../../styles/components/c-button--new.css';
+  composes: c-button from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 
 .primary {
-  composes: c-button--primary from '../../../styles/components/c-button--new.css';
+  composes: c-button--primary from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 .secondary {
-  composes: c-button--secondary from '../../../styles/components/c-button--new.css';
+  composes: c-button--secondary from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 .tertiary {
-  composes: c-button--tertiary from '../../../styles/components/c-button--new.css';
+  composes: c-button--tertiary from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 .active {
-  composes: c-button--is-active from '../../../styles/components/c-button--new.css';
+  composes: c-button--is-active from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 
 .size-small {
-  composes: c-button--size-small from '../../../styles/components/c-button--new.css';
+  composes: c-button--size-small from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 .width-short {
-  composes: c-button--width-short from '../../../styles/components/c-button--new.css';
+  composes: c-button--width-short from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 .width-medium {
-  composes: c-button--width-medium from '../../../styles/components/c-button--new.css';
+  composes: c-button--width-medium from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 .width-long {
-  composes: c-button--width-long from '../../../styles/components/c-button--new.css';
+  composes: c-button--width-long from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 
 .as-link {
-  composes: c-button--as-link from '../../../styles/components/c-button--new.css';
+  composes: c-button--as-link from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 
 .icon--before {
-  composes: c-button__icon--before from '../../../styles/components/c-button--new.css';
+  composes: c-button__icon--before from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 .icon--after {
-  composes: c-button__icon--after from '../../../styles/components/c-button--new.css';
+  composes: c-button__icon--after from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 
 .loading {
-  composes: c-button--is-busy from '../../../styles/components/c-button--new.css';
+  composes: c-button--is-busy from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
 .root {
   position: relative;
@@ -53,5 +53,5 @@
 }
 
 .text {
-  composes: c-button__text from '../../../styles/components/c-button--new.css';
+  composes: c-button__text from '@tacc/core-styles/src/lib/_imports/components/c-button.css';
 }
