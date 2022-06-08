@@ -1,8 +1,8 @@
 .root {
-  composes: c-page-list from '@tacc/core-styles/src/lib/_imports/components/c-page.css';
+  composes: c-page-list from '@tacc/core-styles/dist/components/c-page.css';
 }
 .endcap {
-  composes: c-page-end from '@tacc/core-styles/src/lib/_imports/components/c-page.css';
+  composes: c-page-end from '@tacc/core-styles/dist/components/c-page.css';
 }
 .endcap:global(.btn) {
   padding-left: 12px;
@@ -10,16 +10,16 @@
 }
 
 .etcetera {
-  composes: c-page-item--etcetera from '@tacc/core-styles/src/lib/_imports/components/c-page.css';
+  composes: c-page-item--etcetera from '@tacc/core-styles/dist/components/c-page.css';
 }
 
 .page-root {
-  composes: c-page-item from '@tacc/core-styles/src/lib/_imports/components/c-page.css';
+  composes: c-page-item from '@tacc/core-styles/dist/components/c-page.css';
 }
 
 .page {
-  composes: c-page-link from '@tacc/core-styles/src/lib/_imports/components/c-page.css';
-  composes: c-page-link--always-click from '@tacc/core-styles/src/lib/_imports/components/c-page.css';
+  composes: c-page-link from '@tacc/core-styles/dist/components/c-page.css';
+  composes: c-page-link--always-click from '@tacc/core-styles/dist/components/c-page.css';
 
   /* To show `c-page-link--always-click` pseudo elements */
   overflow: visible; /* overwrite <Button>'s `c-button` */
