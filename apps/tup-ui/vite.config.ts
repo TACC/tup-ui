@@ -13,7 +13,7 @@ export default defineConfig({
       ),
       '@tacc/core-styles': path.resolve(
         __dirname,
-        '../../libs/core-styles/src/'
+        '../../libs/core-styles/'
       ),
     },
   },
