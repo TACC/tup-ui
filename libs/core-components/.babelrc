@@ -8,5 +8,11 @@
       }
     ]
   ],
-  "plugins": []
+  "plugins": [
+    [
+      "babel-plugin-postcss",
+      {
+      }
+    ]
+  ]
 }
