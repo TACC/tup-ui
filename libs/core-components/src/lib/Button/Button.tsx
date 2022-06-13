@@ -23,7 +23,7 @@ export const SIZES = [''].concat(Object.keys(SIZE_MAP));
 export const ATTRIBUTES = ['button', 'submit', 'reset'];
 
 type ButtonProps = React.PropsWithChildren<{
-  className: string;
+  className?: string;
   iconNameBefore?: string;
   iconNameAfter?: string;
   type?: 'primary' | 'secondary' | 'tertiary' | 'active' | 'link';
@@ -32,7 +32,7 @@ type ButtonProps = React.PropsWithChildren<{
   disabled?: boolean;
   onClick?: (e: any) => void;
   attr?: 'button' | 'submit' | 'reset';
-  isLoading: boolean;
+  isLoading?: boolean;
 }>
 
 const Button: React.FC<ButtonProps> = ({
@@ -46,7 +46,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   onClick,
   attr = 'button',
-  isLoading,
+  isLoading = false,
 }) => {
   function onclick(e: any) {
     if (disabled) {
