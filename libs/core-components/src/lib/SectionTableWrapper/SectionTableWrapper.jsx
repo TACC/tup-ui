@@ -146,7 +146,7 @@ function SectionTableWrapper({
         // WARNING: When using `manualContent`, user must implement this feature
         // FAQ: A table can NOT be a flex item; <div> wrap is safest solution
         // SEE: https://stackoverflow.com/q/41421512/11817077
-        <div className={styles['wrap'] +' '+ contentClassName}>
+        <div className={styles['wrap'] + ' ' + contentClassName}>
           {content}
           {children}
         </div>

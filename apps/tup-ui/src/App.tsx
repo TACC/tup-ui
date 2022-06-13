@@ -10,7 +10,11 @@ function App() {
         <p>Hello Vite + React!</p>
         <Message />
         <p>
-          <Button onClick={() => setCount((count) => count + 1)} size='long' type='primary'>
+          <Button
+            onClick={() => setCount((count) => count + 1)}
+            size="long"
+            type="primary"
+          >
             count is: {count}
           </Button>
         </p>

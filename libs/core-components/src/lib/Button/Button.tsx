@@ -33,7 +33,7 @@ type ButtonProps = React.PropsWithChildren<{
   onClick?: (e: any) => void;
   attr?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
-}>
+}>;
 
 const Button: React.FC<ButtonProps> = ({
   children,

@@ -60,7 +60,7 @@ const TextCopyField = ({ value, placeholder, buttonWrapper }) => {
       data-testid="input"
       readOnly
     />
-  )
+  );
 
   return (
     <>

@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Icon.module.css';
 
-
 type IconProps = {
   className?: string;
   dataTestid?: string;
   label?: string;
   name: string;
-}
+};
 
 const Icon: React.FC<IconProps> = ({ className, dataTestid, label, name }) => {
   const iconClassName = `icon icon-${name}`;
