@@ -136,9 +136,7 @@ function Section({
           {sidebar}
         </Sidebar>
       )} */}
-      {manualHeader ? (
-        <>{manualHeader}</>
-      ) : (
+      {manualHeader ?? (
         shouldBuildHeader && (
           <SectionHeader
             className={`${headerClassName} ${styles['header']}`}

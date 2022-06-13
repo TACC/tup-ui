@@ -196,7 +196,7 @@ Message.defaultProps = {
   canDismiss: false,
   dataTestid: '',
   isVisible: true,
-  onDismiss: () => {},
+  onDismiss: () => null,
   scope: '', // RFE: Require scope; remove this line
 };
 

@@ -37,14 +37,6 @@ function isPropertyLimitation(type, size) {
   return isLimited;
 }
 
-function getExpectedType(type, size) {
-  let expType = type;
-  if (type === 'primary' && size === 'small') {
-    expType = '';
-  }
-  return expType;
-}
-
 describe('Button', () => {
   it('uses given text', () => {
     muteTypeNotLinkNoSizeLog();
@@ -117,7 +109,7 @@ describe('Button', () => {
         <Button data-testid="no button here">{TEST_TEXT}</Button>
       );
       const el = queryByTestId('no button here');
-      expect(el).toBeNull;
+      expect(el).toBeNull();
     });
     it('disables button when in loading state', () => {
       muteTypeNotLinkNoSizeLog();
@@ -125,7 +117,7 @@ describe('Button', () => {
         <Button isLoading={true}>Loading Button</Button>
       );
       const el = queryByText('Loading Button');
-      expect(el).toBeDisabled;
+      expect(el).toBeDisabled();
     });
   });
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Spinner } from 'reactstrap';
-import PropTypes from 'prop-types';
 import './LoadingSpinner.scss';
 
 type LoadingSpinnerProps = {

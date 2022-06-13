@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Icon from '../Icon';
 import LoadingSpinner from '../LoadingSpinner';
 import styles from './Button.module.css';
@@ -30,7 +29,7 @@ type ButtonProps = React.PropsWithChildren<{
   size?: 'short' | 'medium' | 'long' | 'small';
   dataTestid?: string;
   disabled?: boolean;
-  onClick?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   attr?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
 }>;
@@ -48,7 +47,7 @@ const Button: React.FC<ButtonProps> = ({
   attr = 'button',
   isLoading = false,
 }) => {
-  function onclick(e: any) {
+  function onclick(e: React.MouseEvent<HTMLButtonElement>) {
     if (disabled) {
       e.preventDefault();
       return;
