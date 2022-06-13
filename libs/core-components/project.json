@@ -21,6 +21,12 @@
             "input": ".",
             "output": "."
           }
+        ],
+        "globals": [
+          {
+            "moduleId": "reactstrap",
+            "global": "reactstrap"
+          }
         ]
       }
     },
