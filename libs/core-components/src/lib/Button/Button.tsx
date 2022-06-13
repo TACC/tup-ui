@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
-
+import LoadingSpinner from '../LoadingSpinner';
 import styles from './Button.module.css';
-import LoadingSpinner from '_common/LoadingSpinner';
 
 export const TYPE_MAP = {
   primary: 'primary',
@@ -12,7 +11,6 @@ export const TYPE_MAP = {
   active: 'is-active',
   link: 'as-link',
 };
-export const TYPES = [''].concat(Object.keys(TYPE_MAP));
 
 export const SIZE_MAP = {
   short: 'width-short',
@@ -24,27 +22,33 @@ export const SIZES = [''].concat(Object.keys(SIZE_MAP));
 
 export const ATTRIBUTES = ['button', 'submit', 'reset'];
 
-function isNotEmptyString(props, propName, componentName) {
-  if (!props[propName] || props[propName].replace(/ /g, '') === '') {
-    return new Error(`No text passed to ${componentName}. Validation failed.`);
-  }
-  return null;
-}
+type ButtonProps = React.PropsWithChildren<{
+  className: string;
+  iconNameBefore?: string;
+  iconNameAfter?: string;
+  type?: 'primary' | 'secondary' | 'tertiary' | 'active' | 'link';
+  size?: 'short' | 'medium' | 'long' | 'small';
+  dataTestid?: string;
+  disabled?: boolean;
+  onClick?: (e: any) => void;
+  attr?: 'button' | 'submit' | 'reset';
+  isLoading: boolean;
+}>
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   className,
   iconNameBefore,
   iconNameAfter,
-  type,
-  size,
+  type = 'secondary',
+  size = 'short',
   dataTestid,
   disabled,
   onClick,
-  attr,
+  attr = 'button',
   isLoading,
 }) => {
-  function onclick(e) {
+  function onclick(e: any) {
     if (disabled) {
       e.preventDefault();
       return;
@@ -57,7 +61,8 @@ const Button = ({
   // Manage prop warnings
   /* eslint-disable no-console */
   if (type === 'link' && size) {
-    size = '';
+    // DISABLING: empty string is not a valid value for size
+    // size = '';
     // Component will work, except `size` is ineffectual
     console.warn('A <Button type="link"> ignores `size` prop.');
   }
@@ -86,6 +91,7 @@ const Button = ({
         ${TYPE_MAP[type] ? styles[TYPE_MAP[type]] : ''}
         ${SIZE_MAP[size] ? styles[SIZE_MAP[size]] : ''}
         ${isLoading ? styles['loading'] : ''}
+        ${className}
       `}
       disabled={disabled || isLoading}
       type={attr}
@@ -119,31 +125,6 @@ const Button = ({
       )}
     </button>
   );
-};
-Button.propTypes = {
-  children: isNotEmptyString,
-  className: PropTypes.string,
-  iconNameBefore: PropTypes.string,
-  iconNameAfter: PropTypes.string,
-  type: PropTypes.oneOf(TYPES),
-  size: PropTypes.oneOf(SIZES),
-  dataTestid: PropTypes.string,
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  attr: PropTypes.oneOf(ATTRIBUTES),
-  isLoading: PropTypes.bool,
-};
-Button.defaultProps = {
-  className: '',
-  iconNameBefore: '',
-  iconNameAfter: '',
-  type: 'secondary',
-  size: '', // unless `type="link", defaults to `short` after `propTypes`
-  dataTestid: '',
-  disabled: false,
-  onClick: null,
-  attr: 'button',
-  isLoading: false,
 };
 
 export default Button;
