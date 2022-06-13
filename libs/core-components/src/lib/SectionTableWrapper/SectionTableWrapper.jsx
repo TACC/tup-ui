@@ -92,7 +92,7 @@ function SectionTableWrapper({
   manualContent,
   manualHeader,
   tagName,
-  isFlexItem
+  isFlexItem,
 }) {
   let styleName = '';
   const styleNameList = [styles['root']];
@@ -124,8 +124,8 @@ function SectionTableWrapper({
 
   return (
     <TagName className={`${styleName} ${className}`}>
-      {manualHeader ?? (
-        shouldBuildHeader && (
+      {manualHeader ??
+        (shouldBuildHeader && (
           <SectionHeader
             className={`${styles['header']} ${headerClassName}`}
             actions={headerActions}
@@ -133,8 +133,7 @@ function SectionTableWrapper({
           >
             {header}
           </SectionHeader>
-        )
-      )}
+        ))}
       {manualContent ? (
         <>
           {manualContent}
@@ -180,7 +179,7 @@ SectionTableWrapper.propTypes = {
   manualHeader: PropTypes.element,
   /** Override tag of the root element */
   tagName: PropTypes.string,
-  isFlexItem: PropTypes.bool
+  isFlexItem: PropTypes.bool,
 };
 SectionTableWrapper.defaultProps = {
   children: undefined,
@@ -194,7 +193,7 @@ SectionTableWrapper.defaultProps = {
   manualHeader: undefined,
   manualContent: undefined,
   tagName: 'article',
-  isFlexItem: false
+  isFlexItem: false,
 };
 
 export default SectionTableWrapper;

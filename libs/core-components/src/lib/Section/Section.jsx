@@ -136,16 +136,15 @@ function Section({
           {sidebar}
         </Sidebar>
       )} */}
-      {manualHeader ?? (
-        shouldBuildHeader && (
+      {manualHeader ??
+        (shouldBuildHeader && (
           <SectionHeader
             className={`${headerClassName} ${styles['header']}`}
             actions={headerActions}
           >
             {header}
           </SectionHeader>
-        )
-      )}
+        ))}
       {manualContent ? (
         <>
           {manualContent}
