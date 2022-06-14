@@ -26,5 +26,6 @@ export default defineConfig({
         },
       },
     },
+    outDir: path.resolve(__dirname, '../../dist/libs/core-components'),
   },
 });
