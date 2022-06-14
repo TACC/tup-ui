@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "core-components": "libs/core-components",
+    "core-components-e2e": "apps/core-components-e2e",
     "core-styles": "libs/core-styles",
     "tup-ui": "apps/tup-ui"
   }
