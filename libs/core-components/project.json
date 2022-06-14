@@ -39,6 +39,28 @@
         "jestConfig": "libs/core-components/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx start-storybook -p 6006"
+          }
+        ],
+        "cwd": "libs/core-components"
+      }
+    },
+    "build-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx build-storybook --output-dir ../../dist/storybooks/core-components"
+          }
+        ],
+        "cwd": "libs/core-components"
+      }
     }
   },
   "tags": []
