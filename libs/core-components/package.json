@@ -1,6 +1,8 @@
 {
   "name": "@tacc/core-components",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/core-components.umd.js",
   "module": "./dist/core-components.es.js",
   "exports": {

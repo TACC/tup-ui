@@ -14,7 +14,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, './src/index.ts'),
       name: '@tacc/core-components',
-      fileName: (format) => `core-components.${format}.js`
+      fileName: (format) => `core-components.${format}.js`,
     },
     rollupOptions: {
       // Externalized dependencies, that will not be included during build
@@ -22,9 +22,9 @@ export default defineConfig({
       output: {
         globals: {
           react: 'react',
-          reactstrap: 'reactstrap'
-        }
-      }
-    }
+          reactstrap: 'reactstrap',
+        },
+      },
+    },
   },
 });
