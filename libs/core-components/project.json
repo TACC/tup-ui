@@ -56,7 +56,7 @@
       "options": {
         "commands": [
           {
-            "command": "npx build-storybook --output-dir ../../dist/storybooks/core-components"
+            "command": "echo 'Currently disabled' # npx build-storybook --output-dir ../../dist/storybooks/core-components"
           }
         ],
         "cwd": "libs/core-components"
