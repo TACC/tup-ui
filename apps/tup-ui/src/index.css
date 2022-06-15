@@ -1,23 +1,23 @@
 /* SETTINGS */
-@import url('@tacc/core-styles/lib/_imports/settings/border.css');
+@import url('@tacc/core-styles/dist/settings/border.css');
 /* below, import local styles (if any) */
 
 /* GENERIC */
-/* @import url('@tacc/core-styles/lib/_imports/generics/*.css'); */
+/* @import url('@tacc/core-styles/dist/generics/*.css'); */
 /* below, import local styles (if any) */
 
 /* ELEMENTS */
-/* @import url('@tacc/core-styles/lib/_imports/elements/*.css'); */
+/* @import url('@tacc/core-styles/dist/elements/*.css'); */
 /* below, import local styles (if any) */
 
 /* OBJECTS */
-@import url('@tacc/core-styles/lib/_imports/objects/o-flex-item-table-wrap.css');
+@import url('@tacc/core-styles/dist/objects/o-flex-item-table-wrap.css');
 /* below, import local styles (if any) */
 
 /* COMPONENTS */
-/* @import url('@tacc/core-styles/lib/_imports/components/*.css'); */
+/* @import url('@tacc/core-styles/dist/components/*.css'); */
 /* below, import local styles (if any) */
 
 /* TRUMPS */
-/* @import url('@tacc/core-styles/lib/_imports/trumps/*.css'); */
+/* @import url('@tacc/core-styles/dist/trumps/*.css'); */
 /* below, import local styles (if any) */
