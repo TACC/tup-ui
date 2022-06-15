@@ -22,4 +22,5 @@ jobs:
       # Lint/test/build any apps and libs that have been impacted by the diff.
       - run: npx nx affected --target=lint --parallel=3
       - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
+      - run: npx nx build core-components
       - run: npx nx affected --target=build --parallel=3
