@@ -58,7 +58,8 @@
           {
             "command": "npm run build-storybook"
           }
-        ]
+        ],
+        "cwd": "libs/core-components"
       }
     }
   },
