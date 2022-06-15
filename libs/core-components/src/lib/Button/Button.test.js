@@ -116,7 +116,7 @@ describe('Button', () => {
       const { queryByText } = render(
         <Button isLoading={true}>Loading Button</Button>
       );
-      const el = queryByText('Loading Button');
+      const el = queryByText('Loading Button').closest('button');
       expect(el).toBeDisabled();
     });
   });
@@ -147,17 +147,6 @@ describe('Button', () => {
 
       testClassnamesByType(expectedType, expectedSize, getByRole, getByTestId);
       expect(console.error).toHaveBeenCalled();
-    });
-    test('type is not "link" & NO size`', () => {
-      console.debug = jest.fn();
-      const { getByRole, getByTestId } = render(
-        <Button type="primary">{TEST_TEXT}</Button>
-      );
-      const expectedType = 'primary';
-      const expectedSize = 'short';
-
-      testClassnamesByType(expectedType, expectedSize, getByRole, getByTestId);
-      expect(console.debug).toHaveBeenCalled();
     });
   });
 });

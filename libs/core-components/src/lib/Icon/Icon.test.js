@@ -5,6 +5,7 @@ import Icon from './Icon';
 const NAME = 'test-icon-name';
 const CLASS = 'test-class-name';
 const TEXT = 'test-icon-text';
+const LABEL = 'test-icon-label';
 
 describe('Icon', () => {
   it('has correct `className (when not passed a `className`)`', () => {
@@ -23,9 +24,13 @@ describe('Icon', () => {
     const icon = getByRole('img');
     expect(icon.tagName).toEqual('I');
   });
-  it('has text', () => {
-    const { getByLabelText } = render(<Icon name={NAME}>{TEXT}</Icon>);
-    const label = getByLabelText(TEXT);
+  it('has a label', () => {
+    const { getByLabelText } = render(<Icon name={NAME} label={LABEL} />);
+    const label = getByLabelText(LABEL);
     expect(label).toBeDefined();
+  });
+  it('has child text nodes', () => {
+    const { getAllByText } = render(<Icon name={NAME}>{TEXT}</Icon>);
+    expect(getAllByText(TEXT).length).toEqual(1);
   });
 });

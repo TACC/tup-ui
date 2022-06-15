@@ -52,7 +52,7 @@ describe('SectionTableWrapper', () => {
     });
     it('renders conditional class names', () => {
       const { container } = render(
-        <SectionTableWrapper>{TABLE_MARKUP}</SectionTableWrapper>
+        <SectionTableWrapper isFlexItem>{TABLE_MARKUP}</SectionTableWrapper>
       );
       expect(container.querySelector('[class*="has-wrap"]')).not.toEqual(null);
     });

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Fade } from 'reactstrap';
-import Icon from '_common/Icon';
+import Icon from '../Icon';
 
 import styles from './Message.module.scss';
 

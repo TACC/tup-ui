@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '_common';
+import Button from '../Button';
 import PropTypes from 'prop-types';
 import styles from './Paginator.module.scss';
 

@@ -17,6 +17,9 @@ export const SIZE_MAP = {
   long: 'width-long',
   small: 'size-small',
 };
+
+export const TYPES = [''].concat(Object.keys(TYPE_MAP));
+
 export const SIZES = [''].concat(Object.keys(SIZE_MAP));
 
 export const ATTRIBUTES = ['button', 'submit', 'reset'];
@@ -71,14 +74,6 @@ const Button: React.FC<ButtonProps> = ({
     console.error(
       'A <Button type="primary" size="small"> is not allowed. ' +
         'Using `type="secondary"` instead.'
-    );
-  }
-  if (type !== 'link' && !size) {
-    size = 'short';
-    // Component will work, except `size` is auto-set
-    console.debug(
-      'A <Button> that is not `type="link"` and has no `size` ' +
-        'is automatically assigned `size="short"`.'
     );
   }
   /* eslint-enable no-console */
