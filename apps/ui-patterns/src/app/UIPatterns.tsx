@@ -3,17 +3,18 @@ import { Section } from '@tacc/core-components';
 /*
 import UIPatternsMessage from './UIPatternsMessage';
 import UIPatternsSection from './UIPatternsSection';
-import UIPatternsDescriptionList from './UIPatternsDescriptionList';
+
 import UIPatternsDropdownSelector from './UIPatternsDropdownSelector';
 import UIPatternsPill from './UIPatternsPill';
 import UIPatternsShowMore from './UIPatternsShowMore';
 import UIPatternsPaginator from './UIPatternsPaginator';
 import UIPatternsSidebar from './UIPatternsSidebar';
 */
+import UIPatternsDescriptionList from './UIPatternsDescriptionList';
 import UIPatternsButton from './UIPatternsButton';
 import styles from './UIPatterns.module.scss';
 
-function UIPatterns() {
+const UIPatterns: React.FC = () => {
   return (
     <Section
       introMessageName="UI"
@@ -24,6 +25,10 @@ function UIPatterns() {
           <div className={styles['list-item']}>
             <h6>Button</h6>
             <UIPatternsButton />
+          </div>
+          <div className={styles['list-item']}>
+            <h6>DescriptionList</h6>
+            <UIPatternsDescriptionList />
           </div>
           {/*
           <div className={styles['list-item']}>
@@ -38,10 +43,7 @@ function UIPatterns() {
             <h6>DropdownSelector</h6>
             <UIPatternsDropdownSelector />
           </div>
-          <div className={styles['list-item']}>
-            <h6>DescriptionList</h6>
-            <UIPatternsDescriptionList />
-          </div>
+
           <div className={styles['list-item']}>
             <h6>Pills</h6>
             <UIPatternsPill />

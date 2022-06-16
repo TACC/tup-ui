@@ -12,7 +12,7 @@ const DATA = {
   Icon: <Icon name="dashboard" />,
 };
 
-function UIPatternsDropdownSelector() {
+const UIPatternsDescriptionList: React.FC = () => {
   return (
     <>
       <div className={styles['list-cols']}>
@@ -99,4 +99,4 @@ function UIPatternsDropdownSelector() {
   );
 }
 
-export default UIPatternsDropdownSelector;
+export default UIPatternsDescriptionList;
