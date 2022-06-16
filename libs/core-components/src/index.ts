@@ -6,3 +6,4 @@ export { default as SectionMessage } from './lib/SectionMessage';
 export { default as LoadingSpinner } from './lib/LoadingSpinner';
 export { default as DescriptionList } from './lib/DescriptionList';
 export { default as Message } from './lib/Message';
+export { default as Paginator } from './lib/Paginator';

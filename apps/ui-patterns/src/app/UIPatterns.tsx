@@ -7,12 +7,13 @@ import UIPatternsSection from './UIPatternsSection';
 import UIPatternsDropdownSelector from './UIPatternsDropdownSelector';
 import UIPatternsPill from './UIPatternsPill';
 import UIPatternsShowMore from './UIPatternsShowMore';
-import UIPatternsPaginator from './UIPatternsPaginator';
+
 import UIPatternsSidebar from './UIPatternsSidebar';
 */
 import UIPatternsDescriptionList from './UIPatternsDescriptionList';
 import UIPatternsButton from './UIPatternsButton';
 import UIPatternsMessage from './UIPatternsMessage';
+import UIPatternsPaginator from './UIPatternsPaginator';
 import styles from './UIPatterns.module.scss';
 
 const UIPatterns: React.FC = () => {
@@ -35,6 +36,10 @@ const UIPatterns: React.FC = () => {
             <h6>Message &amp; Notification</h6>
             <UIPatternsMessage />
           </div>
+          <div className={styles['list-item']}>
+            <h6>Paginator</h6>
+            <UIPatternsPaginator />
+          </div>
           {/*
           <div className={styles['list-item']}>
             <h6>Section</h6>
@@ -54,10 +59,7 @@ const UIPatterns: React.FC = () => {
             <h6>Show More</h6>
             <UIPatternsShowMore />
           </div>
-          <div className={styles['list-item']}>
-            <h6>Paginator</h6>
-            <UIPatternsPaginator />
-          </div>
+
           <div className={styles['list-item']}>
             <h6>Sidebar</h6>
             <UIPatternsSidebar />

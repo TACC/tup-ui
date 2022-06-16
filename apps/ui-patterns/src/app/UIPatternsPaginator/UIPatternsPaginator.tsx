@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import { Paginator } from '@tacc/core-components';
 
-function UIPatternsPaginator() {
+const UIPatternsPaginator: React.FC = () => {
   const [current, setCurrent] = useState(11);
   const callback = useCallback(
-    (page) => {
+    (page: number) => {
       setCurrent(page);
     },
     [setCurrent]
@@ -17,23 +17,23 @@ function UIPatternsPaginator() {
       </dd>
       <dt>Paginator with one page</dt>
       <dd>
-        <Paginator pages={1} current={1} />
+        <Paginator pages={1} current={1} callback={() => {}} />
       </dd>
       <dt>Paginator with fewer than 7 pages</dt>
       <dd>
-        <Paginator pages={4} current={2} />
+        <Paginator pages={4} current={2} callback={() => {}} />
       </dd>
       <dt>Paginator with current page near start</dt>
       <dd>
-        <Paginator pages={20} current={3} />
+        <Paginator pages={20} current={3} callback={() => {}} />
       </dd>
       <dt>Paginator with current page near end</dt>
       <dd>
-        <Paginator pages={20} current={18} />
+        <Paginator pages={20} current={18} callback={() => {}} />
       </dd>
       <dd>Paginator with a custom spread value</dd>
       <dt>
-        <Paginator pages={20} current={11} spread={7} />
+        <Paginator pages={20} current={11} spread={7} callback={() => {}} />
       </dt>
     </dl>
   );
