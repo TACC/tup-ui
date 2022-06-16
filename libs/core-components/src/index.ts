@@ -12,3 +12,5 @@ export { default as DropdownSelector } from './lib/DropdownSelector';
 export { default as ShowMore } from './lib/ShowMore';
 export { default as SectionTableWrapper } from './lib/SectionTableWrapper';
 export { default as InfiniteScrollTable } from './lib/InfiniteScrollTable';
+export { default as Sidebar } from './lib/Sidebar';
+export { default as HistoryBadge } from './lib/HistoryBadge';
