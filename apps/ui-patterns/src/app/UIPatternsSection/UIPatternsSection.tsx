@@ -9,12 +9,10 @@ import {
   SectionMessage,
 } from '@tacc/core-components';
 import { Button } from 'reactstrap';
-import { useDispatch } from 'react-redux';
 
 import styles from './UIPatternsSection.module.css';
 
-function UIPatternsSection() {
-  const dispatch = useDispatch();
+const UIPatternsSection: React.FC = () => {
 
   function performAction() {
     // eslint-disable-next-line no-alert
@@ -180,15 +178,9 @@ function UIPatternsSection() {
           headerActions={
             <Button
               color="link"
-              onClick={() =>
-                dispatch({
-                  type: 'TICKET_CREATE_OPEN_MODAL',
-                  payload: {
-                    provideDashBoardLinkOnSuccess: false,
-                    showAsModalOnDashboard: false,
-                  },
-                })
-              }
+              onClick={() => window.alert(
+                'Open modal action (no actual action has occurred beyond this alert).'
+              )}
             >
               Open Modal
             </Button>
@@ -207,7 +199,7 @@ function UIPatternsSection() {
 
 export default UIPatternsSection;
 
-function UIPatternsSectionTableInfinite({ className }) {
+const UIPatternsSectionTableInfinite: React.FC<{ className?: string}> = ({ className }) => {
   const tableData = [
     {
       col1: 'Hello',
@@ -242,15 +234,9 @@ function UIPatternsSectionTableInfinite({ className }) {
     />
   );
 }
-UIPatternsSectionTableInfinite.propTypes = {
-  /** Additional className for the root element */
-  className: PropTypes.string,
-};
-UIPatternsSectionTableInfinite.defaultProps = {
-  className: '',
-};
 
-function UIPatternsSectionTablePlain({ className }) {
+
+const UIPatternsSectionTablePlain: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <table className={className}>
       <thead>
@@ -276,10 +262,3 @@ function UIPatternsSectionTablePlain({ className }) {
     </table>
   );
 }
-UIPatternsSectionTablePlain.propTypes = {
-  /** Additional className for the root element */
-  className: PropTypes.string,
-};
-UIPatternsSectionTablePlain.defaultProps = {
-  className: '',
-};

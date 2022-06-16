@@ -2,7 +2,7 @@ import React from 'react';
 import { Section } from '@tacc/core-components';
 /*
 
-import UIPatternsSection from './UIPatternsSection';
+
 
 
 
@@ -16,6 +16,7 @@ import UIPatternsMessage from './UIPatternsMessage';
 import UIPatternsPaginator from './UIPatternsPaginator';
 import UIPatternsPill from './UIPatternsPill';
 import UIPatternsShowMore from './UIPatternsShowMore';
+import UIPatternsSection from './UIPatternsSection';
 
 import styles from './UIPatterns.module.scss';
 
@@ -55,12 +56,13 @@ const UIPatterns: React.FC = () => {
             <h6>Show More</h6>
             <UIPatternsShowMore />
           </div>
-          {/*
           <div className={styles['list-item']}>
             <h6>Section</h6>
             <UIPatternsSection />
           </div>
 
+
+          {/*
 
 
 
