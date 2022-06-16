@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pill } from '@tacc/core-components';
 
-function UIPatternsPill() {
+const UIPatternsPill: React.FC = () => {
   return (
     <dl>
       <dt>Default Pill (normal)</dt>

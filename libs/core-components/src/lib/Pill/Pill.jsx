@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Pill.module.scss';
+import styles from './Pill.module.css';
 
 function Pill({ children, type, className, shouldTruncate }) {
   let pillStyleName = `${styles['root']} ${styles[`is-${type}`]}`;
