@@ -11,7 +11,7 @@ const HistoryBadge = ({ unread, disabled }) => {
       </span>
     );
   }
-  return <></>;
+  return null;
 };
 HistoryBadge.propTypes = {
   unread: number.isRequired,

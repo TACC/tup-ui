@@ -1,5 +1,5 @@
 import React from 'react';
-import { queryByTestId, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Sidebar from './Sidebar';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ describe('Sidebar', () => {
       </BrowserRouter>
     );
     const el = queryByTestId('sidebar here');
-    expect(el).toBeDefined;
+    expect(el).toBeDefined();
   });
   it('does not render sidebar where one item has no text', () => {
     const sidebarItems = [
@@ -29,6 +29,6 @@ describe('Sidebar', () => {
       </BrowserRouter>
     );
     const el = queryByTestId('no sidebar here');
-    expect(el).toBeNull;
+    expect(el).toBeNull();
   });
 });

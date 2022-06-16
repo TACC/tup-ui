@@ -42,7 +42,7 @@ DropdownSelector.propTypes = {
 };
 DropdownSelector.defaultProps = {
   type: DEFAULT_TYPE,
-  onChange: () => {},
+  onChange: () => null,
 };
 
 export default DropdownSelector;
