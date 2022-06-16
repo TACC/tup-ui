@@ -8,7 +8,7 @@ import UIPatternsPill from './UIPatternsPill';
 import UIPatternsShowMore from './UIPatternsShowMore';
 import UIPatternsPaginator from './UIPatternsPaginator';
 import UIPatternsButton from './UIPatternsButton';
-// import UIPatternsSidebar from './UIPatternsSidebar';
+import UIPatternsSidebar from './UIPatternsSidebar';
 import styles from './UIPatterns.module.scss';
 
 const UIPatterns: React.FC = () => {
@@ -51,12 +51,10 @@ const UIPatterns: React.FC = () => {
             <h6>Button</h6>
             <UIPatternsButton />
           </div>
-          {/*
-            <div className={styles['list-item']}>
-              <h6>Sidebar</h6>
-              <UIPatternsSidebar />
-            </div>
-          */}
+          <div className={styles['list-item']}>
+            <h6>Sidebar</h6>
+            <UIPatternsSidebar />
+          </div>
         </>
       }
       contentLayoutName="oneColumn"
