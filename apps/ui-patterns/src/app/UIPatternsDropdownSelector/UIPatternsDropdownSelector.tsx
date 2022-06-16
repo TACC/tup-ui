@@ -1,7 +1,7 @@
 import React from 'react';
 import { DropdownSelector } from '@tacc/core-components';
 
-function UIPatternsDropdownSelector() {
+const UIPatternsDropdownSelector: React.FC = () => {
   return (
     <dl>
       <dt>
@@ -9,7 +9,7 @@ function UIPatternsDropdownSelector() {
       </dt>
       <dd>
         <small>Only field (not dropdown) can be styled cross-browser.</small>
-        <DropdownSelector>
+        <DropdownSelector type="single" onChange={() => {}}>
           <optgroup label="Cryptographic People">
             <option value="alice">Alice</option>
             <option value="bob">Bob</option>
@@ -27,7 +27,7 @@ function UIPatternsDropdownSelector() {
       </dt>
       <dd>
         <small>Styling options are limited and browser-dependent.</small>
-        <DropdownSelector type="multiple">
+        <DropdownSelector type="multiple" onChange={() => {}}>
           <optgroup label="Cryptographic People">
             <option value="alice">Alice</option>
             <option value="bob">Bob</option>

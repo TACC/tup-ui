@@ -8,3 +8,4 @@ export { default as DescriptionList } from './lib/DescriptionList';
 export { default as Message } from './lib/Message';
 export { default as Paginator } from './lib/Paginator';
 export { default as Pill } from './lib/Pill';
+export { default as DropdownSelector } from './lib/DropdownSelector';
