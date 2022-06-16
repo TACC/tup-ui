@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Paginator } from '_common';
+import { Paginator } from '@tacc/core-components';
 
 function UIPatternsPaginator() {
   const [current, setCurrent] = useState(11);

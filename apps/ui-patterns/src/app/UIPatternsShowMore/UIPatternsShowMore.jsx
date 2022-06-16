@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShowMore } from '_common';
+import { ShowMore } from '@tacc/core-components';
 import styles from './UIPatternsShowMore.module.scss';
 
 function UIPatternsShowMore() {

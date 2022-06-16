@@ -1,5 +1,5 @@
 import React from 'react';
-import { DescriptionList, Icon } from '_common';
+import { DescriptionList, Icon } from '@tacc/core-components';
 
 import styles from './UIPatternsDescriptionList.module.css';
 

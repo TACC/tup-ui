@@ -1,5 +1,5 @@
 import React from 'react';
-import { InlineMessage, SectionMessage } from '_common';
+import { InlineMessage, SectionMessage } from '@tacc/core-components';
 
 import styles from './UIPatternsMessage.module.scss';
 

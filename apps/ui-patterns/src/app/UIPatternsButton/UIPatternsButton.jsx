@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '_common';
+import { Button } from '@tacc/core-components';
 
 import './UIPatternsButton.module.css';
 

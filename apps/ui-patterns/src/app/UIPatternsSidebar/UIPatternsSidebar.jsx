@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidebar } from '_common';
+import { Sidebar } from '@tacc/core-components';
 import HistoryBadge from '../../History/HistoryBadge';
 
 function UIPatternsSidebar() {

@@ -7,7 +7,7 @@ import {
   InfiniteScrollTable,
   InlineMessage,
   SectionMessage,
-} from '_common';
+} from '@tacc/core-components';
 import { Button } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 

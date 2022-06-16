@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropdownSelector } from '_common';
+import { DropdownSelector } from '@tacc/core-components';
 
 function UIPatternsDropdownSelector() {
   return (

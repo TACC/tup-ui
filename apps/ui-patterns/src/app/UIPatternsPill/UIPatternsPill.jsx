@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pill } from '_common';
+import { Pill } from '@tacc/core-components';
 
 function UIPatternsPill() {
   return (
