@@ -61,6 +61,6 @@ const UIPatterns: React.FC = () => {
       contentShouldScroll
     />
   );
-}
+};
 
 export default UIPatterns;

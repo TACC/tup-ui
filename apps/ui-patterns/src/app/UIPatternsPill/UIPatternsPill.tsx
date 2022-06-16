@@ -26,6 +26,6 @@ const UIPatternsPill: React.FC = () => {
       </dd>
     </dl>
   );
-}
+};
 
 export default UIPatternsPill;

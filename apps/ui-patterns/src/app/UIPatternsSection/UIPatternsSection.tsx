@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Section,
   SectionTableWrapper,
@@ -13,7 +12,6 @@ import { Button } from 'reactstrap';
 import styles from './UIPatternsSection.module.css';
 
 const UIPatternsSection: React.FC = () => {
-
   function performAction() {
     // eslint-disable-next-line no-alert
     window.alert(
@@ -178,9 +176,11 @@ const UIPatternsSection: React.FC = () => {
           headerActions={
             <Button
               color="link"
-              onClick={() => window.alert(
-                'Open modal action (no actual action has occurred beyond this alert).'
-              )}
+              onClick={() =>
+                window.alert(
+                  'Open modal action (no actual action has occurred beyond this alert).'
+                )
+              }
             >
               Open Modal
             </Button>
@@ -195,11 +195,13 @@ const UIPatternsSection: React.FC = () => {
       </dd>
     </dl>
   );
-}
+};
 
 export default UIPatternsSection;
 
-const UIPatternsSectionTableInfinite: React.FC<{ className?: string}> = ({ className }) => {
+const UIPatternsSectionTableInfinite: React.FC<{ className?: string }> = ({
+  className,
+}) => {
   const tableData = [
     {
       col1: 'Hello',
@@ -233,10 +235,11 @@ const UIPatternsSectionTableInfinite: React.FC<{ className?: string}> = ({ class
       tableData={tableData}
     />
   );
-}
+};
 
-
-const UIPatternsSectionTablePlain: React.FC<{ className?: string }> = ({ className }) => {
+const UIPatternsSectionTablePlain: React.FC<{ className?: string }> = ({
+  className,
+}) => {
   return (
     <table className={className}>
       <thead>
@@ -261,4 +264,4 @@ const UIPatternsSectionTablePlain: React.FC<{ className?: string }> = ({ classNa
       </tbody>
     </table>
   );
-}
+};

@@ -9,7 +9,7 @@ const UIPatternsDropdownSelector: React.FC = () => {
       </dt>
       <dd>
         <small>Only field (not dropdown) can be styled cross-browser.</small>
-        <DropdownSelector type="single" onChange={() => {}}>
+        <DropdownSelector type="single" onChange={() => null}>
           <optgroup label="Cryptographic People">
             <option value="alice">Alice</option>
             <option value="bob">Bob</option>
@@ -27,7 +27,7 @@ const UIPatternsDropdownSelector: React.FC = () => {
       </dt>
       <dd>
         <small>Styling options are limited and browser-dependent.</small>
-        <DropdownSelector type="multiple" onChange={() => {}}>
+        <DropdownSelector type="multiple" onChange={() => null}>
           <optgroup label="Cryptographic People">
             <option value="alice">Alice</option>
             <option value="bob">Bob</option>
@@ -42,6 +42,6 @@ const UIPatternsDropdownSelector: React.FC = () => {
       </dd>
     </dl>
   );
-}
+};
 
 export default UIPatternsDropdownSelector;

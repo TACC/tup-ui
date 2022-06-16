@@ -17,26 +17,26 @@ const UIPatternsPaginator: React.FC = () => {
       </dd>
       <dt>Paginator with one page</dt>
       <dd>
-        <Paginator pages={1} current={1} callback={() => {}} />
+        <Paginator pages={1} current={1} callback={() => null} />
       </dd>
       <dt>Paginator with fewer than 7 pages</dt>
       <dd>
-        <Paginator pages={4} current={2} callback={() => {}} />
+        <Paginator pages={4} current={2} callback={() => null} />
       </dd>
       <dt>Paginator with current page near start</dt>
       <dd>
-        <Paginator pages={20} current={3} callback={() => {}} />
+        <Paginator pages={20} current={3} callback={() => null} />
       </dd>
       <dt>Paginator with current page near end</dt>
       <dd>
-        <Paginator pages={20} current={18} callback={() => {}} />
+        <Paginator pages={20} current={18} callback={() => null} />
       </dd>
       <dd>Paginator with a custom spread value</dd>
       <dt>
-        <Paginator pages={20} current={11} spread={7} callback={() => {}} />
+        <Paginator pages={20} current={11} spread={7} callback={() => null} />
       </dt>
     </dl>
   );
-}
+};
 
 export default UIPatternsPaginator;

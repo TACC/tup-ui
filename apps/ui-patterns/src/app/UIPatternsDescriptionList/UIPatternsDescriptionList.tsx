@@ -97,6 +97,6 @@ const UIPatternsDescriptionList: React.FC = () => {
       </div>
     </>
   );
-}
+};
 
 export default UIPatternsDescriptionList;

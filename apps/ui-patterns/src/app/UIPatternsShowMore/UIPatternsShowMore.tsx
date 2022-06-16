@@ -22,6 +22,6 @@ const UIPatternsShowMore: React.FC = () => {
       </ShowMore>
     </div>
   );
-}
+};
 
 export default UIPatternsShowMore;
