@@ -32,9 +32,9 @@ Markup: o-section.html
 
 Styleguide Objects.Section
 */
-@import url("_imports/tools/media-queries.css");
-@import url("_imports/tools/x-layout.css");
-@import url("_imports/tools/x-fake-border.css");
+@import url("../tools/media-queries.css");
+@import url("../tools/x-layout.css");
+@import url("../tools/x-fake-border.css");
 
 
 

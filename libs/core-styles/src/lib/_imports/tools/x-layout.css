@@ -11,7 +11,7 @@ Styles that allow re-usable layouts.
 
 Styleguide Tools.ExtendsAndMixins.Layout
 */
-@import url("_imports/tools/media-queries.css");
+@import url("../tools/media-queries.css");
 
 
 

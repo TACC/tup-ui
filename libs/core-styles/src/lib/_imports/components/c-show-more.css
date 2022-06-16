@@ -11,7 +11,7 @@ A CSS-only way to support a "Show More…" feature. It requires a container and 
 
 Styleguide: Components.ShowMore
 */
-@import url("_imports/tools/x-truncate.css");
+@import url("../tools/x-truncate.css");
 
 /* Truncation */
 
