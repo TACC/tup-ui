@@ -9,3 +9,4 @@ export { default as Message } from './lib/Message';
 export { default as Paginator } from './lib/Paginator';
 export { default as Pill } from './lib/Pill';
 export { default as DropdownSelector } from './lib/DropdownSelector';
+export { default as ShowMore } from './lib/ShowMore';

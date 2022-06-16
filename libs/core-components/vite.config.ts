@@ -23,6 +23,7 @@ export default defineConfig({
         globals: {
           react: 'react',
           reactstrap: 'reactstrap',
+          "react-resize-detector": 'react-resize-detector'
         },
       },
     },

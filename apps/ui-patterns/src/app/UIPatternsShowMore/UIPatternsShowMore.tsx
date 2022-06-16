@@ -1,8 +1,8 @@
 import React from 'react';
 import { ShowMore } from '@tacc/core-components';
-import styles from './UIPatternsShowMore.module.scss';
+import styles from './UIPatternsShowMore.module.css';
 
-function UIPatternsShowMore() {
+const UIPatternsShowMore: React.FC = () => {
   return (
     <div className={styles.root}>
       <ShowMore>
