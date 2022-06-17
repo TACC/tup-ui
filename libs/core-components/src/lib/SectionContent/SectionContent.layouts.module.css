@@ -91,3 +91,6 @@
     column-count: 3;
   }
 }
+
+@custom-media --short-and-below (width < 634px);
+@custom-media --short-and-above (width >= 634px);
