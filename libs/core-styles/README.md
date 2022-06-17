@@ -85,7 +85,7 @@ Notes:
 
 2. Import stylesheets of either type:
    - pre-compiled, from `/dist`
-   - source files, from `/src/lib`
+   - source files, from `/src/lib/_imports`
 
 #### Build Script
 
