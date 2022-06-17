@@ -1,7 +1,3 @@
-/* SETTINGS */
-@import url('@tacc/core-styles/dist/settings/border.css');
-/* below, import local styles (if any) */
-
 /* GENERIC */
 /* @import url('@tacc/core-styles/dist/generics/*.css'); */
 /* below, import local styles (if any) */
@@ -11,7 +7,7 @@
 /* below, import local styles (if any) */
 
 /* OBJECTS */
-@import url('@tacc/core-styles/dist/objects/o-flex-item-table-wrap.css');
+/* @import url('@tacc/core-styles/dist/objects/*.css'); */
 /* below, import local styles (if any) */
 
 /* COMPONENTS */
