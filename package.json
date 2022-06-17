@@ -16,6 +16,11 @@
     "regenerator-runtime": "0.13.7",
     "tslib": "^2.3.0"
   },
+  "engines": {
+    "// node": "https://github.com/storybookjs/storybook/issues/16555#issuecomment-1078784981",
+    "node": ">=16.x",
+    "npm": ">=8.x"
+  },
   "devDependencies": {
     "@babel/core": "7.12.13",
     "@babel/preset-typescript": "7.12.13",
