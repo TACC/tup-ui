@@ -8,6 +8,8 @@ Override Bootstrap styles. See:
 
 Styleguide Components.Bootstrap.Form
 */
+@import url('../settings/border.css');
+
 .form-control {
   border: var(--global-border--normal);
   border-radius: 0;
