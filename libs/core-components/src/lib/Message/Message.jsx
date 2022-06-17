@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Fade } from 'reactstrap';
 import Icon from '../Icon';
 
-import styles from './Message.module.scss';
+import styles from './Message.module.css';
 
 export const ERROR_TEXT = {
   mismatchCanDismissScope:

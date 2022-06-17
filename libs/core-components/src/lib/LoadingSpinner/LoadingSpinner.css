@@ -4,15 +4,16 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  .inline {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  .section {
-    width: 4rem;
-    height: 4rem;
-  }
 }
+.loading-icon .inline {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.loading-icon .section {
+  width: 4rem;
+  height: 4rem;
+}
+
 button .loading-icon {
   display: inline-flex;
   vertical-align: middle;

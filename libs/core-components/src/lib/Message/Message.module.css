@@ -131,18 +131,18 @@ p.is-scope-section {
   /* WARNING: This accessibility solution is only because of lack of design */
   /* FAQ: Can not explicitely declare `.wb-link`, because its a global class */
   /* Avoid clash of red text and purple `.wb-link` */
-  .is-error a {
+  &.is-error a {
     color: var(
       --global-color-danger--normal
     ) !important /* override overly-specific `.workbench-content .wb-link` */;
   }
   /* Distinguish text and `.wb-link`, and link states default and hover */
-  .is-warn a,
-  .is-error a {
+  &.is-warn a,
+  &.is-error a {
     text-decoration-line: underline;
   }
-  .is-warn a:hover,
-  .is-error a:hover {
+  &.is-warn a:hover,
+  &.is-error a:hover {
     text-decoration-style: double;
   }
 }
