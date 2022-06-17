@@ -1,3 +1,6 @@
+@import url('@tacc/core-styles/src/lib/_imports/settings/border.css');
+@import url('@tacc/core-styles/src/lib/_imports/settings/color.css');
+
 /* WARNING: No official design */
 /* FAQ: Styles are a mix of static design and dev design */
 /* SEE: https://confluence.tacc.utexas.edu/x/gYCeBw */

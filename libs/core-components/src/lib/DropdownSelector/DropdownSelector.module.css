@@ -1,3 +1,5 @@
+@import url('@tacc/core-styles/src/lib/_imports/settings/color.css');
+
 /* NOTE: A plugin may be used, instead, when it becomes worthwhile */
 /* PORTABILITY: Only style `<select>` field (not dropdown) because of browser-limitations */
 /* CREDIT: https://github.com/filamentgroup/select-css/blob/8f91fe1/src/select-css.css */

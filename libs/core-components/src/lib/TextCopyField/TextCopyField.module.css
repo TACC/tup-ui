@@ -1,3 +1,5 @@
+@import url('@tacc/core-styles/src/lib/_imports/settings/color.css');
+
 .input {
   /* composes: input from '@tacc/core-styles/dist/components/...form.css'; */
 }
