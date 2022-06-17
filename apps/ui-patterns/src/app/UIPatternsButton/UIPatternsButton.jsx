@@ -65,6 +65,49 @@ function UIPatternsButton() {
           </small>
         </p>
       </dd>
+      <dt>Tertiary Button</dt>
+      <dd>
+        <small>
+          <code>type=&quot;tertiary&quot;</code>&nbsp; (
+          <code>size=&quot;small&quot;</code>)
+        </small>
+      </dd>
+      <dd>
+        <Button type="tertiary">Button</Button>
+        <Button type="tertiary" disabled={true}>
+          Disabled
+        </Button>
+        <Button type="tertiary" size="small">
+          Button
+        </Button>
+        <p>
+          <small>
+            Use for inactive option buttons in a group of buttons (.e.g active
+            page in pagination).
+          </small>
+        </p>
+      </dd>
+      <dt>Active Button</dt>
+      <dd>
+        <small>
+          <code>type=&quot;active&quot;</code>
+        </small>
+      </dd>
+      <dd>
+        <Button type="active">Button</Button>
+        <Button type="active" disabled={true}>
+          Disabled
+        </Button>
+        <Button type="active" size="small">
+          Button
+        </Button>
+        <p>
+          <small>
+            Use for active option button in a group of buttons (.e.g active page
+            in pagination).
+          </small>
+        </p>
+      </dd>
       <dt>Button Sizes: Heights</dt>
       <dd>
         <small>
@@ -133,6 +176,9 @@ function UIPatternsButton() {
       </dd>
       <dd>
         <Button type="link">Link</Button>
+        <Button type="link" disabled>
+          Disabled
+        </Button>
         <p>
           <small>To “clear” or “cancel” a UI state.</small>
         </p>
@@ -153,6 +199,22 @@ function UIPatternsButton() {
           isLoading={isLoading}
         >
           Click Me!
+        </Button>
+        <Button
+          type="secondary"
+          onClick={onClick}
+          size="long"
+          isLoading={isLoading}
+        >
+          Or Me Instead!
+        </Button>
+        <Button
+          type="tertiary"
+          onClick={onClick}
+          size="long"
+          isLoading={isLoading}
+        >
+          Or Even Me!
         </Button>
       </dd>
     </dl>
