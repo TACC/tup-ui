@@ -29,8 +29,4 @@ describe('Icon', () => {
     const label = getByLabelText(LABEL);
     expect(label).toBeDefined();
   });
-  it('has child text nodes', () => {
-    const { getAllByText } = render(<Icon name={NAME}>{TEXT}</Icon>);
-    expect(getAllByText(TEXT).length).toEqual(1);
-  });
 });

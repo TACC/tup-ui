@@ -1,5 +1,5 @@
 import React from 'react';
-import './Icon.module.css';
+import './Icon.css';
 
 type IconProps = React.PropsWithChildren<{
   className?: string;
@@ -9,7 +9,6 @@ type IconProps = React.PropsWithChildren<{
 }>;
 
 const Icon: React.FC<IconProps> = ({
-  children,
   className,
   dataTestid,
   label,
@@ -27,9 +26,7 @@ const Icon: React.FC<IconProps> = ({
       role="img"
       aria-label={label}
       data-testid={dataTestid}
-    >
-      {children}
-    </i>
+    />
   );
 };
 
