@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from 'react';
+// To drop this dependency, use `@tacc/core-styles/.../components/c-show-more`
 import { useResizeDetector } from 'react-resize-detector';
 import PropTypes from 'prop-types';
 
 import Button from '../Button';
 
-import styles from './ShowMore.module.scss';
+import styles from './ShowMore.module.css';
 
 const ShowMore = ({ className, children }) => {
   const [expanded, setExpanded] = useState(false);

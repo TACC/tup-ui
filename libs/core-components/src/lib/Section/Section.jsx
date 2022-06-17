@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { SectionHeader, SectionContent } from '../';
-import { LAYOUTS, DEFAULT_LAYOUT } from '../SectionContent';
+import { SectionHeader } from '../SectionHeader';
+import { SectionContent, LAYOUTS, DEFAULT_LAYOUT } from '../SectionContent';
 
 import styles from './Section.module.css';
 
