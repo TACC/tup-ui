@@ -48,6 +48,8 @@
     "jest": "27.5.1",
     "nx": "14.1.7",
     "prettier": "^2.5.1",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-resize-detector": "^7.1.2",
     "react-test-renderer": "18.1.0",
     "stylelint": "^14.8.5",
     "ts-jest": "27.1.4",
