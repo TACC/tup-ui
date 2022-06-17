@@ -43,8 +43,7 @@ const UIPatternsSection: React.FC = () => {
           density="compact"
           direction="horizontal"
           data={{
-            contentClassName:
-              styles['content--has-list-to-illustrate-scrolling'],
+            contentClassName: 'content--has-list-to-illustrate-scrolling',
             header: 'Milk',
             content: 'Cow, Soy, Nut',
             contentShouldScroll: <code>true</code>,
@@ -71,8 +70,7 @@ const UIPatternsSection: React.FC = () => {
           className={styles['term-details']}
           direction="vertical"
           data={{
-            contentClassName:
-              styles['content--has-table-to-illustrate-scrolling'],
+            contentClassName: 'content--has-table-to-illustrate-scrolling',
             header:
               'Section with <SectionTableWrapper> and <InfiniteScrollTable>',
             content: '(paragraph, table, paragraph)',
@@ -118,8 +116,8 @@ const UIPatternsSection: React.FC = () => {
           className={styles['term-details']}
           direction="vertical"
           data={{
-            className: styles['is-resizable'],
-            contentClassName: styles['content--should-always-show-scrollbar'],
+            className: 'is-resizable',
+            contentClassName: 'content--should-always-show-scrollbar',
             header: 'Header',
             content: (
               <>
