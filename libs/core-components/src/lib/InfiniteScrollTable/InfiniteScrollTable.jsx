@@ -3,6 +3,7 @@ import { useTable } from 'react-table';
 import PropTypes from 'prop-types';
 import LoadingSpinner from '../LoadingSpinner';
 import './InfiniteScrollTable.css';
+import styles from './InfiniteScrollTable.module.css';
 
 const rowContentPropType = PropTypes.oneOfType([
   PropTypes.string,
@@ -76,7 +77,7 @@ const InfiniteScrollTable = ({
   return (
     <table
       {...getTableProps()}
-      className={`${className} InfiniteScrollTable o-fixed-header-table`}
+      className={`${className} InfiniteScrollTable ${styles.container}`}
     >
       <thead>
         {headerGroups.map((headerGroup) => (

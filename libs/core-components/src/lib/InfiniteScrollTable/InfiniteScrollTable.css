@@ -1,6 +1,8 @@
 @import url('@tacc/core-styles/src/lib/_imports/settings/color.css');
 
 .InfiniteScrollTable {
+  composes: o-fixed-header-table from '@tacc/core-styles/dist/components/c-button.css';
+
   --cell-horizontal-padding: 0.35em; /* horizontal cell padding for inter-column buffer */
 
   /* To force `width: 100%` to have effect when table is wider than container
