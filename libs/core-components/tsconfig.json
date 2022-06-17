@@ -23,6 +23,15 @@
     },
     {
       "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./.storybook/tsconfig.json"
     }
+  ],
+  "exclude": [
+    "**/*.stories.ts",
+    "**/*.stories.js",
+    "**/*.stories.jsx",
+    "**/*.stories.tsx"
   ]
 }
