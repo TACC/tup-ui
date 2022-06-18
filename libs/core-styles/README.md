@@ -194,11 +194,11 @@ For syntax highlighting, you may install a PostCSS plugin for your editor; you m
 
 - for VS Code
 
-    ```json
-    "files.associations": {
-        "*.css": "postcss"
-    },
-    ```
+  ```json
+  "files.associations": {
+      "*.css": "postcss"
+  },
+  ```
 
 ## Production Deployment
 
