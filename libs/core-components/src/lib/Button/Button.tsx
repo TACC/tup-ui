@@ -46,7 +46,8 @@ type ButtonProps = React.PropsWithChildren<{
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   attr?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
-}> & (ButtonTypeLinkSize | ButtonTypePrimarySize | ButtonTypeOtherSize);
+}> &
+  (ButtonTypeLinkSize | ButtonTypePrimarySize | ButtonTypeOtherSize);
 
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -70,7 +71,6 @@ const Button: React.FC<ButtonProps> = ({
       return onClick(e);
     }
   }
-
 
   return (
     <button
