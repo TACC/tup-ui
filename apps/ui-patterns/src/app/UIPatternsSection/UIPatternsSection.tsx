@@ -103,9 +103,9 @@ const UIPatternsSection: React.FC = () => {
             </>
           }
           headerActions={
-            <button type="button" onClick={performAction}>
-              Click Me
-            </button>
+            <Button onClick={performAction}>
+              Action
+            </Button>
           }
           contentLayoutName="oneColumn"
         />
