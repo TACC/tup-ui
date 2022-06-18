@@ -1,0 +1,45 @@
+/*
+  Content Sectioning Elements
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning
+*/
+
+h1,
+h2,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 1.125rem; /* 18px (if base is 16px) */
+}
+h3 {
+  font-size: 0.9375rem; /* 15px (if base is 16px) */
+  font-weight: bold;
+}
+
+
+
+
+
+/*
+  Inline Text Semantics
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Inline_text_semantics
+*/
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* To overwrite Bootstrap `_code.scss` */
+code {
+  color: unset;
+}
+kbd {
+  padding: unset;
+  color: unset;
+  background-color: unset;
+  border-radius: unset;
+}
