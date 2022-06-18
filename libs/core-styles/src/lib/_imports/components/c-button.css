@@ -248,6 +248,13 @@ Styleguide Components.Button
 
 /* Modifiers: Sizes */
 
+.c-button:not(
+  .c-button--width-short,
+  .c-button--width-medium,
+  .c-button--width-long,
+  .c-button--size-small,
+  .c-button--as-link
+),
 .c-button--width-short {
   width: var(--min-width);
 }
