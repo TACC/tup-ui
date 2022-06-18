@@ -6,8 +6,8 @@ import {
   InfiniteScrollTable,
   InlineMessage,
   SectionMessage,
+  Button,
 } from '@tacc/core-components';
-import { Button } from 'reactstrap';
 
 import styles from './UIPatternsSection.module.css';
 
@@ -173,7 +173,7 @@ const UIPatternsSection: React.FC = () => {
           contentLayoutName="oneColumn"
           headerActions={
             <Button
-              color="link"
+              type="link"
               onClick={() =>
                 window.alert(
                   'Open modal action (no actual action has occurred beyond this alert).'
