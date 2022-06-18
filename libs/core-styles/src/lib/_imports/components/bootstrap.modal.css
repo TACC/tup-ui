@@ -1,0 +1,74 @@
+/* TODO: Migrate any other should-be-global Portal modal styles to here */
+/* FP-344: Consider a Modal component and a CSS module */
+/*
+Modal (Bootstrap)
+
+Override Bootstrap styles. See:
+
+- [ReactStrap Forms](https://reactstrap.github.io/components/modals/)
+- [Bootstrap Forms](https://getbootstrap.com/docs/4.4/components/modal/)
+
+Styleguide Components.Bootstrap.Modal
+*/
+@import url('../tools/x-truncate.css');
+
+.modal-content,
+.modal-header,
+.modal-body,
+.modal-footer {
+  border-radius: 0;
+}
+.modal-content,
+.modal-header,
+.modal-body {
+  border: none;
+}
+.modal-footer {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+.modal-header {
+  background-color: var(--global-color-primary--x-light);
+  padding: 1.35rem 1.75rem; /* (18px 23.5px design * 1.2 design-to-app ratio) */
+}
+.modal-title {
+  color: var(--global-color-primary--xx-dark);
+  font-weight: normal;
+  font-size: 1.2rem; /* 16px design * 1.2 design-to-app ratio */
+
+  @extend .x-truncate--one-line;
+}
+
+/* To darken close button */
+.modal-header .close {
+  color: var(--global-color-primary--x-dark);
+  opacity: 1;
+}
+/* FAQ: The specificity matches Bootstrap */
+.modal-header .close:not(:disabled):not(.disabled):focus,
+.modal-header .close:not(:disabled):not(.disabled):hover {
+  color: var(--global-color-primary--xx-dark);
+  opacity: 1;
+}
+
+/* To render modal close button icon as a Cortal icon */
+/* CAVEAT: Pass `charCode="&#xe912;"` to `<ModalHeader>` */
+.modal-header .close span {
+  /* To mimic `.icon` styles without `@extend` or `composes` (unavailable) */
+  /* HACK: Copied (and reduced and edited) from `src/styles/trumps/icon...` */
+  font-size: 1.5rem; /* bigger to match header text font height (like design) */
+  font-family: Cortal-Icons !important;
+}
+
+.modal-header.has-MuiTabs {
+  flex-direction: row;
+  position: relative;
+  height: 63.5px;
+  border-bottom: 1px solid #afafaf;
+  padding: 5px;
+}
+.modal-header.has-MuiTabs .close {
+  transform: translate(-25%, 25%);
+}
