@@ -102,11 +102,7 @@ const UIPatternsSection: React.FC = () => {
               </SectionTableWrapper>
             </>
           }
-          headerActions={
-            <Button onClick={performAction}>
-              Action
-            </Button>
-          }
+          headerActions={<Button onClick={performAction}>Action</Button>}
           contentLayoutName="oneColumn"
         />
       </dd>
