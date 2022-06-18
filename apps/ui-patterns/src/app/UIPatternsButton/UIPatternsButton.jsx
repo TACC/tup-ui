@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@tacc/core-components';
 
-import './UIPatternsButton.module.css';
+import styles from './UIPatternsButton.module.css';
 
 function UIPatternsButton() {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +12,7 @@ function UIPatternsButton() {
     }, 3000);
   };
   return (
-    <dl>
+    <dl className={styles.container}>
       <dt>Default Button</dt>
       <dd>
         <small>
