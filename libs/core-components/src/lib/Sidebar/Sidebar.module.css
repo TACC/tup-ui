@@ -14,7 +14,7 @@
 
 /* Elements */
 
-.link:global(.nav-link) /* override Bootstrap */ {
+.link:global(.nav-link) /* extra specific, to override Bootstrap */ {
   display: flex;
   align-items: center;
 }
