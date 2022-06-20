@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Button from '../Button';
 
-import styles from './ShowMore.module.scss';
+import styles from './ShowMore.module.css';
 
 const ShowMore = ({ className, children }) => {
   const [expanded, setExpanded] = useState(false);
