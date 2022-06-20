@@ -276,6 +276,10 @@ Styleguide Components.Button
 
 /* Elements */
 
+.c-button > * {
+  vertical-align: middle;
+}
+
 .c-button__icon--before {
   margin-right: 0.5em;
 }
