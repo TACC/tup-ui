@@ -13,9 +13,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
 }) => {
   return (
     <div className={`loading-icon ${className}`} data-testid="loading-spinner">
-      <Spinner className={placement}>
-        <span className="sr-only">Loading...</span>
-      </Spinner>
+      <Spinner className={placement} />
     </div>
   );
 };
