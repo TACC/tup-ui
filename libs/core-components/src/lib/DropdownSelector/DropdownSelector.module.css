@@ -1,4 +1,4 @@
-@import url('@tacc/core-styles/src/lib/_imports/settings/color.css');
+@import url('@tacc/core-styles/dist/settings/color.css');
 
 /* NOTE: A plugin may be used, instead, when it becomes worthwhile */
 /* PORTABILITY: Only style `<select>` field (not dropdown) because of browser-limitations */

@@ -1,4 +1,4 @@
-@import url('@tacc/core-styles/src/lib/_imports/settings/color.css');
+@import url('@tacc/core-styles/dist/settings/color.css');
 
 .root {
   font-size: 0.875rem; /* 14px (approved deviation from design) */

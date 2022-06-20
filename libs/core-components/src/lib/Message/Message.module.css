@@ -1,5 +1,5 @@
-@import url('@tacc/core-styles/src/lib/_imports/settings/border.css');
-@import url('@tacc/core-styles/src/lib/_imports/settings/color.css');
+@import url('@tacc/core-styles/dist/settings/border.css');
+@import url('@tacc/core-styles/dist/settings/color.css');
 
 /* WARNING: No official design */
 /* FAQ: Styles are a mix of static design and dev design */

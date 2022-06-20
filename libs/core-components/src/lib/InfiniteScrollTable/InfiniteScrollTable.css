@@ -1,4 +1,4 @@
-@import url('@tacc/core-styles/src/lib/_imports/settings/color.css');
+@import url('@tacc/core-styles/dist/settings/color.css');
 
 .InfiniteScrollTable {
   composes: o-fixed-header-table from '@tacc/core-styles/dist/components/c-button.css';
