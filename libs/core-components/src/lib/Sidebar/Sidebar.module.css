@@ -12,22 +12,25 @@
   padding-top: 20px;
 }
 
-.link {
+.link:is(:link, :visited) {
   color: var(--global-color-primary--dark);
   font-weight: 500;
 }
 .link:hover,
-.link--active {
+.link--active:is(:link, :visited) {
   color: var(--global-color-primary--x-dark); /* to pass color contrast test */
   background-color: var(--global-color-accent--weak);
 }
-.link--active,
-.link:active {
+.link:active,
+.link--active:is(:link, :visited) {
   font-weight: 700;
 }
 
 .content {
   padding-left: 20px;
+
+  display: flex;
+  align-items: center;
 }
 
 .text {
