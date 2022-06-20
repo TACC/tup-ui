@@ -8,7 +8,6 @@ const EXAMPLE_LINK = {
     <a
       href={window.location.href}
       onClick={(e) => e.preventDefault()}
-      className="wb-link"
     >
       Example link
     </a>
@@ -17,7 +16,6 @@ const EXAMPLE_LINK = {
     <a
       href={window.location.href}
       onClick={(e) => e.preventDefault()}
-      className="wb-link"
     >
       Example link can be a complete sentence.
     </a>

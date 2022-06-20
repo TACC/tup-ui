@@ -1,3 +1,7 @@
+@import url('@tacc/core-styles/dist/settings/color.css');
+
+
+
 /*
   Content Sectioning Elements
   https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning
@@ -27,6 +31,18 @@ h3 {
   Inline Text Semantics
   https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Inline_text_semantics
 */
+
+/* Use :link and :visited */
+a:link,
+a:hover /* overwrite Bootstrap */ {
+  color: var(--global-color-accent--normal);
+}
+a:visited {
+  color: var(--global-color-accent--x-dark);
+}
+a:active {
+  text-decoration-line: underline overline;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
