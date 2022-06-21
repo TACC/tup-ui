@@ -7,21 +7,27 @@ export {
 export type UIWizardComplexField = {
   name: string;
   include?: boolean;
-}
+};
+
+export type UIWizardArrayOfComplexFields = {
+  name: string;
+  fieldArray: Array<UIWizardComplexField>;
+};
 
 export type UIWizardSchema = {
-  valueOne: string;
-  valueTwo: string;
-  valueThree: string;
-  valueFour: number;
-  fieldArray: Array<UIWizardComplexField>
-}
+  fieldOne: string;
+  fieldTwo: string;
+  fieldThree: string;
+  fieldFour: number;
+  fieldArray: Array<UIWizardComplexField>;
+  fieldArrayOfArrays: Array<UIWizardArrayOfComplexFields>;
+};
 
 export type UIWizardExtra = {
   extraOne: string;
   extraTwo: string;
   memo: string;
-}
+};
 
 // An adapter type for mapping additional values to @tacc/core-wrappers/Wizard
 export type UIWizardStep = {
@@ -30,9 +36,7 @@ export type UIWizardStep = {
   render: React.ReactNode;
   summary: React.ReactNode;
   // A generator for initial values that requires extra values
-  generateInitialValues: (
-    extra: UIWizardExtra
-  ) => Partial<UIWizardSchema>;
+  generateInitialValues: (extra: UIWizardExtra) => Partial<UIWizardSchema>;
   // A custom validator thunk for a step that requires extra values
   // (This returns a custom validation function)
   validateThunk?: (

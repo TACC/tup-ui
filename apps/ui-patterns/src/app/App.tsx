@@ -6,7 +6,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/" element={<UIPatterns />} />
+        <Route path="/" component={UIPatterns} />
       </Switch>
     </Router>
   );

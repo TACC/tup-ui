@@ -1,27 +1,24 @@
 /**
- * useWizardValues.tsx 
- * 
+ * useWizardValues.tsx
+ *
  * Example of how to create a custom context for a wizard with extra
  * values that are not part of the form schema, but required for rendering
  * the Wizard or calculating default values
  */
 
 import React, { useContext } from 'react';
-import { UIWizardSchema, UIWizardExtra } from '.'
+import { UIWizardSchema, UIWizardExtra } from '.';
 import { withBuilder } from '@tacc/core-wrappers';
-
-
 
 // A React context for the external values
 const UIWizardContext = React.createContext<UIWizardExtra>({
   extraOne: 'extra value one',
   extraTwo: 'extra value two',
-  memo: 'memo.value'
+  memo: 'memo.value',
 });
 
 // Use the withBuilder Higher Order Component to generate a context and provider
 const { useBuilderContext, Provider } = withBuilder<UIWizardSchema>();
-
 
 // Create a custom hook that provides the withBuilder methods along with the external values
 export const useWizardValues = () => {
@@ -32,7 +29,7 @@ export const useWizardValues = () => {
     add,
     set,
     clear,
-    extra
+    extra,
   };
 };
 
@@ -40,7 +37,7 @@ export const useWizardValues = () => {
 type UIWizardProviderProps = {
   value: {
     defaultValues: Partial<UIWizardSchema>;
-    extra: UIWizardExtra
+    extra: UIWizardExtra;
   };
 };
 

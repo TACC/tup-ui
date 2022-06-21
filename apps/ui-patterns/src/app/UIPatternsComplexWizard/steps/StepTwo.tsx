@@ -1,14 +1,21 @@
+/**
+ * StepTwo.tsx
+ *
+ * This step demonstrates how to implement a Formik FieldArray. Field arrays are lists
+ * of objects that can be appended or removed.
+ */
 import React from 'react';
 import { Button } from '@tacc/core-components';
 import fieldArrayStyles from './FieldArray.module.css';
-
 import { Collapse } from '@tacc/core-components';
 import { FieldArray, useFormikContext, FieldArrayRenderProps } from 'formik';
+import { FormikInput, FormikCheck } from '@tacc/core-wrappers';
 import {
-  FormikInput,
-  FormikCheck,
-} from '@tacc/core-wrappers';
-import { UIWizardStep, UIWizardComplexField, UIWizardSchema, useWizardValues } from '..';
+  UIWizardStep,
+  UIWizardComplexField,
+  UIWizardSchema,
+  useWizardValues,
+} from '..';
 import * as Yup from 'yup';
 
 type UIWizardComplexFieldProps = {
@@ -17,6 +24,7 @@ type UIWizardComplexFieldProps = {
   remove: (index: number) => UIWizardComplexField | undefined;
 };
 
+// A component for rendering an individual field
 const UIWizardComplexFieldRender: React.FC<UIWizardComplexFieldProps> = ({
   item,
   index,
@@ -25,8 +33,8 @@ const UIWizardComplexFieldRender: React.FC<UIWizardComplexFieldProps> = ({
   return (
     <>
       <Collapse
-        title='Complex Field'
-        note='more values inside'
+        title="Complex Field"
+        note="more values inside"
         className={fieldArrayStyles.item}
       >
         <FormikInput
@@ -49,6 +57,7 @@ const UIWizardComplexFieldRender: React.FC<UIWizardComplexFieldProps> = ({
   );
 };
 
+// A component that renders the items in the field array
 const StepTwoRender: React.FC<{ arrayHelpers: FieldArrayRenderProps }> = ({
   arrayHelpers,
 }) => {
@@ -74,23 +83,25 @@ const StepTwoRender: React.FC<{ arrayHelpers: FieldArrayRenderProps }> = ({
           remove={arrayHelpers.remove}
         />
       ))}
-      <Button onClick={() => arrayHelpers.push({})} size="small">
-        + Add File Input
+      <Button
+        onClick={() => arrayHelpers.push({ name: 'new item', include: true })}
+        size="small"
+      >
+        + Add Item
       </Button>
     </Collapse>
   );
 };
 
+// A step that renders the field array wrapper
 export const StepTwo: React.FC = () => {
   return (
     <div>
-      <h2>Step Two</h2>
+      <h2>Field Array</h2>
       <FieldArray
-        name="fileInputs"
+        name="fieldArray"
         render={(arrayHelpers) => {
-          return (
-            <StepTwoRender arrayHelpers={arrayHelpers} />
-          );
+          return <StepTwoRender arrayHelpers={arrayHelpers} />;
         }}
       />
     </div>
@@ -125,7 +136,7 @@ const step: UIWizardStep = {
   summary: <StepTwoSummary />,
   validationSchema,
   generateInitialValues: (extra) => ({
-    fieldArray: [ { name: 'item one', include: true }]
+    fieldArray: [{ name: 'item one', include: true }],
   }),
 };
 

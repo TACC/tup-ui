@@ -1,25 +1,28 @@
 import { FormikInput } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
-import { UIWizardStep, useWizardValues, UIWizardSchema, UIWizardExtra } from '..';
+import {
+  UIWizardStep,
+  useWizardValues,
+  UIWizardSchema,
+  UIWizardExtra,
+} from '..';
 
 export const StepOne: React.FC = () => {
   const { extra } = useWizardValues();
   return (
     <div>
-      <h2>
-        Step One: Extra value two is {extra.extraTwo}
-      </h2>
+      <h2>Step One: Extra value two is {extra.extraTwo}</h2>
       <FormikInput
-        name="name"
+        name="fieldOne"
         required={true}
         label="Name"
-        description="A name for this job"
+        description="The first form field"
       />
       <FormikInput
-        name="description"
+        name="fieldTwo"
         required={false}
         label="Description"
-        description="A description of this job"
+        description="The second form field"
       />
     </div>
   );
@@ -30,15 +33,17 @@ export const StepOneSummary: React.FC = () => {
   const { values } = useWizardValues();
   return (
     <ul>
-      <li>Value One: {values.valueOne}</li>
-      <li>Value Two: {values.valueTwo}</li>
+      <li>Field One: {values.fieldOne}</li>
+      <li>Field Two: {values.fieldTwo}</li>
     </ul>
   );
 };
 
-const generateInitialValues = (extra: UIWizardExtra): Partial<UIWizardSchema> => ({
+const generateInitialValues = (
+  extra: UIWizardExtra
+): Partial<UIWizardSchema> => ({
   // Use the extra values provided to generate an initial value
-  valueOne: extra.extraOne
+  fieldOne: extra.extraOne,
 });
 
 // Form steps require a validation schema
