@@ -1,27 +1,25 @@
 import { FormikInput } from '@tacc/core-wrappers';
+import { WizardStep } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import {
-  UIWizardStep,
   useWizardValues,
   UIWizardSchema,
-  UIWizardExtra,
 } from '..';
 
 export const StepOne: React.FC = () => {
-  const { extra } = useWizardValues();
   return (
     <div>
-      <h2>Step One: Extra value two is {extra.extraTwo}</h2>
+      <h2>Step One</h2>
       <FormikInput
         name="fieldOne"
         required={true}
-        label="Field One"
+        label="Name"
         description="The first form field"
       />
       <FormikInput
         name="fieldTwo"
         required={false}
-        label="Field Two"
+        label="Description"
         description="The second form field"
       />
     </div>
@@ -30,21 +28,15 @@ export const StepOne: React.FC = () => {
 
 export const StepOneSummary: React.FC = () => {
   // Retrieve the current values in the wizard to render a summary
-  const { values } = useWizardValues();
+  const { data } = useWizardValues();
   return (
     <ul>
-      <li>Field One: {values.fieldOne}</li>
-      <li>Field Two: {values.fieldTwo}</li>
+      <li>Field One: {data.fieldOne}</li>
+      <li>Field Two: {data.fieldTwo}</li>
     </ul>
   );
 };
 
-const generateInitialValues = (
-  extra: UIWizardExtra
-): Partial<UIWizardSchema> => ({
-  // Use the extra values provided to generate an initial value
-  fieldOne: extra.extraOne,
-});
 
 // Form steps require a validation schema
 const validationSchema = Yup.object({
@@ -52,12 +44,12 @@ const validationSchema = Yup.object({
   fieldTwo: Yup.string(),
 });
 
-const stepOne: UIWizardStep = {
-  id: 'stepOne',
-  name: 'Step One',
+const stepOne: WizardStep<UIWizardSchema> = {
+  id: 'start',
+  name: 'Job Name',
   render: <StepOne />,
   summary: <StepOneSummary />,
-  generateInitialValues,
+  initialValues: {},
   validationSchema,
 };
 

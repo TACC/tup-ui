@@ -44,7 +44,7 @@ export const UIPatternsComplexWizardRender: React.FC<{
   );
 };
 
-const UIPatternsWizard: React.FC = () => {
+const UIPatternsComplexWizard: React.FC = () => {
   const defaultValues: Partial<UIWizardSchema> = {};
   const extra: UIWizardExtra = {
     extraOne: 'extra value one',
@@ -58,4 +58,4 @@ const UIPatternsWizard: React.FC = () => {
   );
 };
 
-export default UIPatternsWizard;
+export default UIPatternsComplexWizard;
