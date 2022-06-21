@@ -31,29 +31,27 @@ const UIWizardComplexFieldRender: React.FC<UIWizardComplexFieldProps> = ({
   remove,
 }) => {
   return (
-    <>
-      <Collapse
-        title="Complex Field"
-        note="more values inside"
-        className={fieldArrayStyles.item}
-      >
-        <FormikInput
-          name={`fieldArray.${index}.name`}
-          label="Name"
-          required={true}
-          description="Name field of this object"
-        />
-        <FormikCheck
-          name={`fieldArray.${index}.include`}
-          label="Include"
-          required={false}
-          description="Include field of this object"
-        />
-        <Button onClick={() => remove(index)} size="small">
-          Remove
-        </Button>
-      </Collapse>
-    </>
+    <Collapse
+      title="Complex Field"
+      note="more values inside"
+      className={fieldArrayStyles.item}
+    >
+      <FormikInput
+        name={`fieldArray.${index}.name`}
+        label="Name"
+        required={true}
+        description="Name field of this object"
+      />
+      <FormikCheck
+        name={`fieldArray.${index}.include`}
+        label="Include"
+        required={false}
+        description="Include field of this object"
+      />
+      <Button onClick={() => remove(index)} size="small">
+        Remove
+      </Button>
+    </Collapse>
   );
 };
 

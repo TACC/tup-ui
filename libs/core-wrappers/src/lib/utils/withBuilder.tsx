@@ -13,12 +13,13 @@ export type BuilderContextType<T> = {
  *
  * @returns A Provider and a context hook
  */
+/* eslint-disable-next-line */
 const withBuilder = <T extends unknown>() => {
   const context = React.createContext<BuilderContextType<T>>({
     data: {},
-    add: (slice: Partial<T>) => {},
-    set: (slice: Partial<T>) => {},
-    clear: () => {},
+    add: (slice: Partial<T>) => null,
+    set: (slice: Partial<T>) => null,
+    clear: () => null,
   });
 
   const useBuilderContext = () => useContext(context);

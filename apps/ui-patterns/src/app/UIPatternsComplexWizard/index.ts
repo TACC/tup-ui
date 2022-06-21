@@ -41,6 +41,8 @@ export type UIWizardStep = {
   // (This returns a custom validation function)
   validateThunk?: (
     extra: UIWizardExtra
+    /* eslint-disable-next-line */
   ) => (values: Partial<UIWizardSchema>) => any;
+  /* eslint-disable-next-line */
   validationSchema: any;
 };

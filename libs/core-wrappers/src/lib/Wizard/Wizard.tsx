@@ -25,7 +25,9 @@ export const WizardNavigation: React.FC = () => {
       if (!Object.keys(errors).length) {
         nextStep && nextStep();
       }
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
   }, [validateForm, nextStep]);
   const onSkip = useCallback(async () => {
     try {
@@ -36,7 +38,9 @@ export const WizardNavigation: React.FC = () => {
         handleSubmit();
         goToStep(totalSteps);
       }
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
   }, [validateForm, handleSubmit, goToStep, totalSteps]);
   return (
     <div className={styles.controls}>

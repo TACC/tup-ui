@@ -1,12 +1,9 @@
 /**
  * useWizardValues.tsx
  *
- * Example of how to create a custom context for a wizard with extra
- * values that are not part of the form schema, but required for rendering
- * the Wizard or calculating default values
+ * Context and provider for holding the form schema
  */
 
-import React, { useContext } from 'react';
 import { UIWizardSchema } from '.';
 import { withBuilder } from '@tacc/core-wrappers';
 

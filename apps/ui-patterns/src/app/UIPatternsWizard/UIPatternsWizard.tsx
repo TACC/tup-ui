@@ -11,7 +11,6 @@ import { UIWizardProvider, useWizardValues } from '.';
 import { Wizard } from '@tacc/core-wrappers';
 import wizardSteps from './steps';
 
-
 const UIPatternsWizardRender: React.FC = () => {
   const { add } = useWizardValues();
   const formSubmit = useCallback(
@@ -21,21 +20,18 @@ const UIPatternsWizardRender: React.FC = () => {
     [add]
   );
 
-  return (
-    <Wizard steps={wizardSteps} formSubmit={formSubmit} />
-  )
-}
+  return <Wizard steps={wizardSteps} formSubmit={formSubmit} />;
+};
 
 const UIPatternsWizard: React.FC = () => {
   const defaultValues: Partial<UIWizardSchema> = {
-    fieldOne: 'First field'
-  }
+    fieldOne: 'First field',
+  };
   return (
     <UIWizardProvider value={defaultValues}>
       <UIPatternsWizardRender />
     </UIWizardProvider>
-  )
-
+  );
 };
 
 export default UIPatternsWizard;

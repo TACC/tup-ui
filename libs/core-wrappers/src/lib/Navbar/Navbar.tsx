@@ -20,7 +20,9 @@ export const NavItem: React.FC<
   </NavLink>
 );
 
-const Navbar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+type NavbarProps = React.PropsWithChildren<unknown>;
+
+const Navbar: React.FC<NavbarProps> = ({ children }) => {
   return <div className={`${styles['nav-list']}`}>{children}</div>;
 };
 

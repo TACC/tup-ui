@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, FormGroup } from 'reactstrap';
+import { FormGroup } from 'reactstrap';
 import { Collapse, Button } from '@tacc/core-components';
 import { FieldArray, useFormikContext, FieldArrayRenderProps } from 'formik';
 import { FormikInput, FormikCheck } from '@tacc/core-wrappers';
@@ -9,7 +9,6 @@ import {
   UIWizardComplexField,
   UIWizardSchema,
   UIWizardStep,
-  useWizardValues,
   UIWizardArrayOfComplexFields,
 } from '..';
 
@@ -28,29 +27,27 @@ const UIWizardComplexFieldRender: React.FC<UIWizardComplexFieldRenderProps> = ({
   remove,
 }) => {
   return (
-    <>
-      <Collapse
-        title="Complex Field"
-        note="more values inside"
-        className={fieldArrayStyles.item}
-      >
-        <FormikInput
-          name={`${innerKey}.name`}
-          label="Name"
-          required={true}
-          description="Name field of this object"
-        />
-        <FormikCheck
-          name={`${innerKey}.include`}
-          label="Include"
-          required={false}
-          description="Include field of this object"
-        />
-        <Button onClick={() => remove(innerIndex)} size="small">
-          Remove Inner Item
-        </Button>
-      </Collapse>
-    </>
+    <Collapse
+      title="Complex Field"
+      note="more values inside"
+      className={fieldArrayStyles.item}
+    >
+      <FormikInput
+        name={`${innerKey}.name`}
+        label="Name"
+        required={true}
+        description="Name field of this object"
+      />
+      <FormikCheck
+        name={`${innerKey}.include`}
+        label="Include"
+        required={false}
+        description="Include field of this object"
+      />
+      <Button onClick={() => remove(innerIndex)} size="small">
+        Remove Inner Item
+      </Button>
+    </Collapse>
   );
 };
 
@@ -64,7 +61,8 @@ const FieldArrayInnerRender: React.FC<FieldWrapperInnerRenderProps> = ({
   arrayHelpers,
 }) => {
   const { values } = useFormikContext();
-  const outerItem = (values as Partial<UIWizardSchema>).fieldArrayOfArrays!;
+  const outerItem =
+    (values as Partial<UIWizardSchema>).fieldArrayOfArrays ?? [];
   const innerItems = outerItem[outerIndex].fieldArray ?? [];
 
   return (
@@ -189,7 +187,6 @@ export const StepThree: React.FC = () => {
 };
 
 export const StepThreeSummary: React.FC = () => {
-  const { values } = useWizardValues();
   return <div key="file-input-arrays-summary">Arrays of arrays</div>;
 };
 

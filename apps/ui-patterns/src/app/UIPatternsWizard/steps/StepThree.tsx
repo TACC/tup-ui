@@ -1,10 +1,7 @@
 import { FormikInput } from '@tacc/core-wrappers';
 import { WizardStep } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
-import {
-  useWizardValues,
-  UIWizardSchema,
-} from '..';
+import { useWizardValues, UIWizardSchema } from '..';
 
 export const StepThree: React.FC = () => {
   return (
@@ -29,7 +26,6 @@ export const StepThreeSummary: React.FC = () => {
     </ul>
   );
 };
-
 
 // Form steps require a validation schema
 const validationSchema = Yup.object({

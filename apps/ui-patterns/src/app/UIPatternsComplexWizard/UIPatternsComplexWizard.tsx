@@ -37,7 +37,7 @@ export const UIPatternsComplexWizardRender: React.FC<{
         ...stepProps,
       };
     });
-  }, [extra]);
+  }, [wizardSteps, extra]);
 
   return (
     <Wizard steps={steps} memo={`${extra.memo}`} formSubmit={formSubmit} />
@@ -45,7 +45,9 @@ export const UIPatternsComplexWizardRender: React.FC<{
 };
 
 const UIPatternsComplexWizard: React.FC = () => {
-  const defaultValues: Partial<UIWizardSchema> = {};
+  const defaultValues: Partial<UIWizardSchema> = {
+    fieldArray: [{ name: 'item one', include: true }],
+  };
   const extra: UIWizardExtra = {
     extraOne: 'extra value one',
     extraTwo: 'extra value two',
