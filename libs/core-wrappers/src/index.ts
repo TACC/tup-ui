@@ -1,7 +1,9 @@
 export { Navbar, NavItem } from './lib/Navbar';
 export { default as QueryWrapper } from './lib/QueryWrapper';
 export { default as SubmitWrapper } from './lib/SubmitWrapper';
-export { default as Wizard, WizardStep } from './lib/Wizard';
+import { WizardStep as WizardStepType } from './lib/Wizard';
+export { default as Wizard, useWizard, WizardNavigation } from './lib/Wizard';
+export type WizardStep<T> = WizardStepType<T>;
 export { default as FieldWrapper } from './lib/FieldWrapper';
 export {
   FieldWrapperFormik,

@@ -9,7 +9,7 @@
 */
 .container {
   /* Load select-css after Bootstrap overrides, because Bootstrap is like our "base" */
-  composes: form-control from '../../../styles/components/bootstrap.form.css';
+  /* composes: form-control from '../../../styles/components/bootstrap.form.css'; */
 
   font-size: 0.75rem; /* ~10px design * 1.2 design-to-app ratio */
   /* WARNING: "iOS Safari will [force-zoom site] if […] less than 16px" */

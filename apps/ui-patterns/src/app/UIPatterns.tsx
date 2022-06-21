@@ -9,6 +9,7 @@ import UIPatternsShowMore from './UIPatternsShowMore';
 import UIPatternsPaginator from './UIPatternsPaginator';
 import UIPatternsButton from './UIPatternsButton';
 import UIPatternsSidebar from './UIPatternsSidebar';
+// import UIPatternsComplexWizard from './UIPatternsComplexWizard';
 import styles from './UIPatterns.module.scss';
 
 const UIPatterns: React.FC = () => {
@@ -55,6 +56,15 @@ const UIPatterns: React.FC = () => {
             <h6>Sidebar</h6>
             <UIPatternsSidebar />
           </div>
+          {
+            /*
+                      <div className={styles['list-item']}>
+            <h6>Complex Wizard</h6>
+            <UIPatternsComplexWizard />
+          </div>
+            */
+          }
+
         </>
       }
       contentLayoutName="oneColumn"

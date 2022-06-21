@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingSpinner, Message } from 'tapis-ui/_common';
+import { LoadingSpinner, Message } from '@tacc/core-components';
 
 type QueryWrapperProps = React.PropsWithChildren<{
   isLoading: boolean;

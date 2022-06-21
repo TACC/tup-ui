@@ -1,6 +1,6 @@
 import React from 'react';
-import { LoadingSpinner, Message } from 'tapis-ui/_common';
-import styles from './SubmitWrapper.module.scss';
+import { LoadingSpinner, Message } from '@tacc/core-components';
+import styles from './SubmitWrapper.module.css';
 
 type SubmitWrapperProps = React.PropsWithChildren<{
   isLoading: boolean;

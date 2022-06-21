@@ -4,12 +4,17 @@ export {
   UIWizardProvider,
 } from './useWizardValues';
 
+export type UIWizardComplexField = {
+  name: string;
+  include?: boolean;
+}
 
 export type UIWizardSchema = {
   valueOne: string;
   valueTwo: string;
   valueThree: string;
   valueFour: number;
+  fieldArray: Array<UIWizardComplexField>
 }
 
 export type UIWizardExtra = {
