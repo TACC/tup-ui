@@ -1,8 +1,6 @@
-.container.is-horz {
+.container.is-horz,
+.container.is-horz dd {
   margin-bottom: 0; /* overwrite Bootstrap's `_reboot.scss` */
-  & dd {
-    margin-bottom: 0; /* overwrite Bootstrap's `_reboot.scss` */
-  }
 }
 
 /* Children */
