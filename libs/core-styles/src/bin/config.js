@@ -6,6 +6,7 @@ const fs = require('fs');
 const merge = require('merge-lite');
 const yaml = require('js-yaml');
 
+const ROOT_CONFIG_FILE = `${__dirname}/../../../../.postcssrc.yml`;
 const BASE_CONFIG_FILE = `${__dirname}/../.postcssrc.base.yml`;
 const NEW_CONFIG_FILE = `${__dirname}/../.postcssrc.yml`;
 
@@ -19,7 +20,11 @@ const NEW_CONFIG_FILE = `${__dirname}/../.postcssrc.yml`;
  */
 function config(customConfigFiles = [], cssVersion) {
   // Prepare data
-  const configFiles = [BASE_CONFIG_FILE, ...customConfigFiles];
+  const configFiles = [].concat(
+    ROOT_CONFIG_FILE,
+    BASE_CONFIG_FILE,
+    customConfigFiles
+  );
   const configObjects = [];
   let newJson;
 
