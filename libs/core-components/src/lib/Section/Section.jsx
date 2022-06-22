@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import SectionHeader from '../SectionHeader';
 import SectionContent from '../SectionContent';
 import { LAYOUTS, DEFAULT_LAYOUT } from '../SectionContent';
