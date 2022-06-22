@@ -1,3 +1,6 @@
+@import url('@tacc/core-styles/dist/settings/border.css');
+@import url('@tacc/core-styles/dist/settings/color.css');
+
 /* Block */
 
 .root {

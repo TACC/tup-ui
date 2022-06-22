@@ -22,15 +22,9 @@ const SidebarItem = ({ to, iconName, label, children, disabled, hidden }) => {
         className={styles['link']}
         activeClassName={styles['link--active']}
       >
-        <div
-          className={`${disabled ? styles['disabled'] : ''} ${
-            styles['content']
-          } nav-content`}
-        >
-          <Icon name={iconName} />
-          <span className={styles['text']}>{label}</span>
-          {children}
-        </div>
+        <Icon name={iconName} className={styles['icon']} />
+        <span className={styles['text']}>{label}</span>
+        {children}
       </NavLink>
     </NavItem>
   );

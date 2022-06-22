@@ -1,5 +1,5 @@
 # PostCSS generated files
 ## config
 .postcssrc.yml
-## assets for manual testing of plugins
+## assets for clients not using postcss-preset-env
 dist

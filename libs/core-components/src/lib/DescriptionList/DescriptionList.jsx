@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
-import styles from './DescriptionList.module.scss';
+import styles from './DescriptionList.module.css';
 
 export const DIRECTION_CLASS_MAP = {
   vertical: 'is-vert',

@@ -5,20 +5,12 @@ import styles from './UIPatternsMessage.module.scss';
 
 const EXAMPLE_LINK = {
   short: (
-    <a
-      href={window.location.href}
-      onClick={(e) => e.preventDefault()}
-      className="wb-link"
-    >
+    <a href={window.location.href} onClick={(e) => e.preventDefault()}>
       Example link
     </a>
   ),
   long: (
-    <a
-      href={window.location.href}
-      onClick={(e) => e.preventDefault()}
-      className="wb-link"
-    >
+    <a href={window.location.href} onClick={(e) => e.preventDefault()}>
       Example link can be a complete sentence.
     </a>
   ),

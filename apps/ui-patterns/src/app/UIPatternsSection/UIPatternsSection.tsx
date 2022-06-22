@@ -6,8 +6,8 @@ import {
   InfiniteScrollTable,
   InlineMessage,
   SectionMessage,
+  Button,
 } from '@tacc/core-components';
-import { Button } from 'reactstrap';
 
 import styles from './UIPatternsSection.module.css';
 
@@ -43,8 +43,7 @@ const UIPatternsSection: React.FC = () => {
           density="compact"
           direction="horizontal"
           data={{
-            contentClassName:
-              styles['content--has-list-to-illustrate-scrolling'],
+            contentClassName: 'content--has-list-to-illustrate-scrolling',
             header: 'Milk',
             content: 'Cow, Soy, Nut',
             contentShouldScroll: <code>true</code>,
@@ -71,8 +70,7 @@ const UIPatternsSection: React.FC = () => {
           className={styles['term-details']}
           direction="vertical"
           data={{
-            contentClassName:
-              styles['content--has-table-to-illustrate-scrolling'],
+            contentClassName: 'content--has-table-to-illustrate-scrolling',
             header:
               'Section with <SectionTableWrapper> and <InfiniteScrollTable>',
             content: '(paragraph, table, paragraph)',
@@ -104,11 +102,7 @@ const UIPatternsSection: React.FC = () => {
               </SectionTableWrapper>
             </>
           }
-          headerActions={
-            <button type="button" onClick={performAction}>
-              Click Me
-            </button>
-          }
+          headerActions={<Button onClick={performAction}>Action</Button>}
           contentLayoutName="oneColumn"
         />
       </dd>
@@ -118,8 +112,8 @@ const UIPatternsSection: React.FC = () => {
           className={styles['term-details']}
           direction="vertical"
           data={{
-            className: styles['is-resizable'],
-            contentClassName: styles['content--should-always-show-scrollbar'],
+            className: 'is-resizable',
+            contentClassName: 'content--should-always-show-scrollbar',
             header: 'Header',
             content: (
               <>
@@ -175,7 +169,7 @@ const UIPatternsSection: React.FC = () => {
           contentLayoutName="oneColumn"
           headerActions={
             <Button
-              color="link"
+              type="link"
               onClick={() =>
                 window.alert(
                   'Open modal action (no actual action has occurred beyond this alert).'
