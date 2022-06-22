@@ -11,7 +11,7 @@
 .tertiary {
   composes: c-button--tertiary from '@tacc/core-styles/dist/components/c-button.css';
 }
-.active {
+.is-active {
   composes: c-button--is-active from '@tacc/core-styles/dist/components/c-button.css';
 }
 

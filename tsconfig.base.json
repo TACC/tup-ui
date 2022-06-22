@@ -13,6 +13,7 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "noPropertyAccessFromIndexSignature": false,
     "baseUrl": ".",
     "paths": {
       "@tacc/core-components": ["libs/core-components/src/index.ts"],
