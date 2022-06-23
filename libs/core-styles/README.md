@@ -170,15 +170,15 @@ You can build stylesheets **from** source files **in** `src/lib` directory **to*
 
 1. Build stylesheets:
 
-    ```bash
-    npm run build
-    ```
+   ```bash
+   npm run build
+   ```
 
-    **or**, for custom build id:
+   **or**, for custom build id:
 
-    ```bash
-    npm run build -- --build-id="..."
-    ```
+   ```bash
+   npm run build -- --build-id="..."
+   ```
 
 ## Testing
 
