@@ -23,7 +23,7 @@ export const WizardNavigation: React.FC = () => {
     try {
       const errors = await validateForm();
       if (!Object.keys(errors).length) {
-        handleSubmit();
+        handleSubmit && handleSubmit();
         nextStep && nextStep();
       }
     } catch (e) {
