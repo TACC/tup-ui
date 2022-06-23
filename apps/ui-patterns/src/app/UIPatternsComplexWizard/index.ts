@@ -29,7 +29,10 @@ export type UIWizardExtra = {
   memo: string;
 };
 
-export type InitialValueGenerator = (hookValues: { values: Partial<UIWizardSchema>, extra: UIWizardExtra }) => Partial<UIWizardSchema>;
+export type InitialValueGenerator = (hookValues: {
+  values: Partial<UIWizardSchema>;
+  extra: UIWizardExtra;
+}) => Partial<UIWizardSchema>;
 
 // An adapter type for mapping additional values to @tacc/core-wrappers/Wizard
 export type UIWizardStep = {

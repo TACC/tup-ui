@@ -20,7 +20,7 @@ export const UIPatternsComplexWizardRender: React.FC<{
   // wizard value context
   const formSubmit = useCallback(
     (value: Partial<UIWizardSchema>) => {
-      console.log("Adding", value);
+      console.log('Adding', value);
       add(value);
     },
     [add]
@@ -51,9 +51,9 @@ const UIPatternsComplexWizard: React.FC = () => {
     fieldArrayOfArrays: [
       {
         name: 'outer item',
-        fieldArray:[{ name: 'inner item one', include: true }]
-      }
-    ]
+        fieldArray: [{ name: 'inner item one', include: true }],
+      },
+    ],
   };
   const extra: UIWizardExtra = {
     extraOne: 'extra value one',

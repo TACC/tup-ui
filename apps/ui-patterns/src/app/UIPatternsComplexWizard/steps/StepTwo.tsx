@@ -129,8 +129,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const generateInitialValues: InitialValueGenerator = ({ values, extra }) => ({
-  fieldArray: values.fieldArray ?? [{ name: 'item one', include: true }]
-})
+  fieldArray: values.fieldArray ?? [{ name: 'item one', include: true }],
+});
 
 const step: UIWizardStep = {
   id: 'stepTwo',
@@ -138,7 +138,7 @@ const step: UIWizardStep = {
   render: <StepTwo />,
   summary: <StepTwoSummary />,
   validationSchema,
-  generateInitialValues
+  generateInitialValues,
 };
 
 export default step;

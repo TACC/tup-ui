@@ -1,6 +1,11 @@
 import React, { useCallback, useState } from 'react';
 import * as Yup from 'yup';
-import { UIWizardStep, UIWizardSchema, UIWizardExtra, InitialValueGenerator } from '..';
+import {
+  UIWizardStep,
+  UIWizardSchema,
+  UIWizardExtra,
+  InitialValueGenerator,
+} from '..';
 import { Button } from '@tacc/core-components';
 import { SubmitWrapper } from '@tacc/core-wrappers';
 
@@ -33,7 +38,8 @@ export const LastStepSummary: React.FC = () => {
   return null;
 };
 
-const generateInitialValues: InitialValueGenerator = (): Partial<UIWizardSchema> => ({});
+const generateInitialValues: InitialValueGenerator =
+  (): Partial<UIWizardSchema> => ({});
 
 // Form steps require a validation schema
 const validationSchema = Yup.object({});

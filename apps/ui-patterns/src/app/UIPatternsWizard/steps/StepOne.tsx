@@ -46,7 +46,7 @@ const stepOne: WizardStep<UIWizardSchema> = {
   render: <StepOne />,
   summary: <StepOneSummary />,
   initialValues: {
-    fieldOne: 'default field one'
+    fieldOne: 'default field one',
   },
   validationSchema,
 };

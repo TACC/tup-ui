@@ -11,7 +11,7 @@ import {
   UIWizardStep,
   UIWizardArrayOfComplexFields,
   useWizardValues,
-  InitialValueGenerator
+  InitialValueGenerator,
 } from '..';
 
 type UIWizardComplexFieldRenderProps = {
@@ -190,26 +190,20 @@ export const StepThree: React.FC = () => {
 
 export const StepThreeSummary: React.FC = () => {
   const { values } = useWizardValues();
-  return(
+  return (
     <div>
-      {values.fieldArrayOfArrays?.map(
-        (outerItem) => (
-          <div>
-            <div>
-              {outerItem.name}
-            </div>
-            <ul>
-              {outerItem.fieldArray.map(
-                (innerItem) => (
-                  <li>{innerItem.name}</li>
-                )
-              )}
-            </ul>
-          </div>
-        )
-      )}
+      {values.fieldArrayOfArrays?.map((outerItem) => (
+        <div>
+          <div>{outerItem.name}</div>
+          <ul>
+            {outerItem.fieldArray.map((innerItem) => (
+              <li>{innerItem.name}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
-  )
+  );
 };
 
 const validationSchema = Yup.object().shape({
@@ -220,7 +214,9 @@ const validationSchema = Yup.object().shape({
         .required('A name for the outer item is required'),
       fieldArray: Yup.array(
         Yup.object().shape({
-          name: Yup.string().min(1).required('A name for the inner item is required'),
+          name: Yup.string()
+            .min(1)
+            .required('A name for the inner item is required'),
           include: Yup.boolean(),
         })
       ),
@@ -234,8 +230,8 @@ const generateInitialValues: InitialValueGenerator = ({ values, extra }) => ({
       name: 'outer item',
       fieldArray: [{ name: 'inner item', include: true }],
     },
-  ]
-})
+  ],
+});
 
 const step: UIWizardStep = {
   id: 'stepThree',
@@ -243,7 +239,7 @@ const step: UIWizardStep = {
   render: <StepThree />,
   summary: <StepThreeSummary />,
   validationSchema,
-  generateInitialValues
+  generateInitialValues,
 };
 
 export default step;
