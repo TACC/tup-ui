@@ -4,7 +4,7 @@ import {
   UIWizardStep,
   useWizardValues,
   UIWizardSchema,
-  UIWizardExtra,
+  InitialValueGenerator
 } from '..';
 
 export const StepOne: React.FC = () => {
@@ -39,12 +39,10 @@ export const StepOneSummary: React.FC = () => {
   );
 };
 
-const generateInitialValues = (
-  extra: UIWizardExtra
-): Partial<UIWizardSchema> => ({
-  // Use the extra values provided to generate an initial value
-  fieldOne: extra.extraOne,
-});
+const generateInitialValues: InitialValueGenerator = ({ values, extra }) => ({
+  fieldOne: values?.fieldOne ?? extra.extraOne
+})
+
 
 // Form steps require a validation schema
 const validationSchema = Yup.object({

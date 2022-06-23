@@ -15,6 +15,7 @@ import {
   UIWizardComplexField,
   UIWizardSchema,
   useWizardValues,
+  InitialValueGenerator,
 } from '..';
 import * as Yup from 'yup';
 
@@ -127,15 +128,17 @@ const validationSchema = Yup.object().shape({
   ),
 });
 
+const generateInitialValues: InitialValueGenerator = ({ values, extra }) => ({
+  fieldArray: values.fieldArray ?? [{ name: 'item one', include: true }]
+})
+
 const step: UIWizardStep = {
   id: 'stepTwo',
   name: 'Step Two',
   render: <StepTwo />,
   summary: <StepTwoSummary />,
   validationSchema,
-  generateInitialValues: (extra) => ({
-    fieldArray: [{ name: 'item one', include: true }],
-  }),
+  generateInitialValues
 };
 
 export default step;

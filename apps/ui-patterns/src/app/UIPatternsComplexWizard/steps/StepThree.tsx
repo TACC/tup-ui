@@ -10,7 +10,8 @@ import {
   UIWizardSchema,
   UIWizardStep,
   UIWizardArrayOfComplexFields,
-  useWizardValues
+  useWizardValues,
+  InitialValueGenerator
 } from '..';
 
 type UIWizardComplexFieldRenderProps = {
@@ -227,20 +228,22 @@ const validationSchema = Yup.object().shape({
   ),
 });
 
+const generateInitialValues: InitialValueGenerator = ({ values, extra }) => ({
+  fieldArrayOfArrays: values.fieldArrayOfArrays ?? [
+    {
+      name: 'outer item',
+      fieldArray: [{ name: 'inner item', include: true }],
+    },
+  ]
+})
+
 const step: UIWizardStep = {
   id: 'stepThree',
   name: 'Step Three',
   render: <StepThree />,
   summary: <StepThreeSummary />,
   validationSchema,
-  generateInitialValues: (extra) => ({
-    fieldArrayOfArrays: [
-      {
-        name: 'outer item',
-        fieldArray: [{ name: 'inner item', include: true }],
-      },
-    ],
-  }),
+  generateInitialValues
 };
 
 export default step;

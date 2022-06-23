@@ -9,7 +9,6 @@ import UIPatternsShowMore from './UIPatternsShowMore';
 import UIPatternsPaginator from './UIPatternsPaginator';
 import UIPatternsButton from './UIPatternsButton';
 import UIPatternsSidebar from './UIPatternsSidebar';
-import UIPatternsWizard from './UIPatternsWizard';
 import UIPatternsComplexWizard from './UIPatternsComplexWizard';
 import styles from './UIPatterns.module.css';
 
@@ -59,10 +58,6 @@ const UIPatterns: React.FC = () => {
           </div>
           <div className={styles['list-item']}>
             <h6>Wizard</h6>
-            <UIPatternsWizard />
-          </div>
-          <div className={styles['list-item']}>
-            <h6>Complex Wizard</h6>
             <UIPatternsComplexWizard />
           </div>
         </>

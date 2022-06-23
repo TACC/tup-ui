@@ -14,7 +14,7 @@ import wizardSteps from './steps';
 export const UIPatternsComplexWizardRender: React.FC<{
   wizardSteps: Array<UIWizardStep>;
 }> = ({ wizardSteps }) => {
-  const { add, extra } = useWizardValues();
+  const { values, add, extra } = useWizardValues();
 
   // The submit button rendered by the Wizard should add values to the
   // wizard value context
@@ -32,7 +32,7 @@ export const UIPatternsComplexWizardRender: React.FC<{
       const { generateInitialValues, validateThunk, ...stepProps } = jobStep;
       return {
         // Call the step's custom initial value generator to pass in the extra hook values
-        initialValues: generateInitialValues(extra),
+        initialValues: generateInitialValues({ values, extra }),
         // generate a validation function from the UIWizardSteps's validateThunk, given the current extra hook values
         validate: validateThunk ? validateThunk(extra) : undefined,
         ...stepProps,
@@ -48,6 +48,12 @@ export const UIPatternsComplexWizardRender: React.FC<{
 const UIPatternsComplexWizard: React.FC = () => {
   const defaultValues: Partial<UIWizardSchema> = {
     fieldArray: [{ name: 'item one', include: true }],
+    fieldArrayOfArrays: [
+      {
+        name: 'outer item',
+        fieldArray:[{ name: 'inner item one', include: true }]
+      }
+    ]
   };
   const extra: UIWizardExtra = {
     extraOne: 'extra value one',

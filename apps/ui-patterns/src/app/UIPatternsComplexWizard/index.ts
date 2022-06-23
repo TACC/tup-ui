@@ -29,14 +29,17 @@ export type UIWizardExtra = {
   memo: string;
 };
 
+export type InitialValueGenerator = (hookValues: { values: Partial<UIWizardSchema>, extra: UIWizardExtra }) => Partial<UIWizardSchema>;
+
 // An adapter type for mapping additional values to @tacc/core-wrappers/Wizard
 export type UIWizardStep = {
   id: string;
   name: string;
   render: React.ReactNode;
   summary: React.ReactNode;
-  // A generator for initial values that requires extra values
-  generateInitialValues: (extra: UIWizardExtra) => Partial<UIWizardSchema>;
+  // A generator for initial values. Due to the way Formik renders with respect to step skipping,
+  // a generator is needed to create an initialValues object
+  generateInitialValues: InitialValueGenerator;
   // A custom validator thunk for a step that requires extra values
   // (This returns a custom validation function)
   validateThunk?: (
