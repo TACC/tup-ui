@@ -1,5 +1,5 @@
 import React from 'react';
-import './Icon.module.css';
+import './Icon.css';
 
 type IconProps = React.PropsWithChildren<{
   className?: string;
@@ -8,13 +8,7 @@ type IconProps = React.PropsWithChildren<{
   name: string;
 }>;
 
-const Icon: React.FC<IconProps> = ({
-  children,
-  className,
-  dataTestid,
-  label,
-  name,
-}) => {
+const Icon: React.FC<IconProps> = ({ className, dataTestid, label, name }) => {
   const iconClassName = `icon icon-${name}`;
   // FAQ: The conditional avoids an extra space in class attribute value
   const fullClassName = className
@@ -27,9 +21,7 @@ const Icon: React.FC<IconProps> = ({
       role="img"
       aria-label={label}
       data-testid={dataTestid}
-    >
-      {children}
-    </i>
+    />
   );
 };
 

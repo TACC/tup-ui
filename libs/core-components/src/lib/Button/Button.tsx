@@ -24,18 +24,30 @@ export const SIZES = [''].concat(Object.keys(SIZE_MAP));
 
 export const ATTRIBUTES = ['button', 'submit', 'reset'];
 
+type ButtonTypeLinkSize = {
+  type?: 'link';
+  size?: never;
+};
+type ButtonTypePrimarySize = {
+  type?: 'primary';
+  size?: 'short' | 'medium' | 'long';
+};
+type ButtonTypeOtherSize = {
+  type?: 'secondary' | 'tertiary' | 'active';
+  size?: 'short' | 'medium' | 'long' | 'small';
+};
+
 type ButtonProps = React.PropsWithChildren<{
   className?: string;
   iconNameBefore?: string;
   iconNameAfter?: string;
-  type?: 'primary' | 'secondary' | 'tertiary' | 'active' | 'link';
-  size?: 'short' | 'medium' | 'long' | 'small';
   dataTestid?: string;
   disabled?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   attr?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
-}>;
+}> &
+  (ButtonTypeLinkSize | ButtonTypePrimarySize | ButtonTypeOtherSize);
 
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -43,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
   iconNameBefore,
   iconNameAfter,
   type = 'secondary',
-  size = 'short',
+  size = '',
   dataTestid,
   disabled,
   onClick,
@@ -59,24 +71,6 @@ const Button: React.FC<ButtonProps> = ({
       return onClick(e);
     }
   }
-
-  // Manage prop warnings
-  /* eslint-disable no-console */
-  if (type === 'link' && size) {
-    // DISABLING: empty string is not a valid value for size
-    // size = '';
-    // Component will work, except `size` is ineffectual
-    console.warn('A <Button type="link"> ignores `size` prop.');
-  }
-  if (type === 'primary' && size === 'small') {
-    type = 'secondary';
-    // Component will work, except `type` is overridden
-    console.error(
-      'A <Button type="primary" size="small"> is not allowed. ' +
-        'Using `type="secondary"` instead.'
-    );
-  }
-  /* eslint-enable no-console */
 
   return (
     <button

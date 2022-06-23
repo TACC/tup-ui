@@ -1,3 +1,5 @@
+@import url('@tacc/core-styles/dist/settings/color.css');
+
 .root {
   --width: 215px;
   overflow-y: auto;
@@ -10,29 +12,38 @@
   padding-top: 20px;
 }
 
-.link {
+/* Elements */
+
+.link:global(.nav-link) /* extra specific, to override Bootstrap */ {
+  display: flex;
+  align-items: center;
+}
+.link:is(:link, :visited) {
   color: var(--global-color-primary--dark);
   font-weight: 500;
 }
 .link:hover,
-.link--active {
+.link--active:is(:link, :visited) {
   color: var(--global-color-primary--x-dark); /* to pass color contrast test */
   background-color: var(--global-color-accent--weak);
 }
-.link--active,
-.link:active {
+.link:active,
+.link--active:is(:link, :visited) {
   font-weight: 700;
 }
-
-.content {
-  padding-left: 20px;
-}
-
-.text {
-  padding-left: 20px;
-  font-size: 0.75em; /* ~20px (16px design * 1.2 design-to-app ratio) */
-}
-
-.disabled {
+.link:global(.disabled) {
   color: var(--global-color-primary--light);
+}
+
+
+/* Elements: Icon & Text */
+
+.link > *:first-child /* icon (or text, if icon is missing) */ {
+  text-indent: 20px;
+}
+.icon {
+  padding-right: 20px;
+}
+.text {
+  font-size: 0.75em; /* ~20px (16px design * 1.2 design-to-app ratio) */
 }
