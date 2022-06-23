@@ -10,6 +10,7 @@ import {
   UIWizardSchema,
   UIWizardStep,
   UIWizardArrayOfComplexFields,
+  useWizardValues
 } from '..';
 
 type UIWizardComplexFieldRenderProps = {
@@ -187,7 +188,27 @@ export const StepThree: React.FC = () => {
 };
 
 export const StepThreeSummary: React.FC = () => {
-  return <div key="file-input-arrays-summary">Arrays of arrays</div>;
+  const { values } = useWizardValues();
+  return(
+    <div>
+      {values.fieldArrayOfArrays?.map(
+        (outerItem) => (
+          <div>
+            <div>
+              {outerItem.name}
+            </div>
+            <ul>
+              {outerItem.fieldArray.map(
+                (innerItem) => (
+                  <li>{innerItem.name}</li>
+                )
+              )}
+            </ul>
+          </div>
+        )
+      )}
+    </div>
+  )
 };
 
 const validationSchema = Yup.object().shape({
@@ -198,7 +219,7 @@ const validationSchema = Yup.object().shape({
         .required('A name for the outer item is required'),
       fieldArray: Yup.array(
         Yup.object().shape({
-          name: Yup.string().min(1).required('A name is required'),
+          name: Yup.string().min(1).required('A name for the inner item is required'),
           include: Yup.boolean(),
         })
       ),

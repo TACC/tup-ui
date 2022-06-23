@@ -23,12 +23,13 @@ export const WizardNavigation: React.FC = () => {
     try {
       const errors = await validateForm();
       if (!Object.keys(errors).length) {
+        handleSubmit();
         nextStep && nextStep();
       }
     } catch (e) {
       console.error(e);
     }
-  }, [validateForm, nextStep]);
+  }, [validateForm, nextStep, handleSubmit]);
   const onSkip = useCallback(async () => {
     try {
       const errors = await validateForm();

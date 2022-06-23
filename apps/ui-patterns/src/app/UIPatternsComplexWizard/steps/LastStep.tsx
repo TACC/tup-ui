@@ -20,7 +20,7 @@ export const LastStep: React.FC = () => {
       <h2>Last Step</h2>
       <div>
         <SubmitWrapper error={error} isLoading={isLoading} success={data}>
-          <Button type="primary" onClick={onSubmit}>
+          <Button type="primary" onClick={onSubmit} size="long">
             Submit
           </Button>
         </SubmitWrapper>

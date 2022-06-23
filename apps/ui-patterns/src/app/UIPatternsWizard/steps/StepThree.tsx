@@ -29,7 +29,7 @@ export const StepThreeSummary: React.FC = () => {
 
 // Form steps require a validation schema
 const validationSchema = Yup.object({
-  fieldThree: Yup.string().required().min(1).max(64),
+  fieldFour: Yup.string().required().min(1).max(64),
 });
 
 const stepThree: WizardStep<UIWizardSchema> = {

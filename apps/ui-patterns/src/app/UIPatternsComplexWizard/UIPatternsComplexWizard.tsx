@@ -20,6 +20,7 @@ export const UIPatternsComplexWizardRender: React.FC<{
   // wizard value context
   const formSubmit = useCallback(
     (value: Partial<UIWizardSchema>) => {
+      console.log("Adding", value);
       add(value);
     },
     [add]
