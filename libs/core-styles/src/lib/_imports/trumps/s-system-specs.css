@@ -85,6 +85,8 @@ Styleguide Trumps.Scopes.SystemSpecs
     }
 }
 
+
+
 /* Position */
 
 .s-system-specs > figure > img {
@@ -112,6 +114,15 @@ Styleguide Trumps.Scopes.SystemSpecs
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+
+
+/* Elements */
+
+.s-system-specs figure,
+.s-system-specs figcaption {
+    unset: all;
 }
 
 
