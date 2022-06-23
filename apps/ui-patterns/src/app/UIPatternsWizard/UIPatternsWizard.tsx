@@ -24,9 +24,7 @@ const UIPatternsWizardRender: React.FC = () => {
 };
 
 const UIPatternsWizard: React.FC = () => {
-  const defaultValues: Partial<UIWizardSchema> = {
-    fieldOne: 'First field',
-  };
+  const defaultValues: Partial<UIWizardSchema> = {};
   return (
     <UIWizardProvider value={defaultValues}>
       <UIPatternsWizardRender />

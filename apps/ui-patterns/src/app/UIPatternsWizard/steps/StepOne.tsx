@@ -45,7 +45,9 @@ const stepOne: WizardStep<UIWizardSchema> = {
   name: 'Job Name',
   render: <StepOne />,
   summary: <StepOneSummary />,
-  initialValues: {},
+  initialValues: {
+    fieldOne: 'default field one'
+  },
   validationSchema,
 };
 
