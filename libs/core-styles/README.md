@@ -168,17 +168,17 @@ If you changes files in a `src/lib/` directory, you may need to follow some of t
 
 You can build stylesheets **from** source files **in** `src/lib` directory **to** compiled files **in** `dist` directory.
 
-0. (Optional) Set version (for preserved comment):
-
-   ```bash
-   npm run version -- --build-id="$(git describe --always)"
-   ```
-
 1. Build stylesheets:
 
-   ```bash
-   npm run build
-   ```
+    ```bash
+    npm run build
+    ```
+
+    **or**, for custom build id:
+
+    ```bash
+    npm run build -- --build-id="..."
+    ```
 
 ## Testing
 
