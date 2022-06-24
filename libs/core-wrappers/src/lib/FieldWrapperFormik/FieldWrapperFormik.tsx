@@ -36,7 +36,7 @@ const FieldWrapper: React.FC<FieldWrapperProps> = ({
       {meta.error && (
         <FormText className={styles['form-field__help']} color="body">
           {meta.error}
-        </FormText> 
+        </FormText>
       )}
       {description && !meta.error && (
         <FormText className={styles['form-field__help']} color="muted">
