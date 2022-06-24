@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0-beta.1] - 2022-06-24: Do Not Let Figure CSS Bleed into Other Patterns
+
+### Fixed
+
+- fix(core-styles): no figure css, only .figure css
+- fix(core-styles): remove unwanted sample html css
+
 ## [0.6.0-beta] - 2022-06-08: Linting, Button Updates, package-lock.json
 
 ### Added
@@ -144,7 +151,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial working code. (This code may not work on all environments.)
 
-[unreleased]: https://github.com/TACC/Core-Styles/compare/v0.6.0-beta...HEAD
+[unreleased]: https://github.com/TACC/Core-Styles/compare/v0.6.0-beta.1...HEAD
+[0.6.0-beta.1]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-beta.1
 [0.6.0-beta]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-beta
 [0.6.0-alpha.2]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-alpha.2
 [0.6.0-alpha.1]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-alpha.1
