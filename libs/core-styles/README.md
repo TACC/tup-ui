@@ -224,7 +224,6 @@ Only authorized team members may publish.
 1. (one time) Login to npm i.e. `npm login`.
 1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
-1. Build e.g. `npm run build`.
 1. Update version via `npm version the.new.ver` (run from `.../core-styles/`).
 1. Commit, push, PR, review, merge.
 1. Publish to NPM via `npm publish --access public`.
