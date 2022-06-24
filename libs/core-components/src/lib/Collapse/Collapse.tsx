@@ -50,7 +50,7 @@ const Collapse: React.FC<CollapseProperties> = ({
               size="sm"
               onClick={toggle}
             >
-              <Icon name={isOpen ? 'collapse' : 'expand'} />
+              <Icon name={isOpen ? 'contract' : 'expand'} />
             </Button>
           )}
         </div>
