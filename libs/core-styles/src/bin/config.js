@@ -31,7 +31,7 @@ function config(customConfigFiles = [], cssVersion) {
     newJson = getConfigObject(nextFile);
     configObjects.push(newJson);
   });
-  mergedJson = merge(...configObjects);
+  const mergedJson = merge(...configObjects);
 
   // Update version property
   const updatedJson = updateVersion(mergedJson, cssVersion);
