@@ -19,9 +19,8 @@ const SidebarItem = ({ to, iconName, label, children, disabled, hidden }) => {
         tag={RRNavLink}
         to={to}
         disabled={disabled}
-        className={(isActive) =>
-          isActive ? `${styles['link--active']}` : `${styles['link']}`
-        }
+        className={styles['link']}
+        activeClassName={styles['link--active']}
       >
         <Icon name={iconName} className={styles['icon']} />
         <span className={styles['text']}>{label}</span>
