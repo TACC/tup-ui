@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+// To drop this dependency, use `@tacc/core-styles/.../components/c-show-more`
 import { useResizeDetector } from 'react-resize-detector';
 import PropTypes from 'prop-types';
 
