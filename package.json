@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-resize-detector": "^7.1.2",
     "react-router-dom": "^5.3.3",
     "react-table": "^7.8.0",
