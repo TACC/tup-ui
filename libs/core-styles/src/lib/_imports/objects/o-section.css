@@ -254,16 +254,15 @@ Styleguide Objects.Section
 /* Tricks: /* Children: Banner Image */
 /* FP-1462: Extract to new banner component(s) */
 
-/* HACK: To hide vertical overflow by placing sibling sections atop */
-[class*="o-section--style"] { position: relative; }
+/* To hide section overflow with minimal side effects */
+/* FAQ: Use 'clip', not 'hidden' which can affect opposite 'overflow-' value */
 /* NOTE: This selector assumes only a banner section has vertical overflow */
-/* CAVEAT: Any banner pop-out el's can NOT overflow atop sibling sections */
-[class*="o-section--style"].o-section--banner { z-index: 0; }
-/* NOTE: A `z-index` > 0 is only necessary for sections before banner */
-/* CAVEAT: Any section pop-out el's can NOT overflow atop section after it */
-[class*="o-section--style"] { z-index: 1; }
-
-/* HACK: To hide `.o-section__banner-image` overflow */
+/* CAVEAT: Any banner pop-out el's would NOT overflow atop sibling sections */
+[class*="o-section--style"].o-section--banner {
+  /* To hide vert. overflow */
+  overflow-y: clip;
+}
 main {
-  overflow-x: clip; /* support position sticky on element in section */
+  /* To hide horz. overflow yet support any 'position: sticky' descendant */
+  overflow-x: clip;
 }
