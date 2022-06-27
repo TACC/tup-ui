@@ -168,16 +168,16 @@ If you changes files in a `src/lib/` directory, you may need to follow some of t
 
 You can build stylesheets **from** source files **in** `src/lib` directory **to** compiled files **in** `dist` directory.
 
-0. (Optional) Set version (for preserved comment):
-
-   ```bash
-   npm run version -- --build-id="$(git describe --always)"
-   ```
-
 1. Build stylesheets:
 
    ```bash
    npm run build
+   ```
+
+   **or**, for custom build id:
+
+   ```bash
+   npm run build -- --build-id="..."
    ```
 
 ## Testing
@@ -224,8 +224,7 @@ Only authorized team members may publish.
 1. (one time) Login to npm i.e. `npm login`.
 1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
-1. Update version in `package.json`.
-1. Update version in `package-lock.json` (e.g. `npm i --package-lock-only`).
+1. Update version via `npm version the.new.ver` (run from `.../core-styles/`).
 1. Commit, push, PR, review, merge.
 1. Publish to NPM via `npm publish --access public`.
 
