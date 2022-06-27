@@ -28,7 +28,7 @@ export const StepThreeSummary: React.FC = () => {
 };
 
 // Form steps require a validation schema
-const validationSchema = Yup.object({
+export const validationSchema = Yup.object({
   fieldFour: Yup.string().required().min(1).max(64),
 });
 

@@ -206,7 +206,7 @@ export const StepThreeSummary: React.FC = () => {
   );
 };
 
-const validationSchema = Yup.object().shape({
+export const validationSchema = Yup.object().shape({
   fieldArrayOfArrays: Yup.array().of(
     Yup.object().shape({
       name: Yup.string()

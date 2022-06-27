@@ -44,7 +44,7 @@ const generateInitialValues: InitialValueGenerator = ({ values, extra }) => ({
 });
 
 // Form steps require a validation schema
-const validationSchema = Yup.object({
+export const validationSchema = Yup.object({
   fieldOne: Yup.string().required().min(1).max(64),
   fieldTwo: Yup.string(),
 });

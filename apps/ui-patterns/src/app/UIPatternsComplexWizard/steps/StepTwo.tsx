@@ -119,7 +119,7 @@ export const StepTwoSummary: React.FC = () => {
   );
 };
 
-const validationSchema = Yup.object().shape({
+export const validationSchema = Yup.object().shape({
   fieldArray: Yup.array().of(
     Yup.object().shape({
       name: Yup.string().min(1).required('A name is required'),
