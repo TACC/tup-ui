@@ -8,9 +8,7 @@ export const NavItem: React.FC<
 > = ({ to, icon, children }) => (
   <NavLink
     to={to}
-    className={styles['nav-link']}
-    activeClassName={styles['active']}
-    exact={to === '/'}
+    className={(isActive) => (isActive ? styles['active'] : styles['nav-link'])}
   >
     <div className={styles['nav-content']}>
       {icon && <Icon name={icon} />}
