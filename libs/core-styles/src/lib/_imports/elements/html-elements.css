@@ -58,13 +58,13 @@ Reference:
 Styleguide Elements.ContentSectioning
 */
 
-html > main {
+body > main {
   margin-bottom: var(--global-space--section-gap);
 }
 
 /* To make a "sticky footer" */
 /* https://css-tricks.com/a-clever-sticky-footer-technique/ */
-html > main + footer {
+body > main + footer {
   position: sticky;
   top: 100vh;
 }
