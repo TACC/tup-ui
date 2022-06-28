@@ -62,6 +62,13 @@ html > main {
   margin-bottom: var(--global-space--section-gap);
 }
 
+/* To make a "sticky footer" */
+/* https://css-tricks.com/a-clever-sticky-footer-technique/ */
+html > main + footer {
+  position: sticky;
+  top: 100vh;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin-top: revert; /* to overwrite Bootstrap `_reboot.css` */
 
