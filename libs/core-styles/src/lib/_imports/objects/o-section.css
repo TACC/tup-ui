@@ -44,7 +44,9 @@ Styleguide Objects.Section
 
 .o-section {
   /* GH-99: Use standard spacing value */
-  padding-block: var(--global-space--section-gap); /* ~avg. from design docs */
+  --padding-block: var(--global-space--section-gap);
+
+  padding-block: var(--padding-block); /* ~avg. from design docs */
 }
 /* To distinguish nested sections */
 .o-section .o-section {
@@ -251,7 +253,7 @@ Styleguide Objects.Section
 
 
 
-/* Tricks: /* Children: Banner Image */
+/* Tricks: Children: Banner Image */
 /* FP-1462: Extract to new banner component(s) */
 
 /* HACK: To hide vertical overflow by placing sibling sections atop */
@@ -266,4 +268,16 @@ Styleguide Objects.Section
 /* HACK: To hide `.o-section__banner-image` overflow */
 main {
   overflow-x: clip; /* support position sticky on element in section */
+}
+
+
+
+/* Tricks: Modifers: Style */
+
+/* To prevent visibly extra space beneath light sections and footer */
+/* FAQ: "extra space" = padding in <section> (white) + <main> margin (white) */
+/* FAQ: 'last-of-type' not 'last-child' cuz hidden elements */
+main > .container.o-section--style-light:last-of-type,
+main > .container > .o-section--style-light:last-of-type {
+  margin-bottom: calc( -1 * var(--padding-block) );
 }
