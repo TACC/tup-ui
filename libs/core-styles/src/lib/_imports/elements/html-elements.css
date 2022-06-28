@@ -58,8 +58,8 @@ Reference:
 Styleguide Elements.ContentSectioning
 */
 
-main {
-  padding-bottom: var(--global-space--section-gap);
+html > main {
+  margin-bottom: var(--global-space--section-gap);
 }
 
 h1, h2, h3, h4, h5, h6 {
