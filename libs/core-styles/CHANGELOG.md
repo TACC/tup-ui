@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0-beta.2] - 2022-06-27: Prevent Section Banner Overflow
+
+### Fixed
+
+- fix(core-styles): fp-1666, section banner overflow
+
 ## [0.6.0-beta.1] - 2022-06-24: Do Not Let Figure CSS Bleed into Other Patterns
 
 ### Fixed
@@ -151,7 +157,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial working code. (This code may not work on all environments.)
 
-[unreleased]: https://github.com/TACC/Core-Styles/compare/v0.6.0-beta.1...HEAD
+[unreleased]: https://github.com/TACC/Core-Styles/compare/v0.6.0-beta.2...HEAD
+[0.6.0-beta.2]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-beta.2
 [0.6.0-beta.1]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-beta.1
 [0.6.0-beta]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-beta
 [0.6.0-alpha.2]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-alpha.2
