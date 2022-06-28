@@ -273,10 +273,12 @@ main {
 
 /* Tricks: Modifers: Style */
 
-/* To prevent visibly extra space beneath light sections and footer */
-/* FAQ: "extra space" = padding in <section> (white) + <main> margin (white) */
+/* To prevent visibly extra space beneath certain sections and footer */
+/* FAQ: "extra space" is margin (from <main>) between section and <footer> */
 /* FAQ: 'last-of-type' not 'last-child' cuz hidden elements */
 main > .container.o-section--style-light:last-of-type,
-main > .container > .o-section--style-light:last-of-type {
+main > .container > .o-section--style-light:last-of-type,
+main > .container.o-section--style-dark:last-of-type,
+main > .container > .o-section--style-dark:last-of-type {
   margin-bottom: calc( -1 * var(--padding-block) );
 }
