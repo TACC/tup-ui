@@ -9,9 +9,12 @@
   },
   "private": true,
   "dependencies": {
+    "axios": "^0.27.2",
     "core-js": "^3.6.5",
+    "js-cookie": "^3.0.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-query": "^3.39.1",
     "regenerator-runtime": "0.13.7",
     "tslib": "^2.3.0"
   },
@@ -27,6 +30,7 @@
     "@nrwl/workspace": "14.1.7",
     "@testing-library/react": "13.1.1",
     "@types/jest": "27.4.1",
+    "@types/js-cookie": "^3.0.2",
     "@types/node": "16.11.7",
     "@types/react": "18.0.8",
     "@types/react-dom": "18.0.3",
