@@ -1,4 +1,4 @@
-import { render, cleanup, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { AxiosStatic } from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -28,19 +28,16 @@ const WrappedLogin = () => (
 );
 
 describe('LoginComponent', () => {
+  afterEach(() => testQueryClient.clear());
   it('should render profile if cookie is defined', async () => {
     document.cookie = 'x-tup-token=abc123';
     jest
       .spyOn(mockedAxios, 'get')
       .mockResolvedValue({ data: { firstName: 'testuser' } });
-
     render(<WrappedLogin />);
 
-    await waitFor(() => {
-      const cookieQuery = screen.getByText(/User Profile/);
-      expect(cookieQuery).toBeTruthy();
-      cleanup();
-    });
+    const userQuery = await screen.findByText(/testuser/);
+    expect(userQuery).toBeTruthy();
   });
 
   it('should render login page if no cookie is set', async () => {
@@ -48,14 +45,13 @@ describe('LoginComponent', () => {
 
     render(<WrappedLogin />);
 
-    await waitFor(() => {
-      const cookieQuery = screen.getByText(/Login/);
-      expect(cookieQuery).toBeTruthy();
-    });
+    const userQuery = await screen.findByText(/Login/);
+    expect(userQuery).toBeTruthy();
   });
 });
 
 describe('ProfileComponent', () => {
+  afterEach(() => testQueryClient.clear());
   it('should render successfully', async () => {
     jest
       .spyOn(mockedAxios, 'get')
@@ -65,6 +61,5 @@ describe('ProfileComponent', () => {
     expect(mockedAxios.get).toHaveBeenCalled();
     const userQuery = await screen.findByText(/testuser/);
     expect(userQuery).toBeTruthy();
-    //cleanup();
   });
 });
