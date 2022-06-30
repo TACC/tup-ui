@@ -1,0 +1,22 @@
+/*
+Site
+
+Layout and class names that are applicable to most websites:
+
+- ["sticky footer"](https://css-tricks.com/couple-takes-sticky-footer/)
+
+Markup: o-site.html
+
+Styleguide Objects.Site
+*/
+
+/* IDEA: Use or add grid solution */
+/* https://github.com/DesignSafe-CI/portal/blob/215915c/designsafe/static/styles/main.css#L935 */
+
+/*
+.o-site {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+*/
