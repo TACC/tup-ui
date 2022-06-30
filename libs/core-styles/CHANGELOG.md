@@ -165,14 +165,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial working code. (This code may not work on all environments.)
 
-[unreleased]: https://github.com/TACC/Core-Styles/compare/v0.6.0-beta.3...HEAD
-[0.6.0-beta.2]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-beta.3
-[0.6.0-beta.2]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-beta.2
-[0.6.0-beta.1]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-beta.1
-[0.6.0-beta]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-beta
-[0.6.0-alpha.2]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-alpha.2
-[0.6.0-alpha.1]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-alpha.1
-[0.6.0-alpha]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-alpha
+[unreleased]: https://github.com/TACC/tup-ui/compare/core-styles-v0.6.0-beta.3...HEAD
+[0.6.0-beta.3]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.6.0-beta.3
+[0.6.0-beta.2]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta.2
+[0.6.0-beta.1]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta.1
+[0.6.0-beta]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta
+[0.6.0-alpha.2]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-alpha.2
+[0.6.0-alpha.1]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-alpha.1
+[0.6.0-alpha]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-alpha
 [0.5.1]: https://github.com/TACC/Core-Styles/releases/tag/v0.5.1
 [0.5.0]: https://github.com/TACC/Core-Styles/releases/tag/v0.5.0
 [0.4.0]: https://github.com/TACC/Core-Styles/releases/tag/v0.4.0
