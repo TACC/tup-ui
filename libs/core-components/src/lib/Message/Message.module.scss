@@ -1,6 +1,3 @@
-@import url('@tacc/core-styles/dist/settings/border.css');
-@import url('@tacc/core-styles/dist/settings/color.css');
-
 /* WARNING: No official design */
 /* FAQ: Styles are a mix of static design and dev design */
 /* SEE: https://confluence.tacc.utexas.edu/x/gYCeBw */
@@ -131,19 +128,21 @@ p.is-scope-section {
 /* Modifiers: Complex */
 
 .is-scope-inline {
-  &.is-error a {
+  /* WARNING: This accessibility solution is only because of lack of design */
+  /* FAQ: Can not explicitely declare `.wb-link`, because its a global class */
+  /* Avoid clash of red text and purple `.wb-link` */
+  .is-error a {
     color: var(
       --global-color-danger--normal
-    );
+    ) !important /* override overly-specific `.workbench-content .wb-link` */;
   }
   /* Distinguish text and `.wb-link`, and link states default and hover */
-  &.is-error a:link {
+  .is-warn a,
+  .is-error a {
     text-decoration-line: underline;
   }
-  &.is-error a:hover {
+  .is-warn a:hover,
+  .is-error a:hover {
     text-decoration-style: double;
-  }
-  &.is-error a:active {
-    text-decoration-line: underline overline;
   }
 }

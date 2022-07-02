@@ -20,6 +20,10 @@ function testClassnamesByType(type, size, getByRole, getByTestId) {
   expect(text.className).toMatch('text');
 }
 
+function muteTypeNotLinkNoSizeLog(type, size) {
+  if (type !== 'link' && !size) console.debug = jest.fn();
+}
+
 function isPropertyLimitation(type, size) {
   let isLimited = false;
 
@@ -35,12 +39,14 @@ function isPropertyLimitation(type, size) {
 
 describe('Button', () => {
   it('uses given text', () => {
+    muteTypeNotLinkNoSizeLog();
     const { getByTestId } = render(<Button>{TEST_TEXT}</Button>);
     expect(getByTestId('text').textContent).toEqual(TEST_TEXT);
   });
 
   describe('icons exist as expected when', () => {
     test('only `iconNameBefore` is given', () => {
+      muteTypeNotLinkNoSizeLog();
       const { queryByTestId } = render(
         <Button iconNameBefore="folder">{TEST_TEXT}</Button>
       );
@@ -48,6 +54,7 @@ describe('Button', () => {
       expect(queryByTestId('icon-after')).not.toBeInTheDocument();
     });
     test('only `iconNameAfter` is given', () => {
+      muteTypeNotLinkNoSizeLog();
       const { queryByTestId } = render(
         <Button iconNameAfter="folder">{TEST_TEXT}</Button>
       );
@@ -55,6 +62,7 @@ describe('Button', () => {
       expect(queryByTestId('icon-after')).toBeInTheDocument();
     });
     test('both `iconNameAfter` and `iconNameBefore` are given', () => {
+      muteTypeNotLinkNoSizeLog();
       const { queryByTestId } = render(
         <Button iconNameBefore="folder" iconNameAfter="file">
           {TEST_TEXT}
@@ -67,6 +75,7 @@ describe('Button', () => {
 
   describe('all type & size combinations render accurately', () => {
     it.each(BTN.TYPES)('type is "%s"', (type) => {
+      muteTypeNotLinkNoSizeLog();
       if (isPropertyLimitation(type, TEST_SIZE)) {
         return Promise.resolve();
       }
@@ -79,6 +88,7 @@ describe('Button', () => {
       testClassnamesByType(type, TEST_SIZE, getByRole, getByTestId);
     });
     it.each(BTN.SIZES)('size is "%s"', (size) => {
+      muteTypeNotLinkNoSizeLog();
       if (isPropertyLimitation(TEST_TYPE, size)) {
         return Promise.resolve();
       }
@@ -94,6 +104,7 @@ describe('Button', () => {
 
   describe('loading', () => {
     it('does not render button without text', () => {
+      muteTypeNotLinkNoSizeLog();
       const { queryByTestId } = render(
         <Button data-testid="no button here">{TEST_TEXT}</Button>
       );
@@ -101,11 +112,41 @@ describe('Button', () => {
       expect(el).toBeNull();
     });
     it('disables button when in loading state', () => {
+      muteTypeNotLinkNoSizeLog();
       const { queryByText } = render(
         <Button isLoading={true}>Loading Button</Button>
       );
       const el = queryByText('Loading Button').closest('button');
       expect(el).toBeDisabled();
+    });
+  });
+
+  describe('property limitation', () => {
+    test('type is "link" & ANY size`', () => {
+      console.warn = jest.fn();
+      const { getByRole, getByTestId } = render(
+        <Button type="link" size={TEST_SIZE}>
+          {TEST_TEXT}
+        </Button>
+      );
+      const expectedType = 'link';
+      const expectedSize = '';
+
+      testClassnamesByType(expectedType, expectedSize, getByRole, getByTestId);
+      expect(console.warn).toHaveBeenCalled();
+    });
+    test('type is "primary" & size is "small"', () => {
+      console.error = jest.fn();
+      const { getByRole, getByTestId } = render(
+        <Button type="primary" size="small">
+          {TEST_TEXT}
+        </Button>
+      );
+      const expectedType = 'secondary';
+      const expectedSize = 'small';
+
+      testClassnamesByType(expectedType, expectedSize, getByRole, getByTestId);
+      expect(console.error).toHaveBeenCalled();
     });
   });
 });

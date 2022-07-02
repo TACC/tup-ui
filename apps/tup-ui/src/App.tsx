@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>Hello Vite + React!</p>
-        <Message type="warning">Core-Components Message</Message>
+        <Message />
         <p>
           <Button
             onClick={() => setCount((count) => count + 1)}

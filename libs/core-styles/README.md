@@ -85,7 +85,7 @@ Notes:
 
 2. Import stylesheets of either type:
    - pre-compiled, from `/dist`
-   - source files, from `/src/lib/_imports`
+   - source files, from `/src/lib`
 
 #### Build Script
 
@@ -186,21 +186,7 @@ Plugin testing is done manually. Run `npm run build` from root folder in this pr
 
 > **Future**: Style testing is done manually. Run `npm start` from root folder in this project, then review output at web interface, to ensure styles are rendering correctly.
 
-## Linting
-
-CSS linting is configured by `/.stylelintrc`.
-
-For syntax highlighting, you may install a PostCSS plugin for your editor; you may also need to associate `.css` files with PostCSS e.g.:
-
-- for VS Code
-
-  ```json
-  "files.associations": {
-      "*.css": "postcss"
-  },
-  ```
-
-## Production Deployment
+### Production Deployment
 
 The Core Styles are not deployed alone _yet_. ¹
 

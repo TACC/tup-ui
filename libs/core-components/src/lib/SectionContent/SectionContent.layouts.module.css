@@ -39,7 +39,8 @@
 /* Always */
 .two-column,
 .multi-column {
-  --vertical-buffer: 40px;
+  --vertical-buffer: 2.5rem; /* 40px (~32px design * 1.2 design-to-app ratio) (rounded) */
+  --column-gap: calc(var(--global-space--section-left) * 2);
 }
 .two-column > *,
 .multi-column > * {
@@ -58,7 +59,7 @@
 @media screen and (--medium-and-above) {
   .two-column,
   .multi-column {
-    column-gap: 48px;
+    column-gap: var(--column-gap);
     column-rule: 1px solid rgb(112 112 112 / 25%);
     column-fill: auto;
   }
@@ -90,6 +91,3 @@
     column-count: 3;
   }
 }
-
-@custom-media --short-and-below (height < 634px);
-@custom-media --short-and-above (height >= 634px);

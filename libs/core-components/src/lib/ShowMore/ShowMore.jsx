@@ -32,7 +32,7 @@ const ShowMore = ({ className, children }) => {
         </div>
       }
       {(hasOverflow || expanded) && (
-        <Button type="link" onClick={toggleCallback}>
+        <Button kind="link" onClick={toggleCallback}>
           {expanded ? 'Show Less' : 'Show More'}
         </Button>
       )}

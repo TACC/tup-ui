@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Fade } from 'reactstrap';
 import Icon from '../Icon';
 
-import styles from './Message.module.css';
+import styles from './Message.module.scss';
 
 export const ERROR_TEXT = {
   mismatchCanDismissScope:
@@ -147,8 +147,9 @@ const Message = ({
       <Icon
         className={`${styles['icon']} ${styles['type-icon']}`}
         name={iconName}
-        label={iconText}
-      />
+      >
+        {iconText}
+      </Icon>
       <span className={styles['text']} data-testid="text">
         {children}
       </span>

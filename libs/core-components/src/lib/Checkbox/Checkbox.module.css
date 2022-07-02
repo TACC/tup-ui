@@ -1,5 +1,3 @@
-@import url('@tacc/core-styles/dist/settings/color.css');
-
 /* HACK: Only necessary because icon sizes are not managed by <Icon> yet */
 .root,
 .root > * {
