@@ -24,7 +24,7 @@
   },
   "dependencies": {},
   "scripts": {
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -- --openssl-legacy-provider",
     "build-storybook": "build-storybook"
   }
 }
