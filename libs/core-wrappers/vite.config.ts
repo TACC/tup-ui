@@ -12,13 +12,21 @@ export default defineConfig({
         '../../libs/core-components/src/index.ts'
       ),
       '@tacc/core-styles': path.resolve(__dirname, '../../libs/core-styles/'),
-      '@tacc/core-wrappers': path.resolve(
-        __dirname,
-        '../../libs/core-wrappers/src/index.ts'
-      ),
     },
   },
   build: {
-    outDir: path.resolve(__dirname, '../../dist/apps/ui-patterns'),
+    lib: {
+      entry: path.resolve(__dirname, './src/index.ts'),
+      name: '@tacc/core-wrappers',
+      fileName: (format) => `core-wrappers.${format}.js`,
+    },
+    rollupOptions: {
+      // Externalized dependencies, that will not be included during build
+      external: [],
+      output: {
+        globals: {},
+      },
+    },
+    outDir: path.resolve(__dirname, '../../dist/libs/core-wrappers'),
   },
 });
