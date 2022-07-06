@@ -1,29 +1,35 @@
 import React, { useState } from 'react';
-import { useProfileQuery, useAuth, useJwt } from '../hooks';
+import { useProfile, useAuth, useJwt } from '../hooks';
 
-export const ProfileComponent = () => {
-  const profileQuery = useProfileQuery();
 
+export const LogoutComponent: React.FC = () => {
   const { loggedIn, logout } = useAuth();
+  if (loggedIn) {
+    return (
+      <div>
+        <button onClick={() => logout()}>Log Out</button>
+      </div>
+    )
+  }
+  return null;
+}
+
+export const ProfileComponent: React.FC = () => {
+  const profileQuery = useProfile();
 
   const profile = profileQuery.data;
   if (profile) {
     return (
-      <>
-        <div>
-          User Profile
-          <ul>
-            <li>
-              {profile.firstName} {profile.lastName}
-            </li>
-            <li>{profile.institution}</li>
-            <li>{profile.country}</li>
-          </ul>
-        </div>
-        <div>
-          <button onClick={() => logout()}>Log Out</button>
-        </div>
-      </>
+      <div>
+        User Profile
+        <ul>
+          <li>
+            {profile.firstName} {profile.lastName}
+          </li>
+          <li>{profile.institution}</li>
+          <li>{profile.country}</li>
+        </ul>
+      </div>
     );
   }
   return <div>User Profile</div>;
@@ -46,7 +52,12 @@ const LoginComponent = () => {
   switch (jwtQuery.status) {
     case 'success':
       //return <div>User Profile</div>
-      return <ProfileComponent />;
+      return (
+        <div>
+          <ProfileComponent />
+          <LogoutComponent />
+        </div>
+      );
     case 'error':
       return (
         <form onSubmit={authenticate}>

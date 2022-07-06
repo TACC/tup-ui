@@ -57,5 +57,5 @@ export type AuthBody = {
 }
 
 export { default as useAuth } from './useAuth';
-export { default as useProfileQuery } from './useProfileQuery';
+export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
