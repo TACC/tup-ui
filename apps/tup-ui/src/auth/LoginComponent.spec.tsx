@@ -4,8 +4,9 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 import LoginComponent, {
   ProfileComponent,
-  AxiosClientContext,
 } from './LoginComponent';
+
+import { AxiosClientContext } from '../hooks/useAxios';
 
 const mockedAxios = jest.createMockFromModule<AxiosStatic>('axios');
 const testQueryClient = new QueryClient({
