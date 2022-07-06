@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0-beta.3] - 2022-06-28: Fix/Consistent Space Above CMS Footer
+
+### Fixed
+
+- chore: <main>, margin not pad. & accurate selector
+- feat: drop .o-site for simple sticky footer trick
+- fix: hide extra space, last light section ↔ footer
+
 ## [0.6.0-beta.2] - 2022-06-27: Prevent Section Banner Overflow
 
 ### Fixed
@@ -157,7 +165,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial working code. (This code may not work on all environments.)
 
-[unreleased]: https://github.com/TACC/tup-ui/compare/core-styles-v0.6.0-beta.2...HEAD
+[unreleased]: https://github.com/TACC/tup-ui/compare/core-styles-v0.6.0-beta.3...HEAD
+[0.6.0-beta.3]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.6.0-beta.3
 [0.6.0-beta.2]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta.2
 [0.6.0-beta.1]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta.1
 [0.6.0-beta]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta
