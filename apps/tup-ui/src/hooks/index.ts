@@ -51,6 +51,11 @@ export type AuthResponse = {
   profile: UserProfile;
 };
 
-export { default as useAuthMutation } from './useAuthMutation';
+export type AuthBody = {
+  username: string;
+  password: string;
+}
+
+export { default as useAuth } from './useAuth';
 export { default as useProfileQuery } from './useProfileQuery';
 export { default as useJwt } from './useJwt';

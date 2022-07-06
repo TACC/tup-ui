@@ -12,7 +12,13 @@ const getJwt = () => {
 
 const useJwt = () => {
   const query = useQuery('jwt', getJwt, { retry: false });
-  return query;
+  const { data: jwt, isLoading, error, status } = query;
+  return {
+    jwt,
+    isLoading,
+    error,
+    status
+  };
 };
 
 export default useJwt;

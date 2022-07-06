@@ -1,28 +1,36 @@
 import React, { useState } from 'react';
-import { useProfileQuery, useAuthMutation, useJwt } from '../hooks';
+import { useProfileQuery, useAuth, useJwt } from '../hooks';
 
 export const ProfileComponent = () => {
   const profileQuery = useProfileQuery();
+
+  const { loggedIn, logout } = useAuth();
+
   const profile = profileQuery.data;
   if (profile) {
     return (
-      <div>
-        User Profile
-        <ul>
-          <li>
-            {profile.firstName} {profile.lastName}
-          </li>
-          <li>{profile.institution}</li>
-          <li>{profile.country}</li>
-        </ul>
-      </div>
+      <>
+        <div>
+          User Profile
+          <ul>
+            <li>
+              {profile.firstName} {profile.lastName}
+            </li>
+            <li>{profile.institution}</li>
+            <li>{profile.country}</li>
+          </ul>
+        </div>
+        <div>
+          <button onClick={() => logout()}>Log Out</button>
+        </div>
+      </>
     );
   }
   return <div>User Profile</div>;
 };
 
 const LoginComponent = () => {
-  const authMutation = useAuthMutation();
+  const { login } = useAuth();
   const jwtQuery = useJwt();
 
   const [password, setPassword] = useState('');
@@ -30,7 +38,7 @@ const LoginComponent = () => {
 
   const authenticate = (e: React.FormEvent) => {
     e.preventDefault();
-    authMutation.mutate({ username, password });
+    login({ username, password });
   };
 
   // Once routing is implemented, this logic can be used to wrap routes and redirect
