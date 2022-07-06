@@ -28,7 +28,7 @@ const useAuthMutation = () => {
   const mutation = useMutation(
     async ({ username, password }: { username: string; password: string }) => {
       const result = await authUtil(client, config.baseUrl, username, password);
-      const expirationDate = new Date(Date.now() + 10000);
+      const expirationDate = new Date(Date.now() + result.ttl * 1000);
       Cookies.set('x-tup-token', result.jwt, { expires: expirationDate });
       // Invalidate the jwt query to trigger rerender of any component that uses it.
       queryClient.invalidateQueries('jwt');
