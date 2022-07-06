@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2022-07-06: Fix CMS v3.7.0 Bugs, Button Style Updates
+
+- [0.6.0-beta.3]
+- [0.6.0-beta.2]
+- [0.6.0-beta.1]
+
 ## [0.6.0-beta.3] - 2022-06-28: Fix/Consistent Space Above CMS Footer
 
 ### Fixed
@@ -165,7 +171,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial working code. (This code may not work on all environments.)
 
-[unreleased]: https://github.com/TACC/tup-ui/compare/core-styles-v0.6.0-beta.3...HEAD
+[unreleased]: https://github.com/TACC/tup-ui/compare/core-styles-v0.6.0...HEAD
+[0.6.0]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.6.0
 [0.6.0-beta.3]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.6.0-beta.3
 [0.6.0-beta.2]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta.2
 [0.6.0-beta.1]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta.1
