@@ -1,0 +1,69 @@
+context:
+  supports:
+    states: true
+    icons: true
+    width: true
+    size: true
+    size-small: true
+variants:
+  # type
+  - name: default
+    label: (Unstyled)
+    hidden: true
+    notes: Incomplete implementation; a type is required
+  - name: primary
+    notes: For the only or primary action
+    context:
+      supports:
+        size-small: false
+  - name: secondary
+    notes: For an optional user action
+  - name: tertiary
+    notes: For inactive buttons among many buttons
+          (e.g. pagination buttons to other pages)
+  - name: is-active
+    notes: For the one active button among many buttons
+          (e.g. pagination button for current page)
+  - name: as-link
+    notes: For a button that resembles a link
+    context:
+      supports:
+        width: false
+        size: false
+  # state
+  - name: is-busy
+    notes: For a button whose being clicked started an incomplete process (should have `disabled` attribute)
+    context:
+      supports:
+        states: false
+        type: true
+      type: c-button--secondary
+      disabled: true
+  # width
+  - name: width-short
+    context:
+      supports:
+        width: false
+        type: true
+      type: c-button--secondary
+  - name: width-medium
+    context:
+      supports:
+        width: false
+        type: true
+      type: c-button--secondary
+  - name: width-long
+    context:
+      supports:
+        width: false
+        type: true
+      type: c-button--secondary
+  # size
+  - name: size-small
+    notes: For a button in a condensed layout
+    context:
+      supports:
+        size: false
+        type: true
+      type: c-button--secondary
+      small: true

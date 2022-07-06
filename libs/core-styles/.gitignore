@@ -1,5 +1,6 @@
-# PostCSS generated files
-## config
+# PostCSS
 .postcssrc.yml
-## assets for manual testing of plugins
 dist
+
+# Fractal
+build

@@ -1,22 +1,4 @@
-/*
-Button
-
-A button that may have icon(s) before and/or after its text.
-
-.c-button--primary - A primary (expected) user action
-.c-button--secondary - For an optional user action
-.c-button--tertiary - A button that represents inactive buttons among many
-.c-button--is-active - A button that represents the one active button among many
-.c-button--as-link - A button that visually resembles a link
-.c-button--is-busy - A clicked button that started an incomplete process
-
-Markup: c-button.html
-
-Styleguide Components.Button
-*/
 @import url("_imports/tools/x-truncate.css");
-
-
 
 
 
@@ -51,8 +33,6 @@ Styleguide Components.Button
 .c-button:disabled:not(.c-button--is-busy, .c-button--as-link) {
   background-color: var(--global-color-primary--xx-light);
 }
-
-
 
 
 
@@ -262,8 +242,6 @@ Styleguide Components.Button
   padding: 4px 9px;
   line-height: 1;
 }
-
-
 
 
 

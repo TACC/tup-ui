@@ -1,0 +1,13 @@
+{{#each _target.resources.assets}}
+  {{#if isCSS}}
+    <link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}">
+  {{/if}}
+{{/each}}
+
+{{#each _target.resources.assets}}
+  {{#if isJS}}
+    <script src="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}"></script>
+  {{/if}}
+{{/each}}
+
+{{{yield}}}
