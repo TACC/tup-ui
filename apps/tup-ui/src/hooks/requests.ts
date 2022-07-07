@@ -9,7 +9,7 @@ export function useGet<ResponseType>(endpoint: string, key: string,
   const client = useAxios();
   const { baseUrl } = useConfig();
   const { jwt } = useJwt();
-
+  console.log(jwt);
   const getUtil = async () => {
     const request = await client.get<ResponseType>(`${baseUrl}${endpoint}`, {
       headers: { 'x-tup-token': jwt ?? '' },
