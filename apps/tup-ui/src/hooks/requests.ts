@@ -1,11 +1,10 @@
 import useAxios from "./useAxios";
 import useConfig from "./useConfig";
 import useJwt from "./useJwt";
-import { AxiosResponse } from 'axios';
-import { useQuery, useMutation, MutateOptions, QueryOptions } from 'react-query';
+import { useQuery, useMutation, UseQueryOptions, UseMutationOptions } from 'react-query';
 
 export function useGet<ResponseType>(endpoint: string, key: string,
-  options?: QueryOptions<ResponseType>
+  options: Omit<UseQueryOptions<ResponseType, Error>, "queryKey" | "queryFn"> = {}
   ) {
   const client = useAxios();
   const { baseUrl } = useConfig();
@@ -22,7 +21,7 @@ export function useGet<ResponseType>(endpoint: string, key: string,
 
 
 export function usePost<BodyType, ResponseType>(endpoint: string,
-  options?: MutateOptions<ResponseType, Error, BodyType>
+  options: UseMutationOptions<ResponseType, Error, BodyType> = {}
 ) {
   const client = useAxios();
   const { baseUrl } = useConfig();
