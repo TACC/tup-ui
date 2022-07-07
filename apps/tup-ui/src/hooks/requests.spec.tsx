@@ -44,7 +44,7 @@ describe('requests', () => {
     const { result } = renderHook(() => usePost<string, string>('/endpoint'), {
       wrapper,
     });
-    await act(() => result.current.mutate('body'));
+    act(() => result.current.mutate('body'));
     await waitFor(() => expect(result.current.data).toEqual('response'));
     expect(axios.post).toHaveBeenCalledWith(
       'http://localhost:8000/endpoint',

@@ -17,6 +17,7 @@ describe('useJwt', () => {
   it('return no cookie when a jwt is not defined', async () => {
     document.cookie = 'x-tup-token=';
     const { result } = renderHook(() => useJwt(), { wrapper });
+    await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
     await waitFor(() => expect(result.current.jwt).toBeUndefined());
   });
 });
