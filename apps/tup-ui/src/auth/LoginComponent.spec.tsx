@@ -1,10 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import { AxiosStatic } from 'axios';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
+import { render } from '@testing-library/react';
 import LoginComponent from './LoginComponent';
 import useAuth from '../hooks/useAuth';
-import useProfile from '../hooks/useProfile';
 
 jest.mock('../hooks/useAuth');
 jest.mock('./ProfileComponent');
