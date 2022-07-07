@@ -1,12 +1,8 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { testQueryClient } from './utils';
-import { QueryClientProvider } from 'react-query';
+import { testQueryClient, getTestWrapper } from './utils';
 import useJwt from './useJwt';
-import React from 'react';
 
-const wrapper: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => (
-  <QueryClientProvider client={testQueryClient}>{children}</QueryClientProvider>
-);
+const wrapper = getTestWrapper(testQueryClient);
 
 describe('useJwt', () => {
   afterEach(() => {

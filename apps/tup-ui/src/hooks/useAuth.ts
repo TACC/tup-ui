@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useQueryClient, } from 'react-query';
+import { useQueryClient } from 'react-query';
 import { AuthResponse, AuthBody } from '.';
 import Cookies from 'js-cookie';
 import { usePost } from './requests';

@@ -1,4 +1,3 @@
-import useAxios from './useAxios';
 import useConfig from './useConfig';
 import useJwt from './useJwt';
 import axios from 'axios';
@@ -17,11 +16,10 @@ export function useGet<ResponseType>(
     'queryKey' | 'queryFn'
   > = {}
 ) {
-  const client = useAxios();
+  const client = axios;
   const { baseUrl } = useConfig();
   const { jwt } = useJwt();
   const getUtil = async () => {
-    console.log("GET UTIL");
     const request = await client.get<ResponseType>(`${baseUrl}${endpoint}`, {
       headers: { 'x-tup-token': jwt ?? '' },
     });
