@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth, useJwt } from '../hooks';
+import { useAuth } from '../hooks';
 import ProfileComponent from './ProfileComponent';
 
 export const LogoutComponent: React.FC = () => {
@@ -12,8 +12,7 @@ export const LogoutComponent: React.FC = () => {
 };
 
 const LoginComponent: React.FC = () => {
-  const { login, error, isLoading } = useAuth();
-  const { jwt } = useJwt();
+  const { login, loggedIn, error, isLoading } = useAuth();
 
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -27,7 +26,7 @@ const LoginComponent: React.FC = () => {
     return <div>...</div>;
   }
 
-  if (jwt) {
+  if (loggedIn) {
     return (
       <div>
         <ProfileComponent />
