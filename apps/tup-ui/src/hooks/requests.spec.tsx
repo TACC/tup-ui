@@ -1,58 +1,56 @@
 import { render, screen } from '@testing-library/react';
 import { AxiosStatic } from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
-import LoginComponent, {
-  ProfileComponent,
-} from './LoginComponent';
+import { useGet } from './requests';
 
 import { AxiosClientContext } from '../hooks/useAxios';
 
-
+const MockGetComponent: React.FC = () => {
+  const { data, isLoading, error } = useGet<string>("/endpoint", "key");
+  if (error) {
+    return <div>Error</div>
+  }
+  if (isLoading) {
+    return <div>Loading</div>
+  }
+  return <div>{data}</div>
+}
 
 const mockedAxios = jest.createMockFromModule<AxiosStatic>('axios');
 const testQueryClient = new QueryClient({
   defaultOptions: { queries: { retry: false, cacheTime: Infinity } },
 });
-const WrappedProfileComponent = () => (
+
+const WrappedGet = () => (
   <AxiosClientContext.Provider value={mockedAxios}>
     <QueryClientProvider client={testQueryClient}>
-      <ProfileComponent />
+      <MockGetComponent />
     </QueryClientProvider>
   </AxiosClientContext.Provider>
 );
 
-const WrappedLogin = () => (
-  <AxiosClientContext.Provider value={mockedAxios}>
-    <QueryClientProvider client={testQueryClient}>
-      <LoginComponent />
-    </QueryClientProvider>
-  </AxiosClientContext.Provider>
-);
-
-describe('LoginComponent', () => {
+describe('requests', () => {
   afterEach(() => testQueryClient.clear());
-  it('should render profile if cookie is defined', async () => {
+  it('should render the mock get component', async () => {
     document.cookie = 'x-tup-token=abc123';
     jest
       .spyOn(mockedAxios, 'get')
-      .mockResolvedValue({ data: { firstName: 'testuser' } });
-    render(<WrappedLogin />);
+      .mockResolvedValue({ data: "response" });
+    render(<WrappedGet />);
 
-    const userQuery = await screen.findByText(/testuser/);
-    expect(userQuery).toBeTruthy();
+    const responseQuery = await screen.findByText(/response/);
+    expect(responseQuery).toBeTruthy();
   });
-
-  it('should render login page if no cookie is set', async () => {
+  it('should an error if a JWT is not set', async () => {
     document.cookie = 'x-tup-token=';
 
-    render(<WrappedLogin />);
+    render(<WrappedGet />);
 
-    const userQuery = await screen.findByText(/Login/);
-    expect(userQuery).toBeTruthy();
+    const errorQuery = await screen.findByText(/Error/);
+    expect(errorQuery).toBeTruthy();
   });
 });
-
+/*
 describe('ProfileComponent', () => {
   afterEach(() => testQueryClient.clear());
   it('should render successfully', async () => {
@@ -66,3 +64,4 @@ describe('ProfileComponent', () => {
     expect(userQuery).toBeTruthy();
   });
 });
+*/
