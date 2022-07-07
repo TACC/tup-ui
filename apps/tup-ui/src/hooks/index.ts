@@ -1,4 +1,3 @@
-
 import { setLogger } from 'react-query';
 
 // Disable error logging when we throw inside a react-query fetcher method.
@@ -54,7 +53,7 @@ export type AuthResponse = {
 export type AuthBody = {
   username: string;
   password: string;
-}
+};
 
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';

@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
-import { useQueryClient, useMutation } from 'react-query';
-import { AxiosStatic, AxiosResponse } from 'axios';
+import { useQueryClient, } from 'react-query';
 import { AuthResponse, AuthBody } from '.';
 import Cookies from 'js-cookie';
 import { usePost } from './requests';
@@ -12,14 +11,11 @@ const useAuth = () => {
   const { jwt } = useJwt();
 
   // Provide a logout callback that removes the x-tup-token cookie
-  const logout = useCallback(
-    () => {
-      Cookies.remove('x-tup-token');
-      // Invalidate the jwt query to trigger rerender of any component that uses it.
-      queryClient.invalidateQueries('jwt');
-    },
-    [ queryClient ]
-  )
+  const logout = useCallback(() => {
+    Cookies.remove('x-tup-token');
+    // Invalidate the jwt query to trigger rerender of any component that uses it.
+    queryClient.invalidateQueries('jwt');
+  }, [queryClient]);
 
   // Provide an auth callback that does something with the /auth response
   const onSuccess = useCallback(
@@ -29,8 +25,8 @@ const useAuth = () => {
       // Invalidate the jwt query to trigger rerender of any component that uses it.
       queryClient.invalidateQueries('jwt');
     },
-    [ queryClient ]
-  )
+    [queryClient]
+  );
 
   // Use the post hook with the auth endpoint and the callback
   const mutation = usePost<AuthBody, AuthResponse>('/auth', { onSuccess });
@@ -39,15 +35,15 @@ const useAuth = () => {
   const { mutate: login, ...extra } = mutation;
 
   // Derive the loggedIn state from the JWT cookie
-  const loggedIn: boolean = !!jwt;
+  const loggedIn = !!jwt;
 
-  // Return 
+  // Return
   return {
     login,
     logout,
     loggedIn,
-    ...extra
-  }
+    ...extra,
+  };
 };
 
 export default useAuth;

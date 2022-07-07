@@ -5,17 +5,17 @@ import Cookies from 'js-cookie';
 const getJwt = () => {
   const cookie = Cookies.get('x-tup-token');
   if (!cookie) {
-    throw Error("JWT not found");
+    throw Error('JWT not found');
   }
   return cookie;
 };
 
 const useJwt = () => {
   const query = useQuery('jwt', getJwt, { retry: false });
-  const { data: jwt, ...extra} = query;
+  const { data: jwt, ...extra } = query;
   return {
     jwt,
-    ...extra
+    ...extra,
   };
 };
 
