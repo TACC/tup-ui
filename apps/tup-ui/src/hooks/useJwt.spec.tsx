@@ -11,7 +11,10 @@ const wrapper: React.FC<React.PropsWithChildren<{}>> = ({children}) => (
 );
 
 describe('useJwt', () => {
-  afterEach(() => testQueryClient.clear());
+  afterEach(() => {
+    testQueryClient.clear()
+    document.cookie = '';
+  });
   it('retrieve a a document cookie', async () => {
     document.cookie = 'x-tup-token=abc123';
     const { result } = renderHook(() => useJwt(), { wrapper });
