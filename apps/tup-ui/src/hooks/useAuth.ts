@@ -22,18 +22,18 @@ const useAuth = () => {
   )
 
   // Provide an auth callback that does something with the /auth response
-  const authCallback = useCallback(
-    (response: AxiosResponse<AuthResponse, any>) => {
-      const expirationDate = new Date(Date.now() + response.data.ttl * 1000);
-      Cookies.set('x-tup-token', response.data.jwt, { expires: expirationDate });
+  const onSuccess = useCallback(
+    (response: AuthResponse) => {
+      const expirationDate = new Date(Date.now() + response.ttl * 1000);
+      Cookies.set('x-tup-token', response.jwt, { expires: expirationDate });
       // Invalidate the jwt query to trigger rerender of any component that uses it.
       queryClient.invalidateQueries('jwt');
     },
     [ queryClient ]
   )
-  
+
   // Use the post hook with the auth endpoint and the callback
-  const mutation = usePost<AuthBody, AuthResponse>('/auth', authCallback);
+  const mutation = usePost<AuthBody, AuthResponse>('/auth', { onSuccess });
 
   // Rename some of the default react-query functions to be meaningful to this hook's functions
   const { mutate: login, ...extra } = mutation;

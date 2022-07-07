@@ -2,9 +2,11 @@ import useAxios from "./useAxios";
 import useConfig from "./useConfig";
 import useJwt from "./useJwt";
 import { AxiosResponse } from 'axios';
-import { useQuery, useMutation } from 'react-query';
+import { useQuery, useMutation, MutateOptions, QueryOptions } from 'react-query';
 
-export function useGet<ResponseType>(endpoint: string, key: string) {
+export function useGet<ResponseType>(endpoint: string, key: string,
+  options?: QueryOptions<ResponseType>
+  ) {
   const client = useAxios();
   const { baseUrl } = useConfig();
   const { jwt } = useJwt();
@@ -15,10 +17,13 @@ export function useGet<ResponseType>(endpoint: string, key: string) {
     });
     return request.data;
   }
-  return useQuery(key, () => getUtil());
+  return useQuery(key, () => getUtil(), options);
 }
 
-export function usePost<BodyType, ResponseType>(endpoint: string, callback?: (data: AxiosResponse<ResponseType, any>) => void) {
+
+export function usePost<BodyType, ResponseType>(endpoint: string,
+  options?: MutateOptions<ResponseType, Error, BodyType>
+) {
   const client = useAxios();
   const { baseUrl } = useConfig();
   const { jwt } = useJwt();
@@ -26,13 +31,14 @@ export function usePost<BodyType, ResponseType>(endpoint: string, callback?: (da
     const response = await client.post<ResponseType>(`${baseUrl}${endpoint}`, body, {
       headers: { 'x-tup-token': jwt ?? ''}
     });
-    return response;
+    return response.data;
   }
   const mutation = useMutation(
     async (body: BodyType) => {
       const response = await postUtil(body);
-      callback && callback(response);
-    }
+      return response;
+    },
+    options
   );
   return mutation;
 }
