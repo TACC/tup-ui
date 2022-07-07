@@ -1,6 +1,7 @@
 import useAxios from './useAxios';
 import useConfig from './useConfig';
 import useJwt from './useJwt';
+import axios from 'axios';
 import {
   useQuery,
   useMutation,
@@ -20,6 +21,7 @@ export function useGet<ResponseType>(
   const { baseUrl } = useConfig();
   const { jwt } = useJwt();
   const getUtil = async () => {
+    console.log("GET UTIL");
     const request = await client.get<ResponseType>(`${baseUrl}${endpoint}`, {
       headers: { 'x-tup-token': jwt ?? '' },
     });
@@ -32,7 +34,7 @@ export function usePost<BodyType, ResponseType>(
   endpoint: string,
   options: UseMutationOptions<ResponseType, Error, BodyType> = {}
 ) {
-  const client = useAxios();
+  const client = axios;
   const { baseUrl } = useConfig();
   const { jwt } = useJwt();
   const postUtil = async (body: BodyType) => {

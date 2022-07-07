@@ -1,52 +1,22 @@
 import React, { useEffect } from 'react';
-import { render, screen } from '@testing-library/react';
-import { AxiosStatic } from 'axios';
+import { render, renderHook, waitFor, screen } from '@testing-library/react';
+import axios, { AxiosStatic } from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AxiosClientContext } from './useAxios';
 import { useGet, usePost } from './requests';
+import { testQueryClient } from './utils';
 import useJwt from './useJwt';
+import { act } from 'react-dom/test-utils';
 
 jest.mock('./useJwt');
+jest.mock('axios');
 
-const MockGetComponent: React.FC = () => {
-  const { data, isLoading, error } = useGet<string>('/endpoint', 'key');
-  if (error) {
-    return <div>Error</div>;
-  }
-  if (isLoading) {
-    return <div>Loading</div>;
-  }
-  return <div>{data}</div>;
-};
-
-const mockedAxios = jest.createMockFromModule<AxiosStatic>('axios');
-const testQueryClient = new QueryClient({
-  defaultOptions: { queries: { retry: false, cacheTime: Infinity } },
-});
-
-const Wrapper: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => (
-  <AxiosClientContext.Provider value={mockedAxios}>
-    <QueryClientProvider client={testQueryClient}>
-      {children}
-    </QueryClientProvider>
-  </AxiosClientContext.Provider>
+const wrapper: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => (
+  <QueryClientProvider client={testQueryClient}>
+    {children}
+  </QueryClientProvider>
 );
 
-const MockPostComponent: React.FC = () => {
-  const { data, isLoading, mutate, error } = usePost<string, string>(
-    '/endpoint'
-  );
-  useEffect(() => {
-    mutate('body');
-  }, [mutate]);
-  if (error) {
-    return <div>Error</div>;
-  }
-  if (isLoading) {
-    return <div>Loading</div>;
-  }
-  return <div>{data}</div>;
-};
 
 describe('requests', () => {
   afterEach(() => testQueryClient.clear());
@@ -56,17 +26,15 @@ describe('requests', () => {
       isLoading: false,
       error: null,
     });
-    jest.spyOn(mockedAxios, 'get').mockResolvedValue({ data: 'response' });
+    (axios.get as jest.Mock).mockResolvedValue({
+      data: 'response'
+    })
 
-    render(
-      <Wrapper>
-        <MockGetComponent />
-      </Wrapper>
-    );
+    jest.spyOn(axios, 'get').mockResolvedValue({ data: 'response' });
 
-    const responseQuery = await screen.findByText(/response/);
-    expect(responseQuery).toBeTruthy();
-    expect(mockedAxios.get).toHaveBeenCalledWith(
+    const { result } = renderHook(() => useGet<string>("/endpoint", "key"), { wrapper });
+    await waitFor(() => expect(result.current.data).toEqual("response"));
+    expect(axios.get).toHaveBeenCalledWith(
       'http://localhost:8000/endpoint',
       { headers: { 'x-tup-token': 'abc123' } }
     );
@@ -77,17 +45,13 @@ describe('requests', () => {
       isLoading: false,
       error: null,
     });
-    jest.spyOn(mockedAxios, 'post').mockResolvedValue({ data: 'response' });
-
-    render(
-      <Wrapper>
-        <MockPostComponent />
-      </Wrapper>
-    );
-
-    const responseQuery = await screen.findByText(/response/);
-    expect(responseQuery).toBeTruthy();
-    expect(mockedAxios.post).toHaveBeenCalledWith(
+    (axios.post as jest.Mock).mockResolvedValue({
+      data: 'response'
+    })
+    const { result } = renderHook(() => usePost<string, string>("/endpoint"), { wrapper });
+    await act(() => result.current.mutate("body"));
+    await waitFor(() => expect(result.current.data).toEqual("response"));
+    expect(axios.post).toHaveBeenCalledWith(
       'http://localhost:8000/endpoint',
       'body',
       { headers: { 'x-tup-token': 'abc123' } }
