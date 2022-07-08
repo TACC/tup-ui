@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { testQueryClient, getTestWrapper } from './utils';
+import { testQueryClient, getTestWrapper } from '../utils';
 import useJwt from './useJwt';
 
 const wrapper = getTestWrapper(testQueryClient);
