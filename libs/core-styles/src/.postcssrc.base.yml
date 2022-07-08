@@ -11,8 +11,7 @@ plugins:
       - 'src/lib/_themes/default.json'
 
   postcss-preset-env:
-    features:
-      preserve: true # CMS expects custom properties
+    # managed by root
 
   cssnano:
     preset:

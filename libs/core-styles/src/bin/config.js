@@ -21,8 +21,8 @@ const NEW_CONFIG_FILE = `${__dirname}/../.postcssrc.yml`;
 function config(customConfigFiles = [], cssVersion) {
   // Prepare data
   const configFiles = [].concat(
-    ROOT_CONFIG_FILE,
     BASE_CONFIG_FILE,
+    ROOT_CONFIG_FILE,
     customConfigFiles
   );
   const configObjects = [];
