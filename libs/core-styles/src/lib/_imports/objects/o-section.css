@@ -48,6 +48,12 @@ Styleguide Objects.Section
 
   padding-block: var(--padding-block); /* ~avg. from design docs */
 }
+/* To clear section floats */
+.o-section::after {
+  display: block;
+  content: '';
+  clear: both;
+}
 /* To distinguish nested sections */
 .o-section .o-section {
   padding-block: 1em;
