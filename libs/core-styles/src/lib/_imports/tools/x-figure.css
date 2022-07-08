@@ -14,7 +14,7 @@ Styleguide Tools.ExtendsAndMixins.Figure
   margin-bottom: 20px;
 }
 %x-figcaption {
-  color: var(--global-color-primary--dark);
+  opacity: 0.75;
   font-size: var(--global-font-size--medium);
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--normal);
   padding-top: 12px;
