@@ -3,8 +3,6 @@ plugins:
     path:
       - 'src/lib'
 
-  postcss-extend: {}
-
   # https://github.com/TACC/Core-CMS/blob/70a1ca3/conf/css/.postcssrc.yml#L6-L12
   postcss-env-function:
     importFrom:
@@ -31,6 +29,8 @@ plugins:
           exclude: true
         mergeRules:
           exclude: true
+
+  postcss-extend: {}
 
   postcss-banner:
     banner: 'no build id'
