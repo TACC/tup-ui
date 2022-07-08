@@ -1,22 +1,19 @@
 /*
 Figure (Bootstrap)
 
-Add to Bootstrap styles. See:
+Add to Bootstrap styles.
 
+Reference:
 - [Bootstrap Figures](https://getbootstrap.com/docs/4.0/content/figures/)
-- [HTML: Figure | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure)
-- [HTML: Figcaption | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption)
 
 Styleguide Components.Bootstrap.Figure
 */
+@import url("_imports/tools/x-figure.css");
 
 .figure > a > img,
 .figure > img {
-  margin-bottom: 20px;
+  @extend %x-figure-img;
 }
 .figure-caption {
-  color: var(--global-color-primary--dark);
-  font-size: var(--global-font-size--medium);
-  border-top: var(--global-border-width--normal) solid var(--global-color-primary--normal);
-  padding-top: 12px;
+  @extend %x-figcaption;
 }

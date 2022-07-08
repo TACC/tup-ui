@@ -1,0 +1,21 @@
+/*
+Figure (Bootstrap)
+
+Provide reusable Figure styles.
+
+Reference:
+- [HTML: Figure | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure)
+- [HTML: Figcaption | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption)
+
+Styleguide Tools.ExtendsAndMixins.Figure
+*/
+
+%x-figure-img {
+  margin-bottom: 20px;
+}
+%x-figcaption {
+  color: var(--global-color-primary--dark);
+  font-size: var(--global-font-size--medium);
+  border-top: var(--global-border-width--normal) solid var(--global-color-primary--normal);
+  padding-top: 12px;
+}
