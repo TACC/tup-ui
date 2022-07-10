@@ -13,10 +13,9 @@
 */
 
 :root {
-  /* The primary colors of any app (for neutral text, borders, backgrounds) */
-  /* IDEA: Rename these from `primary` to `neutral` */
-
   /* Neutral */
+  /* FAQ: Primary colors of an app (neutral text, borders, backgrounds) */
+  /* IDEA: Rename these from `primary` to `neutral` */
   --global-color-primary--xx-light: #FFFFFF;
     --global-color-primary--xx-light-rgb: 255, 255, 255;
   --global-color-primary--x-light: #F4F4F4;
