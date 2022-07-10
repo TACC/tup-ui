@@ -7,6 +7,7 @@
   "files": [
     "dist",
     "demo",
+    "fractal.config.js",
     "src/bin",
     "src/lib",
     "src/.postcssrc.base.yml"

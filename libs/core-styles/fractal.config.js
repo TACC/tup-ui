@@ -3,11 +3,12 @@
 const mandelbrot = require('@frctl/mandelbrot');
 const fractal = module.exports = require('@frctl/fractal').create();
 
-const theme = mandelbrot({
+const themeConfig = {
   skin: 'black',
   panels: ['notes', 'html', 'resources', 'context', 'info'],
   nav: ['search', 'docs', 'components']
-});
+};
+const theme = mandelbrot(themeConfig);
 
 fractal.set('project.title', 'TACC UI Patterns');
 
@@ -33,3 +34,6 @@ fractal.web.set('static.path', __dirname + '/dist');
 fractal.web.set('builder.dest', __dirname + '/demo');
 
 fractal.web.theme(theme);
+
+// To let client extend
+module.exports = { fractalInstance: fractal, themeConfig }
