@@ -52,5 +52,9 @@
     "postcss-import": "To import CSS files at build-time",
     "postcss-extend": "To extend CSS rule sets at build-time",
     "postcss-preset-env": "To use future CSS features now"
+  },
+  "peerDependencies": {
+    "@frctl/fractal": "^1.5.13",
+    "@frctl/mandelbrot": "^1.10.1"
   }
 }
