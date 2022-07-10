@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2022-07-06: Fix CMS v3.7.0 Bugs, Button Style Updates
+
+- [0.6.0-beta.3]
+- [0.6.0-beta.2]
+- [0.6.0-beta.1]
+
+## [0.6.0-beta.3] - 2022-06-28: Fix/Consistent Space Above CMS Footer
+
+### Fixed
+
+- chore: <main>, margin not pad. & accurate selector
+- feat: drop .o-site for simple sticky footer trick
+- fix: hide extra space, last light section ↔ footer
+
+## [0.6.0-beta.2] - 2022-06-27: Prevent Section Banner Overflow
+
+### Fixed
+
+- fix(core-styles): fp-1666, section banner overflow
+
+## [0.6.0-beta.1] - 2022-06-24: Do Not Let Figure CSS Bleed into Other Patterns
+
+### Fixed
+
+- fix(core-styles): no figure css, only .figure css
+- fix(core-styles): remove unwanted sample html css
+
 ## [0.6.0-beta] - 2022-06-08: Linting, Button Updates, package-lock.json
 
 ### Added
@@ -144,11 +171,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial working code. (This code may not work on all environments.)
 
-[unreleased]: https://github.com/TACC/Core-Styles/compare/v0.6.0-beta...HEAD
-[0.6.0-beta]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-beta
-[0.6.0-alpha.2]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-alpha.2
-[0.6.0-alpha.1]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-alpha.1
-[0.6.0-alpha]: https://github.com/TACC/Core-Styles/releases/tag/v0.6.0-alpha
+[unreleased]: https://github.com/TACC/tup-ui/compare/core-styles-v0.6.0...HEAD
+[0.6.0]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.6.0
+[0.6.0-beta.3]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.6.0-beta.3
+[0.6.0-beta.2]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta.2
+[0.6.0-beta.1]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta.1
+[0.6.0-beta]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta
+[0.6.0-alpha.2]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-alpha.2
+[0.6.0-alpha.1]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-alpha.1
+[0.6.0-alpha]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-alpha
 [0.5.1]: https://github.com/TACC/Core-Styles/releases/tag/v0.5.1
 [0.5.0]: https://github.com/TACC/Core-Styles/releases/tag/v0.5.0
 [0.4.0]: https://github.com/TACC/Core-Styles/releases/tag/v0.4.0
