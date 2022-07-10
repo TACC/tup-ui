@@ -6,6 +6,7 @@
   "description": "CSS source and processor for TACC Core-CMS and Core-Portal.",
   "files": [
     "dist",
+    "demo",
     "src/bin",
     "src/lib",
     "src/.postcssrc.base.yml"
