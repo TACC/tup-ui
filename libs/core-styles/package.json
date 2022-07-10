@@ -13,14 +13,14 @@
     "src/lib",
     "src/.postcssrc.base.yml"
   ],
-  "main": "src/main.js",
-  "bin": "src/cli.js",
+  "main": "main.js",
+  "bin": "cli.js",
   "scripts": {
     "start": "fractal start --sync",
     "build:demo": "fractal build",
-    "build:css": "node src/cli.js build -i \"src/lib/_imports/**/*!(README).css\" -o \"./dist\" -m \"src/lib/_imports\"",
+    "build:css": "node cli.js build -i \"src/lib/_imports/**/*!(README).css\" -o \"./dist\" -m \"src/lib/_imports\"",
     "build": "npm run build:css && npm run build:demo",
-    "test": "node src/cli.js build -i \"src/lib/_tests\" -o \"./dist\" -m \"src/lib\" && echo \"Test output at 'dist/_tests' (compare to test input)\"",
+    "test": "node cli.js build -i \"src/lib/_tests\" -o \"./dist\" -m \"src/lib\" && echo \"Test output at 'dist/_tests' (compare to test input)\"",
     "prepublishOnly": "npm run build # && npm test && npm run lint"
   },
   "engines": {
