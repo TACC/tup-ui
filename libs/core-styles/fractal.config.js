@@ -32,5 +32,4 @@ fractal.web.set('builder.dest', __dirname + '/demo');
 
 fractal.web.theme(theme);
 
-// To let client extend
 module.exports = fractal
