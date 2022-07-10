@@ -30,6 +30,6 @@ fractal.components.set('resources', {
 fractal.docs.set('path', __dirname + '/docs');
 
 fractal.web.set('static.path', __dirname + '/dist');
-fractal.web.set('builder.dest', __dirname + '/build');
+fractal.web.set('builder.dest', __dirname + '/demo');
 
 fractal.web.theme(theme);
