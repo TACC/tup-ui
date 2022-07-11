@@ -5,11 +5,23 @@
     <link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}">
   {{/if}}
 {{/each}}
+{{#each styles.internal}}
+  <link rel="stylesheet" href="{{ path this }}">
+{{/each}}
+{{#each styles.external}}
+  <link rel="stylesheet" href="{{ this }}">
+{{/each}}
 
 {{#each _target.resources.assets}}
   {{#if isJS}}
     <script src="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}"></script>
   {{/if}}
+{{/each}}
+{{#each scripts.internal}}
+  <script src="{{ path this }}"></script>
+{{/each}}
+{{#each scripts.external}}
+  <script src="{{ this }}"></script>
 {{/each}}
 
 {{{yield}}}

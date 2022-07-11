@@ -24,6 +24,17 @@ fractal.components.set('resources', {
       match: ['**/*.css', '**/*.js']
   }
 });
+fractal.components.set('default.context', {
+  styles: {
+    internal: [
+      '/settings/border.css',
+      '/settings/color.css',
+      '/settings/font.css',
+      '/settings/max-width.css',
+      '/settings/space.css',
+    ]
+  }
+});
 
 fractal.docs.set('path', __dirname + '/docs');
 
