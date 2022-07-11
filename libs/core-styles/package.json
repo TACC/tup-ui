@@ -18,9 +18,9 @@
   "scripts": {
     "start": "fractal start --sync",
     "build:demo": "fractal build",
-    "build:css": "node src/cli.js build -i \"src/lib/_imports/**/*!(README).css\" -o \"./dist\" -m \"src/lib/_imports\"",
+    "build:css": "bin/build-css.js",
     "build": "npm run build:css && npm run build:demo",
-    "test": "node src/cli.js build -i \"src/lib/_tests\" -o \"./dist\" -m \"src/lib\" && echo \"Test output at 'dist/_tests' (compare to test input)\"",
+    "test": "bin/test-css.js && echo \"Test output at 'dist/_tests' (compare to test input)",
     "prepublishOnly": "npm run build # && npm test && npm run lint"
   },
   "engines": {
