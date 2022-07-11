@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}.css' }}">
+
 {{#each _target.resources.assets}}
   {{#if isCSS}}
     <link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}">
