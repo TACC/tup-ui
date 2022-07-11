@@ -2,7 +2,7 @@
 
 /** Build CSS using the Core-Styles API */
 
-const buildStylesheets = require('../src/bin/build');
+const { buildStylesheets } = require('../src/main');
 
 buildStylesheets(
   'src/lib/_imports/**/*!(README).css',
