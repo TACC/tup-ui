@@ -30,11 +30,5 @@
     <script src="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}"></script>
   {{/if}}
 {{/each}}
-{{#each scripts.internal.local}}
-  <script src="{{ path this }}"></script>
-{{/each}}
-{{#each scripts.external.local}}
-  <script src="{{ this }}"></script>
-{{/each}}
 
 {{{yield}}}
