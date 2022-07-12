@@ -3,7 +3,7 @@
 const mandelbrot = require('@frctl/mandelbrot');
 const fractal = module.exports = require('@frctl/fractal').create();
 
-const themeConfig = require('./fractal.config.theme.js');
+const themeConfig = require('./fractal.theme.js');
 
 const theme = mandelbrot(themeConfig);
 

@@ -8,7 +8,7 @@
     "dist",
     "demo",
     "fractal.config.js",
-    "fractal.config.theme.js",
+    "fractal.theme.js",
     "src/bin",
     "src/lib",
     "src/.postcssrc.base.yml"
