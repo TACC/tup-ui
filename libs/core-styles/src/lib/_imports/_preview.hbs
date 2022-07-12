@@ -1,26 +1,39 @@
-<link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}.css' }}">
+<!-- styles: global -->
+{{#if styles.external.global}}
+  {{#each styles.external.global}}
+    <link rel="stylesheet" href="{{ this }}">
+  {{/each}}
+{{else if styles.internal.global}}
+  {{#each styles.internal.global}}
+    <link rel="stylesheet" href="{{ path this }}">
+  {{/each}}
+{{else}}
+  <link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}.css' }}">
+{{/if}}
 
+<!-- styles: local -->
 {{#each _target.resources.assets}}
   {{#if isCSS}}
     <link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}">
   {{/if}}
 {{/each}}
-{{#each styles.internal}}
-  <link rel="stylesheet" href="{{ path this }}">
-{{/each}}
-{{#each styles.external}}
+{{#each styles.external.local}}
   <link rel="stylesheet" href="{{ this }}">
 {{/each}}
+{{#each styles.internal.local}}
+  <link rel="stylesheet" href="{{ path this }}">
+{{/each}}
 
+<!-- scripts: local -->
 {{#each _target.resources.assets}}
   {{#if isJS}}
     <script src="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}"></script>
   {{/if}}
 {{/each}}
-{{#each scripts.internal}}
+{{#each scripts.internal.local}}
   <script src="{{ path this }}"></script>
 {{/each}}
-{{#each scripts.external}}
+{{#each scripts.external.local}}
   <script src="{{ this }}"></script>
 {{/each}}
 
