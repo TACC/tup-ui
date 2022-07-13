@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0-beta] - 2022-07-13: New Global Color, Fix Section Banner on Safari
+
+### Added
+
+- feat(core-styles): tup-308, new global color #25
+
+### Fixed
+
+- fix(core-styles): fp-1723 fix o-section--banner on safari #29
+
 ## [0.6.0] - 2022-07-06: Fix CMS v3.7.0 Bugs, Button Style Updates
 
 - [0.6.0-beta.3]
@@ -171,7 +181,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial working code. (This code may not work on all environments.)
 
-[unreleased]: https://github.com/TACC/tup-ui/compare/core-styles-v0.6.0...HEAD
+[unreleased]: https://github.com/TACC/tup-ui/compare/core-styles-v0.7.0...HEAD
+[0.7.0]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.7.0
 [0.6.0]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.6.0
 [0.6.0-beta.3]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.6.0-beta.3
 [0.6.0-beta.2]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta.2
