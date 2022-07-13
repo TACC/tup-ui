@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - feat(core-styles): tup-308, new global color #25
 
+### Change
+
+- feat(core-styles): add `.npmrc` with `git-tag-version=false`
+
 ### Fixed
 
 - fix(core-styles): fp-1723 fix o-section--banner on safari #29
