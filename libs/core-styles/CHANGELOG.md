@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Change
 
 - feat(core-styles): add `.npmrc` with `git-tag-version=false`
+- feat(core-styles): add git tagging to publish steps in readme
 
 ### Fixed
 
