@@ -227,8 +227,8 @@ Only authorized team members may publish.
 1. Update version via `npm version N.N.N` (run from `.../core-styles/`).
 1. Commit, push, PR, review, merge.
 1. Tag version i.e.
-    1. `git tag -a core-styles-vN.N.N -m "vN.N.N"`
-    2. `git push origin core-styles-vN.N.N`
+   1. `git tag -a core-styles-vN.N.N -m "vN.N.N"`
+   2. `git push origin core-styles-vN.N.N`
 1. Publish to NPM via `npm publish --access public`.
 
 > **Notice**: Project build will automatically occur before publish.
