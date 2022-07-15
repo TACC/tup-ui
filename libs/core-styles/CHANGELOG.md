@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2022-07-15: New Global Color, Fix Section Banner on Safari
+
+### Change
+
+- release [0.7.0-beta] as [0.7.0]
+
 ## [0.7.0-beta] - 2022-07-13: New Global Color, Fix Section Banner on Safari
 
 ### Added
@@ -188,6 +194,7 @@ Initial working code. (This code may not work on all environments.)
 
 [unreleased]: https://github.com/TACC/tup-ui/compare/core-styles-v0.7.0...HEAD
 [0.7.0]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.7.0
+[0.7.0-beta]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.7.0-beta
 [0.6.0]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.6.0
 [0.6.0-beta.3]: https://github.com/TACC/Core-Styles/releases/tag/core-styles-v0.6.0-beta.3
 [0.6.0-beta.2]: https://github.com/TACC/tup-ui/releases/tag/core-styles-v0.6.0-beta.2
