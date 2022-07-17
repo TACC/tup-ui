@@ -1,22 +1,29 @@
-<!-- styles: global -->
+<!-- styles: global (for every component) -->
+{{! manually configured }}
 {{#if styles.external.global}}
   {{#each styles.external.global}}
     <link rel="stylesheet" href="{{ this }}">
   {{/each}}
+{{! manually configured }}
 {{else if styles.internal.global}}
   {{#each styles.internal.global}}
     <link rel="stylesheet" href="{{ path this }}">
   {{/each}}
+{{! fallback }}
 {{else}}
+  <!-- (no global styles configured) -->
+  <!-- styles: local (for current component) -->
   <link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}.css' }}">
 {{/if}}
 
-<!-- styles: local -->
+<!-- styles: local (for current component) -->
+{{! automatically found }}
 {{#each _target.resources.assets}}
   {{#if isCSS}}
     <link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}">
   {{/if}}
 {{/each}}
+{{! manually configured }}
 {{#each styles.external.local}}
   <link rel="stylesheet" href="{{ this }}">
 {{/each}}
@@ -24,7 +31,8 @@
   <link rel="stylesheet" href="{{ path this }}">
 {{/each}}
 
-<!-- scripts: local -->
+<!-- scripts: local (for current component) -->
+{{! automatically found }}
 {{#each _target.resources.assets}}
   {{#if isJS}}
     <script src="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}"></script>

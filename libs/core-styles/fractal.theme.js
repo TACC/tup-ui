@@ -1,6 +1,6 @@
 'use strict';
 
-// To let client extend
+// To let any client extend
 module.exports = {
   skin: {
     accent: '#000000',

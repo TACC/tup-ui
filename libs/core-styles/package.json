@@ -17,9 +17,9 @@
   "bin": "src/cli.js",
   "scripts": {
     "start": "fractal start --sync",
-    "build:demo": "fractal build",
-    "build:css": "bin/build-css.js",
     "build": "npm run build:css && npm run build:demo",
+    "build:css": "bin/build-css.js",
+    "build:demo": "fractal build",
     "test": "bin/test-css.js && echo \"Test output at 'dist/_tests' (compare to test input)",
     "prepublishOnly": "npm run build # && npm test && npm run lint"
   },

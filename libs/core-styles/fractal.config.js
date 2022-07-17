@@ -3,15 +3,18 @@
 const mandelbrot = require('@frctl/mandelbrot');
 const fractal = module.exports = require('@frctl/fractal').create();
 
+// Get base theme
 const themeConfig = require('./fractal.theme.js');
-
 const theme = mandelbrot(themeConfig);
 
+// Configure UI
 fractal.set('project.title', 'TACC UI Patterns');
-
 fractal.components.set('label', 'Patterns'); // default is 'Components'
 fractal.components.set('title', 'Patterns'); // default is 'Components'
 fractal.components.set('default.status', 'wip'); // default is 'ready'
+
+// Set source paths
+// (for components)
 fractal.components.set('path', __dirname + '/src/lib/_imports');
 fractal.components.set('resources', {
   // Render assets from component folders in a panel
@@ -24,6 +27,7 @@ fractal.components.set('resources', {
       match: ['**/*.css', '**/*.js']
   }
 });
+// (for stylesheets)
 fractal.components.set('default.context', {
   styles: {
     internal: {
@@ -38,11 +42,13 @@ fractal.components.set('default.context', {
   }
 });
 
+// Set website paths
 fractal.docs.set('path', __dirname + '/docs');
-
 fractal.web.set('static.path', __dirname + '/dist');
 fractal.web.set('builder.dest', __dirname + '/demo');
 
+// Customize theme
 fractal.web.theme(theme);
 
+// Export
 module.exports = fractal
