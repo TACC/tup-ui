@@ -22,12 +22,11 @@ Styleguide Components.Button
 
 /* Base */
 
-[class*='c-button'] {
+.c-button {
   --min-width: 75px;
   --mid-width: 110px;
   --max-width: 130px;
-}
-.c-button {
+
   display: inline-block;
 
   border-width: var(--global-border-width--normal);
