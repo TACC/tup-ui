@@ -1,7 +1,7 @@
 'use strict';
 
 const mandelbrot = require('@frctl/mandelbrot');
-const fractal = module.exports = require('@frctl/fractal').create();
+const fractal = require('@frctl/fractal').create();
 
 // Get base theme
 const themeConfig = require('./fractal.theme.js');
@@ -22,9 +22,9 @@ fractal.components.set('resources', {
   // https://github.com/frctl/fractal/issues/150#issuecomment-254642411
   // https://github.com/frctl/fractal/issues/93#issuecomment-236429871
   assets: {
-      label: 'Assets',
-      match: ['**/*.css', '**/*.js']
-  }
+    label: 'Assets',
+    match: ['**/*.css', '**/*.js'],
+  },
 });
 // (for stylesheets)
 fractal.components.set('default.context', {
@@ -36,9 +36,9 @@ fractal.components.set('default.context', {
         '/settings/font.css',
         '/settings/max-width.css',
         '/settings/space.css',
-      ]
-    }
-  }
+      ],
+    },
+  },
 });
 
 // Set website paths
@@ -50,4 +50,4 @@ fractal.web.set('builder.dest', __dirname + '/demo');
 fractal.web.theme(theme);
 
 // Export
-module.exports = fractal
+module.exports = fractal;

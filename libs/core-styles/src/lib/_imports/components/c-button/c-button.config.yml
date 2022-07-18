@@ -20,10 +20,10 @@ variants:
     notes: For an optional user action
   - name: tertiary
     notes: For inactive buttons among many buttons
-          (e.g. pagination buttons to other pages)
+      (e.g. pagination buttons to other pages)
   - name: is-active
     notes: For the one active button among many buttons
-          (e.g. pagination button for current page)
+      (e.g. pagination button for current page)
   - name: as-link
     notes: For a button that resembles a link
     context:

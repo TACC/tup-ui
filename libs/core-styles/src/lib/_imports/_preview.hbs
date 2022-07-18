@@ -1,50 +1,50 @@
 {{! styles: base (the current component) }}
 {{#unless styles.shouldSkipBase}}
-<link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}.css' }}">
+  <link
+    rel='stylesheet'
+    href='{{path "/components/{{ _target.baseHandle }}.css"}}'
+  />
 {{/unless}}
-
-
 
 {{! styles: global (for every component) }}
 {{! (manually configured) }}
 {{#if styles.external.global}}
   {{#each styles.external.global}}
-    <link rel="stylesheet" href="{{ this }}">
+    <link rel='stylesheet' href='{{this}}' />
   {{/each}}
 {{else if styles.internal.global}}
   {{#each styles.internal.global}}
-    <link rel="stylesheet" href="{{ path this }}">
+    <link rel='stylesheet' href='{{path this}}' />
   {{/each}}
 {{/if}}
-
-
 
 {{! styles: local (for current component) }}
 {{! (automatically found) }}
 {{#each _target.resources.assets}}
   {{#if isCSS}}
-    <link rel="stylesheet" href="{{ path '/components/raw/{{ _target.baseHandle }}/{{ this.base }}' }}">
+    <link
+      rel='stylesheet'
+      href='{{path "/components/raw/{{ _target.baseHandle }}/{{ this.base }}"}}'
+    />
   {{/if}}
 {{/each}}
 {{! (manually configured) }}
 {{#each styles.external.local}}
-  <link rel="stylesheet" href="{{ this }}">
+  <link rel='stylesheet' href='{{this}}' />
 {{/each}}
 {{#each styles.internal.local}}
-  <link rel="stylesheet" href="{{ path this }}">
+  <link rel='stylesheet' href='{{path this}}' />
 {{/each}}
-
-
 
 {{! scripts: local (for current component) }}
 {{! (automatically found) }}
 {{#each _target.resources.assets}}
   {{#if isJS}}
-    <script src="{{ path '/components/raw/{{ _target.baseHandle }}/{{ this.base }}' }}"></script>
+    <script
+      src='{{path "/components/raw/{{ _target.baseHandle }}/{{ this.base }}"}}'
+    ></script>
   {{/if}}
 {{/each}}
-
-
 
 {{! markup }}
 {{{yield}}}

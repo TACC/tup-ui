@@ -14,8 +14,8 @@ Known Clients:
 - [TACC/Core-Portal]
 - [@tacc/core-components]
 
-[TACC/Core-CMS]: https://github.com/TACC/Core-CMS
-[TACC/Core-Portal]: https://github.com/TACC/Core-Portal
+[tacc/core-cms]: https://github.com/TACC/Core-CMS
+[tacc/core-portal]: https://github.com/TACC/Core-Portal
 [@tacc/core-components]: https://www.npmjs.com/package/@tacc/core-components
 [@tacc/core-styles]: https://www.npmjs.com/package/@tacc/core-styles
 

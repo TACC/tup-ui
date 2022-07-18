@@ -8,5 +8,5 @@ module.exports = {
     links: '#784fe8',
   },
   panels: ['notes', 'html', 'resources', 'context', 'info'],
-  nav: ['search', 'docs', 'components']
-}
+  nav: ['search', 'docs', 'components'],
+};
