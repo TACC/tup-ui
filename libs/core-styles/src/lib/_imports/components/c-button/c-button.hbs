@@ -3,7 +3,6 @@
   <dt>Type</dt>
   <dd>
     <button class="c-button c-button--{{this._self.name}} c-button--secondary"
-      {{! prettier-ignore }}
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">--secondary</span>
     </button>
@@ -11,13 +10,11 @@
       <small>(no small primary allowed)</small>
     {{else}}
       <button class="c-button c-button--{{this._self.name}} c-button--primary"
-      {{! prettier-ignore }}
       {{#if disabled}}disabled{{/if}}>
         <span class="c-button__text">--primary</span>
       </button>
     {{/if}}
     <button class="c-button c-button--{{this._self.name}} c-button--tertiary"
-      {{! prettier-ignore }}
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">--tertiary</span>
     </button>
@@ -28,13 +25,11 @@
   <dt>States</dt>
   <dd>
     <button class="c-button c-button--{{this._self.name}}
-      {{! prettier-ignore }}
       {{#if type}}{{type}}{{/if}}"
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">default</span>
     </button>
     <button class="c-button c-button--{{this._self.name}} c-button--is-busy
-      {{! prettier-ignore }}
       {{#if type}}{{type}}{{/if}}"
       disabled>
       <span class="c-button__text">--is-busy</span>
@@ -46,14 +41,12 @@
   <dt>Icons</dt>
   <dd>
     <button class="c-button c-button--{{this._self.name}}
-      {{! prettier-ignore }}
       {{#if type}}{{type}}{{/if}}"
       {{#if disabled}}disabled{{/if}}>
       <i class="c-button__icon--before" aria-description="validate input">…</i>
       <span class="c-button__text">__icon--before</span>
     </button>
     <button class="c-button c-button--{{this._self.name}}
-      {{! prettier-ignore }}
       {{#if type}}{{type}}{{/if}}"
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">__icon--after</span>
@@ -66,18 +59,15 @@
   <dt>Width</dt>
   <dd>
     <button class="c-button c-button--{{this._self.name}} c-button--width-short
-      {{! prettier-ignore }}
       {{#if type}}{{type}}{{/if}}"
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">--width-short</span>
     </button>
     <button class="c-button c-button--{{this._self.name}} c-button--width-medium {{#if type}}{{type}}{{/if}}"
-      {{! prettier-ignore }}
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">--width-medium</span>
     </button>
     <button class="c-button c-button--{{this._self.name}} c-button--width-large {{#if type}}{{type}}{{/if}}"
-      {{! prettier-ignore }}
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">--width-large</span>
     </button>
@@ -89,7 +79,6 @@
   <dd>
     {{#if supports.size-small}}
     <button class="c-button c-button--{{this._self.name}} c-button--size-small
-      {{! prettier-ignore }}
       {{#if type}}{{type}}{{/if}}"
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">--size-small</span>

@@ -3,3 +3,7 @@
 # do not format stylesheets until `nx format` ignores multiple blank lines
 # https://prettier.io/docs/en/rationale.html#empty-lines
 *.css
+
+# do not format handlebars until there is a succinct solution for
+# "A block may only be used inside an HTML element or another block."
+*.hbs
