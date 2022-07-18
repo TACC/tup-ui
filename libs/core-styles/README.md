@@ -119,12 +119,6 @@ buildStylesheets(
 
 ## Local Development Setup
 
-### Prequisites for Building the Styles
-
-- Nodejs 16.x
-
-> **Future**: The Core Styles will be rendered via a pattern library software.
-
 ### Code Configuration
 
 Code configuration happens in repos that use these styles.
@@ -137,17 +131,21 @@ Code configuration happens in repos that use these styles.
    npm ci
    ```
 
-> **Future**:
->
-> 2. Build stylesheets + Run the pattern library:
->
->    ```bash
->    npm start
->    ```
->
-> 3. Open the web interface.
->
->    The build command will output the URL (and may even open it for you).
+2. Build stylesheets:
+
+   ```bash
+   npm run build:css
+   ```
+
+3. Run the pattern library:
+
+   ```bash
+   npm start
+   ```
+
+4. Open the web interface.
+
+   The build command will output the URL (and may even open it for you).
 
 [npm-install]: https://docs.npmjs.com/cli/v8/commands/npm-ci
 
@@ -158,11 +156,9 @@ If you changes files in a `src/lib/` directory, you may need to follow some of t
 #### Quick Start
 
 1. _(optional)_ Make changes to `/src/lib` files.
-2. Build the styles: `npm run build`
-
-   > **Future**: 2. Build and preview the styles: `npm start`
-
-3. _(to debug)_ Review respective `/dist` files' content.
+2. Build the styles: `npm run build:css`
+3. Build and preview the styles: `npm start`
+4. _(to debug)_ Review respective `/dist` or `/demo` files' content.
 
 #### How to Just Build Stylesheets
 
@@ -171,20 +167,20 @@ You can build stylesheets **from** source files **in** `src/lib` directory **to*
 1. Build stylesheets:
 
    ```bash
-   npm run build
+   npm run build:css
    ```
 
    **or**, for custom build id:
 
    ```bash
-   npm run build -- --build-id="..."
+   npm run build:css -- --build-id="..."
    ```
 
 ## Testing
 
-Plugin testing is done manually. Run `npm run build` from root folder in this project, then review output in `/dist/_tests.css`, to ensure plugins are working correctly.
+Plugin testing is done manually. Run `npm run test`, then review output in `/dist/_tests.css`, to ensure plugins are working correctly.
 
-> **Future**: Style testing is done manually. Run `npm start` from root folder in this project, then review output at web interface, to ensure styles are rendering correctly.
+Style testing is done manually. Run `npm start`, then review output at web interface, to ensure styles are rendering correctly.
 
 ### Production Deployment
 
