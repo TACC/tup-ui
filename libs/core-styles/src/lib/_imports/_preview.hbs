@@ -1,3 +1,10 @@
+{{! styles: base (the current component) }}
+{{#unless styles.shouldSkipBase}}
+<link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}.css' }}">
+{{/unless}}
+
+
+
 {{! styles: global (for every component) }}
 {{! (manually configured) }}
 {{#if styles.external.global}}
@@ -12,16 +19,11 @@
 
 
 
-{{! styles: local (the current component) }}
-<link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}.css' }}">
-
-
-
 {{! styles: local (for current component) }}
 {{! (automatically found) }}
 {{#each _target.resources.assets}}
   {{#if isCSS}}
-    <link rel="stylesheet" href="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}">
+    <link rel="stylesheet" href="{{ path '/components/raw/{{ _target.baseHandle }}/{{ this.base }}' }}">
   {{/if}}
 {{/each}}
 {{! (manually configured) }}
@@ -38,7 +40,7 @@
 {{! (automatically found) }}
 {{#each _target.resources.assets}}
   {{#if isJS}}
-    <script src="{{ path '/components/{{ _target.baseHandle }}/{{ this.base }}' }}"></script>
+    <script src="{{ path '/components/raw/{{ _target.baseHandle }}/{{ this.base }}' }}"></script>
   {{/if}}
 {{/each}}
 
