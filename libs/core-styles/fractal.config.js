@@ -23,7 +23,6 @@ fractal.components.set('resources', {
   // https://github.com/frctl/fractal/issues/93#issuecomment-236429871
   assets: {
       label: 'Assets',
-      // HACK: To provide source CSS, create symlink within folder
       match: ['**/*.css', '**/*.js']
   }
 });
