@@ -47,6 +47,7 @@
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.5.0",
     "jest": "27.5.1",
+    "msw": "^0.43.1",
     "nx": "14.1.7",
     "prettier": "^2.5.1",
     "react-test-renderer": "18.1.0",
