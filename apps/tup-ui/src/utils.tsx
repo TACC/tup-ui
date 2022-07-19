@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 export const testQueryClient = new QueryClient({
@@ -9,8 +10,10 @@ export const getTestWrapper = (
   testQueryClient: QueryClient
 ): React.FC<React.PropsWithChildren<unknown>> => {
   return ({ children }) => (
-    <QueryClientProvider client={testQueryClient}>
-      {children}
-    </QueryClientProvider>
+    <BrowserRouter>
+      <QueryClientProvider client={testQueryClient}>
+        {children}
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 };

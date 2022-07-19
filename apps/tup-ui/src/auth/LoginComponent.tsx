@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useLocation, Location, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks';
-import ProfileComponent from './ProfileComponent';
 
 export const LogoutComponent: React.FC = () => {
   const { logout } = useAuth();
@@ -12,27 +12,25 @@ export const LogoutComponent: React.FC = () => {
 };
 
 const LoginComponent: React.FC = () => {
-  const { login, loggedIn, error, isLoading } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as { from?: Location })?.from?.pathname || '/';
+  const authCallback = useCallback(
+    () => navigate(from, { replace: true }),
+    [from, navigate]
+  );
+  const { login, error, isLoading } = useAuth();
 
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
   const authenticate = (e: React.FormEvent) => {
     e.preventDefault();
-    login({ username, password });
+    login({ username, password }, { onSuccess: authCallback });
   };
 
   if (isLoading) {
     return <div>...</div>;
-  }
-
-  if (loggedIn) {
-    return (
-      <div>
-        <ProfileComponent />
-        <LogoutComponent />
-      </div>
-    );
   }
 
   return (
