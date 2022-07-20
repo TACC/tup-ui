@@ -1,0 +1,9 @@
+notes: A tag within a list of tags.
+context:
+  tags:
+    - test-tag
+    - test-tag-long
+    - test-tag-very-long
+variants:
+  - name: link
+    label: 'Link &lt;a&gt;'

@@ -1,0 +1,20 @@
+@import url("./c-tag.css");
+
+/* Base */
+
+.c-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 0.75em;
+  align-items: center;
+
+  font-size: var(--global-font-size--small);
+}
+ol.c-tag-list,
+ul.c-tag-list {
+  list-style: none;
+
+  padding-inline-start: 0; /* to overwrite browser */
+  margin-block: 0 var(--buffer); /* to overwrite browser */
+}

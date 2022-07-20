@@ -1,0 +1,46 @@
+/* Base */
+
+.c-tag {
+  --pad-inline: 0.5em;
+  --pad-block: 0.25em;
+
+  display: inline-block;
+
+  background-color: var(--global-color-accent--normal);
+  color: var(--global-color-primary--xx-light);
+
+  text-decoration: none;
+}
+.c-tag:not(a) {
+  padding-inline: var(--pad-inline);
+  padding-block: var(--pad-block);
+}
+
+a.c-tag {
+  padding-inline: calc(var(--pad-inline) - var(--global-border-width--normal));
+  padding-block: calc(var(--pad-block) - var(--global-border-width--normal));
+  border-color: var(--global-color-accent--normal);
+  border-width: var(--global-border-width--normal);
+  border-style: solid;
+}
+a.c-tag:hover {
+  background-color: var(--global-color-accent--dark);
+  border-color: var(--global-color-accent--dark);
+}
+a.c-tag:active {
+  background-color: var(--global-color-accent--x-dark);
+  border-color: var(--global-color-accent--dark);
+  outline: var(--global-border-width--normal) solid var(--global-color-accent--dark);
+}
+a.c-tag:focus {
+  border-color: var(--global-color-primary--xx-light);
+  outline: var(--global-border-width--normal) solid var(--global-color-accent--normal);
+}
+
+/* To control rogue tags */
+.c-tag:not(.c-tag-list .c-tag) {
+  font-size: var(--global-font-size--small);
+}
+.c-tag + .c-tag:not(.c-tag-list .c-tag) {
+  margin-inline-start: 0.75em;
+}

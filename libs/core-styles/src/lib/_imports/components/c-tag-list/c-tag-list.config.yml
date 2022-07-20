@@ -1,0 +1,16 @@
+notes: A list of tags.
+context:
+  tags:
+    - test-tag
+    - test-tag-long
+    - test-tag-very-long
+variants:
+  - name: default
+    hidden: true
+    notes: A placeholder to render the component at all
+  - name: nav
+    label: '&lt;nav&gt;'
+  - name: ul
+    label: 'Unordered &lt;ul&gt;'
+  - name: ol
+    label: 'Ordered &lt;ol&gt;'

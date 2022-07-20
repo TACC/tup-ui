@@ -1,0 +1,22 @@
+<dl>
+  <dt>Default</dt>
+  <dd>
+    <ul class="c-tag-list">
+      {{#each tags}}
+        <li>
+          <span class="c-tag">{{this}}</span>
+        </li>
+      {{/each}}
+    </ul>
+  </dd>
+  <dt>Link</dt>
+  <dd>
+    <ul class="c-tag-list">
+      {{#each tags}}
+        <li>
+          <a class="c-tag" href="#">{{this}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </dd>
+</dl>
