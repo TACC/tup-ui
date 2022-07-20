@@ -23,5 +23,5 @@ ul.c-tag-list {
   list-style: none;
 
   padding-inline-start: 0;
-  margin-block: 0 var(--buffer);
+  margin-block: 0;
 }

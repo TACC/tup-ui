@@ -15,6 +15,12 @@
 
 /* Elements */
 
+/* Tags */
+
+.c-tag-list/* ← to overwrite via specificity */.c-pub-item__tags {
+  margin-block-end: var(--buffer);
+}
+
 /* Title */
 
 .c-publication-preview h3 {
@@ -22,34 +28,6 @@
 
   font-size: var(--global-font-size--large);
   color: var(--global-color-primary--xx-dark);
-}
-
-/* Tags */
-
-.c-pub-item__tags {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
-}
-ul.c-pub-item__tags {
-  list-style: none;
-
-  padding-inline-start: 0; /* to overwrite browser */
-  margin-block: 0 var(--buffer); /* to overwrite browser */
-}
-
-.c-pub-item__tags a {
-  display: inline-block;
-  padding-inline: var(--buffer);
-  padding-block: 0.25em;
-
-  background-color: var(--global-color-accent--dark);
-  color: var(--global-color-primary--xx-light);
-
-  font-size: var(--global-font-size--small);
-  text-decoration: none;
 }
 
 /* Citation */
@@ -64,9 +42,13 @@ ul.c-pub-item__tags {
 /* Status */
 
 .c-pub-item__status {
-  display: inline-block;
+  /* To collapse sibling margin, do not use `inline-block` */
+  display: block;
+  width: fit-content;
+
   padding-inline: var(--buffer);
   padding-block: 0.25em;
+  margin-block-start: var(--buffer);
 
   border: var(--global-border-width--normal) solid var(--global-color-accent--dark);
 
