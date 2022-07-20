@@ -11,7 +11,13 @@
       {{/each}}
       </ul>
     {{/if}}
-    <h3>{{title}}</h3>
+    <h3>
+      {{#if url}}
+        <a href="{{url}}">{{title}}</a>
+      {{else}}
+        {{title}}
+      {{/if}}
+    </h3>
     <p><strong>Authors:</strong> {{citation}}</p>
     <span class="c-pub-item__status">{{status}}</span>
   </article>

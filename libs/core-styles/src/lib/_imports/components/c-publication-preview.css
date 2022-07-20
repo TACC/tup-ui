@@ -27,7 +27,15 @@
   margin-block: 0;
 
   font-size: var(--global-font-size--large);
+}
+
+.c-publication-preview h3,
+.c-publication-preview h3 a {
   color: var(--global-color-primary--xx-dark);
+}
+.o-section--style-dark .c-publication-preview h3,
+.o-section--style-dark .c-publication-preview h3 a {
+  color: var(--global-color-primary--xx-light);
 }
 
 /* Citation */
