@@ -1,0 +1,14 @@
+{{#each items}}
+  <article class="c-publication-preview">
+    {{#if tags}}
+      <ul class="c-pub-item__tags">
+      {{#each tags}}
+        <li><a href="#">{{this}}</a></li>
+      {{/each}}
+      </ul>
+    {{/if}}
+    <h3>{{title}}</h3>
+    <p><strong>Authors:</strong> {{citation}}</p>
+    <span class="c-pub-item__status">{{status}}</span>
+  </article>
+{{/each}}

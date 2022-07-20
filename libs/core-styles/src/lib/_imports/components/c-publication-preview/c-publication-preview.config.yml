@@ -1,0 +1,27 @@
+notes: A publication within a list of publications.
+context:
+  items:
+    - tags:
+        - test-tag
+        - test-tag-very-long
+        - test-tag-long
+      title: |
+        Migrating the TeraGrid User Portal and Website to Liferay
+      citation: |
+        M. Dahan, R. Dooley, M. Hanlon, et al. Second International Conference on Parallel, Distributed, Grid and Cloud Computing. Ajaccio, Corsica, France. 2011.
+      status: Good Status
+    - tags:
+        - test-tag
+        - test-tag-long
+      title: |
+        Recent Advances in Computational Methods for the Solution of the Time-Dependent Schrödinger Equation for the Interaction of Short, Intense Radiation with One and Two-Electron Systems: Application to He and H+2
+      citation: |
+        B. Schneider, J. Feist, S. Nagele, et al., Springer Science+Business Media, LLC, 233 Spring Street, NY 10013.Springer. 2011.
+      status: Bad Status
+    - tags:
+        - test-tag-very-long
+      title: |
+        Migrating the TeraGrid User Portal and Website to Liferay
+      citation: |
+        M. Dahan, R. Dooley, M. Hanlon, et al. Second International Conference on Parallel, Distributed, Grid and Cloud Computing. Ajaccio, Corsica, France. 2011.
+      status: Ugly Status
