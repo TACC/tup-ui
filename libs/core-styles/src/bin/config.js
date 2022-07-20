@@ -33,8 +33,9 @@ function config(customConfigFiles = [], cssVersion) {
   });
   const mergedJson = merge(...configObjects);
 
-  // Update version property
-  const updatedJson = updateVersion(mergedJson, cssVersion);
+  // Update properties
+  let updatedJson = updateVersion(mergedJson, cssVersion);
+      updatedJson = resolveImportFromPaths(updatedJson);
   const configYaml = yaml.dump(updatedJson);
 
   // Write final config file
@@ -51,6 +52,38 @@ function updateVersion(config, version) {
   console.log(`Tagging CSS version as ${version}`);
 
   config['plugins']['postcss-banner']['banner'] = version;
+
+  return config;
+}
+
+/**
+ * Update the value for the CSS version in given config data
+ * @param {object} config - The config data in which to update the version
+ * @return {object} - Updated config
+ */
+function resolveImportFromPaths(config) {
+  let paths = config['plugins']['postcss-env-function']['importFrom'];
+      paths = (typeof paths === 'string') ? [ paths ] : paths;
+  let newPaths = [];
+
+  console.log(`Resolving 'importFrom' paths`);
+
+  if (paths) {
+    paths.forEach(path => {
+      let newPath;
+      try {
+        newPath = require.resolve(path);
+      } catch {
+        newPath = path;
+      } finally {
+        newPaths.push( newPath );
+      }
+    });
+  } else {
+    newPaths = paths;
+  }
+
+  config['plugins']['postcss-env-function']['importFrom'] = newPaths;
 
   return config;
 }

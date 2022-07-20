@@ -1,7 +1,5 @@
 plugins:
-  postcss-import:
-    path:
-      - 'src/lib'
+  postcss-import: {}
 
   postcss-extend: {}
 
