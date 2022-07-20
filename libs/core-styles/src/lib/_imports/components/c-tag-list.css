@@ -11,10 +11,17 @@
 
   font-size: var(--global-font-size--small);
 }
+
+/* To let nav lists not require `c-tag` on every child */
+nav.c-tag-list > a {
+  @extend .c-tag;
+}
+
+/* To overwrite browser styles */
 ol.c-tag-list,
 ul.c-tag-list {
   list-style: none;
 
-  padding-inline-start: 0; /* to overwrite browser */
-  margin-block: 0 var(--buffer); /* to overwrite browser */
+  padding-inline-start: 0;
+  margin-block: 0 var(--buffer);
 }

@@ -1,18 +1,31 @@
 <dl>
-  <dt>Default</dt>
-  <dd>
-    <nav class="c-tag-list">
-      {{#each tags}}
-        <span class="c-tag">{{this}}</span>
-      {{/each}}
-    </nav>
-  </dd>
   <dt>Link</dt>
   <dd>
     <nav class="c-tag-list">
       {{#each tags}}
-        <a class="c-tag" href="#">{{this}}</a>
+        <a href="#">{{this}}</a>
       {{/each}}
     </nav>
   </dd>
 </dl>
+
+{{#> @misuse }}
+  <dl>
+    <dt>Nav without Links</dt>
+    <dd>
+      <nav class="c-tag-list">
+        {{#each tags}}
+          <span>{{this}}</span>
+        {{/each}}
+      </nav>
+    </dd>
+    <dt>Nav with Explicit Tag Elements</dt>
+    <dd>
+      <nav class="c-tag-list">
+        {{#each tags}}
+          <a class="c-tag" href="#">{{this}}</a>
+        {{/each}}
+      </nav>
+    </dd>
+  </dl>
+{{/ @misuse }}

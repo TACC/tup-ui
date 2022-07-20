@@ -1,9 +1,15 @@
-notes: A tag within a list of tags.
 context:
-  tags:
-    - test-tag
-    - test-tag-long
-    - test-tag-very-long
+  tag: test-tag
 variants:
+  - name: default
+    notes: A tag used to label a parent element.
   - name: link
     label: 'Link &lt;a&gt;'
+    notes: A tag used to __both__ label a parent element __and__ link elsewhere.
+  - name: multiple
+    notes: A makeshift list of tags.
+    context:
+      tags:
+        - tag: test-tag
+        - tag: test-tag-long
+        - tag: test-tag-very-long

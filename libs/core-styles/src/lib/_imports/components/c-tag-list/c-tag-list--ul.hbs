@@ -1,5 +1,13 @@
 <dl>
-  <dt>Default</dt>
+  <dt>Default <small>(each list item is a tag)</small></dt>
+  <dd>
+    <ul class="c-tag-list">
+      {{#each tags}}
+        <li class="c-tag">{{this}}</li>
+      {{/each}}
+    </ul>
+  </dd>
+  <dt>Default <small>(each list item child is a tag)</small></dt>
   <dd>
     <ul class="c-tag-list">
       {{#each tags}}
@@ -20,3 +28,16 @@
     </ul>
   </dd>
 </dl>
+
+{{#> @misuse }}
+  <dl>
+    <dt>No Explicit Tag Elements</dt>
+    <dd>
+      <ul class="c-tag-list">
+        {{#each tags}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </dd>
+  </dl>
+{{/ @misuse }}

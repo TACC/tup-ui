@@ -16,23 +16,24 @@
   padding-block: var(--pad-block);
 }
 
-a.c-tag {
+/* FAQ: `…:where(a)` not `a.…` so `nav.c-tag-list a` can extend via `.c-tag` */
+.c-tag:where(a) {
   padding-inline: calc(var(--pad-inline) - var(--global-border-width--normal));
   padding-block: calc(var(--pad-block) - var(--global-border-width--normal));
   border-color: var(--global-color-accent--normal);
   border-width: var(--global-border-width--normal);
   border-style: solid;
 }
-a.c-tag:hover {
+.c-tag:hover:where(a) {
   background-color: var(--global-color-accent--dark);
   border-color: var(--global-color-accent--dark);
 }
-a.c-tag:active {
+.c-tag:active:where(a) {
   background-color: var(--global-color-accent--x-dark);
   border-color: var(--global-color-accent--dark);
   outline: var(--global-border-width--normal) solid var(--global-color-accent--dark);
 }
-a.c-tag:focus {
+.c-tag:focus:where(a) {
   border-color: var(--global-color-primary--xx-light);
   outline: var(--global-border-width--normal) solid var(--global-color-accent--normal);
 }
@@ -41,6 +42,8 @@ a.c-tag:focus {
 .c-tag:not(.c-tag-list .c-tag) {
   font-size: var(--global-font-size--small);
 }
+
+/* To support makeshift lists of tags */
 .c-tag + .c-tag:not(.c-tag-list .c-tag) {
   margin-inline-start: 0.75em;
 }

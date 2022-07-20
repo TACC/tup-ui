@@ -1,4 +1,3 @@
-notes: A list of tags.
 context:
   tags:
     - test-tag
@@ -10,7 +9,26 @@ variants:
     notes: A placeholder to render the component at all
   - name: nav
     label: '&lt;nav&gt;'
+    notes: |
+      A list of tags for navigation. The `<a>` does __not__ need `.c-tag` class.
+
+      Use Cases:
+      - manage layout via parent (e.g. using flex or grid)
+      - write fewer classnames in manual markup
+      - semantic use of `<nav>`
   - name: ul
     label: 'Unordered &lt;ul&gt;'
+    notes: |
+      An _unordered_ list of tags. Each tag must have the `.c-tag` class.
+
+      Use Cases:
+      - manage layout via parent (e.g. using flex or grid)
+      - semantic use of `<ul>`
   - name: ol
     label: 'Ordered &lt;ol&gt;'
+    notes: |
+      An _ordered_ list of tags. Each tag must have the `.c-tag` class.
+
+      Use Cases:
+      - manage layout via parent (e.g. using flex or grid)
+      - semantic use of `<ol>`
