@@ -3,10 +3,12 @@ import { Outlet, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Message } from '@tacc/core-components';
 import { useAuth, useJwt } from './hooks';
 import LoginComponent from './auth/LoginComponent';
+import LogoutComponent from './auth/LogoutComponent';
 import ProfileComponent from './auth/ProfileComponent';
 
 const AppLayout = () => {
   const [count, setCount] = useState(0);
+  const { loggedIn } = useAuth();
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +20,7 @@ const AppLayout = () => {
           </button>
         </p>
         <Outlet />
+        {loggedIn && <LogoutComponent />}
       </header>
     </div>
   );

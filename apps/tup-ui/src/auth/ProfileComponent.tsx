@@ -1,6 +1,5 @@
 import React from 'react';
 import { useProfile } from '../hooks';
-import { LogoutComponent } from './LoginComponent';
 
 const ProfileComponent: React.FC = () => {
   const profileQuery = useProfile();
@@ -17,7 +16,6 @@ const ProfileComponent: React.FC = () => {
           <li>{profile.institution}</li>
           <li>{profile.country}</li>
         </ul>
-        <LogoutComponent />
       </div>
     );
   }
