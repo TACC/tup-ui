@@ -1,0 +1,40 @@
+/*
+Overlay
+
+Colored boxes that appear atop a large image (like a banner).
+
+.c-overlay--blurry - A blurry and transluscent background
+.c-overlay--semi-opaque - A clear and almost opaque background
+
+Styleguide Components.Overlay
+*/
+
+.c-overlay--blurry /* f.k.a. %x-overlay--curtain */ {
+  --color-text: inherit;
+  --color-bkgd-rgb: var(--global-color-primary--normal);
+
+  color: var(--color-text);
+  background-color: rgba(var(--color-bkgd-rgb), 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.o-section--style-dark .c-overlay--curtain {
+  --color-bkgd-rgb: var(--global-color-primary--x-dark-rgb);
+}
+.o-section--style-light .c-overlay--curtain {
+  --color-bkgd-rgb: var(--global-color-primary--x-light-rgb);
+}
+
+.c-overlay--semi-opaque /* f.k.a. %x-overlay--callout */ {
+  --color-text: inherit;
+  --color-bkgd-rgb: var(--global-color-primary--normal);
+
+  color: var(--color-text);
+  background-color: rgba(var(--color-bkgd-rgb), 0.90);
+}
+.o-section--style-dark .c-overlay--callout {
+  --color-bkgd-rgb: var(--global-color-primary--xx-dark-rgb);
+}
+.o-section--style-light .c-overlay--callout {
+  --color-bkgd-rgb: var(--global-color-primary--xx-light-rgb);
+}

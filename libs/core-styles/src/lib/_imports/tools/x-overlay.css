@@ -1,15 +1,18 @@
+/* WARNING: Deprecated. Do NOT extend this in CSS! */
+/* WARNING: Will be removed once UTRC and Frontera are updated */
+/* SEE: ../../components/c-overlay.css */
 /*
-Overlay
+(Deprecated) Overlay
 
 Colored boxes that appear atop a large image (like a banner).
 
 %x-overlay--curtain - A full size transluscent curtain over the background
 %x-overlay--callout - A transluscent box surrounding the content
 
-Styleguide Tools.ExtendsAndMixins.Overlay
+Styleguide Tools.Deprecated.ExtendsAndMixins.Overlay
 */
 
-%x-overlay--curtain {
+%x-overlay--curtain /* DEPRECATED */ {
   --color-text: inherit;
   --color-bkgd-rgb: var(--global-color-primary--normal);
 
@@ -19,7 +22,7 @@ Styleguide Tools.ExtendsAndMixins.Overlay
   -webkit-backdrop-filter: blur(6px);
 }
 
-%x-overlay--callout {
+%x-overlay--callout /* DEPRECATED */ {
   --color-text: inherit;
   --color-bkgd-rgb: var(--global-color-primary--normal);
 
