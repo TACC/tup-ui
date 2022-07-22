@@ -7,7 +7,7 @@ const wrapper = getTestWrapper(testQueryClient);
 describe('useJwt', () => {
   afterEach(() => {
     testQueryClient.clear();
-    document.cookie = '';
+    document.cookie = 'x-tup-token=';
   });
   it('retrieve a a document cookie', async () => {
     document.cookie = 'x-tup-token=abc123';

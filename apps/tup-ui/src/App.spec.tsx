@@ -1,27 +1,58 @@
-import { render, cleanup } from '@testing-library/react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { render, screen } from '@testing-library/react';
+import { getTestWrapper, testQueryClient } from './utils';
+import { useJwt } from './hooks';
 
 import App from './App';
 
-const testQueryClient = new QueryClient();
-const WrappedApp = () => (
-  <QueryClientProvider client={testQueryClient}>
-    <App />
-  </QueryClientProvider>
-);
+const Wrapper = getTestWrapper(testQueryClient);
+
+jest.mock('./hooks/useJwt');
 
 describe('App', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<WrappedApp />);
-
-    expect(baseElement).toBeTruthy();
-    cleanup();
+  beforeEach(() => {
+    testQueryClient.clear();
+    Object.defineProperty(document, 'cookie', {
+      writable: true,
+      value: 'x-tup-token=abc123',
+    });
+  });
+  afterEach(() => {
+    document.cookie = 'x-tup-token=';
+    testQueryClient.clear();
   });
 
-  it('should have a greeting as the title', () => {
-    const { getByText } = render(<WrappedApp />);
+  it('should route to user profile when a JWT cookie is present', async () => {
+    //document.cookie = 'x-tup-token=abc123';
 
-    expect(getByText(/hello/i)).toBeTruthy();
-    cleanup();
+    (useJwt as jest.Mock).mockReturnValue({
+      jwt: 'abc123',
+      isLoading: false,
+    });
+
+    render(
+      <Wrapper>
+        <App />
+      </Wrapper>
+    );
+    //screen.debug();
+    expect(await screen.findByText(/mock/)).toBeDefined();
+  });
+
+  it('should route to login page when no JWT cookie is present', async () => {
+    (useJwt as jest.Mock).mockReturnValue({
+      jwt: undefined,
+      isLoading: false,
+    });
+    Object.defineProperty(document, 'cookie', {
+      writable: true,
+      value: 'x-tup-token=',
+    });
+    render(
+      <Wrapper>
+        <App />
+      </Wrapper>
+    );
+
+    expect(await screen.findByText(/Login/)).toBeDefined();
   });
 });
