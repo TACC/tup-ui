@@ -224,8 +224,11 @@ Only authorized team members may publish.
 1. (one time) Login to npm i.e. `npm login`.
 1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
-1. Update version via `npm version the.new.ver` (run from `.../core-styles/`).
+1. Update version via `npm version N.N.N` (run from `.../core-styles/`).
 1. Commit, push, PR, review, merge.
+1. Tag version i.e.
+   1. `git tag -a core-styles-vN.N.N -m "vN.N.N"`
+   2. `git push origin core-styles-vN.N.N`
 1. Publish to NPM via `npm publish --access public`.
 
 > **Notice**: Project build will automatically occur before publish.
