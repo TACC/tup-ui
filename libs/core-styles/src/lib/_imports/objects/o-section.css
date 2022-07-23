@@ -67,8 +67,9 @@ Styleguide Objects.Section
 
 /* Modifers: Banner */
 
-.o-section--banner[class*="o-section--layout"] { gap: 0; }
-.o-section--banner.container { padding-inline: 0; }
+.o-section--banner { overflow: hidden; }
+.o-section--banner [class*="o-section--layout"] { gap: 0; }
+.o-section--banner .container { padding-inline: 0; }
 .o-section--banner.o-section { padding-block: 0; }
 
 
@@ -250,24 +251,6 @@ Styleguide Objects.Section
 
 
 /* Tricks */
-
-
-
-/* Tricks: Children: Banner Image */
-/* FP-1462: Extract to new banner component(s) */
-
-/* To hide section overflow with minimal side effects */
-/* FAQ: Use 'clip', not 'hidden' which can affect opposite 'overflow-' value */
-/* NOTE: This selector assumes only a banner section has vertical overflow */
-/* CAVEAT: Any banner pop-out el's would NOT overflow atop sibling sections */
-[class*="o-section--style"].o-section--banner {
-  /* To hide vert. overflow */
-  overflow-y: clip;
-}
-main {
-  /* To hide horz. overflow yet support any 'position: sticky' descendant */
-  overflow-x: clip;
-}
 
 
 

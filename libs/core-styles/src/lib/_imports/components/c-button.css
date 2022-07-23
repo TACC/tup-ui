@@ -24,12 +24,11 @@ Styleguide Components.Button
 
 /* Base */
 
-[class*='c-button'] {
+.c-button {
   --min-width: 75px;
   --mid-width: 110px;
   --max-width: 130px;
-}
-.c-button {
+
   display: inline-block;
 
   border-width: var(--global-border-width--normal);
@@ -59,6 +58,8 @@ Styleguide Components.Button
 
 
 /* Modifiers */
+
+
 
 /* Modifiers: Types */
 
@@ -247,6 +248,8 @@ Styleguide Components.Button
 .c-button--is-busy .c-button__text {
   opacity: 0.3;
 }
+
+
 
 /* Modifiers: Sizes */
 

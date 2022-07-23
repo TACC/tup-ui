@@ -1,5 +1,3 @@
-# PostCSS generated files
-## config
+# PostCSS
 .postcssrc.yml
-## assets for clients not using postcss-preset-env
 dist
