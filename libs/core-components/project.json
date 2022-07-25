@@ -2,26 +2,27 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/core-components/src",
   "projectType": "library",
-  "tags": [],
   "targets": {
-    "build": {
-      "executor": "@nrwl/web:rollup",
-      "outputs": ["{options.outputPath}"],
+    "serve": {
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "dist/libs/core-components",
-        "tsConfig": "libs/core-components/tsconfig.lib.json",
-        "project": "libs/core-components/package.json",
-        "entryFile": "libs/core-components/src/index.ts",
-        "external": ["react/jsx-runtime"],
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-        "compiler": "babel",
-        "assets": [
+        "commands": [
           {
-            "glob": "libs/core-components/README.md",
-            "input": ".",
-            "output": "."
+            "command": "npx vite"
           }
-        ]
+        ],
+        "cwd": "libs/core-components"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx vite build --emptyOutDir"
+          }
+        ],
+        "cwd": "libs/core-components"
       }
     },
     "lint": {
@@ -39,5 +40,6 @@
         "passWithNoTests": true
       }
     }
-  }
+  },
+  "tags": []
 }

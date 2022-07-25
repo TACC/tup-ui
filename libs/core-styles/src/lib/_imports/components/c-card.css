@@ -11,7 +11,7 @@ Markup: c-card.html
 
 Styleguide Components.Card
 */
-@import url("_imports/tools/x-article-link.css");
+@import url("../tools/x-article-link.css");
 
 /* Modifiers */
 
