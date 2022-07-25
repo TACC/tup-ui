@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Outlet, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useAuth, useJwt } from './hooks';
-import LoginComponent from './auth/LoginComponent';
-import LogoutComponent from './auth/LogoutComponent';
-import ProfileComponent from './auth/ProfileComponent';
+import { LoginComponent, LogoutComponent } from './components/auth';
+import { ProfileComponent } from './components/profile';
 import { Button, Message } from '@tacc/core-components';
 
 const AppLayout = () => {

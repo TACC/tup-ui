@@ -12,6 +12,7 @@ export default defineConfig({
         '../../libs/core-components/src/index.ts'
       ),
       '@tacc/core-styles': path.resolve(__dirname, '../../libs/core-styles/'),
+      '@tacc/tup-ui': path.resolve(__dirname, './src/')
     },
   },
   build: {

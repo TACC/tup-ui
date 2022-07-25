@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useLocation, Location, useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks';
+import { useAuth } from '../../hooks';
 
 export const LogoutComponent: React.FC = () => {
   const { logout } = useAuth();
