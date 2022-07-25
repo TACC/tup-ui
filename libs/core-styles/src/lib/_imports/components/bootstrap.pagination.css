@@ -7,7 +7,7 @@ Style Bootstrap pagination. See:
 
 Styleguide Components.Bootstrap.Pagination
 */
-@import url("_imports/components/c-page.css");
+@import url("../components/c-page.css");
 
 
 

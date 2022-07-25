@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Outlet, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { Message } from '@tacc/core-components';
 import { useAuth, useJwt } from './hooks';
 import LoginComponent from './auth/LoginComponent';
 import LogoutComponent from './auth/LogoutComponent';
 import ProfileComponent from './auth/ProfileComponent';
+import { Button, Message } from '@tacc/core-components';
 
 const AppLayout = () => {
   const [count, setCount] = useState(0);
@@ -13,11 +13,15 @@ const AppLayout = () => {
     <div className="App">
       <header className="App-header">
         <p>Hello Vite + React!</p>
-        <Message />
+        <Message type="warning">Core-Components Message</Message>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
+          <Button
+            onClick={() => setCount((count) => count + 1)}
+            size="long"
+            type="primary"
+          >
             count is: {count}
-          </button>
+          </Button>
         </p>
         <Outlet />
         {loggedIn && <LogoutComponent />}

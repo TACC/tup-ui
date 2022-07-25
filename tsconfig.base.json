@@ -13,10 +13,12 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "noPropertyAccessFromIndexSignature": false,
     "baseUrl": ".",
     "paths": {
       "@tacc/core-components": ["libs/core-components/src/index.ts"],
-      "@tacc/core-styles": ["libs/core-styles/src/"]
+      "@tacc/core-styles": ["libs/core-styles/src/"],
+      "@tacc/core-wrappers": ["libs/core-wrappers/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

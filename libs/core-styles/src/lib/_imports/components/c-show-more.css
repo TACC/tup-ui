@@ -9,9 +9,11 @@ A CSS-only way to support a "Show More…" feature. It requires a container and 
 .c-show-more--one-line   - Truncated text may only be one line tall.
 .c-show-more--many-lines - Truncated text may be many lines tall.
 
+Markup: https://www.tacc.utexas.edu/sc19 (`.sc-read-more--solution-3`)
+
 Styleguide: Components.ShowMore
 */
-@import url("_imports/tools/x-truncate.css");
+@import url("../tools/x-truncate.css");
 
 /* Truncation */
 

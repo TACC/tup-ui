@@ -14,7 +14,9 @@ Markup: c-button.html
 
 Styleguide Components.Button
 */
-@import url("_imports/tools/x-truncate.css");
+@import url('../settings/color.css');
+@import url('../settings/border.css');
+@import url("../tools/x-truncate.css");
 
 
 
@@ -251,6 +253,13 @@ Styleguide Components.Button
 
 /* Modifiers: Sizes */
 
+.c-button:not(
+  .c-button--width-short,
+  .c-button--width-medium,
+  .c-button--width-long,
+  .c-button--size-small,
+  .c-button--as-link
+),
 .c-button--width-short {
   width: var(--min-width);
 }
@@ -271,6 +280,10 @@ Styleguide Components.Button
 
 
 /* Elements */
+
+.c-button > * {
+  vertical-align: middle;
+}
 
 .c-button__icon--before {
   margin-right: 0.5em;

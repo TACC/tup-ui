@@ -1,0 +1,14 @@
+{
+  "name": "@tacc/core-wrappers",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/core-wrappers.umd.js",
+  "module": "./dist/core-wrappers.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/core-wrappers.umd.js",
+      "require": "./dist/core-wrappers.umd.js"
+    }
+  }
+}
