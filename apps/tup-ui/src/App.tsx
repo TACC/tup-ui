@@ -1,19 +1,13 @@
 import { Outlet, Routes, Route } from 'react-router-dom';
-import { Navbar, NavItem } from '@tacc/core-wrappers';
 import { PageLayout } from './components/layout';
 import Dashboard from './Dashboard';
 import Logout from './Logout';
 import Login from './Login';
+import Sidebar from './Sidebar';
 
 const AppLayout = () => {
-  const nav = (
-    <Navbar>
-      <NavItem to={"/"}>Dashboard</NavItem>
-      <NavItem to={"/logout"}>Log Out</NavItem>
-    </Navbar>
-  )
   return(
-    <PageLayout left={nav} right={<Outlet />} />
+    <PageLayout left={<Sidebar />} right={<Outlet />} />
   )
 };
 
@@ -28,9 +22,9 @@ function App() {
             <Dashboard />
           }
         />
-        <Route path="login" element={<Login />} />
         <Route path="logout" element={<Logout /> } />
       </Route>
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 }
