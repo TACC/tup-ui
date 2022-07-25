@@ -58,8 +58,15 @@ Reference:
 Styleguide Elements.ContentSectioning
 */
 
-main {
-  padding-bottom: var(--global-space--section-gap);
+body > main {
+  margin-bottom: var(--global-space--section-gap);
+}
+
+/* To make a "sticky footer" */
+/* https://css-tricks.com/a-clever-sticky-footer-technique/ */
+body > main + footer {
+  position: sticky;
+  top: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {

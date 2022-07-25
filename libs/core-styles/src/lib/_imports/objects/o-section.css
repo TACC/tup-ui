@@ -44,7 +44,9 @@ Styleguide Objects.Section
 
 .o-section {
   /* GH-99: Use standard spacing value */
-  padding-block: var(--global-space--section-gap); /* ~avg. from design docs */
+  --padding-block: var(--global-space--section-gap);
+
+  padding-block: var(--padding-block); /* ~avg. from design docs */
 }
 /* To distinguish nested sections */
 .o-section .o-section {
@@ -65,8 +67,9 @@ Styleguide Objects.Section
 
 /* Modifers: Banner */
 
-.o-section--banner[class*="o-section--layout"] { gap: 0; }
-.o-section--banner.container { padding-inline: 0; }
+.o-section--banner { overflow: hidden; }
+.o-section--banner [class*="o-section--layout"] { gap: 0; }
+.o-section--banner .container { padding-inline: 0; }
 .o-section--banner.o-section { padding-block: 0; }
 
 
@@ -251,19 +254,14 @@ Styleguide Objects.Section
 
 
 
-/* Tricks: /* Children: Banner Image */
-/* FP-1462: Extract to new banner component(s) */
+/* Tricks: Modifers: Style */
 
-/* HACK: To hide vertical overflow by placing sibling sections atop */
-[class*="o-section--style"] { position: relative; }
-/* NOTE: This selector assumes only a banner section has vertical overflow */
-/* CAVEAT: Any banner pop-out el's can NOT overflow atop sibling sections */
-[class*="o-section--style"].o-section--banner { z-index: 0; }
-/* NOTE: A `z-index` > 0 is only necessary for sections before banner */
-/* CAVEAT: Any section pop-out el's can NOT overflow atop section after it */
-[class*="o-section--style"] { z-index: 1; }
-
-/* HACK: To hide `.o-section__banner-image` overflow */
-main {
-  overflow-x: clip; /* support position sticky on element in section */
+/* To prevent visibly extra space beneath certain sections and footer */
+/* FAQ: "extra space" is margin (from <main>) between section and <footer> */
+/* FAQ: 'last-of-type' not 'last-child' cuz hidden elements */
+main > .container.o-section--style-light:last-of-type,
+main > .container > .o-section--style-light:last-of-type,
+main > .container.o-section--style-dark:last-of-type,
+main > .container > .o-section--style-dark:last-of-type {
+  margin-bottom: calc( -1 * var(--padding-block) );
 }
