@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Message } from '@tacc/core-components';
+import { Button, Message } from '@tacc/core-components';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -8,11 +8,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>Hello Vite + React!</p>
-        <Message />
+        <Message type="warning">Core-Components Message</Message>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
+          <Button
+            onClick={() => setCount((count) => count + 1)}
+            size="long"
+            type="primary"
+          >
             count is: {count}
-          </button>
+          </Button>
         </p>
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.

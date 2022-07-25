@@ -15,8 +15,8 @@ Markup: o-grid.html
 
 Styleguide Objects.Grid
 */
-@import url("_imports/tools/media-queries.css");
-@import url("_imports/tools/x-grid.css");
+@import url("../tools/media-queries.css");
+@import url("../tools/x-grid.css");
 
 
 

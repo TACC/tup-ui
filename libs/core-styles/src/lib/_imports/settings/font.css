@@ -20,6 +20,13 @@ Styleguide Settings.CustomProperties.Font
 */
 
 :root {
+  /* Family */
+  /* NOTE: Clients are expected to overwrite these values via their CSS */
+  --global-font-family--sans: sans-serif;
+  --global-font-family--serif: serif;
+  --global-font-family--mono: monospace;
+
+
   /* Size */
   /* SEE: https://confluence.tacc.utexas.edu/x/nh4FDg */
   /* CAVEAT: These font sizes assume root font is 10px or an equivalent value */
