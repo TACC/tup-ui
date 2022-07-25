@@ -4,6 +4,8 @@
   "projects": {
     "core-components": "libs/core-components",
     "core-styles": "libs/core-styles",
-    "tup-ui": "apps/tup-ui"
+    "core-wrappers": "libs/core-wrappers",
+    "tup-ui": "apps/tup-ui",
+    "ui-patterns": "apps/ui-patterns"
   }
 }

@@ -7,8 +7,8 @@ Markup: c-callout.html
 
 Styleguide Components.Callout
 */
-@import url("_imports/tools/media-queries.css");
-@import url("_imports/tools/x-article-link.css");
+@import url("../tools/media-queries.css");
+@import url("../tools/x-article-link.css");
 
 
 

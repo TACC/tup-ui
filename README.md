@@ -1,10 +1,9 @@
-
-
 # Tacc
 
 This project was generated using [Nx](https://nx.dev).
 
 Things to try:
+
 - `npx nx serve tup-ui` to run the app
 - `npx nx build core-components` to create a distributable library for the core components.
 - `npx nx build core-styles` to build the style library.
@@ -83,8 +82,6 @@ Run `nx graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
 
 ## ☁ Nx Cloud
 
