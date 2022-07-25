@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '@tacc/tup-ui/hooks';
+import { useAuth } from '../../hooks';
 
 const LogoutComponent: React.FC = () => {
   const { logout } = useAuth();

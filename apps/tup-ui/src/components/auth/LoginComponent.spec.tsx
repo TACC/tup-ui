@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import LoginComponent from './LoginComponent';
-import useAuth from '@tacc/tup-ui/hooks/useAuth';
-import { getTestWrapper, testQueryClient } from '@tacc/tup-ui/utils';
+import useAuth from '../../hooks/useAuth';
+import { getTestWrapper, testQueryClient } from '../../utils';
 
 jest.mock('../hooks/useAuth');
 jest.mock('./ProfileComponent');
