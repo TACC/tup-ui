@@ -1,0 +1,79 @@
+/*
+Container (Bootstrap)
+
+Provide Cortal Icon styles. See:
+
+- [Cortal Icons (Confluence)](https://confluence.tacc.utexas.edu/x/MCAFDg)
+
+Styleguide Components.Cortal.Icon
+*/
+@import url('./cortal.icon.font.css');
+
+
+
+/* IMPORTANT: Do not add support for icons that neglect `.icon` class */
+/* FAQ: Users should build their icons to spec */
+
+
+
+/* Aliases */
+/* SEE: https://github.com/TACC/Core-Portal/blob/22405ca/client/src/styles/trumps/icon.css#L57 */
+
+/* CAVEAT: Urgent use only; always prefer official icon names */
+
+
+
+/* Overrides */
+
+/* To overwrite `cortal.icon.fonts.css` icon sizes */
+/* SEE: https://confluence.tacc.utexas.edu/x/dgB_CQ */
+/* CAVEAT: Assumes 1rem = 10px */
+/* relative units */
+.icon-sm {
+  font-size: 1.8rem;
+}
+.icon-md {
+  font-size: 2.4rem;
+}
+.icon-lg {
+  font-size: 6.4rem;
+}
+/* absolute units */
+.icon-18 {
+  font-size: 18px;
+}
+.icon-24 {
+  font-size: 24px;
+}
+.icon-64 {
+  font-size: 64px;
+}
+.icon-16,
+.icon-32 { font-size: unset /* to disallow unsupported font sizes */ }
+
+
+
+/* Placeholders */
+/* FAQ: Some icons do not exist, but can be faked (with caveats) */
+
+/* To create a small "chevron" */
+/* CAVEAT: Use `--color` to set color */
+[class*='icon-nav-'] {
+  border: solid var(--color, var(--global-color-primary--xx-dark));
+  border-width: 0 0.25em 0.25em 0;
+  font-size: 8px;
+  /* display: inline-block; */ /* let `.icon`'s `display: inline-flex;` do it */
+  /* padding: var(--size); */ /* let `.icon`'s equal `width` & `height` do it */
+}
+.icon-nav-up {
+  transform: rotate(-135deg);
+}
+.icon-nav-left {
+  transform: rotate(135deg);
+}
+.icon-nav-down {
+  transform: rotate(45deg);
+}
+.icon-nav-right {
+  transform: rotate(-45deg);
+}

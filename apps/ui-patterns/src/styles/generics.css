@@ -1,0 +1,13 @@
+html {
+  /* TODO: Set core-components' rem values off of 10px (not 16px) base font */
+  /* Set base font but support user-defined browser font size */
+  /* SEE: https://snook.ca/archives/html_and_css/font-size-with-rem */
+  /* font-size: 62.5%; *//* 10px */
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

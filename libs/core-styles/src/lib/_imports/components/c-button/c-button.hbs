@@ -41,12 +41,14 @@
   <dt>Icons</dt>
   <dd>
     <button class="c-button c-button--{{this._self.name}}
+      {{#if supports.width}}c-button--width-long{{/if}}
       {{#if type}}{{type}}{{/if}}"
       {{#if disabled}}disabled{{/if}}>
       <i class="c-button__icon--before" aria-description="validate input">…</i>
       <span class="c-button__text">__icon--before</span>
     </button>
     <button class="c-button c-button--{{this._self.name}}
+      {{#if supports.width}}c-button--width-long{{/if}}
       {{#if type}}{{type}}{{/if}}"
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">__icon--after</span>
@@ -58,7 +60,7 @@
   {{#if supports.width}}
   <dt>Width</dt>
   <dd>
-    <button class="c-button c-button--{{this._self.name}} c-button--width-short
+    <button class="c-button c-button--{{this._self.name}}
       {{#if type}}{{type}}{{/if}}"
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">--width-short</span>
@@ -67,9 +69,9 @@
       {{#if disabled}}disabled{{/if}}>
       <span class="c-button__text">--width-medium</span>
     </button>
-    <button class="c-button c-button--{{this._self.name}} c-button--width-large {{#if type}}{{type}}{{/if}}"
+    <button class="c-button c-button--{{this._self.name}} c-button--width-long {{#if type}}{{type}}{{/if}}"
       {{#if disabled}}disabled{{/if}}>
-      <span class="c-button__text">--width-large</span>
+      <span class="c-button__text">--width-long</span>
     </button>
   </dd>
   {{/if}}
