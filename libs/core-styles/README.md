@@ -182,7 +182,21 @@ Plugin testing is done manually. Run `npm run test`, then review output in `/dis
 
 Style testing is done manually. Run `npm start`, then review output at web interface, to ensure styles are rendering correctly.
 
-### Production Deployment
+## Linting
+
+CSS linting is configured by `/.stylelintrc`.
+
+For syntax highlighting, you may install a PostCSS plugin for your editor; you may also need to associate `.css` files with PostCSS e.g.:
+
+- for VS Code
+
+  ```json
+  "files.associations": {
+      "*.css": "postcss"
+  },
+  ```
+
+## Production Deployment
 
 The Core Styles are not deployed alone _yet_. ¹
 
