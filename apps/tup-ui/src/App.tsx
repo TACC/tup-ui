@@ -1,9 +1,6 @@
 import { Outlet, Routes, Route } from 'react-router-dom';
 import { PageLayout } from './components/layout';
-import Dashboard from './Dashboard';
-import Logout from './Logout';
-import Login from './Login';
-import Sidebar from './Sidebar';
+import { Sidebar, Dashboard, Login, Logout } from './pages';
 
 const AppLayout = () => {
   return(

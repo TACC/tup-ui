@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginComponent } from '../components/auth';
+import { LoginComponent } from '../../components/auth';
 
 const Layout: React.FC = () => {
   return (
