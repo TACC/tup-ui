@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useLocation, Location, useNavigate } from 'react-router-dom';
 import { useAuth } from '@tacc/tup-ui/hooks';
-
+import styles from './LoginComponent.module.css';
 
 const LoginComponent: React.FC = () => {
   const navigate = useNavigate();
@@ -26,6 +26,7 @@ const LoginComponent: React.FC = () => {
   }
 
   return (
+    <div>
     <form onSubmit={authenticate}>
       <div>Login:</div>
       <div>
@@ -43,6 +44,8 @@ const LoginComponent: React.FC = () => {
       <button type="submit">Log in</button>
       {error ? <div>Error logging in </div> : null}
     </form>
+    </div>
+
   );
 };
 
