@@ -35,7 +35,7 @@ function config(customConfigFiles = [], cssVersion) {
 
   // Update properties
   let updatedJson = updateVersion(mergedJson, cssVersion);
-      updatedJson = resolveImportFromPaths(updatedJson);
+  updatedJson = resolveImportFromPaths(updatedJson);
   const configYaml = yaml.dump(updatedJson);
 
   // Write final config file
@@ -63,20 +63,20 @@ function updateVersion(config, version) {
  */
 function resolveImportFromPaths(config) {
   let paths = config['plugins']['postcss-env-function']['importFrom'];
-      paths = (typeof paths === 'string') ? [ paths ] : paths;
+  paths = typeof paths === 'string' ? [paths] : paths;
   let newPaths = [];
 
   console.log(`Resolving 'importFrom' paths`);
 
   if (paths) {
-    paths.forEach(path => {
+    paths.forEach((path) => {
       let newPath;
       try {
         newPath = require.resolve(path);
       } catch {
         newPath = path;
       } finally {
-        newPaths.push( newPath );
+        newPaths.push(newPath);
       }
     });
   } else {
