@@ -5,14 +5,10 @@ const Layout: React.FC = () => {
   return (
     <div>
       <LoginComponent />
-      <div>
-        Security
-      </div>
-      <div>
-        Policies
-      </div>
+      <div>Security</div>
+      <div>Policies</div>
     </div>
-  )
-}
+  );
+};
 
 export default Layout;

@@ -1,11 +1,8 @@
-import { render } from '@testing-library/react';
 import LoginComponent from './LoginComponent';
 import useAuth from '@tacc/tup-ui/hooks/useAuth';
-import { getTestWrapper, testQueryClient } from '@tacc/tup-ui/utils';
+import { testRender } from '@tacc/tup-ui/utils';
 
 jest.mock('@tacc/tup-ui/hooks/useAuth');
-
-const Wrapper = getTestWrapper(testQueryClient);
 
 describe('LoginComponent', () => {
   it('should render login component if not logged in', () => {
@@ -14,11 +11,7 @@ describe('LoginComponent', () => {
       isLoading: false,
       error: null,
     });
-    const { getAllByText } = render(
-      <Wrapper>
-        <LoginComponent />
-      </Wrapper>
-    );
+    const { getAllByText } = testRender(<LoginComponent />);
     expect(getAllByText(/Login/)).toBeTruthy();
   });
 });
