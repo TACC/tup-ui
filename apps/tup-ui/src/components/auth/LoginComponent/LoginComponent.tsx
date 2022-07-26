@@ -6,7 +6,7 @@ import { Label } from 'reactstrap';
 import { Button } from '@tacc/core-components';
 import * as Yup from 'yup';
 import styles from './LoginComponent.module.css';
-import logo from '@tacc/tup-ui/assets/TACC-formal-Black-1c.svg';
+import { blackLogo } from '@tacc/tup-ui/assets';
 import { AxiosError } from 'axios';
 
 type LoginInfo = {
@@ -37,24 +37,26 @@ const LoginField: React.FC<LoginFieldProps> = ({ name, label, type }) => {
   );
 };
 
-const LoginError: React.FC<{ status?: number}> = ({ status }) => {
+const LoginError: React.FC<{ status?: number }> = ({ status }) => {
   if (status == 200 || status == undefined) {
     return null;
   }
   if (status == 403) {
     return (
       <div className={styles.error}>
-        Sorry. We can't find an account with a username and matching password.<br />
+        Sorry. We can't find an account with a username and matching password.
+        <br />
         Please try again or <a>submit a ticket</a>.
       </div>
-    )
+    );
   }
   return (
     <div className={styles.error}>
-      Sorry. Something went wrong while trying to log in. Please try again later.
+      Sorry. Something went wrong while trying to log in. Please try again
+      later.
     </div>
-  )
-}
+  );
+};
 
 const LoginComponent: React.FC = () => {
   const navigate = useNavigate();
@@ -88,9 +90,11 @@ const LoginComponent: React.FC = () => {
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        <img src={logo} className={styles.logo} />
+        <img src={blackLogo} className={styles.logo} />
         <h2>Log In</h2>
-        <div className={styles.subtitle}>to continue to the TACC User Portal</div>
+        <div className={styles.subtitle}>
+          to continue to the TACC User Portal
+        </div>
       </div>
       <LoginError status={status} />
       <Formik
@@ -102,10 +106,14 @@ const LoginComponent: React.FC = () => {
           <LoginField name="username" label="User Name" />
           <LoginField name="password" label="Password" type="password" />
           <div className={styles['submit-container']}>
-            <div>
-              Create Account
-            </div>
-            <Button type="primary" attr="submit" size="long" className={styles.submit} isLoading={isLoading}>
+            <div>Create Account</div>
+            <Button
+              type="primary"
+              attr="submit"
+              size="long"
+              className={styles.submit}
+              isLoading={isLoading}
+            >
               Log In
             </Button>
           </div>

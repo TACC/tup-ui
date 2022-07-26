@@ -1,9 +1,11 @@
 import { screen } from '@testing-library/react';
 import { useJwt } from './hooks';
 import { testRender } from './utils';
+import { LoginComponent } from '@tacc/tup-ui/components/auth';
 import App from './App';
 
 jest.mock('./hooks/useJwt');
+jest.mock('@tacc/tup-ui/components/auth');
 
 describe('App', () => {
   beforeEach(() => {
@@ -38,8 +40,8 @@ describe('App', () => {
       writable: true,
       value: 'x-tup-token=',
     });
+    (LoginComponent as jest.Mock).mockReturnValue(<div>Login</div>);
     testRender(<App />);
-
     expect(await screen.findByText(/Login/)).toBeDefined();
   });
 });
