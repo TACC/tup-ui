@@ -1,5 +1,5 @@
 import React from 'react';
-import { useProfile } from '../../hooks';
+import { useProfile } from '@tacc/tup-ui/hooks';
 
 const ProfileComponent: React.FC = () => {
   const profileQuery = useProfile();

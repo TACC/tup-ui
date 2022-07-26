@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import { useGet, usePost } from './requests';
-import { testQueryClient, getTestWrapper } from '../utils';
+import { testQueryClient, getTestWrapper } from '@tacc/tup-ui/utils';
 import useJwt from './useJwt';
 import { act } from 'react-dom/test-utils';
 

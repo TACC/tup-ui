@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useAuth } from '../../hooks';
+import { useAuth } from '@tacc/tup-ui/hooks';
 import { Navigate } from 'react-router-dom';
 
 const Layout: React.FC = () => {

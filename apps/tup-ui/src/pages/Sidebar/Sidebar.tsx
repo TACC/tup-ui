@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, NavItem } from '@tacc/core-wrappers';
-import { useAuth } from '../../hooks';
+import { useAuth } from '@tacc/tup-ui/hooks';
 import styles from './Sidebar.module.css';
 
 const Sidebar: React.FC = () => {

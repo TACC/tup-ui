@@ -1,6 +1,6 @@
 import { render, waitFor } from '@testing-library/react';
 import ProfileComponent from './ProfileComponent';
-import { testQueryClient, getTestWrapper } from '../../utils';
+import { testQueryClient, getTestWrapper } from '@tacc/tup-ui/utils';
 
 const Wrapper = getTestWrapper(testQueryClient);
 
