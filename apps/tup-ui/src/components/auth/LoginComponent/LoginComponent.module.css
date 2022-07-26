@@ -1,5 +1,81 @@
+@import url('@tacc/core-styles/dist/settings/border.css');
+@import url('@tacc/core-styles/dist/settings/space.css');
+@import url('@tacc/core-styles/dist/settings/font.css');
+
 .root {
   width: 627px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 47px 55px 36px 55px;
+  border: var(--global-border--normal);
+  border-color: var(--global-color-primary--dark);
+  font-family: var(--global-font-family--serif);
+}
+
+.logo {
+  height: 73px;
+  width: 186 px;
+  margin-bottom: 45px;
+}
+
+.subtitle {
+  margin-bottom: var(--global-space--large);
+}
+
+.form {
+  width: 100%;
+  font-family: var(--global-font-family--sans);
+  margin-bottom: var(--global-space--x-large);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: var(--global-color-primary--x-dark);
+  margin-bottom: 12px;
+}
+
+.form-field > * {
+  margin-bottom: 12px;
+}
+
+.form-field input {
+  border: var(--global-border--normal);
+  border-color: var(--global-color-primary--dark);
+  width: 100%;
+  font-size: var(--global-font-size-medium);
+  padding: 12px 12px 12px 12px;
+}
+
+.form-field__label {
+  font-size: 12px;
+}
+
+.form-field__help {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.submit {
+  font-size: var(--global-font-size--x-small);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.submit-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.help {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: var(--global-space--small);
+  margin-bottom: var(--global-space--x-small);
 }
