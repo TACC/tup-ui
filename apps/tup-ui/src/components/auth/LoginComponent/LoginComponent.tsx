@@ -70,9 +70,11 @@ const LoginComponent: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <img src={logo} className={styles.logo} />
-      <h2>Log In</h2>
-      <div className={styles.subtitle}>to continue to the TACC User Portal</div>
+      <div className={styles.title}>
+        <img src={logo} className={styles.logo} />
+        <h2>Log In</h2>
+        <div className={styles.subtitle}>to continue to the TACC User Portal</div>
+      </div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -91,9 +93,10 @@ const LoginComponent: React.FC = () => {
           </div>
         </Form>
       </Formik>
-      
-        <div className={styles.help}>Having trouble logging in?</div>
-        <div className={styles.help}>Account Help</div>
+      <div className={styles.footer}>
+        <div>Having trouble logging in?</div>
+        <div>Account Help</div>
+      </div>
     </div>
   );
 };

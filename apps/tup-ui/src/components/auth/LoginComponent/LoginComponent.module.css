@@ -3,14 +3,21 @@
 @import url('@tacc/core-styles/dist/settings/font.css');
 
 .root {
-  width: 627px;
+  width: 507px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   padding: 47px 55px 36px 55px;
   border: var(--global-border--normal);
   border-color: var(--global-color-primary--dark);
   font-family: var(--global-font-family--serif);
+  background-color: var(--global-color-primary--xx-light);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo {
@@ -24,15 +31,17 @@
 }
 
 .form {
-  width: 100%;
   font-family: var(--global-font-family--sans);
-  margin-bottom: var(--global-space--x-large);
+  margin-bottom: var(--global-space--large);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: stretch;
   color: var(--global-color-primary--x-dark);
   margin-bottom: 12px;
 }
@@ -44,7 +53,6 @@
 .form-field input {
   border: var(--global-border--normal);
   border-color: var(--global-color-primary--dark);
-  width: 100%;
   font-size: var(--global-font-size-medium);
   padding: 12px 12px 12px 12px;
 }
@@ -67,15 +75,18 @@
 
 .submit-container {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
 
-.help {
+.footer {
   display: flex;
-  justify-content: flex-end;
-  width: 100%;
+  flex-direction: column;
+  align-items: flex-end;
   margin-top: var(--global-space--small);
   margin-bottom: var(--global-space--x-small);
+}
+
+.footer > div {
+  margin-bottom: var(--global-space--small)
 }

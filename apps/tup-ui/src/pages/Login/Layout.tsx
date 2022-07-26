@@ -1,12 +1,15 @@
 import React from 'react';
 import { LoginComponent } from '@tacc/tup-ui/components/auth';
+import styles from './Layout.module.css';
 
 const Layout: React.FC = () => {
   return (
-    <div>
+    <div className={styles.root}>
       <LoginComponent />
-      <div>Security</div>
-      <div>Policies</div>
+      <div className={styles.footer}>
+        <div>Security</div>
+        <div>Policies</div>
+      </div>
     </div>
   );
 };

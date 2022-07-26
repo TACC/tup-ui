@@ -3,7 +3,9 @@ import { PageLayout } from '@tacc/tup-ui/components/layout';
 import { Sidebar, Dashboard, Login, Logout } from './pages';
 
 const AppLayout = () => {
-  return <PageLayout left={<Sidebar />} right={<Outlet />} />;
+  return (
+    <PageLayout left={<Sidebar />} right={<Outlet />} />
+  )
 };
 
 function App() {
