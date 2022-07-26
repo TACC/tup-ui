@@ -1,15 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useLocation, Location, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks';
+import { useAuth } from '@tacc/tup-ui/hooks';
 
-export const LogoutComponent: React.FC = () => {
-  const { logout } = useAuth();
-  return (
-    <div>
-      <button onClick={() => logout()}>Log Out</button>
-    </div>
-  );
-};
 
 const LoginComponent: React.FC = () => {
   const navigate = useNavigate();
