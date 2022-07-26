@@ -90,3 +90,15 @@
 .footer > div {
   margin-bottom: var(--global-space--small)
 }
+
+.error {
+  background-color: var(--global-color-danger--normal);
+  color: var(--global-color-primary--x-light);
+  font-family: var(--global-font-family--sans);
+  font-size: 14px;
+  padding-top: var(--global-space--normal);
+  padding-left: var(--global-space--normal);
+  padding-right: var(--global-space--normal);
+  padding-bottom: var(--global-space--normal);
+  margin-bottom: var(--global-space--normal);
+}

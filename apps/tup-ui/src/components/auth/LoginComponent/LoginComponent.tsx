@@ -7,6 +7,7 @@ import { Button } from '@tacc/core-components';
 import * as Yup from 'yup';
 import styles from './LoginComponent.module.css';
 import logo from '@tacc/tup-ui/assets/TACC-formal-Black-1c.svg';
+import { AxiosError } from 'axios';
 
 type LoginInfo = {
   username: string;
@@ -36,6 +37,25 @@ const LoginField: React.FC<LoginFieldProps> = ({ name, label, type }) => {
   );
 };
 
+const LoginError: React.FC<{ status?: number}> = ({ status }) => {
+  if (status == 200 || status == undefined) {
+    return null;
+  }
+  if (status == 403) {
+    return (
+      <div className={styles.error}>
+        Sorry. We can't find an account with a username and matching password.<br />
+        Please try again or <a>submit a ticket</a>.
+      </div>
+    )
+  }
+  return (
+    <div className={styles.error}>
+      Sorry. Something went wrong while trying to log in. Please try again later.
+    </div>
+  )
+}
+
 const LoginComponent: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -58,15 +78,12 @@ const LoginComponent: React.FC = () => {
 
   const onSubmit = useCallback(
     ({ username, password }: LoginInfo) => {
-      console.log(username, password);
-      //login({ username, password }, { onSuccess: authCallback });
+      login({ username, password }, { onSuccess: authCallback });
     },
     [login]
   );
 
-  if (isLoading) {
-    return <div>...</div>;
-  }
+  const status = (error as AxiosError)?.response?.status;
 
   return (
     <div className={styles.root}>
@@ -75,6 +92,7 @@ const LoginComponent: React.FC = () => {
         <h2>Log In</h2>
         <div className={styles.subtitle}>to continue to the TACC User Portal</div>
       </div>
+      <LoginError status={status} />
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -87,7 +105,7 @@ const LoginComponent: React.FC = () => {
             <div>
               Create Account
             </div>
-            <Button type="primary" attr="submit" size="long" className={styles.submit}>
+            <Button type="primary" attr="submit" size="long" className={styles.submit} isLoading={isLoading}>
               Log In
             </Button>
           </div>
