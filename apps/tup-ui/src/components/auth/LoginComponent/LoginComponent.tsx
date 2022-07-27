@@ -62,10 +62,9 @@ const LoginComponent: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = (location.state as { from?: Location })?.from?.pathname || '/';
-  const authCallback = useCallback(
-    () => navigate(from, { replace: true }),
-    [from, navigate]
-  );
+  const authCallback = useCallback(() => {
+    navigate(from, { replace: true });
+  }, [from, navigate]);
   const { login, error, isLoading } = useAuth();
 
   const validationSchema = Yup.object({
