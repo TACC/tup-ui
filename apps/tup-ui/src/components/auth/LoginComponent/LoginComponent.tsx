@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useLocation, Location, useNavigate } from 'react-router-dom';
 import { useAuth } from '@tacc/tup-ui/hooks';
-import { Formik, Form, Field, useFormik, useFormikContext } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { Label } from 'reactstrap';
 import { Button } from '@tacc/core-components';
 import * as Yup from 'yup';
@@ -38,15 +38,15 @@ const LoginField: React.FC<LoginFieldProps> = ({ name, label, type }) => {
 };
 
 const LoginError: React.FC<{ status?: number }> = ({ status }) => {
-  if (status == 200 || status == undefined) {
+  if (status === 200 || status === undefined) {
     return null;
   }
-  if (status == 403) {
+  if (status === 403) {
     return (
       <div className={styles.error}>
         Sorry. We can't find an account with a username and matching password.
         <br />
-        Please try again or <a>submit a ticket</a>.
+        Please try again or submit a ticket.
       </div>
     );
   }
@@ -81,7 +81,7 @@ const LoginComponent: React.FC = () => {
     ({ username, password }: LoginInfo) => {
       login({ username, password }, { onSuccess: authCallback });
     },
-    [login]
+    [login, authCallback]
   );
 
   const status = (error as AxiosError)?.response?.status;
@@ -89,7 +89,7 @@ const LoginComponent: React.FC = () => {
   return (
     <div className={styles.root}>
       <div className={styles.title}>
-        <img src={blackLogo} className={styles.logo} />
+        <img src={blackLogo} className={styles.logo} alt="TACC Logo" />
         <h2>Log In</h2>
         <div className={styles.subtitle}>
           to continue to the TACC User Portal
