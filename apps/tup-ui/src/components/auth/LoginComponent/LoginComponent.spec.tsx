@@ -1,13 +1,13 @@
 import LoginComponent from './LoginComponent';
-import { testRender } from '@tacc/tup-ui/utils';
+import { testRender } from '../../../utils';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { fireEvent, act, waitFor } from '@testing-library/react';
-import { server } from '@tacc/tup-ui/mocks/server';
+import { server } from '../../../mocks/server';
 import { rest } from 'msw';
-import useJwt from '@tacc/tup-ui/hooks/useJwt';
+import useJwt from '../../../hooks/useJwt';
 
 jest.mock('react-router-dom');
-jest.mock('@tacc/tup-ui/hooks/useJwt');
+jest.mock('../../../hooks/useJwt');
 
 const mockNavigate = jest.fn();
 

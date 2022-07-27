@@ -1,6 +1,6 @@
 import { waitFor } from '@testing-library/react';
 import ProfileComponent from './ProfileComponent';
-import { testRender } from '@tacc/tup-ui/utils';
+import { testRender } from '../../utils';
 
 describe('ProfileComponent', () => {
   it('should render a user profile', async () => {

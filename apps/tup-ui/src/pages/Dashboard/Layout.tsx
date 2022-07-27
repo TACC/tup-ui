@@ -1,6 +1,6 @@
 import React from 'react';
-import { ProfileComponent } from '@tacc/tup-ui/components/profile';
-import { RequireAuth } from '@tacc/tup-ui/components/utils';
+import { ProfileComponent } from '../../components/profile';
+import { RequireAuth } from '../../components/utils';
 
 const Layout: React.FC = () => {
   return (

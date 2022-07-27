@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginComponent } from '@tacc/tup-ui/components/auth';
+import { LoginComponent } from '../../components/auth';
 import styles from './Layout.module.css';
 
 const Layout: React.FC = () => {

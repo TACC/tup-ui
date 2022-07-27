@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import { useLocation, Location, useNavigate } from 'react-router-dom';
-import { useAuth } from '@tacc/tup-ui/hooks';
+import { useAuth } from '../../../hooks';
 import { Formik, Form, Field } from 'formik';
 import { Label } from 'reactstrap';
 import { Button } from '@tacc/core-components';
 import * as Yup from 'yup';
 import styles from './LoginComponent.module.css';
-import { blackLogo } from '@tacc/tup-ui/assets';
+import { blackLogo } from '../../../assets';
 import { AxiosError } from 'axios';
 
 type LoginInfo = {

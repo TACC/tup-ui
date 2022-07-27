@@ -1,5 +1,5 @@
 import { Outlet, Routes, Route } from 'react-router-dom';
-import { PageLayout } from '@tacc/tup-ui/components/layout';
+import { PageLayout } from './components/layout';
 import { Sidebar, Dashboard, Login, Logout } from './pages';
 
 const AppLayout = () => {

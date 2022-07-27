@@ -1,10 +1,10 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { testRender } from '@tacc/tup-ui/utils';
-import { useAuth } from '@tacc/tup-ui/hooks';
+import { testRender } from '../../utils';
+import { useAuth } from '../../hooks';
 import Sidebar from './Sidebar';
 
-jest.mock('@tacc/tup-ui/hooks');
+jest.mock('../../hooks');
 
 describe('Sidebar', () => {
   it('renders Sidebar component', () => {

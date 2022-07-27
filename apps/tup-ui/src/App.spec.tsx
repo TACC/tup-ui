@@ -1,11 +1,11 @@
 import { screen } from '@testing-library/react';
 import { useJwt } from './hooks';
 import { testRender } from './utils';
-import { LoginComponent } from '@tacc/tup-ui/components/auth';
+import { LoginComponent } from './components/auth';
 import App from './App';
 
 jest.mock('./hooks/useJwt');
-jest.mock('@tacc/tup-ui/components/auth');
+jest.mock('./components/auth');
 
 describe('App', () => {
   beforeEach(() => {

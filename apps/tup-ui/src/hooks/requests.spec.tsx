@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useGet, usePost } from './requests';
 import useJwt from './useJwt';
 import { act } from 'react-dom/test-utils';
-import { TestWrapper } from '@tacc/tup-ui/utils';
+import { TestWrapper } from '../utils';
 
 jest.mock('./useJwt');
 jest.mock('axios');
