@@ -1,16 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import { getTestWrapper, testQueryClient } from './utils';
+import { screen } from '@testing-library/react';
 import { useJwt } from './hooks';
-
+import { testRender } from './utils';
+import { LoginComponent } from './components/auth';
 import App from './App';
 
-const Wrapper = getTestWrapper(testQueryClient);
-
 jest.mock('./hooks/useJwt');
+jest.mock('./components/auth');
 
 describe('App', () => {
   beforeEach(() => {
-    testQueryClient.clear();
     Object.defineProperty(document, 'cookie', {
       writable: true,
       value: 'x-tup-token=abc123',
@@ -18,7 +16,6 @@ describe('App', () => {
   });
   afterEach(() => {
     document.cookie = 'x-tup-token=';
-    testQueryClient.clear();
   });
 
   it('should route to user profile when a JWT cookie is present', async () => {
@@ -29,11 +26,7 @@ describe('App', () => {
       isLoading: false,
     });
 
-    render(
-      <Wrapper>
-        <App />
-      </Wrapper>
-    );
+    testRender(<App />);
     //screen.debug();
     expect(await screen.findByText(/mock/)).toBeDefined();
   });
@@ -47,12 +40,8 @@ describe('App', () => {
       writable: true,
       value: 'x-tup-token=',
     });
-    render(
-      <Wrapper>
-        <App />
-      </Wrapper>
-    );
-
+    (LoginComponent as jest.Mock).mockReturnValue(<div>Login</div>);
+    testRender(<App />);
     expect(await screen.findByText(/Login/)).toBeDefined();
   });
 });

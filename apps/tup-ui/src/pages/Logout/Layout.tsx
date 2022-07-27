@@ -7,9 +7,7 @@ const Layout: React.FC = () => {
   useEffect(() => {
     logout();
   }, [logout]);
-  return (
-    <Navigate to="/login" replace />
-  )
-}
+  return <Navigate to="/login" replace />;
+};
 
 export default Layout;

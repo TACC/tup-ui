@@ -8,11 +8,11 @@ const Sidebar: React.FC = () => {
   return (
     <div className={styles['root']}>
       <Navbar>
-        <NavItem to={"/"}>Dashboard</NavItem>
-        {loggedIn && <NavItem to={"/logout"}>Log Out</NavItem>}
+        <NavItem to={'/'}>Dashboard</NavItem>
+        {loggedIn && <NavItem to={'/logout'}>Log Out</NavItem>}
       </Navbar>
     </div>
-  )
+  );
 };
 
 export default Sidebar;

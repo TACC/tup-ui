@@ -1,17 +1,14 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import { useGet, usePost } from './requests';
-import { testQueryClient, getTestWrapper } from '../utils';
 import useJwt from './useJwt';
 import { act } from 'react-dom/test-utils';
+import { TestWrapper } from '../utils';
 
 jest.mock('./useJwt');
 jest.mock('axios');
 
-const wrapper = getTestWrapper(testQueryClient);
-
 describe('requests', () => {
-  afterEach(() => testQueryClient.clear());
   it('should render the mock get component', async () => {
     (useJwt as jest.Mock).mockReturnValue({
       jwt: 'abc123',
@@ -25,7 +22,7 @@ describe('requests', () => {
     jest.spyOn(axios, 'get').mockResolvedValue({ data: 'response' });
 
     const { result } = renderHook(() => useGet<string>('/endpoint', 'key'), {
-      wrapper,
+      wrapper: TestWrapper,
     });
     await waitFor(() => expect(result.current.data).toEqual('response'));
     expect(axios.get).toHaveBeenCalledWith('http://localhost:8000/endpoint', {
@@ -42,7 +39,7 @@ describe('requests', () => {
       data: 'response',
     });
     const { result } = renderHook(() => usePost<string, string>('/endpoint'), {
-      wrapper,
+      wrapper: TestWrapper,
     });
     act(() => result.current.mutate('body'));
     await waitFor(() => expect(result.current.data).toEqual('response'));

@@ -1,18 +1,17 @@
 import React from 'react';
 import { LoginComponent } from '../../components/auth';
+import styles from './Layout.module.css';
 
 const Layout: React.FC = () => {
   return (
-    <div>
+    <div className={styles.root}>
       <LoginComponent />
-      <div>
-        Security
-      </div>
-      <div>
-        Policies
+      <div className={styles.footer}>
+        <div>Security</div>
+        <div>Policies</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Layout;

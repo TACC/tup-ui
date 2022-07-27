@@ -7,7 +7,7 @@ const Layout: React.FC = () => {
     <RequireAuth>
       <ProfileComponent />
     </RequireAuth>
-  )
-}
+  );
+};
 
 export default Layout;
