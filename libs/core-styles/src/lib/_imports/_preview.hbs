@@ -8,15 +8,12 @@
 
 {{! styles: global (for every component) }}
 {{! (manually configured) }}
-{{#if styles.external.global}}
-  {{#each styles.external.global}}
-    <link rel='stylesheet' href='{{this}}' />
-  {{/each}}
-{{else if styles.internal.global}}
-  {{#each styles.internal.global}}
-    <link rel='stylesheet' href='{{path this}}' />
-  {{/each}}
-{{/if}}
+{{#each styles.external.global}}
+  <link rel='stylesheet' href='{{this}}' />
+{{/each}}
+{{#each styles.internal.global}}
+  <link rel='stylesheet' href='{{path this}}' />
+{{/each}}
 
 {{! styles: local (for current component) }}
 {{! (automatically found) }}
