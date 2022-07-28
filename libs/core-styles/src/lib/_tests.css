@@ -5,7 +5,7 @@
 /* FAQ: This is a low-tech way to test plugins */
 /* USAGE:
    1. Build CSS.
-   2. Review `taccsite_cms/static/site_cms/css/build/_test.css` */
+   2. Review `../../build/_test.css` */
 /* NOTE: This file is not intended to be imported */
 
 @import url("_tests/postcss-extend.css");
