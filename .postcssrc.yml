@@ -5,10 +5,6 @@ plugins:
 
     # https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
     features:
-      custom-properties:
-        # https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties#options
-        preserve: false
       custom-media-queries: true
       media-query-ranges: true
       custom-selectors: true
-      nesting-rules: true
