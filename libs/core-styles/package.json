@@ -13,8 +13,8 @@
   "main": "src/main.js",
   "bin": "src/cli.js",
   "scripts": {
-    "build": "node src/cli.js build -i \"src/lib/_imports/**/*!(README).css\" -o \"./dist\" -m \"src/lib/_imports\"",
-    "test": "node src/cli.js build -i \"src/lib/_tests\" -o \"./dist\" -m \"src/lib\" && echo \"Test output at 'dist/_tests' (compare to test input)\"",
+    "build": "bin/build.js",
+    "test": "bin/test.js && echo \"Test output at 'dist/_tests' (compare to test input)",
     "prepublishOnly": "npm run build # && npm test && npm run lint"
   },
   "engines": {
