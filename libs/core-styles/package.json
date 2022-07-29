@@ -19,9 +19,9 @@
   "scripts": {
     "start": "fractal start --sync",
     "build": "npm run build:css && npm run build:demo",
-    "build:css": "bin/build-css.js",
+    "build:css": "bin/build.js",
     "build:demo": "fractal build",
-    "test": "bin/test-css.js && echo \"Test output at 'dist/_tests' (compare to test input)",
+    "test": "bin/test.js && echo \"Test output at 'dist/_tests' (compare to test input)",
     "prepublishOnly": "npm run build # && npm test && npm run lint"
   },
   "engines": {
