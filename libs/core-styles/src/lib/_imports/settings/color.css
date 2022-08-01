@@ -56,4 +56,8 @@
 
   /* Generic */
   --global-color-background--app: var(--global-color-primary--xx-light);
+
+  /* Link */
+  --global-color-link-on-light--normal: var(--global-color-accent--normal);
+  --global-color-link-on-dark--normal: var(--global-color-accent--light);
 }

@@ -171,15 +171,18 @@ Styleguide Elements.InlineTextSemantics
 
 /* Links */
 
-a,
-a:hover { color: var(--global-color-link-on-light--normal); /* overwrite Bootstrap */ }
-a:focus { text-decoration: underline dotted; }
-
-/* FAQ: Bootstrap already provides basic text-decoration */
-/*
-a { text-decoration: none; }
-a:hover { text-decoration: underline; }
-*/
+a {
+  color: var(--global-color-link-on-light--normal);
+  text-decoration-thickness: var(--global-border-width--normal);
+}
+a:hover {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+}
+a:focus {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+}
 
 /* Monospace */
 
