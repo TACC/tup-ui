@@ -5,13 +5,14 @@
 @import url('@tacc/core-styles/dist/elements/bootstrap.css');
 @import url('@tacc/core-styles/dist/elements/html-elements.cms.css');
 
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
 .root {
   background-color: var(--global-color-primary--light);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
 }
 .root a:not(:focus) {
   text-decoration-line: none;
@@ -19,16 +20,25 @@
 .root a:hover:not(:focus) {
   text-decoration-line: underline;
 }
+.root > * {
+  width: 100%;
+  max-width: 630px;
+}
 
 .footer {
   display: flex;
-  width: 621px;
   gap: 1.5em;
-  justify-content: flex-end;
-  padding-top: var(--global-space--normal);
+  margin-top: var(--global-space--normal);
 
   font-size: var(--global-font-size--x-small);
   font-weight: var(--bold);
+
+  @media (--narrow-and-below) {
+    justify-content: center;
+  }
+  @media (--narrow-and-above) {
+    justify-content: flex-end;
+  }
 }
 .footer a {
   color: var(--global-color-primary--x-dark);

@@ -118,7 +118,7 @@ const LoginComponent: React.FC = () => {
         </Form>
       </Formik>
       <div className={styles.footer}>
-        <div>Having trouble logging in?</div>
+        <p>Having trouble logging in?</p>
         <a href="/account/help">Account Help</a>
       </div>
     </div>
