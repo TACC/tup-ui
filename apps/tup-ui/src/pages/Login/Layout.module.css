@@ -2,6 +2,9 @@
 @import url('@tacc/core-styles/dist/settings/space.css');
 @import url('@tacc/core-styles/dist/settings/font.css');
 
+@import url('@tacc/core-styles/dist/elements/bootstrap.css');
+@import url('@tacc/core-styles/dist/elements/html-elements.cms.css');
+
 .root {
   background-color: var(--global-color-primary--light);
   display: flex;
@@ -16,7 +19,6 @@
   width: 621px;
   justify-content: flex-end;
   padding-top: var(--global-space--large);
-  font-family: var(--global-font-family--sans);
 }
 
 .footer > div {

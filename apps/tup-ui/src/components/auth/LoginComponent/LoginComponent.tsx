@@ -27,7 +27,6 @@ const LoginField: React.FC<LoginFieldProps> = ({ name, label, type }) => {
       <Label
         className={styles['form-field__label']}
         size="sm"
-        style={{ display: 'flex', alignItems: 'center' }}
         htmlFor={name}
       >
         {label}
@@ -90,10 +89,10 @@ const LoginComponent: React.FC = () => {
     <div className={styles.root}>
       <div className={styles.title}>
         <img src={blackLogo} className={styles.logo} alt="TACC Logo" />
-        <h2>Log In</h2>
-        <div className={styles.subtitle}>
+        <h3>Log In</h3>
+        <p className={styles.subtitle}>
           to continue to the TACC User Portal
-        </div>
+        </p>
       </div>
       <LoginError status={status} />
       <Formik
