@@ -7,8 +7,8 @@ const Layout: React.FC = () => {
     <div className={styles.root}>
       <LoginComponent />
       <div className={styles.footer}>
-        <div>Security</div>
-        <div>Policies</div>
+        <a href="./security">Security</a>
+        <a href="./policies">Policies</a>
       </div>
     </div>
   );

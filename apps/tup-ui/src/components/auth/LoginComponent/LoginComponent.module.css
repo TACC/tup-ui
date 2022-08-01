@@ -18,6 +18,9 @@
   border-color: var(--global-color-primary--dark);
   background-color: var(--global-color-primary--xx-light);
 }
+.root a {
+  font-weight: var(--medium);
+}
 
 .title {
   text-align: center;

@@ -104,7 +104,7 @@ const LoginComponent: React.FC = () => {
           <LoginField name="username" label="User Name" />
           <LoginField name="password" label="Password" type="password" />
           <div className={styles['submit-container']}>
-            <div>Create Account</div>
+            <a href="/account/create">Create Account</a>
             <Button
               type="primary"
               attr="submit"
@@ -119,7 +119,7 @@ const LoginComponent: React.FC = () => {
       </Formik>
       <div className={styles.footer}>
         <div>Having trouble logging in?</div>
-        <div>Account Help</div>
+        <a href="/account/help">Account Help</a>
       </div>
     </div>
   );

@@ -13,14 +13,23 @@
   justify-content: center;
   height: 100%;
 }
+.root a:not(:focus) {
+  text-decoration-line: none;
+}
+.root a:hover:not(:focus) {
+  text-decoration-line: underline;
+}
 
 .footer {
   display: flex;
   width: 621px;
+  gap: 1.5em;
   justify-content: flex-end;
-  padding-top: var(--global-space--large);
-}
+  padding-top: var(--global-space--normal);
 
-.footer > div {
-  padding-left: var(--global-space--x-large);
+  font-size: var(--global-font-size--x-small);
+  font-weight: var(--bold);
+}
+.footer a {
+  color: var(--global-color-primary--x-dark);
 }
