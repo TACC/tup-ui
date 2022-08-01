@@ -1,5 +1,7 @@
 import React from 'react';
 import { LoginComponent } from '../../components/auth';
+
+import './Layout.global.css';
 import styles from './Layout.module.css';
 
 const Layout: React.FC = () => {
