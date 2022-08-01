@@ -7,7 +7,7 @@ import styles from './Layout.module.css';
 const Layout: React.FC = () => {
   return (
     <div className={styles.root}>
-      <LoginComponent />
+      <LoginComponent className={styles.body} />
       <div className={styles.footer}>
         <a href="./security">Security</a>
         <a href="./policies">Policies</a>

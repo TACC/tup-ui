@@ -20,9 +20,24 @@
 .root a:hover:not(:focus) {
   text-decoration-line: underline;
 }
-.root > * {
+
+.body,
+.footer {
   width: 100%;
   max-width: 630px;
+}
+
+.body {
+  padding: 50px;
+
+  border: var(--global-border--normal);
+  border-color: var(--global-color-primary--dark);
+  background-color: var(--global-color-primary--xx-light);
+
+  /* To remove left+right borders when form hits page edge */
+  @media (width <= 630px) {
+    border-inline: 0;
+  }
 }
 
 .footer {

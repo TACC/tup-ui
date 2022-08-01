@@ -14,6 +14,10 @@ type LoginInfo = {
   password: string;
 };
 
+type LoginProps = {
+  className?: string;
+};
+
 type LoginFieldProps = {
   name: string;
   label: string;
@@ -57,7 +61,7 @@ const LoginError: React.FC<{ status?: number }> = ({ status }) => {
   );
 };
 
-const LoginComponent: React.FC = () => {
+const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = (location.state as { from?: Location })?.from?.pathname || '/';
@@ -86,7 +90,7 @@ const LoginComponent: React.FC = () => {
   const status = (error as AxiosError)?.response?.status;
 
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root} ${className}`}>
       <div className={styles.title}>
         <img src={blackLogo} className={styles.logo} alt="TACC Logo" />
         <h3>Log In</h3>

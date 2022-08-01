@@ -13,12 +13,6 @@
   flex-direction: column;
   align-items: stretch;
   box-sizing: border-box;
-
-  padding: 50px;
-
-  border: var(--global-border--normal);
-  border-color: var(--global-color-primary--dark);
-  background-color: var(--global-color-primary--xx-light);
 }
 .root a {
   font-weight: var(--medium);
