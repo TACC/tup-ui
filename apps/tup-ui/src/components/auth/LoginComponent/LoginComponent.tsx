@@ -28,11 +28,7 @@ const LoginField: React.FC<LoginFieldProps> = ({ name, label, type }) => {
   // Matt does not want these form stylings to be global
   return (
     <div className={styles['form-field']}>
-      <Label
-        className={styles['form-field__label']}
-        size="sm"
-        htmlFor={name}
-      >
+      <Label className={styles['form-field__label']} size="sm" htmlFor={name}>
         {label}
       </Label>
       <Field name={name} id={name} type={type} />
@@ -94,9 +90,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       <div className={styles.title}>
         <img src={blackLogo} className={styles.logo} alt="TACC Logo" />
         <h3>Log In</h3>
-        <p className={styles.subtitle}>
-          to continue to the TACC User Portal
-        </p>
+        <p className={styles.subtitle}>to continue to the TACC User Portal</p>
       </div>
       <LoginError status={status} />
       <Formik
