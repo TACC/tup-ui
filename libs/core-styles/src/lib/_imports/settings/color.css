@@ -50,9 +50,9 @@
   --global-color-warning--weak: #c7ce1d20;
   --global-color-warning--alt: var(--global-color-accent--dark);
   --global-color-warning--alt-weak: var(--global-color-accent--weak);
-  --global-color-danger--dark: #ab1717;
-  --global-color-danger--normal: #eb6e6e;
-  --global-color-danger--weak: #eb6e6e20;
+  --global-color-danger--dark: #AF1818;
+  --global-color-danger--normal: #F09393;
+  --global-color-danger--weak: #F0939320;
 
   /* Generic */
   --global-color-background--app: var(--global-color-primary--xx-light);
