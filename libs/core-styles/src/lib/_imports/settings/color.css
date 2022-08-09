@@ -42,10 +42,12 @@
   --global-color-info--dark: var(--global-color-primary--x-dark);
   --global-color-info--normal: var(--global-color-primary--normal);
   --global-color-info--light: var(--global-color-primary--x-light);
+  --global-color-success--dark: #237119;
   --global-color-success--normal: #43d130;
   --global-color-success--weak: #43d13020;
   --global-color-success--alt: var(--global-color-warning--normal);
   --global-color-success--alt-weak: var(--global-color-warning--weak);
+  --global-color-warning--dark: #717411;
   --global-color-warning--normal: #c7ce1d;
   --global-color-warning--weak: #c7ce1d20;
   --global-color-warning--alt: var(--global-color-accent--dark);
