@@ -26,7 +26,7 @@ Styleguide Components.Message
 /* Elements */
 
 .c-message a {
-  color: var(--global-color-primary--xx-dark);
+  color: inherit;
 }
 
 /* Modifiers */
