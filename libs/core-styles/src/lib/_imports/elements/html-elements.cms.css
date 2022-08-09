@@ -177,11 +177,11 @@ a {
 }
 a:hover {
   text-decoration-line: underline;
-  text-decoration-style: solid;
+  text-decoration-style: dashed;
 }
 a:focus {
   text-decoration-line: underline;
-  text-decoration-style: dashed;
+  text-decoration-style: dotted;
 }
 
 /* Monospace */
