@@ -43,9 +43,9 @@ const LoginError: React.FC<{ status?: number }> = ({ status }) => {
   if (status === 403) {
     return (
       <div className={styles.error}>
-        Sorry. We can't find an account with a username and matching password.
+        Sorry, We can’t find an account with this username.
         <br />
-        Please try again or submit a ticket.
+        Please try again or <a href="/account/create">create a new account</a>.
       </div>
     );
   }
@@ -102,7 +102,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
           <LoginField name="username" label="User Name" />
           <LoginField name="password" label="Password" type="password" />
           <div className={styles['submit-container']}>
-            <a href="/account/create">Create Account</a>
+            <a className={styles.link} href="/account/create">Create Account</a>
             <Button
               type="primary"
               attr="submit"
@@ -117,7 +117,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       </Formik>
       <div className={styles.footer}>
         <p>Having trouble logging in?</p>
-        <a href="/account/help">Account Help</a>
+        <a className={styles.link} href="/account/help">Account Help</a>
       </div>
     </div>
   );

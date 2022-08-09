@@ -14,11 +14,9 @@
   align-items: center;
   justify-content: center;
 }
-.root a:not(:focus) {
-  text-decoration-line: none;
-}
-.root a:hover:not(:focus) {
-  text-decoration-line: underline;
+
+.link {
+  composes: c-link--undecorated from 'src/styles/components.css';
 }
 
 .body,
