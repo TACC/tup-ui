@@ -1,0 +1,49 @@
+/*
+Message
+
+Inform user about a temporary status.
+
+- .c-message--info - neither positive nor negative
+- .c-message--success - a positive status
+- .c-message--warning - a minor negative status
+- .c-message--danger - a major negative status
+
+Reference:
+- https://getbootstrap.com/docs/4.0/components/alerts/
+
+Styleguide Components.Message
+*/
+@import url('../settings/color.css');
+
+/* Base */
+
+.c-message {
+  padding: 15px 20px;
+
+  font-size: var(--global-font-size--small);
+}
+
+/* Elements */
+
+.c-message a {
+  color: var(--global-color-primary--xx-dark);
+}
+
+/* Modifiers */
+
+.c-message--info {
+  color: var(--global-color-primary--xx-dark);
+  background-color: var(--global-color-info--normal);
+}
+.c-message--success {
+  color: var(--global-color-primary--xx-dark);
+  background-color: var(--global-color-success--normal);
+}
+.c-message--warning {
+  color: var(--global-color-primary--xx-dark);
+  background-color: var(--global-color-warning--normal);
+}
+.c-message--error {
+  color: var(--global-color-primary--xx-dark);
+  background-color: var(--global-color-danger--normal);
+}
