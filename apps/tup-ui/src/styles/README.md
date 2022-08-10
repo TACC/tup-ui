@@ -2,19 +2,19 @@
 
 These project stylesheets should:
 
-1. be imported by global or component stylesheet(s)
+1. be imported by project or component stylesheet(s)
 2. follow [ITCSS organization](https://confluence.tacc.utexas.edu/x/IAA9Cw) and [CSS style guide](https://confluence.tacc.utexas.edu/x/ZQALBg)
 
 ## Usage Options
 
-### Import from Global Stylesheets
+### Import from Project Stylesheets
 
-Global stylesheets may `@import` project stylesheets, e.g.:
+Project stylesheets may `@import` project stylesheets, e.g.:
 
 **`index.css`**
 
 ```
-@import url('@tacc/core-styles/.../settings/color.css');
+@import url('styles/c-widget.css');
 ```
 
 ### Import from Component Stylesheets
@@ -24,7 +24,7 @@ Component stylesheets may `@import` project stylesheets, e.g.:
 **`components/(.../)SomeProjectComponent.module.css`**
 
 ```
-@import url('@tacc/core-styles/.../tools/media-queries.css');
+@import url('.../styles/media-queries.css');
 
 @media screen and (--short-and-above) and (--medium-and-above) {
   selector {
