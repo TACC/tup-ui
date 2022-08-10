@@ -43,7 +43,7 @@ const LoginError: React.FC<{ status?: number }> = ({ status }) => {
   if (status === 403) {
     return (
       <div className={styles.error}>
-        Sorry, we can't find an account matching that username or password.
+        Sorry, we can't find an account matching those credentials.
         <br />
         Please try again or <a href="/account/create">create a new account</a>.
       </div>

@@ -63,7 +63,7 @@ describe('LoginComponent', () => {
     await waitFor(() =>
       expect(
         getAllByText(
-          /Sorry, we can't find an account matching that username or password\./
+          /Sorry, we can't find an account matching those credentials\./
         ).length
       ).toEqual(1)
     );
