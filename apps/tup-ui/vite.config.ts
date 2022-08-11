@@ -11,7 +11,12 @@ export default defineConfig({
         __dirname,
         '../../libs/core-components/src/index.ts'
       ),
+      '@tacc/core-wrappers': path.resolve(
+        __dirname,
+        '../../libs/core-wrappers/src/index.ts'
+      ),
       '@tacc/core-styles': path.resolve(__dirname, '../../libs/core-styles/'),
+      '@tacc/tup-ui': path.resolve(__dirname, './src'),
     },
   },
   build: {

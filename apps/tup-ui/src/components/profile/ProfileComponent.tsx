@@ -1,5 +1,5 @@
 import React from 'react';
-import { useProfile } from '../hooks';
+import { useProfile } from '../../hooks';
 
 const ProfileComponent: React.FC = () => {
   const profileQuery = useProfile();
