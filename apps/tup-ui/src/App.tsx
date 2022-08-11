@@ -1,47 +1,20 @@
-import { useState } from 'react';
-import { Button, Message } from '@tacc/core-components';
+import { Outlet, Routes, Route } from 'react-router-dom';
+import { PageLayout } from './components/layout';
+import { Sidebar, Dashboard, Login, Logout } from './pages';
+
+const AppLayout = () => {
+  return <PageLayout left={<Sidebar />} right={<Outlet />} />;
+};
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Hello Vite + React!</p>
-        <Message type="warning">Core-Components Message</Message>
-        <p>
-          <Button
-            onClick={() => setCount((count) => count + 1)}
-            size="long"
-            type="primary"
-          >
-            count is: {count}
-          </Button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<AppLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="logout" element={<Logout />} />
+      </Route>
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
 

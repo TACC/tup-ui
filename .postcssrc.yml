@@ -8,3 +8,8 @@ plugins:
       custom-media-queries: true
       media-query-ranges: true
       custom-selectors: true
+      nesting-rules: true
+  postcss-replace:
+    pattern: ../../fonts/
+    data:
+      replaceAll: ../fonts/

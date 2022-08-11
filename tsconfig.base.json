@@ -18,7 +18,8 @@
     "paths": {
       "@tacc/core-components": ["libs/core-components/src/index.ts"],
       "@tacc/core-styles": ["libs/core-styles/src/"],
-      "@tacc/core-wrappers": ["libs/core-wrappers/src/index.ts"]
+      "@tacc/core-wrappers": ["libs/core-wrappers/src/index.ts"],
+      "@tacc/tup-ui/*": ["apps/tup-ui/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
