@@ -18,14 +18,15 @@ Reference:
 
 Styleguide Settings.CustomProperties.Font
 */
+@import url('../generics/fonts.css');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
 
 :root {
   /* Family */
-  /* NOTE: Clients are expected to overwrite these values via their CSS */
-  --global-font-family--sans: sans-serif;
-  --global-font-family--serif: serif;
-  --global-font-family--mono: monospace;
-
+  --global-font-family--sans--cms: "Benton Sans", "Roboto", sans-serif;
+  --global-font-family--sans--portal: "Roboto", sans-serif;
+  --global-font-family--serif: Times, sans-serif;
+  --global-font-family--mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 
   /* Size */
   /* SEE: https://confluence.tacc.utexas.edu/x/nh4FDg */

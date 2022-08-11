@@ -1,0 +1,31 @@
+const mockJwt = {
+  username: 'mockuser',
+  ttl: 315360000,
+  iat: 1658862908,
+  exp: 1974222908,
+  jwt: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VybmFtZSI6Im1vY2t1c2VyIiwidHRsIjozMTUzNjAwMDAsImV4cCI6MTk3NDIyMjkwOCwiaWF0IjoxNjU4ODYyOTA4LCJwcm9maWxlIjp7ImlkIjoxLCJ1c2VybmFtZSI6Im1vY2t1c2VyIiwiZW1haWwiOiJtb2NrQHVzZXIuY29tIiwiZmlyc3ROYW1lIjoibW9jayIsImxhc3ROYW1lIjoidXNlciIsImluc3RpdHV0aW9uIjpudWxsLCJpbnN0aXR1dGlvbklkIjoxLCJkZXBhcnRtZW50IjpudWxsLCJkZXBhcnRtZW50SWQiOm51bGwsImNvdW50cnkiOm51bGwsImNvdW50cnlJZCI6MjMwLCJjaXRpemVuc2hpcCI6bnVsbCwiY2l0aXplbnNoaXBJZCI6bnVsbCwicGlFbGlnaWJpbGl0eSI6IlJlcXVlc3RlZCIsInBob25lIjpudWxsLCJ0aXRsZSI6bnVsbCwidWlkIjpudWxsLCJob21lRGlyZWN0b3J5IjpudWxsLCJnaWQiOm51bGwsImVtYWlsQ29uZmlybWF0aW9ucyI6bnVsbH19.vbufMq1pq4KPsXpWGL73J0i_tz77fAl1vOZAI6AlTbvbwveFEmjifqKSKJC-gC2OLhL_UIvbMXbPgQ67xOwJN4LE0UXgRRmvfK7CRhoKeFIUFynlBkO7Ow-JAMRKjmw6eyl8TbsDcsEHSYRbu4TjE2C5_FTuBOYwdhCqXZxkEoM',
+  profile: {
+    id: 1,
+    username: 'mockuser',
+    email: 'mock@user.com',
+    firstName: 'mock',
+    lastName: 'user',
+    institution: null,
+    institutionId: 1,
+    department: null,
+    departmentId: null,
+    country: null,
+    countryId: 230,
+    citizenship: null,
+    citizenshipId: null,
+    piEligibility: 'Requested',
+    phone: null,
+    title: null,
+    uid: null,
+    homeDirectory: null,
+    gid: null,
+    emailConfirmations: null,
+  },
+};
+
+export default mockJwt;
