@@ -14,6 +14,10 @@ type LoginInfo = {
   password: string;
 };
 
+type LoginProps = {
+  className?: string;
+};
+
 type LoginFieldProps = {
   name: string;
   label: string;
@@ -24,12 +28,7 @@ const LoginField: React.FC<LoginFieldProps> = ({ name, label, type }) => {
   // Matt does not want these form stylings to be global
   return (
     <div className={styles['form-field']}>
-      <Label
-        className={styles['form-field__label']}
-        size="sm"
-        style={{ display: 'flex', alignItems: 'center' }}
-        htmlFor={name}
-      >
+      <Label className={styles['form-field__label']} size="sm" htmlFor={name}>
         {label}
       </Label>
       <Field name={name} id={name} type={type} />
@@ -44,9 +43,9 @@ const LoginError: React.FC<{ status?: number }> = ({ status }) => {
   if (status === 403) {
     return (
       <div className={styles.error}>
-        Sorry. We can't find an account with a username and matching password.
+        Sorry, we can't find an account matching those credentials.
         <br />
-        Please try again or submit a ticket.
+        Please try again or <a href="/account/create">create a new account</a>.
       </div>
     );
   }
@@ -58,7 +57,7 @@ const LoginError: React.FC<{ status?: number }> = ({ status }) => {
   );
 };
 
-const LoginComponent: React.FC = () => {
+const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = (location.state as { from?: Location })?.from?.pathname || '/';
@@ -87,13 +86,11 @@ const LoginComponent: React.FC = () => {
   const status = (error as AxiosError)?.response?.status;
 
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root} ${className}`}>
       <div className={styles.title}>
         <img src={blackLogo} className={styles.logo} alt="TACC Logo" />
-        <h2>Log In</h2>
-        <div className={styles.subtitle}>
-          to continue to the TACC User Portal
-        </div>
+        <h3>Log In</h3>
+        <p className={styles.subtitle}>to continue to the TACC User Portal</p>
       </div>
       <LoginError status={status} />
       <Formik
@@ -105,7 +102,9 @@ const LoginComponent: React.FC = () => {
           <LoginField name="username" label="User Name" />
           <LoginField name="password" label="Password" type="password" />
           <div className={styles['submit-container']}>
-            <div>Create Account</div>
+            <a className={styles.link} href="/account/create">
+              Create Account
+            </a>
             <Button
               type="primary"
               attr="submit"
@@ -119,8 +118,10 @@ const LoginComponent: React.FC = () => {
         </Form>
       </Formik>
       <div className={styles.footer}>
-        <div>Having trouble logging in?</div>
-        <div>Account Help</div>
+        <p>Having trouble logging in?</p>
+        <a className={styles.link} href="/account/help">
+          Account Help
+        </a>
       </div>
     </div>
   );

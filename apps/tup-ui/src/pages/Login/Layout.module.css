@@ -2,23 +2,57 @@
 @import url('@tacc/core-styles/dist/settings/space.css');
 @import url('@tacc/core-styles/dist/settings/font.css');
 
+@import url('@tacc/core-styles/dist/elements/bootstrap.css');
+@import url('@tacc/core-styles/dist/elements/html-elements.cms.css');
+
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
 .root {
   background-color: var(--global-color-primary--light);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+}
+
+.link {
+  composes: c-link--undecorated from 'src/styles/components.css';
+}
+
+.body,
+.footer {
+  width: 100%;
+  max-width: 630px;
+}
+
+.body {
+  padding: 50px;
+
+  border: var(--global-border--normal);
+  border-color: var(--global-color-primary--dark);
+  background-color: var(--global-color-primary--xx-light);
+
+  /* To remove left+right borders when form hits page edge */
+  @media (width <= 630px) {
+    border-inline: 0;
+  }
 }
 
 .footer {
   display: flex;
-  width: 621px;
-  justify-content: flex-end;
-  padding-top: var(--global-space--large);
-  font-family: var(--global-font-family--sans);
-}
+  gap: 1.5em;
+  margin-top: var(--global-space--normal);
 
-.footer > div {
-  padding-left: var(--global-space--x-large);
+  font-size: var(--global-font-size--x-small);
+  font-weight: var(--bold);
+
+  @media (--narrow-and-below) {
+    justify-content: center;
+  }
+  @media (--narrow-and-above) {
+    justify-content: flex-end;
+  }
+}
+.footer a {
+  color: var(--global-color-primary--x-dark);
 }

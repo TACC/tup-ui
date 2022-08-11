@@ -1,38 +1,58 @@
 @import url('@tacc/core-styles/dist/settings/border.css');
+@import url('@tacc/core-styles/dist/settings/color.css');
 @import url('@tacc/core-styles/dist/settings/space.css');
 @import url('@tacc/core-styles/dist/settings/font.css');
 
+@import url('@tacc/core-styles/dist/elements/form.cms.css');
+
+
+
+/* CONTAINER */
+
 .root {
-  width: 507px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 47px 55px 36px 55px;
-  border: var(--global-border--normal);
-  border-color: var(--global-color-primary--dark);
-  font-family: var(--global-font-family--serif);
-  background-color: var(--global-color-primary--xx-light);
+  box-sizing: border-box;
 }
 
+
+
+/* LINKS */
+
+.link {
+  composes: c-link--undecorated from 'src/styles/components.css';
+
+  font-weight: var(--medium);
+}
+
+
+
+/* TITLE */
+
 .title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 
 .logo {
-  height: 73px;
-  width: 186 px;
+  display: block; /* to collapse margins with heading */
+  margin-inline: auto; /* to re-center image */
+  height: 75px;
   margin-bottom: 45px;
 }
 
 .subtitle {
-  margin-bottom: var(--global-space--large);
+  color: var(--global-color-primary--xx-dark);
+  font-weight: var(--medium); /* mimics value--not appearance--from design */
+  margin-block: 25px; /* mimics core-cms django.cms.forms.css .description */
 }
 
+
+
+/* FORM */
+
 .form {
-  font-family: var(--global-font-family--sans);
-  margin-bottom: var(--global-space--large);
+  margin-bottom: 35px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -43,33 +63,23 @@
   flex-direction: column;
   align-items: stretch;
   color: var(--global-color-primary--x-dark);
-  margin-bottom: 12px;
-}
-
-.form-field > * {
-  margin-bottom: 12px;
+  margin-bottom: 2rem;
 }
 
 .form-field input {
-  border: var(--global-border--normal);
-  border-color: var(--global-color-primary--dark);
-  font-size: var(--global-font-size-medium);
-  padding: 12px 12px 12px 12px;
+  padding: 12px 12px 12px 12px; /* overwrites core-styles form.cms.css */
 }
 
-.form-field__label {
-  font-size: 12px;
-}
-
+/* mimics core-cms django.cms.forms.css .help-text */
 .form-field__help {
-  font-size: 12px;
+  font-size: var(--global-font-size--small);
   font-style: italic;
-  font-weight: 400;
+  margin-top: 0.3em;
 }
+
 
 .submit {
-  font-size: var(--global-font-size--x-small);
-  font-family: var(--global-font-family--serif);
+  font-size: var(--global-font-size--medium); /* mimics core-cms c-button.css */
   padding-top: 12px;
   padding-bottom: 12px;
 }
@@ -78,29 +88,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--global-font-family--serif);
+
+  margin-top: 15px;
 }
+
+
+
+/* FOOTER */
 
 .footer {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: var(--global-space--small);
-  margin-bottom: var(--global-space--x-small);
+  gap: 12px;
+}
+.footer > p {
+  margin-block: 0; /* overwrite browser */
 }
 
-.footer > div {
-  margin-bottom: var(--global-space--small)
-}
 
+/* ERRORS */
+
+/* mimics core-cms django.cms.forms.css .field-errors */
 .error {
-  background-color: var(--global-color-danger--normal);
-  color: var(--global-color-primary--x-light);
-  font-family: var(--global-font-family--sans);
-  font-size: 14px;
-  padding-top: var(--global-space--normal);
-  padding-left: var(--global-space--normal);
-  padding-right: var(--global-space--normal);
-  padding-bottom: var(--global-space--normal);
-  margin-bottom: var(--global-space--normal);
+  composes: c-message from '@tacc/core-styles/dist/components/c-message.css';
+  composes: c-message--error from '@tacc/core-styles/dist/components/c-message.css';
+
+  margin-bottom: 2rem;
+}
+
+/* when (the only known) error would wrap, move all lines to one line */
+@media screen and (max-width: 435px) {
+  .error br { content: ""; } /* remove new line */
+  .error br::after { content: " "; } /* add space */
 }
