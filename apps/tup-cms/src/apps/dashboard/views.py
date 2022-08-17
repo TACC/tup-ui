@@ -7,7 +7,7 @@ from django.conf import settings
 
 def AddedView(request):
     if settings.DEBUG:
-        template = loader.get_template('custom_example/custom_example.debug.html')
+        template = loader.get_template('dashboard/dashboard.debug.html')
     else:
-        template = loader.get_template('custom_example/custom_example.html')
+        template = loader.get_template('dashboard/dashboard.html')
     return HttpResponse(template.render({}, request))
