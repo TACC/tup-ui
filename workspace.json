@@ -6,6 +6,7 @@
     "core-styles": "libs/core-styles",
     "core-wrappers": "libs/core-wrappers",
     "tup-ui": "apps/tup-ui",
-    "ui-patterns": "apps/ui-patterns"
+    "ui-patterns": "apps/ui-patterns",
+    "tup-cms": "apps/tup-cms"
   }
 }
