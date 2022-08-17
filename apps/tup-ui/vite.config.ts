@@ -5,7 +5,7 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/static/",
+  base: '/static/',
   resolve: {
     alias: {
       '@tacc/core-components': path.resolve(
@@ -24,8 +24,8 @@ export default defineConfig({
     outDir: path.resolve(__dirname, '../../dist/apps/tup-ui'),
     rollupOptions: {
       input: {
-        imports: path.resolve(__dirname,  'imports.html')
-      }
-    }
+        imports: path.resolve(__dirname, 'imports.html'),
+      },
+    },
   },
 });

@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   cms:
     build:
@@ -6,7 +6,7 @@ services:
       dockerfile: apps/tup-cms/Dockerfile
     ports:
       - 8000:8000
-    command: ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+    command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
     container_name: tup_cms
     hostname: tup_cms
     volumes:

@@ -5,8 +5,8 @@
     "core-components": "libs/core-components",
     "core-styles": "libs/core-styles",
     "core-wrappers": "libs/core-wrappers",
+    "tup-cms": "apps/tup-cms",
     "tup-ui": "apps/tup-ui",
-    "ui-patterns": "apps/ui-patterns",
-    "tup-cms": "apps/tup-cms"
+    "ui-patterns": "apps/ui-patterns"
   }
 }

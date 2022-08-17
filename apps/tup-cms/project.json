@@ -1,49 +1,49 @@
 {
-    "root": "apps/tup-cms/",
-    "sourceRoot": "apps/tup-cms/src/",
-    "projectType": "application",
-    "targets": {
-        "build": {
-            "executor": "nx:run-commands",
-            "options": {
-                "commands": [
-                    "npx nx build tup-ui",
-                    "docker-compose -f docker-compose.dev.yml build"
-                ],
-                "cwd": "apps/tup-cms",
-                "parallel": false
-            }
-        },
-        "serve": {
-            "executor": "nx:run-commands",
-            "options": {
-                "commands": [
-                    "docker-compose -f docker-compose.dev.yml stop",
-                    "docker-compose -f docker-compose.dev.yml up"
-                ],
-                "cwd": "apps/tup-cms",
-                "parallel": false
-            }
-        },
-        "down": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "docker-compose -f docker-compose.dev.yml down",
-                "cwd": "apps/tup-cms"
-            }
-        },
-        "push": {
-            "dependsOn": ["^build"],
-            "executor": "nx:run-commands",
-            "options": {
-                "commands": [
-                    {"command": "npx nx build tup-ui", "forwardAllArgs": false},
-                    "docker build -t gitlab.tacc.utexas.edu:5005/tup-cms/tup-cms-deploy:{args.tag} -f Dockerfile ../../",
-                    "docker push gitlab.tacc.utexas.edu:5005/tup-cms/tup-cms-deploy:{args.tag}"
-                    ],
-                "cwd": "apps/tup-cms",
-                "parallel": false
-            }
-        }
+  "root": "apps/tup-cms/",
+  "sourceRoot": "apps/tup-cms/src/",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx nx build tup-ui",
+          "docker-compose -f docker-compose.dev.yml build"
+        ],
+        "cwd": "apps/tup-cms",
+        "parallel": false
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "docker-compose -f docker-compose.dev.yml stop",
+          "docker-compose -f docker-compose.dev.yml up"
+        ],
+        "cwd": "apps/tup-cms",
+        "parallel": false
+      }
+    },
+    "down": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker-compose -f docker-compose.dev.yml down",
+        "cwd": "apps/tup-cms"
+      }
+    },
+    "push": {
+      "dependsOn": ["^build"],
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          { "command": "npx nx build tup-ui", "forwardAllArgs": false },
+          "docker build -t gitlab.tacc.utexas.edu:5005/tup-cms/tup-cms-deploy:{args.tag} -f Dockerfile ../../",
+          "docker push gitlab.tacc.utexas.edu:5005/tup-cms/tup-cms-deploy:{args.tag}"
+        ],
+        "cwd": "apps/tup-cms",
+        "parallel": false
+      }
     }
+  }
 }

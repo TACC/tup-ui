@@ -1,10 +1,10 @@
 {% extends "base.html" %} {% block content %}
 <div id="root" class="o-site"></div>
 <script>
-      window.__TUP_CONFIG__ = {
-        baseUrl: 'https://dev.tup-services.tacc.utexas.edu',
-      };
-  </script>
+  window.__TUP_CONFIG__ = {
+    baseUrl: 'https://dev.tup-services.tacc.utexas.edu',
+  };
+</script>
 <script type="module">
   import RefreshRuntime from 'http://localhost:3000/@react-refresh';
   RefreshRuntime.injectIntoGlobalHook(window);
@@ -12,12 +12,6 @@
   window.$RefreshSig$ = () => (type) => type;
   window.__vite_plugin_react_preamble_installed__ = true;
 </script>
-<script
-  type="module"
-  src="http://localhost:3000/@vite/client"
-></script>
-<script
-  type="module"
-  src="http://localhost:3000/src/main.tsx"
-></script>
+<script type="module" src="http://localhost:3000/@vite/client"></script>
+<script type="module" src="http://localhost:3000/src/main.tsx"></script>
 {%endblock %}
