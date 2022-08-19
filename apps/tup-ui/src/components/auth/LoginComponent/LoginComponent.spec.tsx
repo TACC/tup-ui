@@ -28,6 +28,9 @@ describe('LoginComponent', () => {
     await waitFor(() => expect(getAllByText(/Log In/)).toBeTruthy());
   });
   it('should perform a login', async () => {
+    Object.defineProperty(window, 'location', {
+      value: { replace: mockNavigate },
+    });
     const { getByLabelText, getByRole } = testRender(<LoginComponent />);
     const username = getByLabelText(/User Name/);
     const password = getByLabelText(/Password/);

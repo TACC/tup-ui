@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useLocation, Location, useNavigate } from 'react-router-dom';
+import { useLocation, Location } from 'react-router-dom';
 import { useAuth } from '../../../hooks';
 import { Formik, Form, Field } from 'formik';
 import { Label } from 'reactstrap';
@@ -58,12 +58,11 @@ const LoginError: React.FC<{ status?: number }> = ({ status }) => {
 };
 
 const LoginComponent: React.FC<LoginProps> = ({ className }) => {
-  const navigate = useNavigate();
   const location = useLocation();
   const from = (location.state as { from?: Location })?.from?.pathname || '/';
   const authCallback = useCallback(() => {
-    navigate(from, { replace: true });
-  }, [from, navigate]);
+    window.location.replace(`/dashboard${from}`);
+  }, [from]);
   const { login, error, isLoading } = useAuth();
 
   const validationSchema = Yup.object({
