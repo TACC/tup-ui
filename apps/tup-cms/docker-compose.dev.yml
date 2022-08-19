@@ -18,7 +18,7 @@ services:
       - ./src/taccsite_cms/settings_local.py:/code/taccsite_cms/settings_local.py
       - ./src/taccsite_cms/secrets.py:/code/taccsite_cms/secrets.py
       - ../../dist/apps/tup-ui/imports.html:/code/taccsite_cms/templates/imports.html
-      - ../../dist/apps/tup-ui/assets:/code/taccsite_cms/static/assets
+      - ../../apps/tup-ui/src/assets:/code/taccsite_cms/static/src/assets
     networks:
       - tup_cms_net
 

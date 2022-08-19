@@ -20,6 +20,12 @@ export default defineConfig({
       '@tacc/tup-ui': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    port: 3000,
+    hmr: {
+      port: 3000
+    }
+  },
   build: {
     outDir: path.resolve(__dirname, '../../dist/apps/tup-ui'),
     rollupOptions: {
