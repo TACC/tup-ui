@@ -7,6 +7,11 @@ from django.contrib.auth import authenticate, login
 
 
 def LoginView(request):
+    user = authenticate(request)
+    if user:
+        login(request, user)
+        return redirect(request.GET.get('from', '/dashboard'))
+
     if settings.DEBUG:
         template = loader.get_template('dashboard/dashboard.debug.html')
     else:
@@ -14,11 +19,14 @@ def LoginView(request):
     resp = HttpResponse(template.render({'baseUrl': settings.TUP_SERVICES_URL}, request))
     return resp
 
-def RestrictedView(request):
+
+def DashboardView(request):
     user = authenticate(request)
     if user is None:
-        return redirect('/dashboard/login')
+        from_path = request.path
+        return redirect(f'/dashboard/login?from={from_path}')
     login(request, user)
+
     if settings.DEBUG:
         template = loader.get_template('dashboard/dashboard.debug.html')
     else:

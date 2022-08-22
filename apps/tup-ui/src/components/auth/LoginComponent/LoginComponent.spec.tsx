@@ -1,6 +1,6 @@
 import LoginComponent from './LoginComponent';
 import { testRender } from '../../../utils';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { fireEvent, act, waitFor } from '@testing-library/react';
 import { server } from '../../../mocks/server';
 import { rest } from 'msw';
@@ -22,6 +22,10 @@ describe('LoginComponent', () => {
       jwt: undefined,
       isLoading: false,
     });
+    (useSearchParams as jest.Mock).mockReturnValue([
+      { get: () => '' },
+      jest.fn(),
+    ]);
   });
   it('should render login component if not logged in', async () => {
     const { getAllByText } = testRender(<LoginComponent />);
