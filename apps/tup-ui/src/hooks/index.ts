@@ -55,6 +55,46 @@ export type AuthBody = {
   password: string;
 };
 
+export type SysmonHost = {
+  hostname: string;
+  displayName: string;
+  ssh: {
+    type: string;
+    status: boolean;
+    timestamp: string;
+  }
+  tests: {
+    heartbeat: {
+      type: string;
+      status: boolean;
+      timestamp: string;
+    }
+    ssh: {
+      type: string;
+      status: boolean;
+      timestamp: string;
+    }
+  }
+  timestamp: string;
+  jobs: {
+    running: number;
+    queued: number;
+    other: number;
+  }
+  totalCpu: number;
+  usedCpu: number;
+  load: number;
+  heartbeat: {
+    type: string;
+    status: boolean;
+    timestamp: string;
+  }
+}
+
+export type SystemMonitor = {
+  [hostname: string]: SysmonHost;
+}
+
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';

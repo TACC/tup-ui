@@ -29,7 +29,10 @@ const useAuth = () => {
   );
 
   // Use the post hook with the auth endpoint and the callback
-  const mutation = usePost<AuthBody, AuthResponse>('/auth', { onSuccess });
+  const mutation = usePost<AuthBody, AuthResponse>({
+    endpoint: '/auth',
+    options: { onSuccess },
+  });
 
   // Rename some of the default react-query functions to be meaningful to this hook's functions
   const { mutate: login, ...extra } = mutation;
