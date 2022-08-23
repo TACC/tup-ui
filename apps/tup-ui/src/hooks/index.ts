@@ -55,45 +55,57 @@ export type AuthBody = {
   password: string;
 };
 
-export type SysmonHost = {
+
+export type SystemMonitorTest = {
+  type: string;
+  status: boolean;
+  timestamp: string;
+}
+
+export type SystemMonitorRawSystem = {
   hostname: string;
   displayName: string;
-  ssh: {
-    type: string;
-    status: boolean;
-    timestamp: string;
-  }
-  tests: {
-    heartbeat: {
-      type: string;
-      status: boolean;
-      timestamp: string;
-    }
-    ssh: {
-      type: string;
-      status: boolean;
-      timestamp: string;
-    }
-  }
+  ssh?: SystemMonitorTest;
+  tests?: {
+    heartbeat?: SystemMonitorTest;
+    ssh?: SystemMonitorTest;
+  };
   timestamp: string;
-  jobs: {
+  jobs?: {
     running: number;
     queued: number;
     other: number;
-  }
+  };
   totalCpu: number;
   usedCpu: number;
   load: number;
-  heartbeat: {
-    type: string;
-    status: boolean;
-    timestamp: string;
-  }
-}
+  heartbeat?: SystemMonitorTest;
+};
 
-export type SystemMonitor = {
-  [hostname: string]: SysmonHost;
-}
+export type SystemMonitorRaw = {
+  [hostname: string]: SystemMonitorRawSystem;
+};
+
+export type SystemMonitorSystem = {
+  hostname: string;
+  display_name: string;
+  is_operational?: boolean;
+  load_percentage?: number;
+  jobs?: {
+    running: number;
+    queued: number;
+    other: number;
+  };
+  status_tests?: {
+    ssh?: SystemMonitorTest;
+    heartbeat?: SystemMonitorTest;
+  };
+  ssh?: SystemMonitorTest;
+  heartbeat?: SystemMonitorTest;
+  resource_type?: 'compute' | 'storage';
+  cpu_count?: number;
+  cpu_used?: number;
+};
 
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
