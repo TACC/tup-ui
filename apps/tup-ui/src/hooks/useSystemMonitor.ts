@@ -6,7 +6,7 @@ import { useGet } from './requests';
 
 const getSystemDisplayName = (hostname: string): string => {
   const first = hostname.split('.')[0];
-  return first.charAt(0).toUpperCase + first.slice(1);
+  return first.charAt(0).toUpperCase() + first.slice(1);
 }
 
 const getSystemType = (rawSystem: SystemMonitorRawSystem): 'compute' | 'storage' =>
@@ -43,11 +43,12 @@ type UseSystemMonitorResult = {
 const useSystemMonitor = (systemList: Array<string> = ['frontera.tacc.utexas.edu', 'stampede2.tacc.utexas.edu',
 'maverick2.tacc.utexas.edu', 'longhorn.tacc.utexas.edu']): UseSystemMonitorResult => {
   const query = useGet<SystemMonitorRaw>({
-    endpoint: '/sysmon/index.json',
+    endpoint: '/sysmon',
     key: 'sysmon',
     baseUrl: 'http://localhost',
   });
   const { data, ...otherProps } = query;
+  console.log("QUERY DATA", data);
   const systems = useMemo<Array<SystemMonitorSystem>>(
     () => {
       const result: Array<SystemMonitorSystem> = [];
@@ -87,6 +88,7 @@ const useSystemMonitor = (systemList: Array<string> = ['frontera.tacc.utexas.edu
               jobs: rawSystem.jobs
             }
           }
+          result.push(sysmonSystem);
         }
       )
       return result;

@@ -36,6 +36,12 @@ const SystemMonitor = () => {
     ],
     []
   );
+  const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
+  useTable({
+    columns,
+    data: systems,
+  });
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -48,11 +54,7 @@ const SystemMonitor = () => {
     );
   }
 
-  const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
-    useTable({
-      columns,
-      data: systems,
-    });
+
   return (
     <table
       {...getTableProps()}
