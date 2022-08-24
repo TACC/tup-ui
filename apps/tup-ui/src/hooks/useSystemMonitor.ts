@@ -48,7 +48,7 @@ type UseSystemMonitorResult = {
 
 // Query to retrieve the user's profile object.
 const useSystemMonitor = (
-  systemList: Array<string> = [
+  hosts: Array<string> = [
     'frontera.tacc.utexas.edu',
     'stampede2.tacc.utexas.edu',
     'maverick2.tacc.utexas.edu',
@@ -63,11 +63,11 @@ const useSystemMonitor = (
   const { data } = query;
   const systems = useMemo<Array<SystemMonitorSystem>>(() => {
     const result: Array<SystemMonitorSystem> = [];
-    systemList.forEach((system) => {
-      if (!data?.[system]) {
+    hosts.forEach((host) => {
+      if (!data?.[host]) {
         result.push({
-          hostname: system,
-          display_name: getSystemDisplayName(system),
+          hostname: host,
+          display_name: getSystemDisplayName(host),
           is_operational: false,
           load_percentage: 0,
           jobs: {
@@ -78,7 +78,7 @@ const useSystemMonitor = (
         });
         return;
       }
-      const rawSystem = data[system];
+      const rawSystem = data[host];
       const isCompute = getSystemType(rawSystem) === 'compute';
       result.push({
         hostname: rawSystem.hostname,

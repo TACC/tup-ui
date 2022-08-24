@@ -88,7 +88,7 @@ export type SystemMonitorRaw = {
 export type SystemMonitorSystem = {
   hostname: string;
   display_name: string;
-  is_operational?: boolean;
+  is_operational: boolean;
   load_percentage?: number;
   jobs?: {
     running: number;

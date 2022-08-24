@@ -1,14 +1,13 @@
 import React, { useMemo, useEffect } from 'react';
-import { useTable } from 'react-table';
+import { useTable, Column } from 'react-table';
 import { LoadingSpinner, Message } from '@tacc/core-components';
 import { Display, Operational, Load } from './SystemMonitorCells';
-import { useSystemMonitor } from '@tacc/tup-ui/hooks';
-
+import { SystemMonitorSystem, useSystemMonitor } from '@tacc/tup-ui/hooks';
 import styles from './SystemMonitor.module.css';
 
-const SystemMonitor = () => {
-  const { systems, isLoading, error } = useSystemMonitor();
-  const columns = useMemo(
+const SystemMonitor: React.FC<{ hosts?: Array<string>}> = ({ hosts }) => {
+  const { systems, isLoading, error } = useSystemMonitor(hosts);
+  const columns = useMemo<Column<SystemMonitorSystem>[]>(
     () => [
       {
         accessor: 'display_name',
@@ -68,7 +67,7 @@ const SystemMonitor = () => {
             className={styles['header']}
           >
             {headerGroup.headers.map((column) => (
-              <th key={column.Header}>{column.render('Header')}</th>
+              <th key={column.id}>{column.render('Header')}</th>
             ))}
           </tr>
         ))}
@@ -80,7 +79,7 @@ const SystemMonitor = () => {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => (
-                  <td {...cell.getCellProps({ test: cell.column.testProp })}>
+                  <td {...cell.getCellProps()}>
                     {cell.render('Cell')}
                   </td>
                 ))}
@@ -89,7 +88,7 @@ const SystemMonitor = () => {
           })
         ) : (
           <tr>
-            <td colSpan="5">No systems being monitored</td>
+            <td colSpan={5}>No systems being monitored</td>
           </tr>
         )}
       </tbody>
