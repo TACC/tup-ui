@@ -68,8 +68,8 @@ const useSystemMonitor = (
         result.push({
           hostname: host,
           display_name: getSystemDisplayName(host),
-          is_operational: false,
-          load_percentage: 0,
+          isOperational: false,
+          loadPercentage: 0,
           jobs: {
             running: 0,
             queued: 0,
@@ -83,8 +83,8 @@ const useSystemMonitor = (
       result.push({
         hostname: rawSystem.hostname,
         display_name: rawSystem.displayName,
-        is_operational: isSystemUp(rawSystem),
-        load_percentage: isCompute ? rawSystem.load * 100 : undefined,
+        isOperational: isSystemUp(rawSystem),
+        loadPercentage: isCompute ? rawSystem.load * 100 : undefined,
         jobs: isCompute ? rawSystem.jobs : undefined,
       });
     });

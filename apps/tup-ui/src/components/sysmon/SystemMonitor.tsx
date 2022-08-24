@@ -5,7 +5,7 @@ import { Display, Operational, Load } from './SystemMonitorCells';
 import { SystemMonitorSystem, useSystemMonitor } from '@tacc/tup-ui/hooks';
 import styles from './SystemMonitor.module.css';
 
-const SystemMonitor: React.FC<{ hosts?: Array<string>}> = ({ hosts }) => {
+const SystemMonitor: React.FC<{ hosts?: Array<string> }> = ({ hosts }) => {
   const { systems, isLoading, error } = useSystemMonitor(hosts);
   const columns = useMemo<Column<SystemMonitorSystem>[]>(
     () => [
@@ -15,12 +15,12 @@ const SystemMonitor: React.FC<{ hosts?: Array<string>}> = ({ hosts }) => {
         Cell: Display,
       },
       {
-        accessor: 'is_operational',
+        accessor: 'isOperational',
         Header: 'Status',
         Cell: Operational,
       },
       {
-        accessor: 'load_percentage',
+        accessor: 'loadPercentage',
         Header: 'Load',
         Cell: Load,
       },
@@ -79,9 +79,7 @@ const SystemMonitor: React.FC<{ hosts?: Array<string>}> = ({ hosts }) => {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()}>
-                    {cell.render('Cell')}
-                  </td>
+                  <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 ))}
               </tr>
             );
