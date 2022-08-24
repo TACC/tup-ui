@@ -2,13 +2,12 @@ import React, { useMemo, useEffect } from 'react';
 import { useTable } from 'react-table';
 import { LoadingSpinner, Message } from '@tacc/core-components';
 import { Display, Operational, Load } from './SystemMonitorCells';
+import { useSystemMonitor } from '@tacc/tup-ui/hooks';
 
-import styles from './SystemMonitor.module.scss';
+import styles from './SystemMonitor.module.css';
 
-const SystemsList = () => {
-  const systemList = useSelector((state) => state.systemMonitor.list);
-  const loadingError = useSelector((state) => state.systemMonitor.error);
-  const data = useMemo(() => systemList, []);
+const SystemMonitor = () => {
+  const { systems, isLoading, error } = useSystemMonitor();
   const columns = useMemo(
     () => [
       {
@@ -37,8 +36,11 @@ const SystemsList = () => {
     ],
     []
   );
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
-  if (loadingError) {
+  if (error) {
     return (
       <Message type="warn" className={styles['error']}>
         Unable to gather system information
@@ -49,7 +51,7 @@ const SystemsList = () => {
   const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
     useTable({
       columns,
-      data,
+      data: systems,
     });
   return (
     <table
@@ -94,16 +96,4 @@ const SystemsList = () => {
   );
 };
 
-const SystemMonitorView = () => {
-  const { loading } = useSelector((state) => state.systemMonitor);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({ type: 'GET_SYSTEM_MONITOR' });
-  }, [dispatch]);
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-  return <SystemsList />;
-};
-
-export default SystemMonitorView;
+export default SystemMonitor;
