@@ -14,7 +14,7 @@ const getSystemDisplayName = (hostname: string): string => {
 
 const getSystemType = (
   rawSystem: SystemMonitorRawSystem
-): 'compute' | 'storage' => (!!rawSystem.jobs ? 'compute' : 'storage');
+): 'compute' | 'storage' => (rawSystem.jobs ? 'compute' : 'storage');
 
 const wasUpdatedRecently = (timestamp: string): boolean => {
   const updated = new Date(timestamp).getTime();
@@ -90,7 +90,7 @@ const useSystemMonitor = (
       });
     });
     return result;
-  }, [data]);
+  }, [data, hosts]);
   return { systems, ...query };
 };
 

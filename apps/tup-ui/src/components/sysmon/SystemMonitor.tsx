@@ -1,8 +1,8 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useTable, Column } from 'react-table';
 import { LoadingSpinner, Message } from '@tacc/core-components';
 import { Display, Operational, Load } from './SystemMonitorCells';
-import { SystemMonitorSystem, useSystemMonitor } from '@tacc/tup-ui/hooks';
+import { SystemMonitorSystem, useSystemMonitor } from '../../hooks';
 import styles from './SystemMonitor.module.css';
 
 const SystemMonitor: React.FC<{ hosts?: Array<string> }> = ({ hosts }) => {
