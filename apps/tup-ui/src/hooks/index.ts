@@ -55,12 +55,11 @@ export type AuthBody = {
   password: string;
 };
 
-
 export type SystemMonitorTest = {
   type: string;
   status: boolean;
   timestamp: string;
-}
+};
 
 export type SystemMonitorRawSystem = {
   hostname: string;
@@ -96,15 +95,6 @@ export type SystemMonitorSystem = {
     queued: number;
     other: number;
   };
-  status_tests?: {
-    ssh?: SystemMonitorTest;
-    heartbeat?: SystemMonitorTest;
-  };
-  ssh?: SystemMonitorTest;
-  heartbeat?: SystemMonitorTest;
-  resource_type?: 'compute' | 'storage';
-  cpu_count?: number;
-  cpu_used?: number;
 };
 
 export { default as useAuth } from './useAuth';
