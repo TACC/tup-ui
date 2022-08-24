@@ -58,6 +58,7 @@ const useSystemMonitor = (
   const query = useGet<SystemMonitorRaw>({
     endpoint: '/sysmon',
     key: 'sysmon',
+    // alternate baseUrl until https://github.com/TACC/tup-services/pull/13 (system monitor nginx) has been deployed
     baseUrl: 'http://localhost',
   });
   const { data } = query;
