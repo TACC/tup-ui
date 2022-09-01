@@ -4,6 +4,7 @@ from django.template import loader
 from django.shortcuts import redirect
 from django.conf import settings
 from django.contrib.auth import authenticate, login
+from apps.dashboard.decorators import tup_login_required
 
 
 def LoginView(request):
@@ -20,13 +21,8 @@ def LoginView(request):
     return resp
 
 
+@tup_login_required()
 def DashboardView(request):
-    user = authenticate(request)
-    if user is None:
-        from_path = request.path
-        return redirect(f'/dashboard/login?from={from_path}')
-    login(request, user)
-
     if settings.DEBUG:
         template = loader.get_template('dashboard/dashboard.debug.html')
     else:
