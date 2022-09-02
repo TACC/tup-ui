@@ -2,7 +2,6 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/tup-ui/src",
   "projectType": "application",
-  "implicitDependencies": ["core-styles"],
   "targets": {
     "serve": {
       "executor": "nx:run-commands",
