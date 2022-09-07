@@ -22,7 +22,7 @@ const wasUpdatedRecently = (timestamp: string): boolean => {
   return now - 600000 > updated;
 };
 
-const isSystemUp = (rawSystem: SystemMonitorRawSystem): boolean => {
+const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
   if (getSystemType(rawSystem) === 'compute') {
     if (!rawSystem.load || !rawSystem.jobs) {
       return false;
@@ -82,7 +82,7 @@ const useSystemMonitor = (
       result.push({
         hostname: rawSystem.hostname,
         display_name: rawSystem.displayName,
-        isOperational: isSystemUp(rawSystem),
+        isOperational: !isSystemDown(rawSystem),
         loadPercentage: isCompute ? rawSystem.load * 100 : undefined,
         jobs: isCompute ? rawSystem.jobs : undefined,
       });
