@@ -28,7 +28,7 @@ describe('requests', () => {
       }
     );
     await waitFor(() => expect(result.current.data).toEqual('response'));
-    expect(axios.get).toHaveBeenCalledWith('http://localhost/endpoint', {
+    expect(axios.get).toHaveBeenCalledWith('http://localhost:8001/endpoint', {
       headers: { 'x-tup-token': 'abc123' },
     });
   });
@@ -50,7 +50,7 @@ describe('requests', () => {
     act(() => result.current.mutate('body'));
     await waitFor(() => expect(result.current.data).toEqual('response'));
     expect(axios.post).toHaveBeenCalledWith(
-      'http://localhost/endpoint',
+      'http://localhost:8001/endpoint',
       'body',
       { headers: { 'x-tup-token': 'abc123' } }
     );
