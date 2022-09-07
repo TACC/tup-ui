@@ -5,7 +5,7 @@ import { useGet } from './requests';
 // Query to retrieve the user's profile object.
 const useProfile = (): UseQueryResult<UserProfile> => {
   const query = useGet<UserProfile>({
-    endpoint: '/auth/profile',
+    endpoint: '/users/profile',
     key: 'profile',
   });
   return query;
