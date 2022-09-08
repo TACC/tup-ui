@@ -21,11 +21,14 @@ describe('requests', () => {
 
     jest.spyOn(axios, 'get').mockResolvedValue({ data: 'response' });
 
-    const { result } = renderHook(() => useGet<string>('/endpoint', 'key'), {
-      wrapper: TestWrapper,
-    });
+    const { result } = renderHook(
+      () => useGet<string>({ endpoint: '/endpoint', key: 'key' }),
+      {
+        wrapper: TestWrapper,
+      }
+    );
     await waitFor(() => expect(result.current.data).toEqual('response'));
-    expect(axios.get).toHaveBeenCalledWith('http://localhost:8000/endpoint', {
+    expect(axios.get).toHaveBeenCalledWith('http://localhost:8001/endpoint', {
       headers: { 'x-tup-token': 'abc123' },
     });
   });
@@ -38,13 +41,16 @@ describe('requests', () => {
     (axios.post as jest.Mock).mockResolvedValue({
       data: 'response',
     });
-    const { result } = renderHook(() => usePost<string, string>('/endpoint'), {
-      wrapper: TestWrapper,
-    });
+    const { result } = renderHook(
+      () => usePost<string, string>({ endpoint: '/endpoint' }),
+      {
+        wrapper: TestWrapper,
+      }
+    );
     act(() => result.current.mutate('body'));
     await waitFor(() => expect(result.current.data).toEqual('response'));
     expect(axios.post).toHaveBeenCalledWith(
-      'http://localhost:8000/endpoint',
+      'http://localhost:8001/endpoint',
       'body',
       { headers: { 'x-tup-token': 'abc123' } }
     );

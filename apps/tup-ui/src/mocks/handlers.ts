@@ -1,13 +1,17 @@
 import { rest } from 'msw';
-import { mockProfile, mockJwt } from './fixtures';
+import { mockProfile, mockJwt, rawSystemMonitorOutput } from './fixtures';
 
 export const handlers = [
-  rest.get('http://localhost:8000/auth/profile', (req, res, ctx) => {
+  rest.get('http://localhost:8001/users/profile', (req, res, ctx) => {
     // Respond with a TAS user profile
     return res(ctx.json(mockProfile));
   }),
-  rest.post('http://localhost:8000/auth', (req, res, ctx) => {
+  rest.post('http://localhost:8001/auth', (req, res, ctx) => {
     // Respond with a valid jwt
     return res(ctx.json(mockJwt));
+  }),
+  rest.get('http://localhost:8001/sysmon', (req, res, ctx) => {
+    // Respond with mock system monitor output
+    return res(ctx.json(rawSystemMonitorOutput));
   }),
 ];

@@ -49,7 +49,7 @@ describe('LoginComponent', () => {
   it('should display an error message on bad passwords', async () => {
     // Mock a 403 error
     server.use(
-      rest.post('http://localhost:8000/auth', (req, res, ctx) => {
+      rest.post('http://localhost:8001/auth', (req, res, ctx) => {
         return res.once(
           ctx.status(403),
           ctx.json({ message: 'Invalid username/password' })
@@ -78,7 +78,7 @@ describe('LoginComponent', () => {
   it('should display an error message for other status codes', async () => {
     // Mock a 403 error
     server.use(
-      rest.post('http://localhost:8000/auth', (req, res, ctx) => {
+      rest.post('http://localhost:8001/auth', (req, res, ctx) => {
         return res.once(
           ctx.status(500),
           ctx.json({ message: 'Internal server error' })
