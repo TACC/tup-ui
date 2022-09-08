@@ -83,7 +83,9 @@ const useSystemMonitor = (
         hostname: rawSystem.hostname,
         display_name: rawSystem.displayName,
         isOperational: !isSystemDown(rawSystem),
-        loadPercentage: isCompute ? Math.floor(rawSystem.load * 100) : undefined,
+        loadPercentage: isCompute
+          ? Math.floor(rawSystem.load * 100)
+          : undefined,
         jobs: isCompute ? rawSystem.jobs : undefined,
       });
     });
