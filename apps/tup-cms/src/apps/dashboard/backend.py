@@ -7,7 +7,7 @@ import requests
 class TupServicesBackend(ModelBackend):
     def authenticate(self, request):
         token = request.COOKIES.get('x-tup-token', None)
-        profile_url = f"{settings.TUP_SERVICES_URL}/auth/profile"
+        profile_url = f"{settings.TUP_SERVICES_URL}/users/profile"
         headers = {"x-tup-token": token}
 
         req = requests.get(profile_url, headers=headers)
