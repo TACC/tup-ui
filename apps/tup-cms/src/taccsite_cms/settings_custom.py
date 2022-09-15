@@ -28,7 +28,7 @@ CMS_TEMPLATES = (
     ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
 )
 
-INCLUDES_CORE_PORTAL = False
+INCLUDES_CORE_PORTAL = True # Var name is misnomer since TUP is not Core Portal
 
 RECAPTCHA_PRIVATE_KEY = ''
 RECAPTCHA_PUBLIC_KEY = ''
