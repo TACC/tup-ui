@@ -16,6 +16,6 @@ A `Makefile` has been included for convenience. You may use
 make start
 ```
 
-## Porting from Core CMS Resources
+##  Based on Core CMS Custom
 
-When porting a downstream CMS project from [Core CMS Resources](https://github.com/tacc/core-cms-resources), the contents of a specific project's custom assets should be copied to [`./src/taccsite_custom`](./src/taccsite_custom/). The `settings_custom.py` from this directory should be moved to [`./src/taccsite_cms`](./src/taccsite_cms/) since that is where the file would be placed during a CMS build process from Jenkins.
+This is a downstream CMS project, like those in [Core CMS Custom](https://github.com/tacc/core-cms-custom), but has been placed in [tup-ui](https://github.com/tacc/tup-ui) for convenient access to all public TUP code.
