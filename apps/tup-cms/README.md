@@ -16,6 +16,6 @@ A `Makefile` has been included for convenience. You may use
 make start
 ```
 
-##  Based on Core CMS Custom
+## Based on Core CMS Custom
 
 This is a downstream CMS project, like those in [Core CMS Custom](https://github.com/tacc/core-cms-custom), but has been placed in [tup-ui](https://github.com/tacc/tup-ui) for convenient access to all public TUP code.
