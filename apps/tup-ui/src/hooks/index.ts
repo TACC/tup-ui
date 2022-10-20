@@ -55,6 +55,49 @@ export type AuthBody = {
   password: string;
 };
 
+export type SystemMonitorTest = {
+  type: string;
+  status: boolean;
+  timestamp: string;
+};
+
+export type SystemMonitorRawSystem = {
+  hostname: string;
+  displayName: string;
+  ssh?: SystemMonitorTest;
+  tests?: {
+    heartbeat?: SystemMonitorTest;
+    ssh?: SystemMonitorTest;
+  };
+  timestamp: string;
+  jobs?: {
+    running: number;
+    queued: number;
+    other: number;
+  };
+  totalCpu: number;
+  usedCpu: number;
+  load: number;
+  heartbeat?: SystemMonitorTest;
+};
+
+export type SystemMonitorRaw = {
+  [hostname: string]: SystemMonitorRawSystem;
+};
+
+export type SystemMonitorSystem = {
+  hostname: string;
+  display_name: string;
+  isOperational: boolean;
+  loadPercentage?: number;
+  jobs?: {
+    running: number;
+    queued: number;
+    other: number;
+  };
+};
+
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
+export { default as useSystemMonitor } from './useSystemMonitor';
