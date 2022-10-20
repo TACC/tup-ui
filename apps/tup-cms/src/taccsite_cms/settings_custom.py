@@ -29,9 +29,39 @@ CMS_TEMPLATES = (
 )
 
 INCLUDES_CORE_PORTAL = False
+INCLUDES_PORTAL_NAV = True
+INCLUDES_SEARCH_BAR = True
 
 RECAPTCHA_PRIVATE_KEY = ''
 RECAPTCHA_PUBLIC_KEY = ''
+
+########################
+# TACC: BRANDING
+########################
+
+UTEXAS_BRANDING = [
+    "utexas",
+    "site_cms/img/org_logos/utaustin-white.png",
+    "branding-utaustin",
+    "https://www.utexas.edu/",
+    "_blank",
+    "University of Texas at Austin Logo",
+    "anonymous",
+    "True"
+]
+
+NSF_BRANDING = [
+    "nsf",
+    "site_cms/img/org_logos/nsf-white.png",
+    "branding-nsf",
+    "https://www.nsf.gov/",
+    "_blank",
+    "NSF Logo",
+    "anonymous",
+    "True"
+]
+
+BRANDING = [ NSF_BRANDING, UTEXAS_BRANDING ]
 
 ########################
 # TACC: LOGOS
@@ -39,7 +69,7 @@ RECAPTCHA_PUBLIC_KEY = ''
 
 LOGO = [
     "tup",
-    "tup-cms/img/org_logos/tacc-logo.svg",
+    "tup-cms/img/org_logos/tacc-logo-white.svg",
     "tup",
     "/",
     "_self",
@@ -47,3 +77,7 @@ LOGO = [
     "anonymous",
     "True"
 ]
+
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'apps.dashboard.backend.TupServicesBackend']
+TUP_SERVICES_URL = "https://dev.tup-services.tacc.utexas.edu"
+LOGIN_URL = "/dashboard/login"
