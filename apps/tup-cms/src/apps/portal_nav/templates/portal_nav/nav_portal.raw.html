@@ -16,6 +16,7 @@
     vertical-align: middle; /* tweaked to align better */
   }
 </style>
+{# WARNING: Some markup is duplicated in other repositories: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
 {% if user.is_authenticated %}
 <li class="nav-item dropdown">
   <a
@@ -35,10 +36,6 @@
     <a class="dropdown-item" href="/dashboard">
       <i class="icon icon-dashboard"></i> My Dashboard
     </a>
-
-    {# WARNING: Some markup is duplicated in other repositories:
-    https://confluence.tacc.utexas.edu/x/LoCnCQ #}
-
     <a class="dropdown-item" href="/dashboard/logout">
       <i class="icon icon-exit"></i> Log Out
     </a>
