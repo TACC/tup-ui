@@ -12,13 +12,21 @@
     vertical-align: text-bottom; /* tweaked to align better */
   }
   .s-portal-nav .nav-link .icon {
-      font-size: 1.5em;
-      vertical-align: middle; /* tweaked to align better */
+    font-size: 1.5em;
+    vertical-align: middle; /* tweaked to align better */
   }
 </style>
 {% if user.is_authenticated %}
 <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a
+    class="nav-link dropdown-toggle"
+    href="#"
+    id="navbarDropdown"
+    role="button"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
     <i class="icon icon-user"></i>
     <span>{{ user.get_username }}</span>
     <span class="sr-only">Toggle Dropdown</span>
@@ -28,17 +36,9 @@
       <i class="icon icon-dashboard"></i> My Dashboard
     </a>
 
-
-
-
-
-    {# WARNING: Some markup is duplicated in other repositories #}
-    {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
-    {# FAQ: Extra space makes eases comparison of similar templates #}
-
-
-
-
+    {# WARNING: Some markup is duplicated in other repositories #} {# SEE:
+    https://confluence.tacc.utexas.edu/x/LoCnCQ #} {# FAQ: Extra space makes
+    eases comparison of similar templates #}
 
     <a class="dropdown-item" href="/dashboard/logout">
       <i class="icon icon-exit"></i> Log Out
