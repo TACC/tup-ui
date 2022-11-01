@@ -1,8 +1,8 @@
 import React from 'react';
-import { LoginComponent } from '../../components/auth';
+import { LoginComponent } from '@tacc/tup-components';
 
-import './Layout.global.css';
-import styles from './Layout.module.css';
+import './Login.global.css';
+import styles from './Login.module.css';
 
 const Layout: React.FC = () => {
   return (

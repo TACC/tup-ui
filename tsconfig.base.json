@@ -19,6 +19,7 @@
       "@tacc/core-components": ["libs/core-components/src/index.ts"],
       "@tacc/core-styles/*": ["libs/core-styles/src/*"],
       "@tacc/core-wrappers": ["libs/core-wrappers/src/index.ts"],
+      "@tacc/tup-components": ["libs/tup-components/src/index.ts"],
       "@tacc/tup-hooks": ["libs/tup-hooks/src/index.ts"],
       "@tacc/tup-hooks/*": ["libs/tup-hooks/src/*"],
       "@tacc/tup-testing": ["libs/tup-testing/src/index.ts"],

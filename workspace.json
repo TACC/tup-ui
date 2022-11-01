@@ -6,6 +6,7 @@
     "core-styles": "libs/core-styles",
     "core-wrappers": "libs/core-wrappers",
     "tup-cms": "apps/tup-cms",
+    "tup-components": "libs/tup-components",
     "tup-hooks": "libs/tup-hooks",
     "tup-testing": "libs/tup-testing",
     "tup-ui": "apps/tup-ui",
