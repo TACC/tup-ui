@@ -42,6 +42,7 @@ const useAuth = () => {
 
   // Return
   return {
+    jwt,
     login,
     logout,
     loggedIn,

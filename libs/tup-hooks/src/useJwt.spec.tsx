@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { TestWrapper } from '../utils';
+import { TestWrapper } from '@tacc/tup-testing';
 import useJwt from './useJwt';
 
 describe('useJwt', () => {

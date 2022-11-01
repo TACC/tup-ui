@@ -1,4 +1,4 @@
-import { useAuth, useJwt } from '../../hooks';
+import { useAuth, useJwt } from '@tacc/tup-hooks';
 import { Navigate, useLocation } from 'react-router-dom';
 
 function RequireAuth({ children }: { children: JSX.Element }) {
