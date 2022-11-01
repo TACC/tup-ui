@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useLocation, Location, useSearchParams } from 'react-router-dom';
-import { useAuth } from '../../../hooks';
+import { useAuth } from '@tacc/tup-hooks';
 import { Formik, Form, Field } from 'formik';
 import { Label } from 'reactstrap';
 import { Button } from '@tacc/core-components';

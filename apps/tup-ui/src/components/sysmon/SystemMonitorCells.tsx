@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pill } from '@tacc/core-components';
 import { Cell } from 'react-table';
-import { SystemMonitorSystem } from '../../hooks';
+import { SystemMonitorSystem } from '@tacc/tup-hooks';
 
 export const Display: React.FC<{ cell: Cell<SystemMonitorSystem, string> }> = ({
   cell: { value },

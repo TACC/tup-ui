@@ -1,6 +1,6 @@
 import React from 'react';
 import SystemMonitor from './SystemMonitor';
-import { testRender } from '../../utils';
+import { testRender } from '@tacc/tup-testing';
 import { waitFor } from '@testing-library/react';
 
 describe('System Monitor Component', () => {

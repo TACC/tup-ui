@@ -1,13 +1,13 @@
 import LoginComponent from './LoginComponent';
-import { testRender } from '../../../utils';
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { fireEvent, act, waitFor } from '@testing-library/react';
-import { server } from '../../../mocks/server';
+import { server, testRender } from '@tacc/tup-testing';
 import { rest } from 'msw';
-import useJwt from '../../../hooks/useJwt';
+import { get } from 'js-cookie';
 
 jest.mock('react-router-dom');
-jest.mock('../../../hooks/useJwt');
+//jest.mock('@tacc/tup-hooks/useJwt');
+jest.mock('js-cookie');
 
 const mockNavigate = jest.fn();
 
@@ -18,18 +18,11 @@ describe('LoginComponent', () => {
     (useLocation as jest.Mock).mockReturnValue({
       state: undefined,
     });
-    (useJwt as jest.Mock).mockReturnValue({
-      jwt: undefined,
-      isLoading: false,
-    });
+    (get as jest.Mock).mockReturnValue('badjwt');
     (useSearchParams as jest.Mock).mockReturnValue([
       { get: () => '' },
       jest.fn(),
     ]);
-  });
-  it('should render login component if not logged in', async () => {
-    const { getAllByText } = testRender(<LoginComponent />);
-    await waitFor(() => expect(getAllByText(/Log In/)).toBeTruthy());
   });
   it('should perform a login', async () => {
     Object.defineProperty(window, 'location', {
