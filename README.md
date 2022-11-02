@@ -13,7 +13,6 @@ Local dev setup:
   - a) `docker exec -it tup_cms /bin/bash`
   - b) `python manage.py migrate`
 
-
 The TUP dashboard is accessed at http://localhost:8000/dashboard.
 To bring containers down after development, run `npx nx down tup-cms`.
 
