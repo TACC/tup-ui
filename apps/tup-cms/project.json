@@ -1,5 +1,5 @@
 {
-  "root": "apps/tup-cms/",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/tup-cms/src/",
   "projectType": "application",
   "targets": {
@@ -7,6 +7,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
+          "npx nx build core-styles",
           "npx nx build tup-ui",
           "docker-compose -f docker-compose.dev.yml build"
         ],
@@ -37,7 +38,10 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          { "command": "npx nx build tup-ui", "forwardAllArgs": false },
+          {
+            "command": "npx nx build tup-ui",
+            "forwardAllArgs": false
+          },
           "docker build -t gitlab.tacc.utexas.edu:5005/tup-cms/tup-cms-deploy:{args.tag} -f Dockerfile ../../",
           "docker push gitlab.tacc.utexas.edu:5005/tup-cms/tup-cms-deploy:{args.tag}"
         ],

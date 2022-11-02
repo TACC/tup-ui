@@ -1,5 +1,4 @@
-import { server } from './src/mocks/server';
-import { testQueryClient } from './src/utils';
+import { server, testQueryClient } from '@tacc/tup-testing';
 // Establish API mocking before all tests.
 beforeAll(() => server.listen());
 // Reset any request handlers that we may add during the tests,
