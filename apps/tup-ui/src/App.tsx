@@ -1,6 +1,6 @@
 import { Outlet, Routes, Route } from 'react-router-dom';
-import { PageLayout } from './components/layout';
-import { Sidebar, Dashboard, Login, Logout } from './pages';
+import { PageLayout, Sidebar } from '@tacc/tup-components';
+import { Dashboard, Login, Logout } from './pages';
 
 const AppLayout = () => {
   return <PageLayout left={<Sidebar />} right={<Outlet />} />;

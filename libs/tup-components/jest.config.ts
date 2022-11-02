@@ -1,0 +1,12 @@
+/* eslint-disable */
+export default {
+  displayName: 'tup-components',
+  preset: '../../jest.preset.js',
+  transform: {
+    '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
+    '^.+\\.[tj]sx?$': 'babel-jest',
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/tup-components',
+  setupFilesAfterEnv: ['./jest.setup.ts'],
+};
