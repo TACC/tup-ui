@@ -34,7 +34,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/core-wrappers"],
+      "outputs": ["{workspaceRoot}/coverage/libs/core-wrappers"],
       "options": {
         "jestConfig": "libs/core-wrappers/jest.config.ts",
         "passWithNoTests": true

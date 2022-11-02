@@ -28,7 +28,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/core-styles"],
+      "outputs": ["{workspaceRoot}/coverage/libs/core-styles"],
       "options": {
         "jestConfig": "libs/core-styles/jest.config.ts",
         "passWithNoTests": true
