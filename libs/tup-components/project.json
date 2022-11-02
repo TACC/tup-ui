@@ -13,7 +13,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/tup-components"],
+      "outputs": ["{workspaceRoot}/coverage/libs/tup-components"],
       "options": {
         "jestConfig": "libs/tup-components/jest.config.ts",
         "passWithNoTests": true

@@ -1,4 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts"],
+  "exclude": ["jest.config.ts"]
 }
