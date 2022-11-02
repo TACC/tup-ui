@@ -2,9 +2,17 @@
 
 This project was generated using [Nx](https://nx.dev).
 
-Things to try:
+Local dev setup:
+- `npx nx build tup-cms` to build the CMS container.
+- `npx nx serve tup-cms` to serve the CMS backend.
+- `npx nx serve tup-cms` to serve the CMS backend.
 
-- `npx nx serve tup-ui` to run the app
+
+The TUP dashboard is accessed at http://localhost:8000/dashboard.
+To bring containers down after development, run `npx nx down tup-cms`.
+
+Other useful commands:
+- `npx nx serve tup-ui` to run the frontend React app.
 - `npx nx build core-components` to create a distributable library for the core components.
 - `npx nx build core-styles` to build the style library.
 
