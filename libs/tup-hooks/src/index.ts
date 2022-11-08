@@ -97,7 +97,87 @@ export type SystemMonitorSystem = {
   };
 };
 
+export type ActiveProjectsTest = {
+  type: string;
+  status: boolean;
+  timestamp: Date;
+};
+
+export type ActiveProjectsRawSystem = {
+  hostname: string;
+  id: number;
+  title: string;
+  description: string;
+  chardeCode: string;
+  gid: number,
+  source: string,
+  fieldId: number,
+  secondaryFieldId: number,
+  typeId: number,
+  pi: {
+    id: number,
+    username: string,
+    role: string,
+    firstName: string,
+    middleInitial: string,
+    lastName: string,
+    email: string,
+    vislabTrained: boolean,
+    staff: boolean
+  };
+  allocations: {
+    id: number,
+    start: Date,
+    end: Date,
+    type: string,
+    total: number,
+    used: number,
+    resource: string,
+    status: string,
+    storageQuota: number,
+    myUsage: number,
+    storageUsed: number,
+    justification: string,
+    computeRequested: number,
+    storageRequested: number,
+    memoryRequested: number,
+    increases: {
+        id: number,
+        allocationId: number,
+        susRequested: number,
+        susGranted: number,
+        justification: string,
+        decisionSummary: string
+        }
+    }
+  roles: string;
+  users: {
+    id: number,
+    username: string,
+    role: string,
+    firstName: string,
+    middleInitial: string,
+    lastName: string,
+    email: string,
+    vislabTrained: boolean,
+    staff: boolean
+  }
+};
+
+export type ActiveProjectsRaw = {
+  [hostname: string]: ActiveProjectsRawSystem;
+};
+export type ActiveProjectsSystem = {
+  hostname: string;
+  project_title: string;
+  principle_investigator: string;
+  active_allocations: {
+    id: number;
+  };
+};
+
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
 export { default as useSystemMonitor } from './useSystemMonitor';
+export { default as useActiveProjects } from './useActiveProjects';

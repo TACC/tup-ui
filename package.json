@@ -72,7 +72,7 @@
     "merge-lite": "^1.0.2",
     "msw": "^0.47.4",
     "node-cmd": "^5.0.0",
-    "nx": "15.0.6",
+    "nx": "^15.0.6",
     "postcss": "8.4.16",
     "postcss-banner": "^3.0.2",
     "postcss-cli": "^7.1.2",

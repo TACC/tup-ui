@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { mockProfile, mockJwt, rawSystemMonitorOutput } from './fixtures';
+import { mockProfile, mockJwt, rawSystemMonitorOutput, rawActiveProjectsOutput } from './fixtures';
 
 export const handlers = [
   rest.get('http://localhost:8001/users/profile', (req, res, ctx) => {
@@ -13,5 +13,9 @@ export const handlers = [
   rest.get('http://localhost:8001/sysmon', (req, res, ctx) => {
     // Respond with mock system monitor output
     return res(ctx.json(rawSystemMonitorOutput));
+  }),
+  rest.get('http://localhost:8001/activeprojects', (req, res, ctx) => {
+    // Respond with mock active projects output
+    return res(ctx.json(rawActiveProjectsOutput));
   }),
 ];
