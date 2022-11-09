@@ -6,7 +6,12 @@ const TicketCreateModal: React.FC = () => {
   const params = useParams();
   const modalAlwaysOpen = true;
   return (
-    <Modal className="ticket-model-content" isOpen={modalAlwaysOpen} size="lg">
+    <Modal
+      modalClassName="ticket-create-modal"
+      contentClassName="ticket-create-modal-content"
+      isOpen={modalAlwaysOpen}
+      size="lg"
+    >
       <ModalBody>My Ticket ID: {params.ticketId}</ModalBody>
     </Modal>
   );
