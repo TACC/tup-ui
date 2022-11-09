@@ -35,7 +35,7 @@ export const TicketsTable: React.FC = () => {
     () => [
       {
         accessor: 'numerical_id',
-        Header: 'Number',
+        Header: 'Ticket Number',
       },
       {
         accessor: 'Subject',

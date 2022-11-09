@@ -9,7 +9,7 @@ const TicketsDashboard: React.FC = () => {
       header="My Tickets"
       headerActions={
         <Link to={'tickets/create'} className="btn btn-secondary btn-sm">
-          New Ticket
+          + New Ticket
         </Link>
       }
       contentShouldScroll
