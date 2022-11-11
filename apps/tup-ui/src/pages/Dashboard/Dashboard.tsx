@@ -6,7 +6,7 @@ import {
   ProfileComponent,
   RequireAuth,
   SystemMonitor,
-  ActiveProjects,
+  ProjectsDashboard,
 } from '@tacc/tup-components';
 
 const Layout: React.FC = () => {
@@ -15,8 +15,7 @@ const Layout: React.FC = () => {
       <div>
         <ProfileComponent />
         <SystemMonitor />
-        Active Projects
-        <ActiveProjects />
+        <ProjectsDashboard />
       </div>
     </RequireAuth>
   );

@@ -1,16 +1,16 @@
 import React from 'react';
 import { Pill } from '@tacc/core-components';
 import { Cell } from 'react-table';
-import { ActiveProjectsSystem } from '@tacc/tup-hooks';
+import { ProjectsRawSystem } from '@tacc/tup-hooks';
 
-export const Display: React.FC<{ cell: Cell<ActiveProjectsSystem, string> }> = ({
+export const ProjectTitle: React.FC<{ cell: Cell<ProjectsRawSystem, string> }> = ({
   cell: { value },
 }) => <strong className="wb-text-primary">{value}</strong>;
 
-export const Operational: React.FC<{ cell: Cell<ActiveProjectsSystem, string> }> = ({
+export const PrinInv: React.FC<{ cell: Cell<ProjectsRawSystem, string> }> = ({
     cell: { value },
   }) => <strong className="wb-text-primary">{value}</strong>;
 
-export const Load: React.FC<{ cell: Cell<ActiveProjectsSystem, string> }> = ({
+export const Allocations: React.FC<{ cell: Cell<ProjectsRawSystem, string> }> = ({
   cell: { value },
 }) => <strong className="wb-text-primary">{value}</strong>;

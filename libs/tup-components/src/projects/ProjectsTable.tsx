@@ -1,36 +1,38 @@
 import React, { useMemo } from 'react';
 import { useTable, Column } from 'react-table';
 import { LoadingSpinner, Message } from '@tacc/core-components';
-import { Display, Operational, Load } from './ActiveProjectsCells';
-import { ActiveProjectsSystem, useActiveProjects } from '@tacc/tup-hooks';
-import styles from './ActiveProjects.module.css';
+import { ProjectTitle, PrinInv, Allocations } from './ProjectsCells';
+import { ProjectsRawSystem, useProjects } from '@tacc/tup-hooks';
+import styles from './Projects.module.css';
 
-const ActiveProjects: React.FC<{ hosts?: Array<string> }> = ({ hosts }) => {
-  const { systems, isLoading, error } = useActiveProjects(hosts);
-  const columns = useMemo<Column<ActiveProjectsSystem>[]>(
+export const ProjectsTable: React.FC = () => {
+  const { data, isLoading, error } = useProjects();
+
+  const columns = useMemo<Column<ProjectsRawSystem>[]>(
     () => [
       {
-        accessor: 'project_title',
+        accessor: 'title',
         Header: 'Project Title',
-        // Cell: Display,
+        Cell: ProjectTitle,
       },
       {
-        accessor: 'principle_investigator',
+        accessor: ({ pi }) => (pi.firstName + " " + pi.lastName),
         Header: 'Principle Investigator',
-        // Cell: Operational,
+        Cell: PrinInv,
       },
-      // {
-      //   accessor: ({ active_allocations }) => (active_allocations ? active_allocations.id : '--'),
-      //   Header: 'Active Allocations',
-      //   // Cell: Load,
-      // },
+      {
+        accessor: ({ allocations }) => (allocations ? 
+          allocations.map((e) => e.resource) : '--'),
+        Header: 'Active Allocations',
+        Cell: Allocations,
+      },
     ],
     []
   );
   const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
   useTable({
     columns,
-    data: systems,
+    data: data ?? [],
   });
 
 if (isLoading) {
@@ -40,7 +42,7 @@ if (isLoading) {
 if (error) {
   return (
     <Message type="warn">
-      No can do Kangaroo
+      No active projects were found.
     </Message>
   );
 }
@@ -83,4 +85,4 @@ if (error) {
   );
 };
 
-export default ActiveProjects;
+export default ProjectsTable;

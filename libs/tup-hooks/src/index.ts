@@ -97,14 +97,34 @@ export type SystemMonitorSystem = {
   };
 };
 
-export type ActiveProjectsTest = {
-  type: string;
-  status: boolean;
-  timestamp: Date;
-};
 
-export type ActiveProjectsRawSystem = {
-  hostname: string;
+export type ProjectsAllocations = {
+  id: number,
+  start: Date,
+  end: Date,
+  type: string,
+  total: number,
+  used: number,
+  resource: string,
+  status: string,
+  storageQuota: number,
+  myUsage: number,
+  storageUsed: number,
+  justification: string,
+  computeRequested: number,
+  storageRequested: number,
+  memoryRequested: number,
+  increases: {
+      id: number,
+      allocationId: number,
+      susRequested: number,
+      susGranted: number,
+      justification: string,
+      decisionSummary: string
+      }
+}
+
+export type ProjectsRawSystem = {
   id: number;
   title: string;
   description: string;
@@ -125,31 +145,7 @@ export type ActiveProjectsRawSystem = {
     vislabTrained: boolean,
     staff: boolean
   };
-  allocations: {
-    id: number,
-    start: Date,
-    end: Date,
-    type: string,
-    total: number,
-    used: number,
-    resource: string,
-    status: string,
-    storageQuota: number,
-    myUsage: number,
-    storageUsed: number,
-    justification: string,
-    computeRequested: number,
-    storageRequested: number,
-    memoryRequested: number,
-    increases: {
-        id: number,
-        allocationId: number,
-        susRequested: number,
-        susGranted: number,
-        justification: string,
-        decisionSummary: string
-        }
-    }
+  allocations?: ProjectsAllocations[]
   roles: string;
   users: {
     id: number,
@@ -164,20 +160,9 @@ export type ActiveProjectsRawSystem = {
   }
 };
 
-export type ActiveProjectsRaw = {
-  [hostname: string]: ActiveProjectsRawSystem;
-};
-export type ActiveProjectsSystem = {
-  hostname: string;
-  project_title: string;
-  principle_investigator: string;
-  active_allocations: {
-    id: number;
-  };
-};
 
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
 export { default as useSystemMonitor } from './useSystemMonitor';
-export { default as useActiveProjects } from './useActiveProjects';
+export { default as useProjects } from './useProjects';
