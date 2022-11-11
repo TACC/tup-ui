@@ -22,7 +22,7 @@ export const ProjectsTable: React.FC = () => {
       },
       {
         accessor: ({ allocations }) => (allocations ? 
-          allocations.map((e) => e.resource) : '--'),
+          allocations.map((e) => e.resource).join(', ') : '--'),
         Header: 'Active Allocations',
         Cell: Allocations,
       },

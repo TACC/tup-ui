@@ -1,11 +1,11 @@
 import React from 'react';
-import { Pill } from '@tacc/core-components';
+import { Link } from 'react-router-dom';
 import { Cell } from 'react-table';
 import { ProjectsRawSystem } from '@tacc/tup-hooks';
 
 export const ProjectTitle: React.FC<{ cell: Cell<ProjectsRawSystem, string> }> = ({
-  cell: { value },
-}) => <strong className="wb-text-primary">{value}</strong>;
+  cell: { value ,  row },
+}) => <Link to={`/tickets/${row.original.id}`}>{value}</Link>;
 
 export const PrinInv: React.FC<{ cell: Cell<ProjectsRawSystem, string> }> = ({
     cell: { value },

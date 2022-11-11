@@ -8,7 +8,7 @@ const ProjectsDashboard: React.FC = () => {
     <SectionTableWrapper
       header="Active Projects"
       headerActions={
-        <Link to={'/projectsandalloctions'} className="btn btn-secondary btn-sm">
+        <Link to={'/projects'} className="btn btn-secondary btn-sm">
           View all Projects & Allocations
         </Link>
       }
