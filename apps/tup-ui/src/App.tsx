@@ -17,7 +17,7 @@ function App() {
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route path="/" element={<Dashboard />}>
-          <Route path="tickets/create" element={<TicketCreateModal />} />
+          <Route path="tickets-create" element={<TicketCreateModal />} />
         </Route>
         <Route path="tickets" element={<Tickets />}>
           <Route path="create" element={<TicketCreateModal />} />
