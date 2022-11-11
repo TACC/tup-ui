@@ -8,7 +8,6 @@ const useTickets = (): UseQueryResult<Ticket[]> => {
     endpoint: '/tickets',
     key: 'tickets',
   });
-  const tickets = query.data;
   return query;
 };
 
