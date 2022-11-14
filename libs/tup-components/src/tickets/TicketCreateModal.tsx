@@ -1,11 +1,10 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { TicketCreateForm } from './TicketCreateForm';
 //import './TicketCreateModal.scss';
 
 const TicketCreateModal: React.FC = () => {
-  const params = useParams();
   const navigate = useNavigate();
   const modalAlwaysOpen = true;
   const close = () => {

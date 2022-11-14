@@ -4,9 +4,9 @@ import {
   Sidebar,
   TicketCreateModal,
   Tickets,
+  TicketDetails,
 } from '@tacc/tup-components';
 import { Dashboard, Login, Logout } from './pages';
-import { TicketDetails } from '@tacc/tup-components';
 
 const AppLayout = () => {
   return <PageLayout left={<Sidebar />} right={<Outlet />} />;
@@ -17,7 +17,7 @@ function App() {
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route path="/" element={<Dashboard />}>
-          <Route path="tickets/create" element={<TicketCreateModal />} />
+          <Route path="tickets-create" element={<TicketCreateModal />} />
         </Route>
         <Route path="tickets" element={<Tickets />}>
           <Route path="create" element={<TicketCreateModal />} />

@@ -7,11 +7,11 @@ const TicketsDashboard: React.FC = () => {
   return (
     <SectionTableWrapper
       header="My Tickets"
-      headerActions={
-        <Link to={'tickets/create'} className="btn btn-secondary btn-sm">
-          New Ticket
-        </Link>
-      }
+      // headerActions={
+      //   <Link to={'tickets-create'} className="btn btn-secondary btn-sm">
+      //     + New Ticket
+      //   </Link>
+      // }
       contentShouldScroll
     >
       <TicketsTable />

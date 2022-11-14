@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { Column, Row } from 'react-table';
 import {
   InfiniteScrollTable,
+  InlineMessage,
   LoadingSpinner,
-  Message,
 } from '@tacc/core-components';
 import { Ticket, useTickets } from '@tacc/tup-hooks';
 import { DateCreated, Status, Subject } from './TicketsCells';
@@ -35,7 +35,7 @@ export const TicketsTable: React.FC = () => {
     () => [
       {
         accessor: 'numerical_id',
-        Header: 'Number',
+        Header: 'Ticket Number',
       },
       {
         accessor: 'Subject',
@@ -74,7 +74,11 @@ export const TicketsTable: React.FC = () => {
   }
 
   if (error) {
-    return <Message type="warn">Unable to retrieve ticket information</Message>;
+    return (
+      <InlineMessage type="warning">
+        Unable to retrieve ticket information
+      </InlineMessage>
+    );
   }
 
   return (
