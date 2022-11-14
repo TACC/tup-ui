@@ -7,10 +7,8 @@ import { rest } from 'msw';
 describe('Tickets Table Component', () => {
   it('should render the tickets table', async () => {
     const { getByText, getAllByRole } = testRender(<TicketsTable />);
-    let columnHeaders: HTMLElement[] = [];
-    await waitFor(() => {
-      columnHeaders = getAllByRole('columnheader');
-    });
+    await waitFor(() => getAllByRole('columnheader'));
+    const columnHeaders: HTMLElement[] = getAllByRole('columnheader');
     expect(columnHeaders[0].textContent).toEqual('Ticket Number');
     expect(columnHeaders[1].textContent).toEqual('Subject');
     expect(columnHeaders[2].textContent).toEqual('Date Added');
@@ -29,6 +27,21 @@ describe('Tickets Table Component', () => {
     const { getByText } = testRender(<TicketsTable />);
     await waitFor(() =>
       expect(getByText('No tickets. You can add a ticket here.')).toBeDefined()
+    );
+  });
+  it('should render a loading spinner when waiting for data from useQuery', async () => {
+    const { getByTestId } = testRender(<TicketsTable />);
+    await waitFor(() => expect(getByTestId('loading-spinner')));
+  });
+  it('should display an error message if an error is returned from useQuery', async () => {
+    server.use(
+      rest.get('http://localhost:8001/tickets', (req, res, ctx) =>
+        res.once(ctx.status(404))
+      )
+    );
+    const { getByText } = testRender(<TicketsTable />);
+    await waitFor(() =>
+      expect(getByText('Unable to retrieve ticket information')).toBeDefined()
     );
   });
   it('should have getStatusText helper function convert supported ticket status to proper UI strings', () => {
