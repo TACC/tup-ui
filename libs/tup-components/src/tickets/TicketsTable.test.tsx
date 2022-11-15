@@ -5,8 +5,11 @@ import { waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 
 describe('Tickets Table Component', () => {
-  it('should render the tickets table', async () => {
-    const { getByText, getAllByRole } = testRender(<TicketsTable />);
+  it('should render the loading spinner and then the tickets table', async () => {
+    const { getByText, getByTestId, getAllByRole } = testRender(
+      <TicketsTable />
+    );
+    expect(getByTestId('loading-spinner')).toBeDefined();
     await waitFor(() => getAllByRole('columnheader'));
     const columnHeaders: HTMLElement[] = getAllByRole('columnheader');
     expect(columnHeaders[0].textContent).toEqual('Ticket Number');
@@ -28,10 +31,6 @@ describe('Tickets Table Component', () => {
     await waitFor(() =>
       expect(getByText('No tickets. You can add a ticket here.')).toBeDefined()
     );
-  });
-  it('should render a loading spinner when waiting for data from useQuery', async () => {
-    const { getByTestId } = testRender(<TicketsTable />);
-    await waitFor(() => expect(getByTestId('loading-spinner')));
   });
   it('should display an error message if an error is returned from useQuery', async () => {
     server.use(
