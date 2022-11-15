@@ -6,7 +6,9 @@ import {
   ProfileComponent,
   RequireAuth,
   SystemMonitor,
+  TicketsDashboard,
 } from '@tacc/tup-components';
+import { Outlet } from 'react-router-dom';
 
 const Layout: React.FC = () => {
   return (
@@ -14,6 +16,8 @@ const Layout: React.FC = () => {
       <div>
         <ProfileComponent />
         <SystemMonitor />
+        <TicketsDashboard />
+        <Outlet />
       </div>
     </RequireAuth>
   );
