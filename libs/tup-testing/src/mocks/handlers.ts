@@ -3,6 +3,7 @@ import {
   mockProfile,
   mockJwt,
   rawSystemMonitorOutput,
+  rawActiveProjectsOutput,
   mockTickets,
 } from './fixtures';
 
@@ -22,7 +23,7 @@ export const handlers = [
   rest.get('http://localhost:8001/activeprojects', (req, res, ctx) => {
     // Respond with mock active projects output
     return res(ctx.json(rawActiveProjectsOutput));
-  }),
+}),
   rest.get('http://localhost:8001/tickets', (req, res, ctx) => {
     // Respond with mock tickets output
     return res(ctx.json(mockTickets));
