@@ -9,6 +9,7 @@ const Sidebar: React.FC = () => {
     <div className={styles['root']}>
       <Navbar>
         <NavItem to={'/'}>Dashboard</NavItem>
+        <NavItem to={'/tickets'}>Tickets</NavItem>
         {loggedIn && <NavItem to={'/logout'}>Log Out</NavItem>}
       </Navbar>
     </div>
