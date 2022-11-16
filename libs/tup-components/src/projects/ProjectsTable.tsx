@@ -16,13 +16,13 @@ export const ProjectsTable: React.FC = () => {
         Cell: ProjectTitle,
       },
       {
-        accessor: ({ pi }) => (pi.firstName + " " + pi.lastName),
+        accessor: ({ pi }) => pi.firstName + ' ' + pi.lastName,
         Header: 'Principle Investigator',
         Cell: PrinInv,
       },
       {
-        accessor: ({ allocations }) => (allocations ? 
-          allocations.map((e) => e.resource).join(', ') : '--'),
+        accessor: ({ allocations }) =>
+          allocations ? allocations.map((e) => e.resource).join(', ') : '--',
         Header: 'Active Allocations',
         Cell: Allocations,
       },
@@ -30,29 +30,27 @@ export const ProjectsTable: React.FC = () => {
     []
   );
   const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
-  useTable({
-    columns,
-    data: data ?? [],
-  });
+    useTable({
+      columns,
+      data: data ?? [],
+    });
 
-if (isLoading) {
-  return <LoadingSpinner />;
-}
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
-if (error) {
-  return (
-    <Message type="warn">
-      No active projects were found.
-    </Message>
-  );
-}
+  if (error) {
+    return <Message type="warn">No active projects were found.</Message>;
+  }
   return (
     <table
-    {...getTableProps()}
-    className={`multi-system InfiniteScrollTable o-fixed-header-table ${['root']}`}
-  >
-    <thead>
-    {headerGroups.map((headerGroup) => (
+      {...getTableProps()}
+      className={`multi-system InfiniteScrollTable o-fixed-header-table ${[
+        'root',
+      ]}`}
+    >
+      <thead>
+        {headerGroups.map((headerGroup) => (
           <tr
             {...headerGroup.getHeaderGroupProps()}
             className={styles['header']}
@@ -62,8 +60,8 @@ if (error) {
             ))}
           </tr>
         ))}
-    </thead>
-    <tbody {...getTableBodyProps()} className={styles['rows']}>
+      </thead>
+      <tbody {...getTableBodyProps()} className={styles['rows']}>
         {rows.length ? (
           rows.map((row, idx) => {
             prepareRow(row);
@@ -80,8 +78,8 @@ if (error) {
             <td colSpan={5}>No systems being monitored</td>
           </tr>
         )}
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   );
 };
 

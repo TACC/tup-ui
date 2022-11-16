@@ -97,69 +97,67 @@ export type SystemMonitorSystem = {
   };
 };
 
-
 export type ProjectsAllocations = {
-  id: number,
-  start: Date,
-  end: Date,
-  type: string,
-  total: number,
-  used: number,
-  resource: string,
-  status: string,
-  storageQuota: number,
-  myUsage: number,
-  storageUsed: number,
-  justification: string,
-  computeRequested: number,
-  storageRequested: number,
-  memoryRequested: number,
+  id: number;
+  start: Date;
+  end: Date;
+  type: string;
+  total: number;
+  used: number;
+  resource: string;
+  status: string;
+  storageQuota: number;
+  myUsage: number;
+  storageUsed: number;
+  justification: string;
+  computeRequested: number;
+  storageRequested: number;
+  memoryRequested: number;
   increases: {
-      id: number,
-      allocationId: number,
-      susRequested: number,
-      susGranted: number,
-      justification: string,
-      decisionSummary: string
-      }
-}
+    id: number;
+    allocationId: number;
+    susRequested: number;
+    susGranted: number;
+    justification: string;
+    decisionSummary: string;
+  };
+};
 
 export type ProjectsRawSystem = {
   id: number;
   title: string;
   description: string;
   chardeCode: string;
-  gid: number,
-  source: string,
-  fieldId: number,
-  secondaryFieldId: number,
-  typeId: number,
+  gid: number;
+  source: string;
+  fieldId: number;
+  secondaryFieldId: number;
+  typeId: number;
   pi: {
-    id: number,
-    username: string,
-    role: string,
-    firstName: string,
-    middleInitial: string,
-    lastName: string,
-    email: string,
-    vislabTrained: boolean,
-    staff: boolean
+    id: number;
+    username: string;
+    role: string;
+    firstName: string;
+    middleInitial: string;
+    lastName: string;
+    email: string;
+    vislabTrained: boolean;
+    staff: boolean;
   };
-  allocations?: ProjectsAllocations[]
+  allocations?: ProjectsAllocations[];
   roles: string;
   users: {
-    id: number,
-    username: string,
-    role: string,
-    firstName: string,
-    middleInitial: string,
-    lastName: string,
-    email: string,
-    vislabTrained: boolean,
-    staff: boolean
-  }
+    id: number;
+    username: string;
+    role: string;
+    firstName: string;
+    middleInitial: string;
+    lastName: string;
+    email: string;
+    vislabTrained: boolean;
+    staff: boolean;
+  };
 };
-
 
 export type Ticket = {
   AdminCc: [];
