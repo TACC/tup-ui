@@ -97,6 +97,7 @@ export type SystemMonitorSystem = {
   };
 };
 
+<<<<<<< HEAD
 
 export type ProjectsAllocations = {
   id: number,
@@ -161,8 +162,40 @@ export type ProjectsRawSystem = {
 };
 
 
+=======
+export type Ticket = {
+  AdminCc: [];
+  'CF.{Resource}': string;
+  Created: string;
+  Creator: string;
+  Due: string;
+  FinalPriority: string;
+  InitialPriority: string;
+  LastUpdated: string;
+  Owner: string;
+  Priority: string;
+  Queue: string;
+  Requestors: string[];
+  Resolved: string;
+  Started: string;
+  Starts: string;
+  Status: string;
+  Subject: string;
+  TimeEstimated: string;
+  TimeLeft: string;
+  TimeWorked: string;
+  Told: string;
+  id: string;
+  numerical_id: string;
+};
+
+>>>>>>> main
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
 export { default as useSystemMonitor } from './useSystemMonitor';
+<<<<<<< HEAD
 export { default as useProjects } from './useProjects';
+=======
+export { default as useTickets } from './useTickets';
+>>>>>>> main

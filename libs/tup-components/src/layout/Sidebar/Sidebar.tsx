@@ -10,6 +10,7 @@ const Sidebar: React.FC = () => {
       <Navbar>
         <NavItem to={'/'}>Dashboard</NavItem>
         <NavItem to={'/projects'}>Projects & Allocations</NavItem>
+        <NavItem to={'/tickets'}>Tickets</NavItem>
         {loggedIn && <NavItem to={'/logout'}>Log Out</NavItem>}
       </Navbar>
     </div>
