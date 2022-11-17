@@ -57,10 +57,10 @@ export type AuthBody = {
 };
 
 export type Reservation = {
-    name: string;
-    begin_time: string;
-    end_time: string;
-}
+  name: string;
+  begin_time: string;
+  end_time: string;
+};
 
 export type SystemMonitorRawSystem = {
   display_name: string;
@@ -75,10 +75,10 @@ export type SystemMonitorRawSystem = {
   queues_down?: boolean;
   load?: number;
   running?: number;
-  waiting?: number; 
+  waiting?: number;
   in_maintenance?: boolean;
-  next_maintenance?: boolean; 
-  reservations?: [Reservation]
+  next_maintenance?: boolean;
+  reservations?: [Reservation];
 };
 
 export type Ticket = {

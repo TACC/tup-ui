@@ -6,7 +6,12 @@ import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
 import styles from './SystemMonitor.module.css';
 
 const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
-  if (!rawSystem?.online || !rawSystem?.reachable || rawSystem?.in_maintenance || rawSystem?.in_maintenance) {
+  if (
+    !rawSystem?.online ||
+    !rawSystem?.reachable ||
+    rawSystem?.in_maintenance ||
+    rawSystem?.in_maintenance
+  ) {
     return false;
   }
   return true;
@@ -22,12 +27,12 @@ const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
         Cell: Display,
       },
       {
-        accessor: ({isOperational}) => (isSystemDown),
+        accessor: ({ isOperational }) => isSystemDown,
         Header: 'Status',
         Cell: Operational,
       },
       {
-        accessor: ({load}) => (load ? Math.floor(load * 100) :  '--'),
+        accessor: ({ load }) => (load ? Math.floor(load * 100) : '--'),
         Header: 'Utilization',
         Cell: Load,
       },
@@ -40,7 +45,7 @@ const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
         Header: 'Waiting',
       },
     ],
-    [],
+    []
   );
   const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
     useTable({
@@ -98,7 +103,6 @@ const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
         )}
       </tbody>
     </table>
-
   );
 };
 
