@@ -1,4 +1,4 @@
-const rawSystemMonitorOutput = { 
+export const rawSystemMonitorOutput = { 
   "Longhorn": 
   { 
     "display_name": "Longhorn",
@@ -111,6 +111,4 @@ const rawSystemMonitorOutput = {
       }
     ] 
   } 
-}
-
-export default rawSystemMonitorOutput;
+};
