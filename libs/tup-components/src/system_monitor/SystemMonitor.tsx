@@ -2,43 +2,50 @@ import React, { useMemo } from 'react';
 import { useTable, Column } from 'react-table';
 import { LoadingSpinner, Message } from '@tacc/core-components';
 import { Display, Operational, Load } from './SystemMonitorCells';
-import { SystemMonitorSystem, useSystemMonitor } from '@tacc/tup-hooks';
+import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
 import styles from './SystemMonitor.module.css';
 
-const SystemMonitor: React.FC<{ hosts?: Array<string> }> = ({ hosts }) => {
-  const { systems, isLoading, error } = useSystemMonitor(hosts);
-  const columns = useMemo<Column<SystemMonitorSystem>[]>(
+const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
+  if (!rawSystem?.online || !rawSystem?.reachable || rawSystem?.in_maintenance || rawSystem?.in_maintenance) {
+    return false;
+  }
+  return true;
+};
+
+const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
+  const { data, isLoading, error } = useSystemMonitor();
+  const columns = useMemo<Column<SystemMonitorRawSystem>[]>(
     () => [
       {
         accessor: 'display_name',
-        Header: 'Name',
+        Header: 'System',
         Cell: Display,
       },
       {
-        accessor: 'isOperational',
+        accessor: ({isOperational}) => (isSystemDown),
         Header: 'Status',
         Cell: Operational,
       },
       {
-        accessor: 'loadPercentage',
-        Header: 'Load',
+        accessor: ({load}) => (load ? Math.floor(load * 100) :  '--'),
+        Header: 'Utilization',
         Cell: Load,
       },
       {
-        accessor: ({ jobs }) => (jobs ? jobs.running : '--'),
+        accessor: ({ running }) => (running ? running : '--'),
         Header: 'Running',
       },
       {
-        accessor: ({ jobs }) => (jobs ? jobs.queued : '--'),
-        Header: 'Queued',
+        accessor: ({ waiting }) => (waiting ? waiting : '--'),
+        Header: 'Waiting',
       },
     ],
-    []
+    [],
   );
   const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
     useTable({
       columns,
-      data: systems,
+      data: data ?? [],
     });
 
   if (isLoading) {
@@ -91,6 +98,7 @@ const SystemMonitor: React.FC<{ hosts?: Array<string> }> = ({ hosts }) => {
         )}
       </tbody>
     </table>
+
   );
 };
 

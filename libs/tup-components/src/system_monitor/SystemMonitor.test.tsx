@@ -5,7 +5,7 @@ import { waitFor } from '@testing-library/react';
 
 describe('System Monitor Component', () => {
   it('display a no-systems message when there is no data', async () => {
-    const { getByText } = testRender(<SystemMonitor hosts={[]} />);
+    const { getByText } = testRender(<SystemMonitor display_name={[]} />);
     await waitFor(() =>
       expect(getByText('No systems being monitored')).toBeDefined()
     );
