@@ -2,6 +2,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
+import libPaths from '../../libs/paths';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -11,7 +13,7 @@ export default defineConfig({
         __dirname,
         '../../libs/core-components/src/index.ts'
       ),
-      '@tacc/core-styles/dist': path.resolve(__dirname, '../../node_modules/@tacc/core-styles/src/lib/_imports/'),
+      '@tacc/core-styles/dist': libPaths['@tacc/core-styles/dist'],
     },
   },
   build: {
