@@ -1,14 +1,14 @@
 import React from 'react';
 import { Pill } from '@tacc/core-components';
 import { Cell } from 'react-table';
-import { SystemMonitorSystem } from '@tacc/tup-hooks';
+import { SystemMonitorRawSystem } from '@tacc/tup-hooks';
 
-export const Display: React.FC<{ cell: Cell<SystemMonitorSystem, string> }> = ({
+export const Display: React.FC<{ cell: Cell<SystemMonitorRawSystem, string> }> = ({
   cell: { value },
 }) => <strong className="wb-text-primary">{value}</strong>;
 
 export const Operational: React.FC<{
-  cell: Cell<SystemMonitorSystem, boolean>;
+  cell: Cell<SystemMonitorRawSystem, boolean>;
 }> = ({ cell: { value } }) => {
   if (value) {
     return <Pill type="success">Operational</Pill>;
@@ -17,5 +17,5 @@ export const Operational: React.FC<{
 };
 
 export const Load: React.FC<{
-  cell: Cell<SystemMonitorSystem, number | undefined>;
+  cell: Cell<SystemMonitorRawSystem, number | undefined>;
 }> = ({ cell: { value } }) => <span>{value ? `${value}%` : '--'}</span>;
