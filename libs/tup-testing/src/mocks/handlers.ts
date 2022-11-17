@@ -1,5 +1,10 @@
 import { rest } from 'msw';
-import { mockProfile, mockJwt, rawSystemMonitorOutput } from './fixtures';
+import {
+  mockProfile,
+  mockJwt,
+  rawSystemMonitorOutput,
+  mockTickets,
+} from './fixtures';
 
 export const handlers = [
   rest.get('http://localhost:8001/users/profile', (req, res, ctx) => {
@@ -13,5 +18,9 @@ export const handlers = [
   rest.get('http://localhost:8001/system_monitor', (req, res, ctx) => {
     // Respond with mock system monitor output
     return res(ctx.json(rawSystemMonitorOutput));
+  }),
+  rest.get('http://localhost:8001/tickets', (req, res, ctx) => {
+    // Respond with mock tickets output
+    return res(ctx.json(mockTickets));
   }),
 ];
