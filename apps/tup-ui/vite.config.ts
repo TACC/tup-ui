@@ -2,8 +2,6 @@ import { defineConfig, PluginOption } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-import libAlias from '../../libs/aliases';
-
 function localFsPlugin(): PluginOption {
   // Rewrite @fs asset paths to point to the Vite dev server.
   // Otherwise Django will attempt to serve the files from port 8000.
@@ -44,7 +42,6 @@ export default defineConfig({
         __dirname,
         '../../libs/tup-components/src/index.ts'
       ),
-      '@tacc/core-styles/dist': libAlias['@tacc/core-styles/dist'],
       '@tacc/tup-ui': path.resolve(__dirname, './src'),
     },
   },

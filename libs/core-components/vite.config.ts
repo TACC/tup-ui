@@ -2,15 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-import libAlias from '../../libs/aliases';
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      '@tacc/core-styles/dist': libAlias['@tacc/core-styles/dist'],
-    },
+    alias: {},
   },
   build: {
     lib: {
