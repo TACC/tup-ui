@@ -42,7 +42,7 @@ export default defineConfig({
         __dirname,
         '../../libs/tup-components/src/index.ts'
       ),
-      '@tacc/core-styles': path.resolve(__dirname, '../../libs/core-styles/'),
+      '@tacc/core-styles/dist': path.resolve(__dirname, '../../node_modules/@tacc/core-styles/src/lib/_imports/'),
       '@tacc/tup-ui': path.resolve(__dirname, './src'),
     },
   },
