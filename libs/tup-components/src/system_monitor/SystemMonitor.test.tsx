@@ -1,9 +1,8 @@
 import React from 'react';
 import SystemMonitor from './SystemMonitor';
 import { server, testRender } from '@tacc/tup-testing';
-import { getAllByRole, waitFor } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import { rest } from 'msw';
-import { rawSystemMonitorOutput } from 'libs/tup-testing/src/mocks/fixtures';
 
 describe('System Monitor Component', () => {
   it('should render message when there are no systems to show', async () => {

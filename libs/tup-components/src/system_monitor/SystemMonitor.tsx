@@ -32,16 +32,16 @@ const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
         Cell: Operational,
       },
       {
-        accessor: ({ load }) => (load ? Math.floor(load * 100) : '--'),
+        accessor: ({ load }) => (load ? Math.floor(load * 100) : ' -- '),
         Header: 'Utilization',
         Cell: Load,
       },
       {
-        accessor: ({ running }) => (running ? running : '--'),
+        accessor: ({ running }) => (running ? running : ' 0 '),
         Header: 'Running',
       },
       {
-        accessor: ({ waiting }) => (waiting ? waiting : '--'),
+        accessor: ({ waiting }) => (waiting ? waiting : ' 0 '),
         Header: 'Waiting',
       },
     ],
