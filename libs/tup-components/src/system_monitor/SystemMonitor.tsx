@@ -10,7 +10,7 @@ const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
     !rawSystem?.online ||
     !rawSystem?.reachable ||
     rawSystem?.in_maintenance ||
-    rawSystem?.in_maintenance
+    rawSystem?.queues_down
   ) {
     return false;
   }
