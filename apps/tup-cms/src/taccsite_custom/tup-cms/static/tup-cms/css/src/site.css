@@ -1,0 +1,21 @@
+/* Organize via ITCSS */
+/* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
+
+
+
+/* SETTINGS */
+
+:root {
+
+  /* Accent */
+  --global-color-accent--xxx-light: #AAC7FF;
+  --global-color-accent--x-light: #558EFF;
+  --global-color-accent--light: #0055FF;
+  --global-color-accent--normal: #003399; /* original c-callout background */
+  --global-color-accent--dark: #002266;
+  --global-color-accent--x-dark: #001133;
+
+  --global-color-accent--alt: #B2C1DE;
+  --global-color-accent--weak: #0044CC40;
+
+}
