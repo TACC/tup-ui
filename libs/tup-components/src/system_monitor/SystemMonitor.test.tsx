@@ -11,12 +11,12 @@ describe('System Monitor Component', () => {
       rest.get('http://localhost:8001/system_monitor', (req, res, ctx) => {
         return res.once(ctx.json([]));
       })
-      );
-      const { getByText } = testRender(<SystemMonitor />);
-      await waitFor(() =>
-        expect(getByText('No systems being monitored')).toBeDefined()
-      );
-    });
+    );
+    const { getByText } = testRender(<SystemMonitor />);
+    await waitFor(() =>
+      expect(getByText('No systems being monitored')).toBeDefined()
+    );
+  });
   it('should display an error message if an error is returned from useQuery', async () => {
     server.use(
       rest.get('http://localhost:8001/system_monitor', (req, res, ctx) =>
@@ -31,7 +31,7 @@ describe('System Monitor Component', () => {
   it('should display the system name in each row', async () => {
     const { getByText } = testRender(<SystemMonitor />);
     await waitFor(() => expect(getByText('Frontera')).toBeDefined());
-    const {debug} = testRender(<SystemMonitor />);
-    debug();  
+    const { debug } = testRender(<SystemMonitor />);
+    debug();
   });
 });
