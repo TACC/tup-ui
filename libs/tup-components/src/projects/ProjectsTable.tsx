@@ -18,13 +18,13 @@ export const ProjectsTable: React.FC = () => {
       {
         accessor: ({ pi }) => pi.firstName + ' ' + pi.lastName,
         Header: 'Principle Investigator',
-        Cell: PrinInv,
+        // Cell: PrinInv,
       },
       {
         accessor: ({ allocations }) =>
           allocations ? allocations.map((e) => e.resource).join(', ') : '--',
         Header: 'Active Allocations',
-        Cell: Allocations,
+        // Cell: Allocations,
       },
     ],
     []
@@ -40,7 +40,7 @@ export const ProjectsTable: React.FC = () => {
   }
 
   if (error) {
-    return <Message type="warn">No active projects were found.</Message>;
+    return <Message type="warn">Unable to retrieve projects.</Message>;
   }
   return (
     <table
@@ -56,7 +56,7 @@ export const ProjectsTable: React.FC = () => {
             className={styles['header']}
           >
             {headerGroup.headers.map((column) => (
-              <th key={column.id}>{column.render('Header')}</th>
+              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
             ))}
           </tr>
         ))}
@@ -75,7 +75,7 @@ export const ProjectsTable: React.FC = () => {
           })
         ) : (
           <tr>
-            <td colSpan={5}>No systems being monitored</td>
+            <td colSpan={5}>No active projects found.</td>
           </tr>
         )}
       </tbody>
