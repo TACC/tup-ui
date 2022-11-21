@@ -7,3 +7,13 @@ export type StatusDisplay = {
   text: string;
   unknownStatusText: boolean;
 };
+
+export type formValues = {
+  subject: string;
+  description: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  cc: string;
+  files: File[];
+};

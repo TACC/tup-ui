@@ -1,7 +1,8 @@
 /* FP-993: Allow use by DataFilesUploadModal */
 import React, { useState } from 'react';
-// import { useDropzone } from 'react-dropzone';
-import { Button, InlineMessage } from '@tacc/core-components';
+import { useDropzone } from 'react-dropzone';
+import Button from '../Button';
+import InlineMessage from '../Message';
 import PropTypes from 'prop-types';
 import './FileInputDropZone.scss';
 

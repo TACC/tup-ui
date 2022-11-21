@@ -1,6 +1,13 @@
 import React, { useMemo } from 'react';
 import { Formik, Form } from 'formik';
 import { Link } from 'react-router-dom';
+//import ReCAPTCHA from 'react-google-recaptcha';
+import {
+  UserProfile,
+  useTicketCreate,
+  useTicketCreateNoAuth,
+} from '@tacc/tup-hooks';
+import { FormikInput } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import {
   Alert,
@@ -10,35 +17,68 @@ import {
   ModalBody,
   ModalFooter,
   Row,
-  Spinner,
 } from 'reactstrap';
-import {
-  Button,
-  FormField,
-  FileInputDropZoneFormField,
-} from '@tacc/core-components';
-//import ReCAPTCHA from 'react-google-recaptcha';
+import { Button, FileInputDropZoneFormField } from '@tacc/core-components';
+import { formValues } from './';
+import './TicketCreateForm.scss';
 
-export const TicketCreateForm = () => {
+const CreatedTicketInformation: React.FC<{
+  provideDashBoardLinkOnSuccess: boolean;
+  ticketId: any;
+}> = ({ provideDashBoardLinkOnSuccess, ticketId }) => {
+  if (!ticketId) {
+    return null;
+  }
+
+  if (provideDashBoardLinkOnSuccess) {
+    return (
+      <Alert color="success" className="ticket-create-info-alert">
+        <Link className="ticket-link" to={`tickets/${ticketId}`}>
+          Ticket (#{ticketId})
+        </Link>{' '}
+        was created. Support staff will contact you regarding your problem.
+      </Alert>
+    );
+  }
+  return (
+    <Alert color="success" className="ticket-creation-info-alert">
+      Ticket (#{ticketId}) was created. Support staff will contact you via email
+      regarding your problem.
+    </Alert>
+  );
+};
+
+export const TicketCreateForm: React.FC<{ profile?: UserProfile }> = ({
+  profile,
+}) => {
   const defaultValues = useMemo(
     () => ({
       subject: '',
-      problem_description: '',
-      first_name: '',
-      last_name: '',
-      email: '',
+      description: '',
+      first_name: profile?.firstName ?? '',
+      last_name: profile?.lastName ?? '',
+      email: profile?.email ?? '',
       cc: '',
-      attachments: [],
-      recaptchaResponse: '',
+      files: [],
+      // recaptchaResponse: '',
     }),
-    []
+    [profile]
   );
 
-  const isAuthenticated = true;
+  const isAuthenticated = profile != null;
+
+  const provideDashBoardLinkOnSuccess = true;
+
+  const mutation = useTicketCreate();
+  const mutationNoAuth = useTicketCreateNoAuth();
+  let { mutate, isLoading, isSuccess, isError, error, data } = mutation;
+  if (!isAuthenticated) {
+    ({ mutate, isLoading, isSuccess, isError, error, data } = mutationNoAuth);
+  }
 
   const formShape = {
     subject: Yup.string().required('Required'),
-    problem_description: Yup.string().required('Required'),
+    description: Yup.string().required('Required'),
     first_name: Yup.string().required('Required'),
     last_name: Yup.string().required('Required'),
     email: Yup.string().email('Invalid email').required('Required'),
@@ -60,14 +100,18 @@ export const TicketCreateForm = () => {
       enableReinitialize
       initialValues={defaultValues}
       validationSchema={formSchema}
-      onSubmit={(values, { resetForm }) => {
+      onSubmit={(values: formValues, { resetForm }) => {
         const formData = new FormData();
-        Object.keys(values).forEach((key) => formData.append(key, values[key]));
-        if (values.attachments) {
-          values.attachments.forEach((attach) =>
-            formData.append('attachments', attach)
-          );
+        formData.append('email', values['email']);
+        formData.append('subject', values['subject']);
+        formData.append('description', values['description']);
+        formData.append('cc', values['cc']);
+        if (values.files) {
+          values.files.forEach((file) => formData.append('files', file));
         }
+        mutate(formData, {
+          onSuccess: () => resetForm(),
+        });
       }}
     >
       {({ isSubmitting, isValid, setFieldValue }) => {
@@ -75,55 +119,64 @@ export const TicketCreateForm = () => {
           <Form className="ticket-create-form">
             <ModalBody className="ticket-create-modal-body">
               <FormGroup>
-                <FormField name="subject" label="Subject" required />
-                <FormField
-                  name="problem_description"
+                <FormikInput
+                  name="subject"
+                  label="Subject"
+                  required
+                  description=""
+                />
+                <FormikInput
+                  name="description"
                   label="Problem Description"
-                  className="ticket-description-text-area"
                   type="textarea"
                   required
                   description="Explain your steps leading up to the problem and include any error
-            reports"
+                  reports"
                 />
-                {/* <FileInputDropZoneFormField
-                  id="attachments"
+                <FileInputDropZoneFormField
+                  id="files"
                   isSubmitted={isSubmitting}
                   description="Error reports and screenshots can be helpful for diagnostics"
                   maxSizeMessage="Max File Size: 3MB"
                   maxSize={3145728}
-                /> */}
+                />
                 <Container>
                   <Row>
                     <Col lg="6">
-                      <FormField
+                      <FormikInput
                         name="first_name"
                         label="First Name"
                         required
                         disabled={isAuthenticated}
+                        description=""
                       />
                     </Col>
                     <Col lg="6">
-                      <FormField
+                      <FormikInput
                         name="last_name"
                         label="Last Name"
                         required
                         disabled={isAuthenticated}
+                        description=""
                       />
                     </Col>
                   </Row>
                   <Row>
                     <Col lg="6">
-                      <FormField
+                      <FormikInput
                         name="email"
                         label="Email"
+                        type="email"
                         required
                         disabled={isAuthenticated}
+                        description=""
                       />
                     </Col>
                     <Col lg="6">
-                      <FormField
+                      <FormikInput
                         name="cc"
                         label="Cc"
+                        required={false}
                         description="Separate emails with commas"
                       />
                     </Col>
@@ -142,25 +195,25 @@ export const TicketCreateForm = () => {
             </ModalBody>
             <ModalFooter>
               <div className="ticket-create-button-row">
-                {/* {creatingSuccess && (
+                {isSuccess && (
                   <CreatedTicketInformation
-                    ticketId={createdTicketId}
+                    ticketId={data}
                     provideDashBoardLinkOnSuccess={
                       isAuthenticated && provideDashBoardLinkOnSuccess
                     }
                   />
                 )}
-                {creatingError && (
+                {isError && (
                   <Alert color="warning">
-                    Ticket creating error: {creatingErrorMessage}
+                    Ticket creating error: {error?.message}
                   </Alert>
-                )} */}
+                )}
                 <Button
                   attr="submit"
                   type="primary"
                   size="medium"
-                  // disabled={!isValid || isSubmitting || creating}
-                  // isLoading={creating}
+                  disabled={!isValid || isSubmitting || isLoading}
+                  isLoading={isLoading}
                 >
                   Add Ticket
                 </Button>

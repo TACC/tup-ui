@@ -26,7 +26,7 @@ export type UserProfile = {
   lastName: string;
   institution: string;
   institutionId: number;
-  department: string;
+  department: string | null;
   departmentId: number;
   country: string;
   countryId: number;
@@ -123,8 +123,26 @@ export type Ticket = {
   numerical_id: string;
 };
 
+export type CreateTicketBody = {
+  subject: string;
+  description: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  cc: string;
+  attachments: File[];
+};
+
+export type CreateTicketResponse = {
+  ticketId: string;
+};
+
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
 export { default as useSystemMonitor } from './useSystemMonitor';
-export { default as useTickets } from './useTickets';
+export {
+  useGetTickets,
+  useTicketCreate,
+  useTicketCreateNoAuth,
+} from './useTickets';

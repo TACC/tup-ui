@@ -29,7 +29,10 @@ describe('Tickets Table Component', () => {
     );
     const { getByText } = testRender(<TicketsTable />);
     await waitFor(() =>
-      expect(getByText('No tickets. You can add a ticket here.')).toBeDefined()
+      expect(getByText(/No tickets. You can add a ticket/)).toBeDefined()
+    );
+    expect(getByText('here').closest('a')?.getAttribute('href')).toEqual(
+      '/ticket-create'
     );
   });
   it('should display an error message if an error is returned from useQuery', async () => {

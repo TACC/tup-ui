@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
 import { Column, Row } from 'react-table';
+import { Link } from 'react-router-dom';
 import {
   InfiniteScrollTable,
   InlineMessage,
   LoadingSpinner,
 } from '@tacc/core-components';
-import { Ticket, useTickets } from '@tacc/tup-hooks';
+import { Ticket, useGetTickets } from '@tacc/tup-hooks';
 import { DateCreated, Status, Subject } from './TicketsCells';
 import './TicketsView.scss';
 
@@ -28,8 +29,16 @@ export const getStatusText = (status: string) => {
 };
 
 export const TicketsTable: React.FC = () => {
-  const { data, isLoading, error } = useTickets();
-  const noDataText = <>No tickets. You can add a ticket here.</>;
+  const { data, isLoading, error } = useGetTickets();
+  const noDataText = (
+    <>
+      No tickets. You can add a ticket{' '}
+      <Link className="wb-link" to={'ticket-create'}>
+        here
+      </Link>
+      .
+    </>
+  );
 
   const columns = useMemo<Column<Ticket>[]>(
     () => [

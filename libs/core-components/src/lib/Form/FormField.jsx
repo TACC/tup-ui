@@ -7,7 +7,7 @@ import {
   Badge,
   InputGroup,
 } from 'reactstrap';
-import { Button } from '@tacc/core-components';
+import Button from '../Button';
 
 import { useField } from 'formik';
 import PropTypes from 'prop-types';

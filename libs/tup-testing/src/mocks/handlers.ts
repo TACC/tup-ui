@@ -23,4 +23,8 @@ export const handlers = [
     // Respond with mock tickets output
     return res(ctx.json(mockTickets));
   }),
+  rest.post('http://localhost:8001/tickets', (req, res, ctx) => {
+    // Respond with a mock created ticket id
+    return res(ctx.json('12345'));
+  }),
 ];
