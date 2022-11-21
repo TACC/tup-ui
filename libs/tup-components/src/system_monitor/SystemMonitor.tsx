@@ -3,7 +3,7 @@ import { useTable, Column } from 'react-table';
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { Display, Operational, Load } from './SystemMonitorCells';
 import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
-import './SystemMonitor.module.css';
+import styles from './SystemMonitor.module.css';
 
 export const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
   if (
