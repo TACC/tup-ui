@@ -36,7 +36,7 @@ describe('System Monitor Component', () => {
         return res.once(ctx.json({online : false, reachable : false, queues_down : true, in_maintenance : true}));
       })
     );
-    const SystemMonitor = ({testRender(<SystemMonitor />);
+    const { getAllByText } = testRender(<SystemMonitor />);
     await waitFor(() => 
       expect(getAllByText("Maintenance")).toBeDefined());
   });
