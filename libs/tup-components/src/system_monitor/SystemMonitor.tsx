@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import { useTable, Column } from 'react-table';
-import { LoadingSpinner, Message } from '@tacc/core-components';
+import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { Display, Operational, Load } from './SystemMonitorCells';
 import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
-import styles from './SystemMonitor.module.css';
+import './SystemMonitor.module.css';
 
-const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
+export const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
   if (
     !rawSystem?.online ||
     !rawSystem?.reachable ||
@@ -17,7 +17,7 @@ const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
   return true;
 };
 
-const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
+export const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
   const { data, isLoading, error } = useSystemMonitor();
   const columns = useMemo<Column<SystemMonitorRawSystem>[]>(
     () => [
@@ -47,10 +47,11 @@ const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
     ],
     []
   );
+
   const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
     useTable({
       columns,
-      data: data ?? [],
+      data: data ?? []
     });
 
   if (isLoading) {
@@ -59,9 +60,9 @@ const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
 
   if (error) {
     return (
-      <Message type="warn" className={styles['error']}>
+      <InlineMessage type="warning" className={'error'}>
         Unable to gather system information
-      </Message>
+      </InlineMessage>
     );
   }
 
@@ -84,7 +85,7 @@ const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
           </tr>
         ))}
       </thead>
-      <tbody {...getTableBodyProps()} className={styles['rows']}>
+      <tbody {...getTableBodyProps()} className={styles['rows']} >
         {rows.length ? (
           rows.map((row, idx) => {
             prepareRow(row);
@@ -105,5 +106,3 @@ const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
     </table>
   );
 };
-
-export default SystemMonitor;

@@ -1,1 +1,1 @@
-export { default as SystemMonitor } from './SystemMonitor';
+export { SystemMonitor } from './SystemMonitor';
