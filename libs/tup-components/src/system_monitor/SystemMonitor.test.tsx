@@ -1,9 +1,8 @@
 import React from 'react';
-import { SystemMonitor} from './SystemMonitor';
+import { SystemMonitor } from './SystemMonitor';
 import { server, testRender, TestWrapper } from '@tacc/tup-testing';
 import { waitFor } from '@testing-library/react';
 import { rest } from 'msw';
-
 
 describe('System Monitor Component', () => {
   it('should render message when there are no systems to show', async () => {

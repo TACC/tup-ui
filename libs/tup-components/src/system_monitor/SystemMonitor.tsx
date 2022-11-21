@@ -51,7 +51,7 @@ export const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
   const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
     useTable({
       columns,
-      data: data ?? []
+      data: data ?? [],
     });
 
   if (isLoading) {
@@ -85,7 +85,7 @@ export const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
           </tr>
         ))}
       </thead>
-      <tbody {...getTableBodyProps()} className={styles['rows']} >
+      <tbody {...getTableBodyProps()} className={styles['rows']}>
         {rows.length ? (
           rows.map((row, idx) => {
             prepareRow(row);
