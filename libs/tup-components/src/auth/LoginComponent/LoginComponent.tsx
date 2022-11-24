@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import { useLocation, Location, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@tacc/tup-hooks';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
+import { FormikInput } from '@tacc/core-wrappers';
 import { Label } from 'reactstrap';
 import { Button } from '@tacc/core-components';
 import * as Yup from 'yup';
@@ -25,13 +26,9 @@ type LoginFieldProps = {
 };
 
 const LoginField: React.FC<LoginFieldProps> = ({ name, label, type }) => {
-  // Matt does not want these form stylings to be global
   return (
     <div className={styles['form-field']}>
-      <Label className={styles['form-field__label']} size="sm" htmlFor={name}>
-        {label}
-      </Label>
-      <Field name={name} id={name} type={type} />
+      <FormikInput name={name} label={label} id={name} type={type} required description="fsdaafsd" />
     </div>
   );
 };

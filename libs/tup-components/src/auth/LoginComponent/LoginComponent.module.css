@@ -1,12 +1,3 @@
-@import url('@tacc/core-styles/dist/settings/border.css');
-@import url('@tacc/core-styles/dist/settings/color.css');
-@import url('@tacc/core-styles/dist/settings/space.css');
-@import url('@tacc/core-styles/dist/settings/font.css');
-
-@import url('@tacc/core-styles/dist/elements/form.cms.css');
-
-
-
 /* CONTAINER */
 
 .root {
@@ -21,8 +12,6 @@
 /* LINKS */
 
 .link {
-  composes: c-link--undecorated from 'src/styles/components.css';
-
   font-weight: var(--medium);
 }
 
@@ -32,6 +21,9 @@
 
 .title {
   text-align: center;
+}
+.title :where(h1, h2, h3, h4, h5, h6) {
+  font-weight: var(--black);
 }
 
 .logo {

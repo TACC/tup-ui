@@ -76,9 +76,10 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={`
         ${styles['root']}
-        ${TYPE_MAP[type] ? styles[TYPE_MAP[type]] : ''}
-        ${SIZE_MAP[size] ? styles[SIZE_MAP[size]] : ''}
-        ${isLoading ? styles['loading'] : ''}
+        c-button
+        ${TYPE_MAP[type] ? `c-button--${[TYPE_MAP[type]]}` : ''}
+        ${SIZE_MAP[size] ? `c-button--${[SIZE_MAP[size]]}` : ''}
+        ${isLoading ? 'c-button--is-busy' : ''}
         ${className}
       `}
       disabled={disabled || isLoading}
@@ -96,19 +97,19 @@ const Button: React.FC<ButtonProps> = ({
         <Icon
           name={iconNameBefore}
           dataTestid="icon-before"
-          className={iconNameBefore ? styles['icon--before'] : ''}
+          className="c-button__icon--before"
         />
       ) : (
         ''
       )}
-      <span className={styles['text']} data-testid="text">
+      <span className="c-button__text" data-testid="text">
         {children}
       </span>
       {iconNameAfter && (
         <Icon
           name={iconNameAfter}
           dataTestid="icon-after"
-          className={iconNameAfter ? styles['icon--after'] : ''}
+          className="c-button__icon--after"
         />
       )}
     </button>

@@ -8,7 +8,7 @@ const TicketsDashboard: React.FC = () => {
     <SectionTableWrapper
       header="My Tickets"
       // headerActions={
-      //   <Link to={'tickets-create'} className="btn btn-secondary btn-sm">
+      //   <Link to={'tickets-create'} className="c-button c-button--primary">
       //     + New Ticket
       //   </Link>
       // }

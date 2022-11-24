@@ -9,10 +9,10 @@ const Layout: React.FC = () => {
     <div className={styles.root}>
       <LoginComponent className={styles.body} />
       <div className={styles.footer}>
-        <a className={styles.link} href="./security">
+        <a className={styles.footer__link} href="./security">
           Security
         </a>
-        <a className={styles.link} href="./policies">
+        <a className={styles.footer__link} href="./policies">
           Policies
         </a>
       </div>
