@@ -19,7 +19,6 @@ export const Status: React.FC<{ cell: Cell<Ticket, StatusDisplay> }> = ({
 
 export const Subject: React.FC<{ cell: Cell<Ticket, string> }> = ({
   cell: { value, row },
-}) => <Link to={`/tickets/${row.original.numerical_id}`}>{value}</Link>;
-{
-  /* <Link to={`/tickets/${row.original.numerical_id}`}>{value}</Link>; */
-}
+}) => (
+  <Link to={`/tickets-dashboard/${row.original.numerical_id}`}>{value}</Link>
+);

@@ -1,7 +1,7 @@
 export { default as TicketsDashboard } from './TicketsDashboard';
 export { default as TicketCreateModal } from './TicketCreateModal';
 export { default as Tickets } from './Tickets';
-export { default as TicketDetails } from './TicketDetails';
+export { default as TicketModal } from './TicketModal';
 
 export type StatusDisplay = {
   text: string;
@@ -16,4 +16,15 @@ export type formValues = {
   email: string;
   cc: string;
   files: File[];
+};
+
+export type attachment = [File, string];
+
+export type historyCardParams = {
+  created: Date;
+  creator: string;
+  isCreator: boolean;
+  content: string;
+  attachments?: Array<attachment>;
+  ticketId: string;
 };

@@ -143,6 +143,7 @@ export { default as useJwt } from './useJwt';
 export { default as useSystemMonitor } from './useSystemMonitor';
 export {
   useGetTickets,
+  useGetTicketDetails,
   useTicketCreate,
   useTicketCreateNoAuth,
 } from './useTickets';

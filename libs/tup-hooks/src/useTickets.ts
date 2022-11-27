@@ -11,6 +11,17 @@ export const useGetTickets = (): UseQueryResult<Ticket[]> => {
   return query;
 };
 
+// Query to retrieve detailed info for a specific ticket.
+export const useGetTicketDetails = (
+  ticketId?: string
+): UseQueryResult<Ticket> => {
+  const query = useGet<Ticket>({
+    endpoint: `/tickets/${ticketId}`,
+    key: `tickets/${ticketId}`,
+  });
+  return query;
+};
+
 // Mutation to POST new ticket form data to tup-services.
 export const useTicketCreate = () => {
   const mutation = usePost<FormData, string>({
