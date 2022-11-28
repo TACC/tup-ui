@@ -1,4 +1,5 @@
 import { setLogger } from 'react-query';
+import { string } from 'yup';
 
 // Disable error logging when we throw inside a react-query fetcher method.
 setLogger({
@@ -55,46 +56,29 @@ export type AuthBody = {
   password: string;
 };
 
-export type SystemMonitorTest = {
-  type: string;
-  status: boolean;
-  timestamp: string;
+export type Reservation = {
+  name: string;
+  begin_time: string;
+  end_time: string;
 };
 
 export type SystemMonitorRawSystem = {
-  hostname: string;
-  displayName: string;
-  ssh?: SystemMonitorTest;
-  tests?: {
-    heartbeat?: SystemMonitorTest;
-    ssh?: SystemMonitorTest;
-  };
-  timestamp: string;
-  jobs?: {
-    running: number;
-    queued: number;
-    other: number;
-  };
-  totalCpu: number;
-  usedCpu: number;
-  load: number;
-  heartbeat?: SystemMonitorTest;
-};
-
-export type SystemMonitorRaw = {
-  [hostname: string]: SystemMonitorRawSystem;
-};
-
-export type SystemMonitorSystem = {
-  hostname: string;
   display_name: string;
+  tas_name: string;
+  hostname: string;
+  system_type: string;
+  timestamp: string;
   isOperational: boolean;
-  loadPercentage?: number;
-  jobs?: {
-    running: number;
-    queued: number;
-    other: number;
-  };
+  online: boolean;
+  // values may not be included in the TAP response if systems are down/unreachable
+  reachable?: boolean;
+  queues_down?: boolean;
+  load?: number;
+  running?: number;
+  waiting?: number;
+  in_maintenance?: boolean;
+  next_maintenance?: boolean;
+  reservations?: [Reservation];
 };
 
 export type Ticket = {
