@@ -13,6 +13,7 @@ plugins:
       custom-selectors: true
       nesting-rules: true
   postcss-replace:
-    pattern: ../../fonts/
+    # @tacc/core-styles 'dist/' uses `./fonts`
+    pattern: ./fonts/
     data:
       replaceAll: ../fonts/
