@@ -17,16 +17,14 @@ describe('Projects Table Component', () => {
     );
   });
   it('should display the projects table', async () => {
-    render(<ProjectsTable />)
+    render(<ProjectsTable />);
     // server.use(
     //   rest.get('http://localhost:8001/projects', (req, res, ctx) => {
     //     return res.once(ctx.json([]));
     //   })
     // );
-    screen.debug(screen.getByRole('table'))
+    screen.debug(screen.getByRole('table'));
   });
-
-
 
   // it('should display the projects table', async () => {
   //   server.use(
