@@ -28,7 +28,14 @@ type LoginFieldProps = {
 const LoginField: React.FC<LoginFieldProps> = ({ name, label, type }) => {
   return (
     <div className={styles['form-field']}>
-      <FormikInput name={name} label={label} id={name} type={type} required description="fsdaafsd" />
+      <FormikInput
+        name={name}
+        label={label}
+        id={name}
+        type={type}
+        required
+        description="fsdaafsd"
+      />
     </div>
   );
 };
