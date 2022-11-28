@@ -6,8 +6,10 @@ import React, {
   useState,
 } from 'react';
 import { Column } from 'react-table';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Formik, Form } from 'formik';
+import { FormikInput } from '@tacc/core-wrappers';
 import {
   CardHeader,
   CardBody,
@@ -21,14 +23,31 @@ import {
   ModalHeader,
   ModalBody,
 } from 'reactstrap';
-import { InfiniteScrollTable } from '@tacc/core-components';
-import { useGetTicketDetails } from '@tacc/tup-hooks';
+import {
+  Button,
+  FileInputDropZoneFormField,
+  Icon,
+  InfiniteScrollTable,
+  LoadingSpinner,
+  InlineMessage,
+} from '@tacc/core-components';
+import {
+  useGetFileAttachment,
+  useGetTicketDetails,
+  useGetTicketHistory,
+  useTicketReply,
+} from '@tacc/tup-hooks';
 import { formatDateTime } from '../utils/timeFormat';
 import { historyCardParams } from '.';
 import * as Yup from 'yup';
+import './TicketModal.scss';
+
+const formSchema = Yup.object().shape({
+  text: Yup.string().required('Required'),
+});
 
 const Attachments: React.FC<{
-  attachments: Array<[File, string]>;
+  attachments: Array<Array<any>>;
   ticketId: string;
 }> = ({ attachments, ticketId }) => {
   // const infiniteScrollCallback = useCallback(() => {});
@@ -86,19 +105,91 @@ const Attachments: React.FC<{
       <InfiniteScrollTable
         tableColumns={columns}
         className="attachment-table"
-        tableData={json}
+        tableData={json ?? []}
         noDataText={noDataText}
       />
     </div>
   );
 };
 Attachments.propTypes = {
-  attachments: PropTypes.arrayOf(PropTypes.array).isRequired,
+  attachments: PropTypes.arrayOf(PropTypes.array.isRequired).isRequired,
+  ticketId: PropTypes.string.isRequired,
+};
+
+const TicketHistoryReply: React.FC<{ ticketId: string }> = ({ ticketId }) => {
+  const mutation = useTicketReply(ticketId);
+  const { mutate, isLoading, isSuccess, isError } = mutation;
+
+  const defaultValues = useMemo(
+    () => ({
+      text: '',
+      files: [],
+    }),
+    []
+  );
+
+  return (
+    <Formik
+      enableReinitialize
+      initialValues={defaultValues}
+      validationSchema={formSchema}
+      onSubmit={(values, { resetForm }) => {
+        const formData = new FormData();
+        formData.append('text', values['text']);
+        if (values.files) {
+          values.files.forEach((file) => formData.append('files', file));
+        }
+        mutate(formData, {
+          onSuccess: () => resetForm(),
+        });
+      }}
+    >
+      {({ isSubmitting, isValid }) => {
+        return (
+          <Form className="ticket-reply-form">
+            <FormikInput
+              name="text"
+              label="Reply"
+              type="textarea"
+              className="ticket-reply-text-area"
+              description=""
+              required
+            />
+            <FileInputDropZoneFormField
+              id="files"
+              isSubmitted={isSubmitting}
+              description="Error reports and screenshots can be helpful for diagnostics"
+              maxSizeMessage="Max File Size: 3MB"
+              maxSize={3145728}
+            />
+            <FormGroup className="ticket-reply-submission">
+              {isError && (
+                <InlineMessage type="error">
+                  Something went wrong.
+                </InlineMessage>
+              )}
+              <Button
+                attr="submit"
+                type="primary"
+                disabled={!isValid || isSubmitting || isLoading || isError}
+                isLoading={isLoading}
+              >
+                Reply
+              </Button>
+            </FormGroup>
+          </Form>
+        );
+      }}
+    </Formik>
+  );
+};
+
+TicketHistoryReply.propTypes = {
   ticketId: PropTypes.string.isRequired,
 };
 
 const TicketHistoryCard: React.FC<historyCardParams> = ({
-  historyId,
+  // historyId,
   created,
   creator,
   isCreator,
@@ -121,13 +212,13 @@ const TicketHistoryCard: React.FC<historyCardParams> = ({
   );
 
   const onClick = () => {
-    console.log('hello');
+    setIsOpen(!isOpen);
   };
 
   const onKeyDown = (e: any) => {
     if (e.key === ' ') {
       e.preventDefault();
-      console.log('hello');
+      setIsOpen(!isOpen);
     }
   };
 
@@ -171,12 +262,47 @@ const TicketHistoryCard: React.FC<historyCardParams> = ({
 };
 
 TicketHistoryCard.propTypes = {
-  historyId: PropTypes.number.isRequired,
+  // historyId: PropTypes.number.isRequired,
   created: PropTypes.instanceOf(Date).isRequired,
   creator: PropTypes.string.isRequired,
   isCreator: PropTypes.bool.isRequired,
   content: PropTypes.string.isRequired,
-  attachments: PropTypes.arrayOf(PropTypes.array).isRequired,
+  attachments: PropTypes.arrayOf(PropTypes.array.isRequired).isRequired,
+  ticketId: PropTypes.string.isRequired,
+};
+
+export const TicketHistory: React.FC<{ ticketId: string }> = ({ ticketId }) => {
+  const ticketHistoryEndRef = useRef<HTMLDivElement>(null);
+  const { data, isLoading, isError } = useGetTicketHistory(ticketId);
+  const scrollToBottom = () => {
+    ticketHistoryEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+  useEffect(scrollToBottom, [data]);
+
+  return (
+    <>
+      {isLoading && <LoadingSpinner />}
+      {isError && (
+        <InlineMessage type="error" className="ticket-history-error">
+          Something went wrong.
+        </InlineMessage>
+      )}
+      {data?.map((d) => (
+        <TicketHistoryCard
+          key={d.id}
+          created={new Date(d.Created)}
+          creator={d.Creator}
+          isCreator={false} //TODO: backend revision needed to match CEP
+          content={d.Content}
+          attachments={d.Attachments}
+          ticketId={d.Ticket}
+        />
+      ))}
+      <div ref={ticketHistoryEndRef} />
+    </>
+  );
+};
+TicketHistory.propTypes = {
   ticketId: PropTypes.string.isRequired,
 };
 
@@ -185,8 +311,7 @@ const TicketModal: React.FC = () => {
   const navigate = useNavigate();
   const close = () => navigate(-1);
   const modalAlwaysOpen = true;
-  const { data, isLoading, isError } = useGetTicketDetails(ticketId);
-  console.log(data);
+  const { data, isLoading, isError } = useGetTicketDetails(ticketId ?? '');
 
   return (
     <Modal
@@ -201,14 +326,14 @@ const TicketModal: React.FC = () => {
       </ModalHeader>
       <ModalBody>
         <Container className="ticket-detailed-view-container">
-          {/* <Row className="ticket-detailed-view-row">
-        <Col lg="7" className="ticket-history">
-          <TicketHistory />
-        </Col>
-        <Col lg="5">
-          <TicketHistoryReply ticketId={ticketId} />
-        </Col>
-      </Row> */}
+          <Row className="ticket-detailed-view-row">
+            <Col lg="7" className="ticket-history">
+              <TicketHistory ticketId={ticketId ?? ''} />
+            </Col>
+            <Col lg="5">
+              <TicketHistoryReply ticketId={ticketId ?? ''} />
+            </Col>
+          </Row>
         </Container>
       </ModalBody>
     </Modal>

@@ -18,13 +18,11 @@ export type formValues = {
   files: File[];
 };
 
-export type attachment = [File, string];
-
 export type historyCardParams = {
   created: Date;
   creator: string;
   isCreator: boolean;
   content: string;
-  attachments?: Array<attachment>;
+  attachments?: Array<Array<any>>;
   ticketId: string;
 };

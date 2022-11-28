@@ -123,6 +123,22 @@ export type Ticket = {
   numerical_id: string;
 };
 
+export type TicketHistory = Array<{
+  id: string;
+  Ticket: string;
+  TimeTaken: string;
+  Type: string;
+  Field: string;
+  OldValue: string;
+  NewValue: string;
+  Data: string;
+  Description: string;
+  Content: string;
+  Creator: string;
+  Created: string;
+  Attachments: Array<Array<any>>;
+}>;
+
 export type CreateTicketBody = {
   subject: string;
   description: string;
@@ -142,8 +158,11 @@ export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
 export { default as useSystemMonitor } from './useSystemMonitor';
 export {
+  useGetFileAttachment,
   useGetTickets,
   useGetTicketDetails,
+  useGetTicketHistory,
   useTicketCreate,
   useTicketCreateNoAuth,
+  useTicketReply,
 } from './useTickets';
