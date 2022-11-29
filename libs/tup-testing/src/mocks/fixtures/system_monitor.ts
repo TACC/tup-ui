@@ -72,7 +72,7 @@ export const rawSystemMonitorOutput = [
     running: 243,
     waiting: 0,
     in_maintenance: false,
-    next_maintenance: null,
+    next_maintenance: "2022-12-06T08:00:00-06:00",
     reservations: [
       {
         name: 'additional_gpus_testing',
