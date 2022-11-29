@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProjectsTable } from './ProjectsTable';
 import { server, testRender } from '@tacc/tup-testing';
-import { waitFor, render, screen, prettyDOM } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 
 describe('Projects Table Component', () => {
@@ -16,7 +16,9 @@ describe('Projects Table Component', () => {
       expect(getByText('No active projects found.')).toBeDefined()
     );
   });
+
   it('should display the projects table', async () => {
+<<<<<<< HEAD
     render(<ProjectsTable />);
     // server.use(
     //   rest.get('http://localhost:8001/projects', (req, res, ctx) => {
@@ -47,4 +49,20 @@ describe('Projects Table Component', () => {
   //   // expect(getByText('Jake Rosenberg')).toBeDefined();
   //   // expect(getByText('Lonestar6')).toBeDefined();
   // });
+=======
+    const { getByText, getByTestId, getAllByRole } = testRender(
+      <ProjectsTable />
+    );
+    expect(getByTestId('loading-spinner')).toBeDefined();
+    await waitFor(() => getAllByRole('columnheader'));
+    const columnHeaders: HTMLElement[] = getAllByRole('columnheader');
+    expect(columnHeaders[0].textContent).toEqual('Project Title');
+    expect(columnHeaders[1].textContent).toEqual('Principle Investigator');
+    expect(columnHeaders[2].textContent).toEqual('Active Allocations');
+    expect(getByText('JAR TUP Development Project')).toBeDefined();
+    expect(getByText('Jake Rosenberg')).toBeDefined();
+    expect(getByText('Lonestar6')).toBeDefined();
+  });
+
+>>>>>>> d4d5c04 (tup-358-tests-added)
 });
