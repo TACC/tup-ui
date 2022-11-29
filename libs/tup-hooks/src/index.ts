@@ -156,6 +156,7 @@ export type CreateTicketResponse = {
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
+export { default as useConfig } from './useConfig';
 export { default as useSystemMonitor } from './useSystemMonitor';
 export {
   useGetFileAttachment,

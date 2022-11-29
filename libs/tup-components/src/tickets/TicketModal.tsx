@@ -4,9 +4,10 @@ import React, {
   useRef,
   useCallback,
   useState,
+  KeyboardEvent,
 } from 'react';
 import { Column } from 'react-table';
-import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { FormikInput } from '@tacc/core-wrappers';
@@ -32,12 +33,14 @@ import {
   InlineMessage,
 } from '@tacc/core-components';
 import {
-  useGetFileAttachment,
   useGetTicketDetails,
   useGetTicketHistory,
+  useJwt,
   useTicketReply,
+  useConfig,
 } from '@tacc/tup-hooks';
 import { formatDateTime } from '../utils/timeFormat';
+import { downloadAttachment } from '../utils/downloadAttachment';
 import { historyCardParams } from '.';
 import * as Yup from 'yup';
 import './TicketModal.scss';
@@ -50,7 +53,8 @@ const Attachments: React.FC<{
   attachments: Array<Array<any>>;
   ticketId: string;
 }> = ({ attachments, ticketId }) => {
-  // const infiniteScrollCallback = useCallback(() => {});
+  const { baseUrl } = useConfig();
+  const { jwt } = useJwt();
   const noDataText = 'No attachments to display.';
   const json = attachments.map(function attachmentAcessor(x) {
     return {
@@ -85,19 +89,19 @@ const Attachments: React.FC<{
         className: 'attachment-download',
         accessor: 'attachment_id',
         Cell: (el) => (
-          <a
-            href={`/tickets/${ticketId}/attachment/${el.value}`}
-            className="link"
-            target="_blank"
-            rel="noreferrer noopener"
-            key={el.value}
+          <Button
+            attr={'button'}
+            onClick={useCallback(
+              () => downloadAttachment(ticketId, el.value, baseUrl, jwt),
+              [el.value]
+            )}
           >
             Download
-          </a>
+          </Button>
         ),
       },
     ],
-    [ticketId]
+    [ticketId, baseUrl, jwt]
   );
 
   return (
@@ -118,7 +122,7 @@ Attachments.propTypes = {
 
 const TicketHistoryReply: React.FC<{ ticketId: string }> = ({ ticketId }) => {
   const mutation = useTicketReply(ticketId);
-  const { mutate, isLoading, isSuccess, isError } = mutation;
+  const { mutate, isLoading, isError } = mutation;
 
   const defaultValues = useMemo(
     () => ({
@@ -189,7 +193,6 @@ TicketHistoryReply.propTypes = {
 };
 
 const TicketHistoryCard: React.FC<historyCardParams> = ({
-  // historyId,
   created,
   creator,
   isCreator,
@@ -215,7 +218,7 @@ const TicketHistoryCard: React.FC<historyCardParams> = ({
     setIsOpen(!isOpen);
   };
 
-  const onKeyDown = (e: any) => {
+  const onKeyDown = (e: KeyboardEvent) => {
     if (e.key === ' ') {
       e.preventDefault();
       setIsOpen(!isOpen);
@@ -262,7 +265,6 @@ const TicketHistoryCard: React.FC<historyCardParams> = ({
 };
 
 TicketHistoryCard.propTypes = {
-  // historyId: PropTypes.number.isRequired,
   created: PropTypes.instanceOf(Date).isRequired,
   creator: PropTypes.string.isRequired,
   isCreator: PropTypes.bool.isRequired,
@@ -307,11 +309,11 @@ TicketHistory.propTypes = {
 };
 
 const TicketModal: React.FC = () => {
-  const ticketId = useParams().ticketId;
+  const ticketId = useParams().ticketId ?? '';
   const navigate = useNavigate();
   const close = () => navigate(-1);
   const modalAlwaysOpen = true;
-  const { data, isLoading, isError } = useGetTicketDetails(ticketId ?? '');
+  const { data } = useGetTicketDetails(ticketId);
 
   return (
     <Modal
@@ -320,7 +322,7 @@ const TicketModal: React.FC = () => {
       toggle={close}
       size="lg"
     >
-      <ModalHeader toggle={close} charCode="&#xe912;">
+      <ModalHeader toggle={close}>
         <span className="ticket-id">Ticket {ticketId}</span>
         <span className="ticket-subject">{data?.Subject}</span>
       </ModalHeader>
@@ -328,10 +330,10 @@ const TicketModal: React.FC = () => {
         <Container className="ticket-detailed-view-container">
           <Row className="ticket-detailed-view-row">
             <Col lg="7" className="ticket-history">
-              <TicketHistory ticketId={ticketId ?? ''} />
+              <TicketHistory ticketId={ticketId} />
             </Col>
             <Col lg="5">
-              <TicketHistoryReply ticketId={ticketId ?? ''} />
+              <TicketHistoryReply ticketId={ticketId} />
             </Col>
           </Row>
         </Container>
