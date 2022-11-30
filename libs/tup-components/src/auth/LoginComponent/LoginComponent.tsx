@@ -59,10 +59,10 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   //      1. Uncomment this constant definition
   //      2. Pass this constant to <Formik>; validationSchema={validationSchema}
   //      3. Remove `required` attribute from <FormikInput>'s
-  const validationSchema = Yup.object({
-    username: Yup.string().required(),
-    password: Yup.string().required(),
-  });
+  // const validationSchema = Yup.object({
+  //   username: Yup.string().required(),
+  //   password: Yup.string().required(),
+  // });
 
   const initialValues: LoginInfo = {
     username: '',
@@ -90,7 +90,6 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}
       >
         <Form className="c-form">
           <LoginError status={status} />
