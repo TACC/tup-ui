@@ -1,7 +1,7 @@
 export type FormikInputProps = {
   name: string;
   label: string;
-  required: boolean;
+  required?: boolean;
   description?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 

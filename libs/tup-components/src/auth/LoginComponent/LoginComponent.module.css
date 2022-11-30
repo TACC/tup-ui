@@ -1,11 +1,6 @@
 /* CONTAINER */
 
-.root {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  box-sizing: border-box;
-}
+/* .root {} */
 
 
 
@@ -19,10 +14,11 @@
 
 /* TITLE */
 
-.title {
+.title,
+.subtitle {
   text-align: center;
 }
-.title :where(h1, h2, h3, h4, h5, h6) {
+.title {
   font-weight: var(--black);
 }
 
@@ -36,52 +32,32 @@
 .subtitle {
   color: var(--global-color-primary--xx-dark);
   font-weight: var(--medium); /* mimics value--not appearance--from design */
-  margin-block: 25px; /* mimics core-cms django.cms.forms.css .description */
+  margin-block: 25px; /* mimics Core-CMS django.cms.forms.css .description */
 }
 
 
 
 /* FORM */
 
-.form {
-  margin-bottom: 35px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+/* TODO: Do not load CMS CSS (except header) on Portal app (then remove this) */
+.field {
+  max-width: unset; /* undo Core-CMS forms.cms.css */
+}
+/* TODO: Fix this in @tacc/core-styles (then remove this) */
+.root label {
+  font-weight: var(--medium);
 }
 
-.form-field {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  color: var(--global-color-primary--x-dark);
-  margin-bottom: 2rem;
-}
-
-.form-field input {
-  padding: 12px 12px 12px 12px; /* overwrites core-styles form.cms.css */
-}
-
-/* mimics core-cms django.cms.forms.css .help-text */
-.form-field__help {
-  font-size: var(--global-font-size--small);
-  font-style: italic;
-  margin-top: 0.3em;
-}
 
 
 .submit {
-  font-size: var(--global-font-size--medium); /* mimics core-cms c-button.css */
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-block: 10px; /* overrides @tacc/core-styles c-form__button/c-button */
 }
 
 .submit-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  margin-top: 15px;
 }
 
 
@@ -93,6 +69,8 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
+
+  margin-top: 35px; /* mimics @tacc/core-styles margin-top */
 }
 .footer > p {
   margin-block: 0; /* overwrite browser */
@@ -101,15 +79,11 @@
 
 /* ERRORS */
 
-/* mimics core-cms django.cms.forms.css .field-errors */
 .error {
-  composes: c-message from '@tacc/core-styles/dist/components/c-message.css';
-  composes: c-message--error from '@tacc/core-styles/dist/components/c-message.css';
-
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; /* TODO: Move to @tacc/core-styles */
 }
 
-/* when (the only known) error would wrap, move all lines to one line */
+/* When (the only known) error would wrap, move all lines to one line */
 @media screen and (max-width: 435px) {
   .error br { content: ""; } /* remove new line */
   .error br::after { content: " "; } /* add space */

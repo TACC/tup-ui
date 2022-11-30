@@ -1,11 +1,9 @@
 import React from 'react';
-import { FormGroup, Badge } from 'reactstrap';
-import styles from './FieldWrapperFormik.module.css';
 import { ErrorMessage, Field, useField } from 'formik';
 export type FieldWrapperProps = {
   name: string;
   label: string;
-  required: boolean;
+  required?: boolean;
   description?: string;
   as: React.ComponentType<any>;
 };
@@ -18,23 +16,21 @@ const FieldWrapper: React.FC<FieldWrapperProps> = ({
 }) => {
   const [, meta] = useField(name);
   return (
-    <FormGroup>
+    <div className={`c-form__field ${required ? 'has-required' : ''}`}>
       <label htmlFor={name}>
         {label}
-        {required ? (
-          <Badge color="danger" style={{ marginLeft: '10px' }}>
-            Required
-          </Badge>
-        ) : null}
+        {required ? <span className="c-form__star">*</span> : null}
       </label>
       <Field name={name} as={Component} id={name} required={required} />
       <ErrorMessage name={name}>
-        {(msg) => <div className="some-error-class">{msg}</div>}
+        {(msg) => (
+          <ul className="c-form__errors">
+            <li>{msg}</li>
+          </ul>
+        )}
       </ErrorMessage>
-      <div className={styles['form-field__help']} color="muted">
-        {description}
-      </div>
-    </FormGroup>
+      <div className="c-form__help">{description}</div>
+    </div>
   );
 };
 
