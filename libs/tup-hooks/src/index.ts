@@ -77,7 +77,7 @@ export type SystemMonitorRawSystem = {
   running?: number;
   waiting?: number;
   in_maintenance?: boolean;
-  next_maintenance?: boolean;
+  next_maintenance?: string;
   reservations?: [Reservation];
 };
 
