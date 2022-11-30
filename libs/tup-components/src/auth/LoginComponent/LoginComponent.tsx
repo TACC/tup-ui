@@ -87,10 +87,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       <p className={`c-form__desc ${styles.subtitle}`}>
         to continue to the TACC User Portal
       </p>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-      >
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form className="c-form">
           <LoginError status={status} />
           <FormikInput
