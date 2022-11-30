@@ -81,6 +81,68 @@ export type SystemMonitorRawSystem = {
   reservations?: [Reservation];
 };
 
+export type ProjectsAllocations = {
+  id: number;
+  start: Date;
+  end: Date;
+  type: string;
+  total: number;
+  used: number;
+  resource: string;
+  status: string;
+  storageQuota: number;
+  myUsage: number;
+  storageUsed: number;
+  justification: string;
+  computeRequested: number;
+  storageRequested: number;
+  memoryRequested: number;
+  increases: {
+    id: number;
+    allocationId: number;
+    susRequested: number;
+    susGranted: number;
+    justification: string;
+    decisionSummary: string;
+  };
+};
+
+export type ProjectsRawSystem = {
+  id: number;
+  title: string;
+  description: string;
+  chardeCode: string;
+  gid: number;
+  source: string;
+  fieldId: number;
+  secondaryFieldId: number;
+  typeId: number;
+  pi: {
+    id: number;
+    username: string;
+    role: string;
+    firstName: string;
+    middleInitial: string;
+    lastName: string;
+    email: string;
+    vislabTrained: boolean;
+    staff: boolean;
+  };
+  allocations?: ProjectsAllocations[];
+  roles: string;
+  users: {
+    id: number;
+    username: string;
+    role: string;
+    firstName: string;
+    middleInitial: string;
+    lastName: string;
+    email: string;
+    vislabTrained: boolean;
+    staff: boolean;
+  };
+};
+
 export type Ticket = {
   AdminCc: [];
   'CF.{Resource}': string;
@@ -111,4 +173,5 @@ export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
 export { default as useSystemMonitor } from './useSystemMonitor';
+export { default as useProjects } from './useProjects';
 export { default as useTickets } from './useTickets';

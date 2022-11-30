@@ -3,6 +3,7 @@ import {
   mockProfile,
   mockJwt,
   rawSystemMonitorOutput,
+  mockProjectsOutput,
   mockTickets,
 } from './fixtures';
 
@@ -18,6 +19,10 @@ export const handlers = [
   rest.get('http://localhost:8001/system_monitor', (req, res, ctx) => {
     // Respond with mock system monitor output
     return res(ctx.json(rawSystemMonitorOutput));
+  }),
+  rest.get('http://localhost:8001/projects', (req, res, ctx) => {
+    // Respond with mock active projects output
+    return res(ctx.json(mockProjectsOutput));
   }),
   rest.get('http://localhost:8001/tickets', (req, res, ctx) => {
     // Respond with mock tickets output
