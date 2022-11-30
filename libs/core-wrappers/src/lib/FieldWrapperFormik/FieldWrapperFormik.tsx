@@ -28,9 +28,9 @@ const FieldWrapper: React.FC<FieldWrapperProps> = ({
         ) : null}
       </label>
       <Field name={name} as={Component} id={name} required={required} />
-      <ErrorMessage name={name}>{msg =>
-        <div className="some-error-class">{msg}</div>
-      }</ErrorMessage>
+      <ErrorMessage name={name}>
+        {(msg) => <div className="some-error-class">{msg}</div>}
+      </ErrorMessage>
       <div className={styles['form-field__help']} color="muted">
         {description}
       </div>
