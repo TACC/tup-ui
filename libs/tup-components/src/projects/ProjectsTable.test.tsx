@@ -18,38 +18,6 @@ describe('Projects Table Component', () => {
   });
 
   it('should display the projects table', async () => {
-<<<<<<< HEAD
-    render(<ProjectsTable />);
-    // server.use(
-    //   rest.get('http://localhost:8001/projects', (req, res, ctx) => {
-    //     return res.once(ctx.json([]));
-    //   })
-    // );
-    screen.debug(screen.getByRole('table'));
-  });
-
-  // it('should display the projects table', async () => {
-  //   server.use(
-  //     rest.get('http://localhost:8001/projects', (req, res, ctx) => {
-  //       return res.once(ctx.json([]));
-  //     })
-  //   );
-  //   const { container, getByText, getByTestId, getAllByRole } = testRender(
-  //     <ProjectsTable />
-  //   );
-  //   const {debug} = render({container})
-  //   debug()
-  //   expect(getByTestId('loading-spinner')).toBeDefined();
-  //   await waitFor(() => getAllByRole('columnheader'));
-  //   const columnHeaders: HTMLElement[] = getAllByRole('columnheader');
-  //   expect(columnHeaders[0].textContent).toEqual('Project Title');
-  //   // expect(columnHeaders[1].textContent).toEqual('Principal Investigator');
-  //   // expect(columnHeaders[2].textContent).toEqual('Active Allocations');
-  //   expect(getByText('JAR TUP Development Project')).toBeDefined();
-  //   // expect(getByText('Jake Rosenberg')).toBeDefined();
-  //   // expect(getByText('Lonestar6')).toBeDefined();
-  // });
-=======
     const { getByText, getByTestId, getAllByRole } = testRender(
       <ProjectsTable />
     );
@@ -63,6 +31,4 @@ describe('Projects Table Component', () => {
     expect(getByText('Jake Rosenberg')).toBeDefined();
     expect(getByText('Lonestar6')).toBeDefined();
   });
-
->>>>>>> d4d5c04 (tup-358-tests-added)
 });
