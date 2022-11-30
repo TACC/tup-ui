@@ -1,0 +1,13 @@
+/* TODO: Import in layer()'s when postcss-import can be told to ignore them */
+/* https://confluence.tacc.utexas.edu/x/b53tDg */
+/* @layer foundation, base, project; */
+
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")/* layer(foundation) */;
+
+/* TODO: Create @tacc/core-styles/dist/core-styles.portal.css to load instead */
+@import url("@tacc/core-styles/dist/core-styles.settings.css")/* layer(base) */;
+@import url("@tacc/core-styles/dist/components/c-button.css")/* layer(base) */;
+
+@import url("./styles/generics.css")/* layer(project) */;
+@import url("./styles/elements.css")/* layer(project) */;
+/* React components explicitely import other styles as needed */
