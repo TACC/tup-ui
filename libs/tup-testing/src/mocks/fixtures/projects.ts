@@ -1,7 +1,9 @@
-export const mockProjectsOutput = [{
+export const mockProjectsOutput = [
+  {
     id: 59184,
     title: 'JAR TUP Development Project',
-    description: 'Development project for testing PI-specific endpoints in the redesigned user portal.',
+    description:
+      'Development project for testing PI-specific endpoints in the redesigned user portal.',
     chargeCode: 'STA22002',
     gid: 825495,
     source: null,
@@ -19,24 +21,27 @@ export const mockProjectsOutput = [{
       vislabTrained: false,
       staff: false,
     },
-    allocations: [{
-      id: 90474,
-      start: '2022-10-31T00:00:00',
-      end: '2023-09-30T00:00:00',
-      type: null,
-      total: 10,
-      used: 0,
-      resource: 'Lonestar6',
-      status: 'Active',
-      storageQuota: 0,
-      myUsage: 0,
-      storageUsed: 0,
-      justification: 'Admin-created allocation.',
-      computeRequested: 10,
-      storageRequested: 0,
-      memoryRequested: 0,
-      increases: [],
-    }],
+    allocations: [
+      {
+        id: 90474,
+        start: '2022-10-31T00:00:00',
+        end: '2023-09-30T00:00:00',
+        type: null,
+        total: 10,
+        used: 0,
+        resource: 'Lonestar6',
+        status: 'Active',
+        storageQuota: 0,
+        myUsage: 0,
+        storageUsed: 0,
+        justification: 'Admin-created allocation.',
+        computeRequested: 10,
+        storageRequested: 0,
+        memoryRequested: 0,
+        increases: [],
+      },
+    ],
     role: 'Delegate',
     users: null,
-}];
+  },
+];
