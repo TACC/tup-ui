@@ -1,30 +1,98 @@
-# TACC Styles - Imports
+# TUP UI - Styles
 
-These project stylesheets should:
+## Table of Contents
 
-1. be imported by project or component stylesheet(s)
-2. follow [ITCSS organization](https://confluence.tacc.utexas.edu/x/IAA9Cw) and [CSS style guide](https://confluence.tacc.utexas.edu/x/ZQALBg)
+- [How to Style](#how-to-style)
+- [Component Styles](#component-styles)
+- [Browse Core Styles](#browse-core-styles)
+- [Use Core Styles](#use-core-styles)
+- [Create Core Styles](#create-core-styles)
+- [Use Global Project Styles](#use-global-project-styles)
+- [Create Global Project Styles](#create-global-project-styles)
 
-## Usage Options
 
-### Import from Project Stylesheets
 
-Project stylesheets may `@import` project stylesheets, e.g.:
+## How to Style
 
-**`index.css`**
+1. **Avoid** Global Project styles.
+2. Do use and create [Component Styles](#component-styles).
+3. Do use and create [Core Styles].
+4. Do follow our [CSS Style Guide].
 
+
+
+## Component Styles
+
+- ✓ [Module](#module) — always start here
+- ⚠ [Global](#global) — only as necessary
+
+### Module
+
+`.../SomeComponent.tsx`
+
+```tsx
+import styles from './SomeComponent.module.css';
+
+/* ... */
+
+<table className={styles.root}>
+   {/* ... */}
+</table>
 ```
-@import url('styles/c-widget.css');
+
+`.../SomeComponent.module.css`
+
+```tsx
+.root {
+  /* ... */
+}
 ```
 
-### Import from Component Stylesheets
+### Global
 
-Component stylesheets may `@import` project stylesheets, e.g.:
+`.../SomeComponent.tsx`
 
-**`components/(.../)SomeProjectComponent.module.css`**
-
+```tsx
+import './SomeComponent.global.css';
 ```
-@import url('.../styles/media-queries.css');
+
+`.../SomeComponent.global.css`
+
+```tsx
+.some_class_external_to_component_markup {
+  /* ... */
+}
+```
+
+
+
+## Browse [Core Styles]
+
+| Environment | URL |
+| - | - |
+| Local | http://localhost:8000/static/ui/index.html |
+| Remote | https://dev.tup.tacc.utexas.edu/static/ui/index.html |
+
+## Use [Core Styles]
+
+If the [Core Styles] you need is not available globally, evaluate these options:
+
+### In Component Markup, Use [Core Styles] Classes
+
+**`.../SomeComponent.tsx`**
+
+```tsx
+<table className="o-fixed-header-table">
+   {/* ... */}
+</table>
+```
+
+### In Component Styles, Import from [Core Styles]
+
+**`.../SomeComponent.module.css`**
+
+```css
+@import url('@tacc/core-styles/.../tools/media-queries.css');
 
 @media screen and (--short-and-above) and (--medium-and-above) {
   selector {
@@ -33,13 +101,51 @@ Component stylesheets may `@import` project stylesheets, e.g.:
 }
 ```
 
-### Author atop Core Styles
+### In Component Styles, Compose from [Core Styles]
 
-Project stylesheets may `@import`—then append to—[Core-Styles], e.g.:
+**`.../SomeComponent.module.css`**
 
-**`styles/(.../)some-project-stylesheet.css`**
-
+```css
+selector {
+  composes: x-truncate--many-lines from '@tacc/core-styles/.../tools/x-truncate.css';
+}
 ```
+
+
+
+## Create [Core Styles]
+
+1. Clone [Core Styles].
+3. Develop component.
+4. Request review.*
+
+<sub>* You might need to request repository access.</sub>
+
+
+
+
+## Use Global Project Styles
+
+### In `main.css`, Import from Global Project Styles
+
+**`/main.css`**
+
+```css
+@import url('@tacc/core-styles/.../settings/border.css');
+```
+
+<sub>* The file may not exist, because no global project styles exist.</sub>
+
+
+## Create Global Project Styles
+
+If you need global styles, then evaluate these options.
+
+### In Global Styles, Append to [Core Styles]
+
+**`/styles/(.../)global-stylesheet.css`**
+
+```css
 @import url('@tacc/core-styles/.../settings/color.css');
 
 :root {
@@ -47,11 +153,11 @@ Project stylesheets may `@import`—then append to—[Core-Styles], e.g.:
 }
 ```
 
-Project stylesheets may `@extend` [Core-Styles], e.g.:
+### In Global Project Styles, Extend from [Core Styles]
 
-**`styles/(.../)some-project-stylesheet.css`**
+**`/styles/(.../)global-stylesheet.css`**
 
-```
+```css
 @import url('@tacc/core-styles/.../tools/x-truncate.css');
 
 selector {
@@ -61,22 +167,13 @@ selector {
 }
 ```
 
-### Or Do Not Use At All
+### In Global Project Styles, Import from [Core Styles]
 
-Global stylesheets may directly `@import` [Core-Styles], e.g.:
+**`/main.css`**
 
-**`index.css`**
-
-```
+```css
 @import url('@tacc/core-styles/.../settings/border.css');
 ```
 
-Component stylesheets may directly `compose…` from [Core-Styles], e.g.:
-
-**`components/(.../)SomeProjectComponent.module.css`**
-
-```
-selector {
-  composes: x-truncate--many-lines from '@tacc/core-styles/.../tools/x-truncate.css';
-}
-```
+[Core Styles]: https://github.com/TACC/Core-Styles
+[CSS Style Guide]: https://confluence.tacc.utexas.edu/display/~wbomar/Shared+UI+-+CSS+-+Style+Guide
