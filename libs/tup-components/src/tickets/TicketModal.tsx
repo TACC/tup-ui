@@ -346,6 +346,12 @@ const TicketModal: React.FC = () => {
   const modalAlwaysOpen = true;
   const { data } = useGetTicketDetails(ticketId);
 
+  const closeBtn = (
+    <button className="close" onClick={close} type="button">
+      &times;
+    </button>
+  );
+
   return (
     <Modal
       className="ticket-model-content"
@@ -353,7 +359,7 @@ const TicketModal: React.FC = () => {
       toggle={close}
       size="lg"
     >
-      <ModalHeader toggle={close}>
+      <ModalHeader toggle={close} close={closeBtn}>
         <span className="ticket-id">Ticket {ticketId}</span>
         <span className="ticket-subject">{data?.Subject}</span>
       </ModalHeader>
