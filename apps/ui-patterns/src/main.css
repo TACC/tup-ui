@@ -4,9 +4,8 @@
 
 @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")/* layer(foundation) */;
 
-/* TODO: Create @tacc/core-styles/dist/core-styles.portal.css to load instead */
-@import url("@tacc/core-styles/dist/core-styles.settings.css")/* layer(base) */;
-@import url("@tacc/core-styles/dist/components/c-button.css")/* layer(base) */;
+@import url("@tacc/core-styles/dist/core-styles.base.css")/* layer(base) */;
+/* TODO: Refine and load @tacc/core-styles/dist/core-styles.portal.css */
 
 @import url("./styles/generics.css")/* layer(project) */;
 @import url("./styles/elements.css")/* layer(project) */;

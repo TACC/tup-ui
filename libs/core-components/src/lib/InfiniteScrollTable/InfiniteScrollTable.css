@@ -10,7 +10,6 @@
   width: 100%;
 
   max-height: inherit; /* inherit max-height from parent wrapper */
-  font-size: 0.875rem; /* 14px (approved deviation from design) */
 
   border-collapse: separate;
   border-spacing: 0;

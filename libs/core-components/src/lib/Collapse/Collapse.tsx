@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { Button, Badge } from 'reactstrap';
+import Button from '../Button';
+import { Badge } from 'reactstrap';
 import { Collapse as BootstrapCollapse } from 'reactstrap';
 import Icon from '../Icon';
 import styles from './Collapse.module.css';
@@ -45,9 +46,8 @@ const Collapse: React.FC<CollapseProperties> = ({
           <div>{note ?? ''}</div>
           {isCollapsable && (
             <Button
-              color="link"
+              type="link"
               className={styles.expand}
-              size="sm"
               onClick={toggle}
             >
               <Icon name={isOpen ? 'contract' : 'expand'} />
