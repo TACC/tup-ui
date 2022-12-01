@@ -68,10 +68,8 @@ export const mockTicketHistory = [
     Creator: 'rtdev',
     Created: '2022-11-21 18:38:30',
     Attachments: [
-      [1603869, 'untitled (0b)'],
       [1603870, 'untitled (19b)'],
       [1603871, 'testFile.txt (10b)'],
-      [1603872, 'testFile2.txt (15b)'],
     ],
   },
   {

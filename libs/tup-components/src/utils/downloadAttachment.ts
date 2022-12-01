@@ -12,7 +12,6 @@ export const downloadAttachment = async (
     headers: { 'x-tup-token': jwt ?? '' },
     responseType: 'blob',
   });
-
   const fileName = response.headers['content-type']?.split('"')[1];
   const url = window.URL.createObjectURL(response.data);
   const link = document.createElement('a');

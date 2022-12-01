@@ -123,7 +123,7 @@ export type Ticket = {
   numerical_id: string;
 };
 
-export type TicketHistory = Array<{
+export type TicketHistoryEntry = {
   id: string;
   Ticket: string;
   TimeTaken: string;
@@ -137,7 +137,9 @@ export type TicketHistory = Array<{
   Creator: string;
   Created: string;
   Attachments: Array<Array<any>>;
-}>;
+};
+
+export type TicketHistory = Array<TicketHistoryEntry>;
 
 export type CreateTicketBody = {
   subject: string;

@@ -33,6 +33,10 @@ export const handlers = [
     // Respond with mock ticket details output
     return res(ctx.json(mockTicketDetails));
   }),
+  rest.post('http://localhost:8001/tickets/85411/reply', (req, res, ctx) => {
+    // Respond with true
+    return res(ctx.json(true));
+  }),
   rest.post('http://localhost:8001/tickets', (req, res, ctx) => {
     // Respond with a mock created ticket id
     return res(ctx.json('12345'));

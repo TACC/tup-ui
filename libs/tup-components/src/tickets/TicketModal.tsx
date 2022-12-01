@@ -6,7 +6,7 @@ import React, {
   useState,
   KeyboardEvent,
 } from 'react';
-import { Column } from 'react-table';
+import { Column, useTable } from 'react-table';
 import { useParams, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
@@ -28,7 +28,6 @@ import {
   Button,
   FileInputDropZoneFormField,
   Icon,
-  InfiniteScrollTable,
   LoadingSpinner,
   InlineMessage,
 } from '@tacc/core-components';
@@ -38,6 +37,7 @@ import {
   useJwt,
   useTicketReply,
   useConfig,
+  TicketHistoryEntry,
 } from '@tacc/tup-hooks';
 import { formatDateTime } from '../utils/timeFormat';
 import { downloadAttachment } from '../utils/downloadAttachment';
@@ -55,7 +55,6 @@ const Attachments: React.FC<{
 }> = ({ attachments, ticketId }) => {
   const { baseUrl } = useConfig();
   const { jwt } = useJwt();
-  const noDataText = 'No attachments to display.';
   const json = attachments.map(function attachmentAcessor(x) {
     return {
       attachment_id: x[0],
@@ -90,7 +89,7 @@ const Attachments: React.FC<{
         accessor: 'attachment_id',
         Cell: (el) => (
           <Button
-            attr={'button'}
+            type={'link'}
             onClick={useCallback(
               () => downloadAttachment(ticketId, el.value, baseUrl, jwt),
               [el.value]
@@ -104,14 +103,46 @@ const Attachments: React.FC<{
     [ticketId, baseUrl, jwt]
   );
 
+  const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
+    useTable({
+      columns,
+      data: json,
+    });
+
   return (
     <div>
-      <InfiniteScrollTable
-        tableColumns={columns}
-        className="attachment-table"
-        tableData={json ?? []}
-        noDataText={noDataText}
-      />
+      <table
+        {...getTableProps()}
+        className={`multi-system InfiniteScrollTable o-fixed-header-table`}
+      >
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th key={column.id}>{column.render('Header')}</th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.length ? (
+            rows.map((row, idx) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => (
+                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  ))}
+                </tr>
+              );
+            })
+          ) : (
+            <tr>
+              <td colSpan={5}>No attachments to display.</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
     </div>
   );
 };
@@ -289,12 +320,12 @@ export const TicketHistory: React.FC<{ ticketId: string }> = ({ ticketId }) => {
           Something went wrong.
         </InlineMessage>
       )}
-      {data?.map((d) => (
+      {data?.map((d: TicketHistoryEntry) => (
         <TicketHistoryCard
           key={d.id}
           created={new Date(d.Created)}
           creator={d.Creator}
-          isCreator={false} //TODO: backend revision needed to match CEP
+          isCreator={false} // tup-services revision needed to match CEP behavior
           content={d.Content}
           attachments={d.Attachments}
           ticketId={d.Ticket}
