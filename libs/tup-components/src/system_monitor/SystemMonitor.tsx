@@ -74,9 +74,7 @@ export const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
     <SectionTableWrapper header="System Status">
       <table
         {...getTableProps()}
-        // Emulate <InfiniteScrollTable> and its use of `o-fixed-header-table`
-        // TODO: Create global table styles & Make <InfiniteScrollTable> use them
-        className={`multi-system InfiniteScrollTable o-fixed-header-table ${styles['root']}`}
+        className={`o-fixed-header-table ${styles['root']}`}
       >
         <thead>
           {headerGroups.map((headerGroup) => (

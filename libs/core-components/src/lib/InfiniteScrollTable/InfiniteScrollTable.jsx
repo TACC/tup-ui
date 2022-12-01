@@ -2,7 +2,7 @@ import React from 'react';
 import { useTable } from 'react-table';
 import PropTypes from 'prop-types';
 import LoadingSpinner from '../LoadingSpinner';
-import './InfiniteScrollTable.css';
+
 import styles from './InfiniteScrollTable.module.css';
 
 const rowContentPropType = PropTypes.oneOfType([
@@ -16,7 +16,7 @@ const InfiniteScrollLoadingRow = ({ isLoading }) => {
     return null;
   }
   return (
-    <tr className="-status">
+    <tr>
       {/* Ensure cell spans across ALL columns */}
       <td colSpan="99">
         <LoadingSpinner placement="inline" />
@@ -33,7 +33,7 @@ const InfiniteScrollNoDataRow = ({ display, noDataText }) => {
     return null;
   }
   return (
-    <tr className="-status">
+    <tr>
       {/* Ensure cell spans across ALL columns */}
       <td colSpan="99">
         <span className="-status__message">{noDataText}</span>
@@ -77,7 +77,7 @@ const InfiniteScrollTable = ({
   return (
     <table
       {...getTableProps()}
-      className={`${className} InfiniteScrollTable ${styles.container}`}
+      className={`${className} ${styles.root}`}
     >
       <thead>
         {headerGroups.map((headerGroup) => (
