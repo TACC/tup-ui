@@ -14,6 +14,12 @@ const TicketCreateModal: React.FC = () => {
     navigate(-1);
   };
 
+  const closeBtn = (
+    <button className="close" onClick={close} type="button">
+      &times;
+    </button>
+  );
+
   return (
     <Modal
       modalClassName="ticket-create-modal"
@@ -22,7 +28,9 @@ const TicketCreateModal: React.FC = () => {
       size="lg"
       contentClassName="ticket-create-modal-content"
     >
-      <ModalHeader toggle={close}>New Ticket</ModalHeader>
+      <ModalHeader toggle={close} close={closeBtn}>
+        New Ticket
+      </ModalHeader>
       <TicketCreateForm profile={profile} />
     </Modal>
   );
