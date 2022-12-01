@@ -8,6 +8,7 @@ import {
 import { Display, Operational, Load } from './SystemMonitorCells';
 import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
 import styles from './SystemMonitor.module.css';
+import { debug } from 'console';
 
 export const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
   if (
@@ -76,7 +77,7 @@ export const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
         {...getTableProps()}
         // Emulate <InfiniteScrollTable> and its use of `o-fixed-header-table`
         // TODO: Create global table styles & Make <InfiniteScrollTable> use them
-        className={`multi-system InfiniteScrollTable o-fixed-header-table ${styles['root']}`}
+        className={`multi-system o-fixed-header-table ${styles['root']}`}
       >
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -93,6 +94,8 @@ export const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
         <tbody {...getTableBodyProps()} className={styles['rows']}>
           {rows.length ? (
             rows.map((row, idx) => {
+              // removes Longhorn system now that it's retired. Can remove when it's taken off TAP system endpoint
+              rows.filter((rows) => !{ rows: { display_name: 'Longhorn' } });
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()}>

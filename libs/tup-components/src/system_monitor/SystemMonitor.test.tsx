@@ -31,4 +31,8 @@ describe('System Monitor Component', () => {
     const { getByText } = testRender(<SystemMonitor />);
     await waitFor(() => expect(getByText('Frontera')).toBeDefined());
   });
+  it('should not display the Longhorn system name', async () => {
+    const { getByText } = testRender(<SystemMonitor />);
+    await waitFor(() => expect(!getByText('Longhorn')).toBeDefined());
+  });
 });
