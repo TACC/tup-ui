@@ -1,4 +1,5 @@
 import { setLogger } from 'react-query';
+import { string } from 'yup';
 
 // Disable error logging when we throw inside a react-query fetcher method.
 setLogger({
@@ -55,45 +56,90 @@ export type AuthBody = {
   password: string;
 };
 
-export type SystemMonitorTest = {
-  type: string;
-  status: boolean;
-  timestamp: string;
+export type Reservation = {
+  name: string;
+  begin_time: string;
+  end_time: string;
 };
 
 export type SystemMonitorRawSystem = {
-  hostname: string;
-  displayName: string;
-  ssh?: SystemMonitorTest;
-  tests?: {
-    heartbeat?: SystemMonitorTest;
-    ssh?: SystemMonitorTest;
-  };
-  timestamp: string;
-  jobs?: {
-    running: number;
-    queued: number;
-    other: number;
-  };
-  totalCpu: number;
-  usedCpu: number;
-  load: number;
-  heartbeat?: SystemMonitorTest;
-};
-
-export type SystemMonitorRaw = {
-  [hostname: string]: SystemMonitorRawSystem;
-};
-
-export type SystemMonitorSystem = {
-  hostname: string;
   display_name: string;
+  tas_name: string;
+  hostname: string;
+  system_type: string;
+  timestamp: string;
   isOperational: boolean;
-  loadPercentage?: number;
-  jobs?: {
-    running: number;
-    queued: number;
-    other: number;
+  online: boolean;
+  // values may not be included in the TAP response if systems are down/unreachable
+  reachable?: boolean;
+  queues_down?: boolean;
+  load?: number;
+  running?: number;
+  waiting?: number;
+  in_maintenance?: boolean;
+  next_maintenance?: string;
+  reservations?: [Reservation];
+};
+
+export type ProjectsAllocations = {
+  id: number;
+  start: Date;
+  end: Date;
+  type: string;
+  total: number;
+  used: number;
+  resource: string;
+  status: string;
+  storageQuota: number;
+  myUsage: number;
+  storageUsed: number;
+  justification: string;
+  computeRequested: number;
+  storageRequested: number;
+  memoryRequested: number;
+  increases: {
+    id: number;
+    allocationId: number;
+    susRequested: number;
+    susGranted: number;
+    justification: string;
+    decisionSummary: string;
+  };
+};
+
+export type ProjectsRawSystem = {
+  id: number;
+  title: string;
+  description: string;
+  chardeCode: string;
+  gid: number;
+  source: string;
+  fieldId: number;
+  secondaryFieldId: number;
+  typeId: number;
+  pi: {
+    id: number;
+    username: string;
+    role: string;
+    firstName: string;
+    middleInitial: string;
+    lastName: string;
+    email: string;
+    vislabTrained: boolean;
+    staff: boolean;
+  };
+  allocations?: ProjectsAllocations[];
+  roles: string;
+  users: {
+    id: number;
+    username: string;
+    role: string;
+    firstName: string;
+    middleInitial: string;
+    lastName: string;
+    email: string;
+    vislabTrained: boolean;
+    staff: boolean;
   };
 };
 
@@ -146,3 +192,4 @@ export {
   useTicketCreate,
   useTicketCreateNoAuth,
 } from './useTickets';
+export { default as useProjects } from './useProjects';
