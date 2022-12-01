@@ -45,11 +45,7 @@ const Collapse: React.FC<CollapseProperties> = ({
         <div className={styles.controls}>
           <div>{note ?? ''}</div>
           {isCollapsable && (
-            <Button
-              type="link"
-              className={styles.expand}
-              onClick={toggle}
-            >
+            <Button type="link" className={styles.expand} onClick={toggle}>
               <Icon name={isOpen ? 'contract' : 'expand'} />
             </Button>
           )}

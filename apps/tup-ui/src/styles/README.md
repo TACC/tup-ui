@@ -10,16 +10,12 @@
 - [Use Global Project Styles](#use-global-project-styles)
 - [Create Global Project Styles](#create-global-project-styles)
 
-
-
 ## How to Style
 
 1. **Avoid** Global Project styles.
 2. Do use and create [Component Styles](#component-styles).
 3. Do use and create [Core Styles].
 4. Do follow our [CSS Style Guide].
-
-
 
 ## Component Styles
 
@@ -35,9 +31,7 @@ import styles from './SomeComponent.module.css';
 
 /* ... */
 
-<table className={styles.root}>
-   {/* ... */}
-</table>
+<table className={styles.root}>{/* ... */}</table>;
 ```
 
 `.../SomeComponent.module.css`
@@ -64,14 +58,12 @@ import './SomeComponent.global.css';
 }
 ```
 
-
-
 ## Browse [Core Styles]
 
-| Environment | URL |
-| - | - |
-| Local | http://localhost:8000/static/ui/index.html |
-| Remote | https://dev.tup.tacc.utexas.edu/static/ui/index.html |
+| Environment | URL                                                  |
+| ----------- | ---------------------------------------------------- |
+| Local       | http://localhost:8000/static/ui/index.html           |
+| Remote      | https://dev.tup.tacc.utexas.edu/static/ui/index.html |
 
 ## Use [Core Styles]
 
@@ -82,9 +74,7 @@ If the [Core Styles] you need is not available globally, evaluate these options:
 **`.../SomeComponent.tsx`**
 
 ```tsx
-<table className="o-fixed-header-table">
-   {/* ... */}
-</table>
+<table className="o-fixed-header-table">{/* ... */}</table>
 ```
 
 ### In Component Styles, Import from [Core Styles]
@@ -111,18 +101,13 @@ selector {
 }
 ```
 
-
-
 ## Create [Core Styles]
 
 1. Clone [Core Styles].
-3. Develop component.
-4. Request review.*
+2. Develop component.
+3. Request review.\*
 
-<sub>* You might need to request repository access.</sub>
-
-
-
+<sub>\* You might need to request repository access.</sub>
 
 ## Use Global Project Styles
 
@@ -134,8 +119,7 @@ selector {
 @import url('@tacc/core-styles/.../settings/border.css');
 ```
 
-<sub>* The file may not exist, because no global project styles exist.</sub>
-
+<sub>\* The file may not exist, because no global project styles exist.</sub>
 
 ## Create Global Project Styles
 
@@ -175,5 +159,5 @@ selector {
 @import url('@tacc/core-styles/.../settings/border.css');
 ```
 
-[Core Styles]: https://github.com/TACC/Core-Styles
-[CSS Style Guide]: https://confluence.tacc.utexas.edu/display/~wbomar/Shared+UI+-+CSS+-+Style+Guide
+[core styles]: https://github.com/TACC/Core-Styles
+[css style guide]: https://confluence.tacc.utexas.edu/display/~wbomar/Shared+UI+-+CSS+-+Style+Guide
