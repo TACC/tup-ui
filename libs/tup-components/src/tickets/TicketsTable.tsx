@@ -29,7 +29,7 @@ export const getStatusText = (status: string) => {
 };
 
 export const TicketsTable: React.FC = () => {
-  const { data, isLoading, error } = useGetTickets();
+  const { data, isLoading, isError } = useGetTickets();
   const noDataText = (
     <>
       No tickets. You can add a ticket{' '}
@@ -82,9 +82,9 @@ export const TicketsTable: React.FC = () => {
     return <LoadingSpinner />;
   }
 
-  if (error) {
+  if (isError) {
     return (
-      <InlineMessage type="warning">
+      <InlineMessage type="warning" className="ticket__error">
         Unable to retrieve ticket information
       </InlineMessage>
     );
