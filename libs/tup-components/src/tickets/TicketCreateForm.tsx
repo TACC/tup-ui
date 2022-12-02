@@ -20,7 +20,7 @@ import {
 } from 'reactstrap';
 import { Button, FileInputDropZoneFormField } from '@tacc/core-components';
 import { formValues } from './';
-import './TicketCreateForm.scss';
+import './TicketCreateForm.global.css';
 
 const CreatedTicketInformation: React.FC<{
   provideDashBoardLinkOnSuccess: boolean;

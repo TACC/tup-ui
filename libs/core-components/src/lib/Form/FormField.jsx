@@ -11,7 +11,7 @@ import Button from '../Button';
 
 import { useField } from 'formik';
 import PropTypes from 'prop-types';
-import './FormField.scss';
+import './FormField.global.css';
 
 /** A limited-choice wrapper for `FormField` */
 const FormFieldWrapper = ({ children, type }) => {

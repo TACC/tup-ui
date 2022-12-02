@@ -2,14 +2,15 @@
   overflow: auto;
   max-height: 60vh;
 }
+
 .ticket-create-modal {
   color: var(--global-color-primary--xx-dark);
   font-size: 0.75rem;
+}
 
-  /* make bootstrap dialog wider */
-  @media (min-width: 1200px) {
-    .modal-dialog {
-      max-width: 650px;
-    }
-  }
+/* make bootstrap dialog wider */
+@media (min-width: 1200px) {
+  .ticket-create-modal .modal-dialog {
+    max-width: 650px;
+ }
 }
