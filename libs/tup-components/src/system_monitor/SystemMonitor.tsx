@@ -93,18 +93,19 @@ export const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
         </thead>
         <tbody {...getTableBodyProps()} className={styles['rows']}>
           {rows.length ? (
-            rows.map((row, idx) => {
+            rows
               // removes Longhorn system now that it's retired. Can remove when it's taken off TAP system endpoint
-              rows.filter((rows) => !{ rows: { display_name: 'Longhorn' } });
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  ))}
-                </tr>
-              );
-            })
+              .filter((rows) => rows.display_name !== 'Longhorn')
+              .map((row, idx) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => (
+                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    ))}
+                  </tr>
+                );
+              })
           ) : (
             <tr>
               <td colSpan={5}>No systems being monitored</td>
