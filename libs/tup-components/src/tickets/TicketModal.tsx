@@ -43,7 +43,7 @@ import { formatDateTime } from '../utils/timeFormat';
 import { downloadAttachment } from '../utils/downloadAttachment';
 import { historyCardParams } from '.';
 import * as Yup from 'yup';
-import './TicketModal.scss';
+import './TicketModal.global.css';
 
 const formSchema = Yup.object().shape({
   text: Yup.string().required('Required'),
