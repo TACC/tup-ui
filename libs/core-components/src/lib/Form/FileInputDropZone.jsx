@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone';
 import Button from '../Button';
 import InlineMessage from '../Message';
 import PropTypes from 'prop-types';
-import './FileInputDropZone.scss';
+import './FileInputDropZone.global.css';
 
 /**
  * FileInputDropZone is a component where users can select files via file browser or by

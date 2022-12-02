@@ -4,7 +4,7 @@ import { useField } from 'formik';
 import { FormGroup, FormText, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import FileInputDropZone from './FileInputDropZone';
-import './FormField.scss';
+import './FormField.global.css';
 
 function FileInputDropZoneFormField({
   id,

@@ -8,7 +8,7 @@ import {
 } from '@tacc/core-components';
 import { Ticket, useGetTickets } from '@tacc/tup-hooks';
 import { DateCreated, Status, Subject } from './TicketsCells';
-import './TicketsView.scss';
+import './TicketsTable.global.css';
 
 export const getStatusText = (status: string) => {
   switch (status) {
