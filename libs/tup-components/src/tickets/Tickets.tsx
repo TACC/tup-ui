@@ -1,14 +1,25 @@
 import React from 'react';
-import { Outlet, useOutlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import { SectionTableWrapper } from '@tacc/core-components';
 import { TicketsTable } from './TicketsTable';
 
-const TicketDetails: React.FC = () => {
-  return <div>Select A Ticket</div>;
-};
-
 const Tickets: React.FC = () => {
-  const outlet = useOutlet();
-  return <TicketsTable />;
+  return (
+    <div>
+      <SectionTableWrapper
+        header="Tickets"
+        headerActions={
+          <Link to={'create'} className="btn btn-secondary btn-sm">
+            + New Ticket
+          </Link>
+        }
+        contentShouldScroll
+      >
+        <TicketsTable />
+      </SectionTableWrapper>
+      <Outlet />
+    </div>
+  );
 };
 
 export default Tickets;

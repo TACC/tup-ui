@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import { Column, Row } from 'react-table';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   InfiniteScrollTable,
   InlineMessage,
   LoadingSpinner,
 } from '@tacc/core-components';
 import { Ticket, useGetTickets } from '@tacc/tup-hooks';
-import { DateCreated, Status, Subject } from './TicketsCells';
+import { DateCreated, Status } from './TicketsCells';
 import './TicketsTable.global.css';
 
 export const getStatusText = (status: string) => {
@@ -30,10 +30,28 @@ export const getStatusText = (status: string) => {
 
 export const TicketsTable: React.FC = () => {
   const { data, isLoading, isError } = useGetTickets();
+  const pathname = useLocation().pathname;
+  let [historyModalBasePath, createModalPath] = ['', ''];
+  let ticketData: Array<Ticket> = [];
+
+  if (
+    pathname === '/' ||
+    pathname === '/ticket-create' ||
+    pathname.startsWith('/tickets-dashboard')
+  ) {
+    historyModalBasePath = 'tickets-dashboard';
+    createModalPath = 'ticket-create';
+    ticketData = data?.slice(0, 12) ?? [];
+  } else {
+    historyModalBasePath = 'tickets';
+    createModalPath = 'tickets/create';
+    ticketData = data ?? [];
+  }
+
   const noDataText = (
     <>
       No tickets. You can add a ticket{' '}
-      <Link className="wb-link" to={'ticket-create'}>
+      <Link className="wb-link" to={`/${createModalPath}`}>
         here
       </Link>
       .
@@ -49,7 +67,14 @@ export const TicketsTable: React.FC = () => {
       {
         accessor: 'Subject',
         Header: 'Subject',
-        Cell: Subject,
+        Cell: (el) => (
+          <Link
+            to={`/${historyModalBasePath}/${el.row.original.numerical_id}`}
+            className="wb-link"
+          >
+            <span title={el.value}>{el.value}</span>
+          </Link>
+        ),
       },
       {
         accessor: 'Created',
@@ -68,7 +93,7 @@ export const TicketsTable: React.FC = () => {
         Cell: Status,
       },
     ],
-    []
+    [historyModalBasePath]
   );
 
   const rowProps = (row: Row<Ticket>) => {
@@ -93,7 +118,7 @@ export const TicketsTable: React.FC = () => {
   return (
     <InfiniteScrollTable
       tableColumns={columns}
-      tableData={data ?? []}
+      tableData={ticketData}
       isLoading={isLoading}
       className="tickets-view"
       noDataText={noDataText}
