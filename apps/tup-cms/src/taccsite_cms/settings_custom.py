@@ -86,6 +86,8 @@ LOGIN_URL = "/dashboard/login"
 # NEWS / BLOG
 ########################
 
+from taccsite_cms.settings import INSTALLED_APPS
+
 tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
 INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
     # 'filer',              # already in Core
