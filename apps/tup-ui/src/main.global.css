@@ -1,0 +1,20 @@
+/* To stretch application height to available space */
+body {
+  display: flex;
+  flex-direction: column;
+}
+body > main {
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+}
+.o-site {
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+}
+.o-site > * {
+  flex-grow: 1;
+}

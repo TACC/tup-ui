@@ -1,5 +1,34 @@
-/* FAQ: LoadingSpinner uses Reactstrap of which tup-ui installed version 9 which assumes Bootstrap 5 which uses class `visually-hidden`. (Bootstrap 4, which Reactstrap 8 assumes, uses class `sr-only`. */
-/* IMPORTANT: Selectors must be wrapped in `global()` to take effect */
+.loading-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.loading-icon .inline {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.loading-icon .section {
+  width: 4rem;
+  height: 4rem;
+}
+
+button .loading-icon {
+  display: inline-flex;
+  vertical-align: middle;
+  width: auto;
+}
+
+
+
+
+
+/* FAQ: Clone missing Bootstrap v5 CSS
+  - LoadingSpinner uses Reactstrap. TUP-UI installed Reactstrap v9.
+  - Reactstrap v9 assumes Bootstrap v5, which uses class `visually-hidden`.
+  - Reactstrap v8 assumes Bootstrap v4, which uses class `sr-only`.
+*/
 
 /*
 Spinner (Bootstrap 5)

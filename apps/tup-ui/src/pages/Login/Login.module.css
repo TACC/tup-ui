@@ -1,11 +1,9 @@
 @import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
 
 .root {
+  padding-block: var(--global-space--section-gap);
+
   background-color: var(--global-color-primary--light);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .footer__link {
@@ -16,6 +14,8 @@
 .footer {
   width: 100%;
   max-width: 630px;
+
+  margin-inline: auto;
 }
 
 .body {
