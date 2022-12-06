@@ -1,9 +1,8 @@
 import React, { useMemo } from 'react';
 import { useTable, Column } from 'react-table';
-import { LoadingSpinner, Message } from '@tacc/core-components';
+import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { ProjectTitle, PrinInv, Allocations } from './ProjectsCells';
 import { ProjectsRawSystem, useProjects } from '@tacc/tup-hooks';
-import styles from './Projects.module.css';
 export const ProjectsTable: React.FC = () => {
   const { data, isLoading, error } = useProjects();
   const columns = useMemo<Column<ProjectsRawSystem>[]>(
@@ -36,24 +35,23 @@ export const ProjectsTable: React.FC = () => {
     return <LoadingSpinner />;
   }
   if (error) {
-    return <Message type="warn">Unable to retrieve projects.</Message>;
+    return (
+      <InlineMessage type="warn">Unable to retrieve projects.</InlineMessage>
+    );
   }
   return (
     <div className="o-fixed-header-table">
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
-            <tr
-              {...headerGroup.getHeaderGroupProps()}
-              className={styles['header']}
-            >
+            <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th {...column.getHeaderProps()}>{column.render('Header')}</th>
               ))}
             </tr>
           ))}
         </thead>
-        <tbody {...getTableBodyProps()} className={styles['rows']}>
+        <tbody {...getTableBodyProps()}>
           {rows.length ? (
             rows.map((row, idx) => {
               prepareRow(row);
