@@ -110,11 +110,8 @@ const Attachments: React.FC<{
     });
 
   return (
-    <div>
-      <table
-        {...getTableProps()}
-        className={`multi-system InfiniteScrollTable o-fixed-header-table`}
-      >
+    <div className="o-fixed-header-table">
+      <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
