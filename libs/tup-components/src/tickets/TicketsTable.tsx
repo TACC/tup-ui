@@ -10,6 +10,8 @@ import { Ticket, useGetTickets } from '@tacc/tup-hooks';
 import { DateCreated, Status } from './TicketsCells';
 import './TicketsTable.global.css';
 
+const TICKETS_DASHBOARD_DISPLAY_LIMIT = 12;
+
 export const getStatusText = (status: string) => {
   switch (status) {
     case 'new':
@@ -34,18 +36,14 @@ export const TicketsTable: React.FC = () => {
   let [historyModalBasePath, createModalPath] = ['', ''];
   let ticketData: Array<Ticket> = [];
 
-  if (
-    pathname === '/' ||
-    pathname === '/ticket-create' ||
-    pathname.startsWith('/tickets-dashboard')
-  ) {
-    historyModalBasePath = 'tickets-dashboard';
-    createModalPath = 'ticket-create';
-    ticketData = data?.slice(0, 12) ?? [];
-  } else {
+  if (pathname.startsWith('/tickets')) {
     historyModalBasePath = 'tickets';
     createModalPath = 'tickets/create';
     ticketData = data ?? [];
+  } else {
+    historyModalBasePath = 'dashboard-tickets';
+    createModalPath = 'ticket-create';
+    ticketData = data?.slice(0, TICKETS_DASHBOARD_DISPLAY_LIMIT) ?? [];
   }
 
   const noDataText = (
