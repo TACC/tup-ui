@@ -6,12 +6,11 @@ import {
   Tickets,
   TicketDetails,
 } from '@tacc/tup-components';
-import { Dashboard, Login, Logout } from './pages';
+import { Dashboard, Login, Logout, Projects } from './pages';
 
 const AppLayout = () => {
   return <PageLayout left={<Sidebar />} right={<Outlet />} />;
 };
-
 function App() {
   return (
     <Routes>
@@ -23,11 +22,11 @@ function App() {
           <Route path="create" element={<TicketCreateModal />} />
           <Route path=":ticketId" element={<TicketDetails />} />
         </Route>
+        <Route path="projects" element={<Projects />}></Route>
         <Route path="logout" element={<Logout />} />
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>
   );
 }
-
 export default App;
