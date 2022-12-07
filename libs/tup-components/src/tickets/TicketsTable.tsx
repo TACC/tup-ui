@@ -48,9 +48,9 @@ export const TicketsTable: React.FC = () => {
 
   const noDataText = (
     <>
-      No tickets. You can add a ticket{' '}
-      <Link className="wb-link" to={`/${createModalPath}`}>
-        here
+      No tickets. You can{' '}
+      <Link to={`/${createModalPath}`}>
+      	add a ticket
       </Link>
       .
     </>
