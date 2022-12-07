@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { TicketCreateForm } from './TicketCreateForm';
 import { useProfile } from '@tacc/tup-hooks';
-import './TicketCreateModal.global.css';
+import styles from './TicketCreateModal.module.css';
 
 const TicketCreateModal: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const TicketCreateModal: React.FC = () => {
 
   return (
     <Modal
-      modalClassName="ticket-create-modal"
+      modalClassName={styles['root']}
       isOpen={modalAlwaysOpen}
       toggle={close}
       size="lg"
