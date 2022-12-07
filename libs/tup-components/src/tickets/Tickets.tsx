@@ -5,11 +5,14 @@ import { TicketsTable } from './TicketsTable';
 
 const Tickets: React.FC = () => {
   return (
-    <div>
+    <>
       <SectionTableWrapper
         header="Tickets"
         headerActions={
-          <Link to={'create'} className="c-button c-button--secondary c-button--size-small">
+          <Link
+            to={'create'}
+            className="c-button c-button--secondary c-button--size-small"
+          >
             + New Ticket
           </Link>
         }
@@ -18,7 +21,7 @@ const Tickets: React.FC = () => {
         <TicketsTable />
       </SectionTableWrapper>
       <Outlet />
-    </div>
+    </>
   );
 };
 
