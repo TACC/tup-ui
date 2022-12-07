@@ -10,7 +10,6 @@ import {
 import { FormikInput } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import {
-  Alert,
   Col,
   Container,
   FormGroup,
@@ -18,7 +17,11 @@ import {
   ModalFooter,
   Row,
 } from 'reactstrap';
-import { Button, FileInputDropZoneFormField } from '@tacc/core-components';
+import {
+  Button,
+  FileInputDropZoneFormField,
+  SectionMessage,
+} from '@tacc/core-components';
 import { formValues } from './';
 import './TicketCreateForm.global.css';
 
@@ -32,19 +35,19 @@ const CreatedTicketInformation: React.FC<{
 
   if (provideDashBoardLinkOnSuccess) {
     return (
-      <Alert color="success" className="ticket-create-info-alert">
+      <SectionMessage type="success" className="ticket-create-info-alert">
         <Link className="ticket-link" to={`tickets/${ticketId}`}>
           Ticket (#{ticketId})
         </Link>{' '}
         was created. Support staff will contact you regarding your problem.
-      </Alert>
+      </SectionMessage>
     );
   }
   return (
-    <Alert color="success" className="ticket-creation-info-alert">
+    <SectionMessage type="success" className="ticket-create-info-alert">
       Ticket (#{ticketId}) was created. Support staff will contact you via email
       regarding your problem.
-    </Alert>
+    </SectionMessage>
   );
 };
 
@@ -204,9 +207,9 @@ export const TicketCreateForm: React.FC<{ profile?: UserProfile }> = ({
                   />
                 )}
                 {isError && (
-                  <Alert color="warning">
+                  <SectionMessage type="warning">
                     Ticket creating error: {error?.message}
-                  </Alert>
+                  </SectionMessage>
                 )}
                 <Button
                   attr="submit"
