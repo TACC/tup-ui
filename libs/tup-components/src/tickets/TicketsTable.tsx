@@ -68,7 +68,6 @@ export const TicketsTable: React.FC = () => {
         Cell: (el) => (
           <Link
             to={`/${historyModalBasePath}/${el.row.original.numerical_id}`}
-            className="wb-link"
           >
             <span title={el.value}>{el.value}</span>
           </Link>
