@@ -36,7 +36,7 @@ const CreatedTicketInformation: React.FC<{
   if (provideDashBoardLinkOnSuccess) {
     return (
       <SectionMessage type="success" className="ticket-create-info-alert">
-        <Link className="ticket-link" to={`tickets/${ticketId}`}>
+        <Link className="ticket-link" to={`/tickets/${ticketId}`}>
           Ticket (#{ticketId})
         </Link>{' '}
         was created. Support staff will contact you regarding your problem.
