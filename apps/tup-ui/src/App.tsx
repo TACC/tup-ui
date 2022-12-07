@@ -33,7 +33,7 @@ function App() {
         <Route path="projects" element={<Projects />}></Route>
         <Route path="projects/:projectId" element={<ProjectView />}>
           <Route path="" element={<ProjectDetail />}></Route>
-          <Route path=":user" element={<ProjectMember />}></Route>
+          <Route path=":username" element={<ProjectMember />}></Route>
         </Route>
         <Route path="logout" element={<Logout />}></Route>
       </Route>
