@@ -1,12 +1,8 @@
-@import url('@tacc/core-styles/dist/settings/color.css');
-
 .InfiniteScrollTable {
-  composes: o-fixed-header-table from '@tacc/core-styles/dist/components/c-button.css';
-
   --cell-horizontal-padding: 0.35em; /* horizontal cell padding for inter-column buffer */
 
   /* To force `width: 100%` to have effect when table is wider than container
-     (use case is any very narrow table, such as when screen is very narrow) */
+    (use case is any very narrow table, such as when screen is very narrow) */
   /* FAQ: Table is wider than container when row content is wider than table */
   /* CAVEAT: All tables' column widths must be % values whose sum is 100% */
   /* SEE: https://stackoverflow.com/a/6601257 */
@@ -14,7 +10,6 @@
   width: 100%;
 
   max-height: inherit; /* inherit max-height from parent wrapper */
-  font-size: 0.875rem; /* 14px (approved deviation from design) */
 
   border-collapse: separate;
   border-spacing: 0;

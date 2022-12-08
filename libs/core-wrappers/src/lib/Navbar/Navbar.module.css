@@ -40,6 +40,8 @@
 }
 
 .nav-content {
+  margin-block: 0.5em; /* To add space between items untill sidebar is styled */
+
   display: flex;
   align-items: center;
 }

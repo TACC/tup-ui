@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { useLocation, Location, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@tacc/tup-hooks';
-import { Formik, Form, Field } from 'formik';
-import { Label } from 'reactstrap';
+import { Formik, Form } from 'formik';
+import { FormikInput } from '@tacc/core-wrappers';
 import { Button } from '@tacc/core-components';
 import * as Yup from 'yup';
 import styles from './LoginComponent.module.css';
@@ -18,31 +18,13 @@ type LoginProps = {
   className?: string;
 };
 
-type LoginFieldProps = {
-  name: string;
-  label: string;
-  type?: string;
-};
-
-const LoginField: React.FC<LoginFieldProps> = ({ name, label, type }) => {
-  // Matt does not want these form stylings to be global
-  return (
-    <div className={styles['form-field']}>
-      <Label className={styles['form-field__label']} size="sm" htmlFor={name}>
-        {label}
-      </Label>
-      <Field name={name} id={name} type={type} />
-    </div>
-  );
-};
-
 const LoginError: React.FC<{ status?: number }> = ({ status }) => {
   if (status === 200 || status === undefined) {
     return null;
   }
   if (status === 403) {
     return (
-      <div className={styles.error}>
+      <div className={`c-form__errors ${styles.error}`}>
         Sorry, we can't find an account matching those credentials.
         <br />
         Please try again or <a href="/account/create">create a new account</a>.
@@ -50,7 +32,7 @@ const LoginError: React.FC<{ status?: number }> = ({ status }) => {
     );
   }
   return (
-    <div className={styles.error}>
+    <div className={`c-form__errors ${styles.error}`}>
       Sorry. Something went wrong while trying to log in. Please try again
       later.
     </div>
@@ -73,10 +55,14 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   }, [from]);
   const { login, error, isLoading } = useAuth();
 
-  const validationSchema = Yup.object({
-    username: Yup.string().required(),
-    password: Yup.string().required(),
-  });
+  // FAQ: To use inline messaging for required fields (instead of browser):
+  //      1. Uncomment this constant definition
+  //      2. Pass this constant to <Formik>; validationSchema={validationSchema}
+  //      3. Remove `required` attribute from <FormikInput>'s
+  // const validationSchema = Yup.object({
+  //   username: Yup.string().required(),
+  //   password: Yup.string().required(),
+  // });
 
   const initialValues: LoginInfo = {
     username: '',
@@ -94,21 +80,33 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
 
   return (
     <div className={`${styles.root} ${className}`}>
-      <div className={styles.title}>
+      <h3 className={`c-form__title ${styles.title}`}>
         <img src={blackLogo} className={styles.logo} alt="TACC Logo" />
-        <h3>Log In</h3>
-        <p className={styles.subtitle}>to continue to the TACC User Portal</p>
-      </div>
-      <LoginError status={status} />
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-        <Form className={styles.form}>
-          <LoginField name="username" label="User Name" />
-          <LoginField name="password" label="Password" type="password" />
-          <div className={styles['submit-container']}>
+        <span>Log In</span>
+      </h3>
+      <p className={`c-form__desc ${styles.subtitle}`}>
+        to continue to the TACC User Portal
+      </p>
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        <Form className="c-form">
+          <LoginError status={status} />
+          <FormikInput
+            name="username"
+            label="User Name"
+            type="text"
+            className={styles.field}
+            autoComplete="username"
+            required
+          />
+          <FormikInput
+            name="password"
+            label="Password"
+            type="password"
+            className={styles.field}
+            autoComplete="current-password"
+            required
+          />
+          <div className={`c-form__buttons ${styles['submit-container']}`}>
             <a className={styles.link} href="/account/create">
               Create Account
             </a>

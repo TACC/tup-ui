@@ -6,9 +6,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      '@tacc/core-styles': path.resolve(__dirname, '../../libs/core-styles/'),
-    },
+    alias: {},
   },
   build: {
     lib: {

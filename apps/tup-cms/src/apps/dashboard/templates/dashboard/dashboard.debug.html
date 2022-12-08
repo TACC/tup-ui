@@ -1,4 +1,10 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+
+{% block assets_core_project %}
+{% include './assets.html' %}
+{% endblock %}
+
+{% block content %}
 <div id="root" class="o-site"></div>
 <script>
   window.__TUP_CONFIG__ = {
@@ -14,4 +20,4 @@
 </script>
 <script type="module" src="http://localhost:3000/static/@vite/client"></script>
 <script type="module" src="http://localhost:3000/static/src/main.tsx"></script>
-{%endblock %}
+{% endblock %}

@@ -3,8 +3,6 @@
 
   margin: 0;
   width: 100%;
-
-  font-size: 0.875rem; /* 14px (approved deviation from design) */
 }
 
 .rows tr:nth-child(even) {
