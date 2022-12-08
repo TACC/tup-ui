@@ -19,7 +19,7 @@
 .nav-content {
   height: 34px;
   text-decoration: none;
-  padding-left: 2rem;
+  padding-left: 20px;
 }
 
 .nav-content:hover {
@@ -31,8 +31,8 @@
 }
 
 .nav-text {
-  padding-left: 1rem;
-  font-size: 12px;
+  padding-left: 10px;
+  font-size: 1.2rem;
   font-weight: 500;
   pointer-events: none;
   color: var(--global-color-primary--x-dark);
