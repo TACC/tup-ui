@@ -11,9 +11,17 @@ const Sidebar: React.FC = () => {
         <NavItem end icon="dashboard" to={'/'}>
           Dashboard
         </NavItem>
-        <NavItem icon="allocations" to={'/projects'}>Projects & Allocations</NavItem>
-        <NavItem icon="multiple-coversation" to={'/tickets'}>Tickets</NavItem>
-        {loggedIn && <NavItem icon="exit" to={'/logout'}>Log Out</NavItem>}
+        <NavItem icon="allocations" to={'/projects'}>
+          Projects & Allocations
+        </NavItem>
+        <NavItem icon="multiple-coversation" to={'/tickets'}>
+          Tickets
+        </NavItem>
+        {loggedIn && (
+          <NavItem icon="exit" to={'/logout'}>
+            Log Out
+          </NavItem>
+        )}
       </Navbar>
     </div>
   );
