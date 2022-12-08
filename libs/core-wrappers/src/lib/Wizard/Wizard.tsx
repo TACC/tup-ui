@@ -1,6 +1,6 @@
 import React, { useState, useContext, useCallback, useEffect } from 'react';
 import StepWizard, { StepWizardChildProps } from 'react-step-wizard';
-import { Button } from 'reactstrap';
+import { Button } from '@tacc/core-components';
 import { WizardStep } from '.';
 import { Formik, Form, useFormikContext } from 'formik';
 import styles from './Wizard.module.css';
@@ -50,10 +50,10 @@ export const WizardNavigation: React.FC = () => {
       )}
       {!!currentStep && !!totalSteps && currentStep < totalSteps && (
         <>
-          <Button type="submit" color="primary" onClick={onContinue}>
+          <Button attr="submit" type="primary" onClick={onContinue}>
             Continue
           </Button>
-          <Button type="submit" color="secondary" onClick={onSkip}>
+          <Button attr="submit" type="secondary" onClick={onSkip}>
             Skip to End
           </Button>
         </>
@@ -86,7 +86,7 @@ function WizardSummary<T>({
           <div className={styles.name}>
             <b>{step.name}</b>
             <Button
-              color="link"
+              type="link"
               onClick={() => editCallback(step.id)}
               className={styles.edit}
             >

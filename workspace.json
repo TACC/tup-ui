@@ -3,7 +3,6 @@
   "version": 2,
   "projects": {
     "core-components": "libs/core-components",
-    "core-styles": "libs/core-styles",
     "core-wrappers": "libs/core-wrappers",
     "tup-cms": "apps/tup-cms",
     "tup-components": "libs/tup-components",
