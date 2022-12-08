@@ -3,10 +3,9 @@
 }
 .endcap {
   composes: c-page-end from '@tacc/core-styles/dist/components/c-page.css';
-}
-.endcap:global(.btn) {
-  padding-left: 12px;
-  font-size: inherit;
+
+  /* HELP: Should this be in @tacc/core-styles? */
+  margin-inline: 12px;
 }
 
 .etcetera {
@@ -23,8 +22,4 @@
 
   /* To show `c-page-link--always-click` pseudo elements */
   overflow: visible; /* overwrite <Button>'s `c-button` */
-}
-.page:global(.btn) {
-  border-radius: 0;
-  font-size: inherit;
 }
