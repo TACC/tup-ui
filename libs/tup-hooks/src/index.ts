@@ -111,7 +111,7 @@ export type ProjectsRawSystem = {
   id: number;
   title: string;
   description: string;
-  chardeCode: string;
+  chargeCode: string;
   gid: number;
   source: string;
   fieldId: number;
