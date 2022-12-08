@@ -129,3 +129,9 @@ BLOG_ENABLE_COMMENTS = False
 # TACC settings
 TACC_BLOG_SHOW_CATEGORIES = True
 TACC_BLOG_SHOW_TAGS = True
+
+########################
+# TACC: CORE STYLES
+########################
+
+TACC_CORE_STYLES_VERSION = 1

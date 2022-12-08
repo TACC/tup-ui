@@ -1,6 +1,7 @@
 import React from 'react';
 import { Spinner } from 'reactstrap';
-import './LoadingSpinner.css';
+
+import './LoadingSpinner.global.css';
 
 type LoadingSpinnerProps = {
   placement?: 'inline' | 'section';

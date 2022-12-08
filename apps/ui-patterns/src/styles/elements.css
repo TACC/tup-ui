@@ -1,27 +1,19 @@
-@import url('@tacc/core-styles/dist/settings/color.css');
-
-
-
 /*
   Content Sectioning Elements
   https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning
 */
 
-h1,
-h2,
-h4,
-h5,
-h6 {
-  font-weight: normal;
-}
+h1, h2, h4, h5, h6 { font-weight: normal; }
+h3 { font-weight: bold; }
 
-h2 {
-  font-size: 1.125rem; /* 18px (if base is 16px) */
-}
-h3 {
-  font-size: 0.9375rem; /* 15px (if base is 16px) */
-  font-weight: bold;
-}
+/* To mimic Bootstrap rem so as to mimic CEPv2 */
+h1, h2, h3, h4, h5, h6 { --cepv2-rem: 16px; }
+h1 { font-size: calc( 2.5 * var(--cepv2-rem) ); }
+h2 { font-size: 18px; /* to mimic CEPv2 ui-patterns */ }
+h3 { font-size: 15px; /* to mimic CEPv2 ui-patterns */ }
+h4 { font-size: calc( 1.5 * var(--cepv2-rem) ); }
+h5 { font-size: calc( 1.25 * var(--cepv2-rem) ); }
+h6 { font-size: calc( 1 * var(--cepv2-rem) ); }
 
 
 
@@ -31,18 +23,6 @@ h3 {
   Inline Text Semantics
   https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Inline_text_semantics
 */
-
-/* Use :link and :visited */
-a:link,
-a:hover /* overwrite Bootstrap */ {
-  color: var(--global-color-accent--normal);
-}
-a:visited {
-  color: var(--global-color-accent--x-dark);
-}
-a:active {
-  text-decoration-line: underline overline;
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
