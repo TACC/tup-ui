@@ -230,9 +230,9 @@ const TicketHistoryCard: React.FC<historyCardParams> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleIcon = isOpen ? (
-    <i className="icon-action icon-collapse" />
+    <Icon name="icon-action icon-collapse" />
   ) : (
-    <i className="icon-action icon-expand" />
+    <Icon name="icon-action icon-expand" />
   );
 
   const ticketHeaderClassName = isCreator
