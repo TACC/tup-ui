@@ -48,11 +48,7 @@ export const TicketsTable: React.FC = () => {
 
   const noDataText = (
     <>
-      No tickets. You can{' '}
-      <Link to={`/${createModalPath}`}>
-      	add a ticket
-      </Link>
-      .
+      No tickets. You can <Link to={`/${createModalPath}`}>add a ticket</Link>.
     </>
   );
 
@@ -66,9 +62,7 @@ export const TicketsTable: React.FC = () => {
         accessor: 'Subject',
         Header: 'Subject',
         Cell: (el) => (
-          <Link
-            to={`/${historyModalBasePath}/${el.row.original.numerical_id}`}
-          >
+          <Link to={`/${historyModalBasePath}/${el.row.original.numerical_id}`}>
             <span title={el.value}>{el.value}</span>
           </Link>
         ),
