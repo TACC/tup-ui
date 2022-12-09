@@ -1,23 +1,27 @@
-import React, { useMemo } from 'react';
-import { useTable, Column } from 'react-table';
+import React, { useEffect, useMemo } from 'react';
+import { useTable, Column, FooterProps, Cell } from 'react-table';
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
-import { ProjectSummary } from './ProjectsCells';
-import { ProjectsRawSystem, useProjects } from '@tacc/tup-hooks';
+import { ProjectTitle, ProjectSummary, Allocations } from './ProjectsCells';
+import { ProjectsAllocations, ProjectsRawSystem, useProjects } from '@tacc/tup-hooks';
+
 
 export const ProjectSummaryListing: React.FC = () => {
     const { data, isLoading, error } = useProjects();
+
     const columns = useMemo<Column<ProjectsRawSystem>[]>(
         () => [
           {
             accessor: 'title',
-            Header: 'Project Title',
-            Cell: ProjectSummary,
+            Header: 'Active Projects',
+            Cell: ProjectTitle,
+            Footer: ({allocations}) => allocations ? allocations.map((e) => e.resource).join(', ') : '--',
             columns:
             [
                 {
                     accessor: 'title',
-                    Header: 'Project Title',
+                    Header: 'Project Summary',
                     Cell: ProjectSummary,
+                    Footer: ({allocations}) => allocations ? allocations.map((e) => e.resource).join(', ') : '--',
                 },
             ],
           },
@@ -25,7 +29,7 @@ export const ProjectSummaryListing: React.FC = () => {
       []
     );
 
-    const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
+    const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups, footerGroups } =
       useTable({
         columns,
         data: data ?? [],
@@ -58,17 +62,29 @@ export const ProjectSummaryListing: React.FC = () => {
                 return (
                   <tr {...row.getRowProps()}>
                     {row.cells.map((cell) => (
-                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                    ))}
-                  </tr>
+                      <td {...cell.getCellProps()}>{cell.render('Cell')}
+                    <tfoot> {
+                      footerGroups.map(footerGroup => (
+                        <td colSpan={2} {...footerGroup.getFooterGroupProps()}>
+                          {
+                            footerGroup.headers.map(column => (
+                              <td {...column.getFooterProps}>
+                                {column.render('Footer')}
+                              </td>
+                            ))}
+                        </td>
+                      ))}
+                    </tfoot></td>
+                    ))}</tr>   
                 );
               })
-            ) : (
-              <tr>
-                <td colSpan={5}>No active projects found.</td>
-              </tr>
-            )}
-          </tbody>
+              ) : (
+                <tr>
+                  <td colSpan={5}>No active projects found.</td>
+                </tr>
+              )}
+            </tbody>
+
         </table>
     );
   };
