@@ -5,6 +5,15 @@ import { ProjectsTable } from './ProjectsTable';
 import ProjectSummaryListing from './ProjectsSummaryListing';
 
 const ProjectsLayout: React.FC = () => {
-  return <Section header="Projects & Allocations" content={<SectionTableWrapper><ProjectSummaryListing /> </SectionTableWrapper>} />;
+  return (
+    <Section
+      header="Projects & Allocations"
+      content={
+        <SectionTableWrapper>
+          <ProjectSummaryListing />{' '}
+        </SectionTableWrapper>
+      }
+    />
+  );
 };
 export default ProjectsLayout;

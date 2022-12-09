@@ -16,18 +16,27 @@ export const PrinInv: React.FC<{ cell: Cell<ProjectsRawSystem, string> }> = ({
 
 export const Allocations: React.FC<{
   cell: Cell<ProjectsRawSystem, number>;
-}> = ({ cell: { value, row } }) =>  <tr><td>{'Compute: ' + row.original.allocations}</td></tr>
+}> = ({ cell: { value, row } }) => (
+  <tr>
+    <td>{'Compute: ' + row.original.allocations}</td>
+  </tr>
+);
 
 export const ProjectSummary: React.FC<{
   cell: Cell<ProjectsRawSystem>;
 }> = ({ cell: { value, row } }) => (
   <div>
-      <h6>
-        <b><Link to={`/projects/${row.original.id}`}>{value}</Link></b>
-      </h6>
-      {'Project Charge Code: '} <b>{row.original.chargeCode}</b>
-    <p><Pill type='success'>{"Principle Investigator: "} 
-      <b>{row.original.pi.firstName + ' ' + row.original.pi.lastName}</b>
-      </Pill></p>
-    </div>
+    <h6>
+      <b>
+        <Link to={`/projects/${row.original.id}`}>{value}</Link>
+      </b>
+    </h6>
+    {'Project Charge Code: '} <b>{row.original.chargeCode}</b>
+    <p>
+      <Pill type="success">
+        {'Principle Investigator: '}
+        <b>{row.original.pi.firstName + ' ' + row.original.pi.lastName}</b>
+      </Pill>
+    </p>
+  </div>
 );
