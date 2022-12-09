@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Formik, Form } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 //import ReCAPTCHA from 'react-google-recaptcha';
 import {
   UserProfile,
@@ -36,7 +36,7 @@ const CreatedTicketInformation: React.FC<{
   if (provideDashBoardLinkOnSuccess) {
     return (
       <SectionMessage type="success" className="ticket-create-info-alert">
-        <Link className="ticket-link" to={`/tickets/${ticketId}`}>
+        <Link className="ticket-link" to={`${ticketId}`}>
           Ticket (#{ticketId})
         </Link>{' '}
         was created. Support staff will contact you regarding your problem.
@@ -98,93 +98,94 @@ export const TicketCreateForm: React.FC<{ profile?: UserProfile }> = ({
   const formSchema = Yup.object().shape(formShape);
 
   return (
-    <Formik
-      validateOnMount
-      enableReinitialize
-      initialValues={defaultValues}
-      validationSchema={formSchema}
-      onSubmit={(values: formValues, { resetForm }) => {
-        const formData = new FormData();
-        formData.append('email', values['email']);
-        formData.append('subject', values['subject']);
-        formData.append('description', values['description']);
-        formData.append('cc', values['cc']);
-        if (values.files) {
-          values.files.forEach((file) => formData.append('files', file));
-        }
-        mutate(formData, {
-          onSuccess: () => resetForm(),
-        });
-      }}
-    >
-      {({ isSubmitting, isValid, setFieldValue }) => {
-        return (
-          <Form className="ticket-create-form">
-            <ModalBody className="ticket-create-modal-body">
-              <FormGroup>
-                <FormikInput
-                  name="subject"
-                  label="Subject"
-                  required
-                  description=""
-                />
-                <FormikInput
-                  name="description"
-                  label="Problem Description"
-                  type="textarea"
-                  required
-                  description="Explain your steps leading up to the problem and include any error
+    <>
+      <Formik
+        validateOnMount
+        enableReinitialize
+        initialValues={defaultValues}
+        validationSchema={formSchema}
+        onSubmit={(values: formValues, { resetForm }) => {
+          const formData = new FormData();
+          formData.append('email', values['email']);
+          formData.append('subject', values['subject']);
+          formData.append('description', values['description']);
+          formData.append('cc', values['cc']);
+          if (values.files) {
+            values.files.forEach((file) => formData.append('files', file));
+          }
+          mutate(formData, {
+            onSuccess: () => resetForm(),
+          });
+        }}
+      >
+        {({ isSubmitting, isValid, setFieldValue }) => {
+          return (
+            <Form className="ticket-create-form">
+              <ModalBody className="ticket-create-modal-body">
+                <FormGroup>
+                  <FormikInput
+                    name="subject"
+                    label="Subject"
+                    required
+                    description=""
+                  />
+                  <FormikInput
+                    name="description"
+                    label="Problem Description"
+                    type="textarea"
+                    required
+                    description="Explain your steps leading up to the problem and include any error
                   reports"
-                />
-                <FileInputDropZoneFormField
-                  id="files"
-                  isSubmitted={isSubmitting}
-                  description="Error reports and screenshots can be helpful for diagnostics"
-                  maxSizeMessage="Max File Size: 3MB"
-                  maxSize={3145728}
-                />
-                <Container>
-                  <Row>
-                    <Col lg="6">
-                      <FormikInput
-                        name="first_name"
-                        label="First Name"
-                        required
-                        disabled={isAuthenticated}
-                        description=""
-                      />
-                    </Col>
-                    <Col lg="6">
-                      <FormikInput
-                        name="last_name"
-                        label="Last Name"
-                        required
-                        disabled={isAuthenticated}
-                        description=""
-                      />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col lg="6">
-                      <FormikInput
-                        name="email"
-                        label="Email"
-                        type="email"
-                        required
-                        disabled={isAuthenticated}
-                        description=""
-                      />
-                    </Col>
-                    <Col lg="6">
-                      <FormikInput
-                        name="cc"
-                        label="Cc"
-                        required={false}
-                        description="Separate emails with commas"
-                      />
-                    </Col>
-                  </Row>
-                  {/* {!isAuthenticated && recaptchaSiteKey && (
+                  />
+                  <FileInputDropZoneFormField
+                    id="files"
+                    isSubmitted={isSubmitting}
+                    description="Error reports and screenshots can be helpful for diagnostics"
+                    maxSizeMessage="Max File Size: 3MB"
+                    maxSize={3145728}
+                  />
+                  <Container>
+                    <Row>
+                      <Col lg="6">
+                        <FormikInput
+                          name="first_name"
+                          label="First Name"
+                          required
+                          disabled={isAuthenticated}
+                          description=""
+                        />
+                      </Col>
+                      <Col lg="6">
+                        <FormikInput
+                          name="last_name"
+                          label="Last Name"
+                          required
+                          disabled={isAuthenticated}
+                          description=""
+                        />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg="6">
+                        <FormikInput
+                          name="email"
+                          label="Email"
+                          type="email"
+                          required
+                          disabled={isAuthenticated}
+                          description=""
+                        />
+                      </Col>
+                      <Col lg="6">
+                        <FormikInput
+                          name="cc"
+                          label="Cc"
+                          required={false}
+                          description="Separate emails with commas"
+                        />
+                      </Col>
+                    </Row>
+                    {/* {!isAuthenticated && recaptchaSiteKey && (
                     <ReCAPTCHA
                       name="recaptcha"
                       sitekey={recaptchaSiteKey}
@@ -193,38 +194,40 @@ export const TicketCreateForm: React.FC<{ profile?: UserProfile }> = ({
                       }}
                     />
                   )} */}
-                </Container>
-              </FormGroup>
-            </ModalBody>
-            <ModalFooter>
-              <div className="ticket-create-button-row">
-                {isSuccess && (
-                  <CreatedTicketInformation
-                    ticketId={data}
-                    provideDashBoardLinkOnSuccess={
-                      isAuthenticated && provideDashBoardLinkOnSuccess
-                    }
-                  />
-                )}
-                {isError && (
-                  <SectionMessage type="warning">
-                    Ticket creating error: {error?.message}
-                  </SectionMessage>
-                )}
-                <Button
-                  attr="submit"
-                  type="primary"
-                  size="medium"
-                  disabled={!isValid || isSubmitting || isLoading}
-                  isLoading={isLoading}
-                >
-                  Add Ticket
-                </Button>
-              </div>
-            </ModalFooter>
-          </Form>
-        );
-      }}
-    </Formik>
+                  </Container>
+                </FormGroup>
+              </ModalBody>
+              <ModalFooter>
+                <div className="ticket-create-button-row">
+                  {isSuccess && (
+                    <CreatedTicketInformation
+                      ticketId={data}
+                      provideDashBoardLinkOnSuccess={
+                        isAuthenticated && provideDashBoardLinkOnSuccess
+                      }
+                    />
+                  )}
+                  {isError && (
+                    <SectionMessage type="warning">
+                      Ticket creating error: {error?.message}
+                    </SectionMessage>
+                  )}
+                  <Button
+                    attr="submit"
+                    type="primary"
+                    size="medium"
+                    disabled={!isValid || isSubmitting || isLoading}
+                    isLoading={isLoading}
+                  >
+                    Add Ticket
+                  </Button>
+                </div>
+              </ModalFooter>
+            </Form>
+          );
+        }}
+      </Formik>
+      <Outlet />
+    </>
   );
 };

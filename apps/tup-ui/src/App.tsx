@@ -16,11 +16,15 @@ function App() {
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route path="/" element={<Dashboard />}>
-          <Route path="ticket-create" element={<TicketCreateModal />} />
+          <Route path="ticket-create" element={<TicketCreateModal />}>
+            <Route path=":ticketId" element={<TicketModal />} />
+          </Route>
           <Route path="dashboard-tickets/:ticketId" element={<TicketModal />} />
         </Route>
         <Route path="tickets" element={<Tickets />}>
-          <Route path="create" element={<TicketCreateModal />} />
+          <Route path="create" element={<TicketCreateModal />}>
+            <Route path=":ticketId" element={<TicketModal />} />
+          </Route>
           <Route path=":ticketId" element={<TicketModal />} />
         </Route>
         <Route path="projects" element={<Projects />}></Route>
