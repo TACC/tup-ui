@@ -12,9 +12,14 @@ body > main {
 .o-site {
   display: flex;
   flex-direction: column;
-
+  overflow: auto;
   flex-grow: 1;
 }
 .o-site > * {
   flex-grow: 1;
+}
+
+#cms-content {
+  margin-bottom: 0px;
+  overflow: auto;
 }

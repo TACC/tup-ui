@@ -1,18 +1,32 @@
-.layout-root {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+.layout-grid {
+  display: grid;
+  overflow: auto;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+      "layout-header layout-header"
+      "layout-sidebar layout-content"
+      "layout-footer layout-footer";
+}
+
+.header {
+  grid-area: layout-header;
   overflow: auto;
 }
 
-.layout-row {
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
+.sidebar {
+  grid-area: layout-sidebar;
   overflow: auto;
 }
 
-.constrain {
-  max-height: 100%;
-  overflow: hidden;
+
+.content {
+  display: grid;
+  grid-area: layout-content;
+  overflow: auto;
+}
+
+.footer {
+  grid-area: layout-footer;
+  overflow: auto;
 }

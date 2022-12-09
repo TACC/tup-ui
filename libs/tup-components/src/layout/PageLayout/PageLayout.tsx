@@ -6,26 +6,14 @@ interface LayoutProps {
   right?: React.ReactNode;
   top?: React.ReactNode;
   bottom?: React.ReactNode;
-  constrain?: boolean;
 }
-const Layout: React.FC<LayoutProps> = ({
-  left,
-  right,
-  top,
-  bottom,
-  constrain,
-}) => (
-  <div
-    className={`${styles['layout-root']} ${constrain ? styles.constrain : ''}`}
-  >
-    {top}
-    <div
-      className={`${styles['layout-row']} ${constrain ? styles.constrain : ''}`}
-    >
-      {left}
-      {right}
-    </div>
-    {bottom}
+
+const Layout: React.FC<LayoutProps> = ({ left, right, top, bottom }) => (
+  <div className={styles['layout-grid']}>
+    <div className={styles['header']}>{top}</div>
+    <div className={styles['sidebar']}>{left}</div>
+    <div className={styles['content']}>{right}</div>
+    <div className={styles['footer']}>{bottom}</div>
   </div>
 );
 
