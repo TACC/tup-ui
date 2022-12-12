@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo } from 'react';
-import { useTable, Column, FooterProps, Cell } from 'react-table';
-import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
-import { ProjectTitle, ProjectSummary, Allocations } from './ProjectsCells';
+import React, { useMemo } from 'react';
+import { useTable, Column } from 'react-table';
+import { LoadingSpinner, InlineMessage, SectionTableWrapper } from '@tacc/core-components';
+import { ProjectTitle, ProjectSummary } from './ProjectsCells';
 import {
-  ProjectsAllocations,
   ProjectsRawSystem,
   useProjects,
 } from '@tacc/tup-hooks';
@@ -17,13 +16,11 @@ export const ProjectSummaryListing: React.FC = () => {
         accessor: 'title',
         Header: 'Active Projects',
         Cell: ProjectTitle,
-        Footer: 'Storage: ' + ' SUs',
         columns: [
           {
             accessor: 'title',
             Header: 'Project Summary',
             Cell: ProjectSummary,
-            Footer: 'Compute: ' + ' SUs',
           },
         ],
       },
@@ -37,7 +34,6 @@ export const ProjectSummaryListing: React.FC = () => {
     rows,
     prepareRow,
     headerGroups,
-    footerGroups,
   } = useTable({
     columns,
     data: data ?? [],
@@ -51,51 +47,40 @@ export const ProjectSummaryListing: React.FC = () => {
     );
   }
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => {
-              return column.isVisible === true ? null : (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-              );
-            })}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.length ? (
-          rows.map((row, idx) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()}>
-                    {cell.render('Cell')}
-                    <tfoot>
-                      {' '}
-                      {footerGroups.map((footerGroup) => (
-                        <td colSpan={2} {...footerGroup.getFooterGroupProps()}>
-                          {footerGroup.headers.map((column) => (
-                            <td {...column.getFooterProps}>
-                              {column.render('Footer')}
-                            </td>
-                          ))}
-                        </td>
-                      ))}
-                    </tfoot>
-                  </td>
-                ))}
-              </tr>
-            );
-          })
-        ) : (
-          <tr>
-            <td colSpan={5}>No active projects found.</td>
-          </tr>
-        )}
-      </tbody>
-    </table>
+    <SectionTableWrapper>
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => {
+                return column.isVisible === true ? null : (
+                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                );
+              })}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.length ? (
+            rows.map((row, idx) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => (
+                    <td {...cell.getCellProps()}>
+                      {cell.render('Cell')}
+                    </td>
+                  ))}
+                </tr>
+            )})
+          ) : (
+            <tr>
+              <td colSpan={5}>No active projects found.</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </SectionTableWrapper>
   );
 };
 export default ProjectSummaryListing;
