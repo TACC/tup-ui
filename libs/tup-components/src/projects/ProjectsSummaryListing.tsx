@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useTable, Column } from 'react-table';
 import { LoadingSpinner, InlineMessage, SectionTableWrapper } from '@tacc/core-components';
-import { ProjectTitle, ProjectSummary } from './ProjectsCells';
+import { ProjectTitle, ProjectSummaryAll } from './ProjectsCells';
 import {
   ProjectsRawSystem,
   useProjects,
@@ -20,7 +20,7 @@ export const ProjectSummaryListing: React.FC = () => {
           {
             accessor: 'title',
             Header: 'Project Summary',
-            Cell: ProjectSummary,
+            Cell: ProjectSummaryAll,
           },
         ],
       },
