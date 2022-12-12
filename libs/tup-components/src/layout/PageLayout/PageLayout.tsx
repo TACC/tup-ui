@@ -10,10 +10,10 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ left, right, top, bottom }) => (
   <div className={styles['layout-grid']}>
-    <div className={styles['header']}>{top}</div>
-    <div className={styles['sidebar']}>{left}</div>
+    <header className={styles['header']}>{top}</header>
+    <nav className={styles['nav']}>{left}</nav>
     <div className={styles['content']}>{right}</div>
-    <div className={styles['footer']}>{bottom}</div>
+    <footer className={styles['footer']}>{bottom}</footer>
   </div>
 );
 

@@ -4,29 +4,28 @@
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
-      "layout-header layout-header"
-      "layout-sidebar layout-content"
-      "layout-footer layout-footer";
+      "header header"
+      "nav _content"
+      "footer footer";
+}
+
+.layout-grid > * {
+	overflow: auto;
 }
 
 .header {
-  grid-area: layout-header;
-  overflow: auto;
+  grid-area: header;
 }
 
-.sidebar {
-  grid-area: layout-sidebar;
-  overflow: auto;
+.nav {
+  grid-area: nav;
 }
-
 
 .content {
   display: grid;
-  grid-area: layout-content;
-  overflow: auto;
+  grid-area: _content;
 }
 
 .footer {
-  grid-area: layout-footer;
-  overflow: auto;
+  grid-area: footer;
 }
