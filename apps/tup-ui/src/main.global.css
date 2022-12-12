@@ -20,6 +20,5 @@ body > main {
 }
 
 #cms-content {
-  margin-bottom: 0px;
   overflow: auto;
 }
