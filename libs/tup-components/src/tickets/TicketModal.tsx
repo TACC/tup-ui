@@ -230,7 +230,7 @@ const TicketHistoryCard: React.FC<historyCardParams> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleIcon = isOpen ? (
-    <Icon name="icon-action icon-collapse" />
+    <Icon name="icon-action icon-contract" />
   ) : (
     <Icon name="icon-action icon-expand" />
   );
