@@ -39,7 +39,7 @@
     "@nrwl/react": "15.0.6",
     "@nrwl/web": "15.0.6",
     "@nrwl/workspace": "15.0.6",
-    "@tacc/core-styles": "github:TACC/Core-Styles#9cf8a60",
+    "@tacc/core-styles": "github:TACC/Core-Styles#382ab54",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "13.4.0",
     "@types/jest": "28.1.8",
