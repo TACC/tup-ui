@@ -46,4 +46,8 @@ export const handlers = [
     // Respond with a mock created ticket id
     return res(ctx.json('12345'));
   }),
+  rest.post('http://localhost:8001/tickets/noauth', (req, res, ctx) => {
+    // Respond with a mock created ticket id
+    return res(ctx.json('6789'));
+  }),
 ];
