@@ -1,0 +1,36 @@
+.user-detail-container {
+    width: 50%;
+}
+
+.user-info-banner {
+    display: flex;
+    padding: 2rem;
+    background: #F4F4F4;
+    align-items: center;
+    gap: 2rem;
+}
+
+.user-fullname {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.user-details {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.user-details > .user-details-light {
+    color: #707070;
+}
+
+.manage-user-container {
+    display: flex;
+    padding: 2rem;
+    justify-content: space-between;
+}
+
+.usage-table {
+    width: 100%;
+    padding: 2rem;
+}

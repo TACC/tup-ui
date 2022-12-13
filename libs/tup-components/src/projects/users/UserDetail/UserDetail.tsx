@@ -3,6 +3,7 @@ import {
   useProjectUsage,
   UsagePerResource,
 } from '@tacc/tup-hooks';
+import styles from './UserDetail.module.css';
 
 const UserRoleSelector: React.FC = () => (
   <div>(User role selector placeholder)</div>
@@ -35,31 +36,19 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
   };
 
   return user ? (
-    <div style={{ width: '50%' }}>
-      <div
-        style={{
-          display: 'flex',
-          padding: '2rem',
-          background: '#F4F4F4',
-          alignItems: 'center',
-          gap: '2rem',
-        }}
-      >
-        <span style={{ fontSize: '21px', fontWeight: 'bold' }}>
+    <div className={styles['user-detail-container']}>
+      <div className={styles['user-info-banner']}>
+        <span className={styles['user-fullname']}>
           {user.firstName} {user.lastName}
         </span>
-        <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
-          <span style={{ color: '#707070' }}>Username:</span> {user.username} |{' '}
-          <span style={{ color: '#707070' }}>Email</span>: {user.email}
+        <span className={styles['user-details']}>
+          <span className={styles['user-details-light']}>Username:</span>{' '}
+          {user.username} |{' '}
+          <span className={styles['user-details-light']}>Email</span>:{' '}
+          {user.email}
         </span>
       </div>
-      <div
-        style={{
-          display: 'flex',
-          padding: '2rem',
-          justifyContent: 'space-between',
-        }}
-      >
+      <div className={styles['manage-user-container']}>
         <div>
           <UserRoleSelector />
         </div>
@@ -68,7 +57,7 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
         </div>
       </div>
 
-      <table className=" " style={{ width: '100%', padding: '2rem' }}>
+      <table className={styles['usage-table']}>
         <thead>
           <tr>
             <th>System</th>
