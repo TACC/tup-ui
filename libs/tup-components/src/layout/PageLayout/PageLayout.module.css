@@ -1,18 +1,31 @@
-.layout-root {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+.layout-grid {
+  display: grid;
   overflow: auto;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+      "header header"
+      "nav _content"
+      "footer footer";
 }
 
-.layout-row {
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  overflow: auto;
+.layout-grid > * {
+	overflow: auto;
 }
 
-.constrain {
-  max-height: 100%;
-  overflow: hidden;
+.header {
+  grid-area: header;
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.content {
+  display: grid;
+  grid-area: _content;
+}
+
+.footer {
+  grid-area: footer;
 }
