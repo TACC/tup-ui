@@ -2,12 +2,20 @@ import React from 'react';
 import { useProjectUsers } from '@tacc/tup-hooks';
 import { Navbar, NavItem } from '@tacc/core-wrappers';
 import styles from './UserList.module.css';
+import { LoadingSpinner } from '@tacc/core-components';
 
 const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
   const projectUsers = useProjectUsers(projectId);
   const data = projectUsers.data ?? [];
   const pi = data.find((user) => user.role === 'PI');
   const delegate = data.find((user) => user.role === 'Delegate');
+
+  if (projectUsers.isLoading)
+    return (
+      <div className={styles['loading-placeholder']}>
+        <LoadingSpinner />
+      </div>
+    );
 
   return (
     <Navbar>

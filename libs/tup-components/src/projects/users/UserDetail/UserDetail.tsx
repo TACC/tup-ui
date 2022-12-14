@@ -1,3 +1,4 @@
+import { LoadingSpinner } from '@tacc/core-components';
 import {
   useProjectUsers,
   useProjectUsage,
@@ -11,13 +12,10 @@ const UserRoleSelector: React.FC = () => (
 
 const RemoveUser: React.FC = () => <div>(User removal placeholder)</div>;
 
-const UserDetail: React.FC<{ projectId: number; username: string }> = ({
+const UsageTable: React.FC<{ projectId: number; username: string }> = ({
   projectId,
   username,
 }) => {
-  const projectUsers = useProjectUsers(projectId);
-  const data = projectUsers.data ?? [];
-  const user = data.find((user) => user.username === username);
   const usage = useProjectUsage(projectId, username);
   const usageData = usage.data;
 
@@ -34,6 +32,43 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
         return `${Math.floor(percentage)}%`;
     }
   };
+
+  if (usage.isLoading || !usageData)
+    return (
+      <div className={styles['usage-table--loading']}>
+        <LoadingSpinner />
+      </div>
+    );
+
+  return (
+    <table className={styles['usage-table']}>
+      <thead>
+        <tr>
+          <th>System</th>
+          <th>Individual Usage</th>
+          <th>% of Allocation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {usageData?.map((resource) => (
+          <tr key={resource.resource}>
+            <th>{resource.resource}</th>
+            <th>{resource.used}</th>
+            <th>{getPercentUsage(resource)}</th>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+const UserDetail: React.FC<{ projectId: number; username: string }> = ({
+  projectId,
+  username,
+}) => {
+  const projectUsers = useProjectUsers(projectId);
+  const data = projectUsers.data ?? [];
+  const user = data.find((user) => user.username === username);
 
   return user ? (
     <div className={styles['user-detail-container']}>
@@ -56,25 +91,7 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
           <RemoveUser />
         </div>
       </div>
-
-      <table className={styles['usage-table']}>
-        <thead>
-          <tr>
-            <th>System</th>
-            <th>Individual Usage</th>
-            <th>% of Allocation</th>
-          </tr>
-        </thead>
-        <tbody>
-          {usageData?.map((resource) => (
-            <tr key={resource.resource}>
-              <th>{resource.resource}</th>
-              <th>{resource.used}</th>
-              <th>{getPercentUsage(resource)}</th>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <UsageTable username={username} projectId={projectId} />
     </div>
   ) : null;
 };
