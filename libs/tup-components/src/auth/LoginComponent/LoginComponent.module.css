@@ -1,6 +1,8 @@
 /* CONTAINER */
 
-/* .root {} */
+.root {
+  font-size: 1.6rem;
+}
 
 
 
@@ -19,7 +21,11 @@
   text-align: center;
 }
 .title {
+  font-size: 2.4rem;
   font-weight: var(--black);
+}
+.subtitle {
+  font-size: 1.6rem;
 }
 
 .logo {
