@@ -1,0 +1,80 @@
+.root {
+    --table-border: 1px solid black;
+  
+    margin: 0;
+    width: 100%;
+  
+    font-size: 0.875rem; /* 14px (approved deviation from design) */
+    
+  }
+  
+  .rows tr:nth-child(even) {
+    background-color: rgb(0 0 0 / 3%);
+  }
+  .rows tr:hover {
+    background-color: rgb(0 0 0 / 5%);
+  }
+  .rows td {
+    padding: 5px 8px;
+    white-space: pre-wrap;
+  }
+  
+  .header {
+    border-bottom: var(--table-border);
+  }
+  
+  /* Columns */
+  @media only screen and (min-width: 1200px) {
+    /* name */
+    .root tr > *:nth-child(1) {
+      width: 22%;
+    }
+    /* status */
+    .root tr > *:nth-child(2) {
+      width: 30%;
+    }
+    /* load */
+    .root tr > *:nth-child(3) {
+      width: 16%;
+    }
+    /* run */
+    .root tr > *:nth-child(4) {
+      width: 16%;
+    }
+    /* queue */
+    .root tr > *:nth-child(5) {
+      width: 16%;
+    }
+  }
+  @media only screen and (max-width: 1199px) {
+    /* name */
+    .root tr > *:nth-child(1) {
+      width: 22%;
+    }
+    /* status */
+    .root tr > *:nth-child(2) {
+      width: 24%;
+    }
+    /* load */
+    .root tr > *:nth-child(3) {
+      width: 18%;
+    }
+    /* run */
+    .root tr > *:nth-child(4) {
+      width: 18%;
+    }
+    /* queue */
+    .root tr > *:nth-child(5) {
+      width: 18%;
+    }
+  }
+  
+  /* Messaging */
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--global-color-accent--normal);
+    padding: 30px;
+  }
+  

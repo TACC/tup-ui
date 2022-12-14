@@ -174,4 +174,5 @@ export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
 export { default as useSystemMonitor } from './useSystemMonitor';
 export { default as useProjects } from './useProjects';
+export { default as useProjectsAllocations } from './useAllocations';
 export { default as useTickets } from './useTickets';
