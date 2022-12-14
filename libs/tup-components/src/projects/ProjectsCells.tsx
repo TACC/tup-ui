@@ -15,18 +15,51 @@ export const PrinInv: React.FC<{ cell: Cell<ProjectsRawSystem, string> }> = ({
 }) => <div>{value}</div>;
 
 export const ProjectSummaryAll: React.FC<{
-  cell: Cell<ProjectsRawSystem>;
-}> = ({ cell: { value, row } }) => (
-  <div>
-    <Link to={`/projects/${row.original.id}`}>{value}</Link>
+  project: ProjectsRawSystem;
+}> = ({ project }) => {
+  const totalStorageRequested =
+    project.allocations?.reduce((acc, e) => acc + e.storageRequested, 0) ?? 0;
+  const totalStorageUsed =
+    project.allocations?.reduce((acc, e) => acc + e.storageUsed, 0) ?? 0;
+  const totalComputeRequested =
+    project.allocations?.reduce((acc, e) => acc + e.computeRequested, 0) ?? 0;
+  const totalComputeUsed =
+    project.allocations?.reduce((acc, e) => acc + e.used, 0) ?? 0;
+
+  return (
     <div>
-      {'Project Charge Code: '} {row.original.chargeCode}
+      <Link to={`/projects/${project.id}`}>{project.title}</Link>
+      <div>
+        {'Project Charge Code: '} {project.chargeCode}
+      </div>
+      <Pill type="success">
+        {'Principle Investigator: ' +
+          project.pi.firstName +
+          ' ' +
+          project.pi.lastName}
+      </Pill>
+      <div>{`Compute: ${
+        totalComputeRequested ? totalComputeRequested : '--'
+      } SUs `}</div>
+      <div>
+        {totalComputeUsed
+          ? ' (' +
+            ((totalComputeUsed / totalComputeRequested) * 100).toFixed(0) +
+            '  % Used) '
+          : ' (0% Used) '}
+      </div>
+      <div>
+        {`Storage: ${
+          totalStorageRequested ? totalStorageRequested : '--'
+        } GBs `}
+      </div>
+      <div>
+        {totalStorageUsed
+          ? ' (' +
+            ((totalStorageUsed / totalStorageRequested) * 100).toFixed(0) +
+            '  % Used) '
+          : ' (0% Used) '}
+      </div>
     </div>
-    <Pill type="success">
-      {'Principle Investigator: ' +
-        row.original.pi.firstName +
-        ' ' +
-        row.original.pi.lastName}
-    </Pill>
-  </div>
-);
+  );
+};
