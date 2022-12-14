@@ -4,14 +4,14 @@
 
 .user-info-banner {
     display: flex;
-    padding: 2rem;
+    padding: 20px;
     background: #F4F4F4;
     align-items: center;
-    gap: 2rem;
+    gap: 20px;
 }
 
 .user-fullname {
-    font-size: 21px;
+    font-size: 2.1rem;
     font-weight: bold;
 }
 
@@ -26,13 +26,13 @@
 
 .manage-user-container {
     display: flex;
-    padding: 2rem;
+    padding: 20px;
     justify-content: space-between;
 }
 
 .usage-table {
     width: 100%;
-    padding: 2rem;
+    padding: 20px;
 }
 
 .usage-table--loading {

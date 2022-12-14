@@ -10,7 +10,7 @@ describe('UserDetailComponent', () => {
     const rowQuery = within(row);
 
     expect(rowQuery.getByText('Lonestar6')).toBeDefined();
-    expect(rowQuery.getByText('5')).toBeDefined();
+    expect(rowQuery.getByText('5 SU')).toBeDefined();
     expect(rowQuery.getByText('50%')).toBeDefined();
   });
 
@@ -21,7 +21,7 @@ describe('UserDetailComponent', () => {
     const rowQuery = within(row);
 
     expect(rowQuery.getByText('Lonestar6')).toBeDefined();
-    expect(rowQuery.getByText('0.01')).toBeDefined();
+    expect(rowQuery.getByText('0.01 SU')).toBeDefined();
     expect(rowQuery.getByText('<1%')).toBeDefined();
   });
 
@@ -32,7 +32,7 @@ describe('UserDetailComponent', () => {
     const rowQuery = within(row);
 
     expect(rowQuery.getByText('Lonestar6')).toBeDefined();
-    expect(rowQuery.getByText('0')).toBeDefined();
+    expect(rowQuery.getByText('0 SU')).toBeDefined();
     expect(rowQuery.getByText('0%')).toBeDefined();
   });
 });

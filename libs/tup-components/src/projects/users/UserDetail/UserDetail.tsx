@@ -53,7 +53,7 @@ const UsageTable: React.FC<{ projectId: number; username: string }> = ({
         {usageData?.map((resource) => (
           <tr key={resource.resource}>
             <th>{resource.resource}</th>
-            <th>{resource.used}</th>
+            <th>{resource.used} SU</th>
             <th>{getPercentUsage(resource)}</th>
           </tr>
         ))}
