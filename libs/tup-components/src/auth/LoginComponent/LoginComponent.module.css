@@ -19,6 +19,7 @@
 .title,
 .subtitle {
   text-align: center;
+  color: var(--global-color-primary--xx-dark);
 }
 .title {
   font-size: 2.4rem;
@@ -36,7 +37,6 @@
 }
 
 .subtitle {
-  color: var(--global-color-primary--xx-dark);
   font-weight: var(--medium); /* mimics value--not appearance--from design */
   margin-block: 25px; /* mimics Core-CMS django.cms.forms.css .description */
 }
