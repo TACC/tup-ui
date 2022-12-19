@@ -45,3 +45,48 @@ export const mockProjectsOutput = [
     users: null,
   },
 ];
+
+export const MockProjectUsers = [
+  {
+    id: 1418897,
+    username: 'jarosenb',
+    role: 'PI',
+    firstName: 'Jake',
+    middleInitial: null,
+    lastName: 'Rosenberg',
+    email: 'jrosenberg@tacc.utexas.edu',
+    vislabTrained: null,
+    staff: null,
+  },
+  {
+    id: 1418898,
+    username: 'vg5726',
+    role: 'Standard',
+    firstName: 'Vanessa',
+    middleInitial: null,
+    lastName: 'Gonzalez',
+    email: 'vgonzalez@tacc.utexas.edu',
+    vislabTrained: null,
+    staff: null,
+  },
+  {
+    id: 1419485,
+    username: 'smassie',
+    role: 'Delegate',
+    firstName: 'Sophia',
+    middleInitial: null,
+    lastName: 'Massie',
+    email: 'sophia.massie@austin.utexas.edu',
+    vislabTrained: null,
+    staff: null,
+  },
+];
+
+export const mockProjectUsage = {
+  allocationId: 90474,
+  usage: [
+    { username: 'jarosenb', usage: 5 },
+    { username: 'smassie', usage: 0.01 },
+    { username: 'vg5726', usage: 0 },
+  ],
+};
