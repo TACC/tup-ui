@@ -45,7 +45,7 @@ function SectionHeader({
 }) {
   let styleName = '';
   const styleNameList = [styles['root']];
-  const HeadingTagName = isForForm || isForTable || isForList ? 'h3' : 'h2';
+  const HeadingTagName = isForForm || isForTable || isForList ? 'h2' : 'h1';
 
   if (isForForm) styleNameList.push(styles['for-form']);
   if (isForTable) styleNameList.push(styles['for-table']);
