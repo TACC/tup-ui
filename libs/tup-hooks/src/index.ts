@@ -1,5 +1,4 @@
 import { setLogger } from 'react-query';
-import { string } from 'yup';
 
 // Disable error logging when we throw inside a react-query fetcher method.
 setLogger({
@@ -111,12 +110,16 @@ export type ProjectsRawSystem = {
   id: number;
   title: string;
   description: string;
-  chardeCode: string;
+  chargeCode: string;
   gid: number;
   source: string;
   fieldId: number;
   secondaryFieldId: number;
   typeId: number;
+  totalStorageUsed?: number;
+  totalStorageRequested?: number;
+  totalComputeRequested?: number;
+  totalComputeUsed?: number;
   pi: {
     id: number;
     username: string;
