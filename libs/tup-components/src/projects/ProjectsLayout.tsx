@@ -1,18 +1,12 @@
 import React from 'react';
-import { PageLayout } from '../layout';
-import { Section, SectionTableWrapper } from '@tacc/core-components';
-import { ProjectsTable } from './ProjectsTable';
-import ProjectSummaryListing from './ProjectsSummaryListing';
+import { Section } from '@tacc/core-components';
+import { ProjectsSummaryListing } from '@tacc/tup-components';
 
 const ProjectsLayout: React.FC = () => {
   return (
     <Section
       header="Projects & Allocations"
-      content={
-        <SectionTableWrapper>
-          <ProjectSummaryListing />{' '}
-        </SectionTableWrapper>
-      }
+      content={<ProjectsSummaryListing />}
     />
   );
 };

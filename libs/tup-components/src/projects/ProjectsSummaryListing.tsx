@@ -2,12 +2,12 @@ import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { ProjectSummaryAll } from './ProjectsCells';
 import { useProjects } from '@tacc/tup-hooks';
 
-export const ProjectSummaryListing: React.FC = () => {
+export const ProjectsSummaryListing: React.FC = () => {
   const { data, isLoading, error } = useProjects();
   if (isLoading) return <LoadingSpinner />;
   if (error)
     return (
-      <InlineMessage type="warn">Unable to retrieve projects.</InlineMessage>
+      <InlineMessage type="warning">Unable to retrieve projects.</InlineMessage>
     );
   return (
     <div>
@@ -19,4 +19,4 @@ export const ProjectSummaryListing: React.FC = () => {
     </div>
   );
 };
-export default ProjectSummaryListing;
+export default ProjectsSummaryListing;
