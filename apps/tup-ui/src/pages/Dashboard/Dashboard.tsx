@@ -1,4 +1,5 @@
 import React from 'react';
+import { Section } from '@tacc/core-components';
 import {
   ProfileComponent,
   RequireAuth,
@@ -8,16 +9,26 @@ import {
 } from '@tacc/tup-components';
 import { Outlet } from 'react-router-dom';
 
+import './Dashboard.css';
+import styles from './Dashboard.module.css';
+
 const Layout: React.FC = () => {
   return (
     <RequireAuth>
-      <div>
-        <ProfileComponent />
-        <SystemMonitor />
-        <ProjectsDashboard />
-        <TicketsDashboard />
-        <Outlet />
-      </div>
+      <Section
+        header="Dashboard"
+        bodyClassName="dashboard"
+        contentClassName={styles.panels}
+        content={
+          <>
+            <ProfileComponent />
+            <SystemMonitor />
+            <ProjectsDashboard />
+            <TicketsDashboard />
+            <Outlet />
+          </>
+        }
+      />
     </RequireAuth>
   );
 };

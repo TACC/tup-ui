@@ -34,7 +34,7 @@ export const LAYOUT_CLASS_MAP = {
    */
   multiColumn: layoutStyles['multi-column'],
 };
-export const DEFAULT_LAYOUT = 'hasSidebar';
+export const DEFAULT_LAYOUT = 'one-column';
 export const LAYOUTS = [...Object.keys(LAYOUT_CLASS_MAP)];
 
 /**

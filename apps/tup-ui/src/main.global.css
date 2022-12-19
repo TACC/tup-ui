@@ -1,3 +1,12 @@
+/* To overwrite @tacc/core-styles CEPv2 spacing */
+:root {
+  /* TACC/Core-Styles/blob/823b7b9/src/lib/_imports/settings/space.css */
+  --global-space--section-top: 15px;
+  --global-space--section-bottom: 30px;
+  --global-space--section-left: 20px;
+  --global-space--section-right: 30px;
+}
+
 /* To stretch application height to available space */
 body {
   display: flex;

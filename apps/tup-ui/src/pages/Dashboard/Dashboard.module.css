@@ -1,0 +1,34 @@
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
+.panels {
+  display: grid;
+
+  /* To reproduce complex layout of design doc */
+  @media (--wide-and-above) {
+    gap: 25px;
+    grid-template-columns: 0.65fr 0.35fr;
+    grid-auto-rows: 1fr;
+    grid-template-areas:
+      "projects systems"
+      "projects updates"
+      "tickets updates"
+      "tickets updates";
+  }
+  /* To reproduce simple layout of narrow screens like CEPv2 */
+  @media (--wide-and-below) {
+    row-gap: 25px;
+    grid-auto-rows: 1fr;
+    grid-template-areas:
+      "systems"
+      "projects"
+      "tickets"
+      "updates";
+  }
+}
+.panels > * {
+	overflow: auto; /* to force items to stay within their grid cells */
+}
+.panels > :nth-child(1) { grid-area: updates; }
+.panels > :nth-child(2) { grid-area: systems; }
+.panels > :nth-child(3) { grid-area: projects; }
+.panels > :nth-child(4) { grid-area: tickets; }
