@@ -1,0 +1,13 @@
+.user-navitem > div {
+    height: 25px;
+}
+
+.separator {
+    border: 1px solid  #C7C7C7;
+    margin-left: 20px;
+}
+
+.loading-placeholder {
+    height: 100%;
+    width: 175px;
+}
