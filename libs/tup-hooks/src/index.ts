@@ -1,5 +1,4 @@
 import { setLogger } from 'react-query';
-import { string } from 'yup';
 
 // Disable error logging when we throw inside a react-query fetcher method.
 setLogger({
