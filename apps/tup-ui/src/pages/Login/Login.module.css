@@ -36,6 +36,7 @@
   gap: 1.5em;
   margin-top: var(--global-space--normal);
 
+  font-family: var(--global-font-family--sans--cms);
   font-size: var(--global-font-size--small);
   font-weight: var(--bold);
 
