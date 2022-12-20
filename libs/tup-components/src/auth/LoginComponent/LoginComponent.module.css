@@ -54,10 +54,6 @@
   /* @tacc/core-styles#22783d8:/src/lib/_imports/elements/form.cms.css#L56 */
   padding: 12px 12px;
 }
-/* TODO: Fix this in @tacc/core-styles (then remove this) */
-.root label {
-  font-weight: var(--medium);
-}
 
 
 
