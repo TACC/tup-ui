@@ -16,7 +16,6 @@
   }
   .rows td {
     padding: 5px 8px;
-    white-space: pre-wrap;
   }
   
   .header {
@@ -76,5 +75,9 @@
     align-items: center;
     color: var(--global-color-accent--normal);
     padding: 30px;
+  }
+
+  .list{
+    white-space: pre-wrap;
   }
   
