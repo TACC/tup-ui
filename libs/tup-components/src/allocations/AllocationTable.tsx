@@ -34,7 +34,7 @@ const { data, isLoading, error } = useProjects();
                 <th>{project.allocations?.map(e => e.resource).join('\n')}</th>
                 <th>{project.allocations?.map(e => e.total).join('\n')}</th>
                 <th>{project.allocations?.map(e => e.used).join('\n')}</th>
-                <th>{project.allocations?.map(e => e.end).join(', ').split(', ').map((e)=> `${formatDate(new Date(e))}`).join("\n")}</th>
+                <th>{project.allocations?.map(e => e.end).map((e)=> `${formatDate(new Date(e))}`).join('\n')}</th>
               </tr>            
           </tbody>
         </table>
