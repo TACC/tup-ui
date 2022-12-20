@@ -2,6 +2,7 @@
 
 .root {
   font-size: 1.6rem;
+  font-family: var(--global-font-family--sans--cms);
 }
 
 
@@ -45,6 +46,10 @@
 
 /* FORM */
 
+/* To hide "(required)" which is obvious ona  login form */
+.root label :global(.c-form__star) {
+  display: none;
+}
 /* TODO: Do not load CMS CSS (except header) on Portal app (then remove this) */
 .field {
   max-width: unset; /* undo Core-CMS forms.cms.css */
@@ -52,10 +57,6 @@
   /* To use larger field inputs, always (not just coarse pointer devices) */
   /* @tacc/core-styles#22783d8:/src/lib/_imports/elements/form.cms.css#L56 */
   padding: 12px 12px;
-}
-/* TODO: Fix this in @tacc/core-styles (then remove this) */
-.root label {
-  font-weight: var(--medium);
 }
 
 
