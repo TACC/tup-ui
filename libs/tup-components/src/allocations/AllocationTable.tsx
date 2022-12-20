@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import { useTable, Column, useSortBy } from 'react-table';
-import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
+import { useTable, Column } from 'react-table';
+import { LoadingSpinner, InlineMessage, InfiniteScrollTable } from '@tacc/core-components';
 import { ProjectsRawSystem, useProjects, ProjectsAllocations, useProjectsAllocations } from '@tacc/tup-hooks';
 import { DateExpires } from './AllocationCells';
 import styles from './Allocation.module.css';
@@ -9,16 +9,26 @@ import styles from './Allocation.module.css';
 //   const { data, isLoading, error } = useProjectsAllocations();
 //   const columns = useMemo<Column<ProjectsAllocations>[]>(
 //     () => [
-//       {
-//         accessor: 'id',
-//         Header: 'ID',
-//       },
-//       {
-//         accessor: 'resource',
-//         Header: 'Resource',
-//       },
-//     ],
-//     []
+//         {
+//           accessor: 'resource',
+//           Header: 'Active Resources',
+//           // Cell: Allocations,
+//         },
+//         {
+//           accessor: 'total',
+//           Header: 'Awarded',
+//         },
+//         {
+//           accessor: 'used',
+//           Header: 'Used',
+//         },
+//         {
+//           accessor: 'end',
+//           Header: 'Expires',
+//           // Cell: DateExpires,
+//         },
+//       ],
+//       []
 //   );
 
 export const AllocationsTable: React.FC = () => {
@@ -55,9 +65,7 @@ const columns = useMemo<Column<ProjectsRawSystem>[]>(
     useTable({
       columns,
       data: data ?? [],
-    },
-    useSortBy,
-    );
+    });
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -66,37 +74,87 @@ const columns = useMemo<Column<ProjectsRawSystem>[]>(
       <InlineMessage type="warn">Unable to retrieve projects.</InlineMessage>
     );
   }
+
   return (
-    <div className="o-fixed-header-table">
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()} className={styles['rows']}>
-          {rows.length ? (
-            rows.map((row) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  ))}
-                </tr>
-              );
-            })
-          ) : (
-            <tr>
-              <td colSpan={5}>No active projects found.</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+    <div>
+      {data?.map(project => project.allocations.map(e =>{
+        return (
+          <table className={styles['usage-table']}>
+            <thead>
+              <tr>
+                <th>Active Resources</th>
+                <th>Awarded</th>
+                <th>Used</th>
+                <th>Expires</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <th>{project.allocations?.map(e => e.resource)}</th>
+                  <th>{project.allocations?.map(e => e.total)}</th>
+                  <th>{project.allocations?.map(e => e.used)}</th>
+                </tr>            
+            </tbody>
+          </table>
+        )
+      }))}
     </div>
-  );
-};
+  )};
+
+//   return (
+//     <table className={styles['usage-table']}>
+//       <thead>
+//         <tr>
+//           <th>Active Resources</th>
+//           <th>Awarded</th>
+//           <th>Used</th>
+//           <th>Expires</th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         {data?.map((allocation) => (
+//           <tr key={allocation.resource}>
+//             <th>{allocation.resource}</th>
+//             <th>{allocation.total}</th>
+//             <th>{allocation.used}</th>
+//           </tr>
+//         ))}
+//       </tbody>
+//     </table>
+//   );
+// };
+
+//     return (
+//     <div className="o-fixed-header-table">
+//       <table {...getTableProps()}>
+//         <thead>
+//           {headerGroups.map((headerGroup) => (
+//             <tr {...headerGroup.getHeaderGroupProps()}>
+//               {headerGroup.headers.map((column) => (
+//                 <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+//               ))}
+//             </tr>
+//           ))}
+//         </thead>
+//         <tbody {...getTableBodyProps()} className={styles['rows']}>
+//           {rows.length ? (
+//             rows.map((row) => {
+//               prepareRow(row);
+//               return (
+//                 <tr {...row.getRowProps()}>
+//                   {row.cells.map((cell) => (
+//                     <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+//                   ))}
+//                 </tr>
+//               );
+//             })
+//           ) : (
+//             <tr>
+//               <td colSpan={5}>No active projects found.</td>
+//             </tr>
+//           )}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
