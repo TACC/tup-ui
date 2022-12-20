@@ -12,7 +12,7 @@ export const ProjectsSummaryListing: React.FC = () => {
   return (
     <div>
       {data?.map((project) => (
-        <div>
+        <div key={project.id}>
           <ProjectSummaryAll project={project} />
         </div>
       ))}

@@ -8,6 +8,7 @@ describe('Projects Summary Listing Component', () => {
   it('should display a spinner while loading', async () => {
     const { getByTestId } = testRender(<ProjectsSummaryListing />);
     expect(getByTestId('loading-spinner')).toBeDefined();
+    await screen.findByText('JAR TUP Development Project');
   });
   it('should display an error message if an error is returned', async () => {
     server.use(
