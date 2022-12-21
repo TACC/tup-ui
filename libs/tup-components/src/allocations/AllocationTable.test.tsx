@@ -1,7 +1,7 @@
 import React from 'react';
 import { AllocationsTable } from './AllocationTable';
 import { server, testRender } from '@tacc/tup-testing';
-import { screen,waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 
 describe('Projects Allocation Table', () => {
@@ -20,8 +20,8 @@ describe('Projects Allocation Table', () => {
   });
   it('should display project allocation information', async () => {
     const { getByText, getByTestId, getAllByRole } = testRender(
-        <AllocationsTable />
-      );;
+      <AllocationsTable />
+    );
     await waitFor(() => getAllByRole('columnheader'));
     const columnHeaders: HTMLElement[] = getAllByRole('columnheader');
     expect(columnHeaders[0].textContent).toEqual('Active Resources');

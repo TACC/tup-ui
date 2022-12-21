@@ -5,7 +5,7 @@ import { formatDate } from '../utils/timeFormat';
 import styles from './Allocation.module.css';
 
 export const AllocationsTable: React.FC = () => {
-const { data, isLoading, error } = useProjects();
+  const { data, isLoading, error } = useProjects();
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -13,10 +13,12 @@ const { data, isLoading, error } = useProjects();
 
   if (error) {
     return (
-      <InlineMessage type="warn">Unable to retrieve allocation information.</InlineMessage>
+      <InlineMessage type="warn">
+        Unable to retrieve allocation information.
+      </InlineMessage>
     );
   }
-  
+
   return (
     <div>
       {data?.map((project) => (
@@ -30,12 +32,17 @@ const { data, isLoading, error } = useProjects();
             </tr>
           </thead>
           <tbody>
-              <tr className={styles['list']}>
-                <th>{project.allocations?.map(e => e.resource).join('\n')}</th>
-                <th>{project.allocations?.map(e => e.total).join('\n')}</th>
-                <th>{project.allocations?.map(e => e.used).join('\n')}</th>
-                <th>{project.allocations?.map(e => e.end).map((e)=> `${formatDate(new Date(e))}`).join('\n')}</th>
-              </tr>            
+            <tr className={styles['list']}>
+              <th>{project.allocations?.map((e) => e.resource).join('\n')}</th>
+              <th>{project.allocations?.map((e) => e.total).join('\n')}</th>
+              <th>{project.allocations?.map((e) => e.used).join('\n')}</th>
+              <th>
+                {project.allocations
+                  ?.map((e) => e.end)
+                  .map((e) => `${formatDate(new Date(e))}`)
+                  .join('\n')}
+              </th>
+            </tr>
           </tbody>
         </table>
       ))}
