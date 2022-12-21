@@ -1,5 +1,4 @@
 import { setLogger } from 'react-query';
-import { string } from 'yup';
 
 // Disable error logging when we throw inside a react-query fetcher method.
 setLogger({
@@ -111,12 +110,16 @@ export type ProjectsRawSystem = {
   id: number;
   title: string;
   description: string;
-  chardeCode: string;
+  chargeCode: string;
   gid: number;
   source: string;
   fieldId: number;
   secondaryFieldId: number;
   typeId: number;
+  totalStorageUsed?: number;
+  totalStorageRequested?: number;
+  totalComputeRequested?: number;
+  totalComputeUsed?: number;
   pi: {
     id: number;
     username: string;
@@ -169,6 +172,29 @@ export type Ticket = {
   numerical_id: string;
 };
 
+export type ProjectUser = {
+  id: number;
+  username: string;
+  role?: string;
+  firstName: string;
+  middleInitial?: string;
+  lastName: string;
+  email: string;
+  vislabTrained?: boolean;
+  staff?: boolean;
+};
+
+export type AllocationUsage = {
+  allocationId: number;
+  usage: { username: string; usage: number }[];
+};
+
+export type UsagePerResource = {
+  resource: string;
+  total: number;
+  used: number;
+};
+
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
@@ -176,3 +202,5 @@ export { default as useSystemMonitor } from './useSystemMonitor';
 export { default as useProjects } from './useProjects';
 export { default as useProjectsAllocations } from './useAllocations';
 export { default as useTickets } from './useTickets';
+export { default as useProjectUsers } from './useProjectUsers';
+export { default as useProjectUsage } from './useProjectUsage';

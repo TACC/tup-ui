@@ -7,7 +7,11 @@ import requests
 class TupServicesBackend(ModelBackend):
     def authenticate(self, request):
         token = request.COOKIES.get('x-tup-token', None)
-        profile_url = f"{settings.TUP_SERVICES_URL}/users/profile"
+        service_url = settings.TUP_SERVICES_URL
+        if settings.DEBUG:
+            service_url = service_url.replace("localhost", "host.docker.internal")
+
+        profile_url = f"{service_url}/users/profile"
         headers = {"x-tup-token": token}
 
         req = requests.get(profile_url, headers=headers)

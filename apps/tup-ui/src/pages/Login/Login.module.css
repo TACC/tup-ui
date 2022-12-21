@@ -1,28 +1,21 @@
-@import url('@tacc/core-styles/dist/settings/border.css');
-@import url('@tacc/core-styles/dist/settings/space.css');
-@import url('@tacc/core-styles/dist/settings/font.css');
-
-@import url('@tacc/core-styles/dist/elements/bootstrap.css');
-@import url('@tacc/core-styles/dist/elements/html-elements.cms.css');
-
 @import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
 
 .root {
+  padding-block: var(--global-space--section-gap);
+
   background-color: var(--global-color-primary--light);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.link {
-  composes: c-link--undecorated from 'src/styles/components.css';
+.footer__link {
+  font-weight: var(--bold);
 }
 
 .body,
 .footer {
   width: 100%;
   max-width: 630px;
+
+  margin-inline: auto;
 }
 
 .body {
@@ -43,7 +36,8 @@
   gap: 1.5em;
   margin-top: var(--global-space--normal);
 
-  font-size: var(--global-font-size--x-small);
+  font-family: var(--global-font-family--sans--cms);
+  font-size: var(--global-font-size--small);
   font-weight: var(--bold);
 
   @media (--narrow-and-below) {

@@ -6,6 +6,7 @@ const ProjectsLayout: React.FC = () => {
   return (
     <Section header="Projects & Allocations">
       <div>
+        <ProjectsSummaryListing />
         <AllocationsTable />
       </div>
     </Section>
