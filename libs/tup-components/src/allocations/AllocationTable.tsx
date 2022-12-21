@@ -17,7 +17,7 @@ export const AllocationsTable: React.FC = () => {
       </InlineMessage>
     );
   }
-  
+
   return (
     <>
       {data?.map((project) => (
