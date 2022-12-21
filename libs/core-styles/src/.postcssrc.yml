@@ -1,0 +1,25 @@
+plugins:
+  postcss-import:
+    path:
+      - src/lib
+  postcss-extend: {}
+  postcss-env-function:
+    importFrom:
+      - src/lib/_themes/default.json
+  postcss-preset-env:
+    stage: false
+    features:
+      custom-media-queries: true
+      media-query-ranges: true
+      custom-selectors: true
+  cssnano:
+    preset:
+      - default
+      - discardDuplicates:
+          exclude: true
+        mergeRules:
+          exclude: true
+  postcss-banner:
+    banner: '@tacc/core-styles 0.7.0+ | MIT | github.com/TACC/Core-Styles'
+    inline: true
+    important: true

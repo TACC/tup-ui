@@ -1,0 +1,2 @@
+/*! @tacc/core-styles 0.7.0+ | MIT | github.com/TACC/Core-Styles */
+dl.s-inline-dl dt{display:block;float:left;margin-bottom:0;font-weight:var(--bold)}dl.s-inline-dl dd{clear:right;margin-bottom:0}dl.s-inline-dl dt:after{content:":";-webkit-margin-end:.25em;margin-inline-end:.25em}
