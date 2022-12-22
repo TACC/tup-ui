@@ -1,7 +1,9 @@
 import React from 'react';
 import { ProjectsTable } from './ProjectsTable';
+import { ProjectHeader } from './ProjectHeader';
 import { testRender } from '@tacc/tup-testing';
 import { waitFor } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 
 describe('Projects Layout Component', () => {
   it('should display the projects table', async () => {
@@ -17,5 +19,19 @@ describe('Projects Layout Component', () => {
     expect(getByText('JAR TUP Development Project')).toBeDefined();
     expect(getByText('Jake Rosenberg')).toBeDefined();
     expect(getByText('Lonestar6')).toBeDefined();
+  });
+  it('should display the projects detail header', async () => {
+    testRender(<ProjectHeader projectId={59184} />);
+    const dataQuery = await screen.findByText(/JAR TUP Development Project/);
+
+    const link = dataQuery.closest('a') as HTMLElement;
+    const linkQuery = within(link);
+
+    expect(linkQuery.getByText('Active Projects')).toBeDefined();
+
+    await screen.findByText(/Project Charge Code: STA22002/);
+    await screen.findByText(/Field of Science: placeholder/);
+    await screen.findByText(/Storage: 0 (0% Used)/);
+    await screen.findByText(/Unix Group: placeholder/);
   });
 });

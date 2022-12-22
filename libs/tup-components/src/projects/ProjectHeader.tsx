@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { useProjects } from '@tacc/tup-hooks';
 import { InlineMessage, LoadingSpinner } from '@tacc/core-components';
 
-const ProjectHeader: React.FC<{ projectId: number }> = ({ projectId }) => {
+export const ProjectHeader: React.FC<{ projectId: number }> = ({
+  projectId,
+}) => {
   const { data, isLoading, error } = useProjects();
   const dataById = data?.find((project) => project.id === projectId);
   const usageData = dataById?.allocations?.find((allocations) => allocations);
@@ -30,9 +32,9 @@ const ProjectHeader: React.FC<{ projectId: number }> = ({ projectId }) => {
       </div>
       {`Unix Group: placeholder Compute: ${usageData?.total} (${
         percentageCompute ? percentageCompute : '0'
-      }% Used ) Storage: ${usageData?.storageQuota} (${
+      }% Used) Storage: ${usageData?.storageQuota} (${
         percentageStorage ? percentageStorage : '0'
-      }% Used ) `}
+      }% Used) `}
     </>
   );
 };
