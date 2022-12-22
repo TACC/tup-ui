@@ -66,7 +66,7 @@ import './SomeComponent.global.css';
 | Remote*     | https://dev.tup.tacc.utexas.edu/static/ui/index.html |
 | Source†     | https://github.com/TACC/Core-Styles/tree/main/src/lib/_imports |
 
-<sub>* Incomplete, but each is documented with test cases examples.</sub>\
+<sub>* Incomplete, but each is documented with test case examples.</sub>\
 <sub>† Complete, but expects knowledge of [ITCSS](https://confluence.tacc.utexas.edu/x/IAA9Cw).</sub>
 
 ## Use [Core Styles]
