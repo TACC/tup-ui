@@ -22,16 +22,16 @@ describe('Projects Layout Component', () => {
   });
   it('should display the projects detail header', async () => {
     testRender(<ProjectHeader projectId={59184} />);
-    const dataQuery = await screen.findByText(/JAR TUP Development Project/);
-
-    const link = dataQuery.closest('a') as HTMLElement;
-    const linkQuery = within(link);
-
-    expect(linkQuery.getByText('Active Projects')).toBeDefined();
-
+    await screen.findByText(/JAR TUP Development Project/);
     await screen.findByText(/Project Charge Code: STA22002/);
     await screen.findByText(/Field of Science: placeholder/);
-    await screen.findByText(/Storage: 0 (0% Used)/);
     await screen.findByText(/Unix Group: placeholder/);
+  });
+  it('should have a link in the projects detail header', async () => {
+    testRender(<ProjectHeader projectId={59184} />);
+    const dataQuery = await screen.findByText(/Active Projects/);
+    const link = dataQuery.closest('a') as HTMLElement;
+    const linkQuery = within(link);
+    expect(linkQuery.getByText('Active Projects')).toBeDefined();
   });
 });
