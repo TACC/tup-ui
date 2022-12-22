@@ -117,8 +117,8 @@ export type ProjectsRawSystem = {
   secondaryFieldId: number;
   typeId: number;
   totalStorageUsed?: number;
-  totalStorageRequested?: number;
-  totalComputeRequested?: number;
+  totalStorage?: number;
+  totalCompute?: number;
   totalComputeUsed?: number;
   pi: {
     id: number;

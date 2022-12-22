@@ -31,6 +31,7 @@ function App() {
           <Route path=":ticketId" element={<TicketDetails />} />
         </Route>
         <Route path="projects" element={<Projects />}></Route>
+        <Route path="projects/active" element={<Projects />}></Route>
         <Route path="projects/:projectId" element={<ProjectView />}>
           <Route path="" element={<ProjectDetail />}></Route>
           <Route path=":username" element={<ProjectMember />}></Route>
