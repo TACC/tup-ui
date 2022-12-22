@@ -123,7 +123,7 @@ selector {
 @import url('@tacc/core-styles/.../components/something-not-already-available-globally.css');
 ```
 
-<sub>\* The file may not exist, because no global project styles exist.</sub>
+<sub>\* A `main.css` might not exist (because no global project styles exist).</sub>
 
 ## Create Global Project Styles
 
