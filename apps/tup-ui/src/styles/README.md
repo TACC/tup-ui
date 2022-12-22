@@ -134,10 +134,9 @@ If you need global styles, then evaluate these options.
 **`/styles/(.../)global-stylesheet.css`**
 
 ```css
-@import url('@tacc/core-styles/.../settings/color.css');
-
 :root {
-  --project: 'value';
+  /* To overwrite @tacc/core-styles/.../settings/color.css */
+  --some-global-prop: 'value';
 }
 ```
 
@@ -160,7 +159,7 @@ selector {
 **`/main.css`**
 
 ```css
-@import url('@tacc/core-styles/.../settings/border.css');
+@import url('@tacc/core-styles/.../components/something-not-already-available-globally.css');
 ```
 
 [core styles]: https://github.com/TACC/Core-Styles
