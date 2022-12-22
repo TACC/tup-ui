@@ -38,9 +38,7 @@ export const ProjectSummaryAll: React.FC<{
           ' ' +
           project.pi.lastName}
       </Pill>
-      <div>{`Compute: ${
-        totalCompute ? totalCompute : '--'
-      } SUs `}</div>
+      <div>{`Compute: ${totalCompute ? totalCompute : '--'} SUs `}</div>
       <div>
         {totalComputeUsed
           ? ' (' +
@@ -48,11 +46,7 @@ export const ProjectSummaryAll: React.FC<{
             '  % Used) '
           : ' (0% Used) '}
       </div>
-      <div>
-        {`Storage: ${
-          totalStorage ? totalStorage : '--'
-        } GBs `}
-      </div>
+      <div>{`Storage: ${totalStorage ? totalStorage : '--'} GBs `}</div>
       <div>
         {totalStorageUsed
           ? ' (' +

@@ -1,4 +1,9 @@
-import { PageLayout, RequireAuth, UserList, ProjectHeader  } from '@tacc/tup-components';
+import {
+  PageLayout,
+  RequireAuth,
+  UserList,
+  ProjectHeader,
+} from '@tacc/tup-components';
 import React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 
