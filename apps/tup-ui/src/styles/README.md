@@ -120,7 +120,7 @@ selector {
 **`/main.css`**
 
 ```css
-@import url('@tacc/core-styles/.../settings/border.css');
+@import url('@tacc/core-styles/.../components/something-not-already-available-globally.css');
 ```
 
 <sub>\* The file may not exist, because no global project styles exist.</sub>
