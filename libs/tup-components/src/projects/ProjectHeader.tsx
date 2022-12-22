@@ -26,19 +26,11 @@ const ProjectHeader: React.FC<{ projectId: number }> = ({ projectId }) => {
       <Link to={'/projects/active/'}>Active Projects </Link>
       {`/ ${dataById?.title}`}
       <div>
-        {`Project Charge Code: `}
-        {` ${dataById?.chargeCode} `}
-        {` Field of Science: `}
-        {` placeholder`}
+        {`Project Charge Code: ${dataById?.chargeCode} Field of Science: placeholder`}
       </div>
-      {`Unix Group: `}
-      {`placeholder `}
-      {` Compute: `}
-      {`${usageData?.total} (${
+      {`Unix Group: placeholder Compute: ${usageData?.total} (${
         percentageCompute ? percentageCompute : '0'
-      }% Used )  `}
-      {` Storage: `}
-      {`${usageData?.storageQuota} (${
+      }% Used ) Storage: ${usageData?.storageQuota} (${
         percentageStorage ? percentageStorage : '0'
       }% Used ) `}
     </>
