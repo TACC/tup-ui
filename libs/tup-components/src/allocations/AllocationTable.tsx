@@ -13,16 +13,16 @@ export const AllocationsTable: React.FC = () => {
 
   if (error) {
     return (
-      <InlineMessage type="warn">
+      <InlineMessage type="warning">
         Unable to retrieve allocation information.
       </InlineMessage>
     );
   }
 
   return (
-    <div>
+    <>
       {data?.map((project) => (
-        <table className={styles['usage-table']}>
+        <table>
           <thead>
             <tr>
               <th>Active Resources</th>
@@ -32,7 +32,7 @@ export const AllocationsTable: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className={styles['list']}>
+            <tr>
               <th>{project.allocations?.map((e) => e.resource).join('\n')}</th>
               <th>{project.allocations?.map((e) => e.total).join('\n')}</th>
               <th>{project.allocations?.map((e) => e.used).join('\n')}</th>
@@ -46,6 +46,6 @@ export const AllocationsTable: React.FC = () => {
           </tbody>
         </table>
       ))}
-    </div>
+    </>
   );
 };
