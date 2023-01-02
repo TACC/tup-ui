@@ -40,12 +40,18 @@ const ProjectsLayout: React.FC = () => {
 //     <Section
 //       header="Projects & Allocations"
 //       content={
-//         <div>
-//           <ProjectsSummaryListing />
-//           <AllocationsTable />
-//         </div>
+//         <table >
+//           <tbody>
+//             <td >
+//               <ProjectsSummaryListing />
+//               <AllocationsTable />
+//             </td>
+//           </tbody>
+//         </table>
 //       }
 //     />
 //   );
 // };
+
+
 export default ProjectsLayout;
