@@ -34,4 +34,18 @@ const ProjectsLayout: React.FC = () => {
     />
   );
 };
+
+// const ProjectsLayout: React.FC = () => {
+//   return (
+//     <Section
+//       header="Projects & Allocations"
+//       content={
+//         <div>
+//           <ProjectsSummaryListing />
+//           <AllocationsTable />
+//         </div>
+//       }
+//     />
+//   );
+// };
 export default ProjectsLayout;
