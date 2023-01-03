@@ -2,7 +2,6 @@ import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { ProjectSummaryAll } from './ProjectsCells';
 import { useProjects } from '@tacc/tup-hooks';
 import { formatDate } from '../utils/timeFormat';
-import styles from './ProjectsSummaryListing.module.css';
 
 export const ProjectsSummaryListing: React.FC = () => {
   const { data, isLoading, error } = useProjects();
@@ -27,22 +26,29 @@ export const ProjectsSummaryListing: React.FC = () => {
                   <th>Used</th>
                   <th>Expires</th>
                 </tr>
-                <tbody className={styles['rows']}>
+                <tbody>
                   <tr>
                     <td>
-                      {project.allocations?.map((e) => e.resource).join('\n')}
+                      {project.allocations?.map((e) => (
+                        <li>{e.resource}</li>
+                      ))}
                     </td>
                     <td>
-                      {project.allocations?.map((e) => e.total).join('\n')}
+                      {project.allocations?.map((e) => (
+                        <li>{e.total}</li>
+                      ))}
                     </td>
                     <td>
-                      {project.allocations?.map((e) => e.used).join('\n')}
+                      {project.allocations?.map((e) => (
+                        <li>{e.used}</li>
+                      ))}
                     </td>
                     <td>
                       {project.allocations
                         ?.map((e) => e.end)
-                        .map((e) => `${formatDate(new Date(e))}`)
-                        .join('\n')}
+                        .map((e) => (
+                          <li>{`${formatDate(new Date(e))}`}</li>
+                        ))}
                     </td>
                   </tr>
                 </tbody>
