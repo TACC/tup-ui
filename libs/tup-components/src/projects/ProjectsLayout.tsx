@@ -8,11 +8,11 @@ const ProjectsLayout: React.FC = () => {
     <Section
       header="Projects & Allocations"
       content={
-      <tbody>
-        <ProjectsSummaryListing />
-        <AllocationsTable />
-      </tbody>
-    }
+        <tbody>
+          <ProjectsSummaryListing />
+          <AllocationsTable />
+        </tbody>
+      }
     />
   );
 };
