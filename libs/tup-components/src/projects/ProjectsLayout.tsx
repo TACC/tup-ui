@@ -10,7 +10,6 @@ const ProjectsLayout: React.FC = () => {
       content={
         <tbody>
           <ProjectsSummaryListing />
-          <AllocationsTable />
         </tbody>
       }
     />
