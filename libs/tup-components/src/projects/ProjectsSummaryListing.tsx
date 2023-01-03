@@ -10,13 +10,18 @@ export const ProjectsSummaryListing: React.FC = () => {
       <InlineMessage type="warning">Unable to retrieve projects.</InlineMessage>
     );
   return (
-    <div>
-      {data?.map((project) => (
-        <div key={project.id}>
-          <ProjectSummaryAll project={project} />
-        </div>
-      ))}
-    </div>
+    <table>
+      <tbody>
+        {data?.map((project) => (
+          <tr>
+            <td>
+              <ProjectSummaryAll project={project} key={project.id} />
+            </td>
+            <td>TODO: Load project-specific Allocations table.</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 export default ProjectsSummaryListing;
