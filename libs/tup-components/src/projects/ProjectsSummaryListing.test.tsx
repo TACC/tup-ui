@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProjectsSummaryListing } from './ProjectsSummaryListing';
 import { server, testRender } from '@tacc/tup-testing';
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 
 describe('Projects Summary Listing Component', () => {
@@ -28,5 +28,27 @@ describe('Projects Summary Listing Component', () => {
     expect(screen.getAllByText('Compute: 10 SUs'));
     expect(screen.getAllByText('(0% Used)'));
     expect(screen.getAllByText('Storage: -- GBs'));
+  });
+});
+
+describe('Projects Allocation Table', () => {
+  it('should display a spinner while loading', async () => {
+    const { getByTestId } = testRender(<ProjectsSummaryListing />);
+    expect(getByTestId('loading-spinner')).toBeDefined();
+  });
+  it('should display project allocation information', async () => {
+    const { getByText, getByTestId, getAllByRole } = testRender(
+      <ProjectsSummaryListing />
+    );
+    await waitFor(() => getAllByRole('columnheader'));
+    const columnHeaders: HTMLElement[] = getAllByRole('columnheader');
+    expect(columnHeaders[0].textContent).toEqual('Active Resources');
+    expect(columnHeaders[1].textContent).toEqual('Awarded');
+    expect(columnHeaders[2].textContent).toEqual('Used');
+    expect(columnHeaders[3].textContent).toEqual('Expires');
+    expect(getByText('Lonestar6')).toBeDefined();
+    expect(getByText('10')).toBeDefined();
+    expect(getByText('0')).toBeDefined();
+    expect(getByText('09/30/2023')).toBeDefined();
   });
 });
