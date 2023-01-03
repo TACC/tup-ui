@@ -2,7 +2,6 @@ import React from 'react';
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { useProjects } from '@tacc/tup-hooks';
 import { formatDate } from '../utils/timeFormat';
-import styles from './Allocation.module.css';
 
 export const AllocationsTable: React.FC = () => {
   const { data, isLoading, error } = useProjects();
