@@ -1,10 +1,8 @@
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { ProjectSummaryAll } from './ProjectsCells';
 import { useProjects } from '@tacc/tup-hooks';
-import { AllocationsTable } from '../allocations';
 import { formatDate } from '../utils/timeFormat';
-
-
+import styles from './ProjectsSummaryListing.module.css';
 
 export const ProjectsSummaryListing: React.FC = () => {
   const { data, isLoading, error } = useProjects();
@@ -29,11 +27,17 @@ export const ProjectsSummaryListing: React.FC = () => {
                   <th>Used</th>
                   <th>Expires</th>
                 </tr>
-                <tbody>
+                <tbody className={styles['rows']}>
                   <tr>
-                    <td>{project.allocations?.map((e) => e.resource).join('\n')}</td>
-                    <td>{project.allocations?.map((e) => e.total).join('\n')}</td>
-                    <td>{project.allocations?.map((e) => e.used).join('\n')}</td>
+                    <td>
+                      {project.allocations?.map((e) => e.resource).join('\n')}
+                    </td>
+                    <td>
+                      {project.allocations?.map((e) => e.total).join('\n')}
+                    </td>
+                    <td>
+                      {project.allocations?.map((e) => e.used).join('\n')}
+                    </td>
                     <td>
                       {project.allocations
                         ?.map((e) => e.end)

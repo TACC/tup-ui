@@ -8,9 +8,16 @@ const ProjectsLayout: React.FC = () => {
     <Section
       header="Projects & Allocations"
       content={
-        <tbody>
-          <ProjectsSummaryListing />
-        </tbody>
+        <>
+          <nav>
+            TODO: Replace this <code>&lt;nav&gt;</code> with a{' '}
+            <code>&lt;Sidebar&gt;</code>.
+          </nav>
+          {/* TODO: Once Allocations are loaded within Projects (i.e. `<AllocationsTable />` is not loaded here), remove this temporary <div> wrapper */}
+          <div>
+            <ProjectsSummaryListing />
+          </div>
+        </>
       }
     />
   );
