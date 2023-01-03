@@ -34,7 +34,6 @@ const ProjectsLayout: React.FC = () => {
     />
   );
 };
-<<<<<<< HEAD
 
 // const ProjectsLayout: React.FC = () => {
 //   return (
@@ -55,6 +54,4 @@ const ProjectsLayout: React.FC = () => {
 // };
 
 
-=======
->>>>>>> 4a8ee85 (tup-374-format-changes)
 export default ProjectsLayout;
