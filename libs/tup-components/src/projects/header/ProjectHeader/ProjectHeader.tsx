@@ -52,7 +52,7 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
       <dl className={styles['group']}>
         <dl className={styles['project-heading']}>
           <dt className={styles['key']}>Project Charge Code</dt>
-          <dd className={styles['value']}> {dataById?.title}</dd>
+          <dd className={styles['value']}> {dataById?.chargeCode}</dd>
           <dt className={styles['key']}>Field of Science</dt>
           <dd className={styles['value']}>Placeholder</dd>
         </dl>{' '}
