@@ -1,0 +1,67 @@
+.project-heading,
+.project-heading dd{
+    align-self: baseline;
+    margin-bottom: 0; /* overwrite Bootstrap's `_reboot.scss` */
+}
+.key { 
+    composes: x-truncate--one-line from '@tacc/core-components/src/lib/DescriptionList.module.css';
+    white-space: wrap;
+    overflow: hidden;
+}
+.key::after{
+    content:':';
+    display: inline;
+    flex-direction: row;
+    padding-right: 0.25em;
+    white-space: nowrap;
+}
+.project-heading > .value {
+    white-space: nowrap;
+}
+.project-heading{
+    display: flex;
+    flex-direction: row;
+    padding-top: .5em;
+    padding-left: .5em;
+}
+.project-heading > .key ~ .key::before {
+    display: flex;
+    white-space: nowrap;
+
+  }
+  .project-heading > :nth-last-child(1){
+    content: ' ';
+    font-weight: var(--bold);
+  }
+  .project-heading > :nth-last-child(1)::after{
+    display: inline-block;
+    vertical-align: left;
+
+  }
+.value{
+    font-weight: var(--bold);
+  }
+.value::after {
+    content: " ";
+    display: inline;
+    flex-direction: row;
+    padding-left: 5rem;
+}
+.group,
+.group > .key ~ .key::before {
+    content: ' | ';
+    display: grid;
+    align-items: flex-start;
+  }
+
+.title {
+    padding: .5em;
+}
+.separator {
+    border: .5px solid;
+    margin: .5em;
+}
+.loading-placeholder {
+    height: 100%;
+    width: 175px;
+}
