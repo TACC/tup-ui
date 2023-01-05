@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProjectsSummaryListing } from './ProjectsSummaryListing';
 import { server, testRender } from '@tacc/tup-testing';
-import { screen, waitFor } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { rest } from 'msw';
 
 describe('Projects Summary Listing Component', () => {
@@ -30,4 +30,3 @@ describe('Projects Summary Listing Component', () => {
     expect(screen.getAllByText('Storage: -- GBs'));
   });
 });
-

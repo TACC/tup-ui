@@ -1,7 +1,6 @@
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { ProjectSummaryAll } from './ProjectsCells';
 import { useProjects } from '@tacc/tup-hooks';
-import { formatDate } from '../utils/timeFormat';
 
 export const ProjectsSummaryListing: React.FC = () => {
   const { data, isLoading, error } = useProjects();
