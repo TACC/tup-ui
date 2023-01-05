@@ -1,6 +1,7 @@
 import React from 'react';
 import { Section } from '@tacc/core-components';
 import { ProjectsSummaryListing } from './ProjectsSummaryListing';
+import { AllocationsTable } from '../allocations/AllocationTable';
 
 const ProjectsLayout: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const ProjectsLayout: React.FC = () => {
           {/* TODO: Once Allocations are loaded within Projects (i.e. `<AllocationsTable />` is not loaded here), remove this temporary <div> wrapper */}
           <div>
             <ProjectsSummaryListing />
+            <AllocationsTable />
           </div>
         </>
       }

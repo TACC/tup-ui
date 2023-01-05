@@ -18,42 +18,6 @@ export const ProjectsSummaryListing: React.FC = () => {
             <td>
               <ProjectSummaryAll project={project} key={project.id} />
             </td>
-            <td>
-              <table>
-                <tr>
-                  <th>Active Resources</th>
-                  <th>Awarded</th>
-                  <th>Used</th>
-                  <th>Expires</th>
-                </tr>
-                <tbody>
-                  <tr>
-                    <td>
-                      {project.allocations?.map((e) => (
-                        <li>{e.resource}</li>
-                      ))}
-                    </td>
-                    <td>
-                      {project.allocations?.map((e) => (
-                        <li>{e.total}</li>
-                      ))}
-                    </td>
-                    <td>
-                      {project.allocations?.map((e) => (
-                        <li>{e.used}</li>
-                      ))}
-                    </td>
-                    <td>
-                      {project.allocations
-                        ?.map((e) => e.end)
-                        .map((e) => (
-                          <li>{`${formatDate(new Date(e))}`}</li>
-                        ))}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
           </tr>
         ))}
       </tbody>

@@ -1,0 +1,1 @@
+export { AllocationsTable } from './AllocationTable';

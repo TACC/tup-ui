@@ -31,24 +31,3 @@ describe('Projects Summary Listing Component', () => {
   });
 });
 
-describe('Projects Allocation Table', () => {
-  it('should display a spinner while loading', async () => {
-    const { getByTestId } = testRender(<ProjectsSummaryListing />);
-    expect(getByTestId('loading-spinner')).toBeDefined();
-  });
-  it('should display project allocation information', async () => {
-    const { getByText, getByTestId, getAllByRole } = testRender(
-      <ProjectsSummaryListing />
-    );
-    await waitFor(() => getAllByRole('columnheader'));
-    const columnHeaders: HTMLElement[] = getAllByRole('columnheader');
-    expect(columnHeaders[0].textContent).toEqual('Active Resources');
-    expect(columnHeaders[1].textContent).toEqual('Awarded');
-    expect(columnHeaders[2].textContent).toEqual('Used');
-    expect(columnHeaders[3].textContent).toEqual('Expires');
-    expect(getByText('Lonestar6')).toBeDefined();
-    expect(getByText('10')).toBeDefined();
-    expect(getByText('0')).toBeDefined();
-    expect(getByText('09/30/2023')).toBeDefined();
-  });
-});
