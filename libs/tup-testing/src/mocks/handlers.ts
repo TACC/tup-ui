@@ -7,6 +7,7 @@ import {
   mockProjectUsage,
   MockProjectUsers,
   mockTickets,
+  mockProjectFieldOfScience,
 } from './fixtures';
 
 export const handlers = [
@@ -47,5 +48,9 @@ export const handlers = [
   rest.get('http://localhost:8001/tickets', (req, res, ctx) => {
     // Respond with mock tickets output
     return res(ctx.json(mockTickets));
+  }),
+  rest.get('http://localhost:8001/projects/fields', (req, res, ctx) => {
+    // Respond with mock tickets output
+    return res(ctx.json(mockProjectFieldOfScience));
   }),
 ];

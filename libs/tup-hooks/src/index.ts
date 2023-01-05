@@ -106,6 +106,12 @@ export type ProjectsAllocations = {
   };
 };
 
+export type ProjectFieldOfScience = {
+  id: number;
+  depth: number;
+  name: string;
+};
+
 export type ProjectsRawSystem = {
   id: number;
   title: string;
@@ -203,3 +209,4 @@ export { default as useProjects } from './useProjects';
 export { default as useTickets } from './useTickets';
 export { default as useProjectUsers } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
+export { default as useProjectScienceField } from './useProjectScienceField';

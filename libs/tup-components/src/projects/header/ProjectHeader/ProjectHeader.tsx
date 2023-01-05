@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useProjects } from '@tacc/tup-hooks';
+import { useProjects, useProjectScienceField } from '@tacc/tup-hooks';
 import styles from './Projects.module.css';
 import {
   DescriptionList,
@@ -12,7 +12,16 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
   projectId,
 }) => {
   const { data, isLoading, error } = useProjects();
+  const fieldData = useProjectScienceField();
   const dataById = data?.find((project) => project.id === projectId);
+
+  const fieldOfScienceID = fieldData?.data?.find(
+    (field) => field.id === dataById?.fieldId
+  );
+  const fieldOfScience = fieldOfScienceID?.name
+    ? fieldOfScienceID?.name
+    : 'None';
+  const unixGroup = dataById?.gid ? `G-${dataById?.gid}` : `None`;
   const usageData = dataById?.allocations?.find((allocations) => allocations);
   const percentageCompute = usageData
     ? (usageData?.used / usageData?.total) * 100
@@ -28,14 +37,15 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
       percentageStorage ? percentageStorage : '0'
     }% Used) `,
   };
-  if (isLoading)
+
+  if (isLoading || fieldData.isLoading)
     return (
       <div className={styles['loading-placeholder']}>
         <LoadingSpinner />
       </div>
     );
 
-  if (error)
+  if (error || fieldData.error)
     return (
       <InlineMessage type="warning">
         Unable to retrieve project information.
@@ -54,11 +64,12 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
           <dt className={styles['key']}>Project Charge Code</dt>
           <dd className={styles['value']}> {dataById?.chargeCode}</dd>
           <dt className={styles['key']}>Field of Science</dt>
-          <dd className={styles['value']}>Placeholder</dd>
+          <dd className={styles['value']}>{`${fieldOfScience}`}</dd>
         </dl>{' '}
         <dl className={styles['project-heading']}>
           <dt className={styles['key']}>Unix Group</dt>
-          <dd className={styles['value']}>Placeholder</dd>
+          <dd className={styles['value']}>{`${unixGroup}
+          }`}</dd>
 
           <DescriptionList
             direction="horizontal"
