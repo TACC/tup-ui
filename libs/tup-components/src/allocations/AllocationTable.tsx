@@ -1,16 +1,20 @@
 import React from 'react';
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
-import { useProjects } from '@tacc/tup-hooks';
+import { useProjectUsage, UsagePerResource } from '@tacc/tup-hooks';
 import { formatDate } from '../utils/timeFormat';
 
-export const AllocationsTable: React.FC = () => {
-  const { data, isLoading, error } = useProjects();
+export const AllocationsTable: React.FC<{ projectId: number; username: string }> = ({
+  projectId,
+  username,
+}) => {
+  const usage = useProjectUsage(projectId, username);
+  const usageData = usage.data;
 
-  if (isLoading) {
+  if (usage.isLoading) {
     return <LoadingSpinner />;
   }
 
-  if (error) {
+  if (usage.error) {
     return (
       <InlineMessage type="warning">
         Unable to retrieve allocation information.
@@ -19,32 +23,74 @@ export const AllocationsTable: React.FC = () => {
   }
 
   return (
-    <>
-      {data?.map((project) => (
-        <table>
-          <thead>
-            <tr>
-              <th>Active Resources</th>
-              <th>Awarded</th>
-              <th>Used</th>
-              <th>Expires</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>{project.allocations?.map((e) => e.resource).join('\n')}</th>
-              <th>{project.allocations?.map((e) => e.total).join('\n')}</th>
-              <th>{project.allocations?.map((e) => e.used).join('\n')}</th>
-              <th>
-                {project.allocations
-                  ?.map((e) => e.end)
-                  .map((e) => `${formatDate(new Date(e))}`)
-                  .join('\n')}
-              </th>
-            </tr>
-          </tbody>
-        </table>
-      ))}
-    </>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Active Resources</th>
+          <th>Awarded</th>
+          <th>Used</th>
+          <th>Expires</th>
+        </tr>
+      </thead>
+      <tbody>
+        {usageData?.map((allocations) => (
+          // <tr key={allocations.resource}>
+          <tr>
+            <td>{allocations.resource}</td>
+            <td>{allocations.total}</td>
+            <td>{allocations.used}</td>
+            <td></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    // <>
+    //   {data?.map((projectAllocations) => (
+    //     <table>
+    //       <thead>
+    //         <tr>
+    //           <th>Active Resources</th>
+    //           <th>Awarded</th>
+    //           <th>Used</th>
+    //           <th>Expires</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //         <tr>
+    //           <td>
+    //             <ul>
+    //               {projectAllocations.resource} 
+    //             </ul>
+    //           </td>
+    //           {/* <td>
+    //             <ul>
+    //               {project.allocations?.map((e) => (
+    //                 <li>{e.total}</li>
+    //               ))}
+    //             </ul>
+    //           </td>
+    //           <td>
+    //             <ul>
+    //               {project.allocations?.map((e) => (
+    //                 <li>{e.used}</li>
+    //               ))}
+    //             </ul>
+    //           </td>
+    //           <td>
+    //             <ul>
+    //               {project.allocations
+    //                 ?.map((e) => e.end)
+    //                 .map((e) => (
+    //                   <li>{formatDate(new Date(e))}</li>
+    //                 ))}
+    //             </ul>
+    //           </td> */}
+    //         </tr>
+    //       </tbody>
+    //     </table>
+    //   ))}
+    // </>
   );
 };
