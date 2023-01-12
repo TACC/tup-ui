@@ -1,0 +1,31 @@
+{# Overwrite this template from Core (in which the template is empty) #}
+{# !!!: This should extend taccsite_cms via taccsite_custom not overwrite it #}
+{# FAQ: To support app template inheritance, see TACC/Core-CMS#492 #}
+
+
+
+{# COPIED FROM CORE #}
+{# https://github.com/TACC/Core-CMS/blob/c8844e1/taccsite_cms/templates/assets_custom.html #}
+
+{% load staticfiles %}
+
+<!-- Custom Site Assets: Favicon. -->
+{% with settings.FAVICON as favicon %}
+<link rel="icon" href="{% static favicon.img_file_src %}" type="image/x-icon" />
+{% endwith %}
+
+
+
+{# NEW CODE #}
+
+<!-- Hotjar Tracking Code for https://dev.tup.tacc.utexas.edu/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3319380,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
