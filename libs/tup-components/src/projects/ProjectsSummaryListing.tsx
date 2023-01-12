@@ -1,6 +1,7 @@
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { ProjectSummaryAll } from './ProjectsCells';
 import { useProjects } from '@tacc/tup-hooks';
+import { AllocationsTable } from '../allocations';
 
 export const ProjectsSummaryListing: React.FC = () => {
   const { data, isLoading, error } = useProjects();
@@ -15,7 +16,7 @@ export const ProjectsSummaryListing: React.FC = () => {
         {data?.map((project) => (
           <tr>
             <td>
-              <ProjectSummaryAll project={project} key={project.id} />
+              <ProjectSummaryAll project={project} key={project.id}/>
             </td>
           </tr>
         ))}
@@ -24,4 +25,4 @@ export const ProjectsSummaryListing: React.FC = () => {
   );
 };
 export default ProjectsSummaryListing;
- 
+  
