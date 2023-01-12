@@ -1,6 +1,7 @@
 import useConfig from './useConfig';
 import useJwt from './useJwt';
 import axios from 'axios';
+import { AxiosError } from 'axios';
 import {
   useQuery,
   useMutation,
@@ -11,7 +12,10 @@ import {
 type UseGetParams<ResponseType> = {
   endpoint: string;
   key: string;
-  options?: Omit<UseQueryOptions<ResponseType, Error>, 'queryKey' | 'queryFn'>;
+  options?: Omit<
+    UseQueryOptions<ResponseType, AxiosError>,
+    'queryKey' | 'queryFn'
+  >;
   baseUrl?: string;
 };
 
@@ -33,12 +37,12 @@ export function useGet<ResponseType>({
     );
     return request.data;
   };
-  return useQuery(key, () => getUtil(), options);
+  return useQuery<ResponseType, AxiosError>(key, () => getUtil(), options);
 }
 
 type UsePostParams<BodyType, ResponseType> = {
   endpoint: string;
-  options?: UseMutationOptions<ResponseType, Error, BodyType>;
+  options?: UseMutationOptions<ResponseType, AxiosError, BodyType>;
   baseUrl?: string;
 };
 

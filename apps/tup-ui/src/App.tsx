@@ -5,6 +5,7 @@ import {
   TicketCreateModal,
   Tickets,
   TicketDetails,
+  RequireAuth,
 } from '@tacc/tup-components';
 import {
   Dashboard,
@@ -14,6 +15,7 @@ import {
   ProjectView,
   ProjectDetail,
   ProjectMember,
+  Mfa,
 } from './pages';
 
 const AppLayout = () => {
@@ -26,6 +28,14 @@ function App() {
         <Route path="/" element={<Dashboard />}>
           <Route path="tickets-create" element={<TicketCreateModal />} />
         </Route>
+        <Route
+          path="mfa"
+          element={
+            <RequireAuth>
+              <Mfa />
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="tickets" element={<Tickets />}>
           <Route path="create" element={<TicketCreateModal />} />
           <Route path=":ticketId" element={<TicketDetails />} />

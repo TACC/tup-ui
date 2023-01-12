@@ -195,6 +195,46 @@ export type UsagePerResource = {
   used: number;
 };
 
+export type MfaTokenResponse = {
+  count: number;
+  current: number;
+  tokens: {
+    active: boolean;
+    description: string;
+    id: number;
+    locked: boolean;
+    revoked: boolean;
+    serial: string;
+    tokentype: string;
+    user_id: string;
+    user_realm: string;
+    username: string;
+  }[];
+};
+
+export type MfaPairingResponse = {
+  googleurl: {
+    description: string;
+    img: string;
+  };
+  rollout_state: string;
+  serial: string;
+};
+
+export type MfaValidationResponse = {
+  detail: {
+    otplen: number;
+    serial: string;
+    type: string;
+    message: string;
+  };
+  result: {
+    authentication: 'ACCEPT' | 'REJECT';
+    status: boolean;
+    value: boolean;
+  };
+};
+
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
@@ -203,3 +243,9 @@ export { default as useProjects } from './useProjects';
 export { default as useTickets } from './useTickets';
 export { default as useProjectUsers } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
+export {
+  useMfa,
+  useMfaPairTotp,
+  useMfaPairSms,
+  useMfaValidate,
+} from './useMfa';
