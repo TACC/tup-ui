@@ -1,9 +1,6 @@
 .root {
   overflow-y: auto;
   height: 100%;
-  min-width: 175px;
-  max-width: 175px;
-  width: 175px;
   background: #f4f4f4;
   border-right: 1px solid rgba(112, 112, 112, 0.25);
   padding-top: 20px;

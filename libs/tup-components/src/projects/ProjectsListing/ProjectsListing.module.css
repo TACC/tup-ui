@@ -1,0 +1,60 @@
+.allocations-table {
+    width: 100%;
+}
+.allocations-table tr > td:nth-child(1) {
+    width: 35%;
+}
+.allocations-table tr > td:nth-child(2) {
+    width: 25%;
+}
+.allocations-table tr > td:nth-child(3) {
+    width: 25%;
+}
+.allocations-table tr > td:nth-child(4) {
+    width: 20%;
+}
+
+
+/* Project listing */
+.project-listing-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5%;
+    margin: 20px;
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #707070;
+}
+
+.project-listing-row > * {
+    flex-grow: 1
+}
+
+/* Project summary */
+.project-title {
+    font-weight: 500;
+}
+.project-pi {
+    background: #CAFCC8;
+    width: fit-content;
+    padding: 3px;
+    margin-left: -3px;
+}
+.project-summary-separator {
+    border-bottom: 1px solid #C7C7C7;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.compute-separator {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Project navbar */
+.projects-listing-navbar {
+    height: 100%;
+    border-right: 1px solid #C7C7C7;
+}
+
