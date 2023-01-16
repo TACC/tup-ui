@@ -21,7 +21,7 @@ jobs:
 
       - uses: nrwl/nx-set-shas@v2
 
-      # Check linting/formatting of workspace files
+      # Check linting/formatting of workspace files.
       - run: npx nx workspace-lint
       - run: npx nx format:check
 
