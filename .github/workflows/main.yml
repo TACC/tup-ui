@@ -17,10 +17,7 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
-
-      - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+      - run: npm ci
 
       - uses: nrwl/nx-set-shas@v2
 
