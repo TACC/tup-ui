@@ -195,6 +195,32 @@ export type UsagePerResource = {
   used: number;
 };
 
+export type Publications = {
+  id: number;
+  authors: string;
+  title: string;
+  yearPublished: number;
+  publisher: string;
+  url: string;
+  venue: string;
+  userCitedTacc: boolean;
+};
+
+export type Grants = {
+  id: number;
+  title: string;
+  fundingAgency: string;
+  field: string;
+  piName: string;
+  awardNumber: string;
+  awardAmount: number;
+  start: Date;
+  end: Date;
+  nsfStatusCode: string;
+  grantNumber: StorageManager;
+  fieldId: number;
+};
+
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
@@ -203,3 +229,5 @@ export { default as useProjects } from './useProjects';
 export { default as useTickets } from './useTickets';
 export { default as useProjectUsers } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
+export { default as usePublications } from './usePublications';
+export { default as useGrants } from './useGrants';
