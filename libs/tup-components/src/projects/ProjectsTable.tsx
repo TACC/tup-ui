@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
 import { useTable, Column } from 'react-table';
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
-import { ProjectTitle, PrinInv, Allocations } from './ProjectsCells';
+import { ProjectTitle, PrinInv } from './ProjectsCells';
 import { ProjectsRawSystem, useProjects } from '@tacc/tup-hooks';
+
 export const ProjectsTable: React.FC = () => {
   const { data, isLoading, error } = useProjects();
   const columns = useMemo<Column<ProjectsRawSystem>[]>(
