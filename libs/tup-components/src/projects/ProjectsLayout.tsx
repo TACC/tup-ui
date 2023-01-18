@@ -1,9 +1,13 @@
 import React from 'react';
-import { PageLayout } from '../layout';
 import { Section } from '@tacc/core-components';
-import { ProjectsTable } from './ProjectsTable';
+import { ProjectsSummaryListing } from './ProjectsSummaryListing';
 
 const ProjectsLayout: React.FC = () => {
-  return <Section header="Projects & Allocations" content={<PageLayout />} />;
+  return (
+    <Section
+      header="Projects & Allocations"
+      content={<ProjectsSummaryListing />}
+    />
+  );
 };
 export default ProjectsLayout;

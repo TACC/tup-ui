@@ -4,16 +4,21 @@ import { Icon } from '@tacc/core-components';
 import styles from './Navbar.module.css';
 
 export const NavItem: React.FC<
-  React.PropsWithChildren<{ to: string; icon?: string; end?: boolean }>
-> = ({ to, icon, end, children }) => (
-  <NavLink to={to} end={end} className={styles['nav-link']}>
+  React.PropsWithChildren<{
+    to: string;
+    icon?: string;
+    end?: boolean;
+    className?: string;
+  }>
+> = ({ to, icon, end, className, children }) => (
+  <NavLink to={to} end={end} className={`${styles['nav-link']} ${className}`}>
     {({ isActive }) => (
       <div
         className={`${styles['nav-content']} ${
           isActive ? styles['nav-active'] : ''
         }`}
       >
-        {icon && <Icon name={icon} />}
+        {icon && <Icon name={icon} className={styles['nav-icon']} />}
         {/* we'll want to set name based on the app */}
         <span className={styles['nav-text']}>{children}</span>
       </div>

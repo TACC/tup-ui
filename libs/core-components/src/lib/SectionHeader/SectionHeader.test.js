@@ -57,7 +57,7 @@ describe('SectionHeader', () => {
         expect(container.querySelector(`[class*="${className}"]`)).not.toEqual(
           null
         );
-        expect(getByText('Heading').tagName.toLowerCase()).toEqual('h3');
+        expect(getByText('Heading').tagName.toLowerCase()).toEqual('h2');
       }
     );
   });
