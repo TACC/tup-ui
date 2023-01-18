@@ -1,10 +1,8 @@
 import { Section } from '@tacc/core-components';
-import { PageLayout } from '@tacc/tup-components';
 import { useProjects, usePublications, useGrants } from '@tacc/tup-hooks';
-import { da } from 'date-fns/locale';
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Navbar, NavItem } from '@tacc/core-wrappers';
+import styles from './ProjectDetails.module.css'
 
 
 export const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
@@ -23,27 +21,50 @@ export const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) =
   return (
     <>
       <div>
-        Abstract: 
-        {projectDetails?.description}
+        <span className={styles['project-detail-header']}>Abstract</span>
+        <span className={styles['project-details']}>
+          {projectDetails?.description}
+        </span>
       </div>
       <div>
-        Publications:
-         {pub_details === undefined ? 'This project has no publications' : 
-         (pub_details?.title, 
-          pub_details?.authors, 
-          pub_details.publisher, 
-          pub_details.venue, 
-          pub_details.yearPublished, 
-          pub_details.url)}
+      <span className={styles['project-detail-header']}>Publications</span>
+         {pub_details === undefined ? 
+         <span className={styles['project-details']}>
+           This project has no publications
+         </span> : 
+         <span className={styles['project-details']}>
+          <span className={styles['project-details-bold']}>
+            {pub_details?.title}
+          </span>
+          <span>{pub_details?.authors}</span> 
+          <span>
+            <span>{pub_details.publisher}</span>{' '}
+            <span>{pub_details.venue}</span>{' '}
+            <span>{pub_details.yearPublished}</span>
+          </span>
+          <span>{pub_details?.url}</span> 
+        </span>
+         }
       </div>
       <div>
-        Grants: 
-        {grant_details === undefined ? 'This project has no grants' : 
-          (grant_details?.title,
-            grant_details.piName,
-            grant_details.fundingAgency,
-            grant_details.awardNumber
-          )}
+      <span className={styles['project-detail-header']}>Grants</span> 
+        {grant_details === undefined ? 
+        <span className={styles['project-details']}>
+          This project has no grants
+        </span> : 
+        <span>
+          <span className={styles['project-details-bold']}>
+            {grant_details?.title}
+          </span>
+          <span>Principle Investigator:</span>{' '}
+          {grant_details?.title}
+          <span>{grant_details?.field}</span>
+          <span>Funding Agency:</span>{' '}
+          {grant_details?.fundingAgency}
+          <span>Award Number:</span>{' '}
+          {grant_details?.awardNumber}
+        </span>
+          }
       </div>
     </>
   )
