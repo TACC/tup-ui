@@ -26,17 +26,17 @@ export const ProjectsListing: React.FC = () => {
     );
 
   return (
-    <div>
+    <ul>
       {data?.filter(prjFilter).map((project) => (
-        <div key={project.id} className={styles['project-listing-row']}>
+        <li key={project.id} className={styles['project-listing-row']}>
           <div>
             <ProjectSummary project={project} />
           </div>
           <div>
             <ProjectsListingAllocationTable project={project} />
           </div>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
