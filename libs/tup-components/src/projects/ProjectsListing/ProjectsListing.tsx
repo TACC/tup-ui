@@ -26,7 +26,7 @@ export const ProjectsListing: React.FC = () => {
     );
 
   return (
-    <ul>
+    <ul className={styles['project-listing']}>
       {data?.filter(prjFilter).map((project) => (
         <li key={project.id} className={styles['project-listing-row']}>
           <div>
