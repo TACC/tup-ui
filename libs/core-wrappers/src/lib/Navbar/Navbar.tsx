@@ -18,7 +18,7 @@ export const NavItem: React.FC<
           isActive ? styles['nav-active'] : ''
         }`}
       >
-        {icon && <Icon name={icon} size="xs" className={styles['nav-icon']} />}
+        {icon && <Icon name={icon} className={styles['nav-icon']} />}
         {/* we'll want to set name based on the app */}
         <span className={styles['nav-text']}>{children}</span>
       </div>
@@ -43,7 +43,7 @@ export const QueryNavItem: React.FC<
           active ? styles['nav-active'] : ''
         }`}
       >
-        {icon && <Icon name={icon} size="xs" className={styles['nav-icon']} />}
+        {icon && <Icon name={icon} className={styles['nav-icon']} />}
         {/* we'll want to set name based on the app */}
         <span className={styles['nav-text']}>{children}</span>
       </div>
