@@ -11,10 +11,14 @@ type IconProps = React.PropsWithChildren<{
   size?: sizes;
 }>;
 
-const Icon: React.FC<IconProps> = ({ className, dataTestid, label, name, size }) => {
-  const iconClassName = `icon icon-${name}` + (size
-    ? ` icon-${size}`
-    : '');
+const Icon: React.FC<IconProps> = ({
+  className,
+  dataTestid,
+  label,
+  name,
+  size,
+}) => {
+  const iconClassName = `icon icon-${name}` + (size ? ` icon-${size}` : '');
   // FAQ: The conditional avoids an extra space in class attribute value
   const fullClassName = className
     ? [className, iconClassName].join(' ')

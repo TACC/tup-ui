@@ -16,7 +16,7 @@ export const ProjectSummary: React.FC<{
 
   return (
     <>
-      <Link to={`/projects/${project.id}`}  className={styles['project-title']}>
+      <Link to={`/projects/${project.id}`} className={styles['project-title']}>
         {project.title}
       </Link>
       <div>
@@ -31,9 +31,10 @@ export const ProjectSummary: React.FC<{
       <hr />
       <div>
         <span>
-          Compute: <strong>{`${
-          totalComputeRequested ? totalComputeRequested : '--'
-        } SUs `}</strong>
+          Compute:{' '}
+          <strong>{`${
+            totalComputeRequested ? totalComputeRequested : '--'
+          } SUs `}</strong>
         </span>
         <span>
           {totalComputeUsed
@@ -44,7 +45,8 @@ export const ProjectSummary: React.FC<{
         </span>
         <span className={styles['compute-separator']}>|</span>
         <span>
-          Storage: <strong>{`${
+          Storage:{' '}
+          <strong>{`${
             totalStorageRequested ? totalStorageRequested : '--'
           } GBs `}</strong>
         </span>
