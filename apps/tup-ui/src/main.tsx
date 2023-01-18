@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 import './main.global.css';
-import './main.global.for-core-styles.css';
 
 const queryClient = new QueryClient();
 
