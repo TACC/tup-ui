@@ -16,7 +16,6 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
         <LoadingSpinner />
       </div>
     );
-  
 
   return (
     <Navbar>

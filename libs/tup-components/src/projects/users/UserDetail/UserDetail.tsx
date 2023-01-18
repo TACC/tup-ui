@@ -69,7 +69,7 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
   const projectUsers = useProjectUsers(projectId);
   const data = projectUsers.data ?? [];
   const user = data.find((user) => user.username === username);
-  
+
   return user ? (
     <div className={styles['user-detail-container']}>
       <div className={styles['user-info-banner']}>
