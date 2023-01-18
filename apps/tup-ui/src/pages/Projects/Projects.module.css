@@ -1,5 +1,7 @@
 .project-header {
     font-size: 2.6rem;
-    border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+    margin-top: 12px;
+    margin-left: 24px;
+    border-bottom: 1px solid #707070;
     padding-bottom: 5px;
 }
