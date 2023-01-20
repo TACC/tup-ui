@@ -12,7 +12,7 @@ describe('Projects Header Component', () => {
     await screen.findByText(/Field of Science/);
     await screen.findByText('Center Systems Staff (STA)');
     await screen.findByText(/Unix Group/);
-    await screen.findByText('G-825495 }');
+    await screen.findByText('G-825495');
   });
   it('should have a link in the projects detail header', async () => {
     testRender(<ProjectHeader projectId={59184} />);
