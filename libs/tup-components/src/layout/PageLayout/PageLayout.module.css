@@ -24,6 +24,8 @@
 .content {
   display: grid;
   grid-area: _content;
+
+  padding: var(--global-space--section);
 }
 
 .footer {

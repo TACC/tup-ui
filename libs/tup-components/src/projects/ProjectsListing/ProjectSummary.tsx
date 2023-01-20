@@ -15,12 +15,12 @@ export const ProjectSummary: React.FC<{
     project.allocations?.reduce((acc, e) => acc + e.used, 0) ?? 0;
 
   return (
-    <div>
-      <Link to={`/projects/${project.id}`}>
-        <span className={styles['project-title']}>{project.title}</span>
+    <>
+      <Link to={`/projects/${project.id}`} className={styles['project-title']}>
+        {project.title}
       </Link>
       <div>
-        {'Project Charge Code: '} {project.chargeCode}
+        {'Project Charge Code: '} <strong>{project.chargeCode}</strong>
       </div>
       <div className={styles['project-pi']}>
         {'Principal Investigator: ' +
@@ -28,11 +28,14 @@ export const ProjectSummary: React.FC<{
           ' ' +
           project.pi.lastName}
       </div>
-      <div className={styles['project-summary-separator']} />
+      <hr />
       <div>
-        <span>{`Compute: ${
-          totalComputeRequested ? totalComputeRequested : '--'
-        } SUs `}</span>
+        <span>
+          Compute:{' '}
+          <strong>{`${
+            totalComputeRequested ? totalComputeRequested : '--'
+          } SUs `}</strong>
+        </span>
         <span>
           {totalComputeUsed
             ? ' (' +
@@ -42,9 +45,10 @@ export const ProjectSummary: React.FC<{
         </span>
         <span className={styles['compute-separator']}>|</span>
         <span>
-          {`Storage: ${
+          Storage:{' '}
+          <strong>{`${
             totalStorageRequested ? totalStorageRequested : '--'
-          } GBs `}
+          } GBs `}</strong>
         </span>
         <span>
           {totalStorageUsed
@@ -54,6 +58,6 @@ export const ProjectSummary: React.FC<{
             : ' (0% Used) '}
         </span>
       </div>
-    </div>
+    </>
   );
 };
