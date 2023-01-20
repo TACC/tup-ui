@@ -10,5 +10,7 @@ export {
   FormikInput,
   FormikSelect,
   FormikCheck,
+  FormikTextarea,
+  FormikFileInput,
 } from './lib/FieldWrapperFormik';
 export { default as withBuilder } from './lib/utils/withBuilder';

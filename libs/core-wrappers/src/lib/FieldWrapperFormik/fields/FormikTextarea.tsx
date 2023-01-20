@@ -1,15 +1,15 @@
 import React from 'react';
 import FieldWrapper from '../FieldWrapperFormik';
 import { useField } from 'formik';
-import { FormikInputProps } from '.';
+import { FormikTextareaProps } from '.';
 
-const FormikInput: React.FC<FormikInputProps> = ({
+const FormikTextarea: React.FC<FormikTextareaProps> = ({
   name,
   label,
   required,
   description,
   ...props
-}: FormikInputProps) => {
+}: FormikTextareaProps) => {
   const [field] = useField(name);
   return (
     <FieldWrapper
@@ -18,9 +18,9 @@ const FormikInput: React.FC<FormikInputProps> = ({
       required={required}
       description={description}
     >
-      <input {...field} {...props} />
+      <textarea {...field} {...props} />
     </FieldWrapper>
   );
 };
 
-export default FormikInput;
+export default FormikTextarea;

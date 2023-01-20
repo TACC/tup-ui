@@ -43,6 +43,7 @@
     "@tacc/core-styles": "github:TACC/Core-Styles#task/custom-cms-and-portal-styles",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/jest": "28.1.8",
     "@types/js-cookie": "^3.0.2",
     "@types/node": "18.7.18",
