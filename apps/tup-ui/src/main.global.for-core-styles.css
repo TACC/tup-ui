@@ -1,0 +1,33 @@
+/* These changes and additions belong in Core-Styles */
+
+/* TODO: Remove this after:
+         1. fixing this in core-styles.cms <hr /> styles, and
+         2. either, moving those fixed styles to core-styles.base
+         2. or, cloning those fixed styles to core-styles.portal */
+hr {
+  --global-space--hr-buffer-below: var(--global-space--hr-buffer-above);
+}
+
+/* TODO: Remove this after:
+         0. confirming this new spacing with lead designer
+         1. and updating these in core-styles.base
+         2. (and maybe) moving those fixed styles to core-styles.portal */
+:root {
+  --global-space--section-top: 15px;
+  --global-space--section-left: 20px;
+  --global-space--section-right: 15px;
+}
+
+/* TODO: Remove this after:
+         0. confirming this size with lead designer
+         1. adding these to core-styles.base */
+.icon-xs {
+  font-size: 1.6rem;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.icon-16 {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
