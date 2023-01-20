@@ -5,7 +5,7 @@ services:
       context: ../../
       dockerfile: apps/tup-cms/Dockerfile
     ports:
-      - 8000:8000
+      - 127.0.0.1:8000:8000
     command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
     container_name: tup_cms
     hostname: tup_cms
@@ -48,7 +48,7 @@ services:
       - tup_cms_es_data:/usr/share/elasticsearch/data
     container_name: tup_cms_elasticsearch
     ports:
-      - 9201:9200
+      - 127.0.0.1:9201:9200
     networks:
       - tup_cms_net
 
