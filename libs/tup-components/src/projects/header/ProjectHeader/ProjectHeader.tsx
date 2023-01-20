@@ -21,7 +21,7 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
   const fieldOfScience = fieldOfScienceID?.name
     ? fieldOfScienceID?.name
     : 'None';
-  const unixGroup = dataById?.gid ? `G-${dataById?.gid}` : `None`;
+  const unixGroup = dataById?.gid ? `G-${dataById?.gid}`.slice() : `None`;
   const usageData = dataById?.allocations?.find((allocations) => allocations);
   const percentageCompute = usageData
     ? (usageData?.used / usageData?.total) * 100
@@ -68,8 +68,7 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
         </dl>{' '}
         <dl className={styles['project-heading']}>
           <dt className={styles['key']}>Unix Group</dt>
-          <dd className={styles['value']}>{`${unixGroup}
-          }`}</dd>
+          <dd className={styles['value']}>{`${unixGroup}`}</dd>
 
           <DescriptionList
             direction="horizontal"
