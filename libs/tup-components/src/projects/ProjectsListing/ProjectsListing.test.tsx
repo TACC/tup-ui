@@ -26,9 +26,9 @@ describe('Projects Summary Listing Component', () => {
     expect(screen.findAllByText('/projects/59184', { exact: false }));
     expect(screen.findAllByText('Project Charge Code: STA22002'));
     expect(screen.findAllByText('Principle Investigator: Jake Rosenberg'));
-    expect(screen.getAllByText('Compute: 10 SUs'));
+    expect(screen.getAllByText('10 SUs'));
     expect(screen.getAllByText('(0% Used)'));
-    expect(screen.getAllByText('Storage: -- GBs'));
+    expect(screen.getAllByText('-- GBs'));
 
     // Allocations table
     expect(screen.getAllByText('10 SU'));
