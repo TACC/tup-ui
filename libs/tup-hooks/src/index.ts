@@ -82,8 +82,8 @@ export type SystemMonitorRawSystem = {
 
 export type ProjectsAllocations = {
   id: number;
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
   type: string;
   total: number;
   used: number;
