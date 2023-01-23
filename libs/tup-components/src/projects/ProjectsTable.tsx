@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useTable, Column } from 'react-table';
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
-import { ProjectTitle, PrinInv } from './ProjectsCells';
+import { ProjectTitle } from './ProjectsCells';
 import { ProjectsRawSystem, useProjects } from '@tacc/tup-hooks';
 
 export const ProjectsTable: React.FC = () => {
