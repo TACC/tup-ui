@@ -16,10 +16,3 @@ export const Status: React.FC<{ cell: Cell<Ticket, StatusDisplay> }> = ({
     {value.text}
   </span>
 );
-
-export const Subject: React.FC<{ cell: Cell<Ticket, string> }> = ({
-  cell: { value, row },
-}) => <Link to={`/tickets/${row.original.numerical_id}`}>{value}</Link>;
-{
-  /* <Link to={`/tickets/${row.original.numerical_id}`}>{value}</Link>; */
-}
