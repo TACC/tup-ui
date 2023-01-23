@@ -64,6 +64,7 @@ describe('Ticket Modal', () => {
     const reply = getByLabelText(/Reply/);
     const submit = getByRole('button', { name: 'Reply' });
     fireEvent.change(reply, { target: { value: 'error message?' } });
+    fireEvent.blur(reply);
     fireEvent.click(submit);
 
     await waitFor(() =>
