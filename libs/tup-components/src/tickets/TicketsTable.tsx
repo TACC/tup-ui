@@ -62,7 +62,7 @@ export const TicketsTable: React.FC = () => {
         accessor: 'Subject',
         Header: 'Subject',
         Cell: (el) => (
-          <Link to={`/${historyModalBasePath}/${el.row.original.numerical_id}`}>
+          <Link to={`/tickets/${el.row.original.numerical_id}`}>
             <span title={el.value}>{el.value}</span>
           </Link>
         ),

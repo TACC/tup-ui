@@ -18,7 +18,7 @@ const FormikTextarea: React.FC<FormikTextareaProps> = ({
       required={required}
       description={description}
     >
-      <textarea {...field} {...props} />
+      <textarea {...field} {...props} id={name} />
     </FieldWrapper>
   );
 };

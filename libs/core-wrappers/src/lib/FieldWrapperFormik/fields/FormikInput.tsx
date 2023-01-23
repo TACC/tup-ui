@@ -18,7 +18,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
       required={required}
       description={description}
     >
-      <input {...field} {...props} />
+      <input {...field} {...props} id={name} />
     </FieldWrapper>
   );
 };

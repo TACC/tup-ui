@@ -185,7 +185,7 @@ export type TicketHistoryEntry = {
   Content: string;
   Creator: string;
   Created: string;
-  Attachments: Array<Array<any>>;
+  Attachments: Array<[number, string]>;
 };
 
 export type TicketHistory = Array<TicketHistoryEntry>;
@@ -241,5 +241,6 @@ export {
   useTicketCreateNoAuth,
   useTicketReply,
 } from './useTickets';
+export { default as useProjects } from './useProjects';
 export { default as useProjectUsers } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';

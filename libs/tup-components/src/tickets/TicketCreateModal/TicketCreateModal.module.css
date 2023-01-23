@@ -3,9 +3,9 @@
   max-height: 60vh;
 }
 
-.root {
-  color: var(--global-color-primary--xx-dark);
-  font-size: 0.75rem;
+.modal-header {
+  font-size: 2rem;
+  align-items: center;
 }
 
 /* make bootstrap dialog wider */

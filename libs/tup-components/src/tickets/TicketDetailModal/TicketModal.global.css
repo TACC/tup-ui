@@ -23,13 +23,11 @@
 
 .ticket-reply-submission {
   display: flex;
-  justify-content: space-between;
-  align-items: right;
+  justify-content: right;
 }
 
 .ticket-model-content {
   color: var(--global-color-primary--xx-dark);
-  font-size: 0.75rem;
   height: 90vh;
   min-height: 535px;
  /* alter bootstrap size to match font-size for rest of ticket forms */
@@ -39,9 +37,10 @@
  /* make bootstrap dialog wider */
 }
 
-.ticket-model-content .col-form-label-sm {
-  font-size: 0.75rem;
+.modal-dialog.modal-xl {
+  max-width: 80vw;
 }
+
 
 .ticket-model-content .card-header {
   background-color: white;
@@ -116,4 +115,9 @@
 .ticket-model-content .link:hover {
   color: var(--global-color-accent--normal);
   text-decoration: underline;
+}
+
+.ticket-reply-submission button {
+  padding-left: 5rem;
+  padding-right: 5rem;
 }

@@ -1,6 +1,7 @@
 import { UseQueryResult, useQueryClient } from 'react-query';
 import { useGet, usePost } from './requests';
-import { Ticket, TicketHistory } from '.';
+import { Ticket, TicketHistory, useConfig, useJwt } from '.';
+import axios from 'axios';
 
 // Query to retrieve the user's tickets.
 export const useGetTickets = (): UseQueryResult<Ticket[]> => {
@@ -33,16 +34,43 @@ export const useGetTicketHistory = (
   return query;
 };
 
+const downloadAttachment = async (
+  ticketId: string,
+  attachmentId: number,
+  baseUrl: string,
+  jwt?: string
+) => {
+  const response = await axios({
+    method: 'get',
+    url: `${baseUrl}/tickets/${ticketId}/attachment/${attachmentId}`,
+    headers: { 'x-tup-token': jwt ?? '' },
+    responseType: 'blob',
+  });
+
+  const fileName = response.headers['content-disposition']
+    ?.split('filename=')[1]
+    .split(';')[0];
+  const url = window.URL.createObjectURL(response.data);
+  const link = document.createElement('a');
+  link.href = url;
+  link.setAttribute('download', fileName);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
+
 // Query to retrieve a specific file attachment from a specific ticket history.
 export const useGetFileAttachment = (
-  ticketId: string,
-  attachmentId: string
-): UseQueryResult<File> => {
-  const query = useGet<File>({
-    endpoint: `/tickets/${ticketId}/attachment/${attachmentId}`,
-    key: `tickets/${ticketId}/attachment/${attachmentId}`,
-  });
-  return query;
+  ticketId: string
+): { download: (attachmentId: number) => Promise<void> } => {
+  const { baseUrl } = useConfig();
+  const { jwt } = useJwt();
+
+  return {
+    download: (attachmentId: number) =>
+      downloadAttachment(ticketId, attachmentId, baseUrl, jwt),
+  };
 };
 
 // Mutation to POST new ticket form data to tup-services.

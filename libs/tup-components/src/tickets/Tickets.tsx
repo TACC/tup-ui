@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { SectionTableWrapper } from '@tacc/core-components';
 import { TicketsTable } from './TicketsTable';
 import { RequireAuth } from '../utils';
+import TicketCreateModal from './TicketCreateModal';
 
 const Tickets: React.FC = () => {
   return (
@@ -10,14 +11,7 @@ const Tickets: React.FC = () => {
       <>
         <SectionTableWrapper
           header="Tickets"
-          headerActions={
-            <Link
-              to={'create'}
-              className="c-button c-button--secondary c-button--size-small"
-            >
-              + New Ticket
-            </Link>
-          }
+          headerActions={<TicketCreateModal />}
           contentShouldScroll
         >
           <TicketsTable />

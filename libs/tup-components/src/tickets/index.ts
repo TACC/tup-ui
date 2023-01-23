@@ -1,14 +1,14 @@
 export { default as TicketsDashboard } from './TicketsDashboard';
 export { default as TicketCreateModal } from './TicketCreateModal';
 export { default as Tickets } from './Tickets';
-export { default as TicketModal } from './TicketModal';
+export { default as TicketModal } from './TicketDetailModal';
 
 export type StatusDisplay = {
   text: string;
   unknownStatusText: boolean;
 };
 
-export type formValues = {
+export type CreateTicketFormValues = {
   subject: string;
   description: string;
   first_name: string;
@@ -23,6 +23,6 @@ export type historyCardParams = {
   creator: string;
   isCreator: boolean;
   content: string;
-  attachments?: Array<Array<any>>;
+  attachments?: Array<[number, string]>;
   ticketId: string;
 };
