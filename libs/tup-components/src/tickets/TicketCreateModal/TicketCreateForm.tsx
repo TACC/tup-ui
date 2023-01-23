@@ -78,7 +78,6 @@ export const TicketCreateForm: React.FC = () => {
     >
       {({ isValid }) => (
         <Form className={styles['ticket-create-form']} id="ticket-create-form">
-          {!isValid && <div>not valid</div>}
           <FormikInput name="subject" label="Subject" required description="" />
           <FormikTextarea
             name="description"

@@ -51,7 +51,7 @@ describe('TicketCreateForm Component', () => {
     fireEvent.click(submit);
 
     await waitFor(() => {
-      expect(screen.queryByDisplayValue(/test/)).toBeNull();
+      expect(screen.queryAllByDisplayValue(/test/).length).toBe(0);
     });
   });
 
