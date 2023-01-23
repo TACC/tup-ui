@@ -9,12 +9,15 @@ describe('TicketCreateForm Component', () => {
     testRender(<TicketCreateForm />);
     const subject = screen.getByLabelText(/Subject/);
     const description = screen.getByLabelText(/Problem Description/);
-    const submit = screen.getByRole('button', { name: /add ticket/i });
 
     expect(await screen.findByDisplayValue('mock')).toBeDefined();
 
     fireEvent.change(subject, { target: { value: 'test' } });
     fireEvent.change(description, { target: { value: 'test' } });
+    fireEvent.blur(description);
+
+    const submit = screen.getByRole('button', { name: /add ticket/i });
+    expect(submit.getAttribute('disabled')).toBe(null);
     fireEvent.click(submit);
 
     expect(
@@ -34,15 +37,17 @@ describe('TicketCreateForm Component', () => {
 
     const subject = screen.getByLabelText(/Subject/);
     const description = screen.getByLabelText(/Problem Description/);
-    const submit = screen.getByRole('button', { name: /add ticket/i });
 
     fireEvent.change(subject, { target: { value: 'test' } });
     fireEvent.change(description, { target: { value: 'test' } });
+    fireEvent.blur(description);
+
+    const submit = screen.getByRole('button', { name: /add ticket/i });
+    expect(submit.getAttribute('disabled')).toBe(null);
     fireEvent.click(submit);
 
     expect(
       await screen.findByText(/There was an error creating your ticket/)
     ).toBeDefined();
-    server.resetHandlers();
   });
 });
