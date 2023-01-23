@@ -101,5 +101,6 @@ describe('TicketCreateForm Component', () => {
     expect(
       await screen.findByText(/There was an error creating your ticket./)
     ).toBeDefined();
+    server.resetHandlers();
   });
 });
