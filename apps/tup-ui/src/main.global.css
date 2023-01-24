@@ -1,3 +1,6 @@
+/* To style pages without a React component */
+@import url('./styles/components/c-page.css');
+
 /* To overwrite @tacc/core-styles CEPv2 spacing */
 :root {
   /* TACC/Core-Styles/blob/823b7b9/src/lib/_imports/settings/space.css */
