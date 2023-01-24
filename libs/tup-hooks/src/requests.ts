@@ -70,3 +70,33 @@ export function usePost<BodyType, ResponseType>({
   }, options);
   return mutation;
 }
+
+type UseDeleteParams<ResponseType> = {
+  endpoint: string;
+  options?: UseMutationOptions<ResponseType, AxiosError>;
+  baseUrl?: string;
+};
+
+export function useDelete<ResponseType>({
+  endpoint,
+  options = {},
+  baseUrl: alternateBaseUrl,
+}: UseDeleteParams<ResponseType>) {
+  const client = axios;
+  const { baseUrl } = useConfig();
+  const { jwt } = useJwt();
+  const deleteUtil = async () => {
+    const response = await client.delete<ResponseType>(
+      `${alternateBaseUrl ?? baseUrl}${endpoint}`,
+      {
+        headers: { 'x-tup-token': jwt ?? '' },
+      }
+    );
+    return response.data;
+  };
+  const mutation = useMutation(async () => {
+    const response = await deleteUtil();
+    return response;
+  }, options);
+  return mutation;
+}

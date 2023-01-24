@@ -228,9 +228,7 @@ export type UsagePerResource = {
 };
 
 export type MfaTokenResponse = {
-  count: number;
-  current: number;
-  tokens: {
+  token?: {
     active: boolean;
     description: string;
     id: number;
@@ -241,7 +239,8 @@ export type MfaTokenResponse = {
     user_id: string;
     user_realm: string;
     username: string;
-  }[];
+    rollout_state: 'verify' | 'enrolled';
+  };
 };
 
 export type MfaPairingResponse = {
@@ -288,5 +287,6 @@ export {
   useMfa,
   useMfaPairTotp,
   useMfaPairSms,
-  useMfaValidate,
+  useMfaVerify,
+  useMfaDelete,
 } from './useMfa';

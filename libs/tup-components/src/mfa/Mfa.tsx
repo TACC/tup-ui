@@ -1,61 +1,43 @@
 import React, { useState } from 'react';
 import { useMfa } from '@tacc/tup-hooks';
 import { Button, LoadingSpinner } from '@tacc/core-components';
-import styles from './Mfa.module.css';
-
 import MfaSuccessView from './MfaSuccessView';
 import MfaHeader from './MfaHeader';
 import MfaQRPanel from './MfaQRPanel';
 import MfaSmsPanel from './MfaSmsPanel';
 import MfaValidationPanel from './MfaValidationPanel';
+import styles from './Mfa.module.css';
 
-const MfaPairingLayout: React.FC<{ method: 'SMS' | 'TOTP' }> = ({ method }) => {
-  const mfaQuery = useMfa();
-
-  if (mfaQuery.isLoading)
-    return (
-      <div style={{ width: '100%' }}>
-        <LoadingSpinner />
-      </div>
-    );
-  if (mfaQuery.data && mfaQuery.data.count > 0)
-    return (
-      <div style={{ padding: '15px' }}>
-        <MfaSuccessView />
-      </div>
-    );
+const MfaPairingLayout: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
   return (
-    <div style={{ padding: '15px' }} className={styles['totplayout']}>
+    <>
       <MfaHeader />
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          margin: '20px',
-          gap: '20px',
-        }}
-      >
-        {method === 'TOTP' && <MfaQRPanel />}
-        {method === 'SMS' && <MfaSmsPanel />}
-        <div style={{ borderLeft: '2px solid #D8D8D8' }} />
-        <MfaValidationPanel />
+      <div className={styles['pairing-container']}>
+        {method === 'totp' && <MfaQRPanel />}
+        {method === 'sms' && <MfaSmsPanel />}
+        <div className={styles['pairing-separator']} />
+        <MfaValidationPanel tokenType={method} />
       </div>
-    </div>
+    </>
   );
 };
 
 const MfaView = () => {
   const [mfaType, setMfaType] = useState<'SELECT' | 'SMS' | 'TOTP'>('SELECT');
+  const { isLoading, data } = useMfa();
+
+  if (isLoading) return <LoadingSpinner />;
+  if (data?.token?.rollout_state === 'enrolled') return <MfaSuccessView />;
 
   switch (mfaType) {
     case 'SELECT':
       return (
-        <div style={{ padding: '15px' }}>
+        <>
           <MfaHeader />
-          <div style={{ paddingTop: '15px' }}>
+          <div className={styles['mfa-type-container']}>
             Select whether you want to use an MFA token app or SMS texting for
             authenticating to your TACC account.
-            <div style={{ display: 'flex', gap: '20px', marginTop: '30px' }}>
+            <div className={styles['mfa-type-selection']}>
               <Button onClick={() => setMfaType('TOTP')} type="secondary">
                 Token App
               </Button>
@@ -64,12 +46,12 @@ const MfaView = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </>
       );
     case 'SMS':
-      return <MfaPairingLayout method="SMS" />;
+      return <MfaPairingLayout method="sms" />;
     case 'TOTP':
-      return <MfaPairingLayout method="TOTP" />;
+      return <MfaPairingLayout method="totp" />;
   }
 };
 

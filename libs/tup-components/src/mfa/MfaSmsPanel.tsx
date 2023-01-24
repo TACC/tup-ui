@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMfaPairSms } from '@tacc/tup-hooks';
 import { Button } from '@tacc/core-components';
+import styles from './Mfa.module.css';
 
 const MfaSmsPanel = () => {
   const smsMutation = useMfaPairSms();
@@ -10,11 +11,14 @@ const MfaSmsPanel = () => {
     smsMutation.mutate({ phoneNumber });
   };
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div>
       <span>1. Enter your phone number:</span>
-      <form onSubmit={(e) => onSubmit(e)} style={{ paddingTop: '10px' }}>
-        <input onChange={(e) => setPhoneNumber(e.target.value)}></input>
-        <div style={{ paddingTop: '20px' }}>
+      <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
+        <input
+          id="mfa-phone"
+          onChange={(e) => setPhoneNumber(e.target.value)}
+        />
+        <div className={styles['submit-button']}>
           <Button
             type="primary"
             attr="submit"
