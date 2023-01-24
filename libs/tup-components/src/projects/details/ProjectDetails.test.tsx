@@ -1,7 +1,6 @@
 import ProjectDetails from './ProjectDetails';
-import { testRender, server } from '@tacc/tup-testing';
+import { testRender } from '@tacc/tup-testing';
 import { screen } from '@testing-library/react';
-import { rest } from 'msw';
 
 describe('Project Details Component', () => {
   it('should display a spinner while loading', async () => {
