@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TicketCreateForm } from './TicketCreateForm';
 import { server, testRender } from '@tacc/tup-testing';
 import { fireEvent, waitFor, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
 
 describe('TicketCreateForm Component', () => {
   it('should display a success message after mutation', async () => {
+    const user = userEvent.setup();
     testRender(<TicketCreateForm />);
     const subject = screen.getByLabelText(/Subject/);
     const description = screen.getByLabelText(/Problem Description/);
 
     expect(await screen.findByDisplayValue('mock')).toBeDefined();
 
-    fireEvent.change(subject, { target: { value: 'test' } });
-    fireEvent.change(description, { target: { value: 'test' } });
-    fireEvent.blur(description);
+    await user.type(subject, 'test');
+    await user.type(description, 'test');
 
     const submit = screen.getByRole('button', { name: /add ticket/i });
     expect(submit.getAttribute('disabled')).toBe(null);
@@ -26,6 +27,7 @@ describe('TicketCreateForm Component', () => {
   });
 
   it('should display an error message if an error is returned from useMutation hook', async () => {
+    const user = userEvent.setup();
     server.use(
       rest.post('http://localhost:8001/tickets', (req, res, ctx) =>
         res.once(ctx.status(404))
@@ -38,9 +40,8 @@ describe('TicketCreateForm Component', () => {
     const subject = screen.getByLabelText(/Subject/);
     const description = screen.getByLabelText(/Problem Description/);
 
-    fireEvent.change(subject, { target: { value: 'test' } });
-    fireEvent.change(description, { target: { value: 'test' } });
-    fireEvent.blur(description);
+    await user.type(subject, 'test');
+    await user.type(description, 'test');
 
     const submit = screen.getByRole('button', { name: /add ticket/i });
     expect(submit.getAttribute('disabled')).toBe(null);
