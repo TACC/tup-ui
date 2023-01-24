@@ -1,0 +1,16 @@
+.ticket-create-form input {
+    max-width: 100%;
+}
+.ticket-create-form textarea {
+    max-width: 100%;
+    resize: none;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+}
+.form-row > div {
+    flex-grow: 1;
+}

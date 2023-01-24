@@ -10,12 +10,6 @@ import layoutStyles from './SectionContent.layouts.module.css';
  */
 export const LAYOUT_CLASS_MAP = {
   /**
-   * Each child element is a full-height column with a flexible width
-   *
-   * CAVEAT: No sidebar styles provided (until a <SectionSidebar> exists)
-   */
-  hasSidebar: layoutStyles['has-sidebar'],
-  /**
    * Each child element is a flexible block inside one full-height column
    */
   oneColumn: layoutStyles['one-column'],
@@ -34,7 +28,7 @@ export const LAYOUT_CLASS_MAP = {
    */
   multiColumn: layoutStyles['multi-column'],
 };
-export const DEFAULT_LAYOUT = 'hasSidebar';
+export const DEFAULT_LAYOUT = 'one-column';
 export const LAYOUTS = [...Object.keys(LAYOUT_CLASS_MAP)];
 
 /**
