@@ -5,6 +5,12 @@
     font-size: 2.1rem;
     align-items: left;
     gap: 20px;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.project-detail-header > .link {
+    font-size: 1.6rem;
 }
 
 .project-details {
@@ -21,4 +27,3 @@
     border: 1px solid  #C7C7C7;
     margin-left: 20px;
 }
-

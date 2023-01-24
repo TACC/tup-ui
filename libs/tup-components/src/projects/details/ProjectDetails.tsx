@@ -2,6 +2,8 @@ import React from 'react';
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { useProjects, usePublications, useGrants } from '@tacc/tup-hooks';
 import styles from './ProjectDetails.module.css';
+import { Link } from 'react-router-dom';
+
 
 const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
   const { isLoading, error } = useProjects();
@@ -28,14 +30,20 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
   return (
     <>
       <div >
-        <span className={styles['project-detail-header']}>Abstract</span>
+        <span className={styles['project-detail-header']}>Abstract
+        <Link to={`/projects/${projectId}`} className={styles['link']}>
+          Edit Abstract
+        </Link></span>
         <span className={styles['project-details']}>
           {projectDetails?.description}
         </span>
       </div>
       <div className={styles['separator']}></div>
       <div>
-        <span className={styles['project-detail-header']}>Publications</span>
+        <span className={styles['project-detail-header']}>Publications
+        <Link to={`/projects/${projectId}/publications`} className={styles['link']}>
+          + Add Publication
+        </Link></span>
         {pub_details === undefined ? (
           <span className={styles['project-details']}>
             This project has no publications.
@@ -57,7 +65,10 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
       </div>
       <div className={styles['separator']}></div>
       <div>
-        <span className={styles['project-detail-header']}>Grants</span>
+        <span className={styles['project-detail-header']}>Grants
+        <Link to={`/projects/${projectId}/grants`} className={styles['link']}>
+          + Add Grant
+        </Link></span>
         {grant_details === undefined ? (
           <span className={styles['project-details']}>
             This project has no grants.
