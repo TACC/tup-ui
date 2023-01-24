@@ -1,10 +1,9 @@
 import { Outlet, Routes, Route } from 'react-router-dom';
+
 import {
   PageLayout,
   Sidebar,
-  TicketCreateModal,
   Tickets,
-  TicketDetails,
   RequireAuth,
 } from '@tacc/tup-components';
 import {
@@ -16,6 +15,7 @@ import {
   ProjectDetail,
   ProjectMember,
   Mfa,
+  TicketDetail,
 } from './pages';
 
 const AppLayout = () => {
@@ -25,9 +25,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<AppLayout />}>
-        <Route path="/" element={<Dashboard />}>
-          <Route path="tickets-create" element={<TicketCreateModal />} />
-        </Route>
+        <Route path="/" element={<Dashboard />} />
         <Route
           path="mfa"
           element={
@@ -36,9 +34,9 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+        <Route path="/" element={<Dashboard />}></Route>
         <Route path="tickets" element={<Tickets />}>
-          <Route path="create" element={<TicketCreateModal />} />
-          <Route path=":ticketId" element={<TicketDetails />} />
+          <Route path=":ticketId" element={<TicketDetail />} />
         </Route>
         <Route path="projects" element={<Projects />}></Route>
         <Route path="projects/:projectId" element={<ProjectView />}>

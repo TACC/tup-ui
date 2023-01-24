@@ -1,6 +1,6 @@
 import React from 'react';
 import FieldWrapper from '../FieldWrapperFormik';
-import { FieldInputProps } from 'formik';
+import { useField } from 'formik';
 import { FormikInputProps } from '.';
 
 const FormikInput: React.FC<FormikInputProps> = ({
@@ -9,16 +9,18 @@ const FormikInput: React.FC<FormikInputProps> = ({
   required,
   description,
   ...props
-}: FormikInputProps) => (
-  <FieldWrapper
-    name={name}
-    label={label}
-    required={required}
-    description={description}
-    as={(formikProps: FieldInputProps<any>) => (
-      <input {...props} {...formikProps} required={required} />
-    )}
-  />
-);
+}: FormikInputProps) => {
+  const [field] = useField(name);
+  return (
+    <FieldWrapper
+      name={name}
+      label={label}
+      required={required}
+      description={description}
+    >
+      <input {...field} {...props} id={name} />
+    </FieldWrapper>
+  );
+};
 
-export default React.memo(FormikInput);
+export default FormikInput;

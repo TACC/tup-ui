@@ -26,7 +26,7 @@ export type UserProfile = {
   lastName: string;
   institution: string;
   institutionId: number;
-  department: string;
+  department: string | null;
   departmentId: number;
   country: string;
   countryId: number;
@@ -82,8 +82,8 @@ export type SystemMonitorRawSystem = {
 
 export type ProjectsAllocations = {
   id: number;
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
   type: string;
   total: number;
   used: number;
@@ -172,6 +172,38 @@ export type Ticket = {
   numerical_id: string;
 };
 
+export type TicketHistoryEntry = {
+  id: string;
+  Ticket: string;
+  TimeTaken: string;
+  Type: string;
+  Field: string;
+  OldValue: string;
+  NewValue: string;
+  Data: string;
+  Description: string;
+  Content: string;
+  Creator: string;
+  Created: string;
+  Attachments: Array<[number, string]>;
+};
+
+export type TicketHistory = Array<TicketHistoryEntry>;
+
+export type CreateTicketBody = {
+  subject: string;
+  description: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  cc: string;
+  attachments: File[];
+};
+
+export type CreateTicketResponse = {
+  ticketId: string;
+};
+
 export type ProjectUser = {
   id: number;
   username: string;
@@ -238,9 +270,18 @@ export type MfaValidationResponse = {
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
+export { default as useConfig } from './useConfig';
 export { default as useSystemMonitor } from './useSystemMonitor';
+export {
+  useGetFileAttachment,
+  useGetTickets,
+  useGetTicketDetails,
+  useGetTicketHistory,
+  useTicketCreate,
+  useTicketCreateNoAuth,
+  useTicketReply,
+} from './useTickets';
 export { default as useProjects } from './useProjects';
-export { default as useTickets } from './useTickets';
 export { default as useProjectUsers } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
 export {

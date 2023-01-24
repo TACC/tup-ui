@@ -15,3 +15,4 @@ export { default as InfiniteScrollTable } from './lib/InfiniteScrollTable';
 export { default as Sidebar } from './lib/Sidebar';
 export { default as HistoryBadge } from './lib/HistoryBadge';
 export { default as Collapse } from './lib/Collapse';
+export * from './lib/Form';
