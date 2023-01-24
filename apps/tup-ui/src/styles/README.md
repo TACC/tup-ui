@@ -60,10 +60,14 @@ import './SomeComponent.global.css';
 
 ## Browse [Core Styles]
 
-| Environment | URL                                                  |
-| ----------- | ---------------------------------------------------- |
-| Local       | http://localhost:8000/static/ui/index.html           |
-| Remote      | https://dev.tup.tacc.utexas.edu/static/ui/index.html |
+| Environment | URL                                                            |
+| ----------- | -------------------------------------------------------------- |
+| Local\*     | http://localhost:8000/static/ui/index.html                     |
+| Remote\*    | https://dev.tup.tacc.utexas.edu/static/ui/index.html           |
+| Source†     | https://github.com/TACC/Core-Styles/tree/main/src/lib/_imports |
+
+<sub>\* Incomplete, but each is documented with test case examples.</sub>\
+<sub>† Complete, but expects knowledge of [ITCSS](https://confluence.tacc.utexas.edu/x/IAA9Cw).</sub>
 
 ## Use [Core Styles]
 
@@ -116,10 +120,10 @@ selector {
 **`/main.css`**
 
 ```css
-@import url('@tacc/core-styles/.../settings/border.css');
+@import url('@tacc/core-styles/.../components/something-not-already-available-globally.css');
 ```
 
-<sub>\* The file may not exist, because no global project styles exist.</sub>
+<sub>\* A `main.css` might not exist (because no global project styles exist).</sub>
 
 ## Create Global Project Styles
 
@@ -130,10 +134,9 @@ If you need global styles, then evaluate these options.
 **`/styles/(.../)global-stylesheet.css`**
 
 ```css
-@import url('@tacc/core-styles/.../settings/color.css');
-
 :root {
-  --project: 'value';
+  /* To overwrite @tacc/core-styles/.../settings/color.css */
+  --some-global-prop: 'value';
 }
 ```
 
@@ -156,7 +159,7 @@ selector {
 **`/main.css`**
 
 ```css
-@import url('@tacc/core-styles/.../settings/border.css');
+@import url('@tacc/core-styles/.../components/something-not-already-available-globally.css');
 ```
 
 [core styles]: https://github.com/TACC/Core-Styles
