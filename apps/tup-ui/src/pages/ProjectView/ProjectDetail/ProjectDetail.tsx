@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 
 const ProjectDetail: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
+  if (!projectId) return <div>No project selected.</div>;
   return (
     <Section
       header={`Project Detail: ${projectId}`}

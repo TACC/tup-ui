@@ -3,9 +3,7 @@ import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { useProjects, usePublications, useGrants } from '@tacc/tup-hooks';
 import styles from './ProjectDetails.module.css';
 
-export const ProjectDetails: React.FC<{ projectId: number }> = ({
-  projectId,
-}) => {
+const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
   const { isLoading, error } = useProjects();
   const details = useProjects();
   const project_data = details.data ?? [];
@@ -24,7 +22,7 @@ export const ProjectDetails: React.FC<{ projectId: number }> = ({
   if (isLoading) return <LoadingSpinner />;
   if (error)
     return (
-      <InlineMessage type="warning">Unable to retrieve projects.</InlineMessage>
+      <InlineMessage type="warning">Unable to retrieve project details.</InlineMessage>
     );
 
   return (
