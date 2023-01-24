@@ -28,7 +28,9 @@ const Layout: React.FC = () => {
       <section className="c-page">
         <SectionHeader
           actions={
-            <a href="https://example.com" target="_blank" rel="noreferrer">Manage Account (needs real link)</a>
+            <a href="https://example.com" target="_blank" rel="noreferrer">
+              Manage Account (needs real link)
+            </a>
           }
         >
           Dashboard
