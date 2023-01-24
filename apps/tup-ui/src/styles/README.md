@@ -117,10 +117,10 @@ selector {
 
 ### In `main.css`, Import from Global Project Styles
 
-**`/main.css`**
+**`/main.global.css`**
 
 ```css
-@import url('@tacc/core-styles/.../components/something-not-already-available-globally.css');
+@import url('/styles/(.../)something-not-already-available-globally.css');
 ```
 
 <sub>\* A `main.css` might not exist (because no global project styles exist).</sub>
@@ -131,7 +131,7 @@ If you need global styles, then evaluate these options.
 
 ### In Global Styles, Append to [Core Styles]
 
-**`/styles/(.../)global-stylesheet.css`**
+**`/styles/(.../)some-global-stylesheet.css`**
 
 ```css
 :root {
@@ -142,7 +142,7 @@ If you need global styles, then evaluate these options.
 
 ### In Global Project Styles, Extend from [Core Styles]
 
-**`/styles/(.../)global-stylesheet.css`**
+**`/styles/(.../)some-global-stylesheet.css`**
 
 ```css
 @import url('@tacc/core-styles/.../tools/x-truncate.css');
@@ -156,7 +156,7 @@ selector {
 
 ### In Global Project Styles, Import from [Core Styles]
 
-**`/main.css`**
+**`/main.global.css`**
 
 ```css
 @import url('@tacc/core-styles/.../components/something-not-already-available-globally.css');
