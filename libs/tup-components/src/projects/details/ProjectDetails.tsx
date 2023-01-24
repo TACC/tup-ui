@@ -27,12 +27,13 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
 
   return (
     <>
-      <div>
+      <div >
         <span className={styles['project-detail-header']}>Abstract</span>
         <span className={styles['project-details']}>
           {projectDetails?.description}
         </span>
       </div>
+      <div className={styles['separator']}></div>
       <div>
         <span className={styles['project-detail-header']}>Publications</span>
         {pub_details === undefined ? (
@@ -54,6 +55,7 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
           </span>
         )}
       </div>
+      <div className={styles['separator']}></div>
       <div>
         <span className={styles['project-detail-header']}>Grants</span>
         {grant_details === undefined ? (
