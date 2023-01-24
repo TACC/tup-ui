@@ -47,9 +47,8 @@ services:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - tup_cms_es_data:/usr/share/elasticsearch/data
     container_name: tup_cms_elasticsearch
-    # To avoid exposing Elasticsearch to network (thus letting UT/ISO sniff port), do not set ports (per Jake R)
-    # ports:
-    #   - 9201:9200
+    ports:
+      - 9201:9200
     networks:
       - tup_cms_net
 
