@@ -78,6 +78,10 @@ LOGO = [
     "True"
 ]
 
+########################
+# DJANGO
+########################
+
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'apps.dashboard.backend.TupServicesBackend']
 TUP_SERVICES_URL = "https://dev.tup-services.tacc.utexas.edu"
 LOGIN_URL = "/dashboard/login"
