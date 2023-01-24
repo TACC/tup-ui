@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { SectionHeader } from '@tacc/core-components';
 import {
   ProfileComponent,
   RequireAuth,
@@ -25,10 +26,13 @@ const Layout: React.FC = () => {
   return (
     <RequireAuth>
       <section className="c-page">
-        <header>
-          <h1>Dashboard</h1>
-          <a href="https://example.com" target="_blank" rel="noreferrer">Manage Account (needs real link)</a>
-        </header>
+        <SectionHeader
+          actions={
+            <a href="https://example.com" target="_blank" rel="noreferrer">Manage Account (needs real link)</a>
+          }
+        >
+          Dashboard
+        </SectionHeader>
         <main className={styles.panels}>
           <ProfileComponent />
           <SystemMonitor />
