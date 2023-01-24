@@ -14,17 +14,6 @@
         "cwd": "libs/core-wrappers"
       }
     },
-    "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          {
-            "command": "npx vite build --emptyOutDir"
-          }
-        ],
-        "cwd": "libs/core-wrappers"
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
