@@ -92,6 +92,8 @@ LOGIN_URL = "/dashboard/login"
 
 from taccsite_cms.settings import INSTALLED_APPS
 
+# News must be installed BEFORE our CMS app; reason unknown
+# https://github.com/TACC/Core-CMS-Resources/pull/127/commits/0b09af6cb0ae6dd630f9ca94bf36ca9e042a5d81
 tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
 INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
     # 'filer',              # already in Core
