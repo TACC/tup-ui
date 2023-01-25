@@ -3,7 +3,7 @@ import { useMfaPairTotp } from '@tacc/tup-hooks';
 import { Button, LoadingSpinner, SectionMessage } from '@tacc/core-components';
 import styles from './Mfa.module.css';
 
-const MfaQRPanel = () => {
+const MfaQRPanel: React.FC = () => {
   const { mutate, isLoading, data, isError } = useMfaPairTotp();
   return (
     <div>

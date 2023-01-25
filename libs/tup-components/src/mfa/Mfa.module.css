@@ -2,7 +2,7 @@
 .pairing-container {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px;
+    padding: var(--global-space--section);
     gap: 20px;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .mfa-type-container {
-    padding-top: 15px;
+    padding-top: var(--global-space--section-top);
 }
 
 .mfa-header {
@@ -83,7 +83,7 @@
 .mfa-success-container {
     width: fit-content;
     height: fit-content;
-    padding: 15px;
+    padding: var(--global-space--section)
 }
 
 .mfa-return-button {

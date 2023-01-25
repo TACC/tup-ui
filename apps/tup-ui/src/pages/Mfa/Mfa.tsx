@@ -1,12 +1,20 @@
 import React from 'react';
-import { MfaView } from '@tacc/tup-components';
+import { MfaHeader, MfaWrapper, RequireAuth } from '@tacc/tup-components';
 import styles from './Mfa.module.css';
-import { divide } from 'lodash';
+import { Outlet } from 'react-router-dom';
 
-export default () => {
+const Mfa: React.FC = () => {
   return (
-    <div className={styles['mfa-layout']}>
-      <MfaView />
-    </div>
+    <RequireAuth>
+      <div className={styles['mfa-layout']}>
+        <MfaHeader />
+        {/* Default to a "success" view if user has a verified token */}
+        <MfaWrapper>
+          <Outlet />
+        </MfaWrapper>
+      </div>
+    </RequireAuth>
   );
 };
+
+export default Mfa;

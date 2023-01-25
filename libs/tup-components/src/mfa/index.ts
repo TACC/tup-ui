@@ -1,1 +1,4 @@
-export { default as MfaView } from './Mfa';
+export { default as MfaSelection } from './MfaSelection';
+export { default as MfaHeader } from './MfaHeader';
+export { default as MfaPairingview } from './MfaPairingView';
+export { default as MfaWrapper } from './MfaWrapper';

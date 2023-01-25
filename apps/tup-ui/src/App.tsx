@@ -4,7 +4,8 @@ import {
   PageLayout,
   Sidebar,
   Tickets,
-  RequireAuth,
+  MfaPairingview,
+  MfaSelection,
 } from '@tacc/tup-components';
 import {
   Dashboard,
@@ -26,15 +27,6 @@ function App() {
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route path="/" element={<Dashboard />} />
-        <Route
-          path="mfa"
-          element={
-            <RequireAuth>
-              <Mfa />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route path="/" element={<Dashboard />}></Route>
         <Route path="tickets" element={<Tickets />}>
           <Route path=":ticketId" element={<TicketDetail />} />
         </Route>
@@ -42,6 +34,11 @@ function App() {
         <Route path="projects/:projectId" element={<ProjectView />}>
           <Route path="" element={<ProjectDetail />}></Route>
           <Route path=":username" element={<ProjectMember />}></Route>
+        </Route>
+        <Route path="mfa" element={<Mfa />}>
+          <Route path="" element={<MfaSelection />} />
+          <Route path="totp" element={<MfaPairingview method="totp" />} />
+          <Route path="sms" element={<MfaPairingview method="sms" />} />
         </Route>
         <Route path="logout" element={<Logout />}></Route>
       </Route>

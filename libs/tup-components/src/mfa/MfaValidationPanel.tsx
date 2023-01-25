@@ -12,21 +12,29 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
     e.preventDefault();
     mutate({ password: tokenValue, type: tokenType });
   };
+
+  const pairingMessage = {
+    sms: '2. Enter the token shown in the app to continue the pairing.',
+    totp: '2. Enter the token sent to your phone number.',
+  };
+
   return (
     <div style={{ flex: '1 1 200px' }}>
-      {tokenType === 'totp' &&
-        '2. Enter the token shown in the app to continue the pairing.'}
-      {tokenType === 'sms' && '2. Enter the token sent to your phone number.'}
-
+      {pairingMessage[tokenType]}
       <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
-        <input onChange={(e) => setTokenValue(e.target.value)}></input>
+        <label htmlFor="confirm-pairing" hidden>
+          Confirm Pairing
+        </label>
+        <input
+          id="confirm-pairing"
+          onChange={(e) => setTokenValue(e.target.value)}
+        ></input>
         <div className={styles['submit-button']}>
           <Button type="primary" attr="submit" isLoading={isLoading}>
             Confirm Pairing
           </Button>
         </div>
       </form>
-
       {error && (
         <div className={styles['verify-error-message']}>
           <SectionMessage type="error" scope="section">

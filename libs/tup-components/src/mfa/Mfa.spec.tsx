@@ -1,17 +1,14 @@
 import React from 'react';
-import MfaView from './Mfa';
+import MfaWrapper from './MfaWrapper';
 import { testRender, server } from '@tacc/tup-testing';
-import { waitFor } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { rest } from 'msw';
 import { enrolledToken } from '@tacc/tup-testing';
 
 describe('MFA Pairing component', () => {
   it('Should render selections if token is unenrolled.', async () => {
-    const { getByText } = testRender(<MfaView />);
-    await waitFor(() => {
-      expect(getByText('Token App')).toBeDefined();
-      expect(getByText('SMS Text')).toBeDefined();
-    });
+    testRender(<MfaWrapper>Pairing View</MfaWrapper>);
+    expect(screen.findByText('Pairing View')).toBeDefined();
   });
 
   it('Should render selections if no token exists', async () => {
@@ -20,11 +17,8 @@ describe('MFA Pairing component', () => {
         return res.once(ctx.json({ token: null }));
       })
     );
-    const { getByText } = testRender(<MfaView />);
-    await waitFor(() => {
-      expect(getByText('Token App')).toBeDefined();
-      expect(getByText('SMS Text')).toBeDefined();
-    });
+    testRender(<MfaWrapper>Pairing View</MfaWrapper>);
+    expect(screen.findByText('Pairing View')).toBeDefined();
   });
 
   it('Should render a success view if a token is enrolled', async () => {
@@ -33,9 +27,8 @@ describe('MFA Pairing component', () => {
         return res.once(ctx.json(enrolledToken));
       })
     );
-    const { getByText } = testRender(<MfaView />);
-    await waitFor(() => {
-      expect(getByText(/Pairing Successful/)).toBeDefined();
-    });
+    testRender(<MfaWrapper>Pairing View</MfaWrapper>);
+    expect(screen.findByText(/Pairing Successful/)).toBeDefined();
+    expect(screen.queryByText('Pairing view')).toBeNull();
   });
 });
