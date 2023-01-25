@@ -1,0 +1,123 @@
+.ticket-detailed-view-container, .ticket-detailed-view-container .row {
+  height: 100%;
+}
+
+.ticket-history {
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+.ticket-history-header {
+  padding-right: 1em;
+}
+
+.ticket-reply-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-reply-text-area {
+  min-height: 5em;
+}
+
+.ticket-reply-submission {
+  display: flex;
+  justify-content: right;
+}
+
+.ticket-model-content {
+  color: var(--global-color-primary--xx-dark);
+  height: 90vh;
+  min-height: 535px;
+ /* alter bootstrap size to match font-size for rest of ticket forms */
+ /* Override Bootstrap `.form-text` (being used in _common/Form/FormField.js), because we need the field text to be the same size as the field label */
+ /* ticket header specific styles */
+ /* Visual separation for subject preceded by ID */
+ /* make bootstrap dialog wider */
+}
+
+.modal-dialog.modal-xl {
+  max-width: 80vw;
+}
+
+
+.ticket-model-content .card-header {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ticket-model-content .card-body {
+  white-space: pre-wrap;
+}
+
+.ticket-model-content .attached {
+  padding-top: 0;
+}
+
+.ticket-model-content .ticket-responder {
+  color: var(--global-color-accent--normal);
+}
+
+.ticket-model-content .ticket-history-error {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-model-content .btn-primary {
+  border: none;
+  background-color: var(--global-color-accent--normal);
+  min-width: 100px;
+  min-height: 25px;
+  font-size: 0.75rem;
+}
+
+.ticket-model-content .form-text {
+  font-size: 0.75rem;
+}
+
+.ticket-model-content .ticket-id {
+  color: #707070;
+}
+
+.ticket-model-content .ticket-id + .ticket-subject::before {
+  content: '|';
+  display: inline-block;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+
+@media (min-width: 1200px) {
+  .ticket-model-content .modal-dialog {
+    max-width: 1000px;
+ }
+}
+
+.ticket-model-content .icon-action {
+  font-size: 1.4em;
+  display: flex;
+}
+
+.ticket-model-content .attachment-download {
+  text-align: right;
+}
+
+.ticket-model-content .link {
+  color: var(--global-color-accent--normal);
+  margin-right: 20px;
+}
+
+.ticket-model-content .link:hover {
+  color: var(--global-color-accent--normal);
+  text-decoration: underline;
+}
+
+.ticket-reply-submission button {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}

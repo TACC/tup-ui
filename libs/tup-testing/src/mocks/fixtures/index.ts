@@ -7,4 +7,4 @@ export {
   mockProjectFieldOfScience,
 } from './projects';
 export { rawSystemMonitorOutput } from './system_monitor';
-export { mockTickets } from './tickets';
+export { mockTickets, mockTicketDetails, mockTicketHistory } from './tickets';

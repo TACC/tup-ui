@@ -1,13 +1,16 @@
 import React, { useMemo } from 'react';
 import { Column, Row } from 'react-table';
+import { Link, useLocation } from 'react-router-dom';
 import {
   InfiniteScrollTable,
   InlineMessage,
   LoadingSpinner,
 } from '@tacc/core-components';
-import { Ticket, useTickets } from '@tacc/tup-hooks';
-import { DateCreated, Status, Subject } from './TicketsCells';
-import './TicketsView.scss';
+import { Ticket, useGetTickets } from '@tacc/tup-hooks';
+import { DateCreated, Status } from './TicketsCells';
+import './TicketsTable.global.css';
+
+const TICKETS_DASHBOARD_DISPLAY_LIMIT = 12;
 
 export const getStatusText = (status: string) => {
   switch (status) {
@@ -28,8 +31,26 @@ export const getStatusText = (status: string) => {
 };
 
 export const TicketsTable: React.FC = () => {
-  const { data, isLoading, error } = useTickets();
-  const noDataText = <>No tickets. You can add a ticket here.</>;
+  const { data, isLoading, isError } = useGetTickets();
+  const pathname = useLocation().pathname;
+  let [historyModalBasePath, createModalPath] = ['', ''];
+  let ticketData: Array<Ticket> = [];
+
+  if (pathname.startsWith('/tickets')) {
+    historyModalBasePath = 'tickets';
+    createModalPath = 'tickets/create';
+    ticketData = data ?? [];
+  } else {
+    historyModalBasePath = 'dashboard-tickets';
+    createModalPath = 'ticket-create';
+    ticketData = data?.slice(0, TICKETS_DASHBOARD_DISPLAY_LIMIT) ?? [];
+  }
+
+  const noDataText = (
+    <>
+      No tickets. You can <Link to={`/${createModalPath}`}>add a ticket</Link>.
+    </>
+  );
 
   const columns = useMemo<Column<Ticket>[]>(
     () => [
@@ -40,7 +61,11 @@ export const TicketsTable: React.FC = () => {
       {
         accessor: 'Subject',
         Header: 'Subject',
-        Cell: Subject,
+        Cell: (el) => (
+          <Link to={`/tickets/${el.row.original.numerical_id}`}>
+            <span title={el.value}>{el.value}</span>
+          </Link>
+        ),
       },
       {
         accessor: 'Created',
@@ -59,7 +84,7 @@ export const TicketsTable: React.FC = () => {
         Cell: Status,
       },
     ],
-    []
+    [historyModalBasePath]
   );
 
   const rowProps = (row: Row<Ticket>) => {
@@ -73,9 +98,9 @@ export const TicketsTable: React.FC = () => {
     return <LoadingSpinner />;
   }
 
-  if (error) {
+  if (isError) {
     return (
-      <InlineMessage type="warning">
+      <InlineMessage type="warning" className="ticket__error">
         Unable to retrieve ticket information
       </InlineMessage>
     );
@@ -84,7 +109,7 @@ export const TicketsTable: React.FC = () => {
   return (
     <InfiniteScrollTable
       tableColumns={columns}
-      tableData={data ?? []}
+      tableData={ticketData}
       isLoading={isLoading}
       className="tickets-view"
       noDataText={noDataText}

@@ -1,0 +1,15 @@
+.label {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.required-badge {
+    color: white;
+    font-weight: var(--medium);
+}
+
+.error-text {
+    font-style: italic;
+    color: #eb6e6e
+}
