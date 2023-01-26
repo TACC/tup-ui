@@ -246,8 +246,8 @@ export type Grants = {
   piName: string;
   awardNumber: string;
   awardAmount: number;
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
   nsfStatusCode: string;
   grantNumber: StorageManager;
   fieldId: number;

@@ -12,4 +12,3 @@ const usePublications = (projectId: number): UseQueryResult<Publications[]> => {
 };
 
 export default usePublications;
-

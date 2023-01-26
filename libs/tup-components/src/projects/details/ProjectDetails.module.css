@@ -27,3 +27,17 @@
     border: 1px solid  #C7C7C7;
     margin-left: 20px;
 }
+
+.pub-grants-title {
+    font-size: 1.3rem;
+}
+
+.pub-grants-info {
+    font-weight: bold;
+    margin-right: 2rem;
+}
+
+.pub-grants-edit-link {
+    display: flex;
+    justify-content: space-between;
+}
