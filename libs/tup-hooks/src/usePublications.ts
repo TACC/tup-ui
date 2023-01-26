@@ -3,12 +3,13 @@ import { Publications } from '.';
 import { useGet } from './requests';
 
 // Query to retrieve the user's publications.
-const usePublications = (id: number): UseQueryResult<Publications[]> => {
+const usePublications = (projectId: number): UseQueryResult<Publications[]> => {
   const query = useGet<Publications[]>({
-    endpoint: `/projects/${id}/publications`,
-    key: 'publications',
+    endpoint: `/projects/${projectId}/publications`,
+    key: `/projects/${projectId}/publications`,
   });
   return query;
 };
 
 export default usePublications;
+
