@@ -5,7 +5,9 @@
   @media (--wide-and-above) {
     gap: 25px;
     grid-template-columns: 0.65fr 0.35fr;
-    grid-auto-rows: 1fr;
+    /*set first row as auto to prevent cutting off the sysmon*/
+    grid-template-rows: auto 1fr 1fr 1fr;
+    overflow:auto;
     grid-template-areas:
       "projects systems"
       "projects updates"
@@ -15,7 +17,6 @@
   /* To reproduce simple layout of narrow screens like CEPv2 */
   @media (--wide-and-below) {
     row-gap: 25px;
-    grid-auto-rows: 1fr;
     grid-template-areas:
       "systems"
       "projects"
@@ -30,3 +31,7 @@
 .panels > :nth-child(2) { grid-area: systems; }
 .panels > :nth-child(3) { grid-area: projects; }
 .panels > :nth-child(4) { grid-area: tickets; }
+
+.section {
+  display: grid;
+}

@@ -7,7 +7,6 @@ import {
   ProjectsDashboard,
   TicketsDashboard,
 } from '@tacc/tup-components';
-import { Outlet } from 'react-router-dom';
 
 import './Dashboard.css';
 import styles from './Dashboard.module.css';
@@ -25,7 +24,7 @@ const Layout: React.FC = () => {
 
   return (
     <RequireAuth>
-      <section className="c-page">
+      <section className={`c-page ${styles.section}`}>
         <SectionHeader
           actions={
             <a href="https://example.com" target="_blank" rel="noreferrer">
@@ -40,7 +39,6 @@ const Layout: React.FC = () => {
           <SystemMonitor />
           <ProjectsDashboard />
           <TicketsDashboard />
-          <Outlet />
         </main>
       </section>
     </RequireAuth>
