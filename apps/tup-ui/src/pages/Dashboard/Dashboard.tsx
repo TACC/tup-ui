@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { SectionHeader } from '@tacc/core-components';
 import {
-  ProfileComponent,
   RequireAuth,
   SystemMonitor,
   ProjectsDashboard,
   TicketsDashboard,
+  UserNews,
 } from '@tacc/tup-components';
 
 import './Dashboard.css';
@@ -35,7 +35,7 @@ const Layout: React.FC = () => {
           Dashboard
         </SectionHeader>
         <main className={styles.panels}>
-          <ProfileComponent />
+          <UserNews />
           <SystemMonitor />
           <ProjectsDashboard />
           <TicketsDashboard />

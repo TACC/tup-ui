@@ -227,6 +227,21 @@ export type UsagePerResource = {
   used: number;
 };
 
+export type UserNewsResponse = {
+  ID: string;
+  Updates: {
+    AnnouncementUpdate: { ID: string; PostedDate: string; Content: string }[];
+  };
+  Author: string;
+  PostedDate: string;
+  AnnouncementDate: string;
+  ArchiveDate: string;
+  Title: string;
+  Subtitle: string;
+  WebTitle: string;
+  Content: string;
+};
+
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
@@ -244,3 +259,4 @@ export {
 export { default as useProjects } from './useProjects';
 export { default as useProjectUsers } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
+export { useUserNews } from './useUserNews';
