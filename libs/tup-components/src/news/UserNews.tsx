@@ -1,6 +1,6 @@
 import React from 'react';
 import { useUserNews } from '@tacc/tup-hooks';
-import { LoadingSpinner, Pill } from '@tacc/core-components';
+import { LoadingSpinner, Pill, SectionTableWrapper } from '@tacc/core-components';
 import styles from './UserNews.module.css';
 
 const formatDate = (datestring: string): string => {
@@ -12,8 +12,7 @@ const UserNews: React.FC = () => {
   const { data, isLoading } = useUserNews();
   if (isLoading) return <LoadingSpinner />;
   return (
-    <>
-      System Updates
+      <SectionTableWrapper header="User News" contentShouldScroll>
       <ul className={styles['news-list']}>
         {data &&
           data.slice(0, 12).map((newsItem) => (
@@ -33,7 +32,7 @@ const UserNews: React.FC = () => {
             </li>
           ))}
       </ul>
-    </>
+     </SectionTableWrapper>
   );
 };
 
