@@ -124,7 +124,7 @@ function Section({
       {manualHeader ??
         (shouldBuildHeader && (
           <SectionHeader
-            className={`${headerClassName} ${styles['header']}`}
+            className={`${headerClassName}`}
             actions={headerActions}
           >
             {header}
@@ -138,7 +138,7 @@ function Section({
       ) : (
         <SectionContent
           tagName="main"
-          className={`${contentClassName} ${styles['content']}`}
+          className={`${contentClassName}`}
           layoutName={contentLayoutName}
           shouldScroll={contentShouldScroll}
         >
