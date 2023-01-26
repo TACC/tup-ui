@@ -19,14 +19,6 @@
 .root::after           { background-color: lavender; }
 */
 
-/* Has Sidebar */
-
-/* CAVEAT: No sidebar styles provided (until a <SectionSidebar> exists) */
-.has-sidebar {
-  display: flex;
-  flex-flow: row nowrap;
-}
-
 /* 1 Column */
 
 .one-column {

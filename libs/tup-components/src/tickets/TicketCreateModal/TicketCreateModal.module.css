@@ -1,0 +1,16 @@
+:global(.ticket-create-modal-body) {
+  overflow: auto;
+  max-height: 60vh;
+}
+
+.modal-header {
+  font-size: 2rem;
+  align-items: center;
+}
+
+/* make bootstrap dialog wider */
+@media (min-width: 1200px) {
+  .root :global(.modal-dialog) {
+    max-width: 650px;
+ }
+}

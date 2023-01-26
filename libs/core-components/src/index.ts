@@ -1,6 +1,7 @@
 export { default as Button } from './lib/Button';
 export { default as Icon } from './lib/Icon';
 export { default as Section } from './lib/Section';
+export { default as SectionHeader } from './lib/SectionHeader';
 export { default as InlineMessage } from './lib/InlineMessage';
 export { default as SectionMessage } from './lib/SectionMessage';
 export { default as LoadingSpinner } from './lib/LoadingSpinner';
@@ -15,3 +16,4 @@ export { default as InfiniteScrollTable } from './lib/InfiniteScrollTable';
 export { default as Sidebar } from './lib/Sidebar';
 export { default as HistoryBadge } from './lib/HistoryBadge';
 export { default as Collapse } from './lib/Collapse';
+export * from './lib/Form';
