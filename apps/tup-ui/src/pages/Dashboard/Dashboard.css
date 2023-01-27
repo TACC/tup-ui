@@ -1,4 +1,0 @@
-/* To avoid creating a short screen layout by adding body scrollbar */
-body.dashboard {
-  min-height: 900px;
-}
