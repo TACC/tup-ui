@@ -10,6 +10,7 @@ import {
 
 import './Dashboard.css';
 import styles from './Dashboard.module.css';
+import { Link } from 'react-router-dom';
 
 const Layout: React.FC = () => {
   const bodyClassName = 'dashboard';
@@ -25,13 +26,7 @@ const Layout: React.FC = () => {
   return (
     <RequireAuth>
       <section className={`c-page ${styles.section}`}>
-        <SectionHeader
-          actions={
-            <a href="https://example.com" target="_blank" rel="noreferrer">
-              Manage Account (needs real link)
-            </a>
-          }
-        >
+        <SectionHeader actions={<Link to="/account">Manage Account</Link>}>
           Dashboard
         </SectionHeader>
         <main className={styles.panels}>
