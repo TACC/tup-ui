@@ -1,5 +1,14 @@
 /* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
 
+/* Layer via MCSS */
+/* NOTE: Usage requires either solution:
+         A. Vite/PostCSS NOT hoist/parse our Bootstrap import outside its layer.
+         B. Save/Load external Bootstrap stylesheet as internal file.
+*/
+/* FAQ: Bootstrap external URL not allowed in @layer by Vite/PostCSS */
+/* https://confluence.tacc.utexas.edu/x/b53tDg */
+/* @layer foundation, base, project; */
+
 /* Organize via ITCSS */
 /* https://confluence.tacc.utexas.edu/x/b53tDg */
 
