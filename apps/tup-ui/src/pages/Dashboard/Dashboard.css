@@ -1,4 +1,8 @@
-/* To avoid creating a short screen layout by adding body scrollbar */
-body.dashboard {
-  min-height: 900px;
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
+/* To avoid creating a cramped wide+short screen layout */
+@media (--wide-and-above) {
+  body.dashboard {
+    min-height: 900px; /* to add body scrollbar */
+  }
 }
