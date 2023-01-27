@@ -8,9 +8,20 @@ import {
   UserNews,
 } from '@tacc/tup-components';
 
+import './Dashboard.css';
 import styles from './Dashboard.module.css';
 
 const Layout: React.FC = () => {
+  const bodyClassName = 'dashboard';
+
+  useEffect(() => {
+    if (bodyClassName) document.body.classList.add(bodyClassName);
+
+    return function cleanup() {
+      if (bodyClassName) document.body.classList.remove(bodyClassName);
+    };
+  }, [bodyClassName]);
+
   return (
     <RequireAuth>
       <section className={`c-page ${styles.section}`}>
