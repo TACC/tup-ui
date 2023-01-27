@@ -1,3 +1,6 @@
+/* So login form is built off CMS styles */
+@import url('@tacc/core-styles/dist/elements/form.cms.css') layer(base);
+
 /* CONTAINER */
 
 .root {
@@ -38,31 +41,29 @@
 }
 
 .subtitle {
-  font-weight: var(--medium); /* mimics value--not appearance--from design */
-  margin-block: 25px; /* mimics Core-CMS django.cms.forms.css .description */
+  font-weight: var(--medium); /* mimics value (not appearance) from design */
+  margin-block: 25px; /* mimics django-cms-forms.css `.description` */
 }
 
 
 
 /* FORM */
 
-/* To hide "(required)" which is obvious ona  login form */
-.root label :global(.c-form__star) {
+/* To hide "(required)" (which is an obvious attribute on a login form) */
+.root label :global(.badge) {
   display: none;
 }
-/* TODO: Do not load CMS CSS (except header) on Portal app (then remove this) */
 .field {
-  max-width: unset; /* undo Core-CMS forms.cms.css */
+  max-width: unset; /* undo forms.cms.css `input...` */
 
   /* To use larger field inputs, always (not just coarse pointer devices) */
-  /* @tacc/core-styles#22783d8:/src/lib/_imports/elements/form.cms.css#L56 */
-  padding: 12px 12px;
+  padding: 12px 12px; /* mimic forms.cms.css `@media (pointer: coarse)` */
 }
 
 
 
 .submit {
-  padding-block: 10px; /* overrides @tacc/core-styles c-form__button/c-button */
+  padding-block: 10px; /* overrides core-styles.base.css button styles */
 }
 
 .submit-container {
@@ -81,7 +82,7 @@
   align-items: flex-end;
   gap: 12px;
 
-  margin-top: 35px; /* mimics @tacc/core-styles margin-top */
+  margin-top: 35px; /* mimics django-cms-forms.css `.button-wrapper` */
 }
 .footer > p {
   margin-block: 0; /* overwrite browser */
@@ -91,11 +92,11 @@
 /* ERRORS */
 
 .error {
-  margin-bottom: 2rem; /* TODO: Move to @tacc/core-styles */
+  margin-bottom: 2rem; /* TODO: move to @tacc/core-styles */
 }
 
 /* When (the only known) error would wrap, move all lines to one line */
 @media screen and (max-width: 435px) {
-  .error br { content: ""; } /* remove new line */
-  .error br::after { content: " "; } /* add space */
+  .error br { content: ""; } /* to remove new line */
+  .error br::after { content: " "; } /* to add space */
 }
