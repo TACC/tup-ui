@@ -7,3 +7,4 @@ export * from './system_monitor';
 export * from './tickets';
 export * from './mfa';
 export * from './news';
+export * from './accounts';

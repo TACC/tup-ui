@@ -6,6 +6,8 @@ import {
   Tickets,
   MfaPairingview,
   MfaSelection,
+  ManageAccount,
+  RequireAuth,
 } from '@tacc/tup-components';
 import {
   Dashboard,
@@ -40,6 +42,14 @@ function App() {
           <Route path="totp" element={<MfaPairingview method="totp" />} />
           <Route path="sms" element={<MfaPairingview method="sms" />} />
         </Route>
+        <Route
+          path="account"
+          element={
+            <RequireAuth>
+              <ManageAccount />
+            </RequireAuth>
+          }
+        />
         <Route path="logout" element={<Logout />}></Route>
       </Route>
       <Route path="/login" element={<Login />} />

@@ -1,0 +1,57 @@
+.account-icon {
+    font-size: 32px;
+    margin-bottom: -5px;
+    margin-right: 0.5rem;
+}
+
+.account-section {
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.account-header {
+    font-size: 2rem;
+    border-bottom: 1px solid #707070;
+    padding: 10px;
+}
+
+.account-body {
+    padding-top: 10px;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    gap: 3%;
+}
+
+.tap-column {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+.mfa-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%
+}
+
+.tap-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #707070;
+}
+
+.tap-description {
+    font-size: 1rem;
+    font-style: italic;
+    color: #484848;
+}
+
+.tap-button {
+    width: 200px;
+}

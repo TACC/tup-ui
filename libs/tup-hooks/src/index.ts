@@ -235,7 +235,7 @@ export type MfaTokenResponse = {
     locked: boolean;
     revoked: boolean;
     serial: string;
-    tokentype: string;
+    tokentype: 'sms' | 'totp';
     user_id: string;
     user_realm: string;
     username: string;
@@ -264,7 +264,7 @@ export type MfaValidationResponse = {
     status: boolean;
     value: boolean;
   };
-}
+};
 export type UserNewsResponse = {
   ID: string;
   Updates: {
