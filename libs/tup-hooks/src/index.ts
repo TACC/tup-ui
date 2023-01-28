@@ -106,6 +106,12 @@ export type ProjectsAllocations = {
   };
 };
 
+export type ProjectFieldOfScience = {
+  id: number;
+  depth: number;
+  name: string;
+};
+
 export type ProjectsRawSystem = {
   id: number;
   title: string;
@@ -117,8 +123,8 @@ export type ProjectsRawSystem = {
   secondaryFieldId: number;
   typeId: number;
   totalStorageUsed?: number;
-  totalStorageRequested?: number;
-  totalComputeRequested?: number;
+  totalStorage?: number;
+  totalCompute?: number;
   totalComputeUsed?: number;
   pi: {
     id: number;
@@ -297,6 +303,7 @@ export {
 export { default as useProjects } from './useProjects';
 export { default as useProjectUsers } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
+export { default as useProjectScienceField } from './useProjectScienceField';
 export {
   useMfa,
   useMfaPairTotp,
