@@ -10,6 +10,7 @@ import {
   mockProjectFieldOfScience,
   mockTicketDetails,
   mockTicketHistory,
+  unverifiedToken,
 } from './fixtures';
 
 export const handlers = [
@@ -70,5 +71,10 @@ export const handlers = [
   rest.post('http://localhost:8001/tickets', (req, res, ctx) => {
     // Respond with a mock created ticket id
     return res(ctx.json('12345'));
+  }),
+  // MFA
+  rest.get('http://localhost:8001/mfa', (req, res, ctx) => {
+    // Respond with an un-enrolled token by default
+    return res(ctx.json(unverifiedToken));
   }),
 ];

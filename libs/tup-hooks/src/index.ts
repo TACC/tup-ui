@@ -233,6 +233,59 @@ export type UsagePerResource = {
   used: number;
 };
 
+export type MfaTokenResponse = {
+  token?: {
+    active: boolean;
+    description: string;
+    id: number;
+    locked: boolean;
+    revoked: boolean;
+    serial: string;
+    tokentype: 'sms' | 'totp';
+    user_id: string;
+    user_realm: string;
+    username: string;
+    rollout_state: 'verify' | 'enrolled';
+  };
+};
+
+export type MfaPairingResponse = {
+  googleurl: {
+    description: string;
+    img: string;
+  };
+  rollout_state: string;
+  serial: string;
+};
+
+export type MfaValidationResponse = {
+  detail: {
+    otplen: number;
+    serial: string;
+    type: string;
+    message: string;
+  };
+  result: {
+    authentication: 'ACCEPT' | 'REJECT';
+    status: boolean;
+    value: boolean;
+  };
+};
+export type UserNewsResponse = {
+  ID: string;
+  Updates: {
+    AnnouncementUpdate: { ID: string; PostedDate: string; Content: string }[];
+  };
+  Author: string;
+  PostedDate: string;
+  AnnouncementDate: string;
+  ArchiveDate: string;
+  Title: string;
+  Subtitle: string;
+  WebTitle: string;
+  Content: string;
+};
+
 export { default as useAuth } from './useAuth';
 export { default as useProfile } from './useProfile';
 export { default as useJwt } from './useJwt';
@@ -251,3 +304,11 @@ export { default as useProjects } from './useProjects';
 export { default as useProjectUsers } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
 export { default as useProjectScienceField } from './useProjectScienceField';
+export {
+  useMfa,
+  useMfaPairTotp,
+  useMfaPairSms,
+  useMfaVerify,
+  useMfaDelete,
+} from './useMfa';
+export { useUserNews } from './useUserNews';
