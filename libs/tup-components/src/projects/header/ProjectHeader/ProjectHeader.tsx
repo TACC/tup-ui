@@ -14,6 +14,9 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
   const { data, isLoading, error } = useProjects();
   const fieldData = useProjectScienceField();
   const dataById = data?.find((project) => project.id === projectId);
+  const isActive = dataById?.allocations?.some(
+    (alloc) => alloc.status === 'Active'
+  );
 
   const fieldOfScienceID = fieldData?.data?.find(
     (field) => field.id === dataById?.fieldId
@@ -55,27 +58,38 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
   return (
     <>
       <h3 className={styles['title']}>
-        <Link to={'/projects/active/'}>Active Projects </Link>
+        {isActive && <Link to={'/projects?show=active'}>Active Projects </Link>}
+        {!isActive && (
+          <Link to={'/projects?show=inactive'}>Inactive Projects </Link>
+        )}
         {`/ ${dataById?.title}`}
       </h3>
       <div className={styles['separator']}></div>
+
       <dl className={styles['group']}>
         <dl className={styles['project-heading']}>
-          <dt className={styles['key']}>Project Charge Code</dt>
-          <dd className={styles['value']}> {dataById?.chargeCode}</dd>
-          <dt className={styles['key']}>Field of Science</dt>
-          <dd className={styles['value']}>{`${fieldOfScience}`}</dd>
+          <div>
+            <dt className={styles['key']}>Project Charge Code</dt>
+            <dd className={styles['value']}> {dataById?.chargeCode}</dd>
+          </div>
+          <div>
+            <dt className={styles['key']}>Unix Group</dt>
+            <dd className={styles['value']}>{`${unixGroup}`}</dd>
+          </div>
         </dl>{' '}
         <dl className={styles['project-heading']}>
-          <dt className={styles['key']}>Unix Group</dt>
-          <dd className={styles['value']}>{`${unixGroup}`}</dd>
-
+          <div>
+            <dt className={styles['key']}>Field of Science</dt>
+            <dd className={styles['value']}>{`${fieldOfScience}`}</dd>
+          </div>
           <DescriptionList
+            className={styles['usage']}
             direction="horizontal"
             data={usageArray}
           ></DescriptionList>
         </dl>
       </dl>
+      <div className={styles['separator-bottom']}></div>
     </>
   );
 };
