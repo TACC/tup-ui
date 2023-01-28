@@ -1,5 +1,14 @@
 import { Outlet, Routes, Route } from 'react-router-dom';
-import { PageLayout, Sidebar, Tickets } from '@tacc/tup-components';
+
+import {
+  PageLayout,
+  Sidebar,
+  Tickets,
+  MfaPairingview,
+  MfaSelection,
+  ManageAccount,
+  RequireAuth,
+} from '@tacc/tup-components';
 import {
   Dashboard,
   Login,
@@ -8,6 +17,7 @@ import {
   ProjectView,
   ProjectDetail,
   ProjectMember,
+  Mfa,
   TicketDetail,
 } from './pages';
 
@@ -18,7 +28,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<AppLayout />}>
-        <Route path="/" element={<Dashboard />}></Route>
+        <Route path="/" element={<Dashboard />} />
         <Route path="tickets" element={<Tickets />}>
           <Route path=":ticketId" element={<TicketDetail />} />
         </Route>
@@ -27,6 +37,19 @@ function App() {
           <Route path="" element={<ProjectDetail />}></Route>
           <Route path=":username" element={<ProjectMember />}></Route>
         </Route>
+        <Route path="mfa" element={<Mfa />}>
+          <Route path="" element={<MfaSelection />} />
+          <Route path="totp" element={<MfaPairingview method="totp" />} />
+          <Route path="sms" element={<MfaPairingview method="sms" />} />
+        </Route>
+        <Route
+          path="account"
+          element={
+            <RequireAuth>
+              <ManageAccount />
+            </RequireAuth>
+          }
+        />
         <Route path="logout" element={<Logout />}></Route>
       </Route>
       <Route path="/login" element={<Login />} />
