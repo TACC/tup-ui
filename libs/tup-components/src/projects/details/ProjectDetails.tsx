@@ -3,6 +3,11 @@ import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { useProjects, usePublications, useGrants } from '@tacc/tup-hooks';
 import styles from './ProjectDetails.module.css';
 import { Link } from 'react-router-dom';
+import { ProjectPublicationEditModal } from './ProjectPublicationEdit';
+import { ProjectPublicationCreateModal } from './ProjectPublicationCreate';
+import { ProjectGrantEditModal } from './ProjectGrantEdit';
+import { ProjectGrantCreateModal } from './ProjectGrantCreate';
+import { ProjectAbstractEditModal } from './ProjectAbstractEdit';
 
 const formatDate = (datestring: string): string => {
   const date = new Date(datestring);
@@ -23,8 +28,6 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
   const grant_data = grants.data ?? [];
   const grant_details = grant_data.map((details) => details);
 
-  console.log(pub_details);
-
   if (isLoading) return <LoadingSpinner />;
   if (error)
     return (
@@ -38,9 +41,7 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
       <div>
         <span className={styles['project-detail-header']}>
           Abstract
-          <Link to={`/projects/${projectId}`} className={styles['link']}>
-            Edit Abstract
-          </Link>
+          <ProjectAbstractEditModal projectId={projectId}/>
         </span>
         <span className={styles['project-details']}>
           {projectDetails?.description}
@@ -50,12 +51,7 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
       <div>
         <span className={styles['project-detail-header']}>
           Publications
-          <Link
-            to={`/projects/${projectId}/publications`}
-            className={styles['link']}
-          >
-            + Add Publication
-          </Link>
+          <ProjectPublicationCreateModal projectId={projectId} />
         </span>
         {pub_data.length === 0 ? (
           <span className={styles['project-details']}>
@@ -68,7 +64,7 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
                 return [
                   <div className={styles['pub-grants-edit-link']}>
                     <strong>{pub.title}</strong>
-                    <Link to={`/projects/${projectId}/grants`}>Edit</Link>
+                    <ProjectPublicationEditModal projectId={projectId} publicationId={pub.id}/> 
                   </div>,
                   <div className={styles['pub-grants-title']}>
                     Author(s):{' '}
@@ -103,9 +99,7 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
       <div>
         <span className={styles['project-detail-header']}>
           Grants
-          <Link to={`/projects/${projectId}/grants`} className={styles['link']}>
-            + Add Grant
-          </Link>
+          <ProjectGrantCreateModal projectId={projectId} />
         </span>
         {grant_data.length === 0 ? (
           <span className={styles['project-details']}>
@@ -118,7 +112,7 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
                 return [
                   <div className={styles['pub-grants-edit-link']}>
                     <strong>{grant.title}</strong>
-                    <Link to={`/projects/${projectId}/grants`}>Edit</Link>
+                    <ProjectGrantEditModal projectId={projectId} grantId={grant.id}/>
                   </div>,
                   <div className={styles['pub-grants-title']}>
                     Grant Number:

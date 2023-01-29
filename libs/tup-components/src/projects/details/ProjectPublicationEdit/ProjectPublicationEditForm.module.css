@@ -1,0 +1,22 @@
+.ticket-create-form input {
+    max-width: 100%;
+    font-style: italic;
+    color: red;
+}
+.ticket-create-form textarea {
+    max-width: 100%;
+    resize: none;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+}
+.form-row > div {
+    flex-grow: 1;
+}
+
+.checkbox {
+    font-size: large;
+}

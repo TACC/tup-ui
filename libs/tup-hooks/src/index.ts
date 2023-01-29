@@ -244,13 +244,17 @@ export type Grants = {
   fundingAgency: string;
   field: string;
   piName: string;
-  awardNumber: string;
+  awardNumber: number;
   awardAmount: number;
   start: string;
   end: string;
   nsfStatusCode: string;
-  grantNumber: StorageManager;
+  grantNumber: number;
   fieldId: number;
+};
+
+export type Abstract = {
+  description: string;
 };
 
 export type MfaTokenResponse = {
@@ -291,6 +295,7 @@ export type MfaValidationResponse = {
     value: boolean;
   };
 };
+
 export type UserNewsResponse = {
   ID: string;
   Updates: {
@@ -323,8 +328,17 @@ export {
 export { default as useProjects } from './useProjects';
 export { default as useProjectUsers } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
-export { default as usePublications } from './usePublications';
-export { default as useGrants } from './useGrants';
+export { 
+  usePublications, 
+  usePublicationEdit, 
+  usePublicationCreate 
+} from './usePublications';
+export {  
+  useGrants, 
+  useGrantEdit,
+  useGrantCreate 
+} from './useGrants';
+export { useAbstract } from './useAbstract';
 export {
   useMfa,
   useMfaPairTotp,
