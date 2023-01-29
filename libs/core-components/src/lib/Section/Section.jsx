@@ -91,9 +91,6 @@ function Section({
   headerClassName,
   manualContent,
   manualHeader,
-  // manualSidebar,
-  // sidebar,
-  // sidebarClassName,
   messages,
 }) {
   const shouldBuildHeader = header || headerClassName || headerActions;
@@ -112,11 +109,6 @@ function Section({
       'When passing `manualHeader`, the following props are ineffectual: `header`, `headerClassName`, `headerActions`'
     );
   }
-  // if (manualSidebar && (sidebar || sidebarClassName)) {
-  //   throw new Error(
-  //     'When passing `manualSidebar`, the following props are ineffectual: `sidebar`, `sidebarClassName`'
-  //   );
-  // }
 
   useEffect(() => {
     if (bodyClassName) document.body.classList.add(bodyClassName);
@@ -129,17 +121,10 @@ function Section({
   return (
     <section className={`${styles['root']} ${className}`}>
       {messages}
-      {/* {manualSidebar ? (
-        <>{manualSidebar}</>
-      ) : (
-        <Sidebar styleName="sidebar" className={sidebarClassName}>
-          {sidebar}
-        </Sidebar>
-      )} */}
       {manualHeader ??
         (shouldBuildHeader && (
           <SectionHeader
-            className={`${headerClassName} ${styles['header']}`}
+            className={`${headerClassName}`}
             actions={headerActions}
           >
             {header}
@@ -153,7 +138,7 @@ function Section({
       ) : (
         <SectionContent
           tagName="main"
-          className={`${contentClassName} ${styles['content']}`}
+          className={`${contentClassName}`}
           layoutName={contentLayoutName}
           shouldScroll={contentShouldScroll}
         >
@@ -191,10 +176,6 @@ Section.propTypes = {
   manualContent: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
   /** The section header (built by user) element */
   manualHeader: PropTypes.element,
-  // /** The page-specific sidebar */
-  // sidebar: PropTypes.node,
-  // /** Additional className for the sidebar element */
-  // sidebarClassName: PropTypes.string,
   /** Any message(s) (e.g. <Message>) (but NOT a intro message) */
   messages: PropTypes.node,
 };
@@ -213,7 +194,6 @@ Section.defaultProps = {
   manualHeader: undefined,
   messages: '',
   introMessageName: '',
-  // sidebarClassName: '',
   introMessageText: '',
 };
 

@@ -1,19 +1,24 @@
 import React from 'react';
-import { Outlet, useOutlet } from 'react-router-dom';
-import { PageLayout } from '../layout';
+import { Outlet } from 'react-router-dom';
+import { SectionTableWrapper } from '@tacc/core-components';
 import { TicketsTable } from './TicketsTable';
-
-const TicketDetails: React.FC = () => {
-  return <div>Select A Ticket</div>;
-};
+import { RequireAuth } from '../utils';
+import TicketCreateModal from './TicketCreateModal';
 
 const Tickets: React.FC = () => {
-  const outlet = useOutlet();
   return (
-    <PageLayout
-      left={<TicketsTable />}
-      right={outlet ?? <div>Select A Ticket</div>}
-    />
+    <RequireAuth>
+      <>
+        <SectionTableWrapper
+          header="Tickets"
+          headerActions={<TicketCreateModal />}
+          contentShouldScroll
+        >
+          <TicketsTable />
+        </SectionTableWrapper>
+        <Outlet />
+      </>
+    </RequireAuth>
   );
 };
 
