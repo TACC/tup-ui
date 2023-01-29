@@ -1,6 +1,8 @@
 from django.views.generic.base import TemplateView
 
-def get_latest_articles(count = 5):
+DEFAULT_ARTICLE_COUNT = 5
+
+def get_latest_articles(count = DEFAULT_ARTICLE_COUNT):
   recent_articles = [
     {
       "ID": "107433",
@@ -594,10 +596,10 @@ def get_latest_articles(count = 5):
 
   return latest_articles
 
-class UserNewsView(TemplateView):
-  template_name = 'user_news/user_news.html'
+class UserNewsListView(TemplateView):
+  template_name = 'user_news/list.html'
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context['latest_articles'] = get_latest_articles(5)
+    context['latest_articles'] = get_latest_articles()
     return context

@@ -1,7 +1,8 @@
-from django.urls import re_path
-from .views import UserNewsView
+from django.urls import path
+from .views import UserNewsListView
 
 app_name = 'user_news'
 urlpatterns = [
-    re_path('', UserNewsView.as_view(), name='index'),
+    path('', UserNewsListView.as_view(), name='index'),
+    path('list/', UserNewsListView.as_view(), name='list'),
 ]
