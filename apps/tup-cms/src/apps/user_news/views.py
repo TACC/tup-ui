@@ -2,7 +2,7 @@ import requests
 from django.conf import settings
 from django.views.generic.base import TemplateView
 
-DEFAULT_LIST_COUNT = 5
+from .defaults import list_count
 
 
 service_url = settings.TUP_SERVICES_URL
@@ -17,7 +17,7 @@ def get_articles():
 
   return articles
 
-def get_latest_articles(count = DEFAULT_LIST_COUNT):
+def get_latest_articles(count = list_count):
   articles = get_articles()
   latest_articles = articles[:count]
 
@@ -29,6 +29,7 @@ def get_article(ident):
   article = list(filtered_articles)[0]
 
   return article
+
 
 class UserNewsListView(TemplateView):
   template_name = 'user_news/list.html'
