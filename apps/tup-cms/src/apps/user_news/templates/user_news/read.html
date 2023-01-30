@@ -4,14 +4,6 @@
 
 <section class="container">
   {% include "./includes/list_item_breadcrumbs.html" with article=article urls=urls only %}
-  <h1>
-  {% if article.WebTitle %}
-    {{ article.WebTitle }}
-  {% else %}
-    No Such Update Found
-  {% endif %}
-  </h1>
-
   {% include './includes/page_item.html' with article=article only %}
 </section>
 

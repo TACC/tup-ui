@@ -8,6 +8,11 @@
         {{ article.WebTitle }}
       </a>
     </h4>
+    {% if article.SubTitle %}
+    <h5>
+      {{ article.SubTitle }}
+    </h5>
+    {% endif %}
     <p>{{ article.Content }}</p>
   </article>
   {% endwith %}

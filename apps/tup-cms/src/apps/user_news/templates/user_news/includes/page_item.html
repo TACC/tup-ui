@@ -1,8 +1,20 @@
 {% if article %}
+  <h1>
+  {% if article.WebTitle %}
+    {{ article.WebTitle }}
+  {% else %}
+    No Such Update Found
+  {% endif %}
+  </h1>
+  {% if article.SubTitle %}
+  <h2>
+    {{ article.SubTitle }}
+  </h2>
+  {% endif %}
 
   {% with article.Updates.AnnouncementUpdate as updates %}
   <article class="{% if updates %}has-update{% endif %}">
-    <time data-prefix="Posted by {{Author}} on">{{ article.PostedDate }}</time>
+    <time data-prefix="Posted by {{article.Author}} on">{{ article.PostedDate }}</time>
     {% if updates %}
       {% include './updates.html' with updates=updates only %}
 
