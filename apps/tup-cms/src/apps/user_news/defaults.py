@@ -1,4 +1,4 @@
-max_articles = 7
+max_articles = 5
 
 urls = {
   'base': 'news/user-updates/',

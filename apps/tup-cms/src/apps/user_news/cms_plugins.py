@@ -5,6 +5,7 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 from django.utils.encoding import force_text
 
+from .models import UserNewsList
 from .defaults import max_articles, urls
 from .utils import get_article, get_latest_articles
 
@@ -14,7 +15,7 @@ class UserNewsListPlugin(CMSPluginBase):
     module = 'TUP CMS'
     model = UserNewsList
     name = _('User News List')
-    render_template = 'user_news/list.html'
+    render_template = 'user_news/includes/list.html'
 
     cache = False
     text_enabled = False
@@ -25,7 +26,7 @@ class UserNewsListPlugin(CMSPluginBase):
         request = context['request']
 
         context.update({
-            'articles': get_latest_articles(),
+            'articles': get_latest_articles(instance.max_articles),
             'urls': urls
         })
         return context
