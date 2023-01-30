@@ -1,7 +1,7 @@
-import { InlineMessage, LoadingSpinner } from '@tacc/core-components';
+import { InlineMessage, LoadingSpinner, Button } from '@tacc/core-components';
 import { useProfile, useProjectUsers } from '@tacc/tup-hooks';
 import React from 'react';
-import { Input, InputGroup, Button, InputGroupAddon } from 'reactstrap';
+import { Input, InputGroup } from 'reactstrap';
 import styles from './UserList.module.css';
 
 const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
@@ -31,19 +31,11 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
         <form onSubmit={(e) => addUser(e)} style={{ paddingBottom: '16px' }}>
           <label htmlFor="add-user">Add New User</label>
           <InputGroup>
-            <InputGroupAddon addonType="prepend">
-              <Button
-                type="submit"
-                style={{
-                  borderColor: '#AFAFAF',
-                  backgroundColor: '#F4F4F4',
-                  borderRadius: '0',
-                  color: '#484848',
-                }}
-              >
+            <div className="input-group-prepend">
+              <Button type="secondary" attr="submit" size="small">
                 Add
               </Button>
-            </InputGroupAddon>
+            </div>
             <Input placeholder="Enter Username" id="add-user" />
           </InputGroup>
         </form>
