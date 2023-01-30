@@ -7,6 +7,9 @@ custom_urls = [
     path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
     path('user-updates/', include('apps.user_news.urls', namespace='user_news')),
 
-    # Supports `taggit_autosuggest` (from `djangocms-blog`)
+    # To support legacy TACC site URLs
+    path('user-news/', include('apps.user_news.urls', namespace='user_news')),
+
+    # To support `taggit_autosuggest` (from `djangocms-blog`)
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
 ]
