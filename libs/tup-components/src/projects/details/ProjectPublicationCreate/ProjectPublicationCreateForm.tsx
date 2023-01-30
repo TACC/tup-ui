@@ -30,7 +30,7 @@ export const ProjectPublicationCreateForm: React.FC<{
     () => ({
       title: '',
       authors: '',
-      yearPublished: NaN,
+      yearPublished: '',
       publisher: '',
       url: '',
       venue: '',
@@ -45,16 +45,7 @@ export const ProjectPublicationCreateForm: React.FC<{
     values: PublicationCreateFormValues,
     { resetForm }: FormikHelpers<PublicationCreateFormValues>
   ) => {
-    const formData = new FormData();
-    formData.append('title', values['title']);
-    formData.append('authors', values['authors']);
-    formData.append('yearPublished', values['yearPublished'].toString());
-    formData.append('publisher', values['publisher']);
-    formData.append('url', values['url']);
-    formData.append('venue', values['venue']);
-    formData.append('userCitedTacc', values['userCitedTacc'].toString());
-
-    mutate(formData, {
+    mutate(values, {
       onSuccess: () => {
         resetForm();
       },

@@ -3,7 +3,7 @@ export { default as ProjectDetails } from './ProjectDetails';
 export type PublicationFormValues = {
     title: string;
     authors: string;
-    yearPublished: number;
+    yearPublished: string;
     publisher: string;
     venue: string;
     url: string;
@@ -13,7 +13,7 @@ export type PublicationFormValues = {
   export type PublicationCreateFormValues = {
     title: string;
     authors: string;
-    yearPublished: number;
+    yearPublished: string;
     publisher: string;
     venue: string;
     url: string;
@@ -26,12 +26,12 @@ export type PublicationFormValues = {
     fundingAgency: string;
     field: string;
     piName: string;
-    awardNumber: number;
-    awardAmount: number;
+    awardNumber: string;
+    awardAmount?: number | null;
     start: string;
     end: string;
     nsfStatusCode: string;
-    grantNumber: number;
+    grantNumber: string;
     fieldId: number;
   };
 
@@ -41,12 +41,12 @@ export type PublicationFormValues = {
     fundingAgency: string;
     field: string;
     piName: string;
-    awardNumber: number;
-    awardAmount: number;
+    awardNumber: string;
+    awardAmount?: number | null;
     start: string;
     end: string;
     nsfStatusCode: string;
-    grantNumber: number;
+    grantNumber: string;
     fieldId: number;
   };
 

@@ -7,16 +7,16 @@ import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';
 import { GrantFormValues } from '../'
-import styles from './ProjectGrantEditModal';
+import styles from './ProjectGrantEditModal.module.css';
 
 const formShape = {
   title: Yup.string().required('Required'),
-  grantNumber: Yup.number(),
+  grantNumber: Yup.string(),
   piName: Yup.string().required('required'),
   field: Yup.string().required('required'),
   fundingAgency: Yup.string(),
   awardNumber: Yup.string(),
-  awardAmount: Yup.string(),
+  awardAmount: Yup.number(),
   grantStart: Yup.date(),
   grantEnd: Yup.date(),
   statusCode: Yup.string()
@@ -37,12 +37,12 @@ export const ProjectGrantEditForm: React.FC<{
     () => ({
       id: id ?? 0,
       title: title ?? '',
-      grantNumber: grantNumber ?? NaN,
+      grantNumber: grantNumber ?? '',
       piName: piName ?? '',
       field: field ?? '',
       fundingAgency: fundingAgency ?? '',
-      awardNumber: awardNumber ?? NaN,
-      awardAmount: awardAmount ?? NaN,
+      awardNumber: awardNumber ?? '',
+      awardAmount: awardAmount ?? null,
       start: start ?? '',
       end: end ?? '', 
       nsfStatusCode: nsfStatusCode ?? '',
@@ -57,21 +57,7 @@ export const ProjectGrantEditForm: React.FC<{
     values: GrantFormValues,
     { resetForm }: FormikHelpers<GrantFormValues>
   ) => {
-    const formData = new FormData();
-    formData.set('id', values['id'].toString());
-    formData.set('title', values['title']);
-    formData.set('grantNumber', values['grantNumber'].toString());
-    formData.set('piName', values['piName']);
-    formData.set('field', values['field']);
-    formData.set('fundingAgency', values['fundingAgency']);
-    formData.set('awardNumber', values['awardNumber'].toString());
-    formData.set('awardAmount', values['awardAmount'].toString());
-    formData.set('start', values['start']);
-    formData.set('end', values['end']);
-    formData.set('nsfStatusCode', values['nsfStatusCode']);
-    formData.set('fieldId', values['fieldId'].toString());  
-
-    mutate(formData, {
+    mutate(values, {
       onSuccess: () => {
         resetForm();
       },

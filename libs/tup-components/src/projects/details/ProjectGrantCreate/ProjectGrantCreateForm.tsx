@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
 //import ReCAPTCHA from 'react-google-recaptcha';
-import { usePublicationCreate } from '@tacc/tup-hooks';
+import { useGrantCreate } from '@tacc/tup-hooks';
 import { FormikInput } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
@@ -11,12 +11,12 @@ import { GrantCreateFormValues } from '../'
 
 const formShape = {
     title: Yup.string().required('Required'),
-    grantNumber: Yup.number(),
+    grantNumber: Yup.string(),
     piName: Yup.string().required('required'),
     field: Yup.string().required('required'),
     fundingAgency: Yup.string(),
     awardNumber: Yup.string(),
-    awardAmount: Yup.string(),
+    awardAmount: Yup.number(),
     grantStart: Yup.date(),
     grantEnd: Yup.date(),
     statusCode: Yup.string()
@@ -32,41 +32,27 @@ export const ProjectGrantCreateForm: React.FC<{
         () => ({
             id: 0,
             title: '',
-            grantNumber: NaN,
+            grantNumber: '',
             piName: '',
             field: '',
             fundingAgency: '',
-            awardNumber: NaN,
-            awardAmount: NaN,
+            awardNumber: '',
+            awardAmount: null,
             start: '',
             end: '', 
             nsfStatusCode: '',
-            fieldId: NaN, 
+            fieldId: 0, 
         }),
         []
     );
 
-  const { mutate, isLoading, isSuccess, isError, data } = usePublicationCreate(projectId);
+  const { mutate, isLoading, isSuccess, isError, data } = useGrantCreate(projectId);
 
   const onSubmit = (
     values: GrantCreateFormValues,
     { resetForm }: FormikHelpers<GrantCreateFormValues>
   ) => {
-    const formData = new FormData();
-    formData.set('id', values['id'].toString());
-    formData.set('title', values['title']);
-    formData.set('grantNumber', values['grantNumber'].toString());
-    formData.set('piName', values['piName']);
-    formData.set('field', values['field']);
-    formData.set('fundingAgency', values['fundingAgency']);
-    formData.set('awardNumber', values['awardNumber'].toString());
-    formData.set('awardAmount', values['awardAmount'].toString());
-    formData.set('start', values['start']);
-    formData.set('end', values['end']);
-    formData.set('nsfStatusCode', values['nsfStatusCode']);
-    formData.set('fieldId', values['fieldId'].toString()); 
-
-    mutate(formData, {
+    mutate(values, {
       onSuccess: () => {
         resetForm();
       },

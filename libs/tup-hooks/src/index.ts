@@ -237,7 +237,7 @@ export type Publications = {
   id: number;
   authors: string;
   title: string;
-  yearPublished: number;
+  yearPublished: string;
   publisher: string;
   url: string;
   venue: string;
@@ -250,12 +250,12 @@ export type Grants = {
   fundingAgency: string;
   field: string;
   piName: string;
-  awardNumber: number;
-  awardAmount: number;
+  awardNumber: string;
+  awardAmount: number | null;
   start: string;
   end: string;
   nsfStatusCode: string;
-  grantNumber: number;
+  grantNumber: string;
   fieldId: number;
 };
 
@@ -301,6 +301,7 @@ export type MfaValidationResponse = {
     value: boolean;
   };
 };
+
 export type UserNewsResponse = {
   ID: string;
   Updates: {
@@ -335,8 +336,9 @@ export { default as useProjectUsers } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
 export { 
   usePublications, 
-  usePublicationEdit, 
-  usePublicationCreate 
+  usePublicationEdit,
+  usePublicationCreate, 
+  usePublicationDelete
 } from './usePublications';
 export {  
   useGrants, 

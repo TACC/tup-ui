@@ -1,18 +1,17 @@
 import React, { useMemo } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
-//import ReCAPTCHA from 'react-google-recaptcha';
-import { usePublications, usePublicationEdit } from '@tacc/tup-hooks';
+import { usePublications, usePublicationEdit, usePublicationDelete } from '@tacc/tup-hooks';
 import { FormikInput, FormikCheck } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
-import { Button, SectionMessage } from '@tacc/core-components';
+import { Button, LoadingSpinner, SectionMessage } from '@tacc/core-components';
 import { PublicationFormValues } from '../'
-import styles from './ProjectPublicationEditModal';
+import styles from './ProjectPublicationEditModal.module.css';
 
 const formShape = {
   title: Yup.string().required('Required'),
   authors: Yup.string().required('Required'),
-  yearPublished: Yup.number(),
+  yearPublished: Yup.string(),
   publisher: Yup.string(),
   url: Yup.string(),
   venue: Yup.string(),
@@ -21,10 +20,29 @@ const formShape = {
 
 const formSchema = Yup.object().shape(formShape);
 
+export const ProjectPublicationDelete: React.FC<{ 
+  projectId: number, publicationId: number }> 
+  = ({ projectId, publicationId }) => {
+    const { isLoading, isError, mutate } = usePublicationDelete(projectId, publicationId);
+    if (isLoading)
+    return (
+      <div style={{ width: 'fit-content' }}>
+        <LoadingSpinner placement="inline" />
+      </div>
+    );
+    return (
+      <div>
+        <Button onClick={() => mutate()} type="secondary">
+          <strong>Delete</strong>
+        </Button>
+      </div>
+    );
+  };
+
+
 export const ProjectPublicationEditForm: React.FC<{ 
     projectId: number, publicationId: number }> 
     = ({ projectId, publicationId }) => {
-
   const publication = usePublications(projectId);
   const pub_stuff = publication?.data ?? [];
   const pub_data = pub_stuff?.find((e) => e.id === publicationId)
@@ -34,7 +52,7 @@ export const ProjectPublicationEditForm: React.FC<{
     () => ({
       title: title ?? '',
       authors: authors ?? '',
-      yearPublished: yearPublished ?? NaN,
+      yearPublished: yearPublished ?? '',
       publisher: publisher ?? '',
       url: url ?? '',
       venue: venue ?? '',
@@ -49,20 +67,7 @@ export const ProjectPublicationEditForm: React.FC<{
     values: PublicationFormValues,
     { resetForm }: FormikHelpers<PublicationFormValues>
   ) => {
-    const formData = new FormData();
-    formData.set('title', values['title']);
-    formData.set('authors', values['authors']);
-    formData.set('yearPublished', values['yearPublished'].toString());
-    formData.set('publisher', values['publisher']);
-    formData.set('url', values['url']);
-    formData.set('venue', values['venue']);
-    formData.set('userCitedTacc', values['userCitedTacc'].toString());
-
-    console.log(values['title'])
-    let result = {title: values['title'], }
-    
-
-    mutate(formData, {
+    mutate(values, {
       onSuccess: () => {
         resetForm();
       },
@@ -78,7 +83,7 @@ export const ProjectPublicationEditForm: React.FC<{
       onSubmit={onSubmit}
     >
       {({ isValid }) => (
-        <Form>
+        <Form >
           <FormikInput name="title" label="Publication Title" required  />
           <FormikInput name="authors" label="Authors" required description="Separate multiple authors with a comma" />
           <FormikInput name="yearPublished" label="Year Published" />
@@ -120,14 +125,7 @@ export const ProjectPublicationEditForm: React.FC<{
             >
               Save
             </Button>
-            <Button 
-              attr="submit"
-              type="secondary"
-              isLoading={isLoading}
-              disabled={!isValid || isLoading} 
-            >
-              Delete
-            </Button>
+            <ProjectPublicationDelete projectId={projectId} publicationId={publicationId}/>
           </ModalFooter>
         </Form>
       )}
