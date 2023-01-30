@@ -4,7 +4,7 @@
   <article class="{% if updates %}has-update{% endif %}">
     <time data-prefix="Posted: ">{{ article.PostedDate }}</time>
     <h4>
-      <a href="/user_updates/{{ article.ID }}">
+      <a href="/{{ urls.base }}{{ urls.item_prefix }}{{ article.ID }}">
         {{ article.WebTitle }}
       </a>
     </h4>

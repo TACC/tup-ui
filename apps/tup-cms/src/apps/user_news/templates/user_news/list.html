@@ -5,7 +5,7 @@
 <section class="container">
   {% include "nav_cms_breadcrumbs.html" %}
   <h1>User Updates</h1>
-  {% include './includes/list.html' with articles=articles only %}
+  {% include './includes/list.html' with articles=articles urls=urls only %}
 </section>
 
 {% endblock content %}

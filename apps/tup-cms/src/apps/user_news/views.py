@@ -1,5 +1,6 @@
 from django.views.generic.base import TemplateView
 
+from .defaults import urls
 from .utils import get_article, get_latest_articles
 
 class UserNewsListView(TemplateView):
@@ -9,6 +10,7 @@ class UserNewsListView(TemplateView):
     context = super().get_context_data(**kwargs)
 
     context['articles'] = get_latest_articles()
+    context['urls'] = urls
 
     return context
 
@@ -20,5 +22,6 @@ class UserNewsReadView(TemplateView):
     context = super().get_context_data(**kwargs)
 
     context['article'] = get_article(article_id)
+    context['urls'] = urls
 
     return context

@@ -1,6 +1,6 @@
 {% if articles %}
   {% for article in articles %}
-    {% include './list_item.html' with article=article only %}
+    {% include './list_item.html' with article=article urls=urls only %}
   {% endfor %}
 {% else %}
   <article>

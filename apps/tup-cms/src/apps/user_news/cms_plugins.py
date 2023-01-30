@@ -5,7 +5,7 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 from django.utils.encoding import force_text
 
-from .defaults import list_count
+from .defaults import list_count, urls
 from .utils import get_article, get_latest_articles
 
 # SEE: http://docs.django-cms.org/en/release-3.7.x/reference/plugins.html
@@ -25,6 +25,6 @@ class UserNewsListPlugin(CMSPluginBase):
 
         context.update({
             'articles': get_latest_articles(),
-            'should_title_be_link': True
+            'urls': urls
         })
         return context

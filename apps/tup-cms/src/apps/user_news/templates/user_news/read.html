@@ -3,7 +3,7 @@
 {% block content %}
 
 <section class="container">
-  {% include "nav_cms_breadcrumbs.html" %}
+  {% include "./includes/list_item_breadcrumbs.html" with article=article urls=urls only %}
   <h1>
   {% if article.WebTitle %}
     {{ article.WebTitle }}
