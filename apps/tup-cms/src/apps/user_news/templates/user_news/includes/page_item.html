@@ -1,7 +1,7 @@
 {% if article %}
 
-{% with article.Updates.AnnouncementUpdate as updates %}
-  <article>
+  {% with article.Updates.AnnouncementUpdate as updates %}
+  <article class="{% if updates %}has-update{% endif %}">
     <time data-prefix="Posted by {{Author}} on">{{ article.PostedDate }}</time>
     {% if updates %}
       {% include './updates.html' with updates=updates only %}
@@ -11,7 +11,7 @@
     {% endif %}
     <div>{{ article.Content }}</div>
   </article>
-{% endwith %}
+  {% endwith %}
 
 {% else %}
 

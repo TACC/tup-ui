@@ -1,5 +1,7 @@
 {% if article %}
-  <article>
+
+  {% with article.Updates.AnnouncementUpdate as updates %}
+  <article class="{% if updates %}has-update{% endif %}">
     <time data-prefix="Posted: ">{{ article.PostedDate }}</time>
     <h4>
       <a href="/user_updates/{{ article.ID }}">
@@ -8,8 +10,12 @@
     </h4>
     <p>{{ article.Content }}</p>
   </article>
+  {% endwith %}
+
 {% else %}
+
   <article>
     <p>No such update found.</p>
   </article>
+
 {% endif %}
