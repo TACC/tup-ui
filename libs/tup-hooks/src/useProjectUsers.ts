@@ -6,7 +6,7 @@ import { useGet } from './requests';
 const useProjectUsers = (id: number): UseQueryResult<ProjectUser[]> => {
   const query = useGet<ProjectUser[]>({
     endpoint: `/projects/${id}/users`,
-    key: 'projectUsers',
+    key: ['projectUsers', id],
   });
   return query;
 };

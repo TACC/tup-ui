@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { SectionTableWrapper } from '@tacc/core-components';
+import { SectionHeader, SectionTableWrapper } from '@tacc/core-components';
 import { TicketsTable } from './TicketsTable';
 import { RequireAuth } from '../utils';
 import TicketCreateModal from './TicketCreateModal';
@@ -8,16 +8,13 @@ import TicketCreateModal from './TicketCreateModal';
 const Tickets: React.FC = () => {
   return (
     <RequireAuth>
-      <>
-        <SectionTableWrapper
-          header="Tickets"
-          headerActions={<TicketCreateModal />}
-          contentShouldScroll
-        >
+      <section style={{ display: 'flex', flexDirection: 'column' }}>
+        <SectionHeader actions={<TicketCreateModal />}>Tickets</SectionHeader>
+        <SectionTableWrapper contentShouldScroll className="ticket-container">
           <TicketsTable />
         </SectionTableWrapper>
         <Outlet />
-      </>
+      </section>
     </RequireAuth>
   );
 };

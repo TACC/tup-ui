@@ -7,11 +7,12 @@ import {
   useMutation,
   UseQueryOptions,
   UseMutationOptions,
+  QueryKey,
 } from 'react-query';
 
 type UseGetParams<ResponseType> = {
   endpoint: string;
-  key: string;
+  key: QueryKey;
   options?: Omit<
     UseQueryOptions<ResponseType, AxiosError>,
     'queryKey' | 'queryFn'

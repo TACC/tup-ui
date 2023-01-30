@@ -90,3 +90,11 @@ export const mockProjectUsage = {
     { username: 'vg5726', usage: 0 },
   ],
 };
+
+export const mockProjectFieldOfScience = [
+  {
+    id: 42,
+    depth: 1,
+    name: 'Center Systems Staff (STA)',
+  },
+];

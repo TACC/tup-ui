@@ -1,37 +1,17 @@
-import React, { useMemo } from 'react';
-import { useTable, Column } from 'react-table';
+import React from 'react';
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
-import { ProjectTitle } from './ProjectsCells';
-import { ProjectsRawSystem, useProjects } from '@tacc/tup-hooks';
+import { ProjectsAllocations, useProjects } from '@tacc/tup-hooks';
+import { Link } from 'react-router-dom';
+
+const allocationDisplay = (allocations: ProjectsAllocations[]) => {
+  return allocations.length
+    ? Array.from(new Set(allocations.map((e) => e.resource))).join(', ')
+    : '--';
+};
 
 export const ProjectsTable: React.FC = () => {
   const { data, isLoading, error } = useProjects();
-  const columns = useMemo<Column<ProjectsRawSystem>[]>(
-    () => [
-      {
-        accessor: 'title',
-        Header: 'Project Title',
-        Cell: ProjectTitle,
-      },
-      {
-        accessor: ({ pi }) => pi.firstName + ' ' + pi.lastName,
-        Header: 'Principle Investigator',
-        // Cell: PrinInv,
-      },
-      {
-        accessor: ({ allocations }) =>
-          allocations ? allocations.map((e) => e.resource).join(', ') : '--',
-        Header: 'Active Allocations',
-        // Cell: Allocations,
-      },
-    ],
-    []
-  );
-  const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
-    useTable({
-      columns,
-      data: data ?? [],
-    });
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -42,31 +22,30 @@ export const ProjectsTable: React.FC = () => {
   }
   return (
     <div className="o-fixed-header-table">
-      <table {...getTableProps()}>
+      <table style={{ width: '100%' }}>
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-              ))}
-            </tr>
-          ))}
+          <tr>
+            <th>Project Title</th>
+            <th>Principal Investigator</th>
+            <th>Active Allocations</th>
+          </tr>
         </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.length ? (
-            rows.map((row, idx) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  ))}
-                </tr>
-              );
-            })
+        <tbody>
+          {data && data.length ? (
+            data.map((project) => (
+              <tr key={project.id}>
+                <td style={{ width: '30%' }}>
+                  <Link to={`/projects/${project.id}`}>{project.title}</Link>
+                </td>
+                <td
+                  style={{ width: '20%' }}
+                >{`${project.pi.firstName} ${project.pi.lastName}`}</td>
+                <td>{allocationDisplay(project.allocations ?? [])}</td>
+              </tr>
+            ))
           ) : (
             <tr>
-              <td colSpan={5}>No active projects found.</td>
+              <td colSpan={3}>No active projects found.</td>
             </tr>
           )}
         </tbody>
