@@ -27,7 +27,7 @@ export type PublicationFormValues = {
     field: string;
     piName: string;
     awardNumber: string;
-    awardAmount?: number | null;
+    awardAmount: number;
     start: string;
     end: string;
     nsfStatusCode: string;
@@ -42,7 +42,7 @@ export type PublicationFormValues = {
     field: string;
     piName: string;
     awardNumber: string;
-    awardAmount?: number | null;
+    awardAmount: number;
     start: string;
     end: string;
     nsfStatusCode: string;
@@ -50,6 +50,10 @@ export type PublicationFormValues = {
     fieldId: number;
   };
 
-  export type AbstractFormValues = {
-    description: string;
+  export type ProjectDetailsFormValues = {
+    chargeCode: string;
+    primaryFieldID: string;
+    secondaryFieldID: string;
+    abstract: string;
+    title: string;
   };

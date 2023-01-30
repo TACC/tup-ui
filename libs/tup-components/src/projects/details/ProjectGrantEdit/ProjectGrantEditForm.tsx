@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
 //import ReCAPTCHA from 'react-google-recaptcha';
-import { useGrants, useGrantEdit } from '@tacc/tup-hooks';
+import { useGrants, useGrantEdit, useGrantDelete } from '@tacc/tup-hooks';
 import { FormikInput } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
-import { Button, SectionMessage } from '@tacc/core-components';
+import { Button, LoadingSpinner, SectionMessage } from '@tacc/core-components';
 import { GrantFormValues } from '../'
 import styles from './ProjectGrantEditModal.module.css';
 
@@ -24,6 +24,25 @@ const formShape = {
 
 const formSchema = Yup.object().shape(formShape);
 
+export const ProjectGrantDelete: React.FC<{ 
+  projectId: number, grantId: number }> 
+  = ({ projectId, grantId }) => {
+    const { isLoading, isError, mutate } = useGrantDelete(projectId, grantId);
+    if (isLoading)
+    return (
+      <div style={{ width: 'fit-content' }}>
+        <LoadingSpinner placement="inline" />
+      </div>
+    );
+    return (
+      <div>
+        <Button onClick={() => mutate()} type="secondary">
+          <strong>Delete</strong>
+        </Button>
+      </div>
+    );
+  };
+
 export const ProjectGrantEditForm: React.FC<{ 
     projectId: number, grantId: number }> 
     = ({ projectId, grantId }) => {
@@ -32,27 +51,27 @@ export const ProjectGrantEditForm: React.FC<{
   const grant_stuff = grant?.data ?? [];
   const grant_data = grant_stuff?.find((e) => e.id === grantId)
   const { id, title, grantNumber, piName, field, fundingAgency, awardNumber, awardAmount, start, end, nsfStatusCode, fieldId } = grant_data ?? {};
-
   const defaultValues = useMemo<GrantFormValues>(
     () => ({
       id: id ?? 0,
       title: title ?? '',
       grantNumber: grantNumber ?? '',
       piName: piName ?? '',
-      field: field ?? '',
+      field: field ?? '', 
       fundingAgency: fundingAgency ?? '',
       awardNumber: awardNumber ?? '',
-      awardAmount: awardAmount ?? null,
+      awardAmount: awardAmount ?? 0,
       start: start ?? '',
       end: end ?? '', 
       nsfStatusCode: nsfStatusCode ?? '',
-      fieldId: fieldId ?? NaN, 
+      fieldId: fieldId ?? 0, 
     }),
     [id, title, grantNumber, piName, field, fundingAgency, awardNumber, awardAmount, start, end, nsfStatusCode, fieldId]
   );
 
   const { mutate, isLoading, isSuccess, isError, data } = useGrantEdit(projectId, grantId);
-
+  console.log(typeof(awardAmount), awardAmount)
+  
   const onSubmit = (
     values: GrantFormValues,
     { resetForm }: FormikHelpers<GrantFormValues>
@@ -62,6 +81,7 @@ export const ProjectGrantEditForm: React.FC<{
         resetForm();
       },
     });
+    console.log(values)
   };
 
   return (
@@ -119,14 +139,7 @@ export const ProjectGrantEditForm: React.FC<{
             >
               Save
             </Button>
-            <Button 
-              attr="submit"
-              type="secondary"
-              isLoading={isLoading}
-              disabled={!isValid || isLoading} 
-            >
-              Delete
-            </Button>
+            <ProjectGrantDelete projectId={projectId} grantId={grantId}/>
           </ModalFooter>
         </Form>
       )}

@@ -17,7 +17,8 @@ export const usePublicationCreate = (projectId: number) => {
   const mutation = usePost<{}, string>({
     endpoint: `/projects/${projectId}/publications`,
     options: {
-      onSuccess: () => queryClient.invalidateQueries([`/projects/${projectId}/publications`]),
+      onSuccess: () => 
+        queryClient.invalidateQueries([`/projects/${projectId}/publications`]),
     },
   });
   return mutation;
@@ -36,7 +37,7 @@ export const usePublicationEdit = (projectId: number, publicationId: number) => 
   return mutation;
 };
 
-// Mutation to DELETE a grant from tup-services.
+// Mutation to DELETE a publication from tup-services.
 export const usePublicationDelete = (projectId: number, publicationId: number) => {
   const queryClient = useQueryClient();
   const mutation = useDelete<string>({

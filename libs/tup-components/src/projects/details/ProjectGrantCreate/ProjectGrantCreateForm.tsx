@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
-//import ReCAPTCHA from 'react-google-recaptcha';
 import { useGrantCreate } from '@tacc/tup-hooks';
 import { FormikInput } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
@@ -17,9 +16,10 @@ const formShape = {
     fundingAgency: Yup.string(),
     awardNumber: Yup.string(),
     awardAmount: Yup.number(),
-    grantStart: Yup.date(),
-    grantEnd: Yup.date(),
-    statusCode: Yup.string()
+    Start: Yup.date(),
+    End: Yup.date(),
+    nsfStatusCode: Yup.string(),
+    fieldId: Yup.number()
     };
 
 const formSchema = Yup.object().shape(formShape);
@@ -37,7 +37,7 @@ export const ProjectGrantCreateForm: React.FC<{
             field: '',
             fundingAgency: '',
             awardNumber: '',
-            awardAmount: null,
+            awardAmount: 0,
             start: '',
             end: '', 
             nsfStatusCode: '',

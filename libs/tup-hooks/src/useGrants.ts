@@ -1,12 +1,12 @@
 import { UseQueryResult, useQueryClient } from 'react-query';
 import { Grants } from '.';
-import { useGet, usePost, usePut } from './requests';
+import { useGet, usePost, usePut, useDelete } from './requests';
 
 // Query to retrieve the user's grants.
 export const useGrants = (projectId: number): UseQueryResult<Grants[]> => {
   const query = useGet<Grants[]>({
     endpoint: `/projects/${projectId}/grants`,
-    key: '/projects/${projectId}/grants',
+    key: `/projects/${projectId}/grants`,
   });
   return query;
 };
@@ -17,7 +17,8 @@ export const useGrantCreate = (projectId: number) => {
   const mutation = usePost<{}, string>({
     endpoint: `/projects/${projectId}/grants`,
     options: {
-      onSuccess: () => queryClient.invalidateQueries([`/projects/${projectId}/grants`]),
+      onSuccess: () => 
+        queryClient.invalidateQueries([`/projects/${projectId}/grants`]),
     },
   });
   return mutation;
@@ -36,3 +37,15 @@ export const useGrantEdit = (projectId: number, grantId: number) => {
   return mutation;
 };
 
+// Mutation to DELETE a grant from tup-services.
+export const useGrantDelete = (projectId: number, grantId: number) => {
+  const queryClient = useQueryClient();
+  const mutation = useDelete<string>({
+    endpoint: `/projects/${projectId}/grants/${grantId}`,
+    options: { 
+      onSuccess: () => 
+      queryClient.invalidateQueries([`/projects/${projectId}/grants`]), 
+    },
+  });
+  return mutation;
+};

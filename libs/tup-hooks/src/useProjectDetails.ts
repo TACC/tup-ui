@@ -1,11 +1,11 @@
 import { useQueryClient } from 'react-query';
-import { Abstract } from '.';
+import { ProjectDetails } from '.';
 import { usePut } from './requests';
 
-// Mutation to PUT changes to abstract form data to tup-services.
-export const useAbstract = (projectId: number) => {
+// Mutation to PUT changes to project details form data to tup-services.
+export const useProjectDetails = (projectId: number) => {
     const queryClient = useQueryClient();
-    const mutation = usePut<FormData, string>({
+    const mutation = usePut<{}, string>({
       endpoint: `/projects/${projectId}`,
       options: {
         onSuccess: () =>

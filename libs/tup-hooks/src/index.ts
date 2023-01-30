@@ -119,8 +119,8 @@ export type ProjectsRawSystem = {
   chargeCode: string;
   gid: number;
   source: string;
-  fieldId: number;
-  secondaryFieldId: number;
+  fieldId: string;
+  secondaryFieldId: string;
   typeId: number;
   totalStorageUsed?: number;
   totalStorage?: number;
@@ -251,7 +251,7 @@ export type Grants = {
   field: string;
   piName: string;
   awardNumber: string;
-  awardAmount: number | null;
+  awardAmount: number;
   start: string;
   end: string;
   nsfStatusCode: string;
@@ -259,8 +259,12 @@ export type Grants = {
   fieldId: number;
 };
 
-export type Abstract = {
+export type ProjectDetails = {
+  chargeCode: string;
+  primaryFieldID: string;
+  secondaryFieldID: string;
   description: string;
+  abstract: string;
 };
 
 export type MfaTokenResponse = {
@@ -343,9 +347,10 @@ export {
 export {  
   useGrants, 
   useGrantEdit,
-  useGrantCreate 
+  useGrantCreate, 
+  useGrantDelete 
 } from './useGrants';
-export { useAbstract } from './useAbstract';
+export { useProjectDetails } from './useProjectDetails';
 export { default as useProjectScienceField } from './useProjectScienceField';
 export {
   useMfa,

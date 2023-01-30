@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Button } from '@tacc/core-components';
-import { ProjectAbstractEditForm } from './ProjectAbstractEditForm'
-import { createResponseComposition } from 'msw';
+import { ProjectDetailsEditForm } from './ProjectDetailsEditForm'
 
 const ProjectAbstractEditModal: React.FC<{ 
     projectId: number }> 
@@ -30,7 +29,7 @@ const closeBtn = (
           <span>Edit Abstract</span>
         </ModalHeader>
         <ModalBody>
-          <ProjectAbstractEditForm projectId={projectId} />
+          <ProjectDetailsEditForm projectId={projectId} />
         </ModalBody>
       </Modal>
     </>

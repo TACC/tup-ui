@@ -1,14 +1,12 @@
 import React, { useMemo } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
-//import ReCAPTCHA from 'react-google-recaptcha';
-import { usePublications, usePublicationCreate } from '@tacc/tup-hooks';
+import { usePublicationCreate } from '@tacc/tup-hooks';
 import { FormikInput, FormikCheck } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';
 import styles from './ProjectPublicationCreateModal';
 import { PublicationCreateFormValues } from '../'
-import { isEmpty } from 'lodash';
 
 const formShape = {
   title: Yup.string().required('Required'),

@@ -7,8 +7,8 @@ export const mockProjectsOutput = [
     chargeCode: 'STA22002',
     gid: 825495,
     source: null,
-    fieldId: 42,
-    secondaryFieldId: 0,
+    primaryFieldID: 42,
+    secondaryFieldID: 0,
     typeId: 0,
     pi: {
       id: 87943,

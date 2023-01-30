@@ -7,7 +7,7 @@ import { ProjectPublicationEditModal } from './ProjectPublicationEdit';
 import { ProjectPublicationCreateModal } from './ProjectPublicationCreate';
 import { ProjectGrantEditModal } from './ProjectGrantEdit';
 import { ProjectGrantCreateModal } from './ProjectGrantCreate';
-import { ProjectAbstractEditModal } from './ProjectAbstractEdit';
+import { ProjectDetailsEditModal } from './ProjectDetailsEdit'; 
 
 const formatDate = (datestring: string): string => {
   const date = new Date(datestring);
@@ -41,7 +41,7 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
       <div>
         <span className={styles['project-detail-header']}>
           Abstract
-          <ProjectAbstractEditModal projectId={projectId}/>
+          <ProjectDetailsEditModal projectId={projectId}/>
         </span>
         <span className={styles['project-details']}>
           {projectDetails?.description}
