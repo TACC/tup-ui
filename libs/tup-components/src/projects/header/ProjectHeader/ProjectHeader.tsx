@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useProjects, useProjectScienceField } from '@tacc/tup-hooks';
 import styles from './Projects.module.css';
 import {
@@ -11,6 +11,8 @@ import {
 export const ProjectHeader: React.FC<{ projectId: number }> = ({
   projectId,
 }) => {
+  const params = useParams<{ projectId: string; username: string }>();
+
   const { data, isLoading, error } = useProjects();
   const fieldData = useProjectScienceField();
   const dataById = data?.find((project) => project.id === projectId);
@@ -62,7 +64,13 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
         {!isActive && (
           <Link to={'/projects?show=inactive'}>Inactive Projects </Link>
         )}
-        {`/ ${dataById?.title}`}
+        {!params.username && `/ ${dataById?.title}`}
+        {params.username && (
+          <>
+            <Link to={`/projects/${projectId}`}>{`/ ${dataById?.title}`} </Link>
+            {`/ ${params.username}`}{' '}
+          </>
+        )}
       </h3>
       <div className={styles['separator']}></div>
 

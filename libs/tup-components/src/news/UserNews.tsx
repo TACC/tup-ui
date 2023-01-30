@@ -20,7 +20,7 @@ const UserNews: React.FC = () => {
       <ul className={styles['news-list']}>
         {data &&
           data.slice(0, 12).map((newsItem) => (
-            <li className={styles['news-list-item']}>
+            <li className={styles['news-list-item']} key={newsItem.ID}>
               <div className={styles['posted-date']}>
                 <span>Posted {formatDate(newsItem.PostedDate)} </span>
                 {newsItem.Updates && (

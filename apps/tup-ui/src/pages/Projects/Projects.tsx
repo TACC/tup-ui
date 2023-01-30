@@ -5,15 +5,13 @@ import {
   ProjectsNavbar,
   ProjectsListing,
 } from '@tacc/tup-components';
-import styles from './Projects.module.css';
+import { SectionHeader } from '@tacc/core-components';
 
 const Layout: React.FC = () => {
   return (
     <RequireAuth>
       <PageLayout
-        top={
-          <div className={styles['project-header']}>Projects & Allocations</div>
-        }
+        top={<SectionHeader>Projects & Allocations</SectionHeader>}
         left={<ProjectsNavbar />}
         right={<ProjectsListing />}
       ></PageLayout>

@@ -13,3 +13,8 @@
   color: var(--global-color-accent--normal);
   padding: 30px;
 }
+
+.ticket-container {
+  flex-grow: 1;
+  overflow: auto;
+}

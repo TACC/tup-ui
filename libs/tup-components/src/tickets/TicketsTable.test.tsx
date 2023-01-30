@@ -51,8 +51,6 @@ describe('Tickets Table Component', () => {
     expect(getStatusText('open')).toEqual('In Progress');
     expect(getStatusText('user_wait')).toEqual('Reply Required');
     expect(getStatusText('internal_wait')).toEqual('Reply Sent');
-    expect(() => {
-      getStatusText('random_status');
-    }).toThrow(RangeError);
+    expect(getStatusText('random_status')).toEqual('--');
   });
 });
