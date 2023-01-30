@@ -1,17 +1,9 @@
 <div class="c-feed">
 {% if latest_articles %}
   {% for article in latest_articles %}
-  <article>
-    <time data-prefix="Posted:">JANUARY 28 - 29, 2022</time>
-    <h4>
-      <a href="http://example.com" target="_blank">
-        {{ article.WebTitle }}
-      </a>
-    </h4>
-    <p>{{ article.Content }}</p>
-  </article>
+    {% include './list_item.html' with article=article %}
   {% endfor %}
-  {% else %}
+{% else %}
   <article>
     <p>No recent news found.</p>
   </article>

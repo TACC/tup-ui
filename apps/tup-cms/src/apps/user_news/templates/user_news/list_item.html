@@ -1,0 +1,17 @@
+{% if article %}
+  <article>
+    <time data-prefix="Posted:">{{ article.PostedDate }}</time>
+    <h4>
+      {% if should_title_be_link %}
+      <a href="{{ article.ID }}">
+        {{ article.WebTitle }}
+      </a>
+      {% endif %}
+    </h4>
+    <p>{{ article.Content }}</p>
+  </article>
+{% else %}
+  <article>
+    <p>No such article found.</p>
+  </article>
+{% endif %}

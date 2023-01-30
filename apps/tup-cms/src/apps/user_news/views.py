@@ -1,9 +1,9 @@
 from django.views.generic.base import TemplateView
 
-DEFAULT_ARTICLE_COUNT = 5
+DEFAULT_LIST_COUNT = 5
 
-def get_latest_articles(count = DEFAULT_ARTICLE_COUNT):
-  recent_articles = [
+def get_articles():
+  articles = [
     {
       "ID": "107433",
       "Updates": None,
@@ -592,14 +592,40 @@ def get_latest_articles(count = DEFAULT_ARTICLE_COUNT):
       "Content": "TAPIS Days at TACC - Aug 19th, 10am-4pm CST Learn about the tools necessary to build more complex workflows and techniques to ensure your runtime environment is reproducible and flexible. Use virtual machines and containers to develop and execute scientific workflows in the cloud with the ability to expand to large-scale systems. Go here to register: https://learn.tacc.utexas.edu/"
     }
   ]
-  latest_articles = recent_articles[:count]
+
+  return articles
+
+def get_latest_articles(count = DEFAULT_LIST_COUNT):
+  articles = get_articles()
+  latest_articles = articles[:count]
 
   return latest_articles
+
+def get_article(ident):
+  articles = get_articles()
+  filtered_articles = filter(lambda article: article['ID'] == ident, articles)
+  article = list(filtered_articles)[0]
+
+  return article
 
 class UserNewsListView(TemplateView):
   template_name = 'user_news/list.html'
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
+
     context['latest_articles'] = get_latest_articles()
+    context['should_title_be_link'] = True
+
+    return context
+
+class UserNewsReadView(TemplateView):
+  template_name = 'user_news/read.html'
+
+  def get_context_data(self, **kwargs):
+    article_id = self.kwargs['id']
+    context = super().get_context_data(**kwargs)
+
+    context['article'] = get_article(article_id)
+
     return context
