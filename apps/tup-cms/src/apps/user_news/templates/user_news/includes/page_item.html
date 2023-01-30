@@ -1,11 +1,10 @@
 {% if article %}
-  <h1>{{ article.WebTitle }}</h1>
   <article>
     <time data-prefix="Posted by {{Author}} on">{{ article.PostedDate }}</time>
     <div>{{ article.Content }}</div>
   </article>
 {% else %}
   <article>
-    <p>No such article found.</p>
+    <p>We did not find this news item. Please see <a href="/user_news/">news list</a>.</p>
   </article>
 {% endif %}

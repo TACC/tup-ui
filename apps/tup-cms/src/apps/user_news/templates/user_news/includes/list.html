@@ -1,0 +1,9 @@
+{% if articles %}
+  {% for article in articles %}
+    {% include './list_item.html' with article=article only %}
+  {% endfor %}
+{% else %}
+  <article>
+    <p>No recent news found.</p>
+  </article>
+{% endif %}

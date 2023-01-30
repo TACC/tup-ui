@@ -2,11 +2,9 @@
   <article>
     <time data-prefix="Posted:">{{ article.PostedDate }}</time>
     <h4>
-      {% if should_title_be_link %}
       <a href="/user_news/{{ article.ID }}">
         {{ article.WebTitle }}
       </a>
-      {% endif %}
     </h4>
     <p>{{ article.Content }}</p>
   </article>

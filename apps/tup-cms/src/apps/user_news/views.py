@@ -8,8 +8,7 @@ class UserNewsListView(TemplateView):
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
 
-    context['latest_articles'] = get_latest_articles()
-    context['should_title_be_link'] = True
+    context['articles'] = get_latest_articles()
 
     return context
 

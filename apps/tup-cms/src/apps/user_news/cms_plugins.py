@@ -24,7 +24,7 @@ class UserNewsListPlugin(CMSPluginBase):
         request = context['request']
 
         context.update({
-            'latest_articles': get_latest_articles(),
+            'articles': get_latest_articles(),
             'should_title_be_link': True
         })
         return context

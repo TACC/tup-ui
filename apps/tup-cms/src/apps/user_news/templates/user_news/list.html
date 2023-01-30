@@ -1,9 +1,11 @@
-{% if latest_articles %}
-  {% for article in latest_articles %}
-    {% include './includes/list_item.html' with article=article %}
-  {% endfor %}
-{% else %}
-  <article>
-    <p>No recent news found.</p>
-  </article>
-{% endif %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="container">
+  {% include "nav_cms_breadcrumbs.html" %}
+  <h1>User News</h1>
+  {% include './includes/list.html' with articles=articles only %}
+</section>
+
+{% endblock content %}

@@ -1,1 +1,18 @@
-{% include './includes/page_item.html' with should_title_be_link=true %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="container">
+  {% include "nav_cms_breadcrumbs.html" %}
+  <h1>
+  {% if article.WebTitle %}
+    {{ article.WebTitle }}
+  {% else %}
+    No Such Article Found
+  {% endif %}
+  </h1>
+
+  {% include './includes/page_item.html' with article=article should_title_be_link=true only %}
+</section>
+
+{% endblock content %}
