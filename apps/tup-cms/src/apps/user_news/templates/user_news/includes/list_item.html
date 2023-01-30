@@ -2,7 +2,7 @@
   <article>
     <time data-prefix="Posted:">{{ article.PostedDate }}</time>
     <h4>
-      <a href="/user_news/{{ article.ID }}">
+      <a href="/user_updates/{{ article.ID }}">
         {{ article.WebTitle }}
       </a>
     </h4>
@@ -10,6 +10,6 @@
   </article>
 {% else %}
   <article>
-    <p>No such article found.</p>
+    <p>No such update found.</p>
   </article>
 {% endif %}
