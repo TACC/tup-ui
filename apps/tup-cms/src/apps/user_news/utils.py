@@ -1,7 +1,7 @@
 import requests
 from django.conf import settings
 
-from .defaults import list_count
+from .defaults import max_articles
 
 
 service_url = settings.TUP_SERVICES_URL
@@ -16,7 +16,7 @@ def get_articles():
 
   return articles
 
-def get_latest_articles(count = list_count):
+def get_latest_articles(count = max_articles):
   articles = get_articles()
   latest_articles = articles[:count]
 
