@@ -1,10 +1,22 @@
 {% if article %}
+
+{% with article.Updates.AnnouncementUpdate as updates %}
   <article>
     <time data-prefix="Posted by {{Author}} on">{{ article.PostedDate }}</time>
+    {% if updates %}
+      {% include './updates.html' with updates=updates only %}
+
+    <h2>Original Update</h2>
+
+    {% endif %}
     <div>{{ article.Content }}</div>
   </article>
+{% endwith %}
+
 {% else %}
+
   <article>
     <p>No such update found. <a href="/user_updates/">See all updates</a>.</p>
   </article>
+
 {% endif %}

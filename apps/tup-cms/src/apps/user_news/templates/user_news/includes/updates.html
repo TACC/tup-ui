@@ -1,0 +1,6 @@
+{% for update in updates %}
+  <aside>
+    <h2><time data-prefix="Updated on">{{ update.PostedDate }}</time></h2>
+    <p>{{ update.Content }}</p>
+  </aside>
+{% endfor %}
