@@ -41,12 +41,11 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
                   color: '#484848',
                 }}
               >
-                Add <LoadingSpinner placement="inline"></LoadingSpinner>
+                Add
               </Button>
             </InputGroupAddon>
             <Input placeholder="Enter Username" id="add-user" />
           </InputGroup>
-          <InlineMessage type="error">User not found.</InlineMessage>
         </form>
       </div>
       <div className={styles['separator']}></div>
