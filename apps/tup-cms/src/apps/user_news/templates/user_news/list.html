@@ -1,11 +1,9 @@
-<div class="c-feed">
 {% if latest_articles %}
   {% for article in latest_articles %}
-    {% include './list_item.html' with article=article %}
+    {% include './includes/list_item.html' with article=article %}
   {% endfor %}
 {% else %}
   <article>
     <p>No recent news found.</p>
   </article>
 {% endif %}
-</div>
