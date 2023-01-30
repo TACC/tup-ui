@@ -55,6 +55,7 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
               name="text"
               label="Reply"
               description=""
+              style={{ maxWidth: '100%' }}
               required
             />
             <FormikFileInput

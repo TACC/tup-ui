@@ -1,14 +1,9 @@
-import React, { useMemo } from 'react';
-import { Column, Row } from 'react-table';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  InfiniteScrollTable,
-  InlineMessage,
-  LoadingSpinner,
-} from '@tacc/core-components';
+import { InlineMessage, LoadingSpinner } from '@tacc/core-components';
 import { Ticket, useGetTickets } from '@tacc/tup-hooks';
-import { DateCreated, Status } from './TicketsCells';
 import './TicketsTable.global.css';
+import { formatDate } from '../utils/timeFormat';
 
 const TICKETS_DASHBOARD_DISPLAY_LIMIT = 12;
 
@@ -26,73 +21,20 @@ export const getStatusText = (status: string) => {
     case 'internal_wait':
       return 'Reply Sent';
     default:
-      throw new RangeError('no defined text for this status');
+      return '--';
   }
 };
 
 export const TicketsTable: React.FC = () => {
   const { data, isLoading, isError } = useGetTickets();
   const pathname = useLocation().pathname;
-  let [historyModalBasePath, createModalPath] = ['', ''];
   let ticketData: Array<Ticket> = [];
 
   if (pathname.startsWith('/tickets')) {
-    historyModalBasePath = 'tickets';
-    createModalPath = 'tickets/create';
     ticketData = data ?? [];
   } else {
-    historyModalBasePath = 'dashboard-tickets';
-    createModalPath = 'ticket-create';
     ticketData = data?.slice(0, TICKETS_DASHBOARD_DISPLAY_LIMIT) ?? [];
   }
-
-  const noDataText = (
-    <>
-      No tickets. You can <Link to={`/${createModalPath}`}>add a ticket</Link>.
-    </>
-  );
-
-  const columns = useMemo<Column<Ticket>[]>(
-    () => [
-      {
-        accessor: 'numerical_id',
-        Header: 'Ticket Number',
-      },
-      {
-        accessor: 'Subject',
-        Header: 'Subject',
-        Cell: (el) => (
-          <Link to={`/tickets/${el.row.original.numerical_id}`}>
-            <span title={el.value}>{el.value}</span>
-          </Link>
-        ),
-      },
-      {
-        accessor: 'Created',
-        Header: 'Date Added',
-        Cell: DateCreated,
-      },
-      {
-        accessor: (d) => {
-          try {
-            return { text: getStatusText(d.Status), unknownStatusText: false };
-          } catch {
-            return { text: d.Status, unknownStatusText: true };
-          }
-        },
-        Header: 'Ticket Status',
-        Cell: Status,
-      },
-    ],
-    [historyModalBasePath]
-  );
-
-  const rowProps = (row: Row<Ticket>) => {
-    return {
-      className:
-        row.original.Status === 'user_wait' ? 'ticket-reply-required' : '',
-    };
-  };
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -106,14 +48,43 @@ export const TicketsTable: React.FC = () => {
     );
   }
 
+  if (data && data.length === 0) {
+    return (
+      <>No tickets. You can add a ticket by clicking "New Ticket" above.</>
+    );
+  }
+
   return (
-    <InfiniteScrollTable
-      tableColumns={columns}
-      tableData={ticketData}
-      isLoading={isLoading}
-      className="tickets-view"
-      noDataText={noDataText}
-      getRowProps={rowProps}
-    />
+    <div className="o-fixed-header-table">
+      <table style={{ width: '100%' }}>
+        <thead>
+          <tr>
+            <th>Ticket Number</th>
+            <th>Subject</th>
+            <th>Date Added</th>
+            <th>Ticket Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ticketData.map((ticket) => (
+            <tr
+              key={ticket.numerical_id}
+              className={
+                ticket.Status === 'user_wait' ? 'ticket-reply-required' : ''
+              }
+            >
+              <td>{ticket.numerical_id}</td>
+              <td>
+                <Link to={`/tickets/${ticket.numerical_id}`}>
+                  {ticket.Subject}
+                </Link>
+              </td>
+              <td>{formatDate(new Date(ticket.Created))}</td>
+              <td>{getStatusText(ticket.Status)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
