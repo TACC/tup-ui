@@ -18,18 +18,18 @@ def get_articles(sanitize = True):
 
   return articles
 
-def get_latest_articles(count = max_articles):
-  articles = get_articles()
-  latest_articles = articles[:count]
+def get_latest_articles(count = max_articles, sanitize = True):
+  articles = get_articles(sanitize)
+  latest_articles = articles[:count] if count else articles
   proxy_articles = map(
     lambda article: create_proxy_article(article), latest_articles
   )
 
   return proxy_articles
 
-def get_article(ident):
-  articles = get_articles()
-  filtered_articles = filter(lambda article: article['ID'] == ident, articles)
+def get_article(id_, sanitize = True):
+  articles = get_articles(sanitize)
+  filtered_articles = filter(lambda article: article['ID'] == id_, articles)
   article = list(filtered_articles)[0]
 
   return create_proxy_article(article)

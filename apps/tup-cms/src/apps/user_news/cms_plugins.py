@@ -25,8 +25,11 @@ class UserNewsListPlugin(CMSPluginBase):
         context = super().render(context, instance, placeholder)
         request = context['request']
 
+        should_sanitize = True
+        articles = get_latest_articles(instance.max_articles, should_sanitize)
+
         context.update({
-            'articles': get_latest_articles(instance.max_articles),
+            'articles': articles,
             'urls': urls
         })
         return context

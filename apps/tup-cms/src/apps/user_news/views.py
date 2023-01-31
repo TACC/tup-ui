@@ -8,8 +8,9 @@ class UserNewsListView(TemplateView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
+    should_sanitize = True
 
-    context['articles'] = get_latest_articles()
+    context['articles'] = get_latest_articles(None, should_sanitize)
     context['urls'] = urls
 
     return context
@@ -19,7 +20,8 @@ class UserNewsReadView(TemplateView):
 
   def get_context_data(self, **kwargs):
     article_id = self.kwargs['id']
-    article = get_article(article_id)
+    should_sanitize = True
+    article = get_article(article_id, should_sanitize)
     context = super().get_context_data(**kwargs)
 
     context['article'] = article
