@@ -1,10 +1,10 @@
 {% if article %}
-  <h1>{{ article.title }}</h1>
-  {% if article.subtitle %}
-  <h2>{{ article.subtitle }}</h2>
-  {% endif %}
-
   <article class="{% if article.updates %}has-update{% endif %}">
+    <h1>{{ article.title }}</h1>
+    {% if article.subtitle %}
+    <h2>{{ article.subtitle }}</h2>
+    {% endif %}
+
     <time data-prefix="Published:" datetime="{{ article.postDateTime }}">
       {{ article.postDate }}
     </time>
