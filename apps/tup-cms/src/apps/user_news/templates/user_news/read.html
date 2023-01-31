@@ -4,7 +4,8 @@
 
 <section class="container">
   {% include "./includes/list_item_breadcrumbs.html" with article=article urls=urls only %}
-  {% include './includes/page_item.html' with article=article only %}
+  {% include './includes/content_styles.html' %}
+  {% include './includes/page_item.html' %}
 </section>
 
 {% endblock content %}

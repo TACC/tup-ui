@@ -11,6 +11,7 @@ class UserNewsListView(TemplateView):
     should_sanitize = True
 
     context['articles'] = get_latest_articles(None, should_sanitize)
+    context['has_markup_content'] = not should_sanitize
     context['urls'] = urls
 
     return context
@@ -20,11 +21,12 @@ class UserNewsReadView(TemplateView):
 
   def get_context_data(self, **kwargs):
     article_id = self.kwargs['id']
-    should_sanitize = True
+    should_sanitize = False
     article = get_article(article_id, should_sanitize)
     context = super().get_context_data(**kwargs)
 
     context['article'] = article
+    context['has_markup_content'] = not should_sanitize
     context['urls'] = urls
 
     return context

@@ -15,7 +15,7 @@ class UserNewsListPlugin(CMSPluginBase):
     module = 'TUP CMS'
     model = UserNewsList
     name = _('User News List')
-    render_template = 'user_news/includes/list.html'
+    render_template = 'user_news/list_for_plugin.html'
 
     cache = False
     text_enabled = False
@@ -30,6 +30,7 @@ class UserNewsListPlugin(CMSPluginBase):
 
         context.update({
             'articles': articles,
+            'has_markup_content': not should_sanitize,
             'urls': urls
         })
         return context

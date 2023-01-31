@@ -12,7 +12,11 @@
         {% endif %}
       </a>
     </h4>
+    {% if has_markup_content %}
+    <div class="has-markup">{{ article.content|safe }}</div>
+    {% else %}
     <p>{{ article.content }}</p>
+    {% endif %}
   </article>
 
 {% else %}

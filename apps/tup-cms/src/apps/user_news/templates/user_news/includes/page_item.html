@@ -8,14 +8,22 @@
     <time data-prefix="Published:" datetime="{{ article.postDateTime }}">
       {{ article.postDate }}
     </time>
-    <address data-prefix="by">{{ article.author }}</address>
+    <address data-prefix="by">
+      {{ article.author }}
+    </address>
+
     {% if updates %}
       {% include './updates.html' with updates=article.updates only %}
 
     <h2>Original Update</h2>
 
     {% endif %}
-    <div>{{ article.content }}</div>
+
+    {% if has_markup_content %}
+    <div class="has-markup">{{ article.content|safe }}</div>
+    {% else %}
+    <p>{{ article.content }}</p>
+    {% endif %}
   </article>
 
 {% else %}
