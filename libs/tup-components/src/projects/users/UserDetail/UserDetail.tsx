@@ -1,16 +1,97 @@
-import { LoadingSpinner } from '@tacc/core-components';
+import { LoadingSpinner, Button } from '@tacc/core-components';
 import {
   useProjectUsers,
   useProjectUsage,
   UsagePerResource,
+  ProjectUser,
+  useProfile,
 } from '@tacc/tup-hooks';
+import { useState } from 'react';
 import styles from './UserDetail.module.css';
 
-const UserRoleSelector: React.FC = () => (
-  <div>(User role selector placeholder)</div>
-);
+const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
+  user,
+  projectId,
+}) => {
+  const { data: currentUser } = useProfile();
+  const projectUsers = useProjectUsers(projectId);
+  const projectCurrentUser = (projectUsers.data ?? []).find(
+    (user) => user.username === currentUser?.username
+  );
+  const [confirmState, setConfirmState] = useState<'DEFAULT' | 'CONFIRM'>(
+    'DEFAULT'
+  );
+  const mutate = () => {
+    console.log('setting delegate');
+  };
 
-const RemoveUser: React.FC = () => <div>(User removal placeholder)</div>;
+  const canSetDelegate =
+    user.role === 'Standard' && projectCurrentUser?.role === 'PI';
+  return (
+    <div>
+      <strong>Role:</strong> {user.role}{' '}
+      {canSetDelegate && confirmState === 'DEFAULT' && (
+        <Button onClick={() => setConfirmState('CONFIRM')} type="link">
+          Set as Project Delegate
+        </Button>
+      )}
+      {canSetDelegate && confirmState === 'CONFIRM' && (
+        <>
+          <Button onClick={() => mutate()} type="link">
+            Confirm Delegate Selection
+          </Button>{' '}
+          |{' '}
+          <Button onClick={() => setConfirmState('DEFAULT')} type="link">
+            Cancel
+          </Button>
+        </>
+      )}
+    </div>
+  );
+};
+
+const RemoveUser: React.FC<{ projectId: number; user: ProjectUser }> = ({
+  projectId,
+  user,
+}) => {
+  const { data: currentUser } = useProfile();
+  const projectUsers = useProjectUsers(projectId);
+  const projectCurrentUser = (projectUsers.data ?? []).find(
+    (user) => user.username === currentUser?.username
+  );
+  const [confirmState, setConfirmState] = useState<'DEFAULT' | 'CONFIRM'>(
+    'DEFAULT'
+  );
+
+  const mutate = () => {
+    console.log('remove user');
+  };
+
+  if (!['PI', 'Delegate'].includes(projectCurrentUser?.role ?? '')) return null;
+  if (user.role === 'PI') return null;
+  if (user.username === currentUser?.username) return null;
+
+  if (confirmState === 'DEFAULT')
+    return (
+      <Button onClick={() => setConfirmState('CONFIRM')} type="link">
+        Remove User
+      </Button>
+    );
+  if (confirmState === 'CONFIRM')
+    return (
+      <>
+        <Button onClick={() => mutate()} type="link">
+          Remove
+        </Button>{' '}
+        |{' '}
+        <Button onClick={() => setConfirmState('DEFAULT')} type="link">
+          Cancel
+        </Button>
+      </>
+    );
+
+  return <div>(User removal placeholder)</div>;
+};
 
 const UsageTable: React.FC<{ projectId: number; username: string }> = ({
   projectId,
@@ -85,10 +166,10 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
       </div>
       <div className={styles['manage-user-container']}>
         <div>
-          <UserRoleSelector />
+          <UserRoleSelector projectId={projectId} user={user} />
         </div>
         <div>
-          <RemoveUser />
+          <RemoveUser projectId={projectId} user={user} />
         </div>
       </div>
       <UsageTable username={username} projectId={projectId} />

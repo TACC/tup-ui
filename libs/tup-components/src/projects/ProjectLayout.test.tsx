@@ -13,7 +13,7 @@ describe('Projects Layout Component', () => {
     await waitFor(() => getAllByRole('columnheader'));
     const columnHeaders: HTMLElement[] = getAllByRole('columnheader');
     expect(columnHeaders[0].textContent).toEqual('Project Title');
-    expect(columnHeaders[1].textContent).toEqual('Principle Investigator');
+    expect(columnHeaders[1].textContent).toEqual('Principal Investigator');
     expect(columnHeaders[2].textContent).toEqual('Active Allocations');
     expect(getByText('JAR TUP Development Project')).toBeDefined();
     expect(getByText('Jake Rosenberg')).toBeDefined();
