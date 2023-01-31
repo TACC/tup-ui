@@ -11,8 +11,9 @@ if settings.DEBUG:
     service_url = service_url.replace('localhost', 'host.docker.internal')
 
 
-def get_articles():
-  r = requests.get(f'{service_url}/news')
+def get_articles(sanitize = True):
+  url = f'{service_url}/news?sanitize={sanitize}'
+  r = requests.get(url)
   articles = r.json();
 
   return articles
