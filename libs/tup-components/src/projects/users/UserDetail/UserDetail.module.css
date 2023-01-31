@@ -1,5 +1,7 @@
 .user-detail-container {
     width: 50%;
+    margin-left: -25px;
+    margin-top: -20px;
 }
 
 .user-info-banner {

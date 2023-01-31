@@ -1,8 +1,9 @@
 import React from 'react';
 import { useProjectUsers } from '@tacc/tup-hooks';
-import { Navbar, NavItem } from '@tacc/core-wrappers';
+import { NavItem } from '@tacc/core-wrappers';
 import styles from './UserList.module.css';
 import { LoadingSpinner } from '@tacc/core-components';
+import ManageTeam from './ManageTeam';
 
 const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
   const projectUsers = useProjectUsers(projectId);
@@ -18,7 +19,8 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
     );
 
   return (
-    <Navbar>
+    <div style={{ height: '100%', borderRight: '1px solid #c7c7c7' }}>
+      <ManageTeam projectId={projectId} />
       {pi && (
         <NavItem
           to={`/projects/${projectId}/${pi?.username}`}
@@ -49,7 +51,7 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           {user.firstName} {user.lastName} ({user.username})
         </NavItem>
       ))}
-    </Navbar>
+    </div>
   );
 };
 
