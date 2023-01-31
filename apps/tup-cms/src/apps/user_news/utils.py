@@ -34,6 +34,15 @@ def get_article(id_, sanitize = True):
 
   return create_proxy_article(article)
 
+def get_datetime(str_):
+  return datetime.fromisoformat(str_)
+
+def format_date(datetime):
+  return datetime.strftime('%B %d, %Y')
+
+def format_datetime(datetime):
+  return datetime.isoformat()
+
 def rename_dict_item(dict, old_item_name, new_item_name):
     dict[new_item_name] = dict[old_item_name]
     del dict[old_item_name]
@@ -41,13 +50,19 @@ def rename_dict_item(dict, old_item_name, new_item_name):
 def create_proxy_article(article):
   if article['Updates']:
     updates = article['Updates']['AnnouncementUpdate']
+
     for update in updates:
+      postDateTime = get_datetime(update['PostedDate'])
+
       rename_dict_item(update, 'PostedDate', 'postDate')
       rename_dict_item(update, 'Content', 'content')
+      update['postDate'] = format_date(postDateTime)
+      update['postDateTime'] = format_datetime(postDateTime)
+
   else:
     updates = None
 
-  postDateTime = datetime.fromisoformat(article['PostedDate'])
+  postDateTime = get_datetime(article['PostedDate'])
 
   context_article = {
     'id': article['ID'],
@@ -55,8 +70,8 @@ def create_proxy_article(article):
     'content': article['Content'],
     'subtitle': article['Subtitle'],
     'author': article['Author'],
-    'postDate': postDateTime.strftime('%B %d, %Y'),
-    'postDateTime': postDateTime,
+    'postDate': format_date(postDateTime),
+    'postDateTime': format_datetime(postDateTime),
     'updates': updates,
   }
 
