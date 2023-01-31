@@ -1,21 +1,17 @@
 {% if article %}
 
-  {% with article.Updates.AnnouncementUpdate as updates %}
-  <article class="{% if updates %}has-update{% endif %}">
-    <time data-prefix="Posted: ">{{ article.PostedDate }}</time>
+  <article class="{% if article.updates %}has-update{% endif %}">
+    <time data-prefix="Posted: ">{{ article.postDate }}</time>
     <h4>
-      <a href="/{{ urls.base }}{{ urls.item_prefix }}{{ article.ID }}">
-        {{ article.WebTitle }}
+      <a href="/{{ urls.base }}{{ urls.item_prefix }}{{ article.id }}">
+        {{ article.title }}
+        {% if article.subttitle %}
+        <small>{{ article.subttitle }}</small>
+        {% endif %}
       </a>
     </h4>
-    {% if article.SubTitle %}
-    <h5>
-      {{ article.SubTitle }}
-    </h5>
-    {% endif %}
-    <p>{{ article.Content }}</p>
+    <p>{{ article.content }}</p>
   </article>
-  {% endwith %}
 
 {% else %}
 
