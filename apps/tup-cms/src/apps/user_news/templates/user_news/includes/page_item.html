@@ -12,8 +12,8 @@
       {{ article.author }}
     </address>
 
-    {% if updates %}
-      {% include './updates.html' with updates=article.updates only %}
+    {% if article.updates %}
+      {% include './updates.html' with updates=article.updates %}
 
     <h2>Original Update</h2>
 

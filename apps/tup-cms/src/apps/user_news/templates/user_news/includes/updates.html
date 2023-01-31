@@ -1,6 +1,14 @@
 {% for update in updates %}
   <aside>
-    <h2><time data-prefix="Updated on">{{ update.PostedDate }}</time></h2>
-    <p>{{ update.Content }}</p>
+    <h2>
+      <time data-prefix="Updated on" datetime="{{ update.postDateTime }}">
+        {{ update.postDate }}
+      </time>
+    </h2>
+    {% if has_markup_content %}
+    <div class="has-markup">{{ update.content|safe }}</div>
+    {% else %}
+    <p>{{ update.content }}</p>
+    {% endif %}
   </aside>
 {% endfor %}

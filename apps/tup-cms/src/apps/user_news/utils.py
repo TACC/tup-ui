@@ -47,6 +47,8 @@ def create_proxy_article(article):
   else:
     updates = None
 
+  print(updates)
+
   postDateTime = datetime.fromisoformat(article['PostedDate'])
 
   context_article = {
