@@ -1,4 +1,6 @@
 import requests
+from datetime import datetime
+
 from django.conf import settings
 
 from .defaults import max_articles
@@ -44,13 +46,16 @@ def create_proxy_article(article):
   else:
     updates = None
 
+  postDateTime = datetime.fromisoformat(article['PostedDate'])
+
   context_article = {
     'id': article['ID'],
     'title': article['WebTitle'],
     'content': article['Content'],
     'subtitle': article['Subtitle'],
     'author': article['Author'],
-    'postDate': article['PostedDate'],
+    'postDate': postDateTime.strftime('%B %d, %Y'),
+    'postDateTime': postDateTime,
     'updates': updates,
   }
 
