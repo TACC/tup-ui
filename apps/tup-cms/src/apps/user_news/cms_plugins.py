@@ -7,7 +7,7 @@ from django.utils.encoding import force_text
 
 from .models import UserNewsList
 from .defaults import max_articles, urls
-from .utils import get_article, get_latest_articles
+from .utils import get_latest_articles
 
 # SEE: http://docs.django-cms.org/en/release-3.7.x/reference/plugins.html
 @plugin_pool.register_plugin
