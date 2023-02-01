@@ -1,46 +1,49 @@
 import React, { useMemo } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
 //import ReCAPTCHA from 'react-google-recaptcha';
-import { useProjects, useAbstract } from '@tacc/tup-hooks';
-import { FormikInput } from '@tacc/core-wrappers';
+import { usePublicationCreate, ProjectPublicationBody } from '@tacc/tup-hooks';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';
-import { AbstractFormValues } from '../'
-import styles from './ProjectAbstractEditModal';
+import styles from './ProjectPublicationCreateModal';
+import ProjectPublicationFormFields from './ProjectPublicationFormFIelds';
 
 const formShape = {
-  description: Yup.string().required('Required'),
+  title: Yup.string().required('Required'),
+  authors: Yup.string().required('Required'),
+  yearPublished: Yup.number(),
+  publisher: Yup.string(),
+  url: Yup.string(),
+  venue: Yup.string(),
+  userCitedTacc: Yup.boolean(),
 };
 
 const formSchema = Yup.object().shape(formShape);
 
-export const ProjectAbstractEditForm: React.FC<{ 
-    projectId: number }> 
-    = ({ projectId }) => {
-
-  const details = useProjects();
-  const project_data = details?.data ?? [];
-  const projectDetails = project_data.find((desc) => desc.id === projectId);
-  const { description } = projectDetails ?? {};
-
-  const defaultValues = useMemo<AbstractFormValues>(
+export const ProjectPublicationCreateForm: React.FC<{
+  projectId: number;
+}> = ({ projectId }) => {
+  const defaultValues = useMemo<ProjectPublicationBody>(
     () => ({
-      description: description ?? '',
+      title: '',
+      authors: '',
+      yearPublished: '',
+      publisher: '',
+      url: '',
+      venue: '',
+      userCitedTacc: false,
     }),
-    [description]
+    []
   );
 
-  const { mutate, isLoading, isSuccess, isError, data } = useAbstract(projectId);
+  const { mutate, isLoading, isSuccess, isError } =
+    usePublicationCreate(projectId);
 
   const onSubmit = (
-    values: AbstractFormValues,
-    { resetForm }: FormikHelpers<AbstractFormValues>
+    values: ProjectPublicationBody,
+    { resetForm }: FormikHelpers<ProjectPublicationBody>
   ) => {
-    const formData = new FormData();
-    formData.set('description', values['description']); 
-
-    mutate(formData, {
+    mutate(values, {
       onSuccess: () => {
         resetForm();
       },
@@ -57,8 +60,8 @@ export const ProjectAbstractEditForm: React.FC<{
     >
       {({ isValid }) => (
         <Form>
-          <FormikInput name="description" label="Description" required  />
-          
+          <ProjectPublicationFormFields />
+
           <ModalFooter
             style={{
               marginLeft: '-10px',
@@ -72,16 +75,16 @@ export const ProjectAbstractEditForm: React.FC<{
             <div>
               {isSuccess && (
                 <SectionMessage type="success">
-                  The description was updated.
+                  The publication was updated.
                 </SectionMessage>
               )}
               {isError && (
                 <SectionMessage type="warning">
-                  There was an error updating your description.
+                  There was an error updating your publication.
                 </SectionMessage>
               )}
             </div>
-            <Button 
+            <Button
               attr="submit"
               type="primary"
               isLoading={isLoading}

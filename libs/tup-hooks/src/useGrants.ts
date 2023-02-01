@@ -1,12 +1,12 @@
 import { UseQueryResult, useQueryClient } from 'react-query';
-import { Grants } from '.';
+import { ProjectGrant, ProjectGrantBody } from '.';
 import { useGet, usePost, usePut } from './requests';
 
 // Query to retrieve the user's grants.
-export const useGrants = (id: number): UseQueryResult<Grants[]> => {
-  const query = useGet<Grants[]>({
+export const useGrants = (id: number): UseQueryResult<ProjectGrant[]> => {
+  const query = useGet<ProjectGrant[]>({
     endpoint: `/projects/${id}/grants`,
-    key: 'grants',
+    key: ['grants', id],
   });
   return query;
 };
@@ -14,10 +14,10 @@ export const useGrants = (id: number): UseQueryResult<Grants[]> => {
 // Mutation to POST a new grant form data to tup-services.
 export const useGrantCreate = (projectId: number) => {
   const queryClient = useQueryClient();
-  const mutation = usePost<FormData, string>({
+  const mutation = usePost<ProjectGrantBody, string>({
     endpoint: `/projects/${projectId}/grants`,
     options: {
-      onSuccess: () => queryClient.invalidateQueries([`grants`]),
+      onSuccess: () => queryClient.invalidateQueries(['grants', projectId]),
     },
   });
   return mutation;
@@ -26,11 +26,10 @@ export const useGrantCreate = (projectId: number) => {
 // Mutation to PUT changes to grants form data to tup-services.
 export const useGrantEdit = (projectId: number, grantId: number) => {
   const queryClient = useQueryClient();
-  const mutation = usePut<FormData, string>({
+  const mutation = usePut<ProjectGrant, string>({
     endpoint: `/projects/${projectId}/grants/${grantId}`,
     options: {
-      onSuccess: () =>
-        queryClient.invalidateQueries([`/projects/${projectId}`]),
+      onSuccess: () => queryClient.invalidateQueries(['grants', projectId]),
     },
   });
   return mutation;

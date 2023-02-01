@@ -1,34 +1,140 @@
 import React from 'react';
-import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
-import { useProjects, usePublications, useGrants } from '@tacc/tup-hooks';
+import {
+  LoadingSpinner,
+  InlineMessage,
+  SectionTableWrapper,
+} from '@tacc/core-components';
+import {
+  useProjects,
+  usePublications,
+  useGrants,
+  ProjectPublication,
+  ProjectGrant,
+  useRoleForCurrentUser,
+} from '@tacc/tup-hooks';
 import styles from './ProjectDetails.module.css';
 import { Link } from 'react-router-dom';
-import { ProjectPublicationEditModal } from './ProjectPublicationEdit';
-import { ProjectPublicationCreateModal } from './ProjectPublicationCreate';
-import { ProjectGrantEditModal } from './ProjectGrantEdit';
-import { ProjectGrantCreateModal } from './ProjectGrantCreate';
-import { ProjectAbstractEditModal } from './ProjectAbstractEdit';
+import {
+  ProjectPublicationEditModal,
+  ProjectPublicationCreateModal,
+} from './publications';
+import { ProjectGrantEditModal, ProjectGrantCreateModal } from './grants';
+import { ProjectsListingAllocationTable } from '../ProjectsListing/ProjectsListingAllocationTable';
+import { ProjectEditModal } from './ProjectEdit';
 
 const formatDate = (datestring: string): string => {
   const date = new Date(datestring);
-  return `${date.getMonth() + 1}/${date.getDay()}/${date.getFullYear()}`;
+  return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+};
+
+const Publication: React.FC<{
+  projectId: number;
+  pub: ProjectPublication;
+  canManage: boolean;
+}> = ({ pub, projectId, canManage }) => {
+  return (
+    <div>
+      <div className={styles['pub-grants-edit-link']}>
+        <span style={{ fontSize: '1.5rem' }}>
+          <strong>{pub.title}</strong>
+        </span>
+        {canManage && (
+          <ProjectPublicationEditModal
+            projectId={projectId}
+            publicationId={pub.id}
+          />
+        )}
+      </div>
+      <div className={styles['pub-grants-title']}>
+        Author(s):{' '}
+        <span className={styles['pub-grants-info']}>{pub.authors}</span>
+      </div>
+      <div className={styles['pub-grants-title']}>
+        Publisher:{' '}
+        <span className={styles['pub-grants-info']}>
+          {pub.publisher ?? '(N/A)'}
+        </span>
+        Published:{' '}
+        <span className={styles['pub-grants-info']}>{pub.yearPublished}</span>
+        Venue:{' '}
+        <span className={styles['pub-grants-info']}>
+          {pub.venue || '(N/A)'}
+        </span>
+      </div>
+      {pub.url && <Link to={pub.url}>{pub.url}</Link>}
+    </div>
+  );
+};
+
+const Grant: React.FC<{
+  grant: ProjectGrant;
+  projectId: number;
+  canManage: boolean;
+}> = ({ grant, projectId, canManage }) => {
+  return (
+    <div>
+      <div className={styles['pub-grants-edit-link']}>
+        <span style={{ fontSize: '1.5rem' }}>
+          <strong>{grant.title}</strong>
+        </span>
+        {canManage && (
+          <ProjectGrantEditModal projectId={projectId} grantId={grant.id} />
+        )}
+      </div>
+      <div className={styles['pub-grants-title']}>
+        Grant Number:{' '}
+        <span className={styles['pub-grants-info']}>{grant.id}</span>
+      </div>
+      <div className={styles['pub-grants-title']}>
+        Principal Investigator:{' '}
+        <span className={styles['pub-grants-info']}>{grant.piName}</span>
+      </div>
+      <div className={styles['pub-grants-title']}>
+        <strong>{grant.field}</strong>
+      </div>
+      <div className={styles['pub-grants-title']}>
+        Funding Agency:{' '}
+        <span className={styles['pub-grants-info']}>
+          {grant.fundingAgency ?? '(N/A)'}
+        </span>
+        Award Number:{' '}
+        <span className={styles['pub-grants-info']}>
+          {grant.awardNumber ?? '(N/A)'}
+        </span>
+        Award Amount:{' '}
+        <span className={styles['pub-grants-info']}>
+          {grant.awardAmount ?? '(N/A)'}
+        </span>
+      </div>
+      <div className={styles['pub-grants-title']}>
+        Award Dates:{' '}
+        <span className={styles['pub-grants-info']}>
+          {grant.start ? formatDate(grant.start) : '(N/A)'} -{' '}
+          {grant.end ? formatDate(grant.end) : '(N/A)'}
+        </span>
+      </div>
+    </div>
+  );
 };
 
 const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
-  const { isLoading, error } = useProjects();
-  const details = useProjects();
-  const project_data = details.data ?? [];
-  const projectDetails = project_data.find((desc) => desc.id === projectId);
+  const { data: projectData, isLoading, error } = useProjects();
+  const projectDetails = (projectData ?? []).find(
+    (desc) => desc.id === projectId
+  );
+  const pub_data = usePublications(projectId).data ?? [];
+  const grant_data = useGrants(projectId).data ?? [];
+  const currentUserRole = useRoleForCurrentUser(projectId);
+  const canManage = currentUserRole
+    ? ['PI', 'Delegate'].includes(currentUserRole)
+    : false;
 
-  const publications = usePublications(projectId);
-  const pub_data = publications.data ?? [];
-  const pub_details = pub_data.map((details) => details);
-
-  const grants = useGrants(projectId);
-  const grant_data = grants.data ?? [];
-  const grant_details = grant_data.map((details) => details);
-
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading)
+    return (
+      <div className={styles['pub-details-container']}>
+        <LoadingSpinner />
+      </div>
+    );
   if (error)
     return (
       <InlineMessage type="warning">
@@ -37,125 +143,64 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
     );
 
   return (
-    <>
-      <div>
-        <span className={styles['project-detail-header']}>
-          Abstract
-          <ProjectAbstractEditModal projectId={projectId}/>
-        </span>
-        <span className={styles['project-details']}>
-          {projectDetails?.description}
-        </span>
-      </div>
+    <div className={styles['pub-details-container']}>
+      <SectionTableWrapper header="Allocations">
+        {projectDetails && (
+          <ProjectsListingAllocationTable project={projectDetails} />
+        )}
+      </SectionTableWrapper>
       <div className={styles['separator']}></div>
-      <div>
-        <span className={styles['project-detail-header']}>
-          Publications
-          <ProjectPublicationCreateModal projectId={projectId} />
-        </span>
+      <SectionTableWrapper
+        header="Abstract"
+        headerActions={canManage && <ProjectEditModal projectId={projectId} />}
+      >
+        {projectDetails?.description}
+      </SectionTableWrapper>
+      <div className={styles['separator']}></div>
+
+      <SectionTableWrapper
+        header="Publications"
+        className={styles['listing-section']}
+        headerActions={
+          canManage && <ProjectPublicationCreateModal projectId={projectId} />
+        }
+      >
         {pub_data.length === 0 ? (
-          <span className={styles['project-details']}>
-            This project has no publications.
-          </span>
+          <span>This project has no publications.</span>
         ) : (
-          <span className={styles['project-details']}>
-            <div>
-              {pub_details.map(function (pub) {
-                return [
-                  <div className={styles['pub-grants-edit-link']}>
-                    <strong>{pub.title}</strong>
-                    <ProjectPublicationEditModal projectId={projectId} publicationId={pub.id}/> 
-                  </div>,
-                  <div className={styles['pub-grants-title']}>
-                    Author(s):{' '}
-                    <span className={styles['pub-grants-info']}>
-                      {pub.authors}
-                    </span>
-                  </div>,
-                  <div className={styles['pub-grants-title']}>
-                    Publisher:{' '}
-                    <span className={styles['pub-grants-info']}>
-                      {pub.publisher}
-                    </span>
-                    Published:{' '}
-                    <span className={styles['pub-grants-info']}>
-                      {pub.yearPublished}
-                    </span>
-                    Venue:{' '}
-                    <span className={styles['pub-grants-info']}>
-                      {pub.venue}
-                    </span>
-                  </div>,
-                  <p className={styles['pub-grants-title']}>
-                    <Link to={pub.url}>{pub.url}</Link>
-                  </p>,
-                ];
-              })}
-            </div>
-          </span>
+          pub_data.map((pub) => (
+            <Publication
+              key={pub.id}
+              pub={pub}
+              projectId={projectId}
+              canManage={canManage}
+            />
+          ))
         )}
-      </div>
+      </SectionTableWrapper>
       <div className={styles['separator']}></div>
-      <div>
-        <span className={styles['project-detail-header']}>
-          Grants
-          <ProjectGrantCreateModal projectId={projectId} />
-        </span>
+
+      <SectionTableWrapper
+        header="Grants"
+        className={styles['listing-section']}
+        headerActions={
+          canManage && <ProjectGrantCreateModal projectId={projectId} />
+        }
+      >
         {grant_data.length === 0 ? (
-          <span className={styles['project-details']}>
-            This project has no grants.
-          </span>
+          <span>This project has no grants.</span>
         ) : (
-          <span className={styles['project-details']}>
-            <div>
-              {grant_details.map(function (grant) {
-                return [
-                  <div className={styles['pub-grants-edit-link']}>
-                    <strong>{grant.title}</strong>
-                    <ProjectGrantEditModal projectId={projectId} grantId={grant.id}/>
-                  </div>,
-                  <div className={styles['pub-grants-title']}>
-                    Grant Number:
-                    <span className={styles['pub-grants-info']}>
-                      {grant.id}
-                    </span>
-                  </div>,
-                  <div className={styles['pub-grants-title']}>
-                    Principle Investigator:
-                    <span className={styles['pub-grants-info']}>
-                      {grant.piName}
-                    </span>
-                  </div>,
-                  <div className={styles['pub-grants-title']}>
-                    <strong>{grant.field}</strong>
-                  </div>,
-                  <div className={styles['pub-grants-title']}>
-                    Funding Agency:{' '}
-                    <span className={styles['pub-grants-info']}>
-                      {grant.fundingAgency}
-                    </span>
-                    Award Number:{' '}
-                    <span className={styles['pub-grants-info']}>
-                      {grant.awardNumber}
-                    </span>
-                    Award Amount:{' '}
-                    <span className={styles['pub-grants-info']}>
-                      {grant.awardAmount}
-                    </span>
-                  </div>,
-                  <div className={styles['pub-grants-title']}>
-                    Award Dates:
-                    <span className={styles['pub-grants-info']}>
-                      {formatDate(grant.start)} - {formatDate(grant.end)}
-                    </span>
-                  </div>,
-                ];
-              })}
-            </div>
-          </span>
+          grant_data.map((grant) => (
+            <Grant
+              key={grant.id}
+              grant={grant}
+              projectId={projectId}
+              canManage={canManage}
+            />
+          ))
         )}
-      </div>
-    </>
+      </SectionTableWrapper>
+    </div>
   );
 };
 

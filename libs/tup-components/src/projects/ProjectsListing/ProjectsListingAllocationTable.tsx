@@ -4,7 +4,7 @@ import styles from './ProjectsListing.module.css';
 
 const formatDate = (datestring: string): string => {
   const date = new Date(datestring);
-  return `${date.getMonth() + 1}/${date.getDay()}/${date.getFullYear()}`;
+  return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 };
 
 export const ProjectsListingAllocationTable: React.FC<{

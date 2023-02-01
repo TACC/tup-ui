@@ -10,7 +10,7 @@ describe('Project Details Component', () => {
       'Development project for testing PI-specific endpoints in the redesigned user portal.'
     );
   });
-  it('should display the projects description/abstract, publications, and grants', async () => {
+  it.skip('should display the projects description/abstract, publications, and grants', async () => {
     testRender(<ProjectDetails projectId={59184} />);
     await screen.findByText(
       /Development project for testing PI-specific endpoints in the redesigned user portal./

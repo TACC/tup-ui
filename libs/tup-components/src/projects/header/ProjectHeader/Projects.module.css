@@ -5,8 +5,8 @@
 }
 
 .group {
-    display: flex;
-    flex-direction: row;
+    display: inline-flex;
+    flex-direction: row;;
     gap: 50px;
 }
 

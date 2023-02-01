@@ -24,7 +24,7 @@ export const ProjectsListing: React.FC = () => {
     return (
       <InlineMessage type="warning">Unable to retrieve projects.</InlineMessage>
     );
-  
+
   return (
     <ul className={styles['project-listing']}>
       {data?.filter(prjFilter).map((project) => (
