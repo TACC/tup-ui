@@ -334,11 +334,18 @@ export {
   useTicketCreateNoAuth,
   useTicketReply,
 } from './useTickets';
-export { default as useProjects, useProjectUpdate } from './useProjects';
+export {
+  default as useProjects,
+  useProjectUpdate,
+  useSetProjectDelegate,
+  useRemoveProjectDelegate,
+} from './useProjects';
 export {
   default as useProjectUsers,
   useRoleForCurrentUser,
   useRoleForUser,
+  useAddProjectUser,
+  useRemoveProjectUser,
 } from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
 export {
