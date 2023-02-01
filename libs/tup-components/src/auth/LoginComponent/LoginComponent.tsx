@@ -53,7 +53,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const authCallback = useCallback(() => {
     window.location.replace(from);
   }, [from]);
-  const { login, error, isLoading } = useAuth();
+  const { login, data, error, isLoading } = useAuth();
 
   // FAQ: To use inline messaging for required fields (instead of browser):
   //      1. Uncomment this constant definition
@@ -115,7 +115,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
               attr="submit"
               size="long"
               className={styles.submit}
-              isLoading={isLoading}
+              isLoading={isLoading || !!data}
             >
               Log In
             </Button>
