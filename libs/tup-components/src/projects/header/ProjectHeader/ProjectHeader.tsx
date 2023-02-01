@@ -7,6 +7,7 @@ import {
   InlineMessage,
   LoadingSpinner,
 } from '@tacc/core-components';
+import { ProjectEditModal } from '../../details/ProjectEdit';
 
 export const ProjectHeader: React.FC<{ projectId: number }> = ({
   projectId,
@@ -73,7 +74,6 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
         )}
       </h3>
       <div className={styles['separator']}></div>
-
       <dl className={styles['group']}>
         <dl className={styles['project-heading']}>
           <div>

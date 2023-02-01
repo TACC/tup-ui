@@ -1,10 +1,11 @@
-import { InlineMessage, LoadingSpinner, Button } from '@tacc/core-components';
+import { InlineMessage, LoadingSpinner } from '@tacc/core-components';
 import { useProfile, useProjectUsers } from '@tacc/tup-hooks';
-import React from 'react';
-import { Input, InputGroup } from 'reactstrap';
+import React, { useRef } from 'react';
+import { Input, InputGroup, Button } from 'reactstrap';
 import styles from './UserList.module.css';
 
 const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
+  const ref = useRef<HTMLInputElement>(null);
   const { data: currentUser } = useProfile();
   const { data: users } = useProjectUsers(projectId);
   const currentUserRole =
@@ -16,12 +17,15 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
   const addUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     e.stopPropagation();
+    ref.current && ref.current.showPicker();
     console.log('submitting');
   };
 
   return (
     <>
-      <div style={{ paddingTop: '10px', marginRight: '10px' }}>
+      <div
+        style={{ paddingTop: '10px', marginRight: '10px', marginLeft: '5px' }}
+      >
         <div style={{ paddingBottom: '16px' }}>
           <span style={{ fontSize: '1.5rem' }}>
             <strong>Manage Team</strong>
@@ -32,7 +36,7 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
           <label htmlFor="add-user">Add New User</label>
           <InputGroup>
             <div className="input-group-prepend">
-              <Button type="secondary" attr="submit" size="small">
+              <Button outline type="submit">
                 Add
               </Button>
             </div>
