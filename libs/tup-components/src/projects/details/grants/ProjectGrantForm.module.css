@@ -1,0 +1,16 @@
+.title-row {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.title-row input {
+    max-width: 100%;
+}
+.title-row > :first-child {
+    flex-grow: 1;
+}
+
+.date-row {
+    display: flex;
+    gap: 2rem;
+}

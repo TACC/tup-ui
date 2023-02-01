@@ -152,6 +152,11 @@ export type ProjectsRawSystem = {
   };
 };
 
+export type ProjectEditBody = Pick<
+  ProjectsRawSystem,
+  'title' | 'description' | 'chargeCode' | 'fieldId' | 'secondaryFieldId'
+>;
+
 export type Ticket = {
   AdminCc: [];
   'CF.{Resource}': string;
@@ -233,6 +238,35 @@ export type UsagePerResource = {
   used: number;
 };
 
+export type ProjectPublication = {
+  id: number;
+  authors: string;
+  title: string;
+  yearPublished?: string;
+  publisher?: string;
+  url?: string;
+  venue?: string;
+  userCitedTacc: boolean;
+};
+
+export type ProjectPublicationBody = Omit<ProjectPublication, 'id'>;
+
+export type ProjectGrant = {
+  id: number;
+  title: string;
+  fundingAgency?: string;
+  field?: string;
+  piName: string;
+  awardNumber?: string;
+  awardAmount?: number;
+  start?: string;
+  end?: string;
+  nsfStatusCode?: string;
+  grantNumber?: string;
+  fieldId: number;
+};
+export type ProjectGrantBody = Omit<ProjectGrant, 'id'>;
+
 export type MfaTokenResponse = {
   token?: {
     active: boolean;
@@ -300,9 +334,19 @@ export {
   useTicketCreateNoAuth,
   useTicketReply,
 } from './useTickets';
-export { default as useProjects } from './useProjects';
-export { default as useProjectUsers } from './useProjectUsers';
+export { default as useProjects, useProjectUpdate } from './useProjects';
+export {
+  default as useProjectUsers,
+  useRoleForCurrentUser,
+  useRoleForUser,
+} from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
+export {
+  usePublications,
+  usePublicationEdit,
+  usePublicationCreate,
+} from './usePublications';
+export { useGrants, useGrantEdit, useGrantCreate } from './useGrants';
 export { default as useProjectScienceField } from './useProjectScienceField';
 export {
   useMfa,
