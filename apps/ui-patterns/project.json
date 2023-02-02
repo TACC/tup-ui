@@ -1,39 +1,34 @@
 {
+  "name": "ui-patterns",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/ui-patterns/src",
   "projectType": "application",
   "targets": {
     "serve": {
-      "executor": "nx:run-commands",
+      "executor": "@nrwl/vite:dev-server",
       "options": {
-        "commands": [
-          {
-            "command": "npx vite"
-          }
-        ],
-        "cwd": "apps/ui-patterns"
+        "buildTarget": "ui-patterns:build"
       }
     },
     "build": {
-      "executor": "nx:run-commands",
+      "executor": "@nrwl/vite:build",
       "options": {
-        "commands": [
-          {
-            "command": "npx vite build --emptyOutDir"
-          }
-        ],
-        "cwd": "apps/ui-patterns"
+        "outputPath": "dist/apps/ui-patterns"
       }
     },
     "preview": {
-      "executor": "nx:run-commands",
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
       "options": {
-        "commands": [
-          {
-            "command": "npx vite preview"
-          }
-        ],
-        "cwd": "apps/ui-patterns"
+        "buildTarget": "ui-patterns:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "ui-patterns:build:development"
+        },
+        "production": {
+          "buildTarget": "ui-patterns:build:production"
+        }
       }
     },
     "lint": {
@@ -44,14 +39,12 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nrwl/vite:test",
       "outputs": ["{workspaceRoot}/coverage/apps/ui-patterns"],
       "options": {
-        "jestConfig": "apps/ui-patterns/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": [],
-  "name": "ui-patterns"
+  "tags": []
 }

@@ -1,4 +1,5 @@
 {
+  "name": "tup-testing",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/tup-testing/src",
   "projectType": "library",
@@ -12,13 +13,11 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nrwl/vite:test",
       "outputs": ["{workspaceRoot}/coverage/libs/tup-testing"],
       "options": {
-        "jestConfig": "libs/tup-testing/jest.config.ts",
         "passWithNoTests": true
       }
     }
-  },
-  "name": "tup-testing"
+  }
 }
