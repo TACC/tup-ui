@@ -3,8 +3,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Button, * as BTN from './Button';
 
-import '@testing-library/jest-dom/extend-expect';
-
 const TEST_TEXT = '…';
 const TEST_TYPE = 'primary';
 const TEST_SIZE = 'medium';

@@ -6,7 +6,7 @@ import dts from 'vite-plugin-dts';
 import { join } from 'path';
 
 export default defineConfig({
-  cacheDir: '../../node_modules/.vite/core-components',
+  cacheDir: '../../node_modules/.vite/tup-hooks',
 
   plugins: [
     dts({
@@ -35,7 +35,7 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',
-      name: 'core-components',
+      name: 'tup-hooks',
       fileName: 'index',
       // Change this to the formats you want to support.
       // Don't forgot to update your package.json as well.
@@ -54,5 +54,6 @@ export default defineConfig({
     },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    setupFiles: ['./jest.setup.ts'],
   },
 });

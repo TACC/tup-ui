@@ -3,26 +3,24 @@ import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { fireEvent, act, waitFor } from '@testing-library/react';
 import { server, testRender } from '@tacc/tup-testing';
 import { rest } from 'msw';
-import { get } from 'js-cookie';
+import cookies from 'js-cookie';
+import { vi, Mock } from 'vitest';
 
-jest.mock('react-router-dom');
+vi.mock('react-router-dom');
 //jest.mock('@tacc/tup-hooks/useJwt');
-jest.mock('js-cookie');
+vi.mock('js-cookie');
 
-const mockNavigate = jest.fn();
+const mockNavigate = vi.fn();
 
 describe('LoginComponent', () => {
   beforeEach(() => {
     mockNavigate.mockReset();
-    (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
-    (useLocation as jest.Mock).mockReturnValue({
+    (useNavigate as Mock).mockReturnValue(mockNavigate);
+    (useLocation as Mock).mockReturnValue({
       state: undefined,
     });
-    (get as jest.Mock).mockReturnValue('badjwt');
-    (useSearchParams as jest.Mock).mockReturnValue([
-      { get: () => '' },
-      jest.fn(),
-    ]);
+    (cookies.get as Mock).mockReturnValue('badjwt');
+    (useSearchParams as Mock).mockReturnValue([{ get: () => '' }, vi.fn()]);
   });
   it('should perform a login', async () => {
     Object.defineProperty(window, 'location', {

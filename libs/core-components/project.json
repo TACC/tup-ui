@@ -1,4 +1,5 @@
 {
+  "name": "core-components",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/core-components/src",
   "projectType": "library",
@@ -14,17 +15,6 @@
         "cwd": "libs/core-components"
       }
     },
-    "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          {
-            "command": "npx vite build --emptyOutDir"
-          }
-        ],
-        "cwd": "libs/core-components"
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
@@ -33,14 +23,12 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nrwl/vite:test",
       "outputs": ["{workspaceRoot}/coverage/libs/core-components"],
       "options": {
-        "jestConfig": "libs/core-components/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": [],
-  "name": "core-components"
+  "tags": []
 }
