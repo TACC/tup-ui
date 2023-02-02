@@ -1,0 +1,37 @@
+{% with instance.url as url %}
+
+<p>You must visit an external website to <a href="{{url}}" target="_blank">read the article</a>.</p>
+
+<p class="c-message c-message--scope-inline c-message--type-warning">
+    <span id="redirect-message" hidden>You may <a href="{{url}}" target="_blank">read the article now</a> or wait to be redirected.</span>
+    <span id="edit-message" hidden>No redirect, because you are editing.</span>
+</p>
+
+<script>
+const URL = '{{ url }}';
+const redirectMessage = document.getElementById('redirect-message');
+const editMessage = document.getElementById('edit-message');
+
+console.error({
+  redirectMessage,
+  editMessage,
+  URL
+});
+
+redirectMessage.hidden = false;
+
+setTimeout( () => {
+    const isEditMode = document.querySelector('html[class*="cms-structure-mode-"]');
+
+    if ( isEditMode ) {
+        redirectMessage.hidden = true;
+        editMessage.hidden = false;
+    } else {
+        setTimeout( () => {
+            window.location.href = URL;
+        }, 2000 );
+    }
+}, 2000 );
+</script>
+
+{% endwith %}
