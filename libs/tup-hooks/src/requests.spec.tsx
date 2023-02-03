@@ -23,7 +23,7 @@ describe('requests', () => {
     vi.spyOn(axios, 'get').mockResolvedValue({ data: 'response' });
 
     const { result } = renderHook(
-      () => useGet<string>({ endpoint: '/endpoint', key: 'key' }),
+      () => useGet<string>({ endpoint: '/endpoint', key: ['key'] }),
       {
         wrapper: TestWrapper,
       }

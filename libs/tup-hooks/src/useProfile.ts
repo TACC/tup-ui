@@ -1,4 +1,4 @@
-import { UseQueryResult } from 'react-query';
+import { UseQueryResult } from '@tanstack/react-query';
 import { UserProfile } from '.';
 import { useGet } from './requests';
 
@@ -6,7 +6,7 @@ import { useGet } from './requests';
 const useProfile = (): UseQueryResult<UserProfile> => {
   const query = useGet<UserProfile>({
     endpoint: '/users/profile',
-    key: 'profile',
+    key: ['profile'],
   });
   return query;
 };

@@ -1,4 +1,4 @@
-import { UseQueryResult, useQueryClient } from 'react-query';
+import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
 import { ProjectsRawSystem, ProjectEditBody } from '.';
 import { useDelete, useGet, usePut } from './requests';
 
@@ -6,7 +6,7 @@ import { useDelete, useGet, usePut } from './requests';
 const useProjects = (): UseQueryResult<ProjectsRawSystem[]> => {
   const query = useGet<ProjectsRawSystem[]>({
     endpoint: '/projects',
-    key: 'projects',
+    key: ['projects'],
     options: {
       refetchOnMount: false,
       refetchOnWindowFocus: false,

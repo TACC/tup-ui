@@ -1,14 +1,3 @@
-import { setLogger } from 'react-query';
-
-// Disable error logging when we throw inside a react-query fetcher method.
-setLogger({
-  log: window.console.log,
-  warn: window.console.warn,
-  error: () => {
-    /* */
-  },
-});
-
 // Extend the window type to support custom config passed from the server side.
 declare global {
   interface Window {
