@@ -1,6 +1,6 @@
 import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
 import { ProjectPublication, ProjectPublicationBody } from '.';
-import { useGet, usePost, usePut } from './requests';
+import { useGet, usePost, usePut } from '../requests';
 
 // Query to retrieve the user's publications.
 export const usePublications = (
