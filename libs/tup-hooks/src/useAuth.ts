@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useQueryClient } from 'react-query';
+import { useQueryClient } from '@tanstack/react-query';
 import { AuthResponse, AuthBody } from '.';
 import Cookies from 'js-cookie';
 import { usePost } from './requests';
@@ -14,7 +14,7 @@ const useAuth = () => {
   const logout = useCallback(() => {
     Cookies.remove('x-tup-token');
     // Invalidate the jwt query to trigger rerender of any component that uses it.
-    queryClient.invalidateQueries('jwt');
+    queryClient.invalidateQueries(['jwt']);
   }, [queryClient]);
 
   // Provide an auth callback that does something with the /auth response
@@ -23,7 +23,7 @@ const useAuth = () => {
       const expirationDate = new Date(Date.now() + response.ttl * 1000);
       Cookies.set('x-tup-token', response.jwt, { expires: expirationDate });
       // Invalidate the jwt query to trigger rerender of any component that uses it.
-      queryClient.invalidateQueries('jwt');
+      queryClient.invalidateQueries(['jwt']);
     },
     [queryClient]
   );
