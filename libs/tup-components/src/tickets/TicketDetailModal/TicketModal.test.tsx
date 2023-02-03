@@ -11,8 +11,9 @@ import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
 import { TicketHistory } from './TicketHistory';
 import { TicketReplyForm } from './TicketReplyForm';
+import { vi } from 'vitest';
 
-window.HTMLElement.prototype.scrollIntoView = jest.fn();
+window.HTMLElement.prototype.scrollIntoView = vi.fn();
 
 describe('Ticket Modal', () => {
   it('should render ticket history information and reply form', async () => {

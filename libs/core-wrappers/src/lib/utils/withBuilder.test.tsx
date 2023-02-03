@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom/extend-expect';
 import { renderHook } from '@testing-library/react';
 import withBuilder from './withBuilder';
 
