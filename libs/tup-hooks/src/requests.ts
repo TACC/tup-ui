@@ -8,7 +8,7 @@ import {
   UseQueryOptions,
   UseMutationOptions,
   QueryKey,
-} from 'react-query';
+} from '@tanstack/react-query';
 
 type UseGetParams<ResponseType> = {
   endpoint: string;
