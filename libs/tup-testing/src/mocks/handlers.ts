@@ -12,6 +12,7 @@ import {
   mockTicketHistory,
   unverifiedToken,
 } from './fixtures';
+import { mockProjectGrants, mockProjectPubs } from './fixtures/projects';
 
 export const handlers = [
   rest.get('http://localhost:8001/users/profile', (req, res, ctx) => {
@@ -34,6 +35,20 @@ export const handlers = [
     // Respond with mock active projects output
     return res(ctx.json(mockProjectsOutput));
   }),
+  rest.get(
+    'http://localhost:8001/projects/:projectId/publications',
+    (req, res, ctx) => {
+      // Respond with mock active projects output
+      return res(ctx.json(mockProjectPubs));
+    }
+  ),
+  rest.get(
+    'http://localhost:8001/projects/:projectId/grants',
+    (req, res, ctx) => {
+      // Respond with mock active projects output
+      return res(ctx.json(mockProjectGrants));
+    }
+  ),
   rest.get(
     'http://localhost:8001/projects/:projectId/users',
     (req, res, ctx) => {

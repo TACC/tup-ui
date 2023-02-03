@@ -7,11 +7,12 @@ import {
   useMutation,
   UseQueryOptions,
   UseMutationOptions,
-} from 'react-query';
+  QueryKey,
+} from '@tanstack/react-query';
 
 type UseGetParams<ResponseType> = {
   endpoint: string;
-  key: string;
+  key: QueryKey;
   options?: Omit<
     UseQueryOptions<ResponseType, AxiosError>,
     'queryKey' | 'queryFn'
@@ -96,6 +97,37 @@ export function useDelete<ResponseType>({
   };
   const mutation = useMutation(async () => {
     const response = await deleteUtil();
+    return response;
+  }, options);
+  return mutation;
+}
+
+type UsePutParams<BodyType, ResponseType> = {
+  endpoint: string;
+  options?: UseMutationOptions<ResponseType, AxiosError, BodyType>;
+  baseUrl?: string;
+};
+
+export function usePut<BodyType, ResponseType>({
+  endpoint,
+  options = {},
+  baseUrl: alternateBaseUrl,
+}: UsePutParams<BodyType, ResponseType>) {
+  const client = axios;
+  const { baseUrl } = useConfig();
+  const { jwt } = useJwt();
+  const putUtil = async (body: BodyType) => {
+    const response = await client.put<ResponseType>(
+      `${alternateBaseUrl ?? baseUrl}${endpoint}`,
+      body,
+      {
+        headers: { 'x-tup-token': jwt ?? '' },
+      }
+    );
+    return response.data;
+  };
+  const mutation = useMutation(async (body: BodyType) => {
+    const response = await putUtil(body);
     return response;
   }, options);
   return mutation;

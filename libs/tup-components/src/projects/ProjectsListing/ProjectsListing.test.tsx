@@ -25,13 +25,13 @@ describe('Projects Summary Listing Component', () => {
     await screen.findByText('JAR TUP Development Project');
     expect(screen.findAllByText('/projects/59184', { exact: false }));
     expect(screen.findAllByText('Project Charge Code: STA22002'));
-    expect(screen.findAllByText('Principle Investigator: Jake Rosenberg'));
+    expect(screen.findAllByText('Principal Investigator: Jake Rosenberg'));
     expect(screen.getAllByText('10 SUs'));
     expect(screen.getAllByText('(0% Used)'));
     expect(screen.getAllByText('-- GBs'));
 
     // Allocations table
     expect(screen.getAllByText('10 SU'));
-    expect(screen.getAllByText('9/6/2023'));
+    expect(screen.getAllByText('9/30/2023'));
   });
 });

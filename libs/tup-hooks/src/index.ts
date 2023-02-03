@@ -1,14 +1,3 @@
-import { setLogger } from 'react-query';
-
-// Disable error logging when we throw inside a react-query fetcher method.
-setLogger({
-  log: window.console.log,
-  warn: window.console.warn,
-  error: () => {
-    /* */
-  },
-});
-
 // Extend the window type to support custom config passed from the server side.
 declare global {
   interface Window {
@@ -152,6 +141,11 @@ export type ProjectsRawSystem = {
   };
 };
 
+export type ProjectEditBody = Pick<
+  ProjectsRawSystem,
+  'title' | 'description' | 'chargeCode' | 'fieldId' | 'secondaryFieldId'
+>;
+
 export type Ticket = {
   AdminCc: [];
   'CF.{Resource}': string;
@@ -233,6 +227,35 @@ export type UsagePerResource = {
   used: number;
 };
 
+export type ProjectPublication = {
+  id: number;
+  authors: string;
+  title: string;
+  yearPublished?: string;
+  publisher?: string;
+  url?: string;
+  venue?: string;
+  userCitedTacc: boolean;
+};
+
+export type ProjectPublicationBody = Omit<ProjectPublication, 'id'>;
+
+export type ProjectGrant = {
+  id: number;
+  title: string;
+  fundingAgency?: string;
+  field?: string;
+  piName: string;
+  awardNumber?: string;
+  awardAmount?: number;
+  start?: string;
+  end?: string;
+  nsfStatusCode?: string;
+  grantNumber?: string;
+  fieldId: number;
+};
+export type ProjectGrantBody = Omit<ProjectGrant, 'id'>;
+
 export type MfaTokenResponse = {
   token?: {
     active: boolean;
@@ -300,9 +323,26 @@ export {
   useTicketCreateNoAuth,
   useTicketReply,
 } from './useTickets';
-export { default as useProjects } from './useProjects';
-export { default as useProjectUsers } from './useProjectUsers';
+export {
+  default as useProjects,
+  useProjectUpdate,
+  useSetProjectDelegate,
+  useRemoveProjectDelegate,
+} from './useProjects';
+export {
+  default as useProjectUsers,
+  useRoleForCurrentUser,
+  useRoleForUser,
+  useAddProjectUser,
+  useRemoveProjectUser,
+} from './useProjectUsers';
 export { default as useProjectUsage } from './useProjectUsage';
+export {
+  usePublications,
+  usePublicationEdit,
+  usePublicationCreate,
+} from './usePublications';
+export { useGrants, useGrantEdit, useGrantCreate } from './useGrants';
 export { default as useProjectScienceField } from './useProjectScienceField';
 export {
   useMfa,

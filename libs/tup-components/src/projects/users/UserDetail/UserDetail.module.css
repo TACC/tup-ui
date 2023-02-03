@@ -1,5 +1,7 @@
 .user-detail-container {
     width: 50%;
+    margin-left: -25px;
+    margin-top: -20px;
 }
 
 .user-info-banner {
@@ -38,4 +40,9 @@
 .usage-table--loading {
     width: 100%;
     height: 200px;
+}
+
+.role-selector > :first-child {
+    display: inline-block;
+    margin-right: 0.75rem;
 }

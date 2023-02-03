@@ -5,8 +5,8 @@
 }
 
 .group {
-    display: flex;
-    flex-direction: row;
+    display: inline-flex;
+    flex-direction: row;;
     gap: 50px;
 }
 
@@ -53,10 +53,12 @@
 }
 .separator-bottom {
     border-bottom: 1px solid #C7C7C7;
-    margin: .5em;
+    margin-top: .5em;
+    margin-left: .5em;
+    margin-right: .5em;
 
 }
 .loading-placeholder {
     height: 100%;
-    width: 175px;
+    min-height: 107px;
 }

@@ -48,5 +48,6 @@
         "parallel": false
       }
     }
-  }
+  },
+  "name": "tup-cms"
 }
