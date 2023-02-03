@@ -11,7 +11,7 @@
     "types": ["vite/client", "vitest"],
     "noEmit": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    "allowJs": true,
     "esModuleInterop": false,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,

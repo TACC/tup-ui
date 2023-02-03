@@ -1,39 +1,36 @@
 {
+  "name": "tup-ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/tup-ui/src",
   "projectType": "application",
   "targets": {
     "serve": {
-      "executor": "nx:run-commands",
+      "executor": "@nrwl/vite:dev-server",
       "options": {
-        "commands": [
-          {
-            "command": "npx vite"
-          }
-        ],
-        "cwd": "apps/tup-ui"
+        "buildTarget": "tup-ui:build",
+        "base": ""
       }
     },
     "build": {
-      "executor": "nx:run-commands",
+      "executor": "@nrwl/vite:build",
       "options": {
-        "commands": [
-          {
-            "command": "npx vite build --emptyOutDir"
-          }
-        ],
-        "cwd": "apps/tup-ui"
+        "outputPath": "dist/apps/tup-ui",
+        "base": "/static/"
       }
     },
     "preview": {
-      "executor": "nx:run-commands",
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
       "options": {
-        "commands": [
-          {
-            "command": "npx vite preview"
-          }
-        ],
-        "cwd": "apps/tup-ui"
+        "buildTarget": "tup-ui:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "tup-ui:build:development"
+        },
+        "production": {
+          "buildTarget": "tup-ui:build:production"
+        }
       }
     },
     "lint": {
@@ -44,14 +41,12 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nrwl/vite:test",
       "outputs": ["{workspaceRoot}/coverage/apps/tup-ui"],
       "options": {
-        "jestConfig": "apps/tup-ui/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": [],
-  "name": "tup-ui"
+  "tags": []
 }
