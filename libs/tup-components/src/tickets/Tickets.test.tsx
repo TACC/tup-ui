@@ -2,13 +2,14 @@ import React from 'react';
 import Tickets from './Tickets';
 import { testRender } from '@tacc/tup-testing';
 import { waitFor } from '@testing-library/react';
-import { get } from 'js-cookie';
+import jsCookie from 'js-cookie';
+import { vi, Mock } from 'vitest';
 
-jest.mock('js-cookie');
+vi.mock('js-cookie');
 
 describe('Tickets Component', () => {
   beforeEach(() => {
-    (get as jest.Mock).mockReturnValue('badjwt');
+    (jsCookie.get as Mock).mockReturnValue('badjwt');
   });
   it('should render SectionTableWrapper and Table components', async () => {
     const { getByText } = testRender(<Tickets />);

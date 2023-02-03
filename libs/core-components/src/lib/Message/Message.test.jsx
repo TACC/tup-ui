@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 
 import Message, * as MSG from './Message';
+import { vi } from 'vitest';
 
 const TEST_CONTENT = '…';
 const TEST_TYPE = 'info';
@@ -22,7 +22,7 @@ function testClassnamesByType(type, getByRole, getByTestId) {
 
 describe('Message', () => {
   it.each(MSG.TYPES)('has correct text for type %s', (type) => {
-    if (type === 'warn') console.warn = jest.fn(); // mute deprecation warning
+    if (type === 'warn') console.warn = vi.fn(); // mute deprecation warning
     const { getByTestId } = render(
       <Message type={type} scope={TEST_SCOPE}>
         {TEST_CONTENT}
@@ -33,7 +33,7 @@ describe('Message', () => {
 
   describe('elements', () => {
     test.each(MSG.TYPES)('include icon when type is %s', (type) => {
-      if (type === 'warn') console.warn = jest.fn(); // mute deprecation warning
+      if (type === 'warn') console.warn = vi.fn(); // mute deprecation warning
       const { getByRole } = render(
         <Message type={type} scope={TEST_SCOPE}>
           {TEST_CONTENT}
@@ -42,7 +42,7 @@ describe('Message', () => {
       expect(getByRole('img')).toBeDefined(); // WARNING: Relies on `Icon`
     });
     test.each(MSG.TYPES)('include text when type is %s', (type) => {
-      if (type === 'warn') console.warn = jest.fn(); // mute deprecation warning
+      if (type === 'warn') console.warn = vi.fn(); // mute deprecation warning
       const { getByTestId } = render(
         <Message type={type} scope={TEST_SCOPE}>
           {TEST_CONTENT}
@@ -67,7 +67,7 @@ describe('Message', () => {
           {TEST_CONTENT}
         </Message>
       );
-      expect(queryByRole('button')).not.toBeInTheDocument();
+      expect(queryByRole('button')).toBeNull();
     });
     test.todo('visible when `isVisible` changes from `false` to `true`');
     // FAQ: Feature works (manually tested), but unit test is difficult
@@ -118,7 +118,7 @@ describe('Message', () => {
 
   describe('property limitation', () => {
     test('is announced for `canDismiss` and `scope`', () => {
-      console.error = jest.fn();
+      console.error = vi.fn();
       render(
         <Message type={TEST_TYPE} scope="inline" canDismiss>
           {TEST_CONTENT}
@@ -129,7 +129,7 @@ describe('Message', () => {
       );
     });
     test('is announced for `type="warn"`', () => {
-      console.info = jest.fn();
+      console.info = vi.fn();
       render(
         <Message type="warn" scope={TEST_SCOPE}>
           {TEST_CONTENT}
@@ -138,7 +138,7 @@ describe('Message', () => {
       expect(console.info).toHaveBeenCalledWith(MSG.ERROR_TEXT.deprecatedType);
     });
     test('is announced for missing `scope` value', () => {
-      console.info = jest.fn();
+      console.info = vi.fn();
       render(<Message type={TEST_TYPE}>{TEST_CONTENT}</Message>);
       expect(console.info).toHaveBeenCalledWith(MSG.ERROR_TEXT.missingScope);
     });
