@@ -1,4 +1,4 @@
-import { UseQueryResult, useQueryClient } from 'react-query';
+import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
 import { useGet, usePost } from './requests';
 import { Ticket, TicketHistory, useConfig, useJwt } from '.';
 import axios from 'axios';
@@ -7,7 +7,7 @@ import axios from 'axios';
 export const useGetTickets = (): UseQueryResult<Ticket[]> => {
   const query = useGet<Ticket[]>({
     endpoint: '/tickets',
-    key: 'tickets',
+    key: ['tickets'],
   });
   return query;
 };
@@ -18,7 +18,7 @@ export const useGetTicketDetails = (
 ): UseQueryResult<Ticket> => {
   const query = useGet<Ticket>({
     endpoint: `/tickets/${ticketId}`,
-    key: `tickets/${ticketId}`,
+    key: [`tickets/${ticketId}`],
   });
   return query;
 };
@@ -29,7 +29,7 @@ export const useGetTicketHistory = (
 ): UseQueryResult<TicketHistory> => {
   const query = useGet<TicketHistory>({
     endpoint: `/tickets/${ticketId}/history`,
-    key: `tickets/${ticketId}/history`,
+    key: [`tickets/${ticketId}/history`],
   });
   return query;
 };

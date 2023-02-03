@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import HistoryBadge from './HistoryBadge';
 import '@testing-library/jest-dom/extend-expect';
+import HistoryBadge from './HistoryBadge';
 
 describe('History Badge', () => {
   it('renders the badge if there are unread notifs', () => {

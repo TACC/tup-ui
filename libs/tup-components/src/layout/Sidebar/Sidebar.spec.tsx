@@ -1,14 +1,14 @@
 import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
 import { testRender } from '@tacc/tup-testing';
 import { useAuth } from '@tacc/tup-hooks';
 import Sidebar from './Sidebar';
+import { vi, Mock } from 'vitest';
 
-jest.mock('@tacc/tup-hooks');
+vi.mock('@tacc/tup-hooks');
 
 describe('Sidebar', () => {
   it('renders Sidebar component', () => {
-    (useAuth as jest.Mock).mockReturnValue({
+    (useAuth as Mock).mockReturnValue({
       loggedIn: true,
     });
     const { getAllByText } = testRender(<Sidebar />);

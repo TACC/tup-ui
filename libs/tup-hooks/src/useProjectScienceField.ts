@@ -1,4 +1,4 @@
-import { UseQueryResult } from 'react-query';
+import { UseQueryResult } from '@tanstack/react-query';
 import { ProjectFieldOfScience } from '.';
 import { useGet } from './requests';
 
@@ -6,7 +6,7 @@ import { useGet } from './requests';
 const useProjectScienceField = (): UseQueryResult<ProjectFieldOfScience[]> => {
   const query = useGet<ProjectFieldOfScience[]>({
     endpoint: '/projects/fields',
-    key: 'projects/fields',
+    key: ['projects/fields'],
   });
   return query;
 };
