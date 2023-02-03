@@ -1,4 +1,4 @@
-import { useQueryClient, UseQueryResult } from 'react-query';
+import { useQueryClient, UseQueryResult } from '@tanstack/react-query';
 import { ProjectUser, useProfile } from '.';
 import { useDelete, useGet, usePost } from './requests';
 
