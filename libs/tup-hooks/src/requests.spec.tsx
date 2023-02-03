@@ -4,25 +4,26 @@ import { useGet, usePost } from './requests';
 import useJwt from './useJwt';
 import { act } from 'react-dom/test-utils';
 import { TestWrapper } from '@tacc/tup-testing';
+import { vi, Mock } from 'vitest';
 
-jest.mock('./useJwt');
-jest.mock('axios');
+vi.mock('./useJwt');
+vi.mock('axios');
 
 describe('requests', () => {
   it('should render the mock get component', async () => {
-    (useJwt as jest.Mock).mockReturnValue({
+    (useJwt as Mock).mockReturnValue({
       jwt: 'abc123',
       isLoading: false,
       error: null,
     });
-    (axios.get as jest.Mock).mockResolvedValue({
+    (axios.get as Mock).mockResolvedValue({
       data: 'response',
     });
 
-    jest.spyOn(axios, 'get').mockResolvedValue({ data: 'response' });
+    vi.spyOn(axios, 'get').mockResolvedValue({ data: 'response' });
 
     const { result } = renderHook(
-      () => useGet<string>({ endpoint: '/endpoint', key: 'key' }),
+      () => useGet<string>({ endpoint: '/endpoint', key: ['key'] }),
       {
         wrapper: TestWrapper,
       }
@@ -33,12 +34,12 @@ describe('requests', () => {
     });
   });
   it('should render the mock post component', async () => {
-    (useJwt as jest.Mock).mockReturnValue({
+    (useJwt as Mock).mockReturnValue({
       jwt: 'abc123',
       isLoading: false,
       error: null,
     });
-    (axios.post as jest.Mock).mockResolvedValue({
+    (axios.post as Mock).mockResolvedValue({
       data: 'response',
     });
     const { result } = renderHook(

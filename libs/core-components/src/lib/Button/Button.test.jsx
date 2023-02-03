@@ -1,9 +1,8 @@
 // WARNING: Relies on `Icon` because of `getByRole('img')`
 import React from 'react';
 import { render } from '@testing-library/react';
-import Button, * as BTN from './Button';
-
 import '@testing-library/jest-dom/extend-expect';
+import Button, * as BTN from './Button';
 
 const TEST_TEXT = '…';
 const TEST_TYPE = 'primary';

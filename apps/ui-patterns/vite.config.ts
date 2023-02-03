@@ -1,23 +1,43 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+import react from '@vitejs/plugin-react-swc';
+import viteTsConfigPaths from 'vite-tsconfig-paths';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      '@tacc/core-components': path.resolve(
-        __dirname,
-        '../../libs/core-components/src/index.ts'
-      ),
-      '@tacc/core-wrappers': path.resolve(
-        __dirname,
-        '../../libs/core-wrappers/src/index.ts'
-      ),
-    },
+  cacheDir: '../../node_modules/.vite/ui-patterns',
+
+  server: {
+    port: 4200,
+    host: 'localhost',
   },
-  build: {
-    outDir: path.resolve(__dirname, '../../dist/apps/ui-patterns'),
+
+  preview: {
+    port: 4300,
+    host: 'localhost',
+  },
+
+  plugins: [
+    react(),
+    viteTsConfigPaths({
+      root: '../../',
+    }),
+  ],
+
+  // Uncomment this if you are using workers.
+  // worker: {
+  //  plugins: [
+  //    viteTsConfigPaths({
+  //      root: '../../',
+  //    }),
+  //  ],
+  // },
+
+  test: {
+    globals: true,
+    cache: {
+      dir: '../../node_modules/.vitest',
+    },
+    environment: 'jsdom',
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   },
 });
