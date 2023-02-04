@@ -20,8 +20,7 @@
       "@tacc/core-wrappers": ["libs/core-wrappers/src/index.ts"],
       "@tacc/tup-components": ["libs/tup-components/src/index.ts"],
       "@tacc/tup-hooks": ["libs/tup-hooks/src/index.ts"],
-      "@tacc/tup-testing": ["libs/tup-testing/src/index.ts"],
-      "@tacc/tup-ui/*": ["apps/tup-ui/src/*"]
+      "@tacc/tup-testing": ["libs/tup-testing/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
