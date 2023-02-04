@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { AuthResponse, AuthBody } from '.';
 import Cookies from 'js-cookie';
-import { usePost } from './requests';
+import { usePost } from '../requests';
 import useJwt from './useJwt';
 
 // Mutation to POST credentials to tup-services and retrieve the user's JWT.

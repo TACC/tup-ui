@@ -1,6 +1,6 @@
 import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
 import { ProjectsRawSystem, ProjectEditBody } from '.';
-import { useDelete, useGet, usePut } from './requests';
+import { useDelete, useGet, usePut } from '../requests';
 
 // Query to retrieve the user's active projects.
 const useProjects = (): UseQueryResult<ProjectsRawSystem[]> => {
