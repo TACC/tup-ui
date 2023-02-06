@@ -1,6 +1,18 @@
 <script id="blog-list-link-to-external-site" type="module">
+// The `{{html}}` is whatever used passed in snippet "HTML:"
+const parameter = '{{html}}';
+
+// Only certain articles should support this feature
+const extTagName = parameter ? parameter : `external`;
+
 const articles = document.querySelectorAll('.blog-list article');
 [ ...articles ].forEach( article => {
+  const extTagElement = article.querySelector(`.blog-tag-${extTagName}`);
+
+  if ( ! extTagElement ) {
+    return false;
+  }
+
   const contentLinks = article.querySelectorAll('.blog-lead a[href^="http"]');
   [ ...contentLinks ].forEach( contentLink => {
     const isExternal = ( contentLink.hostname !== window.location.hostname );
