@@ -1,7 +1,6 @@
-import _ from 'lodash';
 import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
-import { MfaTokenResponse, MfaPairingResponse, MfaValidationResponse } from '.';
-import { useGet, usePost, useDelete } from './requests';
+import { MfaTokenResponse, MfaPairingResponse } from '.';
+import { useGet, usePost, useDelete } from '../requests';
 
 // Query to retrieve the user's profile object.
 export const useMfa = (): UseQueryResult<MfaTokenResponse> => {

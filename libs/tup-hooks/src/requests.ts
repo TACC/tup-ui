@@ -1,5 +1,5 @@
 import useConfig from './useConfig';
-import useJwt from './useJwt';
+import useJwt from './auth/useJwt';
 import axios from 'axios';
 import { AxiosError } from 'axios';
 import {
