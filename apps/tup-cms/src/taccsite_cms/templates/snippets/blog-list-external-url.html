@@ -9,6 +9,7 @@ const articles = document.querySelectorAll('.blog-list article');
       const postLink = article.querySelectorAll(':not(.blog-lead) a');
 
       console.info('Swap post links with "{externalUrl}"');
+      postLink.setAttribute('target', '_blank');
       postLink.href = externalUrl;
     }
   });
