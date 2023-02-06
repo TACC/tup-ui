@@ -4,18 +4,39 @@
   "sourceRoot": "apps/tup-ui/src",
   "projectType": "application",
   "targets": {
-    "serve": {
-      "executor": "@nrwl/vite:dev-server",
-      "options": {
-        "buildTarget": "tup-ui:build",
-        "base": ""
-      }
-    },
     "build": {
       "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/tup-ui",
         "base": "/static/"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "tup-ui:build",
+        "base": ""
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "tup-ui:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "tup-ui:build:production",
+          "hmr": false
+        }
       }
     },
     "preview": {
@@ -33,18 +54,19 @@
         }
       }
     },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/apps/tup-ui"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/apps/tup-ui"
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/tup-ui/**/*.{ts,tsx,js,jsx}"]
-      }
-    },
-    "test": {
-      "executor": "@nrwl/vite:test",
-      "outputs": ["{workspaceRoot}/coverage/apps/tup-ui"],
-      "options": {
-        "passWithNoTests": true
       }
     }
   },
