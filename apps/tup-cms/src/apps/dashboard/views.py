@@ -22,10 +22,7 @@ def LoginView(request):
 
 
 def LogoutView(request):
-    user = authenticate(request)
-    if user:
-        logout(request)
-
+    logout(request)
     resp = HttpResponseRedirect("/")
     resp.set_cookie("x-tup-token", "")
     return resp
