@@ -1,6 +1,7 @@
 import { useQueryClient, UseQueryResult } from '@tanstack/react-query';
-import { ProjectUser, useProfile } from '.';
-import { useDelete, useGet, usePost } from './requests';
+import { ProjectUser } from '.';
+import { useDelete, useGet, usePost } from '../requests';
+import { useProfile } from '../auth';
 
 // Query to retrieve the user's active projects.
 const useProjectUsers = (id: number): UseQueryResult<ProjectUser[]> => {

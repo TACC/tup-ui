@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
-import useConfig from './useConfig';
-import useJwt from './useJwt';
+import useConfig from '../useConfig';
+import useJwt from '../auth/useJwt';
 import useProjects from './useProjects';
 import axios from 'axios';
 import { ProjectsAllocations, AllocationUsage, UsagePerResource } from '.';
