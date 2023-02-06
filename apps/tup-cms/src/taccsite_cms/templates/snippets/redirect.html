@@ -1,6 +1,13 @@
 <script class="redirect-snippet-script" type="module">
 const URL = '{{html}}';
 
-console.info(`Redirect to "${URL}"`);
-window.location.href = URL;
+const params = new URLSearchParams( window.location.search );
+const isEditing = params.has('edit');
+
+if ( ! isEditing ) {
+  console.info(`Redirecting to "${URL}"`);
+  window.location.href = URL;
+} else {
+  console.info(`Skipping redirect to "${URL}", because user is editing`);
+}
 </script>
