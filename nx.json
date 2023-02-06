@@ -25,7 +25,8 @@
       },
       "library": {
         "style": "css",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "vitest"
       }
     }
   },
@@ -43,6 +44,9 @@
     },
     "lint-scripts": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
+    "e2e": {
+      "inputs": ["default", "^production"]
     }
   },
   "namedInputs": {

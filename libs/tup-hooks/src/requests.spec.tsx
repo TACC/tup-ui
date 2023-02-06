@@ -1,12 +1,12 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import { useGet, usePost } from './requests';
-import useJwt from './useJwt';
+import useJwt from './auth/useJwt';
 import { act } from 'react-dom/test-utils';
 import { TestWrapper } from '@tacc/tup-testing';
 import { vi, Mock } from 'vitest';
 
-vi.mock('./useJwt');
+vi.mock('./auth/useJwt');
 vi.mock('axios');
 
 describe('requests', () => {

@@ -3,18 +3,8 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/core-components/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
-    "serve": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          {
-            "command": "npx vite"
-          }
-        ],
-        "cwd": "libs/core-components"
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
@@ -24,11 +14,11 @@
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["{workspaceRoot}/coverage/libs/core-components"],
+      "outputs": ["coverage/libs/core-components"],
       "options": {
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/libs/core-components"
       }
     }
-  },
-  "tags": []
+  }
 }

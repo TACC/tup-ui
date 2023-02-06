@@ -1,6 +1,9 @@
 import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
-import { useGet, usePost } from './requests';
-import { Ticket, TicketHistory, useConfig, useJwt } from '.';
+import { useGet, usePost } from '../requests';
+import { Ticket, TicketHistory } from '.';
+import { useConfig } from '..';
+import { useJwt } from '../auth';
+
 import axios from 'axios';
 
 // Query to retrieve the user's tickets.

@@ -44,7 +44,7 @@ const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
       },
     });
   };
-  const canSetDelegate = currentUserRole === 'PI';
+  const canSetDelegate = currentUserRole === 'PI' && user.role !== 'PI';
   if (!canSetDelegate) return null;
 
   return (

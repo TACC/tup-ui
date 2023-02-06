@@ -14,9 +14,10 @@
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["{workspaceRoot}/coverage/libs/tup-components"],
+      "outputs": ["coverage/libs/tup-components"],
       "options": {
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/libs/tup-components"
       }
     }
   }

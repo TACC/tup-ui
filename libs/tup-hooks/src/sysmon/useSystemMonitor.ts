@@ -1,6 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query';
 import { SystemMonitorRawSystem } from '.';
-import { useGet } from './requests';
+import { useGet } from '../requests';
 
 const useSystemMonitor = (): UseQueryResult<SystemMonitorRawSystem[]> => {
   const query = useGet<SystemMonitorRawSystem[]>({
