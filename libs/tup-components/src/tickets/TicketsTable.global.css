@@ -1,0 +1,20 @@
+.ticket-reply-required {
+  font-weight: 500;
+}
+
+.ticket-unknown-status {
+  font-family: var(--global-font-family--mono);
+}
+
+.ticket__error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--global-color-accent--normal);
+  padding: 30px;
+}
+
+.ticket-container {
+  flex-grow: 1;
+  overflow: auto;
+}

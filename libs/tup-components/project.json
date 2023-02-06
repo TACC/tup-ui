@@ -1,4 +1,5 @@
 {
+  "name": "tup-components",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/tup-components/src",
   "projectType": "library",
@@ -12,11 +13,11 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/tup-components"],
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/libs/tup-components"],
       "options": {
-        "jestConfig": "libs/tup-components/jest.config.ts",
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/libs/tup-components"
       }
     }
   }

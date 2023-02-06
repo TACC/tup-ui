@@ -1,31 +1,33 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+import react from '@vitejs/plugin-react-swc';
+import viteTsConfigPaths from 'vite-tsconfig-paths';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {},
-  },
-  build: {
-    lib: {
-      entry: path.resolve(__dirname, './src/index.ts'),
-      name: '@tacc/core-components',
-      fileName: (format) => `core-components.${format}.js`,
+  cacheDir: '../../node_modules/.vite/core-components',
+
+  plugins: [
+    react(),
+    viteTsConfigPaths({
+      root: '../../',
+    }),
+  ],
+
+  // Uncomment this if you are using workers.
+  // worker: {
+  //  plugins: [
+  //    viteTsConfigPaths({
+  //      root: '../../',
+  //    }),
+  //  ],
+  // },
+
+  test: {
+    globals: true,
+    cache: {
+      dir: '../../node_modules/.vitest',
     },
-    rollupOptions: {
-      // Externalized dependencies, that will not be included during build
-      external: ['react', 'reactstrap'],
-      output: {
-        globals: {
-          react: 'react',
-          reactstrap: 'reactstrap',
-          'react-resize-detector': 'react-resize-detector',
-          'react-table': 'react-table',
-        },
-      },
-    },
-    outDir: path.resolve(__dirname, '../../dist/libs/core-components'),
+    environment: 'jsdom',
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   },
 });

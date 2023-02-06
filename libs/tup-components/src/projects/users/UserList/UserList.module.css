@@ -3,11 +3,27 @@
 }
 
 .separator {
-    border: 1px solid  #C7C7C7;
-    margin-left: 20px;
+    border-top: 1px solid  #C7C7C7;
+    margin: 5px;
 }
 
 .loading-placeholder {
     height: 100%;
     width: 175px;
+}
+
+.manage-team { 
+    padding-top: 10px;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.manage-team > :first-child {
+    padding-bottom: 16px;
+}
+
+.manage-team > form {
+    padding-bottom: 16px;
+}
+.manage-team strong {
+    font-size: 1.5rem;
 }

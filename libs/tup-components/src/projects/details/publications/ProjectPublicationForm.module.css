@@ -1,0 +1,42 @@
+.ticket-create-form input {
+    max-width: 100%;
+    font-style: italic;
+    color: red;
+}
+.ticket-create-form textarea {
+    max-width: 100%;
+    resize: none;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.checkbox-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 10px;
+}
+.checkbox-wrapper input {
+    height: 1.5rem;
+    width: 1.5rem;
+    accent-color: var(--global-color-accent--normal)
+}
+.checkbox-wrapper label {
+    margin-bottom: 0px;
+    font-weight: normal;
+}
+
+.publication-edit-form  :global(.c-form__field ) {
+    min-width: 0;
+}
+
+.publication-edit-form input {
+    max-width: 100%;
+    min-width: 0;
+
+}

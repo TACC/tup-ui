@@ -28,9 +28,7 @@ describe('Tickets Table Component', () => {
       })
     );
     const { getByText } = testRender(<TicketsTable />);
-    await waitFor(() =>
-      expect(getByText('No tickets. You can add a ticket here.')).toBeDefined()
-    );
+    await waitFor(() => expect(getByText(/No tickets. You can/)).toBeDefined());
   });
   it('should display an error message if an error is returned from useQuery', async () => {
     server.use(
@@ -50,8 +48,6 @@ describe('Tickets Table Component', () => {
     expect(getStatusText('open')).toEqual('In Progress');
     expect(getStatusText('user_wait')).toEqual('Reply Required');
     expect(getStatusText('internal_wait')).toEqual('Reply Sent');
-    expect(() => {
-      getStatusText('random_status');
-    }).toThrow(RangeError);
+    expect(getStatusText('random_status')).toEqual('--');
   });
 });

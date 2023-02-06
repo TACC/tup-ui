@@ -1,7 +1,11 @@
-import { PageLayout, RequireAuth } from '@tacc/tup-components';
+import {
+  PageLayout,
+  RequireAuth,
+  UserList,
+  ProjectHeader,
+} from '@tacc/tup-components';
 import React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
-import { UserList } from '@tacc/tup-components';
 
 const ProjectView: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
@@ -10,7 +14,7 @@ const ProjectView: React.FC = () => {
   return (
     <RequireAuth>
       <PageLayout
-        top={<div>header placeholder</div>}
+        top={<ProjectHeader projectId={parseInt(projectId)} />}
         left={<UserList projectId={parseInt(projectId)} />}
         right={<Outlet />}
       ></PageLayout>

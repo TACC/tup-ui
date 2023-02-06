@@ -1,17 +1,22 @@
 import useConfig from './useConfig';
-import useJwt from './useJwt';
+import useJwt from './auth/useJwt';
 import axios from 'axios';
+import { AxiosError } from 'axios';
 import {
   useQuery,
   useMutation,
   UseQueryOptions,
   UseMutationOptions,
-} from 'react-query';
+  QueryKey,
+} from '@tanstack/react-query';
 
 type UseGetParams<ResponseType> = {
   endpoint: string;
-  key: string;
-  options?: Omit<UseQueryOptions<ResponseType, Error>, 'queryKey' | 'queryFn'>;
+  key: QueryKey;
+  options?: Omit<
+    UseQueryOptions<ResponseType, AxiosError>,
+    'queryKey' | 'queryFn'
+  >;
   baseUrl?: string;
 };
 
@@ -33,12 +38,12 @@ export function useGet<ResponseType>({
     );
     return request.data;
   };
-  return useQuery(key, () => getUtil(), options);
+  return useQuery<ResponseType, AxiosError>(key, () => getUtil(), options);
 }
 
 type UsePostParams<BodyType, ResponseType> = {
   endpoint: string;
-  options?: UseMutationOptions<ResponseType, Error, BodyType>;
+  options?: UseMutationOptions<ResponseType, AxiosError, BodyType>;
   baseUrl?: string;
 };
 
@@ -62,6 +67,67 @@ export function usePost<BodyType, ResponseType>({
   };
   const mutation = useMutation(async (body: BodyType) => {
     const response = await postUtil(body);
+    return response;
+  }, options);
+  return mutation;
+}
+
+type UseDeleteParams<ResponseType> = {
+  endpoint: string;
+  options?: UseMutationOptions<ResponseType, AxiosError>;
+  baseUrl?: string;
+};
+
+export function useDelete<ResponseType>({
+  endpoint,
+  options = {},
+  baseUrl: alternateBaseUrl,
+}: UseDeleteParams<ResponseType>) {
+  const client = axios;
+  const { baseUrl } = useConfig();
+  const { jwt } = useJwt();
+  const deleteUtil = async () => {
+    const response = await client.delete<ResponseType>(
+      `${alternateBaseUrl ?? baseUrl}${endpoint}`,
+      {
+        headers: { 'x-tup-token': jwt ?? '' },
+      }
+    );
+    return response.data;
+  };
+  const mutation = useMutation(async () => {
+    const response = await deleteUtil();
+    return response;
+  }, options);
+  return mutation;
+}
+
+type UsePutParams<BodyType, ResponseType> = {
+  endpoint: string;
+  options?: UseMutationOptions<ResponseType, AxiosError, BodyType>;
+  baseUrl?: string;
+};
+
+export function usePut<BodyType, ResponseType>({
+  endpoint,
+  options = {},
+  baseUrl: alternateBaseUrl,
+}: UsePutParams<BodyType, ResponseType>) {
+  const client = axios;
+  const { baseUrl } = useConfig();
+  const { jwt } = useJwt();
+  const putUtil = async (body: BodyType) => {
+    const response = await client.put<ResponseType>(
+      `${alternateBaseUrl ?? baseUrl}${endpoint}`,
+      body,
+      {
+        headers: { 'x-tup-token': jwt ?? '' },
+      }
+    );
+    return response.data;
+  };
+  const mutation = useMutation(async (body: BodyType) => {
+    const response = await putUtil(body);
     return response;
   }, options);
   return mutation;

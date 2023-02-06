@@ -7,7 +7,12 @@ import {
   mockProjectUsage,
   MockProjectUsers,
   mockTickets,
+  mockProjectFieldOfScience,
+  mockTicketDetails,
+  mockTicketHistory,
+  unverifiedToken,
 } from './fixtures';
+import { mockProjectGrants, mockProjectPubs } from './fixtures/projects';
 
 export const handlers = [
   rest.get('http://localhost:8001/users/profile', (req, res, ctx) => {
@@ -31,6 +36,20 @@ export const handlers = [
     return res(ctx.json(mockProjectsOutput));
   }),
   rest.get(
+    'http://localhost:8001/projects/:projectId/publications',
+    (req, res, ctx) => {
+      // Respond with mock active projects output
+      return res(ctx.json(mockProjectPubs));
+    }
+  ),
+  rest.get(
+    'http://localhost:8001/projects/:projectId/grants',
+    (req, res, ctx) => {
+      // Respond with mock active projects output
+      return res(ctx.json(mockProjectGrants));
+    }
+  ),
+  rest.get(
     'http://localhost:8001/projects/:projectId/users',
     (req, res, ctx) => {
       // Respond with mock users output
@@ -47,5 +66,30 @@ export const handlers = [
   rest.get('http://localhost:8001/tickets', (req, res, ctx) => {
     // Respond with mock tickets output
     return res(ctx.json(mockTickets));
+  }),
+  rest.get('http://localhost:8001/projects/fields', (req, res, ctx) => {
+    // Respond with mock tickets output
+    return res(ctx.json(mockProjectFieldOfScience));
+  }),
+  rest.get('http://localhost:8001/tickets/85411/history', (req, res, ctx) => {
+    // Respond with mock ticket history output
+    return res(ctx.json(mockTicketHistory));
+  }),
+  rest.get('http://localhost:8001/tickets/85411', (req, res, ctx) => {
+    // Respond with mock ticket details output
+    return res(ctx.json(mockTicketDetails));
+  }),
+  rest.post('http://localhost:8001/tickets/85411/reply', (req, res, ctx) => {
+    // Respond with true
+    return res(ctx.json(true));
+  }),
+  rest.post('http://localhost:8001/tickets', (req, res, ctx) => {
+    // Respond with a mock created ticket id
+    return res(ctx.json('12345'));
+  }),
+  // MFA
+  rest.get('http://localhost:8001/mfa', (req, res, ctx) => {
+    // Respond with an un-enrolled token by default
+    return res(ctx.json(unverifiedToken));
   }),
 ];

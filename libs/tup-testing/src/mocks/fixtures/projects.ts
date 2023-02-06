@@ -90,3 +90,59 @@ export const mockProjectUsage = {
     { username: 'vg5726', usage: 0 },
   ],
 };
+
+export const mockProjectFieldOfScience = [
+  {
+    id: 42,
+    depth: 1,
+    name: 'Center Systems Staff (STA)',
+  },
+];
+
+export const mockProjectPubs = [
+  {
+    id: 7852,
+    authors:
+      'Elizabeth Litvina, Amy Adams, Alison Barth, Marcel Bruchez, James Carson, Jason E Chung, Kristin B D',
+    title:
+      'BRAIN initiative: cutting-edge tools and resources for the community',
+    yearPublished: 2019,
+    publisher: 'Society for Neuroscience',
+    url: 'https://doi.org/10.1523/JNEUROSCI.1169-19.2019',
+    venue: 'Journal of Neuroscience',
+    userCitedTacc: true,
+  },
+];
+
+export const mockProjectGrants = [
+  {
+    id: 7416,
+    title:
+      'NeuroNex Technology Hub: Enhanced resolution for 3DEM analysis of synapses across brain regions and taxa',
+    fundingAgency: 'NSF',
+    field: 'Neuroscience Program',
+    piName: 'Kristen Harris',
+    awardNumber: '1707356',
+    awardAmount: 9650000.0,
+    start: '2017-08-01T00:00:00',
+    end: '2022-07-31T00:00:00',
+    nsfStatusCode: 'Awarded   ',
+    grantNumber: null,
+    fieldId: 115,
+  },
+  {
+    id: 7417,
+    title:
+      'NeuroNex: Enabling Identification and Impact of Synaptic Weight in Functional Networks',
+    fundingAgency: 'NSF',
+    field: 'Neuroscience Program',
+    piName: 'Kristen Harris',
+    awardNumber: '2014862',
+    awardAmount: 17500000.0,
+    start: '2020-08-15T00:00:00',
+    end: '2025-07-31T00:00:00',
+    nsfStatusCode: 'Awarded   ',
+    grantNumber: null,
+    fieldId: 115,
+  },
+];

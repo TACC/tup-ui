@@ -60,13 +60,13 @@ import './SomeComponent.global.css';
 
 ## Browse [Core Styles]
 
-| Environment | URL                                                  |
-| ----------- | ---------------------------------------------------- |
-| Local*      | http://localhost:8000/static/ui/index.html           |
-| Remote*     | https://dev.tup.tacc.utexas.edu/static/ui/index.html |
+| Environment | URL                                                            |
+| ----------- | -------------------------------------------------------------- |
+| Local\*     | http://localhost:8000/static/ui/index.html                     |
+| Remote\*    | https://dev.tup.tacc.utexas.edu/static/ui/index.html           |
 | Source†     | https://github.com/TACC/Core-Styles/tree/main/src/lib/_imports |
 
-<sub>* Incomplete, but each is documented with test case examples.</sub>\
+<sub>\* Incomplete, but each is documented with test case examples.</sub>\
 <sub>† Complete, but expects knowledge of [ITCSS](https://confluence.tacc.utexas.edu/x/IAA9Cw).</sub>
 
 ## Use [Core Styles]
@@ -117,10 +117,10 @@ selector {
 
 ### In `main.css`, Import from Global Project Styles
 
-**`/main.css`**
+**`/main.global.css`**
 
 ```css
-@import url('@tacc/core-styles/.../components/something-not-already-available-globally.css');
+@import url('/styles/(.../)something-not-already-available-globally.css');
 ```
 
 <sub>\* A `main.css` might not exist (because no global project styles exist).</sub>
@@ -131,7 +131,7 @@ If you need global styles, then evaluate these options.
 
 ### In Global Styles, Append to [Core Styles]
 
-**`/styles/(.../)global-stylesheet.css`**
+**`/styles/(.../)some-global-stylesheet.css`**
 
 ```css
 :root {
@@ -142,7 +142,7 @@ If you need global styles, then evaluate these options.
 
 ### In Global Project Styles, Extend from [Core Styles]
 
-**`/styles/(.../)global-stylesheet.css`**
+**`/styles/(.../)some-global-stylesheet.css`**
 
 ```css
 @import url('@tacc/core-styles/.../tools/x-truncate.css');
@@ -156,7 +156,7 @@ selector {
 
 ### In Global Project Styles, Import from [Core Styles]
 
-**`/main.css`**
+**`/main.global.css`**
 
 ```css
 @import url('@tacc/core-styles/.../components/something-not-already-available-globally.css');
