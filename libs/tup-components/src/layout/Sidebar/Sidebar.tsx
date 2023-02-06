@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, NavItem } from '@tacc/core-wrappers';
+import { Navbar, NavItem, AnchorNavItem } from '@tacc/core-wrappers';
 import { useAuth } from '@tacc/tup-hooks';
 import styles from './Sidebar.module.css';
 
@@ -18,9 +18,9 @@ const Sidebar: React.FC = () => {
           Tickets
         </NavItem>
         {loggedIn && (
-          <NavItem icon="exit" to={'/logout'}>
+          <AnchorNavItem icon="exit" to={'/dashboard/logout'}>
             Log Out
-          </NavItem>
+          </AnchorNavItem>
         )}
       </Navbar>
     </div>

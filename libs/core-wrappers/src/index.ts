@@ -1,5 +1,5 @@
 import { WizardStep as WizardStepType } from './lib/Wizard';
-export { Navbar, NavItem, QueryNavItem } from './lib/Navbar';
+export { Navbar, NavItem, QueryNavItem, AnchorNavItem } from './lib/Navbar';
 export { default as QueryWrapper } from './lib/QueryWrapper';
 export { default as SubmitWrapper } from './lib/SubmitWrapper';
 export { default as Wizard, useWizard, WizardNavigation } from './lib/Wizard';
