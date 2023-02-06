@@ -6,7 +6,7 @@ const articles = document.querySelectorAll('.blog-list article');
     const isExternal = ( contentLink.hostname !== window.location.hostname );
     if ( isExternal ) {
       const externalUrl = contentLink.href;
-      const postLinks = article.querySelectorAll(':not(.blog-lead) a');
+      const postLinks = article.querySelectorAll(':is(h3, footer) a');
 
       [ ...postLinks ].forEach( postLink => {
         console.info('Swap post link with "{externalUrl}"', postLink);
