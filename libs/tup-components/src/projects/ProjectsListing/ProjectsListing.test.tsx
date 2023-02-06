@@ -32,6 +32,6 @@ describe('Projects Summary Listing Component', () => {
 
     // Allocations table
     expect(screen.getAllByText('10 SU'));
-    expect(screen.getAllByText('9/6/2023'));
+    expect(screen.getAllByText('9/30/2023'));
   });
 });

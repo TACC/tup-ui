@@ -5,48 +5,75 @@ import {
   UsagePerResource,
   ProjectUser,
   useProfile,
+  useRemoveProjectUser,
+  useRoleForCurrentUser,
+  useSetProjectDelegate,
+  useRemoveProjectDelegate,
 } from '@tacc/tup-hooks';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './UserDetail.module.css';
 
 const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
   user,
   projectId,
 }) => {
-  const { data: currentUser } = useProfile();
-  const projectUsers = useProjectUsers(projectId);
-  const projectCurrentUser = (projectUsers.data ?? []).find(
-    (user) => user.username === currentUser?.username
-  );
+  const currentUserRole = useRoleForCurrentUser(projectId) ?? '';
+  const { mutate: mutateSetDelegate } = useSetProjectDelegate(projectId);
+  const { mutate: mutateRemoveDelegate } = useRemoveProjectDelegate(projectId);
+
   const [confirmState, setConfirmState] = useState<'DEFAULT' | 'CONFIRM'>(
     'DEFAULT'
   );
-  const mutate = () => {
-    console.log('setting delegate');
+
+  const setDelegate = () => {
+    mutateSetDelegate(
+      { username: user.username },
+      {
+        onSuccess: () => {
+          setConfirmState('DEFAULT');
+        },
+      }
+    );
   };
 
-  const canSetDelegate =
-    user.role === 'Standard' && projectCurrentUser?.role === 'PI';
+  const removeDelegate = () => {
+    mutateRemoveDelegate(undefined, {
+      onSuccess: () => {
+        setConfirmState('DEFAULT');
+      },
+    });
+  };
+  const canSetDelegate = currentUserRole === 'PI' && user.role !== 'PI';
+  if (!canSetDelegate) return null;
+
   return (
-    <div>
-      <strong>Role:</strong> {user.role}{' '}
-      {canSetDelegate && confirmState === 'DEFAULT' && (
+    <>
+      {confirmState === 'DEFAULT' && (
         <Button onClick={() => setConfirmState('CONFIRM')} type="link">
-          Set as Project Delegate
+          {user.role !== 'Delegate' && 'Set as Project Delegate'}
+          {user.role === 'Delegate' && 'Remove as Project Delegate'}
         </Button>
       )}
-      {canSetDelegate && confirmState === 'CONFIRM' && (
+      {confirmState === 'CONFIRM' && (
         <>
-          <Button onClick={() => mutate()} type="link">
-            Confirm Delegate Selection
-          </Button>{' '}
-          |{' '}
+          {user.role !== 'Delegate' && (
+            <Button onClick={setDelegate} type="link">
+              Confirm Delegate Selection
+            </Button>
+          )}
+          {user.role === 'Delegate' && (
+            <Button onClick={removeDelegate} type="link">
+              Confirm Delegate Removal
+            </Button>
+          )}
+          <span> | </span>
           <Button onClick={() => setConfirmState('DEFAULT')} type="link">
             Cancel
           </Button>
         </>
       )}
-    </div>
+    </>
   );
 };
 
@@ -54,20 +81,24 @@ const RemoveUser: React.FC<{ projectId: number; user: ProjectUser }> = ({
   projectId,
   user,
 }) => {
+  const navigate = useNavigate();
   const { data: currentUser } = useProfile();
-  const projectUsers = useProjectUsers(projectId);
-  const projectCurrentUser = (projectUsers.data ?? []).find(
-    (user) => user.username === currentUser?.username
-  );
+  const currentUserRole = useRoleForCurrentUser(projectId) ?? '';
+
   const [confirmState, setConfirmState] = useState<'DEFAULT' | 'CONFIRM'>(
     'DEFAULT'
   );
-
-  const mutate = () => {
-    console.log('remove user');
+  const { mutate, isLoading } = useRemoveProjectUser(projectId, user.username);
+  const removeUserCallback = () => {
+    mutate(undefined, {
+      onSuccess: () => {
+        setConfirmState('DEFAULT');
+        navigate(`/projects/${projectId}`);
+      },
+    });
   };
 
-  if (!['PI', 'Delegate'].includes(projectCurrentUser?.role ?? '')) return null;
+  if (!['PI', 'Delegate'].includes(currentUserRole)) return null;
   if (user.role === 'PI') return null;
   if (user.username === currentUser?.username) return null;
 
@@ -80,8 +111,9 @@ const RemoveUser: React.FC<{ projectId: number; user: ProjectUser }> = ({
   if (confirmState === 'CONFIRM')
     return (
       <>
-        <Button onClick={() => mutate()} type="link">
-          Remove
+        <Button onClick={removeUserCallback} type="link">
+          {!isLoading && 'Remove'}{' '}
+          {isLoading && <LoadingSpinner placement="inline" />}
         </Button>{' '}
         |{' '}
         <Button onClick={() => setConfirmState('DEFAULT')} type="link">
@@ -93,26 +125,26 @@ const RemoveUser: React.FC<{ projectId: number; user: ProjectUser }> = ({
   return <div>(User removal placeholder)</div>;
 };
 
+const getPercentUsage = (resource: UsagePerResource): string => {
+  const percentage = (resource.used / resource.total) * 100;
+  switch (true) {
+    case percentage === 0:
+      return '0%';
+    case percentage < 1:
+      return '<1%';
+    case isNaN(percentage):
+      return '0%';
+    default:
+      return `${Math.floor(percentage)}%`;
+  }
+};
+
 const UsageTable: React.FC<{ projectId: number; username: string }> = ({
   projectId,
   username,
 }) => {
   const usage = useProjectUsage(projectId, username);
   const usageData = usage.data;
-
-  const getPercentUsage = (resource: UsagePerResource): string => {
-    const percentage = (resource.used / resource.total) * 100;
-    switch (true) {
-      case percentage === 0:
-        return '0%';
-      case percentage < 1:
-        return '<1%';
-      case isNaN(percentage):
-        return '0%';
-      default:
-        return `${Math.floor(percentage)}%`;
-    }
-  };
 
   if (usage.isLoading || !usageData)
     return (
@@ -151,7 +183,9 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
   const data = projectUsers.data ?? [];
   const user = data.find((user) => user.username === username);
 
-  return user ? (
+  if (!user) return null;
+
+  return (
     <div className={styles['user-detail-container']}>
       <div className={styles['user-info-banner']}>
         <span className={styles['user-fullname']}>
@@ -165,7 +199,10 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
         </span>
       </div>
       <div className={styles['manage-user-container']}>
-        <div>
+        <div className={styles['role-selector']}>
+          <span>
+            <strong>Role:</strong> {user.role}
+          </span>
           <UserRoleSelector projectId={projectId} user={user} />
         </div>
         <div>
@@ -174,7 +211,7 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
       </div>
       <UsageTable username={username} projectId={projectId} />
     </div>
-  ) : null;
+  );
 };
 
 export default UserDetail;

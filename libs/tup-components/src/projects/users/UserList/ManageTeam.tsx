@@ -1,44 +1,61 @@
-import { InlineMessage, LoadingSpinner, Button } from '@tacc/core-components';
-import { useProfile, useProjectUsers } from '@tacc/tup-hooks';
-import React from 'react';
-import { Input, InputGroup } from 'reactstrap';
+import { InlineMessage, LoadingSpinner } from '@tacc/core-components';
+import {
+  useAddProjectUser,
+  useProjectUsers,
+  useRoleForCurrentUser,
+} from '@tacc/tup-hooks';
+import { useState } from 'react';
+import { Input, InputGroup, Button } from 'reactstrap';
 import styles from './UserList.module.css';
 
 const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
-  const { data: currentUser } = useProfile();
   const { data: users } = useProjectUsers(projectId);
-  const currentUserRole =
-    (users ?? []).find((user) => user.username === currentUser?.username)
-      ?.role || '';
+  const currentUserRole = useRoleForCurrentUser(projectId) ?? '';
+  const { mutate, isLoading, error } = useAddProjectUser(projectId);
+  const [userToAdd, setUserToAdd] = useState<string>('');
 
   if (!['PI', 'Delegate'].includes(currentUserRole)) return null;
 
   const addUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('submitting');
+    if (userToAdd)
+      mutate(
+        { username: userToAdd },
+        {
+          onSuccess: () => setUserToAdd(''),
+        }
+      );
   };
 
   return (
     <>
-      <div style={{ paddingTop: '10px', marginRight: '10px' }}>
-        <div style={{ paddingBottom: '16px' }}>
-          <span style={{ fontSize: '1.5rem' }}>
-            <strong>Manage Team</strong>
-          </span>{' '}
-          ({users?.length} Users)
+      <div className={styles['manage-team']}>
+        <div>
+          <strong>Manage Team</strong>({users?.length} Users)
         </div>
-        <form onSubmit={(e) => addUser(e)} style={{ paddingBottom: '16px' }}>
+        <form onSubmit={(e) => addUser(e)}>
           <label htmlFor="add-user">Add New User</label>
           <InputGroup>
             <div className="input-group-prepend">
-              <Button type="secondary" attr="submit" size="small">
-                Add
+              <Button outline type="submit" disabled={!userToAdd}>
+                {!isLoading && 'Add'}
+                {isLoading && <LoadingSpinner placement="inline" />}
               </Button>
             </div>
-            <Input placeholder="Enter Username" id="add-user" />
+            <Input
+              placeholder="Enter Username"
+              value={userToAdd}
+              id="add-user"
+              onChange={(e) => setUserToAdd(e.target.value)}
+            />
           </InputGroup>
         </form>
+        {error && (
+          <InlineMessage type="error">
+            The user could not be added.
+          </InlineMessage>
+        )}
       </div>
       <div className={styles['separator']}></div>
     </>

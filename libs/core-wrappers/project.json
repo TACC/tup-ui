@@ -1,19 +1,10 @@
 {
+  "name": "core-wrappers",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/core-wrappers/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
-    "serve": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          {
-            "command": "npx vite"
-          }
-        ],
-        "cwd": "libs/core-wrappers"
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
@@ -22,13 +13,12 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/core-wrappers"],
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/libs/core-wrappers"],
       "options": {
-        "jestConfig": "libs/core-wrappers/jest.config.ts",
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/libs/core-wrappers"
       }
     }
-  },
-  "tags": []
+  }
 }

@@ -11,3 +11,19 @@
     height: 100%;
     width: 175px;
 }
+
+.manage-team { 
+    padding-top: 10px;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.manage-team > :first-child {
+    padding-bottom: 16px;
+}
+
+.manage-team > form {
+    padding-bottom: 16px;
+}
+.manage-team strong {
+    font-size: 1.5rem;
+}
