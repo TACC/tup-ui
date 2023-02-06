@@ -1,9 +1,9 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.template import loader
 from django.shortcuts import redirect
 from django.conf import settings
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from apps.dashboard.decorators import tup_login_required
 
 
@@ -20,6 +20,13 @@ def LoginView(request):
     resp = HttpResponse(template.render({'baseUrl': settings.TUP_SERVICES_URL}, request))
     return resp
 
+
+def LogoutView(request):
+    logout(request)
+    resp = HttpResponseRedirect("/")
+    resp.set_cookie("x-tup-token", "")
+    return resp
+    
 
 @tup_login_required()
 def DashboardView(request):
