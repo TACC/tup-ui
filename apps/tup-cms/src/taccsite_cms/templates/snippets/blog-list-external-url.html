@@ -1,4 +1,4 @@
-<script id="blog-list-link-to-external-site">
+<script id="blog-list-link-to-external-site" type="module">
 const articles = document.querySelectorAll('.blog-list article');
 [ ...articles ].forEach( article => {
   const contentLinks = article.querySelectorAll('.blog-lead a[href^="http"]');
@@ -6,12 +6,15 @@ const articles = document.querySelectorAll('.blog-list article');
     const isExternal = ( contentLink.hostname !== window.location.hostname );
     if ( isExternal ) {
       const externalUrl = contentLink.href;
-      const postLink = article.querySelectorAll(':not(.blog-lead) a');
+      const postLinks = article.querySelectorAll(':not(.blog-lead) a');
 
-      console.info('Swap post links with "{externalUrl}"');
-      postLink.setAttribute('target', '_blank');
-      postLink.href = externalUrl;
+      [ ...postLinks ].forEach( postLink => {
+        console.info('Swap post link with "{externalUrl}"', postLink);
+
+        postLink.setAttribute('target', '_blank');
+        postLink.href = externalUrl;
+      });
     }
   });
-}
+});
 </script>
