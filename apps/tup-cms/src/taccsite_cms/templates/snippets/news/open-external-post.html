@@ -5,33 +5,26 @@ const parameter = '{{html}}';
 // Only certain articles should support this feature
 const extTagName = parameter ? parameter : `external`;
 
-// For all articles
-const articles = document.querySelectorAll('.blog-list article');
+// Only care about articles with the given tag
+const articles = document.querySelectorAll(
+  `.blog-list article.has-blog-tag-${extTagName}`
+);
 [ ...articles ].forEach( article => {
-  const extTagElement = article.querySelector(`.blog-tag-${extTagName}`);
+  // News admin states only one external link should be in article content
+  const contentLink = article.querySelector('.blog-lead a[href^="http"]');
+  const isExternalLink = ( contentLink.hostname !== window.location.hostname );
 
-  // Exit if article does not have the correct tag
-  if ( ! extTagElement ) {
-    return false;
+  if ( isExternalLink ) {
+    const linkUrl = contentLink.href;
+    const postLinks = article.querySelectorAll(':is(h3, footer) a');
+
+    // All links to the post should open external URL in new window
+    [ ...postLinks ].forEach( postLink => {
+      console.info('Swap post link with "{linkUrl}"', postLink);
+
+      postLink.href = linkUrl;
+      postLink.setAttribute('target', '_blank');
+    });
   }
-
-  // For all links in the article item "abstract"
-  const contentLinks = article.querySelectorAll('.blog-lead a[href^="http"]');
-  [ ...contentLinks ].forEach( contentLink => {
-    const isExternal = ( contentLink.hostname !== window.location.hostname );
-
-    if ( isExternal ) {
-      const externalUrl = contentLink.href;
-      const postLinks = article.querySelectorAll(':is(h3, footer) a');
-
-      // For all links to the post in the article item
-      [ ...postLinks ].forEach( postLink => {
-        console.info('Swap post link with "{externalUrl}"', postLink);
-
-        postLink.setAttribute('target', '_blank');
-        postLink.href = externalUrl;
-      });
-    }
-  });
 });
 </script>
