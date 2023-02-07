@@ -10,7 +10,7 @@ const params = new URLSearchParams( window.location.search );
 const isEditing = params.has('edit');
 const isNewsArticle = ( window.location.pathname.indexOf('/news') == 0 );
 
-if ( isNewsArticle ) {
+if ( isNewsArticle && ! URL ) {
   const extTagName = 'external';
   const article = document.querySelector(`
     .app-blog.has-blog-tag-${extTagName} article
