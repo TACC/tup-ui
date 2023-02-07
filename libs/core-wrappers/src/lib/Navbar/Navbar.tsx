@@ -26,6 +26,23 @@ export const NavItem: React.FC<
   </NavLink>
 );
 
+export const AnchorNavItem: React.FC<
+  React.PropsWithChildren<{
+    to: string;
+    icon?: string;
+    end?: boolean;
+    className?: string;
+  }>
+> = ({ to, icon, end, className, children }) => (
+  <a href={to} className={`${styles['nav-link']} ${className}`}>
+    <div className={styles['nav-content']}>
+      {icon && <Icon name={icon} size="xs" className={styles['nav-icon']} />}
+      {/* we'll want to set name based on the app */}
+      <span className={styles['nav-text']}>{children}</span>
+    </div>
+  </a>
+);
+
 // Alternate nav item with active state set by a prop
 export const QueryNavItem: React.FC<
   React.PropsWithChildren<{
