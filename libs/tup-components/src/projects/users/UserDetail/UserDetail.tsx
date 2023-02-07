@@ -10,7 +10,7 @@ import {
   useSetProjectDelegate,
   useRemoveProjectDelegate,
 } from '@tacc/tup-hooks';
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './UserDetail.module.css';
 
@@ -25,6 +25,9 @@ const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
   const [selectedUserRole, setSelectedUserRole] = useState<string>(
     user.role ?? ''
   );
+  useLayoutEffect(() => {
+    return setSelectedUserRole(user.role ?? '');
+  }, [user]);
 
   const setRole = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -73,6 +76,7 @@ const RemoveUser: React.FC<{ projectId: number; user: ProjectUser }> = ({
   const [confirmState, setConfirmState] = useState<'DEFAULT' | 'CONFIRM'>(
     'DEFAULT'
   );
+  useEffect(() => setConfirmState('DEFAULT'), [user.username]);
   const { mutate, isLoading } = useRemoveProjectUser(projectId, user.username);
   const removeUserCallback = () => {
     mutate(undefined, {
