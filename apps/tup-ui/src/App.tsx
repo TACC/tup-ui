@@ -12,7 +12,6 @@ import {
 import {
   Dashboard,
   Login,
-  Logout,
   Projects,
   ProjectView,
   ProjectDetail,
@@ -51,7 +50,6 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route path="logout" element={<Logout />}></Route>
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>

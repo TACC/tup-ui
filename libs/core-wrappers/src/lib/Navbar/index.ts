@@ -1,2 +1,2 @@
 export { default as Navbar } from './Navbar';
-export { NavItem, QueryNavItem } from './Navbar';
+export { NavItem, QueryNavItem, AnchorNavItem } from './Navbar';
