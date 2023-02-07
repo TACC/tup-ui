@@ -22,58 +22,43 @@ const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
   const { mutate: mutateSetDelegate } = useSetProjectDelegate(projectId);
   const { mutate: mutateRemoveDelegate } = useRemoveProjectDelegate(projectId);
 
-  const [confirmState, setConfirmState] = useState<'DEFAULT' | 'CONFIRM'>(
-    'DEFAULT'
+  const [selectedUserRole, setSelectedUserRole] = useState<string>(
+    user.role ?? ''
   );
 
-  const setDelegate = () => {
-    mutateSetDelegate(
-      { username: user.username },
-      {
-        onSuccess: () => {
-          setConfirmState('DEFAULT');
-        },
-      }
-    );
+  const setRole = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (selectedUserRole === 'Delegate' && user.role === 'Standard')
+      mutateSetDelegate({ username: user.username });
+    if (selectedUserRole === 'Standard' && user.role === 'Delegate')
+      mutateRemoveDelegate(undefined);
   };
 
-  const removeDelegate = () => {
-    mutateRemoveDelegate(undefined, {
-      onSuccess: () => {
-        setConfirmState('DEFAULT');
-      },
-    });
-  };
   const canSetDelegate = currentUserRole === 'PI' && user.role !== 'PI';
-  if (!canSetDelegate) return null;
+  if (!canSetDelegate)
+    return (
+      <span>{user.role === 'Standard' ? 'Standard User' : user.role}</span>
+    );
 
   return (
-    <>
-      {confirmState === 'DEFAULT' && (
-        <Button onClick={() => setConfirmState('CONFIRM')} type="link">
-          {user.role !== 'Delegate' && 'Set as Project Delegate'}
-          {user.role === 'Delegate' && 'Remove as Project Delegate'}
+    <form onSubmit={setRole}>
+      <label hidden htmlFor="user-role-select">
+        Select a new role for this user.
+      </label>
+      <select
+        value={selectedUserRole}
+        onChange={(e) => setSelectedUserRole(e.target.value)}
+        id="user-role-select"
+      >
+        <option value={'Standard'}>Standard User</option>
+        <option value={'Delegate'}>Delegate</option>
+      </select>{' '}
+      {selectedUserRole !== user.role && (
+        <Button className={styles['link-button']} type="link" attr="submit">
+          Confirm
         </Button>
       )}
-      {confirmState === 'CONFIRM' && (
-        <>
-          {user.role !== 'Delegate' && (
-            <Button onClick={setDelegate} type="link">
-              Confirm Delegate Selection
-            </Button>
-          )}
-          {user.role === 'Delegate' && (
-            <Button onClick={removeDelegate} type="link">
-              Confirm Delegate Removal
-            </Button>
-          )}
-          <span> | </span>
-          <Button onClick={() => setConfirmState('DEFAULT')} type="link">
-            Cancel
-          </Button>
-        </>
-      )}
-    </>
+    </form>
   );
 };
 
@@ -104,19 +89,31 @@ const RemoveUser: React.FC<{ projectId: number; user: ProjectUser }> = ({
 
   if (confirmState === 'DEFAULT')
     return (
-      <Button onClick={() => setConfirmState('CONFIRM')} type="link">
+      <Button
+        className={styles['link-button']}
+        onClick={() => setConfirmState('CONFIRM')}
+        type="link"
+      >
         Remove User
       </Button>
     );
   if (confirmState === 'CONFIRM')
     return (
       <>
-        <Button onClick={removeUserCallback} type="link">
+        <Button
+          className={styles['link-button']}
+          onClick={removeUserCallback}
+          type="link"
+        >
           {!isLoading && 'Remove'}{' '}
           {isLoading && <LoadingSpinner placement="inline" />}
         </Button>{' '}
         |{' '}
-        <Button onClick={() => setConfirmState('DEFAULT')} type="link">
+        <Button
+          className={styles['link-button']}
+          onClick={() => setConfirmState('DEFAULT')}
+          type="link"
+        >
           Cancel
         </Button>
       </>
@@ -200,9 +197,7 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
       </div>
       <div className={styles['manage-user-container']}>
         <div className={styles['role-selector']}>
-          <span>
-            <strong>Role:</strong> {user.role}
-          </span>
+          <div>Role:</div>{' '}
           <UserRoleSelector projectId={projectId} user={user} />
         </div>
         <div>
