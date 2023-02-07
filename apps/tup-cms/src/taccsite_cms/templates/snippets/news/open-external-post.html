@@ -1,4 +1,9 @@
+{# To open external article URL, instead of internal one, on news listing #}
+{% load staticfiles %}
+
 <script id="blog-list-link-to-external-site" type="module">
+import getArticleExternalURL from '{% static "site_cms/js/modules/getArticleExternalURL.js" %}';
+
 // The `{{html}}` is whatever user entered into snippet "HTML:" field
 const parameter = '{{html}}';
 
@@ -10,19 +15,16 @@ const articles = document.querySelectorAll(
   `.blog-list article.has-blog-tag-${extTagName}`
 );
 [ ...articles ].forEach( article => {
-  // News admin states only one external link should be in article content
-  const contentLink = article.querySelector('.blog-lead a[href^="http"]');
-  const isExternalLink = ( contentLink.hostname !== window.location.hostname );
+  const externalLinkUrl = getArticleExternalURL( article );
 
-  if ( isExternalLink ) {
-    const linkUrl = contentLink.href;
+  if ( externalLinkUrl ) {
     const postLinks = article.querySelectorAll(':is(h3, footer) a');
 
     // All links to the post should open external URL in new window
     [ ...postLinks ].forEach( postLink => {
-      console.info('Swap post link with "{linkUrl}"', postLink);
+      console.debug(`Swap post link with "${externalLinkUrl}"`, postLink );
 
-      postLink.href = linkUrl;
+      postLink.href = externalLinkUrl;
       postLink.setAttribute('target', '_blank');
     });
   }
