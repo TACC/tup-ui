@@ -5,7 +5,7 @@ import { usePublicationCreate, ProjectPublicationBody } from '@tacc/tup-hooks';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';
-import styles from './ProjectPublicationCreateModal';
+import styles from './ProjectPublicationForm.module.css';
 import ProjectPublicationFormFields from './ProjectPublicationFormFIelds';
 
 const formShape = {
@@ -59,7 +59,7 @@ export const ProjectPublicationCreateForm: React.FC<{
       onSubmit={onSubmit}
     >
       {({ isValid }) => (
-        <Form>
+        <Form className={styles['publication-form']}>
           <ProjectPublicationFormFields />
 
           <ModalFooter
