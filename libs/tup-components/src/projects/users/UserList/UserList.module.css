@@ -1,3 +1,8 @@
+.user-list {
+    min-height: 100%;
+    border-right: 1px solid #C7C7C7;
+}
+
 .user-navitem > div {
     height: 25px;
 }
