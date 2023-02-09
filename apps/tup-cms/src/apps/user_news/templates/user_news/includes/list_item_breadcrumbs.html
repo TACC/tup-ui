@@ -1,0 +1,28 @@
+{# Manual breadcrumbs in lieue of elusive dynamic solution #}
+{# FAQ: This was copied from markup of `/news/user-updates` page #}
+<nav class="s-breadcrumbs">
+   <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1">
+      </li>
+      <li itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem">
+          <a href="/{{ urls.base_parent }}" itemprop="item">
+            <span itemprop="name">News</span>
+          </a>
+          <meta itemprop="position" content="2">
+      </li>
+      <li itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem">
+          <a href="/{{ urls.base }}" itemprop="item">
+            <span itemprop="name">User Updates</span>
+          </a>
+          <meta itemprop="position" content="3">
+      </li>
+      <li itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem">
+          <span itemprop="name">{{ article.title }}</span>
+          <meta itemprop="position" content="4">
+      </li>
+   </ol>
+</nav>
