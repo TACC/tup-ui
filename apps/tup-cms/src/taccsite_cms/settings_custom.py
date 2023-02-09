@@ -29,9 +29,10 @@ CMS_TEMPLATES = (
 )
 
 CMS_PERMISSIONS = True
+# IMPORTANT: All values must be set (to prevent KeyError)
 CMS_CACHE_DURATIONS = {
-    # 'menus': 60,
-    # 'content': 60,
+    'menus': 60,
+    'content': 60,
     'permissions': 0,
 }
 
