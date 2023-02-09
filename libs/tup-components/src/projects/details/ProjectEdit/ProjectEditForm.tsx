@@ -15,7 +15,10 @@ import styles from './ProjectEditModal';
 
 const formShape = {
   title: Yup.string().required('Required'),
+  fieldId: Yup.number().moreThan(1, 'Required'),
+  secondaryFieldId: Yup.number(),
   description: Yup.string().required('Required'),
+  chargeCode: Yup.string().required('Required'),
 };
 
 const formSchema = Yup.object().shape(formShape);

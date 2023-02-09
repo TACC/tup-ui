@@ -28,7 +28,7 @@ const ProjectPublicationFormFields: React.FC = () => {
       <div className={styles['checkbox-wrapper']}>
         <Field name="userCitedTacc" id="userCitedTacc" type="checkbox"></Field>
         <label htmlFor="userCitedTacc">
-          This publication cited TACC or TAC resources
+          This publication cited TACC or TACC resources
         </label>
       </div>
     </>

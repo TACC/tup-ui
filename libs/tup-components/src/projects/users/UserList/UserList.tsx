@@ -19,7 +19,7 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
     );
 
   return (
-    <div style={{ height: '100%', borderRight: '1px solid #c7c7c7' }}>
+    <div className={styles['user-list']}>
       <ManageTeam projectId={projectId} />
       {pi && (
         <NavItem

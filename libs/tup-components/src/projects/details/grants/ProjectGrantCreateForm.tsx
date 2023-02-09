@@ -6,7 +6,7 @@ import { FormikInput } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';
-import styles from './ProjectGrantCreateModal';
+import styles from './ProjectGrantForm.module.css';
 import ProjectGrantFormFields from './ProjectGrantFormFields';
 
 const formShape = {

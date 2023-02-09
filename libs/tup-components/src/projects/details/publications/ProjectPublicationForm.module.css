@@ -31,11 +31,11 @@
     font-weight: normal;
 }
 
-.publication-edit-form  :global(.c-form__field ) {
+.publication-form  :global(.c-form__field ) {
     min-width: 0;
 }
 
-.publication-edit-form input {
+.publication-form input {
     max-width: 100%;
     min-width: 0;
 
