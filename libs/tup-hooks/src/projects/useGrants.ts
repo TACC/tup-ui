@@ -1,6 +1,6 @@
 import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
 import { ProjectGrant, ProjectGrantBody } from '.';
-import { useGet, usePost, usePut } from '../requests';
+import { useGet, usePost, usePut, useDelete } from '../requests';
 
 // Query to retrieve the user's grants.
 export const useGrants = (id: number): UseQueryResult<ProjectGrant[]> => {
@@ -27,6 +27,17 @@ export const useGrantCreate = (projectId: number) => {
 export const useGrantEdit = (projectId: number, grantId: number) => {
   const queryClient = useQueryClient();
   const mutation = usePut<ProjectGrant, string>({
+    endpoint: `/projects/${projectId}/grants/${grantId}`,
+    options: {
+      onSuccess: () => queryClient.invalidateQueries(['grants', projectId]),
+    },
+  });
+  return mutation;
+};
+
+export const useGrantDelete = (projectId: number, grantId: number) => {
+  const queryClient = useQueryClient();
+  const mutation = useDelete<string>({
     endpoint: `/projects/${projectId}/grants/${grantId}`,
     options: {
       onSuccess: () => queryClient.invalidateQueries(['grants', projectId]),

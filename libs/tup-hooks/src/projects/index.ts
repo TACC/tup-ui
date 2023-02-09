@@ -145,6 +145,12 @@ export {
   usePublications,
   usePublicationEdit,
   usePublicationCreate,
+  usePublicationDelete,
 } from './usePublications';
-export { useGrants, useGrantEdit, useGrantCreate } from './useGrants';
+export {
+  useGrants,
+  useGrantEdit,
+  useGrantCreate,
+  useGrantDelete,
+} from './useGrants';
 export { default as useProjectScienceField } from './useProjectScienceField';
