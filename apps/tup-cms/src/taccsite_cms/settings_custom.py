@@ -28,6 +28,13 @@ CMS_TEMPLATES = (
     ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
 )
 
+CMS_PERMISSIONS = True
+CMS_CACHE_DURATIONS = {
+    # 'menus': 60,
+    # 'content': 60,
+    'permissions': 0,
+}
+
 INCLUDES_CORE_PORTAL = False
 INCLUDES_PORTAL_NAV = True
 INCLUDES_SEARCH_BAR = True
