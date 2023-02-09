@@ -21,6 +21,8 @@ import {
 import { ProjectGrantEditModal, ProjectGrantCreateModal } from './grants';
 import { ProjectsListingAllocationTable } from '../ProjectsListing/ProjectsListingAllocationTable';
 import { ProjectEditModal } from './ProjectEdit';
+import ProjectPublicationRemove from './publications/ProjectPublicationDelete';
+import ProjectGrantDelete from './grants/ProjectGrantDelete';
 
 const formatDate = (datestring: string): string => {
   const date = new Date(datestring);
@@ -39,10 +41,17 @@ const Publication: React.FC<{
           <strong>{pub.title}</strong>
         </span>
         {canManage && (
-          <ProjectPublicationEditModal
-            projectId={projectId}
-            publicationId={pub.id}
-          />
+          <span>
+            <ProjectPublicationEditModal
+              projectId={projectId}
+              publicationId={pub.id}
+            />
+            {' | '}
+            <ProjectPublicationRemove
+              projectId={projectId}
+              publicationId={pub.id}
+            />
+          </span>
         )}
       </div>
       <div className={styles['pub-grants-title']}>
@@ -78,7 +87,11 @@ const Grant: React.FC<{
           <strong>{grant.title}</strong>
         </span>
         {canManage && (
-          <ProjectGrantEditModal projectId={projectId} grantId={grant.id} />
+          <span>
+            <ProjectGrantEditModal projectId={projectId} grantId={grant.id} />
+            {' | '}
+            <ProjectGrantDelete projectId={projectId} grantId={grant.id} />
+          </span>
         )}
       </div>
       <div className={styles['pub-grants-title']}>
