@@ -7,26 +7,25 @@ from djangocms_blog.cms_toolbars import BlogToolbar
 
 logger = logging.getLogger(f"portal.{__name__}")
 
-def should_publish(user):
+def should_add_publish_button(user):
+    '''
+    Whether to permit parent class to run add_publish_button()
+
+    FAQ: TACC (CMD) does not want certain groups to publish
+    '''
     for group in user.groups.all():
-        if group.name in ['News Admin']:
-            return True
-    return False
+        if group.name in ['News Writer (Advanced)']:
+            return False
+    return True
 
 @toolbar_pool.register
 class TaccBlogToolbar(BlogToolbar):
-    def populate(self):
-      super().populate()
-
     def add_publish_button(self):
-      """
-      Adds the publish button to the toolbar, like parent, unless user is writer
-      """
-      has_permission = should_publish(self.request.user)
-      if (has_permission):
+      # """
+      # Adds the publish button to the toolbar, like parent, unless user is writer
+      # """
+      should_add = should_add_publish_button(self.request.user)
+      if (should_add):
           super().add_publish_button()
-
-    def post_template_populate(self):
-      super().post_template_populate()
 
 toolbar_pool.unregister(BlogToolbar)
