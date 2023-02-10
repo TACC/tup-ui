@@ -7,7 +7,20 @@ import {
   InlineMessage,
   LoadingSpinner,
 } from '@tacc/core-components';
-import { ProjectEditModal } from '../../details/ProjectEdit';
+
+const getPercentUsage = (total: number, used: number): string => {
+  const percentage = (used / total) * 100;
+  switch (true) {
+    case percentage === 0:
+      return '0%';
+    case percentage < 1:
+      return '<1%';
+    case isNaN(percentage):
+      return '0%';
+    default:
+      return `${Math.floor(percentage)}%`;
+  }
+};
 
 export const ProjectHeader: React.FC<{ projectId: number }> = ({
   projectId,
@@ -27,21 +40,33 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
   const fieldOfScience = fieldOfScienceID?.name
     ? fieldOfScienceID?.name
     : 'None';
-  const unixGroup = dataById?.gid ? `G-${dataById?.gid}`.slice() : `None`;
-  const usageData = dataById?.allocations?.find((allocations) => allocations);
-  const percentageCompute = usageData
-    ? (usageData?.used / usageData?.total) * 100
-    : '--';
-  const percentageStorage = usageData
-    ? (usageData?.storageUsed / usageData?.storageQuota) * 100
-    : '--';
+  const unixGroup = dataById?.gid ? `G-${dataById?.gid}` : `None`;
+  const activeAllocations =
+    dataById?.allocations?.filter((alloc) => alloc.status === 'Active') ?? [];
+
+  const totalCompute = activeAllocations.reduce(
+    (prev, curr) => prev + curr.total,
+    0
+  );
+  const totalStorage = activeAllocations.reduce(
+    (prev, curr) => prev + curr.storageQuota,
+    0
+  );
+  const usedCompute = activeAllocations.reduce(
+    (prev, curr) => prev + curr.used,
+    0
+  );
+  const usedStorage = activeAllocations.reduce(
+    (prev, curr) => prev + curr.storageUsed,
+    0
+  );
+
+  const percentageCompute = getPercentUsage(totalCompute, usedCompute);
+  const percentageStorage = getPercentUsage(totalStorage, usedStorage);
+
   const usageArray = {
-    Compute: `${usageData?.total ? usageData?.total : '0'} SUs (${
-      percentageCompute ? percentageCompute : '0'
-    }% Used)   `,
-    Storage: `${usageData?.storageQuota ? usageData?.storageQuota : '0'} GBs (${
-      percentageStorage ? percentageStorage : '0'
-    }% Used) `,
+    Compute: `${totalCompute} SUs (${percentageCompute} Used)   `,
+    Storage: `${totalStorage} GBs (${percentageStorage} Used) `,
   };
 
   if (isLoading || fieldData.isLoading)
