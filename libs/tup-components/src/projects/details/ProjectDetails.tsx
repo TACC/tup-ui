@@ -132,27 +132,26 @@ const Grant: React.FC<{
 };
 
 const NewAllocation = () => (
-  <>
-    <a href="https://submit-tacc.xras.org/" target="_blank" rel="noreferrer">
-      <Button className={styles['tap-button']} type="link">
+    <a href="https://submit-tacc.xras.org/" 
+       target="_blank" 
+       rel="noreferrer"
+    >
+      <Button type="link">
         + Add New Allocation
       </Button>
     </a>
-  </>
 );
 
 const IncreaseAllocation = () => (
-  <>
     <a
       href="https://submit-tacc.xras.org/requests"
       target="_blank"
       rel="noreferrer"
     >
-      <Button className={styles['tap-button']} type="link">
+      <Button type="link">
         Increase Existing Allocation
       </Button>
     </a>
-  </>
 );
 
 const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
