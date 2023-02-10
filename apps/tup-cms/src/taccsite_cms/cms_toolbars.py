@@ -7,11 +7,9 @@ from djangocms_blog.cms_toolbars import BlogToolbar
 
 logger = logging.getLogger(f"portal.{__name__}")
 
-def can_publish(user):
+def should_publish(user):
     for group in user.groups.all():
-        logger.debug('group:')
-        logger.debug(group)
-        if group.name in ['News Writer (Advanced)']:
+        if group.name in ['News Admin']:
             return True
     return False
 
@@ -24,10 +22,8 @@ class TaccBlogToolbar(BlogToolbar):
       """
       Adds the publish button to the toolbar, like parent, unless user is writer
       """
-      has_permission = can_publish(self.request.user)
-      logger.debug('has_permission:')
-      logger.debug(has_permission)
-      if (not has_permission):
+      has_permission = should_publish(self.request.user)
+      if (has_permission):
           super().add_publish_button()
 
     def post_template_populate(self):
