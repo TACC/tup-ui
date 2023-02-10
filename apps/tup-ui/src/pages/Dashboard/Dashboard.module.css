@@ -13,16 +13,16 @@
     grid-template-areas:
       "projects systems"
       "projects updates"
-      "tickets updates"
-      "tickets updates";
+      "projects updates"
+      "projects updates";
   }
   /* To reproduce simple layout of narrow screens like CEPv2 */
   @media (--wide-and-below) {
     row-gap: 25px;
+    grid-template-rows: auto auto auto;
     grid-template-areas:
       "systems"
       "projects"
-      "tickets"
       "updates";
   }
 }
@@ -32,8 +32,31 @@
 .panels > :nth-child(1) { grid-area: updates; }
 .panels > :nth-child(2) { grid-area: systems; }
 .panels > :nth-child(3) { grid-area: projects; }
-.panels > :nth-child(4) { grid-area: tickets; }
+
 
 .section {
   display: grid;
 }
+
+
+.project-ticket-grid {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+    "_projects"
+    "_tickets";
+
+  @media (--wide-and-below) {
+    row-gap: 25px;
+    grid-template-rows: auto auto auto;
+  }
+}
+
+.project-ticket-grid > * {
+  overflow: auto;
+}
+
+.project-ticket-grid > :nth-child(1) { grid-area: _projects; }
+.project-ticket-grid > :nth-child(2) { grid-area: _tickets; }
