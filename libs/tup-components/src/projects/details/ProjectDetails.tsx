@@ -87,7 +87,7 @@ const Grant: React.FC<{
         <span style={{ fontSize: '1.5rem' }}>
           <strong>{grant.title}</strong>
         </span>
-        0{canManage && (
+        {canManage && (
           <span>
             <ProjectGrantEditModal projectId={projectId} grantId={grant.id} />
             {' | '}
