@@ -7,7 +7,7 @@ const TicketsDashboard: React.FC = () => {
   return (
     <SectionTableWrapper
       header="My Tickets"
-      headerActions={<TicketCreateModal />}
+      headerActions={<TicketCreateModal title={'+ New Ticket'}/>}
       contentShouldScroll
     >
       <TicketsTable />
