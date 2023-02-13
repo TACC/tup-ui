@@ -7,7 +7,7 @@ const MfaHeader: React.FC = () => {
     <div className={styles['mfa-header']}>
       <div>Multifactor Authentication Pairing</div>
       <div>
-        <TicketCreateModal display='link'>Get Help</TicketCreateModal> |{' '}
+        <TicketCreateModal display="link">Get Help</TicketCreateModal> |{' '}
         <Link to="/account">Exit Pairing Process</Link>
       </div>
     </div>
