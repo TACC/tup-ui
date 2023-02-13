@@ -1,5 +1,5 @@
 .user-detail-container {
-    width: 50%;
+    width: 60%;
     margin-left: -25px;
     margin-top: -20px;
 }
@@ -29,8 +29,14 @@
 .manage-user-container {
     display: flex;
     padding: 20px;
+    align-items: center;
     justify-content: space-between;
 }
+
+.link-button > span {
+    vertical-align: baseline;
+}
+
 
 .usage-table {
     width: 100%;
@@ -44,5 +50,11 @@
 
 .role-selector > :first-child {
     display: inline-block;
-    margin-right: 0.75rem;
 }
+.role-selector form {
+    display: inline-block
+}
+.role-selector select {
+    padding: 1px;
+}
+

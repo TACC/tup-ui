@@ -1,0 +1,8 @@
+{% if has_markup_content %}
+<style>
+/* To prevent inline styling within raw API content */
+article > div.has-markup [style] {
+  all: unset !important; /* !important needed to override style attribute */
+}
+</style>
+{% endif %}

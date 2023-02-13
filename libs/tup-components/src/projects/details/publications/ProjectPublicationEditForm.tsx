@@ -80,7 +80,7 @@ export const ProjectPublicationEditForm: React.FC<{
       onSubmit={onSubmit}
     >
       {({ isValid }) => (
-        <Form className={styles['publication-edit-form']}>
+        <Form className={styles['publication-form']}>
           <ProjectPublicationFormFields />
 
           <ModalFooter

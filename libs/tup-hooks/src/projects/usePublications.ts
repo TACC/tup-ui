@@ -1,6 +1,6 @@
 import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
 import { ProjectPublication, ProjectPublicationBody } from '.';
-import { useGet, usePost, usePut } from '../requests';
+import { useDelete, useGet, usePost, usePut } from '../requests';
 
 // Query to retrieve the user's publications.
 export const usePublications = (
@@ -33,6 +33,21 @@ export const usePublicationEdit = (
 ) => {
   const queryClient = useQueryClient();
   const mutation = usePut<ProjectPublicationBody, string>({
+    endpoint: `/projects/${projectId}/publications/${publicationId}`,
+    options: {
+      onSuccess: () =>
+        queryClient.invalidateQueries(['publications', projectId]),
+    },
+  });
+  return mutation;
+};
+
+export const usePublicationDelete = (
+  projectId: number,
+  publicationId: number
+) => {
+  const queryClient = useQueryClient();
+  const mutation = useDelete<string>({
     endpoint: `/projects/${projectId}/publications/${publicationId}`,
     options: {
       onSuccess: () =>
