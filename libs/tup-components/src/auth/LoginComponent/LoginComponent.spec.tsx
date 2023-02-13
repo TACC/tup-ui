@@ -101,8 +101,7 @@ describe('LoginComponent', () => {
     expect(links[0].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/register'
     );
-    expect(links[1].getAttribute('href')).toEqual(
-      'https://dev.tup.tacc.utexas.edu/about/help/'
-    );
+    expect(getByText('Account Help')).toBeDefined();
+    expect(links[1].getAttribute('href')).toEqual('/about/help/');
   });
 });
