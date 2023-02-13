@@ -39,6 +39,28 @@ const LoginError: React.FC<{ status?: number }> = ({ status }) => {
   );
 };
 
+const CreateAccountLink = () => (
+  <a
+    href="https://accounts.tacc.utexas.edu/register"
+    target="_blank"
+    rel="noreferrer"
+    className={styles.link}
+  >
+    Create Account
+  </a>
+);
+
+const AccountHelpLink = () => (
+  <a
+    href="/about/help/"
+    target="_blank"
+    rel="noreferrer"
+    className={styles.link}
+  >
+    Account Help
+  </a>
+);
+
 const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
@@ -107,9 +129,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
             required
           />
           <div className={`c-form__buttons ${styles['submit-container']}`}>
-            <a className={styles.link} href="/account/create">
-              Create Account
-            </a>
+            <CreateAccountLink />
             <Button
               type="primary"
               attr="submit"
@@ -124,9 +144,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       </Formik>
       <div className={styles.footer}>
         <p>Having trouble logging in?</p>
-        <a className={styles.link} href="/account/help">
-          Account Help
-        </a>
+        <AccountHelpLink />
       </div>
     </div>
   );
