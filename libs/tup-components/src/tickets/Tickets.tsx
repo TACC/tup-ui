@@ -9,7 +9,15 @@ const Tickets: React.FC = () => {
   return (
     <RequireAuth>
       <section style={{ display: 'flex', flexDirection: 'column' }}>
-        <SectionHeader actions={<TicketCreateModal />}>Tickets</SectionHeader>
+        <SectionHeader
+          actions={
+            <TicketCreateModal display="secondary">
+              + New Ticket
+            </TicketCreateModal>
+          }
+        >
+          Tickets
+        </SectionHeader>
         <SectionTableWrapper contentShouldScroll className="ticket-container">
           <TicketsTable />
         </SectionTableWrapper>

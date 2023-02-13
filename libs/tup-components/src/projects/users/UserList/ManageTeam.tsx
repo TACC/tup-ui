@@ -32,7 +32,7 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
     <>
       <div className={styles['manage-team']}>
         <div>
-          <strong>Manage Team</strong>({users?.length} Users)
+          <strong>Manage Team</strong> ({users?.length} Users)
         </div>
         <form onSubmit={(e) => addUser(e)}>
           <label htmlFor="add-user">Add New User</label>

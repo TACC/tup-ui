@@ -3,6 +3,7 @@ import {
   LoadingSpinner,
   InlineMessage,
   SectionTableWrapper,
+  Button,
 } from '@tacc/core-components';
 import {
   useProjects,
@@ -130,6 +131,22 @@ const Grant: React.FC<{
   );
 };
 
+const NewAllocation = () => (
+  <a href="https://submit-tacc.xras.org/" target="_blank" rel="noreferrer">
+    <Button type="link">+ Add New Allocation</Button>
+  </a>
+);
+
+const IncreaseAllocation = () => (
+  <a
+    href="https://submit-tacc.xras.org/requests"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <Button type="link">Increase Existing Allocation</Button>
+  </a>
+);
+
 const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
   const { data: projectData, isLoading, error } = useProjects();
   const projectDetails = (projectData ?? []).find(
@@ -157,7 +174,18 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
 
   return (
     <div className={styles['pub-details-container']}>
-      <SectionTableWrapper header="Allocations">
+      <SectionTableWrapper
+        header="Allocations"
+        headerActions={
+          canManage && (
+            <span>
+              <NewAllocation />
+              {' | '}
+              <IncreaseAllocation />
+            </span>
+          )
+        }
+      >
         {projectDetails && (
           <ProjectsListingAllocationTable project={projectDetails} />
         )}
