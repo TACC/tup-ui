@@ -107,11 +107,12 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
             required
           />
           <div className={`c-form__buttons ${styles['submit-container']}`}>
-            <a className={styles.link} 
+            <a
+              className={styles.link}
               href="https://accounts.tacc.utexas.edu/register"
               target="_blank"
               rel="noreferrer"
-              >
+            >
               Create Account
             </a>
             <Button
@@ -128,11 +129,12 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       </Formik>
       <div className={styles.footer}>
         <p>Having trouble logging in?</p>
-        <a className={styles.link} 
+        <a
+          className={styles.link}
           href="https://dev.tup.tacc.utexas.edu/about/help/"
           target="_blank"
           rel="noreferrer"
-          >
+        >
           Account Help
         </a>
       </div>

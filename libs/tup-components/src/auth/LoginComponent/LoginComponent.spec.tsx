@@ -93,4 +93,14 @@ describe('LoginComponent', () => {
       ).toEqual(1)
     );
   });
+  it('should link to TAS Create Account if Create Account clicked', async () => {
+    const { getByText, getAllByRole } = testRender(
+      <LoginComponent/>
+    );
+    await waitFor(() => getAllByRole('link'));
+    const links: HTMLElement[] = getAllByRole('link');
+    expect(getByText('Create Account')).toBeDefined();
+    expect(links[0].getAttribute('href')).toEqual("https://accounts.tacc.utexas.edu/register");
+    expect(links[1].getAttribute('href')).toEqual("https://dev.tup.tacc.utexas.edu/about/help/");
+  });
 });
