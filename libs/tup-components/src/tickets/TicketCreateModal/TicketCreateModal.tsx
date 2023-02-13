@@ -4,10 +4,11 @@ import { Button } from '@tacc/core-components';
 import { TicketCreateForm } from './TicketCreateForm';
 import styles from './TicketCreateModal.module.css';
 
-const TicketCreateModal: React.FC<{
-  title: string;
-}> = ({ title }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const TicketCreateModal: React.FC<React.PropsWithChildren<{
+  display: 'secondary' | 'link';
+  }> 
+> = ({ children, display }) => {
+  const [isOpen, setIsOpen] = useState(false);    
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -20,8 +21,8 @@ const TicketCreateModal: React.FC<{
 
   return (
     <>
-      <Button type="link" onClick={() => toggle()}>
-        {title}
+      <Button type={display} onClick={() => toggle()}>
+        {children}
       </Button>
       <Modal isOpen={isOpen} toggle={toggle} size="lg">
         <ModalHeader
