@@ -104,6 +104,7 @@ const RemoveUser: React.FC<{ projectId: number; user: ProjectUser }> = ({
   if (confirmState === 'CONFIRM')
     return (
       <>
+        Confirm Removal:&nbsp;
         <Button
           className={styles['link-button']}
           onClick={removeUserCallback}
