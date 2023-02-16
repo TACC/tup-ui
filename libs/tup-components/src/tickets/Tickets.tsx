@@ -4,11 +4,12 @@ import { SectionHeader, SectionTableWrapper } from '@tacc/core-components';
 import { TicketsTable } from './TicketsTable';
 import { RequireAuth } from '../utils';
 import TicketCreateModal from './TicketCreateModal';
+import styles from './Tickets.module.css';
 
 const Tickets: React.FC = () => {
   return (
     <RequireAuth>
-      <section style={{ display: 'flex', flexDirection: 'column' }}>
+      <section className={styles['tickets-section']}>
         <SectionHeader
           actions={
             <TicketCreateModal display="secondary">

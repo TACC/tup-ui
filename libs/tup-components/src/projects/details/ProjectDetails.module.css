@@ -53,6 +53,7 @@
 .pub-details-container {
     width: 60%;
     min-width: 500px;
+    margin: var(--global-space--section)
 }
 
 .listing-section > div {

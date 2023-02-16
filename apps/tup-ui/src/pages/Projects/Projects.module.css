@@ -1,5 +1,16 @@
-.project-header {
-    font-size: 2.6rem;
-    border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-    padding-bottom: 5px;
+.project-section {
+    display: grid;
+}
+
+.project-section > div > header {
+    padding-top: var(--global-space--section-top);
+    padding-left: var(--global-space--section-left);
+}
+
+.project-section nav {
+    margin-top: calc( -1 * var(--global-space--section-top));
+}
+
+.project-section > div > div {
+    padding: var(--global-space--section);
 }
