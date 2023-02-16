@@ -53,7 +53,7 @@ export const ProjectPublicationEditForm: React.FC<{
     [title, authors, yearPublished, publisher, url, venue, userCitedTacc]
   );
 
-  const { mutate, isLoading, isSuccess, isError, data } = usePublicationEdit(
+  const { mutate, isLoading, isSuccess, isError } = usePublicationEdit(
     projectId,
     publicationId
   );

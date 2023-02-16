@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { TicketCreateForm } from './TicketCreateForm';
 import { server, testRender } from '@tacc/tup-testing';
 import { fireEvent, waitFor, screen } from '@testing-library/react';
