@@ -11,7 +11,6 @@ import { FormikInput, FormikSelect, FormikTextarea } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';
-import styles from './ProjectEditModal';
 
 const formShape = {
   title: Yup.string().required('Required'),
