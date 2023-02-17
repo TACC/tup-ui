@@ -5,14 +5,17 @@ import styles from './ProjectsListing.module.css';
 export const ProjectSummary: React.FC<{
   project: ProjectsRawSystem;
 }> = ({ project }) => {
+  const allocations = (project.allocations ?? []).filter(
+    (a) => a.status === 'Active'
+  );
   const totalStorageRequested =
-    project.allocations?.reduce((acc, e) => acc + e.storageRequested, 0) ?? 0;
+    allocations?.reduce((acc, e) => acc + e.storageQuota, 0) ?? 0;
   const totalStorageUsed =
-    project.allocations?.reduce((acc, e) => acc + e.storageUsed, 0) ?? 0;
+    allocations?.reduce((acc, e) => acc + e.storageUsed, 0) ?? 0;
   const totalComputeRequested =
-    project.allocations?.reduce((acc, e) => acc + e.computeRequested, 0) ?? 0;
+    allocations?.reduce((acc, e) => acc + e.total, 0) ?? 0;
   const totalComputeUsed =
-    project.allocations?.reduce((acc, e) => acc + e.used, 0) ?? 0;
+    allocations?.reduce((acc, e) => acc + e.used, 0) ?? 0;
 
   return (
     <>
@@ -39,8 +42,10 @@ export const ProjectSummary: React.FC<{
         <span>
           {totalComputeUsed
             ? ' (' +
-              ((totalComputeUsed / totalComputeRequested) * 100).toFixed(0) +
-              '  % Used) '
+              Math.floor(
+                (totalComputeUsed / totalComputeRequested) * 100
+              ).toFixed(0) +
+              '% Used) '
             : ' (0% Used) '}
         </span>
         <span className={styles['compute-separator']}>|</span>
