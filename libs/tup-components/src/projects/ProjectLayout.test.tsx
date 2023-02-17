@@ -2,7 +2,6 @@ import React from 'react';
 import { ProjectsTable } from './ProjectsTable';
 import { testRender } from '@tacc/tup-testing';
 import { waitFor } from '@testing-library/react';
-import { screen, within } from '@testing-library/react';
 
 describe('Projects Layout Component', () => {
   it('should display the projects table', async () => {
