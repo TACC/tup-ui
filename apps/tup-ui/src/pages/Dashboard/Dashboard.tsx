@@ -32,8 +32,10 @@ const Layout: React.FC = () => {
         <main className={styles.panels}>
           <UserNews />
           <SystemMonitor />
-          <ProjectsDashboard />
-          <TicketsDashboard />
+          <div className={styles['project-ticket-grid']}>
+            <ProjectsDashboard />
+            <TicketsDashboard />
+          </div>
         </main>
       </section>
     </RequireAuth>

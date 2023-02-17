@@ -5,12 +5,21 @@ import { Link } from 'react-router-dom';
 
 const allocationDisplay = (allocations: ProjectsAllocations[]) => {
   return allocations.length
-    ? Array.from(new Set(allocations.map((e) => e.resource))).join(', ')
+    ? Array.from(
+        new Set(
+          allocations
+            .filter((e) => e.status === 'Active')
+            .map((e) => e.resource)
+        )
+      ).join(', ')
     : '--';
 };
 
 export const ProjectsTable: React.FC = () => {
   const { data, isLoading, error } = useProjects();
+  const projectData = data?.filter((prj) =>
+    prj.allocations?.some((alloc) => alloc.status === 'Active')
+  );
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -31,8 +40,8 @@ export const ProjectsTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {data && data.length ? (
-            data.map((project) => (
+          {projectData && projectData.length ? (
+            projectData.map((project) => (
               <tr key={project.id}>
                 <td style={{ width: '30%' }}>
                   <Link to={`/projects/${project.id}`}>{project.title}</Link>
