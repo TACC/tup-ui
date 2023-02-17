@@ -2,8 +2,9 @@ import React from 'react';
 
 import { useProjectScienceField } from '@tacc/tup-hooks';
 import { FormikInput, FormikSelect } from '@tacc/core-wrappers';
-import styles from './ProjectGrantForm.module.css';
 import { LoadingSpinner } from '@tacc/core-components';
+
+import styles from './ProjectGrantForm.module.css';
 
 const ProjectGrantFormFields: React.FC = () => {
   const scienceFields = useProjectScienceField().data ?? [];
@@ -40,7 +41,7 @@ const ProjectGrantFormFields: React.FC = () => {
       <FormikInput
         name="nsfStatusCode"
         label="NSF Status Code"
-        description="Typical status codes are: Pending, Recommended, 
+        description="Typical status codes are: Pending, Recommended,
                             Declined, Awarded, Withdrawn, Returned"
       />
     </>
