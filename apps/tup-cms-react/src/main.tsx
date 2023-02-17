@@ -13,16 +13,17 @@ const queryClient = new QueryClient({
   },
 });
 
-const sysmonRoot = ReactDOM.createRoot(
-  document.getElementById('cms-sysmon') as HTMLElement
-);
-sysmonRoot.render(
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Sysmon />
-    </QueryClientProvider>
-  </StrictMode>
-);
+const sysmonDOM = document.getElementById('cms-sysmon');
+if (sysmonDOM) {
+  const sysmonRoot = ReactDOM.createRoot(sysmonDOM as HTMLElement);
+  sysmonRoot.render(
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <Sysmon />
+      </QueryClientProvider>
+    </StrictMode>
+  );
+}
 
 /*
 const otherThingRoot = ReactDOM.createRoot(
