@@ -1,11 +1,9 @@
 import React from 'react';
 import { server, testRender } from '@tacc/tup-testing';
 import {
-  act,
   fireEvent,
   waitFor,
   within,
-  screen,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
