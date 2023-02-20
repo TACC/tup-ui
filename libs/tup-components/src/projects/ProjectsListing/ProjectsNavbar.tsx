@@ -22,7 +22,6 @@ export const ProjectsNavbar: React.FC = () => {
       >
         <div>Inactive Projects</div>
       </QueryNavItem>
-      <div className={styles['project-navbar-spacer']} />
     </div>
   );
 };

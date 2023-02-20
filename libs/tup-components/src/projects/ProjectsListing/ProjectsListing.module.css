@@ -37,7 +37,7 @@
 
 .project-listing-row > * {
     width: 100%;
-    flex-grow: 1
+    flex-grow: 1;
 }
 
 /* Project summary */
@@ -66,11 +66,4 @@
 
 .projects-listing-navbar > a > div {
     padding-left: var(--global-space--section-left);
-}
-
-.project-navbar-spacer {
-    border-top: 1px solid #707070;
-    margin-top: 10px;
-    margin-left: var(--global-space--section-left); 
-    margin-right: 7px;
 }

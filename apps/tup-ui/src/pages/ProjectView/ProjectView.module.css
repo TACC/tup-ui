@@ -2,6 +2,6 @@
     display: grid;
 }
 
-.project-view div {
+.project-view > div {
     overflow: auto;
 }
