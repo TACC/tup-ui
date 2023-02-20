@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Cell } from 'react-table';
 import { Ticket } from '@tacc/tup-hooks';
 import { formatDate } from '../utils/timeFormat';
