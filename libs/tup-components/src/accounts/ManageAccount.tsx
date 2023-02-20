@@ -7,9 +7,7 @@ import styles from './ManageAccount.module.css';
 const ManageUser = () => (
   <>
     <div className={styles['tap-header']}>
-      <strong>
-        Edit User Information
-      </strong>
+      <strong>Edit User Information</strong>
     </div>
     <span className={styles['tap-description']}>
       Your user account can be managed on the TACC Account Management (TAM)
