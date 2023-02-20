@@ -9,7 +9,10 @@ const Layout: React.FC = () => {
     <div className={styles.root}>
       <LoginComponent className={styles.body} />
       <div className={styles.footer}>
-        <a className={styles.footer__link} href="/about/security-and-compliance/">
+        <a
+          className={styles.footer__link}
+          href="/about/security-and-compliance/"
+        >
           Security
         </a>
         {/* NOTE: No one is certain yet what this link/button should do */}
