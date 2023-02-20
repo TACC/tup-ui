@@ -1,10 +1,12 @@
 .user-list {
+    padding-top: 10px;
     min-height: 100%;
     border-right: 1px solid #C7C7C7;
 }
 
 .user-navitem > div {
     height: 25px;
+    padding-left: var(--global-space--section-left);
 }
 
 .separator {
@@ -18,9 +20,8 @@
 }
 
 .manage-team { 
-    padding-top: 10px;
-    margin-right: 10px;
-    margin-left: 5px;
+    padding-right: var(--global-space--section-right);
+    padding-left: var(--global-space--section-left)
 }
 .manage-team > :first-child {
     padding-bottom: 16px;
