@@ -16,7 +16,7 @@ const UserNews: React.FC = () => {
   const { data, isLoading } = useUserNews();
   if (isLoading) return <LoadingSpinner />;
   return (
-    <SectionTableWrapper header="User News" contentShouldScroll>
+    <SectionTableWrapper header="User Updates" contentShouldScroll>
       <ul className={styles['news-list']}>
         {data &&
           data.slice(0, 12).map((newsItem) => (
