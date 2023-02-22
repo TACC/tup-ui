@@ -1,4 +1,4 @@
-import { Outlet, Routes, Route, redirect, Navigate } from 'react-router-dom';
+import { Outlet, Routes, Route, Navigate } from 'react-router-dom';
 
 import {
   PageLayout,
