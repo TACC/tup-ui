@@ -2,10 +2,13 @@ from django.urls import path, include
 
 from django.conf.urls import url
 from apps.user_news.urls import urls as user_news_urls
+from django.views.generic.base import RedirectView
 
 custom_urls = [
     path('core/markup/nav/', include('apps.portal_nav.urls', namespace='portal_nav')),
-    path('dashboard/', include('apps.dashboard.urls', namespace='dashboard')),
+    path('logout/', RedirectView.as_view(url="/portal/logout"), name='logout'),
+    path('login/', RedirectView.as_view(url="/portal/login"), name='login'),
+    path('portal/', include('apps.portal.urls', namespace='portal')),
     path(user_news_urls['base'], include('apps.user_news.urls', namespace='user_news')),
 
     # To support legacy TACC site URLs

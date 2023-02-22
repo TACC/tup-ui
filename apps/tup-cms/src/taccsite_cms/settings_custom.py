@@ -90,9 +90,9 @@ LOGO = [
 # DJANGO
 ########################
 
-AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'apps.dashboard.backend.TupServicesBackend']
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'apps.portal.backend.TupServicesBackend']
 TUP_SERVICES_URL = "https://dev.tup-services.tacc.utexas.edu"
-LOGIN_URL = "/dashboard/login"
+LOGIN_URL = "/portal/login"
 
 ########################
 # NEWS / BLOG
