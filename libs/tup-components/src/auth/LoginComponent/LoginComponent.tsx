@@ -4,7 +4,6 @@ import { useAuth } from '@tacc/tup-hooks';
 import { Formik, Form } from 'formik';
 import { FormikInput } from '@tacc/core-wrappers';
 import { Button } from '@tacc/core-components';
-import * as Yup from 'yup';
 import styles from './LoginComponent.module.css';
 import { blackLogo } from '../../../assets';
 import { AxiosError } from 'axios';

@@ -43,7 +43,7 @@
     justify-content: space-between;
 }
 .pub-grants-edit-link button {
-    min-width: fit-content
+    min-width: fit-content;
 }
 
 .pub-details-container h2 {
@@ -52,7 +52,8 @@
 
 .pub-details-container {
     width: 60%;
-    min-width: 500px;
+    min-width: 545px;
+    padding: var(--global-space--section);
 }
 
 .listing-section > div {
