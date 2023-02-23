@@ -90,7 +90,7 @@ LOGO = [
 # TACC: SEARCH
 ########################
 
-SEARCH_QUERY_PARAM_NAME = 'query_string'
+SEARCH_QUERY_PARAM_NAME = 'q'
 
 ########################
 # DJANGO
