@@ -22,7 +22,12 @@ const ProjectPublicationCreateModal: React.FC<{
       <Button type="link" onClick={() => toggle()}>
         <strong> + Add Publication</strong>
       </Button>
-      <Modal isOpen={isOpen} toggle={toggle} size="md">
+      <Modal
+        isOpen={isOpen}
+        toggle={toggle}
+        size="md"
+        className="modal-dialog-centered"
+      >
         <ModalHeader toggle={toggle} close={closeBtn}>
           <span>Add Publication</span>
         </ModalHeader>

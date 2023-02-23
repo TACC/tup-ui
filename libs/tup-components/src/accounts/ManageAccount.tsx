@@ -20,6 +20,7 @@ const ManageUser = () => (
       href="https://accounts-dev.tacc.utexas.edu/profile"
       target="_blank"
       rel="noreferrer"
+      className={styles['tap-href']}
     >
       <Button className={styles['tap-button']} type="primary">
         Edit User Profile
@@ -40,6 +41,7 @@ const ManageDNs = () => (
       href="https://accounts-dev.tacc.utexas.edu/certificates"
       target="_blank"
       rel="noreferrer"
+      className={styles['tap-href']}
     >
       <Button className={styles['tap-button']} type="primary">
         Manage DNs
@@ -60,6 +62,7 @@ const ManagePassword = () => (
       href="https://accounts-dev.tacc.utexas.edu/change_password"
       target="_blank"
       rel="noreferrer"
+      className={styles['tap-href']}
     >
       <Button className={styles['tap-button']} type="primary">
         Change Password

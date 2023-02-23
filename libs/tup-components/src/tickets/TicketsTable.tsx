@@ -25,7 +25,9 @@ export const getStatusText = (status: string) => {
   }
 };
 
-export const TicketsTable: React.FC = () => {
+export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
+  ticketsPath,
+}) => {
   const { data, isLoading, isError } = useGetTickets();
   const pathname = useLocation().pathname;
   let ticketData: Array<Ticket> = [];
@@ -75,7 +77,7 @@ export const TicketsTable: React.FC = () => {
             >
               <td>{ticket.numerical_id}</td>
               <td>
-                <Link to={`/tickets/${ticket.numerical_id}`}>
+                <Link to={`${ticketsPath}/${ticket.numerical_id}`}>
                   {ticket.Subject}
                 </Link>
               </td>
