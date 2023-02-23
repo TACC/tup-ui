@@ -6,6 +6,7 @@ import {
   DescriptionList,
   InlineMessage,
   LoadingSpinner,
+  SectionHeader,
 } from '@tacc/core-components';
 
 const getPercentUsage = (total: number, used: number): string => {
@@ -84,8 +85,8 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
     );
 
   return (
-    <>
-      <h3 className={styles['title']}>
+    <div className={styles['project-header']}>
+      <SectionHeader>
         {isActive && <Link to={'/projects?show=active'}>Active Projects </Link>}
         {!isActive && (
           <Link to={'/projects?show=inactive'}>Inactive Projects </Link>
@@ -97,8 +98,7 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
             {`/ ${params.username}`}{' '}
           </>
         )}
-      </h3>
-      <div className={styles['separator']}></div>
+      </SectionHeader>
       <dl className={styles['group']}>
         <dl className={styles['project-heading']}>
           <div>
@@ -123,7 +123,7 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
         </dl>
       </dl>
       <div className={styles['separator-bottom']}></div>
-    </>
+    </div>
   );
 };
 
