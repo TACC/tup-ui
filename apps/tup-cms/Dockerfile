@@ -1,4 +1,4 @@
-FROM taccwma/core-cms:831f541
+FROM taccwma/core-cms:2581ba6
 
 WORKDIR /code
 
