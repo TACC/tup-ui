@@ -2,7 +2,7 @@ from functools import wraps
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login
 
-def tup_login_required(login_url="/dashboard/login"):
+def tup_login_required(login_url="/portal/login"):
     """
     Decorates a view so that it attempts to authenticate the user before proceeding.
     This differs from @login_required() in that it explicitly calls the authentication
