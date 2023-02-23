@@ -36,6 +36,7 @@
 
 .section {
   display: grid;
+  padding: var(--global-space--section)
 }
 
 

@@ -26,7 +26,6 @@
 
   display: grid;
   grid-template-rows: 100%; /* to not let items overflow this container */
-  padding: var(--global-space--section);
 }
 
 .footer {
