@@ -22,7 +22,7 @@ const ManageUser = () => (
       rel="noreferrer"
     >
       <Button className={styles['tap-button']} type="primary">
-        Go to TAP
+        Edit User Profile
       </Button>
     </a>
   </>
@@ -71,26 +71,28 @@ const ManagePassword = () => (
 const ManageAccount: React.FC = () => {
   const { data } = useProfile();
   return (
-    <article className={styles['account-layout']}>
-      <header className={styles['account-header']}>
-        <Icon name="user" />
-        <span>
-          {data?.firstName} {data?.lastName}
-        </span>
-      </header>
-      <div className={styles['account-body']}>
-        <section>
-          <ManageUser />
-          <ManagePassword />
-          <span />
-          <ManageDNs />
-        </section>
-        <span className={styles['tap-separator']} />
-        <section>
-          <AccountMfa />
-        </section>
-      </div>
-    </article>
+    <section>
+      <article className={styles['account-layout']}>
+        <header className={styles['account-header']}>
+          <Icon name="user" />
+          <span>
+            {data?.firstName} {data?.lastName}
+          </span>
+        </header>
+        <div className={styles['account-body']}>
+          <section>
+            <ManageUser />
+            <ManagePassword />
+            <span />
+            <ManageDNs />
+          </section>
+          <span className={styles['tap-separator']} />
+          <section>
+            <AccountMfa />
+          </section>
+        </div>
+      </article>
+    </section>
   );
 };
 

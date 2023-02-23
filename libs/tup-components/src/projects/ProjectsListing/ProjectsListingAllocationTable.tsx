@@ -11,6 +11,8 @@ export const ProjectsListingAllocationTable: React.FC<{
   project: ProjectsRawSystem;
 }> = ({ project }) => {
   const allocations = project.allocations || [];
+  const isActive = allocations.some((a) => a.status === 'Active');
+
   return (
     <table className={styles['allocations-table']}>
       <thead>
@@ -23,7 +25,8 @@ export const ProjectsListingAllocationTable: React.FC<{
       </thead>
       <tbody>
         {allocations
-          .filter((a) => a.status === 'Active')
+          // Show expired allocations if the project is inactive.
+          .filter((a) => (isActive ? a.status === 'Active' : true))
           .map((allocation) => (
             <tr key={allocation.id}>
               <td>{allocation.resource}</td>
