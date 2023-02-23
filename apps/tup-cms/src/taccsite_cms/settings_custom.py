@@ -87,6 +87,12 @@ LOGO = [
 ]
 
 ########################
+# TACC: SEARCH
+########################
+
+SEARCH_QUERY_PARAM_NAME = 'query_string'
+
+########################
 # DJANGO
 ########################
 
@@ -95,7 +101,7 @@ TUP_SERVICES_URL = "https://dev.tup-services.tacc.utexas.edu"
 LOGIN_URL = "/portal/login"
 
 ########################
-# NEWS / BLOG
+# TACC: NEWS/BLOG
 ########################
 
 from taccsite_cms.settings import INSTALLED_APPS
