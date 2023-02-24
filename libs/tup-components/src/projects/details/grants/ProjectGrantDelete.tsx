@@ -5,9 +5,10 @@ import React, { useState } from 'react';
 const ProjectGrantDelete: React.FC<{
   projectId: number;
   grantId: number;
-}> = ({ projectId, grantId }) => {
-  const [confirmState, setConfirmState] = useState<'CONFIRM' | 'DEFAULT'>(
-    'DEFAULT'
+  isOpen: boolean;
+}> = ({ projectId, grantId, isOpen }) => {
+  const [confirmState, setConfirmState] = useState<true | false>(
+    isOpen
   );
 
   const { mutate } = useGrantDelete(projectId, grantId);
@@ -15,25 +16,25 @@ const ProjectGrantDelete: React.FC<{
   const deleteGrant = () =>
     mutate(undefined, {
       onSuccess: () => {
-        setConfirmState('DEFAULT');
+        setConfirmState(false);
       },
     });
 
   switch (confirmState) {
-    case 'DEFAULT':
+    case false:
       return (
-        <Button onClick={() => setConfirmState('CONFIRM')} type="link">
+        <Button onClick={() => setConfirmState(true)} type="link">
           Delete
         </Button>
       );
-    case 'CONFIRM':
+    case true:
       return (
         <>
           <Button type="link" onClick={deleteGrant}>
             <strong>Confirm Deletion</strong>
           </Button>
           {' | '}
-          <Button onClick={() => setConfirmState('DEFAULT')} type="link">
+          <Button onClick={() => setConfirmState(false)} type="link">
             <strong>Cancel</strong>
           </Button>
         </>

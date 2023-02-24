@@ -100,19 +100,30 @@ const Grant: React.FC<{
   projectId: number;
   canManage: boolean;
 }> = ({ grant, projectId, canManage }) => {
+  const [isDelete, setIsDelete] = useState(false);
+  const toggle = () => {
+    setIsDelete(!isDelete);
+  };
   return (
     <div>
       <div className={styles['pub-grants-edit-link']}>
         <span style={{ fontSize: '1.5rem' }}>
           <strong>{grant.title}</strong>
         </span>
-        {canManage && (
+        {canManage && 
+          (!isDelete ?(
           <span>
             <ProjectGrantEditModal projectId={projectId} grantId={grant.id} />
             {' | '}
-            <ProjectGrantDelete projectId={projectId} grantId={grant.id} />
+            <Button type="link" className="link" onClick={toggle}>
+            <ProjectGrantDelete projectId={projectId} grantId={grant.id} isOpen={isDelete}/>
+            </Button>
           </span>
-        )}
+                  ): (
+                    <Button type="link" className="link" onClick={toggle}>
+                    <ProjectGrantDelete projectId={projectId} grantId={grant.id} isOpen={isDelete}/>
+                    </Button>
+        ))}
       </div>
       <div className={styles['pub-grants-title']}>
         Grant Number:{' '}
