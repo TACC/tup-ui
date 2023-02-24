@@ -34,8 +34,8 @@ def callback(form, cleaned_data, **kwargs):
         submit_ticket(cleaned_data)
 
 
-class DashboardConfig(AppConfig):
-    name = "apps.dashboard"
+class PortalConfig(AppConfig):
+    name = "apps.portal"
 
     def ready(self):
         form_submission.connect(callback)

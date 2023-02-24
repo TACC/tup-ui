@@ -68,8 +68,8 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   // parameter, 3) dashboard base route
   let from = (location.state as { from?: Location })?.from?.pathname ?? '';
   if (!from) {
-    from = searchParams.get('from') ?? '/dashboard';
-  } else from = `/dashboard${from}`;
+    from = searchParams.get('from') ?? '/portal';
+  } else from = `/portal${from}`;
 
   const authCallback = useCallback(() => {
     window.location.replace(from);
