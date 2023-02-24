@@ -34,6 +34,9 @@
 .link-button > span {
     vertical-align: baseline;
 }
+.link-button-delete {
+    font-weight: bold;
+}
 
 
 .usage-table {
