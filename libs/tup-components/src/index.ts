@@ -8,3 +8,4 @@ export * from './tickets';
 export * from './mfa';
 export * from './news';
 export * from './accounts';
+export * from './software';
