@@ -4,7 +4,6 @@ import { useAuth } from '@tacc/tup-hooks';
 import { Formik, Form } from 'formik';
 import { FormikInput } from '@tacc/core-wrappers';
 import { Button } from '@tacc/core-components';
-import * as Yup from 'yup';
 import styles from './LoginComponent.module.css';
 import { blackLogo } from '../../../assets';
 import { AxiosError } from 'axios';
@@ -69,8 +68,8 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   // parameter, 3) dashboard base route
   let from = (location.state as { from?: Location })?.from?.pathname ?? '';
   if (!from) {
-    from = searchParams.get('from') ?? '/dashboard';
-  } else from = `/dashboard${from}`;
+    from = searchParams.get('from') ?? '/portal';
+  } else from = `/portal${from}`;
 
   const authCallback = useCallback(() => {
     window.location.replace(from);

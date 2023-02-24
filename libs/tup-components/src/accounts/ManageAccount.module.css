@@ -1,4 +1,5 @@
 .account-layout{
+    padding: var(--global-space--section);
     padding-right: 30px;
 }
 
