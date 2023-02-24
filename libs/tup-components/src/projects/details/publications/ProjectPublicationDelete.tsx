@@ -5,9 +5,10 @@ import React, { useState } from 'react';
 const ProjectPublicationDelete: React.FC<{
   projectId: number;
   publicationId: number;
-}> = ({ projectId, publicationId }) => {
-  const [confirmState, setConfirmState] = useState<'CONFIRM' | 'DEFAULT'>(
-    'DEFAULT'
+  isOpen: boolean;
+}> = ({ projectId, publicationId, isOpen }) => {
+  const [confirmState, setConfirmState] = useState<true | false>(
+    isOpen
   );
 
   const { mutate } = usePublicationDelete(projectId, publicationId);
@@ -15,25 +16,25 @@ const ProjectPublicationDelete: React.FC<{
   const deletePublication = () =>
     mutate(undefined, {
       onSuccess: () => {
-        setConfirmState('DEFAULT');
+        setConfirmState(false);
       },
     });
 
   switch (confirmState) {
-    case 'DEFAULT':
+    case false:
       return (
-        <Button onClick={() => setConfirmState('CONFIRM')} type="link">
+        <Button onClick={() => setConfirmState(true)} type="link">
           Delete
         </Button>
       );
-    case 'CONFIRM':
+    case true:
       return (
         <>
           <Button type="link" onClick={deletePublication}>
             <strong>Confirm Deletion</strong>
           </Button>
           {' | '}
-          <Button onClick={() => setConfirmState('DEFAULT')} type="link">
+          <Button onClick={() => setConfirmState(false)} type="link">
             <strong>Cancel</strong>
           </Button>
         </>

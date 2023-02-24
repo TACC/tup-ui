@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   LoadingSpinner,
   InlineMessage,
@@ -35,25 +35,44 @@ const Publication: React.FC<{
   pub: ProjectPublication;
   canManage: boolean;
 }> = ({ pub, projectId, canManage }) => {
+  const [isDelete, setIsDelete] = useState(false);
+  const toggle = () => {
+    setIsDelete(!isDelete);
+  };
+  
   return (
     <div>
       <div className={styles['pub-grants-edit-link']}>
         <span style={{ fontSize: '1.5rem' }}>
           <strong>{pub.title}</strong>
         </span>
-        {canManage && (
+        {canManage && 
+          (!isDelete ?(
           <span>
+
             <ProjectPublicationEditModal
               projectId={projectId}
               publicationId={pub.id}
             />
             {' | '}
+            <Button type="link" className="link" onClick={toggle}>
             <ProjectPublicationRemove
               projectId={projectId}
               publicationId={pub.id}
-            />
+              isOpen={isDelete}
+            /></Button>
+
           </span>
+        ): (
+            <Button type="link" className="link" onClick={toggle}>
+            <ProjectPublicationRemove
+              projectId={projectId}
+              publicationId={pub.id}
+              isOpen={isDelete}
+            /></Button>
+          )
         )}
+        
       </div>
       <div className={styles['pub-grants-title']}>
         Author(s):{' '}
