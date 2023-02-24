@@ -7,9 +7,7 @@ const ProjectGrantDelete: React.FC<{
   grantId: number;
   isOpen: boolean;
 }> = ({ projectId, grantId, isOpen }) => {
-  const [confirmState, setConfirmState] = useState<true | false>(
-    isOpen
-  );
+  const [confirmState, setConfirmState] = useState<true | false>(isOpen);
 
   const { mutate } = useGrantDelete(projectId, grantId);
 

@@ -7,9 +7,7 @@ const ProjectPublicationDelete: React.FC<{
   publicationId: number;
   isOpen: boolean;
 }> = ({ projectId, publicationId, isOpen }) => {
-  const [confirmState, setConfirmState] = useState<true | false>(
-    isOpen
-  );
+  const [confirmState, setConfirmState] = useState<true | false>(isOpen);
 
   const { mutate } = usePublicationDelete(projectId, publicationId);
 

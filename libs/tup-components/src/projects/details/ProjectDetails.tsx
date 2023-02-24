@@ -39,40 +39,38 @@ const Publication: React.FC<{
   const toggle = () => {
     setIsDelete(!isDelete);
   };
-  
+
   return (
     <div>
       <div className={styles['pub-grants-edit-link']}>
         <span style={{ fontSize: '1.5rem' }}>
           <strong>{pub.title}</strong>
         </span>
-        {canManage && 
-          (!isDelete ?(
-          <span>
-
-            <ProjectPublicationEditModal
-              projectId={projectId}
-              publicationId={pub.id}
-            />
-            {' | '}
+        {canManage &&
+          (!isDelete ? (
+            <span>
+              <ProjectPublicationEditModal
+                projectId={projectId}
+                publicationId={pub.id}
+              />
+              {' | '}
+              <Button type="link" className="link" onClick={toggle}>
+                <ProjectPublicationRemove
+                  projectId={projectId}
+                  publicationId={pub.id}
+                  isOpen={isDelete}
+                />
+              </Button>
+            </span>
+          ) : (
             <Button type="link" className="link" onClick={toggle}>
-            <ProjectPublicationRemove
-              projectId={projectId}
-              publicationId={pub.id}
-              isOpen={isDelete}
-            /></Button>
-
-          </span>
-        ): (
-            <Button type="link" className="link" onClick={toggle}>
-            <ProjectPublicationRemove
-              projectId={projectId}
-              publicationId={pub.id}
-              isOpen={isDelete}
-            /></Button>
-          )
-        )}
-        
+              <ProjectPublicationRemove
+                projectId={projectId}
+                publicationId={pub.id}
+                isOpen={isDelete}
+              />
+            </Button>
+          ))}
       </div>
       <div className={styles['pub-grants-title']}>
         Author(s):{' '}
@@ -110,20 +108,28 @@ const Grant: React.FC<{
         <span style={{ fontSize: '1.5rem' }}>
           <strong>{grant.title}</strong>
         </span>
-        {canManage && 
-          (!isDelete ?(
-          <span>
-            <ProjectGrantEditModal projectId={projectId} grantId={grant.id} />
-            {' | '}
+        {canManage &&
+          (!isDelete ? (
+            <span>
+              <ProjectGrantEditModal projectId={projectId} grantId={grant.id} />
+              {' | '}
+              <Button type="link" className="link" onClick={toggle}>
+                <ProjectGrantDelete
+                  projectId={projectId}
+                  grantId={grant.id}
+                  isOpen={isDelete}
+                />
+              </Button>
+            </span>
+          ) : (
             <Button type="link" className="link" onClick={toggle}>
-            <ProjectGrantDelete projectId={projectId} grantId={grant.id} isOpen={isDelete}/>
+              <ProjectGrantDelete
+                projectId={projectId}
+                grantId={grant.id}
+                isOpen={isDelete}
+              />
             </Button>
-          </span>
-                  ): (
-                    <Button type="link" className="link" onClick={toggle}>
-                    <ProjectGrantDelete projectId={projectId} grantId={grant.id} isOpen={isDelete}/>
-                    </Button>
-        ))}
+          ))}
       </div>
       <div className={styles['pub-grants-title']}>
         Grant Number:{' '}
