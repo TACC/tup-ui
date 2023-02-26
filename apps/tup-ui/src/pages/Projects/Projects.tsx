@@ -19,7 +19,11 @@ const Layout: React.FC = () => {
     <RequireAuth>
       <section className={styles['project-section']}>
         <PageLayout
-          top={<SectionHeader actions={<NewProject/>}>Projects & Allocations</SectionHeader>}
+          top={
+            <SectionHeader actions={<NewProject />}>
+              Projects & Allocations
+            </SectionHeader>
+          }
           left={<ProjectsNavbar />}
           right={<ProjectsListing />}
         ></PageLayout>
