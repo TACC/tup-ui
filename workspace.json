@@ -5,6 +5,7 @@
     "core-components": "libs/core-components",
     "core-wrappers": "libs/core-wrappers",
     "tup-cms": "apps/tup-cms",
+    "tup-cms-react": "apps/tup-cms-react",
     "tup-components": "libs/tup-components",
     "tup-hooks": "libs/tup-hooks",
     "tup-testing": "libs/tup-testing",

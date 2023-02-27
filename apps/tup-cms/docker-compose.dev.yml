@@ -20,6 +20,8 @@ services:
       - ./src/taccsite_cms/management/commands/group_perms:/code/taccsite_cms/management/commands/group_perms
       - ../../dist/apps/tup-ui/imports.html:/code/taccsite_cms/templates/imports.html
       - ../../apps/tup-ui/src/assets:/code/taccsite_cms/static/src/assets
+      - ../../dist/apps/tup-cms-react/assets:/code/taccsite_cms/static/cms-react/assets
+      - ../../apps/tup-cms-react/imports.debug.html:/code/taccsite_cms/templates/assets_custom_delayed.html
     networks:
       - tup_cms_net
 
