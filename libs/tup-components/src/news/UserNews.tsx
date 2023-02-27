@@ -4,6 +4,8 @@ import {
   LoadingSpinner,
   Pill,
   SectionTableWrapper,
+  Button,
+  Icon,
 } from '@tacc/core-components';
 import styles from './UserNews.module.css';
 
@@ -11,12 +13,24 @@ const formatDate = (datestring: string): string => {
   const date = new Date(datestring);
   return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 };
+const ViewAllUpdates = () => (
+  <a href={`/news/user-updates/`} target="_blank">
+    <Button type="link" iconNameBefore="icon icon-push-right">
+      {' '}
+      View All Updates
+    </Button>
+  </a>
+);
 
 const UserNews: React.FC = () => {
   const { data, isLoading } = useUserNews();
   if (isLoading) return <LoadingSpinner />;
   return (
-    <SectionTableWrapper header="User Updates" contentShouldScroll>
+    <SectionTableWrapper
+      header="User Updates"
+      headerActions={<ViewAllUpdates />}
+      contentShouldScroll
+    >
       <ul className={styles['news-list']}>
         {data &&
           data.slice(0, 12).map((newsItem) => (
@@ -30,7 +44,9 @@ const UserNews: React.FC = () => {
                 )}
               </div>
               <div className={styles['title']}>
-                <strong>{newsItem.WebTitle}</strong>
+                <a href={`/news/user-updates/${newsItem.ID}`} target="_blank">
+                  {newsItem.WebTitle}
+                </a>
               </div>
               <div className={styles['body']}>{newsItem.Content}</div>
             </li>
