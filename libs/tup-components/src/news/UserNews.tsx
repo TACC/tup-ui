@@ -14,7 +14,7 @@ const formatDate = (datestring: string): string => {
   return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 };
 const ViewAllUpdates = () => (
-  <a href={`/news/user-updates/`} target="_blank">
+  <a href={`/news/user-updates/`} target="_blank" rel="noopener noreferrer">
     <Button type="link" iconNameBefore="icon icon-push-right">
       {' '}
       View All Updates
@@ -44,7 +44,7 @@ const UserNews: React.FC = () => {
                 )}
               </div>
               <div className={styles['title']}>
-                <a href={`/news/user-updates/${newsItem.ID}`} target="_blank">
+                <a href={`/news/user-updates/${newsItem.ID}`} target="_blank" rel="noopener noreferrer">
                   {newsItem.WebTitle}
                 </a>
               </div>
