@@ -44,7 +44,11 @@ const UserNews: React.FC = () => {
                 )}
               </div>
               <div className={styles['title']}>
-                <a href={`/news/user-updates/${newsItem.ID}`} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={`/news/user-updates/${newsItem.ID}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {newsItem.WebTitle}
                 </a>
               </div>
