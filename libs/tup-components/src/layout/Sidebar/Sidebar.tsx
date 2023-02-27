@@ -17,11 +17,9 @@ const Sidebar: React.FC = () => {
         <NavItem icon="multiple-coversation" to={'/tickets'}>
           Tickets
         </NavItem>
-        {loggedIn && (
-          <AnchorNavItem icon="exit" to={'/portal/logout'}>
-            Log Out
-          </AnchorNavItem>
-        )}
+        <NavItem icon="icon-user" to={'/account'}>
+          Manage Account
+        </NavItem>
       </Navbar>
     </div>
   );
