@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';
 import ProjectGrantFormFields from './ProjectGrantFormFields';
-import styles from './ProjectGrantForm.module.css';
 
 const formShape = {
   title: Yup.string().required('Required'),

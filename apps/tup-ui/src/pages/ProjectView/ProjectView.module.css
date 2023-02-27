@@ -1,0 +1,7 @@
+.project-view {
+    display: grid;
+}
+
+.project-view > div {
+    overflow: auto;
+}

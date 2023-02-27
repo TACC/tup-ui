@@ -1,7 +1,5 @@
 .user-detail-container {
     width: 60%;
-    margin-left: -25px;
-    margin-top: -20px;
 }
 
 .user-info-banner {
@@ -35,6 +33,9 @@
 
 .link-button > span {
     vertical-align: baseline;
+}
+.link-button-delete {
+    font-weight: bold;
 }
 
 

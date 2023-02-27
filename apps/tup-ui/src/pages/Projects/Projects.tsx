@@ -5,16 +5,29 @@ import {
   ProjectsNavbar,
   ProjectsListing,
 } from '@tacc/tup-components';
-import { SectionHeader } from '@tacc/core-components';
+import { SectionHeader, Button } from '@tacc/core-components';
+import styles from './Projects.module.css';
+
+const NewProject = () => (
+  <a href="https://submit-tacc.xras.org/" target="_blank" rel="noreferrer">
+    <Button type="primary">+ New Project</Button>
+  </a>
+);
 
 const Layout: React.FC = () => {
   return (
     <RequireAuth>
-      <PageLayout
-        top={<SectionHeader>Projects & Allocations</SectionHeader>}
-        left={<ProjectsNavbar />}
-        right={<ProjectsListing />}
-      ></PageLayout>
+      <section className={styles['project-section']}>
+        <PageLayout
+          top={
+            <SectionHeader actions={<NewProject />}>
+              Projects & Allocations
+            </SectionHeader>
+          }
+          left={<ProjectsNavbar />}
+          right={<ProjectsListing />}
+        ></PageLayout>
+      </section>
     </RequireAuth>
   );
 };

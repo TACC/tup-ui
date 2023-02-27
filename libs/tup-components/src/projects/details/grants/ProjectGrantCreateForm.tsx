@@ -2,11 +2,9 @@ import React, { useMemo } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
 //import ReCAPTCHA from 'react-google-recaptcha';
 import { useGrantCreate, ProjectGrant } from '@tacc/tup-hooks';
-import { FormikInput } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';
-import styles from './ProjectGrantForm.module.css';
 import ProjectGrantFormFields from './ProjectGrantFormFields';
 
 const formShape = {

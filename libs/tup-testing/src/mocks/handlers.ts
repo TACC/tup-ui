@@ -71,11 +71,14 @@ export const handlers = [
     // Respond with mock tickets output
     return res(ctx.json(mockProjectFieldOfScience));
   }),
-  rest.get('http://localhost:8001/tickets/85411/history', (req, res, ctx) => {
-    // Respond with mock ticket history output
-    return res(ctx.json(mockTicketHistory));
-  }),
-  rest.get('http://localhost:8001/tickets/85411', (req, res, ctx) => {
+  rest.get(
+    'http://localhost:8001/tickets/:ticketId/history',
+    (req, res, ctx) => {
+      // Respond with mock ticket history output
+      return res(ctx.json(mockTicketHistory));
+    }
+  ),
+  rest.get('http://localhost:8001/tickets/:ticketId', (req, res, ctx) => {
     // Respond with mock ticket details output
     return res(ctx.json(mockTicketDetails));
   }),

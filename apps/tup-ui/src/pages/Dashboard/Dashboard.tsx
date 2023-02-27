@@ -26,9 +26,7 @@ const Layout: React.FC = () => {
   return (
     <RequireAuth>
       <section className={`c-page ${styles.section}`}>
-        <SectionHeader actions={<Link to="/account">Manage Account</Link>}>
-          Dashboard
-        </SectionHeader>
+        <SectionHeader>Dashboard</SectionHeader>
         <main className={styles.panels}>
           <UserNews />
           <SystemMonitor />

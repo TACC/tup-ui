@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { useGetTicketDetails } from '@tacc/tup-hooks';
 import './TicketModal.global.css';

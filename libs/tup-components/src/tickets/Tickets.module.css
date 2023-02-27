@@ -1,0 +1,5 @@
+.tickets-section {
+    display: flex;
+    flex-direction: column;
+    padding: var(--global-space--section);
+}
