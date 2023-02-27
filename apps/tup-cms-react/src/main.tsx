@@ -28,8 +28,8 @@ if (sysmonDOM) {
 
 const SoftwareDOM = document.getElementById('cms-software');
 if (SoftwareDOM) {
-  const sysmonRoot = ReactDOM.createRoot(SoftwareDOM as HTMLElement);
-  sysmonRoot.render(
+  const softwareRoot = ReactDOM.createRoot(SoftwareDOM as HTMLElement);
+  softwareRoot.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <SoftwareTable />
