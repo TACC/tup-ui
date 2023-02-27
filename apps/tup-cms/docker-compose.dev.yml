@@ -17,6 +17,7 @@ services:
       - ./src/taccsite_cms/settings_custom.py:/code/taccsite_cms/settings_custom.py
       - ./src/taccsite_cms/settings_local.py:/code/taccsite_cms/settings_local.py
       - ./src/taccsite_cms/secrets.py:/code/taccsite_cms/secrets.py
+      - ./src/taccsite_cms/management/commands/group_perms:/code/taccsite_cms/management/commands/group_perms
       - ../../dist/apps/tup-ui/imports.html:/code/taccsite_cms/templates/imports.html
       - ../../apps/tup-ui/src/assets:/code/taccsite_cms/static/src/assets
     networks:
