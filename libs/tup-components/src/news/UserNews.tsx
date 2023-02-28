@@ -5,7 +5,6 @@ import {
   Pill,
   SectionTableWrapper,
   Button,
-  Icon,
 } from '@tacc/core-components';
 import styles from './UserNews.module.css';
 
