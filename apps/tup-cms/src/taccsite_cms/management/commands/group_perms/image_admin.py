@@ -4,7 +4,7 @@ from django.core.management import BaseCommand
 
 def set_group_perms():
     group, was_created = Group.objects.get_or_create(
-        name='Content Admin'
+        name='Image Admin'
     )
 
     model_name = 'page'.lower().replace(' ', '')
