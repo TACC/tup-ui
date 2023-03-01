@@ -1,1 +1,1 @@
-export { SystemMonitor } from './SystemMonitor';
+export { SystemMonitor, SystemMonitorTable } from './SystemMonitor';
