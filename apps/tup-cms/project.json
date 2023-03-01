@@ -2,7 +2,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/tup-cms/src/",
   "projectType": "application",
-  "implicitDependencies": ["tup-ui"],
+  "implicitDependencies": ["tup-ui", "tup-cms-react"],
   "targets": {
     "build": {
       "executor": "nx:run-commands",
