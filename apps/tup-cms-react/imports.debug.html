@@ -1,0 +1,15 @@
+<script>
+  window.__TUP_CONFIG__ = {
+    // TODO: use custom context processor instead of hard-coding
+    baseUrl: 'https://dev.tup-services.tacc.utexas.edu',
+  };
+</script>
+<script type="module">
+  import RefreshRuntime from 'http://localhost:4200/@react-refresh';
+  RefreshRuntime.injectIntoGlobalHook(window);
+  window.$RefreshReg$ = () => {};
+  window.$RefreshSig$ = () => (type) => type;
+  window.__vite_plugin_react_preamble_installed__ = true;
+</script>
+<script type="module" src="http://localhost:4200/@vite/client"></script>
+<script type="module" src="http://localhost:4200/src/main.tsx"></script>
