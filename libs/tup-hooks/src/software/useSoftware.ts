@@ -1,4 +1,4 @@
-import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
+import { UseQueryResult } from '@tanstack/react-query';
 import { SoftwareResult, SoftwareDetail } from '.';
 import { useGet } from '../requests';
 
