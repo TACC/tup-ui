@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { InlineMessage, LoadingSpinner } from '@tacc/core-components';
-import { Ticket, useGetTickets } from '@tacc/tup-hooks';
+import { Icon, InlineMessage, LoadingSpinner } from '@tacc/core-components';
+import { Ticket, useGetTicketHistory, useGetTickets } from '@tacc/tup-hooks';
 import './TicketsTable.global.css';
 import { formatDate } from '../utils/timeFormat';
 
@@ -23,6 +23,18 @@ export const getStatusText = (status: string) => {
     default:
       return '--';
   }
+};
+
+const AttachmentIndicator: React.FC<{ ticketId: string }> = ({ ticketId }) => {
+  const { data } = useGetTicketHistory(ticketId);
+
+  if (
+    data?.some((ticket) =>
+      ticket.Attachments.some((att) => !att[1].startsWith('untitled'))
+    )
+  )
+    return <Icon dataTestid="attachment-icon" name="link"></Icon>;
+  return null;
 };
 
 export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
@@ -79,7 +91,8 @@ export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
               <td>
                 <Link to={`${ticketsPath}/${ticket.numerical_id}`}>
                   {ticket.Subject}
-                </Link>
+                </Link>{' '}
+                <AttachmentIndicator ticketId={ticket.numerical_id} />
               </td>
               <td>{formatDate(new Date(ticket.Created))}</td>
               <td>{getStatusText(ticket.Status)}</td>
