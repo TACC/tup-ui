@@ -157,3 +157,10 @@ TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
 ########################
 
 TACC_CORE_STYLES_VERSION = 1
+
+########################
+# PLUGIN SETTINGS
+########################
+
+# https://github.com/django-cms/django-filer/blob/2.0.2/docs/permissions.rst
+FILER_ENABLE_PERMISSIONS = True
