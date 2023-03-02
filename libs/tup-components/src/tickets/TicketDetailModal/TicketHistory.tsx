@@ -45,10 +45,11 @@ const Attachments: React.FC<{
   );
 };
 
-const TicketHistoryCard: React.FC<{ history: TicketHistoryEntry }> = ({
-  history,
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
+const TicketHistoryCard: React.FC<{
+  history: TicketHistoryEntry;
+  defaultOpen?: boolean;
+}> = ({ history, defaultOpen = false }) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
   const { data } = useProfile();
 
   const ticketHeaderClassName =
@@ -73,32 +74,32 @@ const TicketHistoryCard: React.FC<{ history: TicketHistoryEntry }> = ({
   return (
     <Card className="mt-1">
       <CardHeader tabIndex={0} onClick={onClick} onKeyDown={onKeyDown}>
-        <span className="ticket-history-header d-inline-block text-truncate">
-          <strong>
-            <span
-              className={ticketHeaderClassName}
-              id="TicketHeader"
-              role="button"
-              aria-expanded={isOpen}
-              aria-controls="CardBody"
-            >
-              {history.Creator} |{' '}
-              {`${formatDateTime(new Date(history.Created))}`}
+        <div
+          className="ticket-history-header"
+          id="TicketHeader"
+          role="button"
+          aria-expanded={isOpen}
+          aria-controls="CardBody"
+        >
+          <div className="text-truncate">
+            <span className={ticketHeaderClassName}>
+              <strong>{history.Creator}</strong>
             </span>
-            {!!attachmentTitles.length && (
-              <span>
-                {' '}
-                <Icon name="link" />{' '}
-              </span>
+            <span className="text-truncate">
+              {isOpen ? '' : ` | ${history.Content}`}
+            </span>
+          </div>
+          <div>
+            <span className="ticket-history-header-date">{`${formatDateTime(
+              new Date(history.Created)
+            )}`}</span>
+            {isOpen ? (
+              <Icon size="xs" name="icon-action icon-contract" />
+            ) : (
+              <Icon size="xs" name="icon-action icon-expand" />
             )}
-          </strong>{' '}
-          {isOpen ? '' : history.Content}
-        </span>
-        {isOpen ? (
-          <Icon name="icon-action icon-contract" />
-        ) : (
-          <Icon name="icon-action icon-expand" />
-        )}
+          </div>
+        </div>
       </CardHeader>
       <Collapse isOpen={isOpen}>
         <CardBody id="CardBody" role="region" aria-labelledby="TicketHeader">
@@ -133,8 +134,12 @@ export const TicketHistory: React.FC<{ ticketId: string }> = ({ ticketId }) => {
           Something went wrong.
         </InlineMessage>
       )}
-      {data?.map((history: TicketHistoryEntry) => (
-        <TicketHistoryCard key={history.id} history={history} />
+      {data?.map((history: TicketHistoryEntry, idx) => (
+        <TicketHistoryCard
+          key={history.id}
+          history={history}
+          defaultOpen={idx === data.length - 1}
+        />
       ))}
       <div ref={ticketHistoryEndRef} />
     </>

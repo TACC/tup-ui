@@ -16,7 +16,7 @@ describe('Ticket Modal', () => {
     );
     expect(getByTestId('loading-spinner')).toBeDefined();
     await waitFor(() =>
-      expect(getAllByText('test; please ignore').length).toEqual(2)
+      expect(getAllByText(/test; please ignore/).length).toEqual(4)
     );
     expect(getByText('testFile.txt (10b)')).toBeDefined();
   });
