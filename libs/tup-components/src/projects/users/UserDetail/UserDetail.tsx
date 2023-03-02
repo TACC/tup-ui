@@ -209,8 +209,8 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
         </div>
       </div>
       <div className={styles['role-explainer']}>
-        PI and Delegate can manage the project. <br /> Standard Users can only
-        view the project.
+        PI and Delegate Users can manage the project. <br /> Standard Users can
+        only view the project.
       </div>
       <UsageTable username={username} projectId={projectId} />
     </div>
