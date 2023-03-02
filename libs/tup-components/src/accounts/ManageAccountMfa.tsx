@@ -59,7 +59,7 @@ export const AccountMfa: React.FC = () => {
         <strong>MFA Pairing</strong>
       </div>
       {!hasPairing && (
-        <Link to="/mfa">
+        <Link to="/mfa" className={styles['tap-href']}>
           <Button type="primary">Pair Device</Button>
         </Link>
       )}

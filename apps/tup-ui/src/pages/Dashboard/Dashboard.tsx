@@ -10,7 +10,7 @@ import {
 
 import './Dashboard.css';
 import styles from './Dashboard.module.css';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const Layout: React.FC = () => {
   const bodyClassName = 'dashboard';
@@ -35,6 +35,7 @@ const Layout: React.FC = () => {
             <TicketsDashboard />
           </div>
         </main>
+        <Outlet />
       </section>
     </RequireAuth>
   );
