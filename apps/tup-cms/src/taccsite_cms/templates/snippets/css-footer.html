@@ -16,15 +16,10 @@
     /* TACC/Core-Styles#4d7cece (just before daada8b) */
     --global-color-secondary--light: #d5b57c; /* from designer *//* from header */
 }
-html:not(#page-portal) .c-footer::before /* trans id */ {
-    position: absolute;
-    top: 0;
-
-    width: 100%;
-    margin-left: -36px;
-    content: '';
-
-    border-top: 2px solid var(--global-color-secondary--light);
+html:not(#page-portal) .c-footer {
+    border-width: var(--global-border-width--thick) 0 0 0;
+    border-style: solid;
+    border-color: var(--global-color-secondary--light);
 }
 
 /* To hide/show CMS/Portal footer */
