@@ -6,9 +6,12 @@ import './TicketModal.global.css';
 import { TicketHistory } from './TicketHistory';
 import { TicketReplyForm } from './TicketReplyForm';
 
-const TicketModal: React.FC<{ ticketId: string }> = ({ ticketId }) => {
+const TicketModal: React.FC<{ ticketId: string; baseRoute: string }> = ({
+  ticketId,
+  baseRoute,
+}) => {
   const navigate = useNavigate();
-  const close = () => navigate('/tickets');
+  const close = () => navigate(baseRoute);
   const modalAlwaysOpen = true;
   const { data } = useGetTicketDetails(ticketId);
 
@@ -20,7 +23,7 @@ const TicketModal: React.FC<{ ticketId: string }> = ({ ticketId }) => {
 
   return (
     <Modal
-      className="ticket-model-content"
+      className="ticket-model-content modal-dialog-centered"
       size="xl"
       isOpen={modalAlwaysOpen}
       toggle={close}
@@ -29,7 +32,7 @@ const TicketModal: React.FC<{ ticketId: string }> = ({ ticketId }) => {
         <span className="ticket-id">Ticket {ticketId}</span>
         <span className="ticket-subject">{data?.Subject}</span>
       </ModalHeader>
-      <ModalBody>
+      <ModalBody style={{ minHeight: '70vh', maxHeight: 'fit-content' }}>
         <Container className="ticket-detailed-view-container">
           <Row className="ticket-detailed-view-row">
             <Col lg="7" className="ticket-history">

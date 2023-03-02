@@ -27,7 +27,8 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           end
           className={styles['user-navitem']}
         >
-          PI: {pi.firstName} {pi.lastName} ({pi.username})
+          <span style={{ fontWeight: 'normal' }}>PI</span>: {pi.firstName}{' '}
+          {pi.lastName} ({pi.username})
         </NavItem>
       )}
       {delegate && (
@@ -36,8 +37,8 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           end
           className={styles['user-navitem']}
         >
-          Delegate: {delegate?.firstName} {delegate?.lastName} (
-          {delegate.username})
+          <span style={{ fontWeight: 'normal' }}>Delegate</span>:{' '}
+          {delegate?.firstName} {delegate?.lastName} ({delegate.username})
         </NavItem>
       )}
       <div className={styles['separator']}></div>
