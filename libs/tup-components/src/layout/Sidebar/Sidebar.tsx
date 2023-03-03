@@ -8,7 +8,7 @@ const Sidebar: React.FC = () => {
   return (
     <div className={styles['root']}>
       <Navbar>
-        <NavItem end icon="dashboard" to={'/'}>
+        <NavItem end icon="dashboard" to={'/dashboard'}>
           Dashboard
         </NavItem>
         <NavItem icon="allocations" to={'/projects'}>
@@ -17,11 +17,9 @@ const Sidebar: React.FC = () => {
         <NavItem icon="multiple-coversation" to={'/tickets'}>
           Tickets
         </NavItem>
-        {loggedIn && (
-          <AnchorNavItem icon="exit" to={'/dashboard/logout'}>
-            Log Out
-          </AnchorNavItem>
-        )}
+        <NavItem icon="user" to={'/account'}>
+          Manage Account
+        </NavItem>
       </Navbar>
     </div>
   );

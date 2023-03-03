@@ -22,7 +22,12 @@ const ProjectGrantCreateModal: React.FC<{
       <Button type="link" onClick={() => toggle()}>
         <strong>+ Add Grant</strong>
       </Button>
-      <Modal isOpen={isOpen} toggle={toggle} size="lg">
+      <Modal
+        isOpen={isOpen}
+        toggle={toggle}
+        size="lg"
+        className="modal-dialog-centered"
+      >
         <ModalHeader toggle={toggle} close={closeBtn}>
           <span>Add Grant</span>
         </ModalHeader>

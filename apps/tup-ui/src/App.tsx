@@ -1,4 +1,4 @@
-import { Outlet, Routes, Route } from 'react-router-dom';
+import { Outlet, Routes, Route, Navigate } from 'react-router-dom';
 
 import {
   PageLayout,
@@ -27,9 +27,18 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<AppLayout />}>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route
+            path="tickets/:ticketId"
+            element={<TicketDetail baseRoute="/dashboard" />}
+          />
+        </Route>
         <Route path="tickets" element={<Tickets />}>
-          <Route path=":ticketId" element={<TicketDetail />} />
+          <Route
+            path=":ticketId"
+            element={<TicketDetail baseRoute="/tickets" />}
+          />
         </Route>
         <Route path="projects" element={<Projects />}></Route>
         <Route path="projects/active" element={<Projects />}></Route>

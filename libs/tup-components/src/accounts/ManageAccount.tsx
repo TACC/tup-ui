@@ -7,10 +7,7 @@ import styles from './ManageAccount.module.css';
 const ManageUser = () => (
   <>
     <div className={styles['tap-header']}>
-      <strong>
-        Edit User Information | Change Password | Manage Distinguished Names
-        (DNs)
-      </strong>
+      <strong>Edit User Information</strong>
     </div>
     <span className={styles['tap-description']}>
       Your user account can be managed on the TACC Account Management (TAM)
@@ -20,6 +17,7 @@ const ManageUser = () => (
       href="https://accounts-dev.tacc.utexas.edu/profile"
       target="_blank"
       rel="noreferrer"
+      className={styles['tap-href']}
     >
       <Button className={styles['tap-button']} type="primary">
         Edit User Profile
@@ -40,6 +38,7 @@ const ManageDNs = () => (
       href="https://accounts-dev.tacc.utexas.edu/certificates"
       target="_blank"
       rel="noreferrer"
+      className={styles['tap-href']}
     >
       <Button className={styles['tap-button']} type="primary">
         Manage DNs
@@ -60,6 +59,7 @@ const ManagePassword = () => (
       href="https://accounts-dev.tacc.utexas.edu/change_password"
       target="_blank"
       rel="noreferrer"
+      className={styles['tap-href']}
     >
       <Button className={styles['tap-button']} type="primary">
         Change Password

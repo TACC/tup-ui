@@ -104,18 +104,17 @@ const RemoveUser: React.FC<{ projectId: number; user: ProjectUser }> = ({
   if (confirmState === 'CONFIRM')
     return (
       <>
-        Confirm Removal:&nbsp;
         <Button
-          className={styles['link-button']}
+          className={styles['link-button-delete']}
           onClick={removeUserCallback}
           type="link"
         >
-          {!isLoading && 'Remove'}{' '}
+          {!isLoading && ' Confirm Removal'}{' '}
           {isLoading && <LoadingSpinner placement="inline" />}
         </Button>{' '}
         |{' '}
         <Button
-          className={styles['link-button']}
+          className={styles['link-button-delete']}
           onClick={() => setConfirmState('DEFAULT')}
           type="link"
         >
@@ -208,6 +207,10 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
         <div>
           <RemoveUser projectId={projectId} user={user} />
         </div>
+      </div>
+      <div className={styles['role-explainer']}>
+        PI and Delegate Users can manage the project. <br /> Standard Users can
+        only view the project.
       </div>
       <UsageTable username={username} projectId={projectId} />
     </div>

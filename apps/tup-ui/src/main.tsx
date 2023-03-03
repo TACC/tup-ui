@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter basename="dashboard">
+    <BrowserRouter basename="portal">
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>

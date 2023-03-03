@@ -35,7 +35,7 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
           <strong>Manage Team</strong> ({users?.length} Users)
         </div>
         <form onSubmit={(e) => addUser(e)}>
-          <label htmlFor="add-user">Add New User</label>
+          <label htmlFor="add-user">Add New User</label> (use TACC username)
           <InputGroup>
             <div className="input-group-prepend">
               <Button outline type="submit" disabled={!userToAdd}>
