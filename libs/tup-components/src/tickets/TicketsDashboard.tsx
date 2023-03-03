@@ -12,7 +12,7 @@ const TicketsDashboard: React.FC = () => {
       }
       contentShouldScroll
     >
-      <TicketsTable />
+      <TicketsTable ticketsPath="/dashboard/tickets" />
     </SectionTableWrapper>
   );
 };

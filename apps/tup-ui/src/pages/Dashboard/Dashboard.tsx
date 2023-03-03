@@ -10,7 +10,7 @@ import {
 
 import './Dashboard.css';
 import styles from './Dashboard.module.css';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const Layout: React.FC = () => {
   const bodyClassName = 'dashboard';
@@ -26,9 +26,7 @@ const Layout: React.FC = () => {
   return (
     <RequireAuth>
       <section className={`c-page ${styles.section}`}>
-        <SectionHeader actions={<Link to="/account">Manage Account</Link>}>
-          Dashboard
-        </SectionHeader>
+        <SectionHeader>Dashboard</SectionHeader>
         <main className={styles.panels}>
           <UserNews />
           <SystemMonitor />
@@ -37,6 +35,7 @@ const Layout: React.FC = () => {
             <TicketsDashboard />
           </div>
         </main>
+        <Outlet />
       </section>
     </RequireAuth>
   );
