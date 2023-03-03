@@ -4,7 +4,6 @@ import {
   LoadingSpinner,
   Pill,
   SectionTableWrapper,
-  Button,
 } from '@tacc/core-components';
 import styles from './UserNews.module.css';
 
@@ -13,11 +12,13 @@ const formatDate = (datestring: string): string => {
   return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 };
 const ViewAllUpdates = () => (
-  <a href={`/news/user-updates/`} target="_blank" rel="noopener noreferrer">
-    <Button type="link" iconNameBefore="icon icon-push-right">
-      {' '}
-      View All Updates
-    </Button>
+  <a
+    href={`/news/user-updates/`}
+    className="c-button c-button--as-link"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    View All Updates
   </a>
 );
 

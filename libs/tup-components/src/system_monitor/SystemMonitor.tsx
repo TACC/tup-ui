@@ -21,7 +21,7 @@ export const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
   return true;
 };
 
-export const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
+export const SystemMonitorTable: React.FC = () => {
   const { data, isLoading, error } = useSystemMonitor();
   const columns = useMemo<Column<SystemMonitorRawSystem>[]>(
     () => [
@@ -71,44 +71,50 @@ export const SystemMonitor: React.FC<{ display_name?: Array<string> }> = () => {
   }
 
   return (
+    <table
+      {...getTableProps()}
+      // Emulate <InfiniteScrollTable> and its use of `o-fixed-header-table`
+      // TODO: Create global table styles & Make <InfiniteScrollTable> use them
+      className={`multi-system InfiniteScrollTable o-fixed-header-table ${styles['root']}`}
+    >
+      <thead>
+        {headerGroups.map((headerGroup) => (
+          <tr
+            {...headerGroup.getHeaderGroupProps()}
+            className={styles['header']}
+          >
+            {headerGroup.headers.map((column) => (
+              <th key={column.id}>{column.render('Header')}</th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()} className={styles['rows']}>
+        {rows.length ? (
+          rows.map((row, idx) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => (
+                  <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                ))}
+              </tr>
+            );
+          })
+        ) : (
+          <tr>
+            <td colSpan={5}>No systems being monitored</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  );
+};
+
+export const SystemMonitor = () => {
+  return (
     <SectionTableWrapper header="System Status">
-      <table
-        {...getTableProps()}
-        // Emulate <InfiniteScrollTable> and its use of `o-fixed-header-table`
-        // TODO: Create global table styles & Make <InfiniteScrollTable> use them
-        className={`multi-system InfiniteScrollTable o-fixed-header-table ${styles['root']}`}
-      >
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr
-              {...headerGroup.getHeaderGroupProps()}
-              className={styles['header']}
-            >
-              {headerGroup.headers.map((column) => (
-                <th key={column.id}>{column.render('Header')}</th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()} className={styles['rows']}>
-          {rows.length ? (
-            rows.map((row, idx) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  ))}
-                </tr>
-              );
-            })
-          ) : (
-            <tr>
-              <td colSpan={5}>No systems being monitored</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      <SystemMonitorTable />
     </SectionTableWrapper>
   );
 };

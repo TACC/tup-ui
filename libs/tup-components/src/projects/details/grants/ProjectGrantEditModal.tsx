@@ -23,7 +23,12 @@ const ProjectGrantEditModal: React.FC<{
       <Button type="link" onClick={() => toggle()}>
         Edit
       </Button>
-      <Modal isOpen={isOpen} toggle={toggle} size="lg">
+      <Modal
+        isOpen={isOpen}
+        toggle={toggle}
+        size="lg"
+        className="modal-dialog-centered"
+      >
         <ModalHeader toggle={toggle} close={closeBtn}>
           <span>Edit Grant</span>
         </ModalHeader>

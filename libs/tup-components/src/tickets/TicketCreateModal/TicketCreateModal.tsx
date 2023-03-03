@@ -25,7 +25,12 @@ const TicketCreateModal: React.FC<
       <Button type={display} onClick={() => toggle()}>
         {children}
       </Button>
-      <Modal isOpen={isOpen} toggle={toggle} size="lg">
+      <Modal
+        isOpen={isOpen}
+        toggle={toggle}
+        size="lg"
+        className="modal-dialog-centered"
+      >
         <ModalHeader
           toggle={toggle}
           close={closeBtn}
