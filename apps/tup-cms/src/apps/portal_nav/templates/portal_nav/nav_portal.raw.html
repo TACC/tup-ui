@@ -33,17 +33,20 @@
     <span class="sr-only">Toggle Dropdown</span>
   </a>
   <nav class="dropdown-menu dropdown-menu-right">
-    <a class="dropdown-item" href="/dashboard">
+    <a class="dropdown-item" href="/portal">
       <i class="icon icon-dashboard"></i> My Dashboard
     </a>
-    <a class="dropdown-item" href="/dashboard/logout">
+    <a class="dropdown-item" href="/portal/account">
+      <i class="icon icon-user"></i> Manage Account
+    </a>
+    <a class="dropdown-item" href="/portal/logout">
       <i class="icon icon-exit"></i> Log Out
     </a>
   </nav>
 </li>
 {% else %}
 <li class="nav-item">
-  <a class="nav-link" href="/dashboard/login">
+  <a class="nav-link" href="/portal/login">
     <i class="icon icon-user"></i> Log in
   </a>
 </li>

@@ -34,6 +34,9 @@
 .link-button > span {
     vertical-align: baseline;
 }
+.link-button-delete {
+    font-weight: bold;
+}
 
 
 .usage-table {
@@ -56,3 +59,7 @@
     padding: 1px;
 }
 
+.role-explainer {
+    padding-left: 20px;
+    font-style: italic;
+}

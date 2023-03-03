@@ -1,0 +1,75 @@
+{
+  "name": "tup-cms-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/tup-cms-react/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/tup-cms-react",
+        "base": "/static/cms-react"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development",
+          "watch": {}
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "tup-cms-react:build",
+        "base": ""
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "tup-cms-react:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "tup-cms-react:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "tup-cms-react:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "tup-cms-react:build:development"
+        },
+        "production": {
+          "buildTarget": "tup-cms-react:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/apps/tup-cms-react"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/apps/tup-cms-react"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/tup-cms-react/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

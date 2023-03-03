@@ -20,7 +20,7 @@ const Tickets: React.FC = () => {
           Tickets
         </SectionHeader>
         <SectionTableWrapper contentShouldScroll className="ticket-container">
-          <TicketsTable />
+          <TicketsTable ticketsPath="/tickets" />
         </SectionTableWrapper>
         <Outlet />
       </section>

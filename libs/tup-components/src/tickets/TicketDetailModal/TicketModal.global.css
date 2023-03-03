@@ -8,7 +8,22 @@
 }
 
 .ticket-history-header {
-  padding-right: 1em;
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.ticket-history-header > :nth-child(1) {
+  padding-right: 1rem;
+}
+.ticket-history-header > :nth-child(2) {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1rem;
+}
+.ticket-history-header-date {
+  padding-right: 0.5rem;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 .ticket-reply-form {

@@ -6,9 +6,8 @@ import { rest } from 'msw';
 
 describe('Tickets Table Component', () => {
   it('should render the loading spinner and then the tickets table', async () => {
-    const { getByText, getByTestId, getAllByRole } = testRender(
-      <TicketsTable />
-    );
+    const { getByText, getByTestId, findAllByTestId, getAllByRole } =
+      testRender(<TicketsTable />);
     expect(getByTestId('loading-spinner')).toBeDefined();
     await waitFor(() => getAllByRole('columnheader'));
     const columnHeaders: HTMLElement[] = getAllByRole('columnheader');
@@ -20,6 +19,7 @@ describe('Tickets Table Component', () => {
     expect(getByText('Feedback for CEP')).toBeDefined();
     expect(getByText('10/13/2022')).toBeDefined();
     expect(getByText('Resolved')).toBeDefined();
+    expect(await findAllByTestId('attachment-icon')).toHaveLength(2);
   });
   it('should render message when there are no tickets to show', async () => {
     server.use(

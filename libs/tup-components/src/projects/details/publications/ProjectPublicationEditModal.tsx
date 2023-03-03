@@ -23,7 +23,12 @@ const ProjectPublicationEditModal: React.FC<{
       <Button type="link" onClick={() => toggle()}>
         Edit
       </Button>
-      <Modal isOpen={isOpen} toggle={toggle} size="md">
+      <Modal
+        isOpen={isOpen}
+        toggle={toggle}
+        size="md"
+        className="modal-dialog-centered"
+      >
         <ModalHeader toggle={toggle} close={closeBtn}>
           <span>Edit Publication</span>
         </ModalHeader>
