@@ -8,9 +8,7 @@ import {
 import {
   useProjects,
   usePublications,
-  useGrants,
   ProjectPublication,
-  ProjectGrant,
   useRoleForCurrentUser,
 } from '@tacc/tup-hooks';
 import styles from './ProjectDetails.module.css';
@@ -19,11 +17,8 @@ import {
   ProjectPublicationEditModal,
   ProjectPublicationCreateModal,
 } from './publications';
-import { ProjectGrantEditModal, ProjectGrantCreateModal } from './grants';
 import { ProjectsListingAllocationTable } from '../ProjectsListing/ProjectsListingAllocationTable';
-import { ProjectEditModal } from './ProjectEdit';
 import ProjectPublicationRemove from './publications/ProjectPublicationDelete';
-import ProjectGrantDelete from './grants/ProjectGrantDelete';
 
 const formatDate = (datestring: string): string => {
   const date = new Date(datestring);
@@ -108,7 +103,6 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
     (desc) => desc.id === projectId
   );
   const pub_data = usePublications(projectId).data ?? [];
-  const grant_data = useGrants(projectId).data ?? [];
   const currentUserRole = useRoleForCurrentUser(projectId);
   const canManage = currentUserRole
     ? ['PI', 'Delegate'].includes(currentUserRole)
@@ -175,7 +169,7 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
       >
         {projectDetails?.description}
 
-        <div className={styles['pub-grants-info']}>
+        <div className={styles['pub-abstract-grants']}>
           Your project and allocation information can be managed on the TXRAS
           portal.
         </div>

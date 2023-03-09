@@ -30,13 +30,12 @@
 }
 
 .pub-grants-title {
-    font-size: 1.3rem;
+    font-weight: bold;
+    margin-right: 2rem;
 }
 
 .pub-grants-info {
-    margin-top:10px;
-    font-size: 1.3rem;
-    font-style: italic;
+    margin-right: 2rem;
 }
 
 .pub-grants-edit-link {
@@ -61,4 +60,10 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.pub-abstract-grants {
+    margin-top:10px;
+    font-size: 1.3rem;
+    font-style: italic;
 }
