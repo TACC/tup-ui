@@ -9,7 +9,7 @@ describe('Project Details Component', () => {
   });
   it('should display the projects table', async () => {
     const { getByText, getByTestId, getAllByRole } = testRender(
-      <ProjectDetails projectId={59184}  />
+      <ProjectDetails projectId={59184} />
     );
     expect(getByTestId('loading-spinner')).toBeDefined();
     await waitFor(() => getAllByRole('columnheader'));
@@ -26,6 +26,8 @@ describe('Project Details Component', () => {
   it.skip('should display the projects publications, and abstract/grants', async () => {
     testRender(<ProjectDetails projectId={59184} />);
     await screen.findByText(/This project has no publications./);
-    await screen.findByText(/Your project and allocation information can be managed on the TXRAS portal./);
+    await screen.findByText(
+      /Your project and allocation information can be managed on the TXRAS portal./
+    );
   });
 });
