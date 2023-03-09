@@ -76,61 +76,6 @@ const Publication: React.FC<{
   );
 };
 
-const Grant: React.FC<{
-  grant: ProjectGrant;
-  projectId: number;
-  canManage: boolean;
-}> = ({ grant, projectId, canManage }) => {
-  return (
-    <div>
-      <div className={styles['pub-grants-edit-link']}>
-        <span style={{ fontSize: '1.5rem' }}>
-          <strong>{grant.title}</strong>
-        </span>
-        {canManage && (
-          <span>
-            <ProjectGrantEditModal projectId={projectId} grantId={grant.id} />
-            {' | '}
-            <ProjectGrantDelete projectId={projectId} grantId={grant.id} />
-          </span>
-        )}
-      </div>
-      <div className={styles['pub-grants-title']}>
-        Grant Number:{' '}
-        <span className={styles['pub-grants-info']}>{grant.id}</span>
-      </div>
-      <div className={styles['pub-grants-title']}>
-        Principal Investigator:{' '}
-        <span className={styles['pub-grants-info']}>{grant.piName}</span>
-      </div>
-      <div className={styles['pub-grants-title']}>
-        <strong>{grant.field}</strong>
-      </div>
-      <div className={styles['pub-grants-title']}>
-        Funding Agency:{' '}
-        <span className={styles['pub-grants-info']}>
-          {grant.fundingAgency ?? '(N/A)'}
-        </span>
-        Award Number:{' '}
-        <span className={styles['pub-grants-info']}>
-          {grant.awardNumber ?? '(N/A)'}
-        </span>
-        Award Amount:{' '}
-        <span className={styles['pub-grants-info']}>
-          {grant.awardAmount ?? '(N/A)'}
-        </span>
-      </div>
-      <div className={styles['pub-grants-title']}>
-        Award Dates:{' '}
-        <span className={styles['pub-grants-info']}>
-          {grant.start ? formatDate(grant.start) : '(N/A)'} -{' '}
-          {grant.end ? formatDate(grant.end) : '(N/A)'}
-        </span>
-      </div>
-    </div>
-  );
-};
-
 const NewAllocation = () => (
   <a href="https://submit-tacc.xras.org/" target="_blank" rel="noreferrer">
     <Button type="link">+ Add New Allocation</Button>
@@ -144,6 +89,16 @@ const IncreaseAllocation = () => (
     rel="noreferrer"
   >
     <Button type="link">Increase Existing Allocation</Button>
+  </a>
+);
+
+const AbstractGrants = () => (
+  <a
+    href="https://submit-tacc.xras.org/requests"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <Button type="link">Edit Project</Button>
   </a>
 );
 
@@ -191,13 +146,6 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
         )}
       </SectionTableWrapper>
       <div className={styles['separator']}></div>
-      <SectionTableWrapper
-        header="Abstract"
-        headerActions={canManage && <ProjectEditModal projectId={projectId} />}
-      >
-        {projectDetails?.description}
-      </SectionTableWrapper>
-      <div className={styles['separator']}></div>
 
       <SectionTableWrapper
         header="Publications"
@@ -222,24 +170,13 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
       <div className={styles['separator']}></div>
 
       <SectionTableWrapper
-        header="Grants"
-        className={styles['listing-section']}
-        headerActions={
-          canManage && <ProjectGrantCreateModal projectId={projectId} />
-        }
+        header="Abstract/Grants"
+        headerActions={canManage && <AbstractGrants />}
       >
-        {grant_data.length === 0 ? (
-          <span>This project has no grants.</span>
-        ) : (
-          grant_data.map((grant) => (
-            <Grant
-              key={grant.id}
-              grant={grant}
-              projectId={projectId}
-              canManage={canManage}
-            />
-          ))
-        )}
+        <div className={styles['pub-grants-title']}>
+          Your project and allocation information can be managed on the TXRAS
+          portal.
+        </div>
       </SectionTableWrapper>
     </div>
   );
