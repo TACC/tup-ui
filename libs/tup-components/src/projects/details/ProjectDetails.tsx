@@ -173,7 +173,9 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
         header="Abstract/Grants"
         headerActions={canManage && <AbstractGrants />}
       >
-        <div className={styles['pub-grants-title']}>
+        {projectDetails?.description}
+
+        <div className={styles['pub-grants-info']}>
           Your project and allocation information can be managed on the TXRAS
           portal.
         </div>

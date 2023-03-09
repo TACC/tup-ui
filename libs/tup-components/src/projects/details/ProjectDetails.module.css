@@ -34,8 +34,9 @@
 }
 
 .pub-grants-info {
-    font-weight: bold;
-    margin-right: 2rem;
+    margin-top:10px;
+    font-size: 1.3rem;
+    font-style: italic;
 }
 
 .pub-grants-edit-link {
