@@ -1,18 +1,16 @@
 <style id="css-footer--proposal-for-core">
 /* To mimic Bootstrap _reboot img { vertical-align: middle } */
-/* TODO: Evaluate for core-cms or core-styles CSS */
 svg {
     vertical-align: middle;
 }
 </style>
 
 <style id="css-footer--logos">
-/* To color and align social media icons */
+/* To set baseline styles for footer logos */
 /* TODO: Evaluate for tup-ui or core-cms CSS */
 .c-footer svg {
     fill: var(--global-color-primary--xx-light);
 }
-
 .c-footer [class*="logos--"] {
     text-align: center;
 }
@@ -20,6 +18,13 @@ svg {
     text-decoration: none;
 }
 
+/* To mimic inline styles from initial logo addition */
+.c-footer .logos__tacc svg { width: 32%; }
+.c-footer .logos__nsf svg { width: 24%; }
+.c-footer .logos__ut svg { width: 36%; }
+
+/* To skin social media logo links */
+/* WARNING: Developer styling */
 .c-footer .logos--social {
     font-size: 0; /* to remove whitespace */
 }
