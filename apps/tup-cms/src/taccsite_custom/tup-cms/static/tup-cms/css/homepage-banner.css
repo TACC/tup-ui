@@ -1,0 +1,95 @@
+/* CORE */
+
+/* Settings: Font (CMS) */
+
+:root {
+  --global-font-size--xxx-large: 3.2rem;
+}
+
+
+
+/* Mark & Highlight */
+
+:is(.highlight, mark) {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+:is(h1, h2, h3, h4).highlight {
+	display: inline;
+}
+
+
+
+/* Tag */
+
+.tag {
+  /* Client must set display (inline-)block|flex|grid|etc. */
+  /* FAQ: We should not assume the display of an element client controls */
+  /* display: inline-block; */
+
+  padding-block: 0.25em 0;
+  padding-inline: 0.5em;
+  width: min-content;
+
+  font-size: var(--global-font-size--small);
+  font-weight: var(--bold);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+
+
+
+
+/* TACC */
+
+/* Banner */
+
+[class*="banner--"] :is(h1, h2, h3, h4) {
+  margin-bottom: 0;
+}
+
+[class*="banner--"] > a {
+  display: block;
+}
+
+[class*="banner--"] .tag {
+  display: block;
+  margin-bottom: 2.0rem;
+
+  color: #ffffff;
+  background: #000000;
+}
+
+/* Banner (Large) */
+
+.banner--large h2 {
+	font-size: var(--global-font-size--xxx-large);
+  font-weight: var(--bold);
+
+	text-transform: uppercase;
+}
+[class*="banner--"] .highlight {
+	padding-inline: 0.5rem;
+
+	color: var(--global-color-primary--xx-light);
+  background-color: var(--global-color-primary--xxx-dark);
+
+	line-height: 1;
+}
+[class*="banner--"] a:is(:hover, :active) .highlight {
+	color: var(--global-color-primary--light);
+}
+
+.banner--large figure {
+	position: relative;
+  margin-bottom: unset; /* undo Botstrap */
+}
+.banner--large figcaption {
+	position: absolute;
+  bottom: 0;
+  left: 0;
+
+	width: 50%;
+  padding: 5.0rem 3.0rem;
+}
