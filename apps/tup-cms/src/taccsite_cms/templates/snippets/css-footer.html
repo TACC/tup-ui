@@ -12,22 +12,38 @@ svg {
     fill: var(--global-color-primary--xx-light);
 }
 .c-footer [class*="logos--"] {
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 .c-footer [class*="logos--"] a {
-    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* horz align when image narrower than grid cell */
 }
 
-/* To mimic inline styles from initial logo addition */
-.c-footer .logos__tacc svg { width: 32%; }
-.c-footer .logos__nsf svg { width: 24%; }
-.c-footer .logos__ut svg { width: 36%; }
+/* For independent logo size */
+.c-footer .logos__tacc { width: 25% }
+.c-footer .logos__nsf { width: 30% }
+.c-footer .logos__ut { width: 40% }
+
+/* To create fake border between logos */
+.c-footer .logos--branding a:not(:first-child)::before {
+  content: '';
+  display: inline-block;
+
+  background-color: var(--global-color-primary--xx-light);
+  background-clip: content-box;
+
+  height: 66.66%;
+  width: var(--global-border-width--normal);
+  border-inline: 1em solid transparent;
+  box-sizing: content-box;
+
+  cursor: default;
+}
 
 /* To skin social media logo links */
-/* WARNING: Developer styling */
-.c-footer .logos--social {
-    font-size: 0; /* to remove whitespace */
-}
+/* WARNING: Developer styles */
 .c-footer .logos--social a {
     display: inline-block;
     padding: 1rem; /* rem, because any em value is 0 because font-size: 0 */
