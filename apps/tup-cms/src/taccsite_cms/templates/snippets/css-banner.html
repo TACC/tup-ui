@@ -129,13 +129,16 @@ Styleguide Components.Banner
   font-weight: revert;
 }
 
-/* To move text atop image */
 .banner-cell--minor > a {
+  /* To move text atop image */
   margin-top: calc( -1 * (
     /* To move by half the height of the .tag */
     /* FAQ: Not using `translateY(-50%)` because the h2 must move same amount */
     var(--tag-padding) + ( var(--global-font-size--small) / 2 )
   ));
+
+  /* To add space "beneath" banner */
+  margin-bottom: 5.0rem;
 }
 
 /* To allow image to be underneath text */
