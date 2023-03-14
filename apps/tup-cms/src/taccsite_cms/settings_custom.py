@@ -17,6 +17,8 @@ DATABASES = {
     }
 }
 
+SESSION_COOKIE_AGE = 14400
+
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
