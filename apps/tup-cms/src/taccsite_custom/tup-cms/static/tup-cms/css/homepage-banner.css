@@ -27,8 +27,8 @@
   /* FAQ: We should not assume the display of an element client controls */
   /* display: inline-block; */
 
-  padding-block: 0.25em 0;
-  padding-inline: 0.5em;
+  line-height: 1; /* so padding-block can be consistent */
+  padding: 0.5rem;
   width: min-content;
 
   font-size: var(--global-font-size--small);
@@ -45,12 +45,18 @@
 
 /* Banner */
 
+[class*="banner--"] {
+  --tag-padding: 0.5rem; /* manually copied from Core-Styles .tag */
+}
+
 [class*="banner--"] :is(h1, h2, h3, h4) {
   margin-bottom: 0;
 }
 
 [class*="banner--"] > a {
   display: block;
+
+  text-decoration: none;
 }
 
 [class*="banner--"] .tag {
@@ -61,16 +67,8 @@
   background: #000000;
 }
 
-/* Banner (Large) */
-
-.banner--large h2 {
-	font-size: var(--global-font-size--xxx-large);
-  font-weight: var(--bold);
-
-	text-transform: uppercase;
-}
 [class*="banner--"] .highlight {
-	padding-inline: 0.5rem;
+	padding-inline: var(--tag-padding);
 
 	color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xxx-dark);
@@ -81,15 +79,44 @@
 	color: var(--global-color-primary--light);
 }
 
-.banner--large figure {
-	position: relative;
+[class*="banner--"] figure {
   margin-bottom: unset; /* undo Botstrap */
 }
+[class*="banner--"] figcaption {
+  padding: 0 3.0rem 5.0rem;
+}
+
+/* Banner (Large) */
+
+.banner--large h2 {
+	font-size: var(--global-font-size--xxx-large);
+  font-weight: var(--bold);
+
+	text-transform: uppercase;
+}
+
+.banner--large figure { position: relative }
 .banner--large figcaption {
 	position: absolute;
   bottom: 0;
   left: 0;
 
 	width: 50%;
-  padding: 5.0rem 3.0rem;
+}
+
+/* Banner (Small) */
+
+.banner--small h2 {
+  color: var(--global-color-primary--xxx-dark);
+  font-weight: revert;
+}
+
+.banner--small figcaption {
+  /* To move text above image before it */
+  position: relative;
+  margin-top: calc( -1 * (
+    /* To move by half the height of the .tag */
+    /* FAQ: Not using `translateY(-50%)` because the h2 must move same amount */
+    var(--tag-padding) + var(--global-font-size--small)/2
+  ));
 }
