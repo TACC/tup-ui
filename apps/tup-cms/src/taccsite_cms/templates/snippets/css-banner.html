@@ -1,86 +1,32 @@
-/* CORE */
-
-/* Settings: Font (CMS) */
-
-:root {
-  --global-font-size--xxx-large: 3.2rem;
-}
-
-
-
-/* Mark & Highlight */
-
-:is(.highlight, mark) {
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-:is(h1, h2, h3, h4).highlight {
-	display: inline;
-}
-
-
-
-/* Tag */
-
-.tag {
-  /* Client must set display (inline-)block|flex|grid|etc. */
-  /* FAQ: We should not assume the display of an element client controls */
-  /* display: inline-block; */
-
-  line-height: 1; /* so padding-block can be consistent */
-  padding: 0.5rem;
-  width: min-content;
-
-  font-size: var(--global-font-size--small);
-  font-weight: var(--bold);
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-
-
-
-
-/* TACC */
-
-
+<link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/settings/font--cms.css" />
+<link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/components/c-tag.css" />
+<link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/trumps/u-highlight.css" />
+<style id="css-banner">
+/* Banner */
+/* TODO: Create a .c-banner */
 
 /* Banner Row */
 
+/* To add (and collapse) white border around each cell */
 .banner-row {
-  margin: 3px;
-  column-gap: 3px;
+  --border-width: var(--global-border-width--x-thick);
+
+  margin: var(--border-width);
+  column-gap: var(--border-width);
 }
 .banner-row.row {
-  display: revert;
+  display: revert; /* undo Bootstrap */
 }
 .banner-row > .col {
-  max-width: unset;
+  max-width: unset; /* undo Bootstrap */
 }
 
 
 
 /* Banner Cell */
 
-/* Settings */
-
 [class*="banner-cell--"] {
-  --tag-padding: 0.5rem; /* manually copied from Core-Styles .tag */
-}
-
-/* Container */
-
-/* To add white border around */
-/* HELP: Do not let borders double up next to each other */
-[class*="banner-cell--"] {
-  --border-width: var(--global-border-width--x-thick);
-  --neg-border-width: calc( -1 * var(--border-width) );
-
-  /*
-  border-width: var(--border-width);
-  border-style: solid;
-  border-color: var(--global-color-primary--xx-light);
-  */
+  --tag-padding: 0.5rem; /* manually copied from ".tag" styles */
 }
 
 /* Elements */
@@ -124,7 +70,9 @@
 	color: var(--global-color-primary--light);
 }
 
-/* Banner (Large) */
+
+
+/* Banner Cell (Major) */
 
 .banner-cell--major h2 {
 	font-size: var(--global-font-size--xxx-large);
@@ -142,7 +90,9 @@
 	width: 50%;
 }
 
-/* Banner (Small) */
+
+
+/* Banner Cell (Minor) */
 
 .banner-cell--minor h2 {
   color: var(--global-color-primary--xxx-dark);
@@ -158,3 +108,4 @@
     var(--tag-padding) + var(--global-font-size--small)/2
   ));
 }
+</style>
