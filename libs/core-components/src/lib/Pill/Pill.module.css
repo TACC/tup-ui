@@ -1,13 +1,14 @@
 @import url('@tacc/core-styles/dist/settings/color.css');
 
 .root {
-  font-weight: 500;
+  font-weight: var(--medium);
+
   padding: 0.2em 0.5em; /* aim for ~23px height (19px design * 1.2 design-to-app ratio) */
   display: inline-block; /* FAQ: Supports `min/max-width` */
   /* min-width: ____; */ /* FAQ: Set only as desired (not always desired) */
   text-align: center;
-  border-radius: 3px;
-  color: var(--global-color-primary--xx-light);
+  border-radius: 0.5em;
+  color: var(--global-color-primary--xx-dark);
 }
 
 /* CAVEAT: This alone may not trigger truncation */
@@ -25,17 +26,21 @@
 }
 
 .is-danger {
-  background-color: var(--global-color-danger--normal);
+  /* FAQ: Danger color is reserved for user error, but this is a system error */
+  background-color: var(--global-color-warning--normal);
 }
-
 .is-success {
   background-color: var(--global-color-success--normal);
 }
-
 .is-warning {
   background-color: var(--global-color-warning--normal);
 }
-
 .is-normal {
-  background-color: var(--global-color-accent--normal);
+  background-color: var(--global-color-extra--light);
+}
+.is-fixed {
+  background-color: var(--global-color-primary--light);
+}
+.is-updated {
+  background-color: #FFF500;
 }
