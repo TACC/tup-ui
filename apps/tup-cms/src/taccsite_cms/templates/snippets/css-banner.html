@@ -2,8 +2,18 @@
 <link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/components/c-tag.css" />
 <link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/trumps/u-highlight.css" />
 <style id="css-banner">
-/* Banner */
-/* TODO: Create a .c-banner */
+/*
+Banner
+
+A list of article previews. Content __must__ use the tags defined by the example markup.
+
+Markup: css-banner--sample-markup.html
+
+Styleguide Components.Banner
+*/
+/* TODO: (1) Evaluate how best to organize styles. (2) Create a .c-banner */
+
+
 
 /* Banner Row */
 
@@ -37,15 +47,28 @@
 
 [class*="banner-cell--"] > a {
   display: block;
+  margin-inline: 3.0rem;
 
   text-decoration: none;
 }
 
-[class*="banner-cell--"] figure {
-  margin-bottom: unset; /* undo Botstrap */
+/* To cover image with link */
+[class*="banner-cell--"] { position: relative; }
+[class*="banner-cell--"] > a::before {
+  content: '';
+  position: absolute; /* CAVEAT: Requires `position: relative` on an ancestor */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
-[class*="banner-cell--"] figcaption {
-  padding: 0 3.0rem 5.0rem;
+
+/* To cover a re-sized image box with the full-size image (like a bkgd image) */
+/* FAQ: If user sets dimension via style, we assume they want this feature */
+[class*="banner-cell--"] > img:where([style*="height"], [style*="width"]) {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 /* Components */
@@ -70,6 +93,11 @@
 	color: var(--global-color-primary--light);
 }
 
+/* To ensure one column has only banner cell (not one-and–a-half nor two) */
+.banner-row[style*="column-count"] [class*="banner-cell--"] {
+  break-before: column;
+}
+
 
 
 /* Banner Cell (Major) */
@@ -81,13 +109,15 @@
 	text-transform: uppercase;
 }
 
-.banner-cell--major figure { position: relative }
-.banner-cell--major figcaption {
-	position: absolute;
-  bottom: 0;
-  left: 0;
-
-	width: 50%;
+/* To move text atop image */
+.banner-cell--major { display: grid; }
+.banner-cell--major > :is(a, img) {
+  grid-row: 1;
+  grid-column: 1;
+}
+.banner-cell--major > a {
+  align-self: end; /* to align text to bottom */
+  margin-bottom: 5.0rem; /* to move text away from bottom */
 }
 
 
@@ -95,17 +125,21 @@
 /* Banner Cell (Minor) */
 
 .banner-cell--minor h2 {
-  color: var(--global-color-primary--xxx-dark);
+  color: var(--global-color-primary--xxx-dark); /* undo core-styles.cms */
   font-weight: revert;
 }
 
-.banner-cell--minor figcaption {
-  /* To move text above image before it */
-  position: relative;
+/* To move text atop image */
+.banner-cell--minor > a {
   margin-top: calc( -1 * (
     /* To move by half the height of the .tag */
     /* FAQ: Not using `translateY(-50%)` because the h2 must move same amount */
-    var(--tag-padding) + var(--global-font-size--small)/2
+    var(--tag-padding) + ( var(--global-font-size--small) / 2 )
   ));
 }
+
+/* To allow image to be underneath text */
+/* FAQ: To just set `position: relative` on `a` is easier,
+        but then `a::before` position would not cover image */
+.banner-cell--minor { display: grid; }
 </style>
