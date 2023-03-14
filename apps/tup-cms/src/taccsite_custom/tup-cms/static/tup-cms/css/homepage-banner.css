@@ -43,23 +43,68 @@
 
 /* TACC */
 
-/* Banner */
 
-[class*="banner--"] {
+
+/* Banner Row */
+
+.banner-row {
+  margin: 3px;
+  column-gap: 3px;
+}
+.banner-row.row {
+  display: revert;
+}
+.banner-row > .col {
+  max-width: unset;
+}
+
+
+
+/* Banner Cell */
+
+/* Settings */
+
+[class*="banner-cell--"] {
   --tag-padding: 0.5rem; /* manually copied from Core-Styles .tag */
 }
 
-[class*="banner--"] :is(h1, h2, h3, h4) {
+/* Container */
+
+/* To add white border around */
+/* HELP: Do not let borders double up next to each other */
+[class*="banner-cell--"] {
+  --border-width: var(--global-border-width--x-thick);
+  --neg-border-width: calc( -1 * var(--border-width) );
+
+  /*
+  border-width: var(--border-width);
+  border-style: solid;
+  border-color: var(--global-color-primary--xx-light);
+  */
+}
+
+/* Elements */
+
+[class*="banner-cell--"] :is(h1, h2, h3, h4) {
   margin-bottom: 0;
 }
 
-[class*="banner--"] > a {
+[class*="banner-cell--"] > a {
   display: block;
 
   text-decoration: none;
 }
 
-[class*="banner--"] .tag {
+[class*="banner-cell--"] figure {
+  margin-bottom: unset; /* undo Botstrap */
+}
+[class*="banner-cell--"] figcaption {
+  padding: 0 3.0rem 5.0rem;
+}
+
+/* Components */
+
+[class*="banner-cell--"] .tag {
   display: block;
   margin-bottom: 2.0rem;
 
@@ -67,7 +112,7 @@
   background: #000000;
 }
 
-[class*="banner--"] .highlight {
+[class*="banner-cell--"] .highlight {
 	padding-inline: var(--tag-padding);
 
 	color: var(--global-color-primary--xx-light);
@@ -75,28 +120,21 @@
 
 	line-height: 1;
 }
-[class*="banner--"] a:is(:hover, :active) .highlight {
+[class*="banner-cell--"] a:is(:hover, :active) .highlight {
 	color: var(--global-color-primary--light);
-}
-
-[class*="banner--"] figure {
-  margin-bottom: unset; /* undo Botstrap */
-}
-[class*="banner--"] figcaption {
-  padding: 0 3.0rem 5.0rem;
 }
 
 /* Banner (Large) */
 
-.banner--large h2 {
+.banner-cell--major h2 {
 	font-size: var(--global-font-size--xxx-large);
   font-weight: var(--bold);
 
 	text-transform: uppercase;
 }
 
-.banner--large figure { position: relative }
-.banner--large figcaption {
+.banner-cell--major figure { position: relative }
+.banner-cell--major figcaption {
 	position: absolute;
   bottom: 0;
   left: 0;
@@ -106,12 +144,12 @@
 
 /* Banner (Small) */
 
-.banner--small h2 {
+.banner-cell--minor h2 {
   color: var(--global-color-primary--xxx-dark);
   font-weight: revert;
 }
 
-.banner--small figcaption {
+.banner-cell--minor figcaption {
   /* To move text above image before it */
   position: relative;
   margin-top: calc( -1 * (
