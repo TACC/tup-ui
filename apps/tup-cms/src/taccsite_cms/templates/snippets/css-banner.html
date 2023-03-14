@@ -31,6 +31,18 @@ Styleguide Components.Banner
   max-width: unset; /* undo Bootstrap */
 }
 
+@media (width < 576px) {
+  .banner-row[style*="column-count"] {
+    column-count: 1 !important /* to overwrite inline style */;
+  }
+}
+@media (width >= 576px) {
+  /* To ensure 1 column has only 1 banner cell (not 1.N nor 2 banner cells) */
+  .banner-row[style*="column-count"] [class*="banner-cell--"] {
+    break-before: column;
+  }
+}
+
 
 
 /* Banner Cell */
@@ -91,11 +103,6 @@ Styleguide Components.Banner
 }
 [class*="banner-cell--"] a:is(:hover, :active) .highlight {
 	color: var(--global-color-primary--light);
-}
-
-/* To ensure one column has only banner cell (not one-and–a-half nor two) */
-.banner-row[style*="column-count"] [class*="banner-cell--"] {
-  break-before: column;
 }
 
 
