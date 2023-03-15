@@ -26,8 +26,7 @@
 }
 
 .is-danger {
-  /* FAQ: Danger color is reserved for user error, but this is a system error */
-  background-color: var(--global-color-warning--normal);
+  background-color: var(--global-color-danger--light);
 }
 .is-success {
   background-color: var(--global-color-success--normal);
