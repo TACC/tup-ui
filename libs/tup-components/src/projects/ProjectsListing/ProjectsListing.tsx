@@ -9,6 +9,24 @@ const isActive = (project: ProjectsRawSystem): boolean => {
   return (project.allocations ?? []).some((alloc) => alloc.status === 'Active');
 };
 
+const ProjectsEmptyPlaceholder = () => {
+  return (
+    <div className={styles['projects-empty']}>
+      <div>
+        No projects or allocations found.{' '}
+        <a
+          href="https://submit-tacc.xras.org/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Create a new project on TXRAS
+        </a>
+        .
+      </div>
+    </div>
+  );
+};
+
 export const ProjectsListing: React.FC = () => {
   const { data, isLoading, error } = useProjects();
   const location = useLocation();
@@ -24,6 +42,8 @@ export const ProjectsListing: React.FC = () => {
     return (
       <InlineMessage type="warning">Unable to retrieve projects.</InlineMessage>
     );
+
+  if (!data?.length) return <ProjectsEmptyPlaceholder />;
 
   return (
     <ul className={styles['project-listing']}>

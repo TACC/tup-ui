@@ -64,3 +64,15 @@
 .projects-listing-navbar > a > div {
     padding-left: var(--global-space--section-left);
 }
+
+/* Placeholder */
+.projects-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.projects-empty > :first-child {
+    padding: 50px 100px 50px 100px;
+    border: 1px solid var(--global-color-primary--dark);
+}
