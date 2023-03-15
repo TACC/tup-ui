@@ -90,7 +90,7 @@ export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
               <td>{ticket.numerical_id}</td>
               <td>
                 <Link to={`${ticketsPath}/${ticket.numerical_id}`}>
-                  {ticket.Subject}
+                  {ticket.Subject || '(No Subject)'}
                 </Link>{' '}
                 <AttachmentIndicator ticketId={ticket.numerical_id} />
               </td>
