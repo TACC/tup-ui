@@ -2,7 +2,6 @@
   --table-border: 1px solid black;
 
   margin: 0;
-  width: 100%;
 }
 
 .rows tr:nth-child(even) {
