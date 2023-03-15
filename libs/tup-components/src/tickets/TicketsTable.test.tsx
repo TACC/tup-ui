@@ -28,7 +28,7 @@ describe('Tickets Table Component', () => {
       })
     );
     const { getByText } = testRender(<TicketsTable />);
-    await waitFor(() => expect(getByText(/No tickets. You can/)).toBeDefined());
+    await waitFor(() => expect(getByText(/You have not added any tickets/)).toBeDefined());
   });
   it('should display an error message if an error is returned from useQuery', async () => {
     server.use(
