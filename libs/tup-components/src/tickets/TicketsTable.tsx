@@ -70,7 +70,7 @@ export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
 
   return (
     <div className="o-fixed-header-table">
-      <table style={{ width: '100%' }}>
+      <table>
         <thead>
           <tr>
             <th>Ticket Number</th>
