@@ -73,6 +73,6 @@
 }
 
 .projects-empty > :first-child {
-    padding: 50px 100px 50px 100px;
+    padding: 50px;
     border: 1px solid var(--global-color-primary--dark);
 }

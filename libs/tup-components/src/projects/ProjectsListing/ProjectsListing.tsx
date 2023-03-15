@@ -1,4 +1,8 @@
-import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
+import {
+  LoadingSpinner,
+  InlineMessage,
+  SectionMessage,
+} from '@tacc/core-components';
 import { ProjectSummary } from './ProjectSummary';
 import { ProjectsListingAllocationTable } from './ProjectsListingAllocationTable';
 import { ProjectsRawSystem, useProjects } from '@tacc/tup-hooks';
@@ -12,7 +16,7 @@ const isActive = (project: ProjectsRawSystem): boolean => {
 const ProjectsEmptyPlaceholder = () => {
   return (
     <div className={styles['projects-empty']}>
-      <div>
+      <SectionMessage type="warning">
         No projects or allocations found.{' '}
         <a
           href="https://submit-tacc.xras.org/"
@@ -22,7 +26,7 @@ const ProjectsEmptyPlaceholder = () => {
           Create a new project on TXRAS
         </a>
         .
-      </div>
+      </SectionMessage>
     </div>
   );
 };
