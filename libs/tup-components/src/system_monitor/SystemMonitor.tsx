@@ -7,7 +7,6 @@ import {
 } from '@tacc/core-components';
 import { Display, Operational, Load } from './SystemMonitorCells';
 import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
-import styles from './SystemMonitor.module.css';
 
 export const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
   if (
@@ -64,32 +63,24 @@ export const SystemMonitorTable: React.FC = () => {
 
   if (error) {
     return (
-      <InlineMessage type="warning" className={'error'}>
+      <InlineMessage type="warning">
         Unable to gather system information
       </InlineMessage>
     );
   }
 
   return (
-    <table
-      {...getTableProps()}
-      // Emulate <InfiniteScrollTable> and its use of `o-fixed-header-table`
-      // TODO: Create global table styles & Make <InfiniteScrollTable> use them
-      className={`multi-system InfiniteScrollTable o-fixed-header-table ${styles['root']}`}
-    >
+    <table {...getTableProps()} className="o-fixed-header-table">
       <thead>
         {headerGroups.map((headerGroup) => (
-          <tr
-            {...headerGroup.getHeaderGroupProps()}
-            className={styles['header']}
-          >
+          <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
               <th key={column.id}>{column.render('Header')}</th>
             ))}
           </tr>
         ))}
       </thead>
-      <tbody {...getTableBodyProps()} className={styles['rows']}>
+      <tbody {...getTableBodyProps()}>
         {rows.length ? (
           rows.map((row, idx) => {
             prepareRow(row);
@@ -103,7 +94,11 @@ export const SystemMonitorTable: React.FC = () => {
           })
         ) : (
           <tr>
-            <td colSpan={5}>No systems being monitored</td>
+            <td colSpan={5}>
+              <InlineMessage type="info">
+                No systems being monitored
+              </InlineMessage>
+            </td>
           </tr>
         )}
       </tbody>
