@@ -13,7 +13,8 @@ describe('Projects Table Component', () => {
     );
     const { getByText } = testRender(<ProjectsTable />);
     await waitFor(() =>
-      expect(getByText('No projects or allocations found.')).toBeDefined());
+      expect(getByText('No projects or allocations found.')).toBeDefined()
+    );
   });
 
   it('should display the projects table', async () => {
