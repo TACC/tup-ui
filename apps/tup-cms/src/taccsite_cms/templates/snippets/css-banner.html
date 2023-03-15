@@ -31,6 +31,18 @@ Styleguide Components.Banner
   max-width: unset; /* undo Bootstrap */
 }
 
+@media (width < 576px) {
+  .banner-row[style*="column-count"] {
+    column-count: 1 !important /* to overwrite inline style */;
+  }
+}
+@media (width >= 576px) {
+  /* To ensure 1 column has only 1 banner cell (not 1.N nor 2 banner cells) */
+  .banner-row[style*="column-count"] [class*="banner-cell--"] {
+    break-before: column;
+  }
+}
+
 
 
 /* Banner Cell */
@@ -45,16 +57,26 @@ Styleguide Components.Banner
   margin-bottom: 0;
 }
 
-[class*="banner-cell--"] > a {
+[class*="banner-cell--"] figure /* "Figure" Layout */ {
+  margin-bottom: unset; /* undo Bootstrap */
+}
+
+[class*="banner-cell--"] > img + a /* "Image & Link" Layout */,
+[class*="banner-cell--"] figcaption /* "Figure" Layout */ {
   display: block;
   margin-inline: 3.0rem;
+}
 
+/* To remove standard link text docoration */
+[class*="banner-cell--"] > img + a /* "Image & Link" Layout */,
+[class*="banner-cell--"] > a:only-child /* "Figure" Layout */ {
   text-decoration: none;
 }
 
 /* To cover image with link */
+/* FAQ: "Figure" layout does not need this because it is wrapped in a link */
 [class*="banner-cell--"] { position: relative; }
-[class*="banner-cell--"] > a::before {
+[class*="banner-cell--"] > img + a::before /* "Image & Link" Layout */ {
   content: '';
   position: absolute; /* CAVEAT: Requires `position: relative` on an ancestor */
   top: 0;
@@ -65,7 +87,10 @@ Styleguide Components.Banner
 
 /* To cover a re-sized image box with the full-size image (like a bkgd image) */
 /* FAQ: If user sets dimension via style, we assume they want this feature */
-[class*="banner-cell--"] > img:where([style*="height"], [style*="width"]) {
+/* "Image & Link" Layout */
+[class*="banner-cell--"] > img:where([style*="height"], [style*="width"]),
+/* "Figure" Layout */
+[class*="banner-cell--"] figure:where([style*="height"], [style*="width"]) img {
   object-fit: cover;
   height: 100%;
   width: 100%;
@@ -93,9 +118,17 @@ Styleguide Components.Banner
 	color: var(--global-color-primary--light);
 }
 
-/* To ensure one column has only banner cell (not one-and–a-half nor two) */
-.banner-row[style*="column-count"] [class*="banner-cell--"] {
-  break-before: column;
+/* To allow image to be underneath text */
+/* FAQ: To just set `position: relative` on `img + a` is easier,
+        but then `a::before` position would not cover image */
+[class*="banner-cell--"] /* "Image & Link" Layout */,
+[class*="banner-cell--"] figure /* "Figure" Layout */ {
+  display: grid;
+
+  /* "Figure" Layout */
+  /* To force % image height to match its container (i.e. <figure>) */
+  /* https://stackoverflow.com/a/52137966/11817077 */
+  grid-template-rows: minmax( 0, 1fr );
 }
 
 
@@ -110,12 +143,13 @@ Styleguide Components.Banner
 }
 
 /* To move text atop image */
-.banner-cell--major { display: grid; }
-.banner-cell--major > :is(a, img) {
+.banner-cell--major > :is(img, img + a) /* "Image & Link" Layout */,
+.banner-cell--major :is(figure > img, img + figcaption) /* "Figure" Layout */ {
   grid-row: 1;
   grid-column: 1;
 }
-.banner-cell--major > a {
+.banner-cell--major > img + a /* "Image & Link" Layout */,
+.banner-cell--major figcaption /* "Figure" Layout */ {
   align-self: end; /* to align text to bottom */
   margin-bottom: 5.0rem; /* to move text away from bottom */
 }
@@ -130,16 +164,12 @@ Styleguide Components.Banner
 }
 
 /* To move text atop image */
-.banner-cell--minor > a {
+.banner-cell--minor > img + a /* "Image & Link" Layout */,
+.banner-cell--minor figcaption /* "Figure" Layout */ {
   margin-top: calc( -1 * (
     /* To move by half the height of the .tag */
     /* FAQ: Not using `translateY(-50%)` because the h2 must move same amount */
     var(--tag-padding) + ( var(--global-font-size--small) / 2 )
   ));
 }
-
-/* To allow image to be underneath text */
-/* FAQ: To just set `position: relative` on `a` is easier,
-        but then `a::before` position would not cover image */
-.banner-cell--minor { display: grid; }
 </style>

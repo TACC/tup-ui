@@ -1,0 +1,7 @@
+.impersonate-container {
+    padding: var(--global-space--section);
+}
+
+.impersonate-container > div {
+    padding-top: 10px;
+}
