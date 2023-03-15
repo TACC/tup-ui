@@ -4,6 +4,7 @@ import { Icon, InlineMessage, LoadingSpinner } from '@tacc/core-components';
 import { Ticket, useGetTicketHistory, useGetTickets } from '@tacc/tup-hooks';
 import './TicketsTable.global.css';
 import { formatDate } from '../utils/timeFormat';
+import { EmptyTablePlaceholder } from '../utils';
 
 const TICKETS_DASHBOARD_DISPLAY_LIMIT = 12;
 
@@ -62,12 +63,6 @@ export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
     );
   }
 
-  if (data && data.length === 0) {
-    return (
-      <>No tickets. You can add a ticket by clicking "New Ticket" above.</>
-    );
-  }
-
   return (
     <div className="o-fixed-header-table">
       <table>
@@ -80,24 +75,32 @@ export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
           </tr>
         </thead>
         <tbody>
-          {ticketData.map((ticket) => (
-            <tr
-              key={ticket.numerical_id}
-              className={
-                ticket.Status === 'user_wait' ? 'ticket-reply-required' : ''
-              }
-            >
-              <td>{ticket.numerical_id}</td>
-              <td>
-                <Link to={`${ticketsPath}/${ticket.numerical_id}`}>
-                  {ticket.Subject || '(No Subject)'}
-                </Link>{' '}
-                <AttachmentIndicator ticketId={ticket.numerical_id} />
+          {ticketData && ticketData.length ? (
+            ticketData.map((ticket) => (
+              <tr
+                key={ticket.numerical_id}
+                className={
+                  ticket.Status === 'user_wait' ? 'ticket-reply-required' : ''
+                }
+              >
+                <td>{ticket.numerical_id}</td>
+                <td>
+                  <Link to={`${ticketsPath}/${ticket.numerical_id}`}>
+                    {ticket.Subject || '(No Subject)'}
+                  </Link>{' '}
+                  <AttachmentIndicator ticketId={ticket.numerical_id} />
+                </td>
+                <td>{formatDate(new Date(ticket.Created))}</td>
+                <td>{getStatusText(ticket.Status)}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={4}>
+                <EmptyTablePlaceholder componentName="Tickets" />
               </td>
-              <td>{formatDate(new Date(ticket.Created))}</td>
-              <td>{getStatusText(ticket.Status)}</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

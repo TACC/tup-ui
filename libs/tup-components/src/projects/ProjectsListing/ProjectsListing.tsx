@@ -1,34 +1,13 @@
-import {
-  LoadingSpinner,
-  InlineMessage,
-  SectionMessage,
-} from '@tacc/core-components';
+import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { ProjectSummary } from './ProjectSummary';
 import { ProjectsListingAllocationTable } from './ProjectsListingAllocationTable';
 import { ProjectsRawSystem, useProjects } from '@tacc/tup-hooks';
+import { EmptyTablePlaceholder } from '../../utils';
 import { useLocation } from 'react-router-dom';
 import styles from './ProjectsListing.module.css';
 
 const isActive = (project: ProjectsRawSystem): boolean => {
   return (project.allocations ?? []).some((alloc) => alloc.status === 'Active');
-};
-
-const ProjectsEmptyPlaceholder = () => {
-  return (
-    <div className={styles['projects-empty']}>
-      <SectionMessage type="warning">
-        No projects or allocations found.{' '}
-        <a
-          href="https://submit-tacc.xras.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Create a new project on TXRAS
-        </a>
-        .
-      </SectionMessage>
-    </div>
-  );
 };
 
 export const ProjectsListing: React.FC = () => {
@@ -47,7 +26,7 @@ export const ProjectsListing: React.FC = () => {
       <InlineMessage type="warning">Unable to retrieve projects.</InlineMessage>
     );
 
-  if (!data?.length) return <ProjectsEmptyPlaceholder />;
+  if (!data?.length) return <EmptyTablePlaceholder componentName="Projects" />;
 
   return (
     <ul className={styles['project-listing']}>

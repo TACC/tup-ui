@@ -2,6 +2,7 @@ import React from 'react';
 import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { ProjectsAllocations, useProjects } from '@tacc/tup-hooks';
 import { Link } from 'react-router-dom';
+import { EmptyTablePlaceholder } from '../utils';
 
 const allocationDisplay = (allocations: ProjectsAllocations[]) => {
   return allocations.length
@@ -54,7 +55,9 @@ export const ProjectsTable: React.FC = () => {
             ))
           ) : (
             <tr>
-              <td colSpan={3}>No active projects found.</td>
+              <td colSpan={3}>
+                <EmptyTablePlaceholder componentName="Projects" />
+              </td>
             </tr>
           )}
         </tbody>
