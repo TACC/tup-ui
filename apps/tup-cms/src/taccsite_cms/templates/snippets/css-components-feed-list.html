@@ -47,6 +47,7 @@
     'time link'
     'name link'
     'desc link';
+  grid-template-columns: 1fr auto; /* to not let short desc make short column */
 
   padding-block: 10px;
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
@@ -65,7 +66,8 @@
 }
 
 .c-feed-list > :is(div, article) > p {
-  margin-bottom: unset;
+  /* WARNING: Value is guess-n-check; prevents unexplained visibile 3rd line */
+  margin-bottom: 1.15rem;
 
   /* TODO: When migrated to core-styles, use @extend instead */
   /* @extend .x-truncate--many-lines; */
