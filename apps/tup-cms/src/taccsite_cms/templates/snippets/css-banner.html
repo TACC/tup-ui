@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/settings/font--cms.css" />
-<link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/components/c-tag.css" />
 <link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/trumps/u-highlight.css" />
 <style id="css-banner">
 /*
@@ -48,13 +47,21 @@ Styleguide Components.Banner
 /* Banner Cell */
 
 [class*="banner-cell--"] {
-  --tag-padding: 0.5rem; /* manually copied from ".tag" styles */
+  --tag-padding: 0.5rem; /* manually copied from .c-tag styles */
 }
 
 /* Elements */
 
 [class*="banner-cell--"] :is(h1, h2, h3, h4) {
   margin-bottom: 0;
+}
+
+[class*="banner-cell--"] a:is(:hover, :active)::before /* "Image & Link" Layout */,
+[class*="banner-cell--"] a:is(:hover, :active):only-child /* "Figure" Layout */ {
+	outline-width: var(--global-border-width--thick);
+  outline-style: solid;
+  outline-color: var(--global-color-primary--xxx-dark);
+	outline-offset: calc( -1 * var(--global-border-width--thick) );
 }
 
 [class*="banner-cell--"] figure /* "Figure" Layout */ {
@@ -65,6 +72,7 @@ Styleguide Components.Banner
 [class*="banner-cell--"] figcaption /* "Figure" Layout */ {
   display: block;
   margin-inline: 3.0rem;
+  margin-bottom: 3.0rem;
 }
 
 /* To remove standard link text docoration */
@@ -98,12 +106,10 @@ Styleguide Components.Banner
 
 /* Components */
 
-[class*="banner-cell--"] .tag {
+[class*="banner-cell--"] .c-tag,
+[class*="banner-cell--"] [class*="tag--"] {
   display: block;
   margin-bottom: 2.0rem;
-
-  color: #ffffff;
-  background: #000000;
 }
 
 [class*="banner-cell--"] .highlight {
@@ -113,9 +119,6 @@ Styleguide Components.Banner
   background-color: var(--global-color-primary--xxx-dark);
 
 	line-height: 1;
-}
-[class*="banner-cell--"] a:is(:hover, :active) .highlight {
-	color: var(--global-color-primary--light);
 }
 
 /* To allow image to be underneath text */
@@ -167,7 +170,7 @@ Styleguide Components.Banner
 .banner-cell--minor > img + a /* "Image & Link" Layout */,
 .banner-cell--minor figcaption /* "Figure" Layout */ {
   margin-top: calc( -1 * (
-    /* To move by half the height of the .tag */
+    /* To move by half the height of the .c-tag */
     /* FAQ: Not using `translateY(-50%)` because the h2 must move same amount */
     var(--tag-padding) + ( var(--global-font-size--small) / 2 )
   ));
