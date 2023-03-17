@@ -21,9 +21,6 @@ services:
       - ../../apps/tup-ui/src/assets:/code/taccsite_cms/static/src/assets
       - ../../dist/apps/tup-cms-react/assets:/code/taccsite_cms/static/cms-react/assets
       - ../../apps/tup-cms-react/imports.debug.html:/code/taccsite_cms/templates/tup-cms-react.html
-      # TODO: Migrate assets to TACC/Core-CMS and remove this
-      - ./src/taccsite_cms/templates/admin/djangocms_icon:/code/taccsite_cms/templates/admin/djangocms_icon
-      - ./src/taccsite_cms/templates/djangocms_icon:/code/taccsite_cms/templates/djangocms_icon
     networks:
       - tup_cms_net
 
