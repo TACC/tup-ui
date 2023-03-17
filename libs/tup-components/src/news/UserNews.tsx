@@ -38,7 +38,7 @@ const UserNews: React.FC = () => {
               <div className={styles['posted-date']}>
                 <span>Posted {formatDate(newsItem.PostedDate)} </span>
                 {newsItem.Updates && (
-                  <Pill type="warning" className={styles['status-pill']}>
+                  <Pill type="updated" className={styles['status-pill']}>
                     Updated
                   </Pill>
                 )}
