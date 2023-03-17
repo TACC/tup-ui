@@ -7,6 +7,10 @@
     padding-left: var(--global-space--section-left);
 }
 
+.project-section > div > header button {
+    margin-right: var(--global-space--section-right);
+}
+
 .project-section nav {
     margin-top: -15px;
 }
