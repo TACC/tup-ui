@@ -1,0 +1,12 @@
+{
+    "svg": true,
+    "spritePath": "tup-cms/img/sprites/decorations.svg",
+    "// iconClass": "Must be blank or svg template <use> hash includes a space",
+    "iconClass": "",
+    "icons": [
+        "tacc-formal",
+        "nsf-logo",
+        "ut-informal",
+        "ut-primary"
+    ]
+}

@@ -2,6 +2,12 @@
 # TACC WMA CMS SITE:
 # *.TUP.TACC.UTEXAS.EDU
 
+import os
+
+from django.utils.translation import gettext_lazy as _
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 ########################
 # DJANGO CMS SETTINGS
 ########################
@@ -166,3 +172,27 @@ TACC_CORE_STYLES_VERSION = 1
 
 # https://github.com/django-cms/django-filer/blob/2.0.2/docs/permissions.rst
 FILER_ENABLE_PERMISSIONS = True
+
+
+
+# https://github.com/django-cms/djangocms-icon
+
+DECOR_ICONFILE = os.path.join(
+  BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 'tup-cms', 'img', 'sprites', 'decorations.json'
+)
+with open(DECOR_ICONFILE) as fh:
+    DECOR_ICONSET = fh.read()
+
+CORTAL_ICONFILE = os.path.join(
+  BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 'tup-cms', 'img', 'icons', 'cortal.json'
+)
+with open(CORTAL_ICONFILE) as fh:
+    CORTAL_ICONSET = fh.read()
+
+DJANGOCMS_ICON_SETS = [
+    # The SVG icon set must be first or icon selection is not remembered on edit
+    # HELP: Icon previews are blank if editor switches from SVG set to icon set
+    # https://github.com/django-cms/djangocms-icon/issues/9
+    (DECOR_ICONSET, '', _('(TACC) SVGs (choose SVG template)')),
+    (CORTAL_ICONSET, 'icon', _('(TACC) Cortal Icons')),
+]
