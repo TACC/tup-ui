@@ -177,22 +177,14 @@ FILER_ENABLE_PERMISSIONS = True
 
 # https://github.com/django-cms/djangocms-icon
 
-DECOR_ICONFILE = os.path.join(
-  BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 'tup-cms', 'img', 'sprites', 'decorations.json'
-)
-with open(DECOR_ICONFILE) as fh:
-    DECOR_ICONSET = fh.read()
+from taccsite_cms.settings import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
 
-CORTAL_ICONFILE = os.path.join(
-  BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 'tup-cms', 'img', 'icons', 'cortal.json'
+DECAL_ICONFILE = os.path.join(
+  BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 'tup-cms', 'img', 'icons', 'decals.json'
 )
-with open(CORTAL_ICONFILE) as fh:
-    CORTAL_ICONSET = fh.read()
+with open(DECAL_ICONFILE) as fh:
+    DECAL_ICONS = fh.read()
 
 DJANGOCMS_ICON_SETS = [
-    # The SVG icon set must be first or icon selection is not remembered on edit
-    # HELP: Icon previews are blank if editor switches from SVG set to icon set
-    # https://github.com/django-cms/djangocms-icon/issues/9
-    (DECOR_ICONSET, '', _('(TACC) SVGs (choose SVG template)')),
-    (CORTAL_ICONSET, 'icon', _('(TACC) Cortal Icons')),
-]
+    (DECAL_ICONS, '', _('(TACC) SVGs (choose SVG template)')),
+] + CORECMS_ICON_SETS
