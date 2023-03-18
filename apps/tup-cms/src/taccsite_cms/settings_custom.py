@@ -174,17 +174,15 @@ TACC_CORE_STYLES_VERSION = 1
 FILER_ENABLE_PERMISSIONS = True
 
 
-
+# DJANGOCMS_ICON SETTINGS
 # https://github.com/django-cms/djangocms-icon
 
 from taccsite_cms.settings import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
 
-DECAL_ICONFILE = os.path.join(
-  BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 'tup-cms', 'img', 'icons', 'decals.json'
-)
-with open(DECAL_ICONFILE) as fh:
+DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 'tup-cms', 'img', 'icons', 'decals.json')
+with open(DECAL_ICONFILE, 'r') as fh:
     DECAL_ICONS = fh.read()
 
 DJANGOCMS_ICON_SETS = [
-    (DECAL_ICONS, '', _('(TACC) SVGs (choose SVG template)')),
+    (DECAL_ICONS, '', _('TACC Decal SVGs')),
 ] + CORECMS_ICON_SETS
