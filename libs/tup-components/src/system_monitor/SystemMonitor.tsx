@@ -7,6 +7,7 @@ import {
 } from '@tacc/core-components';
 import { Display, Operational, Load } from './SystemMonitorCells';
 import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
+import styles from './SystemMonitor.module.css';
 
 export const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
   if (
@@ -70,7 +71,10 @@ export const SystemMonitorTable: React.FC = () => {
   }
 
   return (
-    <table {...getTableProps()} className="o-fixed-header-table">
+    <table
+      {...getTableProps()}
+      className={`o-fixed-header-table ${styles.root}`}
+    >
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
