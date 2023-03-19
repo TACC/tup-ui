@@ -2,6 +2,7 @@
 
 .root {
   font-weight: var(--medium);
+  font-size: var(--global-font-size--small);
 
   padding: 0.2em 0.5em; /* aim for ~23px height (19px design * 1.2 design-to-app ratio) */
   display: inline-block; /* FAQ: Supports `min/max-width` */
