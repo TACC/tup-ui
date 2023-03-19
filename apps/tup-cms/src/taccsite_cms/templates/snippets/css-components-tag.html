@@ -1,4 +1,3 @@
-<link id="css-components-tags--core" rel="stylesheet" href="/static/tup-cms/css/for-core-styles/components/c-tag.css" />
 <style id="css-components-tags--tacc">
 .c-tag,
 [class*="tag--"] {
@@ -6,22 +5,43 @@
   margin-bottom: 2.0rem;
 
   color: var(--global-color-primary--xx-light);
+
+  font-size: var(--global-font-size--small);
 }
-[class*="tag--press_release"] {
+
+/* Press Release */
+[class*="tag--pr"],
+.blog-category-press-release {
   background: #723B0C;
 }
-[class*="tag--qa"] {
+
+/* Q&A, Human Interest */
+[class*="tag--qa"],
+.blog-category-qa,
+.blog-category-welcome-profile,
+.blog-category-staff-highlight {
   background: var(--global-color-accent--light);
 }
-[class*="tag--media"] {
+
+/* Has Video, Audio, or other media beyond statc image */
+[class*="tag--media"],
+.blog-category-podcast,
+.blog-category-multimedia {
   background: var(--global-color-primary--dark);
 }
+
+/* System Status Update */
 [class*="tag--system"] {
   background: var(--global-color-tertiary--normal);
 }
-[class*="tag--featured"] {
+
+/* Feature Story (different than a "featured" article) */
+[class*="tag--feature"],
+.blog-category-feature-story {
   background: var(--global-color-accent--normal);
 }
+
+/* External Article */
 [class*="tag--external"] {
   background: var(--global-color-secondary--normal);
 }
