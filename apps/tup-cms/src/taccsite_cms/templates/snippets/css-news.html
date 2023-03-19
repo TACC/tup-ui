@@ -2,6 +2,12 @@
 /* TODO: Integrate appropriate styles into Core-CMS */
 /* TODO: Consider CMS setting to hide `.blog-visual` */
 
+/* On article list, to undo inline content styles */
+/* FAQ: In case author pasted such markup from another source */
+.blog-list article .blog-lead [style] {
+    all: revert !important; /* force undo all inline styles */
+}
+
 /* On article page, to undo inline content styles */
 /* FAQ: In case author pasted such markup from another source */
 .blog-content [style]:not(
