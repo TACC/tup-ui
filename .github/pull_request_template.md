@@ -1,15 +1,15 @@
-## Overview:
+## Overview
 
-## Related:
+## Related
 
 - [TUP-1234](https://jira.tacc.utexas.edu/browse/TUP-1234)
 
-## Changes:
+## Changes
 
-## Testing:
+## Testing
 
 1.
 
-## UI:
+## UI
 
-## Notes:
+## Notes
