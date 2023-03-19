@@ -1,0 +1,20 @@
+<style id="css-news--tacc">
+/* To add space beneath image whose <p> trapped inside it the text beneath */
+/* NOTE: W.B. does NOT know how the text gets trapped with image in one <p> */
+/* HELP: Do not integrate into Core unless the use case is real and clarified */
+.blog-content > p:first-child > img:not(:only-child) {
+    margin-bottom: 2rem; /* mimic core-styles.cms <p> margin-bottom */
+}
+
+/* On article page, to hide automatic main image */
+/* TODO: Consider CMS setting to hide `.blog-visual` */
+article.post-detail .blog-visual {
+    display: none;
+}
+
+/* On article page, to hide "RELATED POSTS:" */
+/* TODO: Style "RELATED POSTS:" output */
+article.post-detail .post-detail-list {
+    display: none;
+}
+</style>

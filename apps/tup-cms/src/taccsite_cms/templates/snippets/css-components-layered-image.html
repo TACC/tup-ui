@@ -1,5 +1,5 @@
 <!-- CSS: Components: Layered Image — RELATED STYLES -->
-<style>
+<style id="components-layered-image--header-and-section-tweaks">
 /* TODO: Integrate into Core-CMS */
 
 /* So <main> content (e.g. `.c-layered-image`) does not appear atop header */
@@ -27,12 +27,13 @@ body > header {
 
 
 <!-- CSS: Components: Layered Image — Fix Raw Image Size -->
-<style>
+<style id="components-layered-image--fix-image-size">
 /* All images are uploaded at @2x */
 /* HELP: How can we use @2x and @4x to support retina displays */
 :is(.layered-image, [class*="layered-image--"])
 > :is(.align-left, .align-left--oversized, .align-right, .align-center) {
-    transform: scale(50%);
+    /* transform: scale(50%); *//* To fix image size */
+    transform: scale(40%); /* To fix then tweak image size */
 }
 /* FAQ: Some images are off by a different size than the others... */
 :is(.layered-image, [class*="layered-image--"]) > img[src*="/paperclip"],
@@ -56,7 +57,7 @@ body > header {
 
 
 <!-- CSS: Components: Layered Image -->
-<style>
+<style id="components-layered-image">
 /* TODO: Integrate into Core-CMS */
 /* TODO: Pull component to right LIKE DESIGN (or use o-offset-content) */
 /* CAVEAT: Does NOT yet support the offset of main image as shown in design */

@@ -1,0 +1,135 @@
+<style id="css-settings-color">
+
+/* To change accent to blue for header and CMS,
+  but not Portal */
+/* TODO: When TACC/tup-ui:/apps/tup-cms supports custom styles,
+  add these */
+.s-header,
+body>main> :not(#root) {
+  --global-color-accent--xxx-light: #dfeafe;
+  --global-color-accent--xx-light: #caddfe;
+  --global-color-accent--x-light: #AAC7FF;
+  --global-color-accent--light: #86aeff;
+  --global-color-accent--normal: #003399;
+  --global-color-accent--dark: #002266;
+  --global-color-accent--x-dark: #001133;
+  --global-color-accent--xx-dark: #021230;
+  --global-color-accent--xxx-dark: #000a22;
+}
+
+/* To change accent to blue in very specific DARK contexts */
+.c-footer,
+/* NOTE: Based on TACC/Core-Styles@2.1.0:/…/generics/color */
+:where(
+  .c-recognition--style-dark:not(
+    .c-recognition--style-light *,
+    .o-section--style-muted *,
+    .section--muted *,
+    .o-section--style-light *,
+    .section--dark *,
+    .c-card--standard *,
+    .card--standard *,
+    .c-card--standard-1 *,
+    .c-card--standard-2 *,
+    .c-card--standard-3 *,
+    .c-card--plain *,
+    .card--plain *,
+    [class*=card--plain-] *
+  ),
+  .o-section--style-dark:not(
+    .c-recognition--style-light *,
+    .o-section--style-muted *,
+    .section--muted *,
+    .o-section--style-light *,
+    .section--dark *,
+    .c-card--standard *,
+    .card--standard *,
+    .c-card--standard-1 *,
+    .c-card--standard-2 *,
+    .c-card--standard-3 *,
+    .c-card--plain *,
+    .card--plain *,
+    [class*=card--plain-] *
+  ),
+  .section--dark:not(
+    .c-recognition--style-light *,
+    .o-section--style-muted *,
+    .section--muted *,
+    .o-section--style-light *,
+    .section--dark *,
+    .c-card--standard *,
+    .card--standard *,
+    .c-card--standard-1 *,
+    .c-card--standard-2 *,
+    .c-card--standard-3 *,
+    .c-card--plain *,
+    .card--plain *,
+    [class*=card--plain-] *
+  )
+) {
+  --global-color-accent--xxx-light: #f3f7fe;
+  --global-color-accent--xx-light: #dfeafe;
+  --global-color-accent--x-light: #caddfe;
+  --global-color-accent--light: #AAC7FF;
+  --global-color-accent--normal: #86aeff;
+  --global-color-accent--dark: #003399;
+  --global-color-accent--x-dark: #002266;
+  --global-color-accent--xx-dark: #001133;
+  --global-color-accent--xxx-dark: #021230;
+}
+
+/* To change accent to blue in very specific LIGHT contexts */
+/* NOTE: Based on TACC/Core-Styles@2.1.0:/…/generics/color */
+:where(
+  .c-recognition--style-dark .c-recognition--style-light,
+  .c-recognition--style-dark .o-section--style-muted,
+  .c-recognition--style-dark .section--muted,
+  .c-recognition--style-dark .o-section--style-light,
+  .c-recognition--style-dark .section--dark,
+  .c-recognition--style-dark .c-card--standard,
+  .c-recognition--style-dark .card--standard,
+  .c-recognition--style-dark .c-card--standard-1,
+  .c-recognition--style-dark .c-card--standard-2,
+  .c-recognition--style-dark .c-card--standard-3,
+  .c-recognition--style-dark .c-card--plain,
+  .c-recognition--style-dark .card--plain,
+  .c-recognition--style-dark [class*=card--plain-],
+  .o-section--style-dark .c-recognition--style-light,
+  .o-section--style-dark .o-section--style-muted,
+  .o-section--style-dark .section--muted,
+  .o-section--style-dark .o-section--style-light,
+  .o-section--style-dark .section--dark,
+  .o-section--style-dark .c-card--standard,
+  .o-section--style-dark .card--standard,
+  .o-section--style-dark .c-card--standard-1,
+  .o-section--style-dark .c-card--standard-2,
+  .o-section--style-dark .c-card--standard-3,
+  .o-section--style-dark .c-card--plain,
+  .o-section--style-dark .card--plain,
+  .o-section--style-dark [class*=card--plain-],
+  .section--dark .c-recognition--style-light,
+  .section--dark .o-section--style-muted,
+  .section--dark .section--muted,
+  .section--dark .o-section--style-light,
+  .section--dark .section--dark,
+  .section--dark .c-card--standard,
+  .section--dark .card--standard,
+  .section--dark .c-card--standard-1,
+  .section--dark .c-card--standard-2,
+  .section--dark .c-card--standard-3,
+  .section--dark .c-card--plain,
+  .section--dark .card--plain,
+  .section--dark [class*=card--plain-]
+) {
+  --global-color-accent--xxx-light: #dfeafe;
+  --global-color-accent--xx-light: #caddfe;
+  --global-color-accent--x-light: #AAC7FF;
+  --global-color-accent--light: #86aeff;
+  --global-color-accent--normal: #003399;
+  --global-color-accent--dark: #002266;
+  --global-color-accent--x-dark: #001133;
+  --global-color-accent--xx-dark: #021230;
+  --global-color-accent--xxx-dark: #000a22;
+}
+
+</style>
