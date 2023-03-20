@@ -1,0 +1,26 @@
+{% load i18n %}
+
+<ul class="c-news__data c-news__attr">{% spaceless %}
+    {% if article.author %}
+    <li class="c-news__byline">
+        <span>{% trans "by" %}</span>&nbsp;
+        <address>{{ article.author }}</address>
+    </li>
+    {% endif %}
+    {% if article.postDateTime %}
+    <li class="c-news__date">
+        <span>{% trans "Published" %}</span>&nbsp;
+        <time datetime="{{ article.postDateTime }}">
+            {{ article.postDate }}
+        </time>
+    </li>
+    {% endif %}
+{% endspaceless %}</ul>
+<ul class="c-news__data c-news__cats">{% spaceless %}
+    {# <li class="c-tag c-tag--system">System</li> #}
+{% endspaceless %}</ul>
+<ul class="c-news__data c-news__tags">{% spaceless %}
+    {% if article.updates %}
+    <span class="c-pill c-pill--is-updated">Update</span>
+    {% endif %}
+{% endspaceless %}</ul>

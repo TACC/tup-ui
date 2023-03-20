@@ -1,10 +1,7 @@
-<style id="css-user-updates">
-    article.has-update :is(h1, h4)::after {
-        display: inline-block;
-        content: '⚠️ Updated';
-        margin-left: 2ch;
-    }
-    article.has-update h1::after {
-        font-weight: var(--regular);
-    }
+<link rel="stylesheet" id="css-components-news" href="/static/tup-cms/css/for-core-styles/components/c-news.css" />
+<style id="css-user-updates--tacc">
+/* TODO: Scope these styles to User Updates pages */
+.c-news-item__byline {
+  display: none;
+}
 </style>

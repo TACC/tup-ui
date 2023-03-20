@@ -1,0 +1,61 @@
+/* TODO: When integrated into Core-Styles, uncomment this */
+/* @import url('../settings/color.css'); */
+
+/* Base */
+
+.c-pill {
+  font-weight: var(--medium);
+  font-size: var(--global-font-size--x-small);
+
+  display: inline-block; /* FAQ: Supports `min/max-width` */
+  min-width: 8em;
+
+  text-align: center;
+  border-radius: 0.5em;
+  color: var(--global-color-primary--xx-dark);
+}
+
+
+
+/* Modifiers */
+
+/* Modifiers - Structure */
+
+/* CAVEAT: This alone may not trigger truncation */
+/* SEE: https://confluence.tacc.utexas.edu/x/sAoFDg */
+.c-pill--should-truncate {
+  max-width: 100%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */ /* FAQ: Let client decide */
+
+  /* Keep alignment that is changed by `overflow: hidden;` */
+  /* SEE: https://stackoverflow.com/q/25818199 */
+  vertical-align: bottom;
+}
+
+
+
+/* Modifiers */
+
+/* Modifiers - Skin */
+
+.c-pill--is-danger {
+  background-color: var(--global-color-danger--light);
+}
+.c-pill--is-success {
+  background-color: var(--global-color-success--normal);
+}
+.c-pill--is-warning {
+  background-color: var(--global-color-warning--normal);
+}
+.c-pill--is-normal {
+  background-color: var(--global-color-extra--light);
+}
+.c-pill--is-fixed {
+  background-color: var(--global-color-primary--light);
+}
+.c-pill--is-updated {
+  background-color: #FFF500;
+}

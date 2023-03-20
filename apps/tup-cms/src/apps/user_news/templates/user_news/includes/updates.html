@@ -1,14 +1,17 @@
+{% load i18n %}
+
 {% for update in updates %}
   <aside>
     <h2>
-      <time data-prefix="Updated on" datetime="{{ update.postDateTime }}">
+      <span>{% trans "Updated" %}</span>&nbsp;
+      <time datetime="{{ update.postDateTime }}">
         {{ update.postDate }}
       </time>
     </h2>
     {% if has_markup_content %}
     <div class="has-markup">{{ update.content|safe }}</div>
     {% else %}
-    <p>{{ update.content }}</p>
+    <div><p>{{ update.content }}</p></div>
     {% endif %}
   </aside>
 {% endfor %}

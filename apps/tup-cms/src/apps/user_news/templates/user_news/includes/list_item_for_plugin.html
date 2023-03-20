@@ -1,0 +1,28 @@
+{% if article %}
+
+  <article class="{% if article.updates %}has-update{% endif %}">
+    <time data-prefix="Posted:" datetime="{{ article.postDateTime }}">
+      {{ article.postDate }}
+    </time>
+    <h4>
+      <a href="/{{ urls.base }}{{ urls.item_prefix }}{{ article.id }}">
+        {{ article.title }}
+        {% if article.subttitle %}
+        <small>{{ article.subttitle }}</small>
+        {% endif %}
+      </a>
+    </h4>
+    {% if has_markup_content %}
+    <div class="has-markup">{{ article.content|safe }}</div>
+    {% else %}
+    <p>{{ article.content }}</p>
+    {% endif %}
+  </article>
+
+{% else %}
+
+  <article>
+    <p>No such update found.</p>
+  </article>
+
+{% endif %}
