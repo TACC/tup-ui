@@ -21,8 +21,6 @@ services:
       - ../../apps/tup-ui/src/assets:/code/taccsite_cms/static/src/assets
       - ../../dist/apps/tup-cms-react/assets:/code/taccsite_cms/static/cms-react/assets
       - ../../apps/tup-cms-react/imports.debug.html:/code/taccsite_cms/templates/tup-cms-react.html
-      # TESTING
-      - ./src/taccsite_cms/templates/djangocms_blog/tacc/layout-choice-form.html:/code/taccsite_cms/templates/djangocms_blog/tacc/layout-choice-form.html
     networks:
       - tup_cms_net
 
