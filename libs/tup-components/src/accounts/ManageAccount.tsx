@@ -4,7 +4,6 @@ import { useProfile } from '@tacc/tup-hooks';
 import { AccountMfa } from './ManageAccountMfa';
 import SecureUpload from './SecureUpload';
 import styles from './ManageAccount.module.css';
-import { Link } from 'react-router-dom';
 
 const ManageUser = () => (
   <>
