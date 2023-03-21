@@ -183,9 +183,8 @@ DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 
 with open(DECAL_ICONFILE, 'r') as fh:
     DECAL_ICONS = fh.read()
 
-# HELP: Any CORECMS_ICON_SETS placement has a bug:
-#       - If last, editor assumes SVG is from tup-cms DECAL_ICONS.
-#       - If first, editor assumes SVG is from Core-CMS LOGO_ICONS.
+# HELP: Icon dropdown sometimes does not show active icon selected.
+#       The position of DECAL_ICONS in this array affects the bug.
 DJANGOCMS_ICON_SETS = [
     (DECAL_ICONS, '', _('TACC Decal SVGs')),
 ] + CORECMS_ICON_SETS
