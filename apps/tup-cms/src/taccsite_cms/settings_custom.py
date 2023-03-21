@@ -2,6 +2,12 @@
 # TACC WMA CMS SITE:
 # *.TUP.TACC.UTEXAS.EDU
 
+import os
+
+from django.utils.translation import gettext_lazy as _
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 ########################
 # DJANGO CMS SETTINGS
 ########################
@@ -166,3 +172,20 @@ TACC_CORE_STYLES_VERSION = 1
 
 # https://github.com/django-cms/django-filer/blob/2.0.2/docs/permissions.rst
 FILER_ENABLE_PERMISSIONS = True
+
+
+# DJANGOCMS_ICON SETTINGS
+# https://github.com/django-cms/djangocms-icon
+
+from taccsite_cms.settings import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
+
+DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 'tup-cms', 'img', 'icons', 'decals.json')
+with open(DECAL_ICONFILE, 'r') as fh:
+    DECAL_ICONS = fh.read()
+
+# HELP: Icon dropdown sometimes does not show active icon selected.
+#       The position of DECAL_ICONS in this array affects the bug.
+# SEE: https://github.com/django-cms/djangocms-icon/issues/9
+DJANGOCMS_ICON_SETS = [
+    (DECAL_ICONS, '', _('TACC Decal SVGs')),
+] + CORECMS_ICON_SETS
