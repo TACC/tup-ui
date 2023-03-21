@@ -41,25 +41,33 @@ export const ProjectsTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {projectData && projectData.length ? (
-            projectData.map((project) => (
-              <tr key={project.id}>
-                <td style={{ width: '30%' }}>
-                  <Link to={`/projects/${project.id}`}>{project.title}</Link>
-                </td>
-                <td
-                  style={{ width: '20%' }}
-                >{`${project.pi.firstName} ${project.pi.lastName}`}</td>
-                <td>{allocationDisplay(project.allocations ?? [])}</td>
-              </tr>
-            ))
-          ) : (
+          {!data?.length && (
             <tr>
               <td colSpan={3}>
-                <EmptyTablePlaceholder componentName="Projects" />
+                <EmptyTablePlaceholder>
+                  No projects or allocations found. {''}
+                  <a
+                    href="https://submit-tacc.xras.org/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Create a new project on TXRAS.
+                  </a>
+                </EmptyTablePlaceholder>
               </td>
             </tr>
           )}
+          {projectData?.map((project) => (
+            <tr key={project.id}>
+              <td style={{ width: '30%' }}>
+                <Link to={`/projects/${project.id}`}>{project.title}</Link>
+              </td>
+              <td
+                style={{ width: '20%' }}
+              >{`${project.pi.firstName} ${project.pi.lastName}`}</td>
+              <td>{allocationDisplay(project.allocations ?? [])}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

@@ -75,32 +75,33 @@ export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
           </tr>
         </thead>
         <tbody>
-          {ticketData && ticketData.length ? (
-            ticketData.map((ticket) => (
-              <tr
-                key={ticket.numerical_id}
-                className={
-                  ticket.Status === 'user_wait' ? 'ticket-reply-required' : ''
-                }
-              >
-                <td>{ticket.numerical_id}</td>
-                <td>
-                  <Link to={`${ticketsPath}/${ticket.numerical_id}`}>
-                    {ticket.Subject || '(No Subject)'}
-                  </Link>{' '}
-                  <AttachmentIndicator ticketId={ticket.numerical_id} />
-                </td>
-                <td>{formatDate(new Date(ticket.Created))}</td>
-                <td>{getStatusText(ticket.Status)}</td>
-              </tr>
-            ))
-          ) : (
+          {!ticketData?.length && (
             <tr>
               <td colSpan={4}>
-                <EmptyTablePlaceholder componentName="Tickets" />
+                <EmptyTablePlaceholder>
+                  You have not added any tickets.
+                </EmptyTablePlaceholder>
               </td>
             </tr>
           )}
+          {ticketData.map((ticket) => (
+            <tr
+              key={ticket.numerical_id}
+              className={
+                ticket.Status === 'user_wait' ? 'ticket-reply-required' : ''
+              }
+            >
+              <td>{ticket.numerical_id}</td>
+              <td>
+                <Link to={`${ticketsPath}/${ticket.numerical_id}`}>
+                  {ticket.Subject || '(No Subject)'}
+                </Link>{' '}
+                <AttachmentIndicator ticketId={ticket.numerical_id} />
+              </td>
+              <td>{formatDate(new Date(ticket.Created))}</td>
+              <td>{getStatusText(ticket.Status)}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
