@@ -23,8 +23,11 @@
 
 .c-news--read .c-news__header {
   grid-template-areas:
-    var(--row-head)
-    var(--row-meta);
+    'head'
+    'subh'
+    'cats'
+    'tags'
+    'attr';
 }
 .c-news--read .c-news__title,
 .c-news--read .c-news__subtitle {
