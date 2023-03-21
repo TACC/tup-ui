@@ -3,6 +3,7 @@ import { Icon, Button } from '@tacc/core-components';
 import { useProfile } from '@tacc/tup-hooks';
 import { AccountMfa } from './ManageAccountMfa';
 import styles from './ManageAccount.module.css';
+import { Link } from 'react-router-dom';
 
 const ManageUser = () => (
   <>
@@ -68,6 +69,22 @@ const ManagePassword = () => (
   </>
 );
 
+const ManageUpload = () => (
+  <>
+    <div className={styles['tap-header']}>
+      <strong>Secure Upload</strong>
+    </div>
+    <span className={styles['tap-description']}>
+      Upload documents securely through Box.
+    </span>
+    <Link to="/secure-upload" className={styles['tap-href']}>
+      <Button className={styles['tap-button']} type="primary">
+        Secure Upload
+      </Button>
+    </Link>
+  </>
+);
+
 const ManageAccount: React.FC = () => {
   const { data } = useProfile();
   return (
@@ -85,6 +102,7 @@ const ManageAccount: React.FC = () => {
             <ManagePassword />
             <span />
             <ManageDNs />
+            <ManageUpload />
           </section>
           <span className={styles['tap-separator']} />
           <section>

@@ -8,6 +8,7 @@ import {
   MfaSelection,
   ManageAccount,
   RequireAuth,
+  SecureUpload,
 } from '@tacc/tup-components';
 import {
   Dashboard,
@@ -61,6 +62,14 @@ function App() {
           }
         />
         <Route path="/impersonation" element={<Impersonate />} />
+        <Route
+          path="secure-upload"
+          element={
+            <RequireAuth>
+              <SecureUpload />
+            </RequireAuth>
+          }
+        />
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>
