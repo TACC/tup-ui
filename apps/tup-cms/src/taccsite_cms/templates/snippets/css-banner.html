@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/settings/font--cms.css" />
-<link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/components/c-tag.css" />
 <link rel="stylesheet" href="/static/tup-cms/css/for-core-styles/trumps/u-highlight.css" />
 <style id="css-banner">
 /*
@@ -20,26 +18,32 @@ Styleguide Components.Banner
 /* To add (and collapse) white border around each cell */
 .banner-row {
   --border-width: var(--global-border-width--x-thick);
-
-  margin: var(--border-width);
-  column-gap: var(--border-width);
-}
-.banner-row.row {
-  display: revert; /* undo Bootstrap */
-}
-.banner-row > .col {
-  max-width: unset; /* undo Bootstrap */
 }
 
 @media (width < 576px) {
-  .banner-row[style*="column-count"] {
-    column-count: 1 !important /* to overwrite inline style */;
+  [class*="banner-cell--"] {
+    margin: var(--border-width);
   }
 }
 @media (width >= 576px) {
-  /* To ensure 1 column has only 1 banner cell (not 1.N nor 2 banner cells) */
-  .banner-row[style*="column-count"] [class*="banner-cell--"] {
-    break-before: column;
+  .banner-row {
+    display: table;
+    border-spacing: var(--border-width);
+    width: 100%;
+  }
+  .banner-row + .banner-row {
+    margin-top: calc( -1 * var(--border-width) );
+  }
+  [class*="banner-cell--"] {
+    display: table-cell;
+  }
+  .banner-row,
+  [class*="banner-cell--"],
+  [class*="banner-cell--"] > a {
+    height: 100%;
+  }
+  [class*="banner-cell--"] > a {
+    display: block;
   }
 }
 
@@ -48,48 +52,45 @@ Styleguide Components.Banner
 /* Banner Cell */
 
 [class*="banner-cell--"] {
-  --tag-padding: 0.5rem; /* manually copied from ".tag" styles */
+  --tag-padding: 0.5rem; /* manually copied from .c-tag styles */
 }
 
 /* Elements */
 
-[class*="banner-cell--"] :is(h1, h2, h3, h4) {
+[class*="banner-cell--"] :where(h1, h2, h3, h4) {
   margin-bottom: 0;
 }
 
-[class*="banner-cell--"] figure /* "Figure" Layout */ {
+[class*="banner-cell--"] > a:hover {
+  --border-width: var(--global-border-width--thick);
+
+  /* FAQ: Using `border` shrinks content while `outline` does not */
+	outline-width: var(--border-width);
+  outline-style: solid;
+  outline-color: var(--global-color-primary--xxx-dark);
+	outline-offset: calc( -1 * var(--border-width) );
+}
+[class*="banner-cell--"] > a:active {
+	--border-width: var(--global-border-width--normal);
+}
+
+[class*="banner-cell--"] figure {
   margin-bottom: unset; /* undo Bootstrap */
 }
 
-[class*="banner-cell--"] > img + a /* "Image & Link" Layout */,
-[class*="banner-cell--"] figcaption /* "Figure" Layout */ {
-  display: block;
+[class*="banner-cell--"] figcaption {
+  display: revert; /* undo core-styles.cms */
   margin-inline: 3.0rem;
+  margin-bottom: 3.0rem;
 }
 
 /* To remove standard link text docoration */
-[class*="banner-cell--"] > img + a /* "Image & Link" Layout */,
-[class*="banner-cell--"] > a:only-child /* "Figure" Layout */ {
+[class*="banner-cell--"] > a {
   text-decoration: none;
-}
-
-/* To cover image with link */
-/* FAQ: "Figure" layout does not need this because it is wrapped in a link */
-[class*="banner-cell--"] { position: relative; }
-[class*="banner-cell--"] > img + a::before /* "Image & Link" Layout */ {
-  content: '';
-  position: absolute; /* CAVEAT: Requires `position: relative` on an ancestor */
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
 }
 
 /* To cover a re-sized image box with the full-size image (like a bkgd image) */
 /* FAQ: If user sets dimension via style, we assume they want this feature */
-/* "Image & Link" Layout */
-[class*="banner-cell--"] > img:where([style*="height"], [style*="width"]),
-/* "Figure" Layout */
 [class*="banner-cell--"] figure:where([style*="height"], [style*="width"]) img {
   object-fit: cover;
   height: 100%;
@@ -98,12 +99,10 @@ Styleguide Components.Banner
 
 /* Components */
 
-[class*="banner-cell--"] .tag {
+[class*="banner-cell--"] .c-tag,
+[class*="banner-cell--"] [class*="tag--"] {
   display: block;
   margin-bottom: 2.0rem;
-
-  color: #ffffff;
-  background: #000000;
 }
 
 [class*="banner-cell--"] .highlight {
@@ -114,18 +113,11 @@ Styleguide Components.Banner
 
 	line-height: 1;
 }
-[class*="banner-cell--"] a:is(:hover, :active) .highlight {
-	color: var(--global-color-primary--light);
-}
 
 /* To allow image to be underneath text */
-/* FAQ: To just set `position: relative` on `img + a` is easier,
-        but then `a::before` position would not cover image */
-[class*="banner-cell--"] /* "Image & Link" Layout */,
-[class*="banner-cell--"] figure /* "Figure" Layout */ {
+[class*="banner-cell--"] figure {
   display: grid;
 
-  /* "Figure" Layout */
   /* To force % image height to match its container (i.e. <figure>) */
   /* https://stackoverflow.com/a/52137966/11817077 */
   grid-template-rows: minmax( 0, 1fr );
@@ -143,13 +135,12 @@ Styleguide Components.Banner
 }
 
 /* To move text atop image */
-.banner-cell--major > :is(img, img + a) /* "Image & Link" Layout */,
-.banner-cell--major :is(figure > img, img + figcaption) /* "Figure" Layout */ {
+.banner-cell--major img,
+.banner-cell--major figcaption {
   grid-row: 1;
   grid-column: 1;
 }
-.banner-cell--major > img + a /* "Image & Link" Layout */,
-.banner-cell--major figcaption /* "Figure" Layout */ {
+.banner-cell--major figcaption {
   align-self: end; /* to align text to bottom */
   margin-bottom: 5.0rem; /* to move text away from bottom */
 }
@@ -164,10 +155,9 @@ Styleguide Components.Banner
 }
 
 /* To move text atop image */
-.banner-cell--minor > img + a /* "Image & Link" Layout */,
-.banner-cell--minor figcaption /* "Figure" Layout */ {
+.banner-cell--minor figcaption {
   margin-top: calc( -1 * (
-    /* To move by half the height of the .tag */
+    /* To move by half the height of the .c-tag */
     /* FAQ: Not using `translateY(-50%)` because the h2 must move same amount */
     var(--tag-padding) + ( var(--global-font-size--small) / 2 )
   ));
