@@ -7,11 +7,14 @@
     <h4>
       <a href="/{{ urls.base }}{{ urls.item_prefix }}{{ article.id }}">
         {{ article.title }}
-        {% if article.subttitle %}
-        <small>{{ article.subttitle }}</small>
+        {% if article.updates %}
+          <span class="c-pill c-pill--is-updated">Update</span>
         {% endif %}
       </a>
     </h4>
+    {% if article.subttitle %}
+    <h5>{{ article.subttitle }}</h5>
+    {% endif %}
     {% if has_markup_content %}
     <div class="has-markup">{{ article.content|safe }}</div>
     {% else %}

@@ -17,10 +17,14 @@
     {% endif %}
 {% endspaceless %}</ul>
 <ul class="c-news__data c-news__cats">{% spaceless %}
-    {# <li class="c-tag c-tag--system">System</li> #}
+    {% comment %}
+    <li class="c-tag c-tag--system">System</li>
+    {% endcomment %}
 {% endspaceless %}</ul>
 <ul class="c-news__data c-news__tags">{% spaceless %}
+    {% comment %}
     {% if article.updates %}
-    <span class="c-pill c-pill--is-updated">Update</span>
+    <li class="c-pill c-pill--is-updated">Update</li>
     {% endif %}
+    {% endcomment %}
 {% endspaceless %}</ul>

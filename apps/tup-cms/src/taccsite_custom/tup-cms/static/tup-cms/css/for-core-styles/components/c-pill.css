@@ -10,7 +10,9 @@
   display: inline-block; /* FAQ: Supports `min/max-width` */
   min-width: 8em;
 
+  line-height: 1.4;
   text-align: center;
+  text-transform: none; /* avoid inheritance form context e.g. <h1> */
   border-radius: 0.5em;
   color: var(--global-color-primary--xx-dark);
 }

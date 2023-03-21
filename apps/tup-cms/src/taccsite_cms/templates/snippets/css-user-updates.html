@@ -4,4 +4,20 @@
 .c-news-item__byline {
   display: none;
 }
+
+/* To style "Update" pill in any title */
+.c-feed-list h4 a,
+.c-news__title a {
+  display: inline-block;
+}
+.c-feed-list h4 .c-pill,
+.c-news__title .c-pill {
+  vertical-align: middle;
+  transform: translateY(-0.125em);
+}
+
+/* To style "Update" pill in big article page title */
+h1.c-news__title .c-pill {
+  font-size: var(--global-font-size--medium);
+}
 </style>
