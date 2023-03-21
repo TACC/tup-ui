@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon, Button } from '@tacc/core-components';
 import { useProfile } from '@tacc/tup-hooks';
 import { AccountMfa } from './ManageAccountMfa';
+import SecureUpload from './SecureUpload';
 import styles from './ManageAccount.module.css';
 import { Link } from 'react-router-dom';
 
@@ -77,11 +78,7 @@ const ManageUpload = () => (
     <span className={styles['tap-description']}>
       Upload documents securely through Box.
     </span>
-    <Link to="/secure-upload" className={styles['tap-href']}>
-      <Button className={styles['tap-button']} type="primary">
-        Secure Upload
-      </Button>
-    </Link>
+    <SecureUpload />
   </>
 );
 
