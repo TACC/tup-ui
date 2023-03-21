@@ -185,6 +185,7 @@ with open(DECAL_ICONFILE, 'r') as fh:
 
 # HELP: Icon dropdown sometimes does not show active icon selected.
 #       The position of DECAL_ICONS in this array affects the bug.
+# SEE: https://github.com/django-cms/djangocms-icon/issues/9
 DJANGOCMS_ICON_SETS = [
     (DECAL_ICONS, '', _('TACC Decal SVGs')),
 ] + CORECMS_ICON_SETS
