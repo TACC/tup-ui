@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Sysmon from './Sysmon/Sysmon';
+import SoftwareTable from './Software/Software';
 const queryClient = new QueryClient({
   logger: {
     log: window.console.log,
@@ -20,6 +21,18 @@ if (sysmonDOM) {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <Sysmon />
+      </QueryClientProvider>
+    </StrictMode>
+  );
+}
+
+const SoftwareDOM = document.getElementById('cms-software');
+if (SoftwareDOM) {
+  const softwareRoot = ReactDOM.createRoot(SoftwareDOM as HTMLElement);
+  softwareRoot.render(
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <SoftwareTable />
       </QueryClientProvider>
     </StrictMode>
   );
