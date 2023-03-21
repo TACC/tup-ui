@@ -13,5 +13,6 @@ export * from './projects';
 export * from './tickets';
 export * from './news';
 export * from './mfa';
+export * from './software';
 
 export { default as useConfig } from './useConfig';

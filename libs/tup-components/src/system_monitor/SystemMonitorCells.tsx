@@ -13,7 +13,7 @@ export const Operational: React.FC<{
   cell: Cell<SystemMonitorRawSystem, boolean>;
 }> = ({ cell: { value } }) => {
   if (value) {
-    return <Pill type="success">Operational</Pill>;
+    return <Pill type="normal">Operational</Pill>;
   }
   return <Pill type="warning">Maintenance</Pill>;
 };
