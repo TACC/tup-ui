@@ -13,7 +13,13 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
-import { Button, Icon } from '@tacc/core-components';
+import {
+  Button,
+  Icon,
+  InlineMessage,
+  LoadingSpinner,
+} from '@tacc/core-components';
+import { EmptyTablePlaceholder } from '../utils';
 
 import './SoftwareTable.global.css';
 import styles from './SoftwareTable.module.css';
@@ -87,7 +93,12 @@ const ResourceView: React.FC<{ resource: SoftwareResource }> = ({
 };
 
 const SoftwareTable: React.FC = () => {
-  const { data } = useSoftware();
+  const { data, isLoading, error } = useSoftware();
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterTopic, setFilterTopic] = useState('');
+  const [filterSystem, setFilterSystem] = useState('');
+
   const sortedData = useMemo(
     () =>
       data?.sort((a, b) =>
@@ -95,10 +106,20 @@ const SoftwareTable: React.FC = () => {
       ),
     [data]
   );
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterTopic, setFilterTopic] = useState('');
-  const [filterSystem, setFilterSystem] = useState('');
 
+  const filteredData = sortedData
+    ?.filter((pkg) => pkg.package.includes(searchTerm))
+    ?.filter((pkg) => !filterTopic || pkg.topic.includes(filterTopic))
+    ?.filter((pkg) => !filterSystem || pkg.resources.includes(filterSystem));
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+  if (error) {
+    return (
+      <InlineMessage type="warn">Unable to retrieve software.</InlineMessage>
+    );
+  }
   return (
     <>
       <form className={styles.form}>
@@ -163,25 +184,25 @@ const SoftwareTable: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {sortedData
-              ?.filter((pkg) => pkg.package.includes(searchTerm))
-              ?.filter(
-                (pkg) => ! filterTopic || pkg.topic.includes(filterTopic)
-              )
-              ?.filter(
-                (pkg) =>
-                  ! filterSystem || pkg.resources.includes(filterSystem)
-              )
-              .map((pkg) => (
-                <tr key={pkg.package}>
-                  <td>{pkg.package}</td>
-                  <td>{pkg.topic}</td>
-                  <td>{pkg.resources.join(', ')}</td>
-                  <td>
-                    <SoftwareModal pkg={pkg} />
-                  </td>
-                </tr>
-              ))}
+            {!filteredData?.length && (
+              <tr>
+                <td colSpan={4}>
+                  <EmptyTablePlaceholder>
+                    No matching software found.
+                  </EmptyTablePlaceholder>
+                </td>
+              </tr>
+            )}
+            {filteredData?.map((pkg) => (
+              <tr key={pkg.package}>
+                <td>{pkg.package}</td>
+                <td>{pkg.topic}</td>
+                <td>{pkg.resources.join(', ')}</td>
+                <td>
+                  <SoftwareModal pkg={pkg} />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
