@@ -50,3 +50,9 @@ h2 {
 table {
   width: 100%;
 }
+
+/* Modals */
+.modal-body {
+  overflow-y: auto;
+  max-height: 60vh;
+}
