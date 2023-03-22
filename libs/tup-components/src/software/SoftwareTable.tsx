@@ -44,20 +44,33 @@ const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
       <Button type="link" onClick={() => toggle()}>
         Version Documentation
       </Button>
-      <Modal centered isOpen={isOpen} toggle={toggle} size="lg">
+      <Modal
+        centered
+        isOpen={isOpen}
+        toggle={toggle}
+        size="lg"
+        id="software-table-modal"
+      >
         <ModalHeader toggle={toggle} close={closeBtn}>
-          <div>{pkg.package}</div>
-          <div>{data?.description}</div>
+          {pkg.package}
         </ModalHeader>
-        <ModalBody>
+        <ModalBody className={styles['modal-body']}>
+          <p className={styles['package-desc']}>{data?.description}</p>
           <Nav tabs>
-            {data?.resources.map((resource) => (
-              <NavItem key={resource.name}>
-                <NavLink onClick={() => setResource(resource)}>
-                  {resource.name}
-                </NavLink>
-              </NavItem>
-            ))}
+            {data?.resources.map((r) => {
+              const isActive = r.name === resource?.name;
+              return (
+                <NavItem key={r.name}>
+                  <NavLink
+                    href="#" // So cursor becomes pointer on hover
+                    className={isActive ? 'active' : ''}
+                    onClick={() => setResource(r)}
+                  >
+                    {r.name}
+                  </NavLink>
+                </NavItem>
+              );
+            })}
           </Nav>
           {resource && <ResourceView resource={resource}></ResourceView>}
         </ModalBody>
@@ -69,26 +82,36 @@ const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
 const ResourceView: React.FC<{ resource: SoftwareResource }> = ({
   resource,
 }) => {
-  const [currentVersion, setcurrentVersion] = useState(resource.versions[0]);
-  useLayoutEffect(() => setcurrentVersion(resource.versions[0]), [resource]);
+  const [currentVersion, setCurrentVersion] = useState(resource.versions[0]);
+  useLayoutEffect(() => setCurrentVersion(resource.versions[0]), [resource]);
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <div> {resource.name}</div>
-      <span>
-        {resource.versions.map((v) => (
-          <Button
-            key={v.id}
-            type={v.id === currentVersion?.id ? 'active' : 'secondary'}
-            onClick={() => setcurrentVersion(v)}
-          >
-            {v.name}
-          </Button>
-        ))}
-      </span>
-      <span style={{ whiteSpace: 'pre-line' }}>
-        {currentVersion.description}
-      </span>
-    </div>
+    <section className={styles.resource}>
+      <nav>
+        <p className={styles['resource-title']}>Software Version</p>
+        <ul>
+          {resource.versions.map((v) => {
+            const isActive = v.id === currentVersion?.id;
+            return (
+              <li key={v.id}>
+                <button
+                  className={`
+                    ${styles['resource-version']}
+                    ${isActive ? styles['is-active'] : ''}
+                  `}
+                  onClick={() => setCurrentVersion(v)}
+                >
+                  {v.name}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+      <article>
+        <h3>{resource.name}</h3>
+        <pre>{currentVersion.description}</pre>
+      </article>
+    </section>
   );
 };
 

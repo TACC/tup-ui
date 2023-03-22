@@ -1,5 +1,32 @@
+@import url("@tacc/core-styles/src/lib/_imports/tools/selectors.css");
+
 /* TODO: Remove this after:
          1. adding this to core-styles.base */
 [type="search"] {
   outline-offset: revert; /* undo Bootstrap _reboot */
+}
+
+/* TODO: Remove this after:
+         1. adding/changing these in core-styles.base */
+.modal-content {
+  border: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+}
+.modal-header {
+  align-items: center;
+}
+.modal-header .close {
+  font-size: 3.2rem;
+}
+.modal-title {
+  /* TODO: Confirm whether this is for CMS or Portal */
+  /* NOTE: Portal design looks like 1.6rem */
+  font-size: 2.1rem;
+}
+.modal-body {
+  overflow: auto;
+  max-height: 60vh;
+}
+:root {
+  --global-color-tertiary--xx-light: #e7f1f0; /* from designer */
+  --global-color-tertiary--x-light: #b1d1ce;
 }
