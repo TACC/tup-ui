@@ -80,3 +80,9 @@
 .form + :is(table, .table-wrap) {
   margin-top: 1rem;
 }
+
+/* So table columns do not change width (much) on filter */
+.table-wrap th:nth-child(1) { width: 14%; }
+.table-wrap th:nth-child(2) { width: 36%; }
+.table-wrap th:nth-child(3) { width: 40%; }
+.table-wrap th:nth-child(4) { width: 10%; }
