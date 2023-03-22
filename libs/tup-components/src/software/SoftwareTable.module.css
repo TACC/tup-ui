@@ -1,0 +1,51 @@
+/* Form */
+
+.form {
+  --icon-width: 2.4rem; /* mimic core-styles .icon-md */
+  --icon-pad-horz: 10px; /* mimic core-styles input */
+
+  display: grid;
+}
+
+/* So label/icon is atop input field */
+.form label {
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+
+  z-index: 1;
+  align-self: center;
+}
+.form input {
+  grid-row: 1 / 1;
+  grid-column: 1 / 2;
+}
+
+.form label {
+  margin-bottom: 0; /* override core-styles */
+  box-sizing: content-box;
+  padding-inline: var(--icon-pad-horz);
+}
+.form input {
+  max-width: 30ch;
+  text-indent: calc( var(--icon-width) + var(--icon-pad-horz) );
+}
+
+
+
+/* Table */
+
+.table-wrap {
+  /* To scroll as necessary, if height (or width) is set */
+  /* CAVEAT: Client decides height because client knows layout context */
+  overflow: auto;
+}
+
+.table-wrap table {
+  /* NOTE: This is Portal global style, but table can be used outside Portal */
+  /* NOTE: CMS does not have this globally... should it? */
+  width: 100%;
+}
+
+.form + :is(table, .table-wrap) {
+  margin-top: 1rem;
+}

@@ -1,0 +1,5 @@
+/* TODO: Remove this after:
+         1. adding this to core-styles.base */
+[type="search"] {
+  outline-offset: revert; /* undo Bootstrap _reboot */
+}

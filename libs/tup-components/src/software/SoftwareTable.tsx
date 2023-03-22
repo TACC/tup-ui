@@ -15,6 +15,10 @@ import {
 } from 'reactstrap';
 import { Button } from '@tacc/core-components';
 
+import './SoftwareTable.global.css';
+import styles from './SoftwareTable.module.css';
+import '@tacc/core-styles/dist/trumps/u-hide.css';
+
 const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { data } = useSoftwareDetail(pkg.package, isOpen);
@@ -96,22 +100,21 @@ const SoftwareTable: React.FC = () => {
 
   return (
     <>
-      <div
-        style={{ width: '100%', display: 'flex', flexDirection: 'row-reverse' }}
-      >
-        <strong style={{ display: 'flex', alignItems: 'center' }}>
-          <span>Search:&nbsp;</span>
-          <input
-            onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ float: 'right' }}
-          ></input>
-        </strong>
-      </div>
-      <div style={{ height: '70vh', overflow: 'auto' }}>
-        <table
-          className="o-fixed-header-table"
-          style={{ width: '100%', overflow: 'auto' }}
-        >
+      <form className={styles.form}>
+        <label htmlFor="software-search" className="icon icon-search icon-md">
+          <span className="u-hide--visually">Search</span>
+        </label>
+        <input
+          id="software-search"
+          type="search"
+          placeholder="Search for package"
+          autoComplete="off"
+          minLength={3}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </form>
+      <div className={`${styles['table-wrap']}`}>
+        <table className="o-fixed-header-table">
           <thead>
             <tr>
               <th>Package</th>
