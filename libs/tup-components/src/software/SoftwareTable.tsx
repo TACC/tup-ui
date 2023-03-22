@@ -13,11 +13,10 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
-import { Button } from '@tacc/core-components';
+import { Button, Icon } from '@tacc/core-components';
 
 import './SoftwareTable.global.css';
 import styles from './SoftwareTable.module.css';
-import '@tacc/core-styles/dist/trumps/u-hide.css';
 
 const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -97,21 +96,61 @@ const SoftwareTable: React.FC = () => {
     [data]
   );
   const [searchTerm, setSearchTerm] = useState('');
+  const [filterTopic, setFilterTopic] = useState('');
+  const [filterSystem, setFilterSystem] = useState('');
 
   return (
     <>
       <form className={styles.form}>
-        <label htmlFor="software-search" className="icon icon-search icon-md">
-          <span className="u-hide--visually">Search</span>
+        <label className={styles['search-field']}>
+          <Icon
+            name="search"
+            size="md"
+            label="Search"
+            className={styles.icon}
+          />
+          <input
+            type="search"
+            placeholder="Search for package"
+            autoComplete="off"
+            minLength={3}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </label>
-        <input
-          id="software-search"
-          type="search"
-          placeholder="Search for package"
-          autoComplete="off"
-          minLength={3}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+        <label className={styles['filter-field']}>
+          <span>Topic</span>
+          <select onChange={(e) => setFilterTopic(e.target.value)}>
+            <option value="">any</option>
+            <option>application</option>
+            <option>chemistry</option>
+            <option>computational biology</option>
+            <option>developer support</option>
+            <option>genomics</option>
+            <option>graphics</option>
+            <option>library</option>
+            <option>mathematics</option>
+            <option>performance analysis</option>
+            <option>runtime support</option>
+            <option>software</option>
+            <option>scientific</option>
+            <option>statistics</option>
+            <option>system</option>
+            <option>tools</option>
+            <option>utilities</option>
+            <option>utility</option>
+            <option>visualization</option>
+          </select>
+        </label>
+        <label className={styles['filter-field']}>
+          <span>System</span>
+          <select onChange={(e) => setFilterSystem(e.target.value)}>
+            <option value="">any</option>
+            <option>Frontera</option>
+            <option>Lonestar6</option>
+            <option>Longhorn</option>
+            <option>Stampede2</option>
+          </select>
+        </label>
       </form>
       <div className={`${styles['table-wrap']}`}>
         <table className="o-fixed-header-table">
@@ -119,13 +158,20 @@ const SoftwareTable: React.FC = () => {
             <tr>
               <th>Package</th>
               <th>Topic</th>
-              <th>Resources</th>
+              <th>System</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {sortedData
               ?.filter((pkg) => pkg.package.includes(searchTerm))
+              ?.filter(
+                (pkg) => ! filterTopic || pkg.topic.includes(filterTopic)
+              )
+              ?.filter(
+                (pkg) =>
+                  ! filterSystem || pkg.resources.includes(filterSystem)
+              )
               .map((pkg) => (
                 <tr key={pkg.package}>
                   <td>{pkg.package}</td>

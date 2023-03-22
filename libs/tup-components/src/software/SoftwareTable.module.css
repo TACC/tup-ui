@@ -4,31 +4,62 @@
   --icon-width: 2.4rem; /* mimic core-styles .icon-md */
   --icon-pad-horz: 10px; /* mimic core-styles input */
 
-  display: grid;
+  display: flex;
+  align-items: start;
+}
+.form label {
+  margin-bottom: 0; /* override core-styles */
+}
+.form .search-field {
+  margin-right: auto;
+}
+.form .filter-field {
+  margin-left: 2rem;
 }
 
-/* So label/icon is atop input field */
-.form label {
+
+
+/* Form: Search Field */
+
+/* So icon is atop input field */
+.form .search-field {
+  display: grid;
+}
+.form .search-field .icon {
   grid-row: 1 / 1;
   grid-column: 1 / 1;
 
   z-index: 1;
   align-self: center;
 }
-.form input {
+.form .search-field input {
   grid-row: 1 / 1;
   grid-column: 1 / 2;
 }
 
-.form label {
-  margin-bottom: 0; /* override core-styles */
+/* So text entry occurs after icon */
+.form .search-field .icon {
   box-sizing: content-box;
   padding-inline: var(--icon-pad-horz);
 }
-.form input {
-  max-width: 30ch;
+.form .search-field input {
+  width: 30ch;
   text-indent: calc( var(--icon-width) + var(--icon-pad-horz) );
 }
+
+
+
+/* Form: Filter Field */
+
+.form .filter-field {
+  display: flex;
+  align-items: center;
+}
+.form .filter-field span + select {
+  margin-left: 1rem;
+}
+
+
 
 
 
