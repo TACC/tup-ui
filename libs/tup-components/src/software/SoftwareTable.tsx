@@ -41,8 +41,8 @@ const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
   );
   return (
     <>
-      <Button onClick={() => toggle()}>
-        <strong>Details</strong>
+      <Button type="link" onClick={() => toggle()}>
+        Version Documentation
       </Button>
       <Modal centered isOpen={isOpen} toggle={toggle} size="lg">
         <ModalHeader toggle={toggle} close={closeBtn}>
