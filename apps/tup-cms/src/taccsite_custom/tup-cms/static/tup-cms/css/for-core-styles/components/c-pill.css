@@ -8,7 +8,8 @@
   font-size: var(--global-font-size--x-small);
 
   display: inline-block; /* FAQ: Supports `min/max-width` */
-  min-width: 8em;
+  padding-inline: 0.75em;
+  min-width: 6.5em;
 
   line-height: 1.4;
   text-align: center;

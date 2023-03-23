@@ -6,9 +6,6 @@
     <header class="c-news__header">
         <h1 class="c-news__title">
           {{ article.title }}
-          {% if article.updates %}
-            <span class="c-pill c-pill--is-updated">Update</span>
-          {% endif %}
         </h1>
         {% if article.subtitle %}
         <h2 class="c-news__subtitle">{{ article.subtitle }}</h2>
@@ -20,7 +17,13 @@
 
     {% if article.updates %}
     {% include './updates.html' with updates=article.updates %}
-    <h2>{% trans "Original Update" %}</h2>
+    <header class="c-update__header">
+      <h3 class="c-update__title">{% trans "Original Message" %}</h3>
+      <span>{% trans "Published" %}</span>&nbsp;
+      <time datetime="{{ article.postDateTime }}">
+          {{ article.postDate }}
+      </time>
+    </header>
     {% endif %}
 
     {% if has_markup_content %}
