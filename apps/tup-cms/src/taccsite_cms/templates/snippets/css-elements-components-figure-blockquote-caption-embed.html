@@ -46,3 +46,13 @@ blockquote {
     line-height: 1.7;
 }
 </style>
+<style id="css-components-figure">
+/* WARNING: This is a rush fix, so side effects are uncertain */
+/* IMPORTANT: Some changes here overwrite #css-elements-components-figure-blockquote-caption-embed (e.g. margin) */
+figcaption,
+p.caption {
+  padding-bottom: 10px;
+  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--normal);
+  margin-bottom: 15px;
+}
+</style>
