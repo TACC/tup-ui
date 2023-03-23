@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon, Button } from '@tacc/core-components';
 import { useProfile } from '@tacc/tup-hooks';
 import { AccountMfa } from './ManageAccountMfa';
+import SecureUpload from './SecureUpload';
 import styles from './ManageAccount.module.css';
 
 const ManageUser = () => (
@@ -68,6 +69,18 @@ const ManagePassword = () => (
   </>
 );
 
+const ManageUpload = () => (
+  <>
+    <div className={styles['tap-header']}>
+      <strong>Secure Upload</strong>
+    </div>
+    <span className={styles['tap-description']}>
+      Upload documents securely through Box.
+    </span>
+    <SecureUpload />
+  </>
+);
+
 const ManageAccount: React.FC = () => {
   const { data } = useProfile();
   return (
@@ -85,6 +98,7 @@ const ManageAccount: React.FC = () => {
             <ManagePassword />
             <span />
             <ManageDNs />
+            <ManageUpload />
           </section>
           <span className={styles['tap-separator']} />
           <section>
