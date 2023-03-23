@@ -135,6 +135,14 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
           )
         }
       >
+        {canManage && (
+          <span>
+            To set an Allocation Manager, please select a user in the menu to
+            the left.
+            <br />
+            <br />
+          </span>
+        )}
         {projectDetails && (
           <ProjectsListingAllocationTable project={projectDetails} />
         )}

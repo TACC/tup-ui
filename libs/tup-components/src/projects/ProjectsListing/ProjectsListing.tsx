@@ -25,23 +25,23 @@ export const ProjectsListing: React.FC = () => {
     return (
       <InlineMessage type="warning">Unable to retrieve projects.</InlineMessage>
     );
+  if (!data?.length) {
+    return (
+      <EmptyTablePlaceholder>
+        No projects or allocations found. {''}
+        <a
+          href="/use-tacc/allocations/#request"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Learn how to request a new allocation.
+        </a>
+      </EmptyTablePlaceholder>
+    );
+  }
 
   return (
     <ul className={styles['project-listing']}>
-      {!data?.length && (
-        <li>
-          <EmptyTablePlaceholder>
-            No projects or allocations found. {''}
-            <a
-              href="https://submit-tacc.xras.org/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Create a new project on TXRAS.
-            </a>
-          </EmptyTablePlaceholder>
-        </li>
-      )}
       {data?.filter(prjFilter).map((project) => (
         <li key={project.id} className={styles['project-listing-row']}>
           <div>

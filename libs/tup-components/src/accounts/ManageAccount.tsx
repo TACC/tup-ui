@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon, Button } from '@tacc/core-components';
 import { useProfile } from '@tacc/tup-hooks';
 import { AccountMfa } from './ManageAccountMfa';
+import SecureUpload from './SecureUpload';
 import styles from './ManageAccount.module.css';
 
 const ManageUser = () => (
@@ -14,7 +15,7 @@ const ManageUser = () => (
       portal.
     </span>
     <a
-      href="https://accounts-dev.tacc.utexas.edu/profile"
+      href="https://accounts.tacc.utexas.edu/profile"
       target="_blank"
       rel="noreferrer"
       className={styles['tap-href']}
@@ -35,7 +36,7 @@ const ManageDNs = () => (
       DNs are managed on the TACC Account Management (TAM) portal.
     </span>
     <a
-      href="https://accounts-dev.tacc.utexas.edu/certificates"
+      href="https://accounts.tacc.utexas.edu/certificates"
       target="_blank"
       rel="noreferrer"
       className={styles['tap-href']}
@@ -56,7 +57,7 @@ const ManagePassword = () => (
       Passwords are managed on the TACC Account Management (TAM) portal.
     </span>
     <a
-      href="https://accounts-dev.tacc.utexas.edu/change_password"
+      href="https://accounts.tacc.utexas.edu/change_password"
       target="_blank"
       rel="noreferrer"
       className={styles['tap-href']}
@@ -65,6 +66,18 @@ const ManagePassword = () => (
         Change Password
       </Button>
     </a>
+  </>
+);
+
+const ManageUpload = () => (
+  <>
+    <div className={styles['tap-header']}>
+      <strong>Secure Upload</strong>
+    </div>
+    <span className={styles['tap-description']}>
+      Upload documents securely through Box.
+    </span>
+    <SecureUpload />
   </>
 );
 
@@ -85,6 +98,7 @@ const ManageAccount: React.FC = () => {
             <ManagePassword />
             <span />
             <ManageDNs />
+            <ManageUpload />
           </section>
           <span className={styles['tap-separator']} />
           <section>
