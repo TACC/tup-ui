@@ -37,7 +37,7 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           end
           className={styles['user-navitem']}
         >
-          <span style={{ fontWeight: 'normal' }}>Delegate</span>:{' '}
+          <span style={{ fontWeight: 'normal' }}>Allocation Manager</span>:{' '}
           {delegate?.firstName} {delegate?.lastName} ({delegate.username})
         </NavItem>
       )}

@@ -14,7 +14,7 @@ const ManageUser = () => (
       portal.
     </span>
     <a
-      href="https://accounts-dev.tacc.utexas.edu/profile"
+      href="https://accounts.tacc.utexas.edu/profile"
       target="_blank"
       rel="noreferrer"
       className={styles['tap-href']}
@@ -35,7 +35,7 @@ const ManageDNs = () => (
       DNs are managed on the TACC Account Management (TAM) portal.
     </span>
     <a
-      href="https://accounts-dev.tacc.utexas.edu/certificates"
+      href="https://accounts.tacc.utexas.edu/certificates"
       target="_blank"
       rel="noreferrer"
       className={styles['tap-href']}
@@ -56,7 +56,7 @@ const ManagePassword = () => (
       Passwords are managed on the TACC Account Management (TAM) portal.
     </span>
     <a
-      href="https://accounts-dev.tacc.utexas.edu/change_password"
+      href="https://accounts.tacc.utexas.edu/change_password"
       target="_blank"
       rel="noreferrer"
       className={styles['tap-href']}
