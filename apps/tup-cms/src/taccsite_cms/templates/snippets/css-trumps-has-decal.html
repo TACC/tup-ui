@@ -1,7 +1,16 @@
 <style id="css-trumps-has-decal">
 /* To restrict movement & visibility of background decal icons with a section */
-.has-decal {
-    overflow-y: clip;
+.has-decal,
+[class*="has-decal--"] {
     position: relative;
+}
+.has-decal--clip {
+    overflow: clip;
+}
+.has-decal--clip-x {
+    overflow-x: clip;
+}
+.has-decal--clip-y {
+    overflow-y: clip;
 }
 </style>
