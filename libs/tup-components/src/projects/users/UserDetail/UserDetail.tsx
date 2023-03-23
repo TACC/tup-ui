@@ -37,10 +37,18 @@ const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
       mutateRemoveDelegate(undefined);
   };
 
+  const roleDisplayMap = {
+    Standard: 'Standard User',
+    Delegate: 'Allocation Manager',
+    PI: 'PI',
+  };
   const canSetDelegate = currentUserRole === 'PI' && user.role !== 'PI';
   if (!canSetDelegate)
     return (
-      <span>{user.role === 'Standard' ? 'Standard User' : user.role}</span>
+      <span>
+        {user.role &&
+          roleDisplayMap[user.role as 'Standard' | 'Delegate' | 'PI']}
+      </span>
     );
 
   return (
@@ -54,7 +62,7 @@ const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
         id="user-role-select"
       >
         <option value={'Standard'}>Standard User</option>
-        <option value={'Delegate'}>Delegate</option>
+        <option value={'Delegate'}>Allocation Manager</option>
       </select>{' '}
       {selectedUserRole !== user.role && (
         <Button className={styles['link-button']} type="link" attr="submit">
@@ -209,8 +217,8 @@ const UserDetail: React.FC<{ projectId: number; username: string }> = ({
         </div>
       </div>
       <div className={styles['role-explainer']}>
-        PI and Delegate Users can manage the project. <br /> Standard Users can
-        only view the project.
+        PIs and Allocation Managers can manage the project. <br /> Standard
+        Users can only view the project.
       </div>
       <UsageTable username={username} projectId={projectId} />
     </div>
