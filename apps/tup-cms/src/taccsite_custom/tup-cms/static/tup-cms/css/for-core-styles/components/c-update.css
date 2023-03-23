@@ -1,0 +1,10 @@
+.c-update__header {
+  display: flex;
+  align-items: baseline;
+}
+
+.c-update__title {
+  margin-right: 0.5em;
+
+  text-transform: uppercase;
+}
