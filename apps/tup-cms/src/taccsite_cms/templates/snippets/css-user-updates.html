@@ -1,10 +1,39 @@
-<style id="css-user-updates">
-    article.has-update :is(h1, h4)::after {
-        display: inline-block;
-        content: '⚠️ Updated';
-        margin-left: 2ch;
-    }
-    article.has-update h1::after {
-        font-weight: var(--regular);
-    }
+<link rel="stylesheet" id="css-components-news" href="/static/tup-cms/css/for-core-styles/components/c-news.css" />
+<link rel="stylesheet" id="css-components-news" href="/static/tup-cms/css/for-core-styles/components/c-update.css" />
+<style id="css-user-updates--tacc">
+/* To adjust display of metadata (given what .c-update shows) */
+.c-news--read article.has-update .c-news__data {
+  display: none;
+}
+.c-news--read article.has-update .c-news__title {
+  /* Overwrites c-news--read.css */
+  border-bottom: unset;
+  margin-bottom: 6.5rem;
+}
+
+/* To style "Update" pill in any title */
+.c-feed-list h4 .c-pill,
+.c-update__title .c-pill {
+  vertical-align: middle;
+  transform: translateY(-0.125em);
+}
+
+/* To style "Update" pill in big article page title */
+.c-update__title .c-pill {
+  font-size: var(--global-font-size--large);
+  min-width: unset; /* overwrite .c-pill */
+}
+
+/* To reduce space between "Original Update" and its content */
+.c-update__header + .c-news__content {
+  margin-top: unset; /* ovewrite c-news--read.css */
+}
+
+/* To tweak hr appearance and layout */
+.c-update + hr {
+  border-top-color: var(--global-color-priamry--dark);
+
+  /* To make line between updates darker and have equal space above and below */
+  margin-top: var(--global-space--hr-buffer-below);
+}
 </style>
