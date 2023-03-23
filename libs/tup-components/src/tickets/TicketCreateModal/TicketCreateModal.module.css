@@ -1,8 +1,3 @@
-:global(.ticket-create-modal-body) {
-  overflow: auto;
-  max-height: 60vh;
-}
-
 .modal-header {
   font-size: 2rem;
   align-items: center;
