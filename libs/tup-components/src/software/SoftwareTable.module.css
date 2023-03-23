@@ -1,0 +1,182 @@
+/* Form */
+
+.form {
+  --icon-width: 2.4rem; /* mimic core-styles .icon-md */
+  --icon-pad-horz: 10px; /* mimic core-styles input */
+
+  display: flex;
+  align-items: start;
+}
+.form label {
+  margin-bottom: 0; /* override core-styles */
+}
+.form .search-field {
+  margin-right: auto;
+}
+.form .filter-field {
+  margin-left: 2rem;
+}
+
+
+
+/* Form: Search Field */
+
+/* So icon is atop input field */
+.form .search-field {
+  display: grid;
+}
+.form .search-field .icon {
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+
+  z-index: 1;
+  align-self: center;
+}
+.form .search-field input {
+  grid-row: 1 / 1;
+  grid-column: 1 / 2;
+}
+
+/* So text entry occurs after icon */
+.form .search-field .icon {
+  box-sizing: content-box;
+  padding-inline: var(--icon-pad-horz);
+}
+.form .search-field input {
+  width: 30ch;
+  text-indent: calc( var(--icon-width) + var(--icon-pad-horz) );
+}
+
+
+
+/* Form: Filter Field */
+
+.form .filter-field {
+  display: flex;
+  align-items: center;
+}
+.form .filter-field span + select {
+  margin-left: 1rem;
+}
+
+
+
+
+
+/* Table */
+
+.table-wrap {
+  /* To scroll as necessary, if height (or width) is set */
+  /* CAVEAT: Client decides height because client knows layout context */
+  overflow: auto;
+}
+
+.table-wrap table {
+  /* NOTE: This is Portal global style, but table can be used outside Portal */
+  /* NOTE: CMS does not have this globally... should it? */
+  width: 100%;
+}
+
+.form + :is(table, .table-wrap) {
+  margin-top: 1rem;
+}
+
+/* So table columns do not change width (much) on filter */
+.table-wrap th:nth-child(1) { width: 14%; }
+.table-wrap th:nth-child(2) { width: 36%; }
+.table-wrap th:nth-child(3) { width: 40%; }
+.table-wrap th:nth-child(4) { width: 10%; }
+
+
+
+
+
+/* Modal */
+
+.modal-body {
+  padding: 0; /* overwrite Bootstrap */
+
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+.modal-body section {
+  min-height: 0;
+}
+.modal-body :global(.nav-tabs) {
+  border-bottom-color: var(--global-color-primary--normal); /* overwrite Bootstrap */
+}
+
+
+
+
+
+/* Package */
+
+.package-desc {
+  margin: 1.5rem 1.5rem 0;
+}
+
+
+
+
+/* Resource */
+
+/* Layout */
+
+.resource {
+  display: grid;
+  grid-template-areas:
+    'nav doc';
+  grid-template-columns: max-content auto;
+}
+.resource nav { grid-area: nav }
+.resource article { grid-area: doc }
+
+/* Nav */
+
+.resource nav {
+  font-size: var(--global-font-size--small);
+  border-right: var(--global-border--normal);
+}
+.resource nav ul {
+  padding-left: 1rem;
+}
+
+/* Title */
+
+.resource-title {
+  margin: 1em;
+}
+
+/* Version */
+
+.resource-version {
+  width: 100%;
+  display: block;
+  line-height: 1;
+  padding: 0.5em 0.5em 0.25em;
+
+  color: var(--global-color-primary--dark);
+}
+button.resource-version {
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.resource-version.is-active {
+  background-color: var(--global-color-accent--xx-light);
+}
+.resource-version:not(.is-active) {
+  background-color: transparent;
+}
+
+/* Article */
+
+.resource article {
+  overflow: auto;
+
+  padding: 2rem 2rem 0;
+}
+.resource article pre {
+  font-family: var(--global-font-family--sans);
+}

@@ -35,7 +35,7 @@ const TicketModal: React.FC<{ ticketId: string; baseRoute: string }> = ({
       <ModalBody style={{ minHeight: '70vh', maxHeight: 'fit-content' }}>
         <Container className="ticket-detailed-view-container">
           <Row className="ticket-detailed-view-row">
-            <Col lg="7" className="ticket-history">
+            <Col lg="7">
               <TicketHistory ticketId={ticketId} />
             </Col>
             <Col lg="5">
