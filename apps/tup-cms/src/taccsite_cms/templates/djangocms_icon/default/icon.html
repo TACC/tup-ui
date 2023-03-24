@@ -1,0 +1,10 @@
+{# https://github.com/TACC/Core-CMS/blob/task/icon-support-cortal-svg/taccsite_cms/templates/djangocms_icon/default/icon.html #}
+{% load cms_tags %}
+
+{% if '-logo' in instance.icon %}
+  {% include 'djangocms_icon/includes/svg.html' with path="site_cms/img/icons/logos.svg" %}
+{% elif 'svg-' in instance.icon %}
+  {% include 'djangocms_icon/includes/svg.html' with path="tup-cms/img/icons/decals.svg" %}
+{% else %}
+  {% include 'djangocms_icon/includes/icon.html' %}
+{% endif %}

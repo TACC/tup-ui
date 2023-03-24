@@ -18,6 +18,7 @@ import {
   ProjectMember,
   Mfa,
   TicketDetail,
+  Impersonate,
 } from './pages';
 
 const AppLayout = () => {
@@ -59,6 +60,7 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route path="/impersonation" element={<Impersonate />} />
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>
