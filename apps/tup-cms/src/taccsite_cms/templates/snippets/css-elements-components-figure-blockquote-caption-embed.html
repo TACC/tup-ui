@@ -1,11 +1,13 @@
 <style id="css-elements-components-figure-blockquote-caption-embed">
 /* CHANGES NOT IN CORE (BUT ARE IN TACC/TACC-Docs#1cc1599) */
+/* IMPORTANT: Since TACC/TACC-Docs#1cc1599,
+              .app-blog has been prepended to each selector */
 
 /* To add space abvoe and below small text beneath these patterns */
-figure,
-blockquote,
-p.caption,
-.embed-responsive {
+.app-blog figure,
+.app-blog blockquote,
+.app-blog p.caption,
+.app-blog .embed-responsive {
     --buffer-top: 10px;
     --buffer-bottom: 2rem; /* mimic core-styles.cms <p> margin-bottom: 2rem; */
 
@@ -13,33 +15,33 @@ p.caption,
 }
 
 /* To hide `.embed-…` margin-bottom */
-.embed-responsive + p.caption {
+.app-blog .embed-responsive + p.caption {
     margin-top: calc( var(--buffer-top) - var(--buffer-bottom) );
 }
 /* To remove extra whitespace beneath embeded content */
-.embed-responsive > * {
+.app-blog .embed-responsive > * {
     display: block;
 }
 
 /* TODO: In Core, share styles (how?) */
-figcaption,
-p.caption,
-blockquote footer {
+.app-blog figcaption,
+.app-blog p.caption,
+.app-blog blockquote footer {
     color: var(--global-color-primary--dark);
     font-style: italic;
     line-height: 1.7;
     font-size: var(--global-font-size--small);
 }
 /* FAQ: Not for blockquote footer, because blockquote line-height is enough */
-figcaption,
-p.caption {
+.app-blog figcaption,
+.app-blog p.caption {
     margin-top: var(--buffer-top);
 }
 
 /* TODO: Use global variables */
 /* TODO: Incorporate add `o-float-content--right` (requires Core-CMS repo) */
 /* TODO: Hide "TACC Site" Blockquote plugin */
-blockquote {
+.app-blog blockquote {
     font-size: var(--global-font-size--large); /* HP wanted non-standard 20px */
     color: var(--global-color-accent--secondary);
     width: fit-content;
@@ -47,19 +49,17 @@ blockquote {
 }
 </style>
 <style id="css-components-figure">
-/* WARNING: This is a rush fix, so side effects are uncertain */
 /* IMPORTANT: Some changes here overwrite #css-elements-components-figure-blockquote-caption-embed (e.g. margin) */
-figcaption,
-p.caption {
+.app-blog figcaption,
+.app-blog p.caption {
   padding-bottom: 10px;
   border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--normal);
   margin-bottom: 15px;
 }
 </style>
 <style id="css-components-blockquote">
-/* WARNING: This is a rush fix, so side effects are uncertain */
 /* IMPORTANT: Some changes here overwrite #css-elements-components-figure-blockquote-caption-embed (e.g. color) */
-blockquote {
+.app-blog blockquote {
   color: var(--global-color-tertiary--normal);
 
   margin-top: 30px;
