@@ -4,8 +4,12 @@ from django.template import loader
 from django.shortcuts import redirect
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
+import requests
 from apps.portal.decorators import tup_login_required
 
+service_url = settings.TUP_SERVICES_URL
+if settings.DEBUG:
+    service_url = service_url.replace("localhost", "host.docker.internal")
 
 def LoginView(request):
     user = authenticate(request)
@@ -25,6 +29,22 @@ def LogoutView(request):
     logout(request)
     resp = HttpResponseRedirect("/login")
     resp.set_cookie("x-tup-token", "")
+    return resp
+
+
+def ImpersonateView(request):
+    resp = HttpResponseRedirect("/portal/dashboard")
+    if not request.user.is_staff:
+        return resp
+    
+    headers = {"x-tup-token": settings.TUP_SERVICES_ADMIN_JWT}
+    data = {"username": request.GET.get("username")}
+    
+    impersonation_resp = requests.post(f"{service_url}/auth/impersonate",
+                                       headers=headers,
+                                       json=data)
+    user_jwt = impersonation_resp.json()['jwt']
+    resp.set_cookie("x-tup-token", user_jwt)
     return resp
     
 

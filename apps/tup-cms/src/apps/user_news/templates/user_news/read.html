@@ -1,11 +1,14 @@
 {% extends "fullwidth.html" %}
+{% load i18n %}
 
-{% block title %}User Updates{% endblock %}
+{% block title %}{% trans "User Updates" %}{% endblock %}
 
 {% block content %}
-<section class="container">
+<div class="container">
   {% include "./includes/list_item_breadcrumbs.html" with article=article urls=urls only %}
-  {% include './includes/content_styles.html' %}
-  {% include './includes/page_item.html' %}
-</section>
+  <section class="c-news c-news--read">
+    {% include './includes/content_styles.html' %}
+    {% include './includes/read_item.html' %}
+  </section>
+</div>
 {% endblock content %}

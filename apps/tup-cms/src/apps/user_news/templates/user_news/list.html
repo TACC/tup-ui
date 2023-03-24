@@ -1,10 +1,18 @@
 {% extends "fullwidth.html" %}
+{% load i18n %}
 
 {% block content %}
-<section class="container">
+{% include 'djangocms_blog/tacc/layout-choice-form.html' with list_selector=".c-news--list" %}
+<div class="container">
   {% include "nav_cms_breadcrumbs.html" %}
-  <h1>User Updates</h1>
-  {% include './includes/content_styles.html' %}
-  {% include './includes/list.html' %}
-</section>
+  <section class="c-news c-news--list">
+    <h1 class="c-news__name">{% trans "User Updates" %}</h1>
+    {% include './includes/content_styles.html' %}
+
+    {% with title_tag="h3" subtitle_tag="h4" %}
+    {% include './includes/list.html' %}
+    {% endwith %}
+
+  </section>
+</div>
 {% endblock content %}

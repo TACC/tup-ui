@@ -4,6 +4,7 @@ import { Icon, InlineMessage, LoadingSpinner } from '@tacc/core-components';
 import { Ticket, useGetTicketHistory, useGetTickets } from '@tacc/tup-hooks';
 import './TicketsTable.global.css';
 import { formatDate } from '../utils/timeFormat';
+import { EmptyTablePlaceholder } from '../utils';
 
 const TICKETS_DASHBOARD_DISPLAY_LIMIT = 12;
 
@@ -62,15 +63,9 @@ export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
     );
   }
 
-  if (data && data.length === 0) {
-    return (
-      <>No tickets. You can add a ticket by clicking "New Ticket" above.</>
-    );
-  }
-
   return (
     <div className="o-fixed-header-table">
-      <table style={{ width: '100%' }}>
+      <table>
         <thead>
           <tr>
             <th>Ticket Number</th>
@@ -80,6 +75,15 @@ export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
           </tr>
         </thead>
         <tbody>
+          {!ticketData?.length && (
+            <tr>
+              <td colSpan={4}>
+                <EmptyTablePlaceholder>
+                  You have not added any tickets.
+                </EmptyTablePlaceholder>
+              </td>
+            </tr>
+          )}
           {ticketData.map((ticket) => (
             <tr
               key={ticket.numerical_id}
@@ -90,7 +94,7 @@ export const TicketsTable: React.FC<{ ticketsPath: string }> = ({
               <td>{ticket.numerical_id}</td>
               <td>
                 <Link to={`${ticketsPath}/${ticket.numerical_id}`}>
-                  {ticket.Subject}
+                  {ticket.Subject || '(No Subject)'}
                 </Link>{' '}
                 <AttachmentIndicator ticketId={ticket.numerical_id} />
               </td>

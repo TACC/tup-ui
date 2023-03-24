@@ -2,6 +2,7 @@ import { LoadingSpinner, InlineMessage } from '@tacc/core-components';
 import { ProjectSummary } from './ProjectSummary';
 import { ProjectsListingAllocationTable } from './ProjectsListingAllocationTable';
 import { ProjectsRawSystem, useProjects } from '@tacc/tup-hooks';
+import { EmptyTablePlaceholder } from '../../utils';
 import { useLocation } from 'react-router-dom';
 import styles from './ProjectsListing.module.css';
 
@@ -24,6 +25,20 @@ export const ProjectsListing: React.FC = () => {
     return (
       <InlineMessage type="warning">Unable to retrieve projects.</InlineMessage>
     );
+  if (!data?.length) {
+    return (
+      <EmptyTablePlaceholder>
+        No projects or allocations found. {''}
+        <a
+          href="/use-tacc/allocations/#request"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Learn how to request a new allocation.
+        </a>
+      </EmptyTablePlaceholder>
+    );
+  }
 
   return (
     <ul className={styles['project-listing']}>
