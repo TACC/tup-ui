@@ -109,6 +109,12 @@ TUP_SERVICES_URL = "https://dev.tup-services.tacc.utexas.edu"
 LOGIN_URL = "/portal/login"
 
 ########################
+# TACC: PORTAL
+########################
+
+INCLUDES_SEARCH_BAR = False
+
+########################
 # TACC: NEWS/BLOG
 ########################
 
