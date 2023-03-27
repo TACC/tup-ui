@@ -10,7 +10,7 @@ import {
 
 import './Dashboard.css';
 import styles from './Dashboard.module.css';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const Layout: React.FC = () => {
   const bodyClassName = 'dashboard';
