@@ -146,8 +146,9 @@ Styleguide Components.Banner
 .banner-cell--minor figure {
   display: grid;
 
-  /* To force figcaption height to fill its container (i.e. <figure>) */
+  /* To make image and caption fill, but also fit within, grid */
   grid-template-rows: auto 1fr;
+  grid-template-columns: minmax( 0, 1fr );
 }
 
 .banner-cell--minor h2 {
