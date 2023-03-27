@@ -4,8 +4,9 @@
   but not Portal */
 /* TODO: When TACC/tup-ui:/apps/tup-cms supports custom styles,
   add these */
+/* !!!: When migrated, use `:root` selector instead */
 .s-header,
-body>main> :not(#root) {
+:where(body > main > :not(#root)) {
   --global-color-accent--xxx-light: #dfeafe;
   --global-color-accent--xx-light: #caddfe;
   --global-color-accent--x-light: #AAC7FF;
