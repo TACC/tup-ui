@@ -9,44 +9,7 @@ Markup: css-banner--sample-markup.html
 
 Styleguide Components.Banner
 */
-/* TODO: (1) Evaluate how best to organize styles. (2) Create a .c-banner */
-
-
-
-/* Banner Row */
-
-/* To add (and collapse) white border around each cell */
-.banner-row {
-  --border-width: var(--global-border-width--x-thick);
-}
-
-@media (width < 576px) {
-  [class*="banner-cell--"] {
-    margin: var(--border-width);
-  }
-}
-@media (width >= 576px) {
-  .banner-row {
-    display: table;
-    border-spacing: var(--border-width);
-    width: 100%;
-  }
-  .banner-row + .banner-row {
-    margin-top: calc( -1 * var(--border-width) );
-  }
-  [class*="banner-cell--"] {
-    display: table-cell;
-  }
-  .banner-row,
-  [class*="banner-cell--"],
-  [class*="banner-cell--"] > a {
-    height: 100%;
-  }
-  [class*="banner-cell--"] > a {
-    display: block;
-  }
-}
-
+/* TODO: 1. Evaluate how best to organize styles. 2. Create a .c-banner-cell */
 
 
 /* Banner Cell */
@@ -61,7 +24,16 @@ Styleguide Components.Banner
   margin-bottom: 0;
 }
 
+/* So image caption heights are equal (not an issue on narrow screen) */
+@media (width >= 576px) {
+  [class*="banner-cell--"] > a {
+    height: 100%;
+    display: block;
+  }
+}
+
 /* FAQ: Using after so outline is on top of mix-blend-mode (see .o-colorize) */
+[class*="banner-cell--"] > a { position: relative; }
 [class*="banner-cell--"] > a:hover::after {
   --border-width: var(--global-border-width--thick);
 
@@ -154,6 +126,21 @@ Styleguide Components.Banner
 
 
 /* Banner Cell (Minor) */
+
+/* To space out cells */
+@media (width < 576px) {
+  .banner-cell--minor {
+    margin-top: calc( var(--global-space--bootstrap-gap) / 2 );
+  }
+  .banner-cell--minor:last-child {
+    margin-bottom: calc( var(--global-space--bootstrap-gap) / 2 );
+  }
+}
+@media (width >= 576px) {
+  .banner-cell--minor {
+    margin-block: var(--global-space--bootstrap-gap);
+  }
+}
 
 /* To allow image to be underneath text */
 .banner-cell--minor figure {
