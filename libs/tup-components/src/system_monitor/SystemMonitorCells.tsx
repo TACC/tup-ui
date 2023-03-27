@@ -6,7 +6,7 @@ import { SystemMonitorRawSystem } from '@tacc/tup-hooks';
 export const Display: React.FC<{
   cell: Cell<SystemMonitorRawSystem, string>;
 }> = ({ cell: { value } }) => (
-  <strong className="wb-text-primary">{value}</strong>
+  <strong>{value}</strong>
 );
 
 export const Operational: React.FC<{
