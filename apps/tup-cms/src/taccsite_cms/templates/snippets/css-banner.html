@@ -9,44 +9,7 @@ Markup: css-banner--sample-markup.html
 
 Styleguide Components.Banner
 */
-/* TODO: (1) Evaluate how best to organize styles. (2) Create a .c-banner */
-
-
-
-/* Banner Row */
-
-/* To add (and collapse) white border around each cell */
-.banner-row {
-  --border-width: var(--global-border-width--x-thick);
-}
-
-@media (width < 576px) {
-  [class*="banner-cell--"] {
-    margin: var(--border-width);
-  }
-}
-@media (width >= 576px) {
-  .banner-row {
-    display: table;
-    border-spacing: var(--border-width);
-    width: 100%;
-  }
-  .banner-row + .banner-row {
-    margin-top: calc( -1 * var(--border-width) );
-  }
-  [class*="banner-cell--"] {
-    display: table-cell;
-  }
-  .banner-row,
-  [class*="banner-cell--"],
-  [class*="banner-cell--"] > a {
-    height: 100%;
-  }
-  [class*="banner-cell--"] > a {
-    display: block;
-  }
-}
-
+/* TODO: 1. Evaluate how best to organize styles. 2. Create a .c-banner-cell */
 
 
 /* Banner Cell */
@@ -61,7 +24,17 @@ Styleguide Components.Banner
   margin-bottom: 0;
 }
 
-[class*="banner-cell--"] > a:hover {
+/* So image caption heights are equal (not an issue on narrow screen) */
+@media (width >= 576px) {
+  [class*="banner-cell--"] > a {
+    height: 100%;
+    display: block;
+  }
+}
+
+/* FAQ: Using after so outline is on top of mix-blend-mode (see .o-colorize) */
+[class*="banner-cell--"] > a { position: relative; }
+[class*="banner-cell--"] > a:hover::after {
   --border-width: var(--global-border-width--thick);
 
   /* FAQ: Using `border` shrinks content while `outline` does not */
@@ -69,6 +42,12 @@ Styleguide Components.Banner
   outline-style: solid;
   outline-color: var(--global-color-primary--xxx-dark);
 	outline-offset: calc( -1 * var(--border-width) );
+
+  /* So ::after stretches to fill parent */
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0; top: 0; bottom: 0; right: 0;
 }
 [class*="banner-cell--"] > a:active {
 	--border-width: var(--global-border-width--normal);
@@ -80,8 +59,8 @@ Styleguide Components.Banner
 
 [class*="banner-cell--"] figcaption {
   display: revert; /* undo core-styles.cms */
-  margin-inline: 3.0rem;
-  margin-bottom: 3.0rem;
+  padding-inline: 3.0rem;
+  padding-bottom: 3.0rem;
 }
 
 /* To remove standard link text docoration */
@@ -114,18 +93,17 @@ Styleguide Components.Banner
 	line-height: 1;
 }
 
+
+/* Banner Cell (Major) */
+
 /* To allow image to be underneath text */
-[class*="banner-cell--"] figure {
+.banner-cell--major figure {
   display: grid;
 
   /* To force % image height to match its container (i.e. <figure>) */
   /* https://stackoverflow.com/a/52137966/11817077 */
   grid-template-rows: minmax( 0, 1fr );
 }
-
-
-
-/* Banner Cell (Major) */
 
 .banner-cell--major h2 {
 	font-size: var(--global-font-size--xxx-large);
@@ -149,6 +127,30 @@ Styleguide Components.Banner
 
 /* Banner Cell (Minor) */
 
+/* To space out cells */
+@media (width < 576px) {
+  .banner-cell--minor {
+    margin-top: calc( var(--global-space--bootstrap-gap) / 2 );
+  }
+  .banner-cell--minor:last-child {
+    margin-bottom: calc( var(--global-space--bootstrap-gap) / 2 );
+  }
+}
+@media (width >= 576px) {
+  .banner-cell--minor {
+    margin-block: var(--global-space--bootstrap-gap);
+  }
+}
+
+/* To allow image to be underneath text */
+.banner-cell--minor figure {
+  display: grid;
+
+  /* To make image and caption fill, but also fit within, grid */
+  grid-template-rows: auto 1fr;
+  grid-template-columns: minmax( 0, 1fr );
+}
+
 .banner-cell--minor h2 {
   color: var(--global-color-primary--xxx-dark); /* undo core-styles.cms */
   font-weight: revert;
@@ -156,11 +158,12 @@ Styleguide Components.Banner
 
 /* To move text atop image */
 .banner-cell--minor figcaption {
-  margin-top: calc( -1 * (
-    /* To move by half the height of the .c-tag */
-    /* FAQ: Not using `translateY(-50%)` because the h2 must move same amount */
-    var(--tag-padding) + ( var(--global-font-size--small) / 2 )
-  ));
+  /* To move by half the height of the .c-tag */
+  /* FAQ: Not using `translateY(-50%)` because h2 must move same amount */
+  --offset: calc( var(--tag-padding) + ( var(--global-font-size--small) / 2 ) );
+
+  /* FAQ: Using variable so styles that extend this can use the value */
+  margin-top: calc( -1 * var(--offset) );
 }
 </style>
 <style id="css-banner--conflicts-with-snippet-77">

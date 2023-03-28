@@ -1,0 +1,14 @@
+<style id="css-scrolling-fixes">
+/* To prevent decal SVG horz. body scroll on mobile */
+@media (max-width: 575px) {
+  .container {
+      overflow-x: clip;
+  }
+}
+
+/* Prevent trackpad scroll to show white background beyond page height */
+/* TODO: Ask Designer if "scroll away into forever" bug has come back */
+body {
+    overscroll-behavior-y: none;
+}
+</style>

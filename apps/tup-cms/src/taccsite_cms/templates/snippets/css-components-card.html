@@ -3,15 +3,15 @@
 @layer base {
 
 /* TODO: In Core, add this pattern modification */
-/* !!!: In Core, remove `:not(#root *)` (e.g. "not in portal") */
-:is(.card, .c-card, [class*="card--"]) p:last-child:not(#root *) {
+/* !!!: When migrated, remove `:where(:not(…` (e.g. "not in portal") */
+:is(.card, .c-card, [class*="card--"]) p:last-child:where(:not(#root *)) {
     margin-bottom: 2rem; /* restore <p> `margin-bottom `*/
 }
 
 /* To more specifically control c-card link font weight */
 /* TODO: In Core, add this pattern modification */
-/* !!!: In Core, remove `:not(#root *)` (e.g. "not in portal") */
-:is(.card, .c-card, [class*="card--"]) a.c-button:not(#root *) {
+/* !!!: When migrated, remove `:where(:not(…` (e.g. "not in portal") */
+:is(.card, .c-card, [class*="card--"]) a.c-button:where(:not(#root *)) {
     font-weight: var(--bold);
 }
 

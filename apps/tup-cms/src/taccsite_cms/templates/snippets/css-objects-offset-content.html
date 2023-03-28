@@ -1,0 +1,13 @@
+<style>
+/* To prevent offset content from touching horz. edge of narrow screen */
+/* TODO: Make this change in Core-Styles */
+.o-offset-content--left,
+.o-offset-content--right,
+article.post-detail .blog-content .align-left,
+article.post-detail .blog-content .align-right,
+article.post-detail .blog-content .blockquote.text-left,
+article.post-detail .blog-content .blockquote.text-right {
+    /* WARNING: Value is based on developer memory of designer confirmation */
+    --offset-distance: min(12vw);
+}
+</style>
