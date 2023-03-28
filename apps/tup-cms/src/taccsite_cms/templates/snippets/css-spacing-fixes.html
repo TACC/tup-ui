@@ -1,0 +1,14 @@
+<style id="css-spacing-fixes">
+/* FAQ: Columns that explcitely or automatically span 12, get margin bottom */
+.col-12:not(
+  :last-child,
+  [class*="banner-cell"],
+  #page-scivis-gallery *
+),
+.col:not(
+  [class*="col-"],
+  :last-child
+) {
+  margin-bottom: 4rem;
+}
+</style>
