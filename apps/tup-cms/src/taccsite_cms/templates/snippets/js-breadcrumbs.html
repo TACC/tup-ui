@@ -1,0 +1,24 @@
+<script id="js-breadcrumbs-script" type="module">
+// To "disable" top-level CMS menu nav links in breadcrumbs
+// FAQ: Because they are all set to redirect to a child
+// TODO: Perform via TACC/Core-CMS template, not JavaScript
+const link = document.querySelector('.s-breadcrumbs:is(nav) li:nth-of-type(2) a');
+const isAppropriatePage = (window.location.pathname.search('/systems/') == -1);
+if ( isAppropriatePage ) {
+    link.removeAttribute('href');
+}
+</script>
+<style id="js-breadcrumbs-style">
+/* To disable links without an href */
+/* https://github.com/TACC/Core-Styles/pull/130 */
+:where([role="main"], main) a:not([href]) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+/* To overwrite core-styles.base.css href-less link styles */
+/* NOTE: If not overwriting Core-Styles, it overwrites placeholder CSS above */
+.s-breadcrumbs:is(nav) a:not([href]) {
+    opacity: 1;
+    color: unset;
+}
+</style>
