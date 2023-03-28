@@ -1,0 +1,15 @@
+<style id="css-page-systems">
+/* To enlarge images enough to never allow negative space in card */
+/* FAQ: Hide overflow of enlarged image not constrained in grid item */
+.card--image-right {
+    overflow: hidden;
+}
+/* FAQ: Enlarge image while maintaining aspect ratio */
+.card--image-right img {
+  --size: calc(100% + 105px);
+
+  width: var(--size);
+  height: var(--size);
+  object-fit: cover; /* to retain aspect ratio */
+}
+</style>
