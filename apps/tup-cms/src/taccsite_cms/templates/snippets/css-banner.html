@@ -60,7 +60,6 @@ Styleguide Components.Banner
 [class*="banner-cell--"] figcaption {
   display: revert; /* undo core-styles.cms */
   padding-inline: 3.0rem;
-  padding-bottom: 3.0rem;
 }
 
 /* To remove standard link text docoration */
@@ -148,6 +147,11 @@ Styleguide Components.Banner
   /* To make image and caption fill, but also fit within, grid */
   grid-template-rows: auto 1fr;
   grid-template-columns: minmax( 0, 1fr );
+}
+
+/* To add space under caption text within container */
+.banner-cell--minor figcaption {
+  padding-bottom: 3.0rem;
 }
 
 .banner-cell--minor h2 {
