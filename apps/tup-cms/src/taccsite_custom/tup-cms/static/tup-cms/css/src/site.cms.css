@@ -1,21 +1,50 @@
 /* Organize via ITCSS */
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
-
-
 /* SETTINGS */
+/* ... */
 
-:root {
+/* GENERICS */
+/* (Base) */
+@import url("../for-core-styles/generics/attributes.css") layer(base);
+@import url("../for-core-styles/generics/color.css") layer(base);
 
-  /* Accent */
-  --global-color-accent--xxx-light: #AAC7FF;
-  --global-color-accent--x-light: #558EFF;
-  --global-color-accent--light: #0055FF;
-  --global-color-accent--normal: #003399; /* original c-callout background */
-  --global-color-accent--dark: #002266;
-  --global-color-accent--x-dark: #001133;
+/* ELEMENTS */
+/* (Project) */
+@import url("./_imports/elements/mailto-link.css") layer(project);
 
-  --global-color-accent--alt: #B2C1DE;
-  --global-color-accent--weak: #0044CC40;
+/* OBJECTS */
+/* (Base) */
+@import url("../for-core-styles/objects/o-sections.css") layer(base);
+@import url("../for-core-styles/objects/o-heading-steps.css") layer(base);
+/* (Project) */
+@import url("./_imports/objects/o-section.css") layer(project);
 
-}
+/* COMPONENTS */
+/* (Base) */
+@import url("../for-core-styles/components/c-button.css") layer(base);
+@import url("../for-core-styles/components/c-card.css") layer(base);
+@import url("../for-core-styles/components/c-card--frontera-about-page.css") layer(base);
+@import url("../for-core-styles/components/c-content-block.css") layer(base);
+@import url("../for-core-styles/components/c-news.css") layer(base);
+@import url("../for-core-styles/components/c-pill.css") layer(base);
+@import url("../for-core-styles/components/c-update.css") layer(base);
+/* (Project) */
+@import url("./_imports/components/banner.css") layer(project);
+@import url("./_imports/components/c-data-list.css") layer(project);
+@import url("./_imports/components/c-footer.css") layer(project);
+@import url("./_imports/components/c-news.css") layer(project);
+@import url("./_imports/components/c-tag.css") layer(project);
+@import url("./_imports/components/c-update.css") layer(project);
+@import url("./_imports/components/c-widget.css") layer(project);
+@import url("./_imports/components/content-block.css") layer(project);
+@import url("./_imports/components/django-cms-forms.css") layer(project);
+@import url("./_imports/components/django.cms.blog.app.page") layer(project);
+@import url("./_imports/components/layered-image.css") layer(project);
+
+/* TRUMPS */
+/* (Base) */
+@import url("../for-core-styles/trumps/u-highlight.css") layer(base);
+@import url("../for-core-styles/trumps/s-header.css") layer(base);
+/* (Project) */
+@import url("./_imports/trumps/s-abbr-list.css") layer(project);
