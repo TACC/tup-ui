@@ -11,14 +11,14 @@
 
 /* ELEMENTS */
 /* (Project) */
-@import url("./_imports/elements/mailto-link.css") layer(project);
+@import url("./imports/elements/mailto-link.css") layer(project);
 
 /* OBJECTS */
 /* (Base) */
 @import url("../for-core-styles/objects/o-sections.css") layer(base);
 @import url("../for-core-styles/objects/o-heading-steps.css") layer(base);
 /* (Project) */
-@import url("./_imports/objects/o-section.css") layer(project);
+@import url("./imports/objects/o-section.css") layer(project);
 
 /* COMPONENTS */
 /* (Base) */
@@ -30,22 +30,22 @@
 @import url("../for-core-styles/components/c-pill.css") layer(base);
 @import url("../for-core-styles/components/c-update.css") layer(base);
 /* (Project) */
-@import url("./_imports/components/banner.css") layer(project);
-@import url("./_imports/components/c-data-list.css") layer(project);
-@import url("./_imports/components/c-footer.css") layer(project);
-@import url("./_imports/components/c-news.css") layer(project);
-@import url("./_imports/components/c-tag.css") layer(project);
-@import url("./_imports/components/c-update.css") layer(project);
-@import url("./_imports/components/c-widget.css") layer(project);
-@import url("./_imports/components/content-block.css") layer(project);
-@import url("./_imports/components/django-cms-forms.css") layer(project);
-@import url("./_imports/components/django.cms.blog.app.page") layer(project);
-@import url("./_imports/components/layered-image.css") layer(project);
+@import url("./imports/components/banner.css") layer(project);
+@import url("./imports/components/c-data-list.css") layer(project);
+@import url("./imports/components/c-footer.css") layer(project);
+@import url("./imports/components/c-news.css") layer(project);
+@import url("./imports/components/c-tag.css") layer(project);
+@import url("./imports/components/c-update.css") layer(project);
+@import url("./imports/components/c-widget.css") layer(project);
+@import url("./imports/components/content-block.css") layer(project);
+@import url("./imports/components/django-cms-forms.css") layer(project);
+@import url("./imports/components/django.cms.blog.app.page") layer(project);
+@import url("./imports/components/layered-image.css") layer(project);
 
 /* TRUMPS */
 /* (Base) */
 @import url("../for-core-styles/trumps/u-highlight.css") layer(base);
 @import url("../for-core-styles/trumps/s-header.css") layer(base);
 /* (Project) */
-@import url("./_imports/trumps/s-abbr-list.css") layer(project);
-@import url("./_imports/trumps/s-breadcrumbs.css") layer(project);
+@import url("./imports/trumps/s-abbr-list.css") layer(project);
+@import url("./imports/trumps/s-breadcrumbs.css") layer(project);
