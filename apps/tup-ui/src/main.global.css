@@ -50,11 +50,3 @@ h2 {
 table {
   width: 100%;
 }
-
-/* Modals */
-/* TODO: Remove this after:
-         1. adding/changing these in core-styles.base */
-.modal-body {
-  overflow-y: auto;
-  max-height: 60vh;
-}

@@ -21,7 +21,6 @@ import {
 } from '@tacc/core-components';
 import { EmptyTablePlaceholder } from '../utils';
 
-import './SoftwareTable.global.css';
 import styles from './SoftwareTable.module.css';
 
 const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
