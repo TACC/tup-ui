@@ -12,6 +12,6 @@ const link = document.querySelector(
 );
 const isAppropriatePage = window.location.pathname.search('/systems/') == -1;
 
-if (isAppropriatePage) {
+if (link && isAppropriatePage) {
   link.removeAttribute('href');
 }
