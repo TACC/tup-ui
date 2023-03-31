@@ -16,7 +16,7 @@
 
 /* OBJECTS */
 /* (Base) */
-@import url("./for-core-styles/objects/o-sections.css") layer(base);
+@import url("./for-core-styles/objects/o-section.css") layer(base);
 @import url("./for-core-styles/objects/o-heading-steps.css") layer(base);
 /* (Project) */
 @import url("./for-tup-cms/objects/o-section.css") layer(project);
