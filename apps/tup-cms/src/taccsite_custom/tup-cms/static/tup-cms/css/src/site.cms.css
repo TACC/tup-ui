@@ -7,7 +7,8 @@
 /* GENERICS */
 /* (Base) */
 @import url("../for-core-styles/generics/attributes.css") layer(base);
-@import url("../for-core-styles/generics/color.css") layer(base);
+/* (Project) */
+@import url("./imports/generics/color.css") layer(project);
 
 /* ELEMENTS */
 /* (Project) */

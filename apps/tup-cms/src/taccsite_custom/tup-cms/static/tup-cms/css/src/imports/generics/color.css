@@ -1,4 +1,3 @@
-<style id="css-settings-color-widgets">
 /* To overwrite imports-….css (from tup-cms-react for Portal components) */
 .s-header,
 :where(body > main > :not(#root)) {
@@ -63,4 +62,3 @@
   --global-color-accent--xx-dark: #001133;
   --global-color-accent--xxx-dark: #021230;
 }
-</style>
