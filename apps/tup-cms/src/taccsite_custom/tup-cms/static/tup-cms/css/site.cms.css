@@ -1,0 +1,52 @@
+/* Organize via ITCSS */
+/* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
+
+/* SETTINGS */
+/* ... */
+
+/* GENERICS */
+/* (Base) */
+@import url("./for-core-styles/generics/attributes.css") layer(base);
+/* (Project) */
+@import url("./for-tup-cms/generics/color.css") layer(project);
+
+/* ELEMENTS */
+/* (Project) */
+@import url("./for-tup-cms/elements/mailto-link.css") layer(project);
+
+/* OBJECTS */
+/* (Base) */
+@import url("./for-core-styles/objects/o-sections.css") layer(base);
+@import url("./for-core-styles/objects/o-heading-steps.css") layer(base);
+/* (Project) */
+@import url("./for-tup-cms/objects/o-section.css") layer(project);
+
+/* COMPONENTS */
+/* (Base) */
+@import url("./for-core-styles/components/c-button.css") layer(base);
+@import url("./for-core-styles/components/c-card.css") layer(base);
+@import url("./for-core-styles/components/c-card--frontera-about-page.css") layer(base);
+@import url("./for-core-styles/components/c-content-block.css") layer(base);
+@import url("./for-core-styles/components/c-news.css") layer(base);
+@import url("./for-core-styles/components/c-pill.css") layer(base);
+@import url("./for-core-styles/components/c-update.css") layer(base);
+/* (Project) */
+@import url("./for-tup-cms/components/banner.css") layer(project);
+@import url("./for-tup-cms/components/c-data-list.css") layer(project);
+@import url("./for-tup-cms/components/c-footer.css") layer(project);
+@import url("./for-tup-cms/components/c-news.css") layer(project);
+@import url("./for-tup-cms/components/c-tag.css") layer(project);
+@import url("./for-tup-cms/components/c-update.css") layer(project);
+@import url("./for-tup-cms/components/c-widget.css") layer(project);
+@import url("./for-tup-cms/components/content-block.css") layer(project);
+@import url("./for-tup-cms/components/django-cms-forms.css") layer(project);
+@import url("./for-tup-cms/components/django.cms.blog.app.page") layer(project);
+@import url("./for-tup-cms/components/layered-image.css") layer(project);
+
+/* TRUMPS */
+/* (Base) */
+@import url("./for-core-styles/trumps/u-highlight.css") layer(base);
+@import url("./for-core-styles/trumps/s-header.css") layer(base);
+/* (Project) */
+@import url("./for-tup-cms/trumps/s-abbr-list.css") layer(project);
+@import url("./for-tup-cms/trumps/s-breadcrumbs.css") layer(project);
