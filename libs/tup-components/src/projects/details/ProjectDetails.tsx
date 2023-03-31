@@ -20,11 +20,6 @@ import {
 import { ProjectsListingAllocationTable } from '../ProjectsListing/ProjectsListingAllocationTable';
 import ProjectPublicationRemove from './publications/ProjectPublicationDelete';
 
-const formatDate = (datestring: string): string => {
-  const date = new Date(datestring);
-  return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-};
-
 const Publication: React.FC<{
   projectId: number;
   pub: ProjectPublication;

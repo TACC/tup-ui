@@ -3,7 +3,6 @@ import * as Yup from 'yup';
 import {
   UIWizardStep,
   useWizardValues,
-  UIWizardSchema,
   InitialValueGenerator,
 } from '..';
 
