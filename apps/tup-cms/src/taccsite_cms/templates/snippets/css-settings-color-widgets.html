@@ -1,0 +1,66 @@
+<style id="css-settings-color-widgets">
+/* To overwrite imports-….css (from tup-cms-react for Portal components) */
+.s-header,
+:where(body > main > :not(#root)) {
+  /* Accent */
+
+  --global-color-accent--xxx-light: #dfeafe;
+  --global-color-accent--xx-light: #caddfe;
+  --global-color-accent--x-light: #AAC7FF;
+  --global-color-accent--light: #86aeff;
+  --global-color-accent--normal: #003399;
+  --global-color-accent--dark: #002266;
+  --global-color-accent--x-dark: #001133;
+  --global-color-accent--xx-dark: #021230;
+  --global-color-accent--xxx-dark: #000a22;
+
+  /* DEPRECATED */
+  --global-color-accent--alt: var(--global-color-accent--xx-light);
+  --global-color-accent--weak: var(--global-color-accent--x-light);
+
+
+  /* State */
+
+  --global-color-info--x-light: var(--global-color-primary--x-light);
+  --global-color-info--light: var(--global-color-primary--light);
+  --global-color-info--normal: var(--global-color-primary--dark);
+  --global-color-info--dark: var(--global-color-primary--x-dark);
+  --global-color-info--x-dark: var(--global-color-primary--xx-dark);
+
+  --global-color-danger--x-light: #fce4db; /* from designer */
+  --global-color-danger--light: #fcaf91;
+  --global-color-danger--normal: #ed4c11; /* from designer */
+  --global-color-danger--dark: #c23a03;
+  --global-color-danger--x-dark: #932b06;
+
+  --global-color-warning--x-light: #FDF0D3; /* from designer */
+  --global-color-warning--light: #fed880;
+  --global-color-warning--normal: #F2B327; /* from designer */
+  --global-color-warning--dark: #cd971c;
+  --global-color-warning--x-dark: #996f0a;
+
+  --global-color-success--x-light: #baf8dc; /* from designer */
+  --global-color-success--light: #93f6cd;
+  --global-color-success--normal: #10f7a9; /* from designer */
+  --global-color-success--dark: #3dce92;
+  --global-color-success--x-dark: #26885f;
+
+  --global-color-extra--x-light: #f0f6ff; /* from designer */
+  --global-color-extra--light: #b4d0f9;
+  --global-color-extra--normal: #3f85f4; /* from designer */
+  --global-color-extra--dark: #255bb1;
+  --global-color-extra--x-dark: #174a99;
+}
+/* FAQ: The footer is a "dark context", so it needs lighter colors */
+.c-footer {
+  --global-color-accent--xxx-light: #f3f7fe;
+  --global-color-accent--xx-light: #dfeafe;
+  --global-color-accent--x-light: #caddfe;
+  --global-color-accent--light: #AAC7FF;
+  --global-color-accent--normal: #86aeff;
+  --global-color-accent--dark: #003399;
+  --global-color-accent--x-dark: #002266;
+  --global-color-accent--xx-dark: #001133;
+  --global-color-accent--xxx-dark: #021230;
+}
+</style>

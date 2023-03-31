@@ -42,7 +42,7 @@
     "@nrwl/vite": "^15.6.3",
     "@nrwl/web": "15.6.3",
     "@nrwl/workspace": "15.6.3",
-    "@tacc/core-styles": "github:TACC/Core-Styles#675e5d5",
+    "@tacc/core-styles": "github:TACC/Core-Styles#task/accent-color-from-purple-to-blue",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "^14.4.3",
