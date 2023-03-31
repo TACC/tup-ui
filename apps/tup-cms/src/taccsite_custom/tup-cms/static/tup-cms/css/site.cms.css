@@ -40,7 +40,7 @@
 @import url("./for-tup-cms/components/c-widget.css") layer(project);
 @import url("./for-tup-cms/components/content-block.css") layer(project);
 @import url("./for-tup-cms/components/django-cms-forms.css") layer(project);
-@import url("./for-tup-cms/components/django.cms.blog.app.page") layer(project);
+@import url("./for-tup-cms/components/django.cms.blog.app.page.css") layer(project);
 @import url("./for-tup-cms/components/layered-image.css") layer(project);
 
 /* TRUMPS */
