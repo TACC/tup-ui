@@ -2,6 +2,7 @@ import React from 'react';
 import { LoginComponent } from '@tacc/tup-components';
 import { Button } from '@tacc/core-components';
 
+import './Login.global.css';
 import styles from './Login.module.css';
 
 const Layout: React.FC = () => {
