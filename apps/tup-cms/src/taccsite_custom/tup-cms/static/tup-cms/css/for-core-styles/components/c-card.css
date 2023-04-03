@@ -1,13 +1,17 @@
 /* FIX CARD */
 
-/* !!!: When migrated, remove `:where(:not(…` (e.g. "not in portal") */
-:is(.card, .c-card, [class*="card--"]) p:last-child:where(:not(#root *)) {
+/* !!!: When migrated:
+        1. Remove `:where(:not(…` (e.g. "not in portal").
+        2. Prevent or Undo these styles in apps/tup-ui TicketHistory CSS */
+:is(.card, .c-card, [class*="card--"]) p:last-child:where(:not(#page-portal *)) {
     margin-bottom: 2rem; /* restore <p> `margin-bottom `*/
 }
 
 /* To more specifically control c-card link font weight */
-/* !!!: When migrated, remove `:where(:not(…` (e.g. "not in portal") */
-:is(.card, .c-card, [class*="card--"]) a.c-button:where(:not(#root *)) {
+/* !!!: When migrated:
+        1. Remove `:where(:not(…` (e.g. "not in portal").
+        2. Prevent or Undo these styles in apps/tup-ui TicketHistory CSS */
+:is(.card, .c-card, [class*="card--"]) a.c-button:where(:not(#page-portal *)) {
     font-weight: var(--bold);
 }
 
