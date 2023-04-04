@@ -1,6 +1,6 @@
 /* To overwrite imports-….css (from tup-cms-react for Portal components) */
 .s-header,
-:not(#page-portal) main {
+html:not(#page-portal) main {
   /* Accent */
 
   --global-color-accent--xxx-light: #dfeafe;
