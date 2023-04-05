@@ -207,13 +207,7 @@
   /* NOTE: Ignore in TUP-CMS, cuz c-news only for User Updates (no captions) */
 }
 
-/* To fix caption styles for `.embed-responsive` */
-/* TODO: When in Core, use nesting */
-.c-news--read .embed-responsive + p.caption {
-  /* To hide `.embed-…` margin-bottom */
-  margin-top: calc( var(--buffer-middle) - var(--buffer-below) );
-}
+/* To remove extra whitespace beneath embeded content */
 .c-news--read .embed-responsive > * {
-  /* To remove extra whitespace beneath embeded content */
   display: block;
 }

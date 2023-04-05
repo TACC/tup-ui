@@ -20,6 +20,7 @@
 @import url("./for-core-styles/objects/o-heading-steps.css") layer(base);
 /* (Project) */
 @import url("./for-tup-cms/objects/o-section.css") layer(project);
+@import url("./for-tup-cms/objects/people-grid.css") layer(project);
 
 /* COMPONENTS */
 /* (Base) */
