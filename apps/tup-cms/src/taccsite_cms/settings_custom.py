@@ -52,6 +52,14 @@ RECAPTCHA_PRIVATE_KEY = ''
 RECAPTCHA_PUBLIC_KEY = ''
 
 ########################
+# TACC: SEARCH
+########################
+
+SEARCH_QUERY_PARAM_NAME = 'q'
+# SEE: https://github.com/TACC/Core-CMS/pull/621
+SEARCH_ENGINE = 'NOT_ELASTIC' # There is no Core-CMS support for 'GOOGLE'
+
+########################
 # TACC: BRANDING
 ########################
 
@@ -93,12 +101,6 @@ LOGO = [
     "anonymous",
     "True"
 ]
-
-########################
-# TACC: SEARCH
-########################
-
-SEARCH_QUERY_PARAM_NAME = 'q'
 
 ########################
 # DJANGO
