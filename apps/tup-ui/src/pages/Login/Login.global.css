@@ -1,5 +1,0 @@
-body.login {
-  display: unset; /* undo tup-ui main.global.css `display: flex` */
-
-  background-color: var(--global-color-primary--light);
-}

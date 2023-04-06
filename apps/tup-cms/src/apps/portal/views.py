@@ -21,7 +21,7 @@ def LoginView(request):
         template = loader.get_template('portal/portal.debug.html')
     else:
         template = loader.get_template('portal/portal.html')
-    resp = HttpResponse(template.render({'baseUrl': settings.TUP_SERVICES_URL}, request))
+    resp = HttpResponse(template.render({'baseUrl': settings.TUP_SERVICES_URL, 'login': True}, request))
     return resp
 
 

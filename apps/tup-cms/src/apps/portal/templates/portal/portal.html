@@ -13,7 +13,17 @@
 {% include "imports.html" %}
 <script>
   window.__TUP_CONFIG__ = {
-    baseUrl: 'https://dev.tup-services.tacc.utexas.edu',
+    baseUrl: '{{baseUrl}}',
   };
 </script>
+
+{% if login %}
+<style>
+  body {
+  display: unset; /* undo tup-ui main.global.css `display: flex` */
+  background-color: var(--global-color-primary--light);
+}
+</style>
+{% endif %}
+
 {% endblock %}
