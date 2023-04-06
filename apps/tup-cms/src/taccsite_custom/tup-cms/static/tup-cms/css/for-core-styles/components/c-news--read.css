@@ -1,6 +1,11 @@
 /* TODO: When integrated into Core-Styles, uncomment this *//*
 @import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
 */
+/*
+@import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-figure.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-blockquote.css");
+*/
 
 
 
@@ -11,7 +16,7 @@
 .c-news--read article {
   --header-buffer: calc( var(--global-space--grid-gap) / 2 );
 
-  max-width: 665px;
+  max-width: 775px;
   margin-inline: auto;
 }
 
@@ -117,6 +122,11 @@
   margin-top: 0.5em;
 }
 
+/* To reduce space between "Original Message" and its content */
+.c-update__header + .c-news__content {
+  margin-top: unset; /* ovewrite c-news--read.css */
+}
+
 
 
 /* Media & Content - Alignment */
@@ -162,4 +172,42 @@
   .c-news--read .c-news__content .align-left {
     max-width: 50%;
   }
+}
+
+
+
+
+
+/* Components & Elements */
+
+/* To style elements that are or have captions */
+/* TODO: When in Core, use nesting */
+.c-news--read figure,
+.c-news--read p.caption,
+.c-news--read .embed-responsive {
+  /* TODO: When in Core, use @extend */
+  /* @extend .x-figure; */
+  /* NOTE: Ignore in TUP-CMS, cuz c-news only for User Updates (no captions) */
+}
+.c-news--read figcaption,
+.c-news--read p.caption {
+  /* TODO: When in Core, use @extend */
+  /* @extend .x-figure-caption; */
+  /* NOTE: Ignore in TUP-CMS, cuz c-news only for User Updates (no captions) */
+}
+
+.c-news--read blockquote {
+  /* TODO: When in Core, use @extend */
+  /* @extend .x-blockquote; */
+  /* NOTE: Ignore in TUP-CMS, cuz c-news only for User Updates (no captions) */
+}
+.c-news--read blockquote footer {
+  /* TODO: When in Core, use @extend */
+  /* @extend .x-blockquote-caption; */
+  /* NOTE: Ignore in TUP-CMS, cuz c-news only for User Updates (no captions) */
+}
+
+/* To remove extra whitespace beneath embeded content */
+.c-news--read .embed-responsive > * {
+  display: block;
 }
