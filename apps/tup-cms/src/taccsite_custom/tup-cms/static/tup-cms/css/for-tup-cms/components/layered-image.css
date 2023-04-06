@@ -14,7 +14,7 @@
 /* So top of `.align-left` decal image aligns with top of <h1> */
 /* FAQ: To limit style to specific context, consider: `.col`, `:only-child` */
 .layered-image, [class*="layered-image--"] {
-    --h1-offset: 27px;
+    --h1-offset: 0;
 
     margin-top: var(--h1-offset);
 }
