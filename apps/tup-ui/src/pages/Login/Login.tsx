@@ -1,21 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { LoginComponent } from '@tacc/tup-components';
 import { Button } from '@tacc/core-components';
-
-import './Login.global.css';
 import styles from './Login.module.css';
 
 const Layout: React.FC = () => {
-  const bodyClassName = 'login';
-
-  useEffect(() => {
-    if (bodyClassName) document.body.classList.add(bodyClassName);
-
-    return function cleanup() {
-      if (bodyClassName) document.body.classList.remove(bodyClassName);
-    };
-  }, [bodyClassName]);
-
   return (
     <div className={styles.root}>
       <LoginComponent className={styles.body} />
