@@ -7,7 +7,9 @@
 
 {% if is_login_view %}
 <style>
-body {
+/* So only login page has unique background */
+/* FAQ: The ID is added by the CMS and makes these rules trump imports-….css */
+#page-portal body {
   display: unset; /* undo tup-ui main.global.css `display: flex` */
   background-color: var(--global-color-primary--light);
 }
