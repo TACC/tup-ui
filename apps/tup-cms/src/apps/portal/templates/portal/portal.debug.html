@@ -24,14 +24,4 @@
 </script>
 <script type="module" src="http://localhost:3000/@vite/client"></script>
 <script type="module" src="http://localhost:3000/src/main.tsx"></script>
-
-{% if login %}
-<style>
-  body {
-  display: unset; /* undo tup-ui main.global.css `display: flex` */
-  background-color: var(--global-color-primary--light);
-}
-</style>
-{% endif %}
-
 {% endblock %}

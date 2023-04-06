@@ -21,7 +21,7 @@ def LoginView(request):
         template = loader.get_template('portal/portal.debug.html')
     else:
         template = loader.get_template('portal/portal.html')
-    resp = HttpResponse(template.render({'baseUrl': settings.TUP_SERVICES_URL, 'login': True}, request))
+    resp = HttpResponse(template.render({'baseUrl': settings.TUP_SERVICES_URL, 'is_login_view': True}, request))
     return resp
 
 
@@ -36,17 +36,17 @@ def ImpersonateView(request):
     resp = HttpResponseRedirect("/portal/dashboard")
     if not request.user.is_staff:
         return resp
-    
+
     headers = {"x-tup-token": settings.TUP_SERVICES_ADMIN_JWT}
     data = {"username": request.GET.get("username")}
-    
+
     impersonation_resp = requests.post(f"{service_url}/auth/impersonate",
                                        headers=headers,
                                        json=data)
     user_jwt = impersonation_resp.json()['jwt']
     resp.set_cookie("x-tup-token", user_jwt)
     return resp
-    
+
 
 @tup_login_required()
 def PortalView(request):

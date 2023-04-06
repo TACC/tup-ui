@@ -4,3 +4,12 @@
   @import url("{% static 'site_cms/css/build/core-styles.portal.css' %}") layer(base);
   @import url("{% static 'site_cms/css/build/core-styles.header.css' %}") layer(base);
 </style>
+
+{% if is_login_view %}
+<style>
+body {
+  display: unset; /* undo tup-ui main.global.css `display: flex` */
+  background-color: var(--global-color-primary--light);
+}
+</style>
+{% endif %}
