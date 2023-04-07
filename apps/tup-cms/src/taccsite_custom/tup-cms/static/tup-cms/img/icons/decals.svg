@@ -146,42 +146,42 @@
       <path class="cls-1" d="m348.64,1132.24V327.09c0-15.74-12.8-28.54-28.54-28.54s-28.54,12.8-28.54,28.54v1062.58c0,15.74,12.8,28.54,28.54,28.54s28.54-12.8,28.54-28.54v-77.65"/>
     </symbol>
 
-    <symbol id="circuit-fill" viewBox="0 0 599.52 870.6">
+    <symbol id="svg-circuit-fill" viewBox="0 0 599.52 870.6">
       <defs>
         <style>.cls-1{fill:#50c6fc;}</style>
       </defs>
       <path class="cls-1" d="m81.07,79.11c-10.13-10.13-10.13-26.54,0-36.67,10.13-10.13,26.54-10.13,36.67,0l-36.67,36.67Z"/><path class="cls-1" d="m447.25,783.33c-10.13-10.13-10.13-26.54,0-36.67,10.13-10.13,26.54-10.13,36.67,0l-36.67,36.67Z"/><circle class="cls-1" cx="134.55" cy="671.27" r="13.74"/><circle class="cls-1" cx="134.61" cy="149.62" r="13.74"/><circle class="cls-1" cx="28.3" cy="590.38" r="13.74"/><circle class="cls-1" cx="80.63" cy="395.38" r="13.74"/><circle class="cls-1" cx="242.55" cy="532.12" r="13.74"/><circle class="cls-1" cx="459.22" cy="597.48" r="13.74"/><circle class="cls-1" cx="513.94" cy="482.74" r="13.74"/><circle class="cls-1" cx="351.07" cy="215.91" r="13.74"/><path class="cls-1" d="m350.71,298.26c-12.74,0-23.07,10.33-23.07,23.07s10.33,23.07,23.07,23.07,23.07-10.33,23.07-23.07-10.33-23.07-23.07-23.07Zm12.8,35.86c-7.07,7.07-18.53,7.07-25.59,0l25.59-25.59c7.07,7.07,7.07,18.53,0,25.59Z"/>
     </symbol>
 
-    <symbol id="circuit-stroke" viewBox="0 0 599.52 870.6">
+    <symbol id="svg-circuit-stroke" viewBox="0 0 599.52 870.6">
       <defs>
         <style>.cls-1{fill:none;stroke:#50c6fc;stroke-miterlimit:10;stroke-width:10px;}</style>
       </defs>
       <polyline class="cls-1" points="188.48 870.6 188.48 828.28 134.63 792.95 134.63 671.27"/><circle class="cls-1" cx="99.94" cy="61.28" r="34.11"/><circle class="cls-1" cx="466.11" cy="765.5" r="34.11"/><line class="cls-1" x1="134.61" y1="149.62" x2="134.61" y2="581.83"/><line class="cls-1" x1="188.48" y1="250.45" x2="188.48" y2="870.6"/><line class="cls-1" x1="242.55" y1="530.38" x2="242.55" y2="869.6"/><line class="cls-1" x1="568.05" x2="568.05" y2="321.33"/><line class="cls-1" x1="28.3" y1="590.38" x2="28.3" y2="869.6"/><polyline class="cls-1" points="28.3 .06 28.3 130.57 80.63 165.9 80.63 395.38"/><polyline class="cls-1" points="28.3 208.51 28.3 445.5 80.63 548.65 80.63 870.6"/><circle class="cls-1" cx="134.61" cy="599.05" r="17.22"/><circle class="cls-1" cx="28.3" cy="195.72" r="17.22"/><circle class="cls-1" cx="568.05" cy="338.56" r="17.22"/><line class="cls-1" x1="459.22" x2="459.22" y2="155.18"/><circle class="cls-1" cx="459.86" cy="172.4" r="17.22"/><line class="cls-1" x1="242.55" y1=".06" x2="242.55" y2="392.12"/><circle class="cls-1" cx="242.55" cy="409.34" r="17.22"/><line class="cls-1" x1="296.63" y1="869.6" x2="296.63" y2="670.48"/><circle class="cls-1" cx="296.63" cy="653.25" r="17.22"/><circle class="cls-1" cx="188.48" cy="233.23" r="17.22"/><polyline class="cls-1" points="459.86 597.62 459.86 254.32 405.14 218.98 405.14 0"/><line class="cls-1" x1="405.14" y1="869.6" x2="405.14" y2="49.83"/><line class="cls-1" x1="351.07" y1="213.41" x2="351.07"/><polyline class="cls-1" points="568.05 869.6 568.05 747.55 513.94 712.21 513.94 482.74"/><polyline class="cls-1" points="567.95 669.06 567.95 432.07 513.3 328.92 513.3 -.48"/><circle class="cls-1" cx="567.95" cy="685.01" r="17.22"/><polyline class="cls-1" points="350.71 869.6 350.71 500.41 296.63 465.07 296.63 .06"/>
     </symbol>
 
-    <symbol id="dots" viewBox="0 0 793.28 1396.67">
+    <symbol id="svg-dots" viewBox="0 0 793.28 1396.67">
       <defs>
         <style>.cls-1{fill:none;}.cls-2{fill:#1a1a1a;}.cls-3{fill:url(#Dots-aligned);}</style>
       </defs>
       <defs><pattern id="Dots-aligned" x="0" y="0" width="42" height="42" patternTransform="translate(-5341.72 -620.48) scale(.97 1)" patternUnits="userSpaceOnUse" viewBox="0 0 42 42"><g><rect class="cls-1" width="42" height="42"/><circle class="cls-2" cx="21" cy="21" r="6.88"/></g></pattern></defs><rect class="cls-3" width="771.29" height="1396.67"/>
     </symbol>
 
-    <symbol id="loop" viewBox="0 0 572.44 286.22">
+    <symbol id="svg-loop" viewBox="0 0 572.44 286.22">
       <defs>
         <style>.cls-1{fill:none;stroke:#50c6fc;stroke-linecap:round;stroke-miterlimit:10;stroke-width:10px;}</style>
       </defs>
       <path class="cls-1" d="m242.95,271.13c0-23.9,19.37-43.27,43.27-43.27s43.27,19.37,43.27,43.27"/><path class="cls-1" d="m208.32,271.13c0-43.02,34.88-77.9,77.9-77.9s77.9,34.88,77.9,77.9"/><path class="cls-1" d="m173.69,271.13c0-62.15,50.38-112.53,112.53-112.53s112.53,50.38,112.53,112.53"/><path class="cls-1" d="m139.07,271.13c0-81.27,65.88-147.16,147.16-147.16s147.16,65.88,147.16,147.16"/><path class="cls-1" d="m104.44,271.13c0-100.4,81.39-181.78,181.78-181.78s181.78,81.39,181.78,181.78"/><path class="cls-1" d="m69.81,271.13c0-119.52,96.89-216.41,216.41-216.41s216.41,96.89,216.41,216.41"/><path class="cls-1" d="m35.18,271.13c0-138.65,112.39-251.04,251.04-251.04s251.04,112.39,251.04,251.04"/>
     </symbol>
 
-    <symbol id="plus-ol" viewBox="0 0 793.28 1396.67">
+    <symbol id="svg-plus-ol" viewBox="0 0 793.28 1396.67">
       <defs>
         <style>.cls-1{fill: none;}.cls-2{fill: url(#Dots-aligned_2);}.cls-3{ fill:#847557;}</style>
       </defs>
       <pattern id="Dots-aligned_2" data-name="Dots-aligned 2" x="0" y="0" width="42" height="42" patternTransform="translate(-6566.78 -620.48) scale(.97 1)" patternUnits="userSpaceOnUse" viewBox="0 0 42 42"><g><rect class="cls-1" width="42" height="42"/><g><rect class="cls-3" x="10.18" y="20.24" width="21.64" height="1.51"/><rect class="cls-3" x="20.24" y="10.18" width="1.51" height="21.64"/></g></g></pattern></defs><rect class="cls-2" width="771.29" height="1396.67"/>
     </symbol>
 
-    <symbol id="stripes-ol" viewBox="0 0 793.28 1396.67">
+    <symbol id="svg-stripes-ol" viewBox="0 0 793.28 1396.67">
       <defs>
         <style>.cls-1{fill:#50c6fc;}</style>
       </defs>
