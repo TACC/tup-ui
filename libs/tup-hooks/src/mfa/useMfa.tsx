@@ -38,6 +38,13 @@ export const useMfaVerify = () => {
   return mutation;
 };
 
+export const useMfaChallenge = () => {
+  const mutation = usePost<null, string>({
+    endpoint: '/mfa/challenge/sms',
+  });
+  return mutation;
+};
+
 export const useMfaDelete = () => {
   const client = useQueryClient();
   const mutation = useDelete<string>({
