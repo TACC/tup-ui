@@ -19,7 +19,7 @@
 {# NEW CODE #}
 
 <!-- Hotjar Tracking Code for https://dev.tup.tacc.utexas.edu/ -->
-<script>
+<script id="js-hotjar-tracking">
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:3319380,hjsv:6};
@@ -29,3 +29,11 @@
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
+
+<!-- TUP CMS UX Scripts -->
+<script src="{% static 'tup-cms/js/modules/breadcrumbs.js' %}" type="module"></script>
+
+<!-- TUP CMS UI Styles -->
+<style>
+    @import url("{% static 'tup-cms/css/site.cms.css' %}");
+</style>
