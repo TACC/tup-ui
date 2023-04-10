@@ -1,7 +1,7 @@
 import useConfig from './useConfig';
 import useJwt from './auth/useJwt';
 import axios from 'axios';
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosRequestHeaders } from 'axios';
 import {
   useQuery,
   useMutation,
@@ -74,7 +74,11 @@ export function usePost<BodyType, ResponseType>({
 
 type UseDeleteParams<ResponseType> = {
   endpoint: string;
-  options?: UseMutationOptions<ResponseType, AxiosError>;
+  options?: UseMutationOptions<
+    ResponseType,
+    AxiosError,
+    AxiosRequestHeaders | undefined
+  >;
   baseUrl?: string;
 };
 
@@ -86,17 +90,18 @@ export function useDelete<ResponseType>({
   const client = axios;
   const { baseUrl } = useConfig();
   const { jwt } = useJwt();
-  const deleteUtil = async () => {
+  const deleteUtil = async (body?: AxiosRequestHeaders) => {
     const response = await client.delete<ResponseType>(
       `${alternateBaseUrl ?? baseUrl}${endpoint}`,
       {
-        headers: { 'x-tup-token': jwt ?? '' },
+        headers: { 'x-tup-token': jwt ?? '', ...(body ?? {}) },
       }
     );
     return response.data;
   };
-  const mutation = useMutation(async () => {
-    const response = await deleteUtil();
+
+  const mutation = useMutation(async (body) => {
+    const response = await deleteUtil(body);
     return response;
   }, options);
   return mutation;
