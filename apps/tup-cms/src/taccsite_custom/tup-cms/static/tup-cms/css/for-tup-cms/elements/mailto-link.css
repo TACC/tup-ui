@@ -1,3 +1,5 @@
+@import url("/static/site_cms/css/build/mailto-link.css");
+
 /* TODO: Consider a new, different inheritence trick */
 /* TODO: Consider for Core-CMS, not Core-Styles */
 /* WARNING: Do not move to Core-Styles, because client font size is uncertain */
