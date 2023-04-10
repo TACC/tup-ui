@@ -1,8 +1,4 @@
-import {
-  Button,
-  LoadingSpinner,
-  SectionMessage,
-} from '@tacc/core-components';
+import { Button, LoadingSpinner, SectionMessage } from '@tacc/core-components';
 import {
   MfaTokenResponse,
   useMfa,
