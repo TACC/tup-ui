@@ -6,11 +6,16 @@
   "icons": [
     "svg-spiral-big",
     "svg-bars",
-    "svg-circuit",
     "svg-cyber-clip",
     "svg-cyber-clip-dots",
     "svg-cyber-clip-ol",
     "svg-cyber-clip-stroke",
-    "svg-paperclip"
+    "svg-paperclip",
+    "svg-circuit-fill",
+    "svg-circuit-stroke",
+    "svg-dots",
+    "svg-loops",
+    "svg-plus-ol",
+    "svg-stripes-ol"
   ]
 }

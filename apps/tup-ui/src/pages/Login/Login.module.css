@@ -2,8 +2,6 @@
 
 .root {
   padding-block: var(--global-space--section-gap);
-
-  background-color: var(--global-color-primary--light);
 }
 
 .footer__link {
