@@ -7,3 +7,8 @@
   border-bottom: unset;
   margin-bottom: 6.5rem;
 }
+
+/* To hide byline on User Updates */
+.c-news__byline:not(.app-blog *) {
+  display: none;
+}
