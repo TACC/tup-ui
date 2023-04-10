@@ -45,7 +45,7 @@
 }
 
 [class*="banner-cell--"] figure {
-  margin-bottom: unset; /* undo Bootstrap */
+  margin-bottom: unset; /* undo site.cms.css and Bootstrap */
 }
 
 [class*="banner-cell--"] figcaption {
@@ -180,11 +180,14 @@
 
 
 
-/* Banner Gotchas */
+/* Conflicts with Core-CMS */
 
-/* WARNING: Conflicts with css-elements-components-figure-blockquote-caption-embed */
-/* TODO: Determine how to avoid this or where to add this */
+/* Overwrite Core-CMS site.cms.css */
+/* HELP: How can all CMS sites avoid this? */
 [class*="banner-cell--"] figcaption {
+    border-bottom: unset;
+    color: unset;
+    font-size: unset;
     font-style: normal;
     line-height: inherit;
 }
