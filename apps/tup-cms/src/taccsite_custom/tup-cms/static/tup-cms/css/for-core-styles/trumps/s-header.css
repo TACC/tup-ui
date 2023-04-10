@@ -34,9 +34,6 @@
         padding-block: 0; /* overwrite core-styles.header.css */
     }
 }
-.portal-logo {
-    height: unset; /* undo core-styles.header.css */
-}
 .s-header .navbar-brand {
     display: grid;
     align-content: center;
