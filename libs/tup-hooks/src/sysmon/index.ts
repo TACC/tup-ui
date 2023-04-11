@@ -10,7 +10,6 @@ export type SystemMonitorRawSystem = {
   hostname: string;
   system_type: string;
   timestamp: string;
-  isOperational: boolean;
   online: boolean;
   // values may not be included in the TAP response if systems are down/unreachable
   reachable?: boolean;

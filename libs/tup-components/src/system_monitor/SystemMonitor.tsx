@@ -31,7 +31,7 @@ export const SystemMonitorTable: React.FC = () => {
         Cell: Display,
       },
       {
-        accessor: ({ isOperational }) => isSystemDown,
+        accessor: isSystemDown,
         Header: 'Status',
         Cell: Operational,
       },
