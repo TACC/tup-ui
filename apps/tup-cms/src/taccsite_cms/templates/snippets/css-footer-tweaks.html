@@ -1,0 +1,89 @@
+<style id="css-footer-tweaks--wide">
+/* TODO: Remove padding-top from core-styles.cms.css (then remove this) */
+html:not(#page-portal) .c-footer {
+    --pad-vert: 36px;
+    --pad-horz: 36px; /* mimic `.s-header.navbar { --nav-padding-horz }` */
+
+    padding-top: revert; /* undo core-styles.cms.css */
+}
+
+/* To manage vertical padding via variable to use later */
+#cms-footer {
+    color: var(--global-color-primary--light);
+
+    padding-block: var(--pad-vert);
+}
+
+/* To draw a line between "Quick Links" and regular links */
+@media (width > 380px) {
+    #cms-footer .c-pane--aside {
+        border-left: var(--global-border-width--normal) solid var(--global-color-primary--xx-light);
+    }
+}
+
+/* Add vertical space between panes, except for aside when it is below others */
+/* FAQ: Bootstrap 4 grid does not have a way to do so */
+#cms-footer .col.c-pane--nav {
+    margin-bottom: 2rem;
+}
+
+/* To draw a box behind common footer content */
+/* FAQ: The box stretches to cover the height and right side of the footer */
+@media (width >= 992px) {
+    #cms-footer .c-pane--common {
+        /* To move c-footer vertical padding into this pane */
+        margin-block: calc( -1 * var(--pad-vert) );
+        padding-block: var(--pad-vert);
+
+        background-color: var(--global-color-primary--x-dark);
+    }
+    html:not(#page-portal) .c-footer {
+        padding-right: revert; /* undo core-styles.cms.css */
+    }
+    #cms-footer .c-pane--common {
+        padding-inline: var(--pad-horz);
+    }
+    #cms-footer.row:not(.no-gutters) {
+        margin-right: 0;
+    }
+}
+
+/* To make text color match, link or not */
+#cms-footer .c-pane--common,
+#cms-footer .c-pane--common a {
+    color: var(--global-color-primary--xx-light);
+}
+
+/* To vertically center text */
+#portal-footer p {
+    margin-block: revert; /* undo Bootstrap */
+}
+</style>
+<style id="css-footer-tweaks--narrow">
+/* Move all panes to one column */
+/* TODO: Add this to footer css in site.cms.css */
+@media (width < 380px) {
+  #cms-footer .col {
+    /* FAQ: I copied Bootstrap .col-6 styles and changed 50% to 100% */
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+@media (pointer: coarse) {
+  .c-footer a {
+    display: inline-block;
+    line-height: 3rem;
+  }
+}
+
+/* TODO: Move this to same selector in site.cms.css */
+.c-footer .logos--branding {
+    max-height: 120px;
+}
+/* TODO: Move this to same selector in site.cms.css */
+.c-footer [class*="logos--"] a {
+    min-height: 0;
+}
+</style>
