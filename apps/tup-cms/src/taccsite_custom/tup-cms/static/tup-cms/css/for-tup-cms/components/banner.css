@@ -124,10 +124,6 @@
     }
 }
 
-/* To make image look wider than it actually is (on wide screen) */
-.banner-cell--major figure { background-color: black; }
-.banner-cell--major figure img { justify-self: end; }
-
 
 
 /* Banner Cell (Minor) */
