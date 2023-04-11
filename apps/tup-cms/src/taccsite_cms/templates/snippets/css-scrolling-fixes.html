@@ -1,9 +1,24 @@
 <style id="css-scrolling-fixes">
-/* To prevent decal SVG horz. body scroll on mobile */
-@media (max-width: 575px) {
-  .container {
-      overflow-x: clip;
-  }
+/* To prevent horz. body scroll because of header nav too wide (192px—1066px) */
+/* HELP: Fix the bug, instead of just hiding the bug */
+/* FAQ: 290px is our body min. width; narrower than that, user must scroll */
+/* SEE: /use-tacc/stem-evaluation-services/ */
+/* SEE: /partnerships/star-industry-program/ */
+/* SEE: / (i.e. home page) */
+header {
+    overflow-x: clip;
+}
+
+/* To prevent horz. body scroll because of offset SVG Icons */
+/* HELP: Fix the bug, instead of just hiding the bug */
+/* FAQ: 290px is our body min. width; narrower than that, user must scroll */
+/* SEE: /use-tacc/stem-evaluation-services/ */
+/* SEE: /partnerships/star-industry-program/ */
+/* SEE: / (i.e. home page) */
+@media (width >= 290px) {
+    main {
+        overflow-x: clip;
+    }
 }
 
 /* Prevent trackpad scroll to show white background beyond page height */
