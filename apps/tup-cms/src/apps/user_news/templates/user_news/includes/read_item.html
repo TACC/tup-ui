@@ -1,0 +1,42 @@
+{% load i18n %}
+
+{% if article %}
+
+<article class="{% if article.updates %}has-update{% endif %}">
+    <header class="c-news__header">
+        <h1 class="c-news__title">
+          {{ article.title }}
+        </h1>
+        {% if article.subtitle %}
+        <h2 class="c-news__subtitle">{{ article.subtitle }}</h2>
+        {% endif %}
+        {% include './item_data.html' %}
+    </header>
+
+    {# <img class="c-news__media" ... /> #}
+
+    {% if article.updates %}
+    {% include './updates.html' with updates=article.updates %}
+    <header class="c-update__header">
+      <h3 class="c-update__title">{% trans "Original Message" %}</h3>
+      <span>{% trans "Published" %}</span>&nbsp;
+      <time datetime="{{ article.postDateTime }}">
+          {{ article.postDate }}
+      </time>
+    </header>
+    {% endif %}
+
+    {% if has_markup_content %}
+    <div class="c-news__content has-markup">{{ article.content|safe }}</div>
+    {% else %}
+    <div class="c-news__content"><p>{{ article.content }}</p></div>
+    {% endif %}
+</article>
+
+{% else %}
+
+<article>
+    <p>{% trans "No such update found." %} <a href="/{{ urls.base }}">{% trans "See all updates." %}</a></p>
+</article>
+
+{% endif %}

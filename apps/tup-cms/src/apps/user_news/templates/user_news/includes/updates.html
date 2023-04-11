@@ -1,14 +1,21 @@
+{% load i18n %}
+
 {% for update in updates %}
-  <aside>
-    <h2>
-      <time data-prefix="Updated on" datetime="{{ update.postDateTime }}">
+  <aside class="c-update">
+    <header class="c-update__header">
+      <h3 class="c-update__title">
+        <span class="c-pill c-pill--is-updated">Update</span>&nbsp;
+      </h3>
+      <span>{% trans "Published" %}</span>&nbsp;
+      <time datetime="{{ update.postDateTime }}">
         {{ update.postDate }}
       </time>
-    </h2>
+    </header>
     {% if has_markup_content %}
     <div class="has-markup">{{ update.content|safe }}</div>
     {% else %}
-    <p>{{ update.content }}</p>
+    <div><p>{{ update.content }}</p></div>
     {% endif %}
   </aside>
+  <hr />
 {% endfor %}

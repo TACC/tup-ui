@@ -43,4 +43,5 @@ export {
   useMfaPairSms,
   useMfaVerify,
   useMfaDelete,
+  useMfaChallenge,
 } from './useMfa';
