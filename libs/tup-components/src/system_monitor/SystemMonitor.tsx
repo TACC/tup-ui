@@ -9,7 +9,7 @@ import { Display, Operational, Load } from './SystemMonitorCells';
 import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
 import styles from './SystemMonitor.module.css';
 
-export const isSystemDown = (rawSystem: SystemMonitorRawSystem): boolean => {
+export const isSystemOnline = (rawSystem: SystemMonitorRawSystem): boolean => {
   if (
     !rawSystem?.online ||
     !rawSystem?.reachable ||
@@ -31,7 +31,7 @@ export const SystemMonitorTable: React.FC = () => {
         Cell: Display,
       },
       {
-        accessor: isSystemDown,
+        accessor: isSystemOnline,
         Header: 'Status',
         Cell: Operational,
       },
