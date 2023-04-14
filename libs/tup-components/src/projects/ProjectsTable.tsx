@@ -41,7 +41,7 @@ export const ProjectsTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {!data?.length && (
+          {!projectData?.length && (
             <tr>
               <td colSpan={3}>
                 <EmptyTablePlaceholder>
