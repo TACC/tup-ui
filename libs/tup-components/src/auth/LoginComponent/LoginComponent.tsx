@@ -60,6 +60,17 @@ const AccountHelpLink = () => (
   </a>
 );
 
+const ResetPasswordLink = () => (
+  <a
+    href="https://accounts.tacc.utexas.edu/forgot_password"
+    target="_blank"
+    rel="noreferrer"
+    className={styles.link}
+  >
+    Reset Password
+  </a>
+);
+
 const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
@@ -143,6 +154,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       </Formik>
       <div className={styles.footer}>
         <p>Having trouble logging in?</p>
+        <ResetPasswordLink />
         <AccountHelpLink />
       </div>
     </div>
