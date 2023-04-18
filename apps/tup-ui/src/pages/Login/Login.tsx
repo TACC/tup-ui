@@ -15,10 +15,12 @@ const Layout: React.FC = () => {
         >
           Security
         </a>
-        {/* NOTE: No one is certain yet what this link/button should do */}
-        <Button type="link" disabled>
+        <a
+          className={styles.footer__link}
+          href="/about/user-policies/"
+        >
           Policies
-        </Button>
+        </a>
       </div>
     </div>
   );
