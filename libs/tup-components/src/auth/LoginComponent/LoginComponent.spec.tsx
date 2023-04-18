@@ -101,7 +101,11 @@ describe('LoginComponent', () => {
     expect(links[0].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/register'
     );
+    expect(getByText('Reset Password')).toBeDefined();
+    expect(links[1].getAttribute('href')).toEqual(
+      'https://accounts.tacc.utexas.edu/forgot_password'
+    );
     expect(getByText('Account Help')).toBeDefined();
-    expect(links[1].getAttribute('href')).toEqual('/about/help/');
+    expect(links[2].getAttribute('href')).toEqual('/about/help/');
   });
 });
