@@ -154,7 +154,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       </Formik>
       <div className={styles.footer}>
         <p>Having trouble logging in?</p>
-        <ResetPasswordLink/>
+        <ResetPasswordLink />
         <AccountHelpLink />
       </div>
     </div>
