@@ -12,6 +12,16 @@ if settings.DEBUG:
     service_url = service_url.replace("localhost", "host.docker.internal")
 
 
+QUEUE_MAP = {
+    "Allocations": "Accounting",
+    "Data Analytics or Storage Resources": "Data Intensive Computing",
+    "Login/Authentication Issue": "Accounting",
+    "Running Jobs or Using TACC Resources": "High Performance Computing",
+    "Security Incident": "NSO",
+    "Other": "High Performance Computing"
+}
+
+
 def submit_ticket(form_data):
     message_body = ""
     message_body += f"Category: {form_data['category']}\n"
@@ -22,7 +32,8 @@ def submit_ticket(form_data):
     ticket_data = {
         "email": form_data["email"],
         "subject": form_data["subject"],
-        "description": message_body
+        "description": message_body,
+        "queue": QUEUE_MAP.get(form_data['category'], 'Accounting')
     }
     logger.debug(ticket_data)
     requests.post(f"{service_url}/tickets/noauth", data=ticket_data, files=[])
