@@ -54,7 +54,7 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
           close={closeBtn}
           className={styles['modal-header']}
         >
-          <span>Unpair Muli-Factor Authentication</span>
+          <span>Unpair Multifactor Authentication</span>
         </ModalHeader>
         <form onSubmit={(e) => submit(e)}>
           <ModalBody>
