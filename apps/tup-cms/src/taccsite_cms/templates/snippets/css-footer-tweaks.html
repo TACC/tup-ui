@@ -71,12 +71,6 @@ html:not(#page-portal) .c-footer {
     max-width: 100%;
   }
 }
-@media (pointer: coarse) {
-  .c-footer a {
-    display: inline-block;
-    line-height: 3rem;
-  }
-}
 
 /* TODO: Move this to same selector in site.cms.css */
 .c-footer .logos--branding {
@@ -85,5 +79,11 @@ html:not(#page-portal) .c-footer {
 /* TODO: Move this to same selector in site.cms.css */
 .c-footer [class*="logos--"] a {
     min-height: 0;
+}
+</style>
+<style id="css-footer-fixes--layout">
+/* To prevent missing NSF logo on Firefox */
+.c-footer .logos--branding {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 }
 </style>
