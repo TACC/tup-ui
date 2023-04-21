@@ -105,7 +105,7 @@ SEARCH_QUERY_PARAM_NAME = 'q'
 ########################
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'apps.portal.backend.TupServicesBackend']
-TUP_SERVICES_URL = "https://dev.tup-services.tacc.utexas.edu"
+TUP_SERVICES_URL = "https://tup-services.tacc.utexas.edu"
 LOGIN_URL = "/portal/login"
 
 ########################

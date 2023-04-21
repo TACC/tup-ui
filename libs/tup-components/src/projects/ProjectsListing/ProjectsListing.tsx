@@ -25,7 +25,7 @@ export const ProjectsListing: React.FC = () => {
     return (
       <InlineMessage type="warning">Unable to retrieve projects.</InlineMessage>
     );
-  if (!data?.length) {
+  if (!data?.filter(prjFilter).length) {
     return (
       <EmptyTablePlaceholder>
         No projects or allocations found. {''}

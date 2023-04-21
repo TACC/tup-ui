@@ -24,6 +24,13 @@
   position: relative;
 }
 
+/* TODO: Share styles between c-news and c-feed-list (`time:not(…)`) */
+.c-news article time:not(:is(h1, h2, h3, h4, h5, h6) *) {
+  color: var(--global-color-accent--secondary);
+  font-weight: var(--medium);
+  text-transform: uppercase;
+}
+
 
 
 
@@ -86,8 +93,7 @@
 }
 
 /* To style categories as "tags" (the UI pattern) */
-/* FAQ: Uses `:where()` to reduce specificity so colors are easily overridden */
-:where(.c-news__cats a) {
+.c-news__cats a {
   /* TODO: When integrated into Core-Styles, uncomment this */
   /* @extend :--c-tag; */
 
@@ -100,8 +106,7 @@
 }
 
 /* To style tags as "pills" (the UI pattern) */
-/* FAQ: Uses `:where()` to reduce specificity so colors are easily overridden */
-:where(.app-blog .tags a) {
+.c-news__tags .tags a {
   /* TODO: When available in Core-Styles, uncomment this */
   /* @extend :--c-pill; */
 

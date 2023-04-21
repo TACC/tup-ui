@@ -1,0 +1,12 @@
+/* FAQ: Used on TACC as `content-block` */
+/* SEE: https://dev.tup.tacc.utexas.edu/use-tacc/stem-evaluation-services/ */
+
+:is(.c-content-block, .content-block) {
+    margin-bottom: var(--global-space--bootstrap-gap);
+    padding: var(--global-space--pattern-pad);
+}
+
+:is(.c-content-block, .content-block) :is(h1, h2, h3, h4, h5, h6) {
+    border-left: var(--global-border-width--xx-thick) solid var(--global-color-accent--tertiary);
+    padding-left: 10px;
+}
