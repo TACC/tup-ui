@@ -1,6 +1,5 @@
 import React from 'react';
 import { LoginComponent } from '@tacc/tup-components';
-import { Button } from '@tacc/core-components';
 
 import styles from './Login.module.css';
 
