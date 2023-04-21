@@ -15,7 +15,7 @@ const Layout: React.FC = () => {
         >
           Security
         </a>
-        <a className={styles.footer__link} href="/about/user-policies/">
+        <a className={styles.footer__link} href="/use-tacc/user-policies/">
           Policies
         </a>
       </div>
