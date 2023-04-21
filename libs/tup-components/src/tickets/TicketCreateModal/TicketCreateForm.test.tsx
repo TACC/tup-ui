@@ -8,6 +8,8 @@ describe('TicketCreateForm Component', () => {
   it('should display a success message after mutation', async () => {
     const user = userEvent.setup();
     testRender(<TicketCreateForm />);
+    const category = screen.getByLabelText(/Category/);
+    const resource = screen.getByLabelText(/System\/Resource/);
     const subject = screen.getByLabelText(/Subject/);
     const description = screen.getByLabelText(/Problem Description/);
 
@@ -15,6 +17,8 @@ describe('TicketCreateForm Component', () => {
 
     await user.type(subject, 'test');
     await user.type(description, 'test');
+    await user.selectOptions(category, 'Allocations');
+    await user.selectOptions(resource, 'Other');
 
     const submit = screen.getByRole('button', { name: /add ticket/i });
     expect(submit.getAttribute('disabled')).toBe(null);
@@ -35,12 +39,15 @@ describe('TicketCreateForm Component', () => {
     testRender(<TicketCreateForm />);
 
     expect(await screen.findByDisplayValue('mock')).toBeDefined();
-
+    const category = screen.getByLabelText(/Category/);
+    const resource = screen.getByLabelText(/System\/Resource/);
     const subject = screen.getByLabelText(/Subject/);
     const description = screen.getByLabelText(/Problem Description/);
 
     await user.type(subject, 'test');
     await user.type(description, 'test');
+    await user.selectOptions(category, 'Allocations');
+    await user.selectOptions(resource, 'Other');
 
     const submit = screen.getByRole('button', { name: /add ticket/i });
     expect(submit.getAttribute('disabled')).toBe(null);
