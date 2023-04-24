@@ -6,11 +6,12 @@ import {
   FormikInput,
   FormikTextarea,
   FormikFileInput,
+  FormikSelect,
 } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';
-import { CreateTicketFormValues } from '..';
+import { CreateTicketFormValues, QUEUE_MAP } from '..';
 import styles from './TicketCreateForm.module.css';
 
 const formShape = {
@@ -19,6 +20,8 @@ const formShape = {
   first_name: Yup.string().required('Required'),
   last_name: Yup.string().required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
+  category: Yup.string().required('Required'),
+  resource: Yup.string().required('Required'),
   cc: Yup.string().test('email', 'Invalid email', (emails) =>
     (emails ?? 'placeholder@x.y.z')
       .split(/[\s,]+/)
@@ -41,6 +44,8 @@ export const TicketCreateForm: React.FC = () => {
       email: email ?? '',
       cc: '',
       files: [],
+      category: '',
+      resource: '',
       // recaptchaResponse: '',
     }),
     [firstName, lastName, email]
@@ -53,11 +58,18 @@ export const TicketCreateForm: React.FC = () => {
     values: CreateTicketFormValues,
     { resetForm }: FormikHelpers<CreateTicketFormValues>
   ) => {
+    let messageBody = ``;
+    messageBody += `Category: ${values.category}\n`;
+    messageBody += `System/Resource: ${values.resource}\n`;
+    messageBody += `Requestor: ${values.first_name} ${values.last_name} (${values.email})\n\n`;
+    messageBody += `${values.description}`;
+
     const formData = new FormData();
     formData.append('email', values['email']);
     formData.append('subject', values['subject']);
-    formData.append('description', values['description']);
+    formData.append('description', messageBody);
     formData.append('cc', values['cc']);
+    formData.append('queue', values.category && QUEUE_MAP[values.category]);
     if (values.files) {
       values.files.forEach((file) => formData.append('files', file));
     }
@@ -78,6 +90,34 @@ export const TicketCreateForm: React.FC = () => {
     >
       {({ isValid }) => (
         <Form className={styles['ticket-create-form']} id="ticket-create-form">
+          <FormikSelect name="category" label="Category" required>
+            <option value="">Please Choose One</option>
+            <option>Allocations</option>
+            <option>Data Analytics or Storage Resources</option>
+            <option>Login/Authentication Issue</option>
+            <option>Running Jobs or Using TACC Resources</option>
+            <option>Security Incident</option>
+            <option>Other</option>
+          </FormikSelect>
+          <FormikSelect name="resource" label="System/Resource" required>
+            <option value="">Please Choose One</option>
+            <option>Corral (corral-login.tacc.utexas.edu)</option>
+            <option>Corral iRODS(icat.corral.tacc.utexas.edu)</option>
+            <option>Corral-Protected(corral-protected.tacc.utexas.edu)</option>
+            <option>Frontera(frontera.tacc.utexas.edu)</option>
+            <option>Jetstream(jetstream.tacc.utexas.edu)</option>
+            <option>Lonestar6(lonestar6.tacc.utexas.edu)</option>
+            <option>Longhorn(longhorn.tacc.utexas.edu)</option>
+            <option>Maverick2(maverick2.tacc.utexas.edu)</option>
+            <option>Ranch(ranch.tacc.utexas.edu)</option>
+            <option>Stampede2(stampede2.tacc.utexas.edu)</option>
+            <option>Vislab(stallion.tacc.utexas.edu)</option>
+            <option>Cyclone(cyclone.tacc.utexas.edu)</option>
+            <option>Cloud and Interactive Computing (Agave API)</option>
+            <option>Cloud and Interactive Computing (Abaco API)</option>
+            <option>Cloud and Interactive Computing (JupyterHub)</option>
+            <option>Other</option>
+          </FormikSelect>
           <FormikInput name="subject" label="Subject" required description="" />
           <FormikTextarea
             name="description"
