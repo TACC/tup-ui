@@ -9,7 +9,6 @@ import {
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TicketCreateModal } from '../tickets';
 import styles from './ManageAccount.module.css';
 
 const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
