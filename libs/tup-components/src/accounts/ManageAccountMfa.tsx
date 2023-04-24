@@ -4,11 +4,11 @@ import {
   useMfa,
   useMfaDelete,
   useMfaChallenge,
+  useMfaEmailUnpair,
 } from '@tacc/tup-hooks';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TicketCreateModal } from '../tickets';
 import styles from './ManageAccount.module.css';
 
 const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
@@ -23,15 +23,17 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
     </button>
   );
   const [currentToken, setCurrentToken] = useState('');
-  const { mutate, isError } = useMfaDelete();
+  const { mutate: unpairWithCode, isError } = useMfaDelete();
+  const { mutate: unpairWithEmail, isSuccess: emailSentSuccess } =
+    useMfaEmailUnpair();
   const { mutate: sendChallenge } = useMfaChallenge();
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setCurrentToken('');
-    console.log('form submitted');
-    mutate({
+
+    unpairWithCode({
       otpcode: currentToken,
     });
   };
@@ -51,7 +53,7 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
           close={closeBtn}
           className={styles['modal-header']}
         >
-          <span>Unpair Muli-Factor Authentication</span>
+          <span>Unpair Multifactor Authentication</span>
         </ModalHeader>
         <form onSubmit={(e) => submit(e)}>
           <ModalBody>
@@ -86,14 +88,18 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               </p>
             )}
 
+            <p>If you lost your phone, you can unpair via email.</p>
             <p>
-              If you do not have access to the device you used for the initial
-              pairing, please{' '}
-              <TicketCreateModal display="link">
-                submit a ticket
-              </TicketCreateModal>
-              .
+              <Button onClick={() => unpairWithEmail(null)}>Send Email</Button>
             </p>
+            {emailSentSuccess && (
+              <p>
+                <SectionMessage type="info">
+                  An email has been sent to the address listed on your account.
+                  Follow its instructions to continue the unpairing.
+                </SectionMessage>
+              </p>
+            )}
           </ModalBody>
           <ModalFooter>
             <Button type="primary" attr="submit">
