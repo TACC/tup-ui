@@ -55,3 +55,10 @@ export const useMfaDelete = () => {
   });
   return mutation;
 };
+
+export const useMfaEmailUnpair = () => {
+  const mutation = usePost<null, string>({
+    endpoint: '/mfa/unpair',
+  });
+  return mutation;
+};
