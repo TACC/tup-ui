@@ -32,7 +32,7 @@ const TicketModal: React.FC<{ ticketId: string; baseRoute: string }> = ({
         <span className="ticket-id">Ticket {ticketId}</span>
         <span className="ticket-subject">{data?.Subject}</span>
       </ModalHeader>
-      <ModalBody style={{ minHeight: '70vh', maxHeight: 'fit-content' }}>
+      <ModalBody style={{ height: '70vh' }}>
         <Container className="ticket-detailed-view-container">
           <Row className="ticket-detailed-view-row">
             <Col lg="7">
