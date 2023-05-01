@@ -20,11 +20,6 @@ import {
 import { ProjectsListingAllocationTable } from '../ProjectsListing/ProjectsListingAllocationTable';
 import ProjectPublicationRemove from './publications/ProjectPublicationDelete';
 
-const formatDate = (datestring: string): string => {
-  const date = new Date(datestring);
-  return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-};
-
 const Publication: React.FC<{
   projectId: number;
   pub: ProjectPublication;
@@ -175,7 +170,7 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
         header="Abstract/Grants"
         headerActions={canManage && <AbstractGrants />}
       >
-        {projectDetails?.description}
+        {projectDetails?.description ?? '(No description provided)'}
 
         <div className={styles['pub-abstract-grants']}>
           Your project and allocation information can be managed on the TXRAS

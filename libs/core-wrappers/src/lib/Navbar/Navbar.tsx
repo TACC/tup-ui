@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useSearchParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Icon } from '@tacc/core-components';
 import styles from './Navbar.module.css';
 

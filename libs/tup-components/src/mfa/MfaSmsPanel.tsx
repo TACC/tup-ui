@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useMfaPairSms } from '@tacc/tup-hooks';
-import { Button } from '@tacc/core-components';
+import { Button, SectionMessage } from '@tacc/core-components';
 import styles from './Mfa.module.css';
+import { TicketCreateModal } from '../tickets';
 
 const MfaSmsPanel: React.FC = () => {
   const smsMutation = useMfaPairSms();
@@ -31,6 +32,18 @@ const MfaSmsPanel: React.FC = () => {
           </Button>
         </div>
       </form>
+      {smsMutation.isError && (
+        <SectionMessage type="error">
+          <div className={styles['qr-code-error']}>
+            There was an error generating your SMS pairing. If this error
+            persists, please{' '}
+            <TicketCreateModal display="link">
+              submit a ticket
+            </TicketCreateModal>{' '}
+            and TACC User Services will assist you.
+          </div>
+        </SectionMessage>
+      )}
     </div>
   );
 };
