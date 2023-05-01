@@ -7,6 +7,7 @@ import {
   useMfaEmailUnpair,
 } from '@tacc/tup-hooks';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { TicketCreateModal } from '../tickets';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ManageAccount.module.css';
@@ -120,7 +121,23 @@ export const AccountMfa: React.FC = () => {
     sms: 'SMS Token',
     totp: 'TACC Token App',
   };
-  const { data, isLoading } = useMfa();
+  const { data, isLoading, isError } = useMfa();
+  if (isError) {
+    return (
+      <>
+        <div className={styles['tap-header']}>
+          <strong>MFA Pairing</strong>
+        </div>
+        <SectionMessage type="error">
+          There was an error retrieving your multifactor authentication status.
+          Your account may be in a non-valid state. if this error persists
+          please{' '}
+          <TicketCreateModal display="link">submit a ticket</TicketCreateModal>{' '}
+          with this information and TACC User Services will assist you.
+        </SectionMessage>
+      </>
+    );
+  }
   if (isLoading || !data) return <LoadingSpinner />;
   const hasPairing = data?.token?.rollout_state === 'enrolled';
   return (

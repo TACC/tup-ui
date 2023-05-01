@@ -58,14 +58,12 @@
     height: 100%;
 }
 .qr-code-error {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    max-width: 200px;
 }
 
 .mfa-form {
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .submit-button {

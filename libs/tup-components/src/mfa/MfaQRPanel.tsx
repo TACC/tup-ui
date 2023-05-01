@@ -1,6 +1,7 @@
 import React from 'react';
 import { useMfaPairTotp } from '@tacc/tup-hooks';
 import { Button, LoadingSpinner, SectionMessage } from '@tacc/core-components';
+import { TicketCreateModal } from '../tickets';
 import styles from './Mfa.module.css';
 
 const MfaQRPanel: React.FC = () => {
@@ -27,10 +28,12 @@ const MfaQRPanel: React.FC = () => {
       {!data && isError && (
         <SectionMessage type="error">
           <div className={styles['qr-code-error']}>
-            There was an error generating your QR code.{' '}
-            <Button type="primary" onClick={() => mutate(null)}>
-              Generate a new code
-            </Button>
+            There was an error generating your QR code. If this error persists,
+            please{' '}
+            <TicketCreateModal display="link">
+              submit a ticket
+            </TicketCreateModal>{' '}
+            and TACC User Services will assist you.
           </div>
         </SectionMessage>
       )}
