@@ -1,11 +1,6 @@
 import { FormikInput } from '@tacc/core-wrappers';
 import * as Yup from 'yup';
-import {
-  UIWizardStep,
-  useWizardValues,
-  UIWizardSchema,
-  InitialValueGenerator,
-} from '..';
+import { UIWizardStep, useWizardValues, InitialValueGenerator } from '..';
 
 export const StepOne: React.FC = () => {
   const { extra } = useWizardValues();
