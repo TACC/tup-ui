@@ -60,7 +60,9 @@ export const ProjectsTable: React.FC = () => {
           {projectData?.map((project) => (
             <tr key={project.id}>
               <td style={{ width: '30%' }}>
-                <Link to={`/projects/${project.id}`}>{project.title}</Link>
+                <Link to={`/projects/${project.id}`}>
+                  {project.title ?? 'Untitled Project'} ({project.chargeCode})
+                </Link>
               </td>
               <td
                 style={{ width: '20%' }}

@@ -20,7 +20,7 @@ export const ProjectSummary: React.FC<{
   return (
     <>
       <Link to={`/projects/${project.id}`} className={styles['project-title']}>
-        {project.title}
+        {project.title ?? '(untitled)'}
       </Link>
       <div>
         {'Project Charge Code: '} <strong>{project.chargeCode}</strong>
