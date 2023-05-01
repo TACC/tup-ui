@@ -1,4 +1,5 @@
 .git
 .cache
+node_modules
 **/secrets.py
 **/settings_local.py
