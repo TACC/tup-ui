@@ -47,11 +47,7 @@
       "options": {
         "commands": [
           {
-            "command": "docker build -t gitlab.tacc.utexas.edu:5005/tup-cms/tup-cms-deploy:{args.tag} -f Dockerfile ../../",
-            "forwardAllArgs": false
-          },
-          {
-            "command": "docker build -t gitlab.tacc.utexas.edu:5005/tup-cms/tup-cms-deploy:$(git rev-parse --short HEAD) -f Dockerfile ../../",
+            "command": "docker build -t gitlab.tacc.utexas.edu:5005/tup-cms/tup-cms-deploy:{args.tag} -t gitlab.tacc.utexas.edu:5005/tup-cms/tup-cms-deploy:$(git rev-parse --short HEAD) -f Dockerfile ../../",
             "forwardAllArgs": false
           },
           {
