@@ -85,7 +85,7 @@ BRANDING = [ NSF_BRANDING, UTEXAS_BRANDING ]
 
 LOGO = [
     "tup",
-    "tup-cms/img/org_logos/tacc-logo-white.svg",
+    "tup_cms/img/org_logos/tacc-logo-white.svg",
     "tup",
     "/",
     "_self",
@@ -185,7 +185,7 @@ FILER_ENABLE_PERMISSIONS = True
 
 from taccsite_cms.settings import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
 
-DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 'tup-cms', 'img', 'icons', 'decals.json')
+DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup_cms', 'static', 'tup_cms', 'img', 'icons', 'decals.json')
 with open(DECAL_ICONFILE, 'r') as fh:
     DECAL_ICONS = fh.read()
 
