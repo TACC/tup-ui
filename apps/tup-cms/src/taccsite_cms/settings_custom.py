@@ -52,6 +52,14 @@ RECAPTCHA_PRIVATE_KEY = ''
 RECAPTCHA_PUBLIC_KEY = ''
 
 ########################
+# TACC: GOOGLE ANALYTICS
+########################
+
+# To use during dev, Tracking Protection in browser needs to be turned OFF.
+GOOGLE_ANALYTICS_PROPERTY_ID = "UA-96034853-2"
+GOOGLE_ANALYTICS_PRELOAD = True
+
+########################
 # TACC: BRANDING
 ########################
 
