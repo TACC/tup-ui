@@ -44,4 +44,5 @@ export {
   useMfaVerify,
   useMfaDelete,
   useMfaChallenge,
+  useMfaEmailUnpair,
 } from './useMfa';

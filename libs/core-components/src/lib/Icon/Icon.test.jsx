@@ -4,7 +4,7 @@ import Icon from './Icon';
 
 const NAME = 'test-icon-name';
 const CLASS = 'test-class-name';
-const TEXT = 'test-icon-text';
+// const TEXT = 'test-icon-text';
 const LABEL = 'test-icon-label';
 
 describe('Icon', () => {

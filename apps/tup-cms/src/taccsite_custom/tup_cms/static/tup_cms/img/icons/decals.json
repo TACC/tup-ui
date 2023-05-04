@@ -1,6 +1,6 @@
 {
   "svg": true,
-  "spritePath": "tup-cms/img/icons/decals.svg",
+  "spritePath": "tup_cms/img/icons/decals.svg",
   "// iconClass": "Must be blank or svg template <use> hash includes a space",
   "iconClass": "",
   "icons": [
