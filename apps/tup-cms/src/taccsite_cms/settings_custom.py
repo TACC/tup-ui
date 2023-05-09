@@ -44,10 +44,6 @@ CMS_CACHE_DURATIONS = {
     'permissions': 0,
 }
 
-INCLUDES_CORE_PORTAL = False
-INCLUDES_PORTAL_NAV = True
-INCLUDES_SEARCH_BAR = True
-
 RECAPTCHA_PRIVATE_KEY = ''
 RECAPTCHA_PUBLIC_KEY = ''
 
@@ -120,7 +116,9 @@ LOGIN_URL = "/portal/login"
 # TACC: PORTAL
 ########################
 
-INCLUDES_SEARCH_BAR = False
+INCLUDES_CORE_PORTAL = False
+INCLUDES_PORTAL_NAV = True
+INCLUDES_SEARCH_BAR = True
 
 ########################
 # TACC: NEWS/BLOG
