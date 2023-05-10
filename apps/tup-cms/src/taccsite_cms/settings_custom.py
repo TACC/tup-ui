@@ -14,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'PORT': '5432',
         'NAME': 'taccsite',
         'USER': 'postgresadmin',
@@ -44,12 +44,16 @@ CMS_CACHE_DURATIONS = {
     'permissions': 0,
 }
 
-INCLUDES_CORE_PORTAL = False
-INCLUDES_PORTAL_NAV = True
-INCLUDES_SEARCH_BAR = True
-
 RECAPTCHA_PRIVATE_KEY = ''
 RECAPTCHA_PUBLIC_KEY = ''
+
+########################
+# TACC: GOOGLE ANALYTICS
+########################
+
+# To use during dev, Tracking Protection in browser needs to be turned OFF.
+GOOGLE_ANALYTICS_PROPERTY_ID = "UA-96034853-2"
+GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
 # TACC: BRANDING
@@ -85,7 +89,7 @@ BRANDING = [ NSF_BRANDING, UTEXAS_BRANDING ]
 
 LOGO = [
     "tup",
-    "tup-cms/img/org_logos/tacc-logo-white.svg",
+    "tup_cms/img/org_logos/tacc-logo-white.svg",
     "tup",
     "/",
     "_self",
@@ -112,7 +116,9 @@ LOGIN_URL = "/portal/login"
 # TACC: PORTAL
 ########################
 
-INCLUDES_SEARCH_BAR = False
+INCLUDES_CORE_PORTAL = False
+INCLUDES_PORTAL_NAV = True
+INCLUDES_SEARCH_BAR = True
 
 ########################
 # TACC: NEWS/BLOG
@@ -185,7 +191,7 @@ FILER_ENABLE_PERMISSIONS = True
 
 from taccsite_cms.settings import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
 
-DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup-cms', 'static', 'tup-cms', 'img', 'icons', 'decals.json')
+DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup_cms', 'static', 'tup_cms', 'img', 'icons', 'decals.json')
 with open(DECAL_ICONFILE, 'r') as fh:
     DECAL_ICONS = fh.read()
 
