@@ -9,6 +9,7 @@ import {
   useRoleForCurrentUser,
   useSetProjectDelegate,
   useRemoveProjectDelegate,
+  useProject,
 } from '@tacc/tup-hooks';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +22,8 @@ const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
   const currentUserRole = useRoleForCurrentUser(projectId) ?? '';
   const { mutate: mutateSetDelegate } = useSetProjectDelegate(projectId);
   const { mutate: mutateRemoveDelegate } = useRemoveProjectDelegate(projectId);
+  const { data: project, isLoading: isLoadingProject } = useProject(projectId);
+  const isAccess = project?.chargeCode.startsWith('TG-');
 
   const [selectedUserRole, setSelectedUserRole] = useState<string>(
     user.role ?? ''
@@ -43,7 +46,8 @@ const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
     PI: 'PI',
   };
   const canSetDelegate = currentUserRole === 'PI' && user.role !== 'PI';
-  if (!canSetDelegate)
+
+  if (!canSetDelegate || isAccess || isLoadingProject)
     return (
       <span>
         {user.role &&
@@ -95,6 +99,10 @@ const RemoveUser: React.FC<{ projectId: number; user: ProjectUser }> = ({
     });
   };
 
+  const { data: project, isLoading: isLoadingProject } = useProject(projectId);
+  const isAccess = project?.chargeCode.startsWith('TG-');
+
+  if (isLoadingProject || isAccess) return null;
   if (!['PI', 'Delegate'].includes(currentUserRole)) return null;
   if (user.role === 'PI') return null;
   if (user.username === currentUser?.username) return null;

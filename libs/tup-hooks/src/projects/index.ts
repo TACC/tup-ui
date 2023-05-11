@@ -129,6 +129,7 @@ export type ProjectGrantBody = Omit<ProjectGrant, 'id'>;
 
 export {
   default as useProjects,
+  useProject,
   useProjectUpdate,
   useSetProjectDelegate,
   useRemoveProjectDelegate,
