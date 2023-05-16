@@ -28,17 +28,17 @@ export type SystemQueue = {
   hostname: string;
   system_type: string;
   timestamp?: string;
-  queues?: {[queueName: string]: JobsQueue};
+  queues?: JobsQueue[];
 };
 
 export type JobsQueue = {
+  name?: string;
   down?: boolean;
   hidden?: boolean;
   load?: number;
   free?: number;
   running?: number;
   waiting?: number;
-
 };
 
 export { useSystemMonitor, useSystemQueue } from './useSystemMonitor';

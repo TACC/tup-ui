@@ -8,6 +8,7 @@ import {
 import { Display, Operational, Load } from './SystemMonitorCells';
 import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
 import styles from './SystemMonitor.module.css';
+import { EmptyTablePlaceholder } from '../utils';
 
 export const isSystemOnline = (rawSystem: SystemMonitorRawSystem): boolean => {
   if (
@@ -64,9 +65,9 @@ export const SystemMonitorTable: React.FC = () => {
 
   if (error) {
     return (
-      <InlineMessage type="warning">
+      <EmptyTablePlaceholder>
         Unable to gather system information
-      </InlineMessage>
+      </EmptyTablePlaceholder>
     );
   }
 
@@ -112,7 +113,7 @@ export const SystemMonitorTable: React.FC = () => {
 
 export const SystemMonitor = () => {
   return (
-    <SectionTableWrapper header="System Status">
+    <SectionTableWrapper header={'System Monitor'}>
       <SystemMonitorTable />
     </SectionTableWrapper>
   );
