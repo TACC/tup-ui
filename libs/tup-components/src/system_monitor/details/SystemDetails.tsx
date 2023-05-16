@@ -5,6 +5,7 @@ import {
   LoadingSpinner,
   SectionTableWrapper,
   Pill,
+  Button
 } from '@tacc/core-components';
 import { JobsQueue, useSystemQueue } from '@tacc/tup-hooks';
 import styles from './SystemDetails.module.css';
@@ -87,7 +88,7 @@ const SystemQueueTable: React.FC<{
           <tr>
             <td colSpan={5}>
               <EmptyTablePlaceholder>
-                No systems being monitored.
+                System job queues are unavailable
               </EmptyTablePlaceholder>
             </td>
           </tr>
@@ -96,6 +97,11 @@ const SystemQueueTable: React.FC<{
     </table>
   );
 };
+const ViewMonitor = () => (
+  <a href="/portal/system_monitor">
+    <Button type="primary">View All Systems</Button>
+  </a>
+);
 
 const SystemDetails: React.FC<{
   tas_name: string;
@@ -105,7 +111,9 @@ const SystemDetails: React.FC<{
   if (isLoading) return <LoadingSpinner />;
   return (
     systemData && (
-      <SectionTableWrapper header={`${systemData.display_name} Queues`}>
+      <SectionTableWrapper header={`${systemData.display_name} Queues`} headerActions={  <a href="/portal/system_monitor">
+      <Button type="primary">View All Systems</Button>
+    </a>}>
         <SystemQueueTable tas_name={`${tas_name}`} />
       </SectionTableWrapper>
     )
