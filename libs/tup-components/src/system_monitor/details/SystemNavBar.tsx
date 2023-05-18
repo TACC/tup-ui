@@ -1,9 +1,7 @@
 import React from 'react';
 import { NavItem } from '@tacc/core-wrappers';
-import { Nav, NavLink } from 'reactstrap';
 import styles from './SystemDetails.module.css';
 import { useSystemMonitor } from '@tacc/tup-hooks';
-import { EmptyTablePlaceholder } from '../../utils';
 import { InlineMessage, LoadingSpinner } from '@tacc/core-components';
 
 export const SystemNavBar: React.FC = () => {

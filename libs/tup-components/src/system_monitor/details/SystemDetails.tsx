@@ -107,8 +107,20 @@ const SystemDetails: React.FC<{
   tas_name: string;
 }> = ({ tas_name }) => {
   const { data: systemData, isLoading, error } = useSystemQueue(tas_name);
-  // const system =
-  if (isLoading) return <LoadingSpinner />;
+
+  if (error) return (
+    <SectionTableWrapper
+        header={`System Queues`}
+        headerActions={<ViewMonitor/>
+        }>
+        <EmptyTablePlaceholder>There was a problem loading the system queues</EmptyTablePlaceholder>
+        </SectionTableWrapper>
+  );
+
+  if (isLoading) return (
+    <LoadingSpinner />
+  );
+
   return (
     systemData && (
       <SectionTableWrapper

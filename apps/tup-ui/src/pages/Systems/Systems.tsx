@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageLayout, RequireAuth, SystemNavBar } from '@tacc/tup-components';
 import { SystemDetail } from '..';
-import { SectionHeader, Button } from '@tacc/core-components';
+import { SectionHeader } from '@tacc/core-components';
 import styles from './Systems.module.css';
 
 const Layout: React.FC = () => {
