@@ -9,11 +9,7 @@ const Layout: React.FC = () => {
     <RequireAuth>
       <section className={styles['system-section']}>
         <PageLayout
-          top={
-            <SectionHeader >
-              System Status
-            </SectionHeader>
-          }
+          top={<SectionHeader>System Status</SectionHeader>}
           left={<SystemNavBar />}
           right={<SystemDetail />}
         ></PageLayout>

@@ -5,7 +5,7 @@ import {
   LoadingSpinner,
   SectionTableWrapper,
   Pill,
-  Button
+  Button,
 } from '@tacc/core-components';
 import { JobsQueue, useSystemQueue } from '@tacc/tup-hooks';
 import styles from './SystemDetails.module.css';
@@ -111,9 +111,14 @@ const SystemDetails: React.FC<{
   if (isLoading) return <LoadingSpinner />;
   return (
     systemData && (
-      <SectionTableWrapper header={`${systemData.display_name} Queues`} headerActions={  <a href="/portal/system_monitor">
-      <Button type="primary">View All Systems</Button>
-    </a>}>
+      <SectionTableWrapper
+        header={`${systemData.display_name} Queues`}
+        headerActions={
+          <a href="/portal/system_monitor">
+            <Button type="primary">View All Systems</Button>
+          </a>
+        }
+      >
         <SystemQueueTable tas_name={`${tas_name}`} />
       </SectionTableWrapper>
     )
