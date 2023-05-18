@@ -1,4 +1,8 @@
-import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
+import {
+  UseQueryResult,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
 import { ProjectsRawSystem, ProjectEditBody } from '.';
 import { useDelete, useGet, usePut } from '../requests';
 
@@ -13,6 +17,21 @@ const useProjects = (): UseQueryResult<ProjectsRawSystem[]> => {
     },
   });
   return query;
+};
+
+export const useProject = (
+  projectId: number
+): UseQueryResult<ProjectsRawSystem | undefined> => {
+  const projectsQuery = useProjects();
+  const projectQuery = useQuery({
+    queryKey: ['project', projectId],
+    queryFn: () => {
+      return projectsQuery.data?.find((project) => project.id === projectId);
+    },
+    enabled: !!projectsQuery.data,
+  });
+
+  return projectQuery;
 };
 
 // Mutation to update fields in a project.

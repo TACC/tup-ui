@@ -82,14 +82,12 @@ const FormField = ({
     </Label>
   );
   const FieldNote = () => (
-    <>
-      <FormText className="form-field__help" color="muted">
-        {description}
-        {meta.touched && meta.error && (
-          <div className="form-field__validation-error">{meta.error}</div>
-        )}
-      </FormText>
-    </>
+    <FormText className="form-field__help" color="muted">
+      {description}
+      {meta.touched && meta.error && (
+        <div className="form-field__validation-error">{meta.error}</div>
+      )}
+    </FormText>
   );
 
   // Allowing ineffectual prop combinations would lead to confusion

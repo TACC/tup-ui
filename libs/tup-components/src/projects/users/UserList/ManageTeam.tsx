@@ -1,7 +1,12 @@
-import { InlineMessage, LoadingSpinner } from '@tacc/core-components';
+import {
+  InlineMessage,
+  LoadingSpinner,
+  Button as CoreButton,
+} from '@tacc/core-components';
 import {
   useAddProjectUser,
   useProjectUsers,
+  useProject,
   useRoleForCurrentUser,
 } from '@tacc/tup-hooks';
 import { useState } from 'react';
@@ -13,8 +18,25 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
   const currentUserRole = useRoleForCurrentUser(projectId) ?? '';
   const { mutate, isLoading, error } = useAddProjectUser(projectId);
   const [userToAdd, setUserToAdd] = useState<string>('');
+  const { data: project } = useProject(projectId);
+  const chargeCode = project?.chargeCode;
 
-  if (!['PI', 'Delegate'].includes(currentUserRole)) return null;
+  if (!['PI', 'Delegate'].includes(currentUserRole) || !chargeCode) return null;
+
+  if (chargeCode.startsWith('TG-')) {
+    return (
+      <div className={styles['manage-team']} style={{ paddingBottom: '5px' }}>
+        <a
+          className={styles['access-button']}
+          href="https://allocations.access-ci.org/user_management"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <CoreButton type="primary">Manage Team on ACCESS</CoreButton>
+        </a>
+      </div>
+    );
+  }
 
   const addUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

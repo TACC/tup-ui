@@ -20,11 +20,6 @@ import {
 import { ProjectsListingAllocationTable } from '../ProjectsListing/ProjectsListingAllocationTable';
 import ProjectPublicationRemove from './publications/ProjectPublicationDelete';
 
-const formatDate = (datestring: string): string => {
-  const date = new Date(datestring);
-  return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-};
-
 const Publication: React.FC<{
   projectId: number;
   pub: ProjectPublication;
@@ -71,31 +66,40 @@ const Publication: React.FC<{
   );
 };
 
-const NewAllocation = () => (
-  <a href="https://submit-tacc.xras.org/" target="_blank" rel="noreferrer">
-    <Button type="link">+ Add New Allocation</Button>
-  </a>
-);
+const NewAllocation: React.FC<{ chargeCode: string }> = ({ chargeCode }) => {
+  const href = chargeCode.startsWith('TG-')
+    ? 'https://allocations.access-ci.org/requests'
+    : 'https://submit-tacc.xras.org/';
+  return (
+    <a href={href} target="_blank" rel="noreferrer">
+      <Button type="link">+ Add New Allocation</Button>
+    </a>
+  );
+};
 
-const IncreaseAllocation = () => (
-  <a
-    href="https://submit-tacc.xras.org/requests"
-    target="_blank"
-    rel="noreferrer"
-  >
-    <Button type="link">Increase Existing Allocation</Button>
-  </a>
-);
+const IncreaseAllocation: React.FC<{ chargeCode: string }> = ({
+  chargeCode,
+}) => {
+  const href = chargeCode.startsWith('TG-')
+    ? 'https://allocations.access-ci.org/requests'
+    : 'https://submit-tacc.xras.org/';
+  return (
+    <a href={href} target="_blank" rel="noreferrer">
+      <Button type="link">Increase Existing Allocation</Button>
+    </a>
+  );
+};
 
-const AbstractGrants = () => (
-  <a
-    href="https://submit-tacc.xras.org/requests"
-    target="_blank"
-    rel="noreferrer"
-  >
-    <Button type="link">Edit Project</Button>
-  </a>
-);
+const AbstractGrants: React.FC<{ chargeCode: string }> = ({ chargeCode }) => {
+  const href = chargeCode.startsWith('TG-')
+    ? 'https://allocations.access-ci.org/requests'
+    : 'https://submit-tacc.xras.org/';
+  return (
+    <a href={href} target="_blank" rel="noreferrer">
+      <Button type="link">Edit Project</Button>
+    </a>
+  );
+};
 
 const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
   const { data: projectData, isLoading, error } = useProjects();
@@ -128,9 +132,11 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
         headerActions={
           canManage && (
             <span>
-              <NewAllocation />
+              <NewAllocation chargeCode={projectDetails?.chargeCode ?? ''} />
               {' | '}
-              <IncreaseAllocation />
+              <IncreaseAllocation
+                chargeCode={projectDetails?.chargeCode ?? ''}
+              />
             </span>
           )
         }
@@ -173,9 +179,13 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
 
       <SectionTableWrapper
         header="Abstract/Grants"
-        headerActions={canManage && <AbstractGrants />}
+        headerActions={
+          canManage && (
+            <AbstractGrants chargeCode={projectDetails?.chargeCode ?? ''} />
+          )
+        }
       >
-        {projectDetails?.description}
+        {projectDetails?.description ?? '(No description provided)'}
 
         <div className={styles['pub-abstract-grants']}>
           Your project and allocation information can be managed on the TXRAS

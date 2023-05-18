@@ -32,8 +32,8 @@ export type ProjectFieldOfScience = {
 
 export type ProjectsRawSystem = {
   id: number;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   chargeCode: string;
   gid: number;
   source: string;
@@ -67,7 +67,7 @@ export type ProjectsRawSystem = {
     email: string;
     vislabTrained: boolean;
     staff: boolean;
-  };
+  }[];
 };
 
 export type ProjectEditBody = Pick<
@@ -129,6 +129,7 @@ export type ProjectGrantBody = Omit<ProjectGrant, 'id'>;
 
 export {
   default as useProjects,
+  useProject,
   useProjectUpdate,
   useSetProjectDelegate,
   useRemoveProjectDelegate,

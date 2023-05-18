@@ -91,10 +91,12 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
         {!isActive && (
           <Link to={'/projects?show=inactive'}>Inactive Projects </Link>
         )}
-        {!params.username && `/ ${dataById?.title}`}
+        {!params.username && `/ ${dataById?.title ?? 'Untitled Project'}`}
         {params.username && (
           <>
-            <Link to={`/projects/${projectId}`}>{`/ ${dataById?.title}`} </Link>
+            <Link to={`/projects/${projectId}`}>
+              {`/ ${dataById?.title ?? 'Untitled Project'}`}{' '}
+            </Link>
             {`/ ${params.username}`}{' '}
           </>
         )}
