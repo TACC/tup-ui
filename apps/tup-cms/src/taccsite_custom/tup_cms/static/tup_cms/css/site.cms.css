@@ -34,6 +34,7 @@
 @import url("./for-core-styles/components/c-update.css") layer(base);
 /* (Base: CMS) */
 @import url("./for-core-cms/components/django.cms.blog.app.item.css") layer(base);
+@import url("./for-core-cms/components/django.cms.picture.css") layer(base);
 /* (Project) */
 @import url("./for-tup-cms/components/banner.css") layer(project);
 @import url("./for-tup-cms/components/c-data-list.css") layer(project);

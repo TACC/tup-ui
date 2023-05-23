@@ -1,0 +1,7 @@
+/* HELP: Why do I need to add styles for this? */
+/* NOTE: There are Core Styles and Core CMS styles for image alignment. */
+/* SEE: https://www.tacc.utexas.edu/news/latest-news/2025/11/11/basic-news-template/?edit (these styles are not needed for figures) */
+/* SEE: https://www.tacc.utexas.edu/education/k-12-students/high-school-camps/gencyber-level-up/ (these styles are needed for images) */
+img.align-center {
+    display: block;
+}
