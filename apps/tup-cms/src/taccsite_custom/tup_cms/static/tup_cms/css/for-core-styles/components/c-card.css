@@ -23,6 +23,26 @@
 
 
 
+/* SUPPORT LIST IN CARD */
+
+/* FAQ: The Portal uses Bootstrap ".card" for ticket modal */
+:is(.card, .c-card, [class*="card--"]) ul {
+    list-style: none;
+    padding-left: unset; /* undo core-styles.cms */
+}
+:is(.card, .c-card, [class*="card--"]) li {
+    line-height: 2;
+}
+/* TODO: Consider changing this site wide; SEE:
+:where([role=main],main) li:not(td li) { line-height: 1.6; } */
+:is(.card, .c-card, [class*="card--"]) ul:last-child:where(:not(#page-portal *)) {
+    margin-bottom: 2rem;
+}
+
+
+
+
+
 /* ADD CARD--IMAGE */
 
 /* Image */
