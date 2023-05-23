@@ -21,8 +21,9 @@
 
 .manage-team { 
     padding-right: var(--global-space--section-right);
-    padding-left: var(--global-space--section-left)
+    padding-left: var(--global-space--section-left);
 }
+
 .manage-team > :first-child {
     padding-bottom: 16px;
 }
@@ -32,4 +33,8 @@
 }
 .manage-team strong {
     font-size: 1.5rem;
+}
+
+.access-button {
+    width: 100%;
 }
