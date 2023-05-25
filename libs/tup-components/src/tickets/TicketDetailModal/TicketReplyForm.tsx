@@ -69,9 +69,9 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
             <FormikSelect name="status" label="Status" required>
               <option value="new">New</option>
               <option value="resolved">Resolved</option>
-              <option value="open">Investigating</option>
-              <option value="user_wait">User Wait</option>
-              <option value="internal_wait">TACC Wait</option>
+              <option value="open">In Progress</option>
+              <option value="user_wait">Reply Required</option>
+              <option value="internal_wait">Reply Sent</option>
             </FormikSelect>
             <FormikFileInput
               name="files"
