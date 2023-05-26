@@ -8,7 +8,7 @@ import {
 } from '@tacc/core-wrappers';
 import { FormGroup } from 'reactstrap';
 import { Button, InlineMessage } from '@tacc/core-components';
-import { useGetTicketDetails, useTicketReply } from '@tacc/tup-hooks';
+import { useTicketReply } from '@tacc/tup-hooks';
 import * as Yup from 'yup';
 import './TicketModal.global.css';
 
@@ -66,9 +66,7 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
               required
             />
             <FormikSelect name="status" label="Status">
-              <option value="">
-                --
-              </option>
+              <option value="">--</option>
               <option value="new">New</option>
               <option value="resolved">Resolved</option>
               <option value="open">In Progress</option>
