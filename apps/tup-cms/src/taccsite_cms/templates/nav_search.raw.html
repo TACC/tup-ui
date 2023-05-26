@@ -1,0 +1,36 @@
+{# TODO: Migrate to Core #}
+{# FAQ: The difference is the addition of `required` to the <input> field #}
+
+{# COPIED FROM CORE #}
+{# https://github.com/TACC/Core-CMS/blob/f0bad55/taccsite_cms/templates/nav_search.raw.html#L1-L31 #}
+{# @var settings #}
+
+{% load static %}
+<!-- FAQ: This template loads independently at a unique url (see `urls.py`)
+          so Portal and User Guide can render this markup into their markup. -->
+
+<style type="text/css">
+  /* SEE: https://github.com/TACC/Core-Styles/blob/main/source/_imports/elements/tacc-search-bar.md */
+  :host { visibility: hidden; height: 0; }
+</style>
+<link rel="stylesheet" href="{% static 'site_cms/css/build/site.tacc-search-bar.css' %}">
+
+<form part="form" method="get" action="/search">
+  <label for="header-search" class="u-hide--visually" part="label">
+    Search
+  </label>
+
+  <input part="input"
+    id="header-search"
+    type="search"
+    name="{{ settings.SEARCH_QUERY_PARAM_NAME }}"
+    placeholder="Search"
+    data-testid="input"
+    autocomplete="off" minlength="3" required
+    value="" />
+  <input type="hidden" name="page" value="1" />
+
+  <button part="button" type="submit" class="icon icon-search">
+    <span class="u-hide--visually">Search</span>
+  </button>
+</form>
