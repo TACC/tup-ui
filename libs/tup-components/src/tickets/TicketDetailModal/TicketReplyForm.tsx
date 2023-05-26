@@ -27,12 +27,11 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
 }) => {
   const mutation = useTicketReply(ticketId);
   const { mutate, isLoading, isError } = mutation;
-  const { data: ticketData } = useGetTicketDetails(ticketId);
 
   const defaultValues: TicketReplyFormValues = {
     text: '',
     files: [],
-    status: ticketData?.Status ?? 'open',
+    status: '',
   };
 
   const onSubmit = (
@@ -42,7 +41,7 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
     const formData = new FormData();
     formData.append('text', values['text']);
     (values.files || []).forEach((file) => formData.append('files', file));
-    formData.append('status', values['status']);
+    if (values.status) formData.append('status', values.status);
     mutate(formData, {
       onSuccess: () => resetForm(),
     });
@@ -66,7 +65,10 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
               style={{ maxWidth: '100%' }}
               required
             />
-            <FormikSelect name="status" label="Status" required>
+            <FormikSelect name="status" label="Status">
+              <option value="">
+                --
+              </option>
               <option value="new">New</option>
               <option value="resolved">Resolved</option>
               <option value="open">In Progress</option>
