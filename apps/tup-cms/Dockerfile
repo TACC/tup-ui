@@ -1,3 +1,4 @@
+# TACC/Core-CMS#631 (which bubbles up to TACC/Core-CMS#581@9ff0f1e)
 FROM taccwma/core-cms:4bfdffa
 
 WORKDIR /code
