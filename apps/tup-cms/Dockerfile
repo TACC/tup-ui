@@ -1,5 +1,5 @@
-# TACC/Core-CMS#631 (which bubbles up to TACC/Core-CMS#581@9ff0f1e)
-FROM taccwma/core-cms:4bfdffa
+# TACC/Core-CMS#581 a.k.a. ~v3.12.0-alpha
+FROM taccwma/core-cms:505df2a
 
 WORKDIR /code
 
