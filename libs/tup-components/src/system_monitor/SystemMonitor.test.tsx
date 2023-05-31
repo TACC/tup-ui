@@ -1,7 +1,7 @@
 import React from 'react';
-import { SystemMonitorTable, SystemMonitor } from './SystemMonitor';
+import { SystemMonitorTable } from './SystemMonitor';
 import { server, testRender } from '@tacc/tup-testing';
-import { getAllByText, waitFor } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 
 describe('System Monitor Component', () => {
