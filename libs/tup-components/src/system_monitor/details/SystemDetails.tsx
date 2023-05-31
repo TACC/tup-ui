@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { useTable, Column } from 'react-table';
 import { EmptyTablePlaceholder } from '../../utils';
+import { Link } from 'react-router-dom';
 import {
   LoadingSpinner,
   SectionTableWrapper,
@@ -127,9 +128,9 @@ const SystemDetails: React.FC<{
       <SectionTableWrapper
         header={`${systemData.display_name} Queues`}
         headerActions={
-          <a href="/portal/system_monitor">
+          <Link to="/system_monitor">
             <Button type="primary">View All Systems</Button>
-          </a>
+          </Link>
         }
       >
         <SystemQueueTable tas_name={`${tas_name}`} />
