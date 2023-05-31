@@ -106,8 +106,11 @@ export const useTicketReply = (ticketId: string) => {
   const mutation = usePost<FormData, string>({
     endpoint: `/tickets/${ticketId}/reply`,
     options: {
-      onSuccess: () =>
-        queryClient.invalidateQueries([`tickets/${ticketId}/history`]),
+      onSuccess: () => {
+        queryClient.invalidateQueries([`tickets/${ticketId}/history`]);
+        queryClient.invalidateQueries([`tickets/${ticketId}`]);
+        queryClient.invalidateQueries(['tickets']);
+      },
     },
   });
   return mutation;
