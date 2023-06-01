@@ -34,7 +34,7 @@ def LogoutView(request):
 
 def ImpersonateView(request):
     resp = HttpResponseRedirect("/portal/dashboard")
-    if not request.user.is_staff:
+    if not request.user.is_superuser:
         return resp
 
     headers = {"x-tup-token": settings.TUP_SERVICES_ADMIN_JWT}
