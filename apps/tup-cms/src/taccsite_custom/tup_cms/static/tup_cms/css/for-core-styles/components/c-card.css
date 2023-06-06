@@ -30,8 +30,10 @@
     list-style: none;
     padding-left: unset; /* undo core-styles.cms */
 }
-:is(.card, .c-card, [class*="card--"]) li {
-    line-height: 2;
+/* To add space between line items */
+/* FAQ: Using margin and li:not(:first-of-type) because of multi-line items */
+:is(.card, .c-card, [class*="card--"]) li:not(:first-of-type) {
+    margin-top: 0.5;
 }
 /* TODO: Consider changing this site wide; SEE:
 :where([role=main],main) li:not(td li) { line-height: 1.6; } */
