@@ -5,7 +5,6 @@ import { Link, Navigate } from 'react-router-dom';
 import { useMfa } from '@tacc/tup-hooks';
 
 const MfaSelector: React.FC = () => {
-
   return (
     <div className={styles['mfa-type-container']}>
       Select whether you want to use an MFA token app or SMS texting for
