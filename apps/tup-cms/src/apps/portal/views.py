@@ -34,6 +34,10 @@ def LogoutView(request):
 
 def ImpersonateView(request):
     resp = HttpResponseRedirect("/portal/dashboard")
+
+    if not request.user:
+        return resp
+
     if not request.user.groups.filter(name='Impersonator').exists():
         return resp
 
