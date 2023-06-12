@@ -14,8 +14,8 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
   };
 
   const pairingMessage = {
-    sms: '2. Enter the token shown in the app to continue the pairing.',
-    totp: '2. Enter the token sent to your phone number.',
+    totp: '2. Enter the token shown in the app to continue the pairing.',
+    sms: '2. Enter the token sent to your phone number.',
   };
 
   return (
