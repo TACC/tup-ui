@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate
 
 def PortalNavView(request):
     user = authenticate(request)
-    context = {'user': user}
+    is_impersonator = False
+    if user:
+        is_impersonator = user.groups.filter(name='Impersonator').exists()
+    context = {'user': user, 'show_impersonation': is_impersonator}
     template = loader.get_template('portal_nav/nav_portal.raw.html')
     return HttpResponse(template.render(context, request))
