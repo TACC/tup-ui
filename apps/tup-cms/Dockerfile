@@ -1,4 +1,4 @@
-# TACC/Core-CMSv3.12.0-alpha.3
+# TACC/Core-CMS#v3.12.0-alpha.3 (via TACC/Core-CMS#581)
 FROM taccwma/core-cms:7b1b6cf
 
 WORKDIR /code
