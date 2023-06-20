@@ -43,8 +43,8 @@
 }
 :is(.layered-image, [class*="layered-image--"])
 > :is(.align-left, .align-right) {
-    float: unset; /* undo site.cms.css */
-    max-width: unset; /* undo site.cms.css */
+    float: unset; /* undo core-cms.css */
+    max-width: unset; /* undo core-cms.css */
 }
 
 /* To position images at standard anchor points */
