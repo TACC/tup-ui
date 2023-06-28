@@ -41,6 +41,7 @@
 
 /* To style "Update" pill in title */
 .c-feed-list :is(h1, h2, h3, h4, h5, h6) > .c-pill {
+  margin-left: 0.5ch;
   vertical-align: middle;
   transform: translateY(-0.125em);
 }
