@@ -52,6 +52,11 @@ const UserNews: React.FC = () => {
                 dateTime={formatDateTime(newsItem.PostedDate)}
               >
                 {formatDate(newsItem.PostedDate)}
+                {newsItem.Updates && (
+                  <Pill type="updated" className={styles['status-pill']}>
+                    Update
+                  </Pill>
+                )}
               </time>
               <h3 className={styles['title']}>
                 <a
@@ -61,11 +66,6 @@ const UserNews: React.FC = () => {
                 >
                   {newsItem.WebTitle.trim()}
                 </a>
-                {newsItem.Updates && (
-                  <Pill type="updated" className={styles['status-pill']}>
-                    Update
-                  </Pill>
-                )}
               </h3>
               <p className={styles['body']}>{newsItem.Content}</p>
             </article>

@@ -18,6 +18,13 @@
     font-weight: var(--medium);
     text-transform: uppercase;
 }
+.posted-date .status-pill {
+  text-transform: none;
+
+  vertical-align: middle;
+  transform: translateY(-0.125em);
+}
+
 .status-pill {
     margin-left: 0.5ch;
     vertical-align: middle;
