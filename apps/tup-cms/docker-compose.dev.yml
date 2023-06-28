@@ -38,22 +38,6 @@ services:
     networks:
       - tup_cms_net
 
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
-    ulimits:
-      memlock: -1
-    environment:
-      - ES_HEAP_SIZE:1g
-      - discovery.type=single-node
-    volumes:
-      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - tup_cms_es_data:/usr/share/elasticsearch/data
-    container_name: tup_cms_elasticsearch
-    ports:
-      - 127.0.0.1:9201:9200
-    networks:
-      - tup_cms_net
-
 volumes:
   tup_cms_postgres_data:
   tup_cms_es_data:
