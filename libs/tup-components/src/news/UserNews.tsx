@@ -63,7 +63,7 @@ const UserNews: React.FC = () => {
                 </a>
                 {newsItem.Updates && (
                   <Pill type="updated" className={styles['status-pill']}>
-                    Updated
+                    Update
                   </Pill>
                 )}
               </h3>
