@@ -31,3 +31,13 @@ hr {
   width: 16px;
   height: 16px;
 }
+
+/* TODO: Remove this after:
+         0. attributes.css is migrated to Core-Styles
+         1. attributes.css is loaded by Portal */
+[data-prefix]::before {
+    display: inline-block;
+    content: attr(data-prefix);
+    margin-right: 0.25ch;
+    text-transform: none;
+}

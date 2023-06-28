@@ -1,38 +1,37 @@
 .news-list {
-    padding: 0px;
+    font-size: var(--global-font-size--small);
 }
 
 .news-list-item {
-    list-style: none;
-    border-top: 1px solid #707070;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-block: 10px;
+    border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
 
 .body {
-    display: -webkit-box;
-    font-size: 1rem;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    composes: x-truncate--many-lines from '@tacc/core-styles/dist/tools/x-truncate.css';
+
+    margin-bottom: 1.15rem;
 }
 
 .posted-date {
-    font-size: 1rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    color: var(--global-color-accent--secondary);
+    font-weight: var(--medium);
+    text-transform: uppercase;
 }
-
 .status-pill {
-    padding-bottom: 0px;
-    padding-top: 0px;
-    margin-left: 1rem;
+    margin-left: 0.5ch;
+    vertical-align: middle;
+
+    /* Mimics .c-pill font-size */
+    /* TODO: Update <Pill> to use .c-pill, then remove this */
+    font-size: var(--global-font-size--x-small);
 }
 
 .title {
-    font-size: 1.25rem;
-    font-weight: bolder;
+    composes: x-truncate--many-lines from '@tacc/core-styles/dist/tools/x-truncate.css';
+
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .news-error {
