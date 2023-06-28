@@ -33,6 +33,8 @@ const ViewAllUpdates = () => (
 
 const UserNews: React.FC = () => {
   const { data, isLoading } = useUserNews();
+  const maxItems = 5;
+
   if (isLoading) return <LoadingSpinner />;
   return (
     <SectionTableWrapper
@@ -42,7 +44,7 @@ const UserNews: React.FC = () => {
     >
       <div className={styles['news-list']}>
         {data &&
-          data.slice(0, 12).map((newsItem) => (
+          data.slice(0, maxItems).map((newsItem) => (
             <article className={styles['news-list-item']} key={newsItem.ID}>
               <time className={styles['posted-date']}
                     data-prefix="Posted:"
