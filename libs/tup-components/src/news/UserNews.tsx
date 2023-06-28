@@ -46,9 +46,11 @@ const UserNews: React.FC = () => {
         {data &&
           data.slice(0, maxItems).map((newsItem) => (
             <article className={styles['news-list-item']} key={newsItem.ID}>
-              <time className={styles['posted-date']}
-                    data-prefix="Posted:"
-                    dateTime={formatDateTime(newsItem.PostedDate)}>
+              <time
+                className={styles['posted-date']}
+                data-prefix="Posted:"
+                dateTime={formatDateTime(newsItem.PostedDate)}
+              >
                 {formatDate(newsItem.PostedDate)}
               </time>
               <h3 className={styles['title']}>
