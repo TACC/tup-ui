@@ -1,22 +1,22 @@
 .news-list {
-    font-size: var(--global-font-size--small);
+  font-size: var(--global-font-size--small);
 }
 
 .news-list-item {
-    padding-block: 10px;
-    border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+  padding-block: 10px;
+  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
 
 .body {
-    composes: x-truncate--many-lines from '@tacc/core-styles/dist/tools/x-truncate.css';
+  composes: x-truncate--many-lines from '@tacc/core-styles/dist/tools/x-truncate.css';
 
-    margin-bottom: 1.15rem;
+  margin-bottom: 1.15rem;
 }
 
 .posted-date {
-    color: var(--global-color-accent--secondary);
-    font-weight: var(--medium);
-    text-transform: uppercase;
+  color: var(--global-color-accent--secondary);
+  font-weight: var(--medium);
+  text-transform: uppercase;
 }
 .posted-date .status-pill {
   text-transform: none;
@@ -26,25 +26,25 @@
 }
 
 .status-pill {
-    margin-left: 0.5ch;
-    vertical-align: middle;
+  margin-left: 0.5ch;
+  vertical-align: middle;
 
-    /* Mimics .c-pill font-size */
-    /* TODO: Update <Pill> to use .c-pill, then remove this */
-    font-size: var(--global-font-size--x-small);
+  /* Mimics .c-pill font-size */
+  /* TODO: Update <Pill> to use .c-pill, then remove this */
+  font-size: var(--global-font-size--x-small);
 }
 
 .title {
-    composes: x-truncate--many-lines from '@tacc/core-styles/dist/tools/x-truncate.css';
+  composes: x-truncate--many-lines from '@tacc/core-styles/dist/tools/x-truncate.css';
 
-    margin-top: 10px;
-    margin-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .news-error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--global-color-accent--normal);
-    padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--global-color-accent--normal);
+  padding: 30px;
 }
