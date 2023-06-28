@@ -48,7 +48,7 @@ const UserNews: React.FC = () => {
             <article className={styles['news-list-item']} key={newsItem.ID}>
               <time
                 className={styles['posted-date']}
-                data-prefix="Posted:"
+                data-prefix="Published:"
                 dateTime={formatDateTime(newsItem.PostedDate)}
               >
                 {formatDate(newsItem.PostedDate)}
