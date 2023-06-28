@@ -2,15 +2,15 @@
 
   <article class="{% if article.updates %}has-update{% endif %}">
     <time data-prefix="Published:" datetime="{{ article.postDateTime }}">
-      {{ article.postDate }}
+      <span>{{ article.postDate }}</span>
+      {% if article.updates %}
+        <span class="c-pill c-pill--is-updated">Update</span>
+      {% endif %}
     </time>
     <h4>
       <a href="/{{ urls.base }}{{ urls.item_prefix }}{{ article.id }}">
         {{ article.title }}
       </a>
-      {% if article.updates %}
-        <span class="c-pill c-pill--is-updated">Update</span>
-      {% endif %}
     </h4>
     {% if article.subttitle %}
     <h5>{{ article.subttitle }}</h5>
