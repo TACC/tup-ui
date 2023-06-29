@@ -144,6 +144,7 @@
 
 /* To style "Update" pill in title */
 .c-news .c-pill {
+  margin-left: 0.5ch;
   vertical-align: middle;
   transform: translateY(-0.125em);
 }
