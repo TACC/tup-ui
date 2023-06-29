@@ -47,6 +47,8 @@ CMS_CACHE_DURATIONS = {
 RECAPTCHA_PRIVATE_KEY = ''
 RECAPTCHA_PUBLIC_KEY = ''
 
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
+
 ########################
 # TACC: GOOGLE ANALYTICS
 ########################
@@ -176,7 +178,7 @@ TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
 # TACC: CORE STYLES
 ########################
 
-TACC_CORE_STYLES_VERSION = 1
+TACC_CORE_STYLES_VERSION = 2
 
 ########################
 # PLUGIN SETTINGS

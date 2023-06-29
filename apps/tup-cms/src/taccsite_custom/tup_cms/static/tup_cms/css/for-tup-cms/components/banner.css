@@ -45,7 +45,7 @@
 }
 
 [class*="banner-cell--"] figure {
-  margin-bottom: unset; /* undo site.cms.css and Bootstrap */
+  margin-bottom: unset; /* undo core-cms.css and Bootstrap */
 }
 
 [class*="banner-cell--"] figcaption {
@@ -179,7 +179,7 @@
 
 /* Conflicts with Core-CMS */
 
-/* Overwrite Core-CMS site.cms.css */
+/* Overwrite Core-CMS core-cms.css */
 /* HELP: How can all CMS sites avoid this? */
 [class*="banner-cell--"] figcaption {
     border-bottom: unset;
