@@ -143,7 +143,7 @@
 }
 
 /* To style "Update" pill in title */
-.c-news__title .c-pill {
+.c-news .c-pill {
   vertical-align: middle;
   transform: translateY(-0.125em);
 }
