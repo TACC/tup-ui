@@ -7,6 +7,8 @@
 /* GENERICS */
 /* (Base) */
 @import url("./for-core-styles/generics/attributes.css") layer(base);
+/* BASE: CMS) */
+@import url("./for-core-cms/generics/pseudo-elements.css") layer(base);
 /* (Project) */
 @import url("./for-tup-cms/generics/color.css") layer(project);
 
