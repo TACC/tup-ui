@@ -27,8 +27,8 @@
 
 /* FAQ: The Portal uses Bootstrap ".card" for ticket modal */
 :is(.card, .c-card, [class*="card--"]) ul {
-    list-style: none;
-    padding-left: unset; /* undo core-styles.cms */
+    /* list-style: none; *//* H.P. restored bullets, M.S. does not know */
+    padding-left: 1em; /* overwrite core-styles.cms */
 }
 /* To add space between line items */
 /* FAQ: Using margin and li:not(:first-of-type) because of multi-line items */
