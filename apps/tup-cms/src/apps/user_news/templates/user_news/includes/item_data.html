@@ -13,6 +13,9 @@
         <time datetime="{{ article.postDateTime }}">
             {{ article.postDate }}
         </time>
+        {% if article.updates %}
+        <span class="c-pill c-pill--is-updated">Update</span>
+        {% endif %}
     </li>
     {% endif %}
 {% endspaceless %}</ul>
