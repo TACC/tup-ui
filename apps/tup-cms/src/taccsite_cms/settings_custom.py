@@ -47,6 +47,8 @@ CMS_CACHE_DURATIONS = {
 RECAPTCHA_PRIVATE_KEY = ''
 RECAPTCHA_PUBLIC_KEY = ''
 
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
+
 ########################
 # TACC: GOOGLE ANALYTICS
 ########################
