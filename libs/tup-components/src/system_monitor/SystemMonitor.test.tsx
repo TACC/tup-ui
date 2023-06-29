@@ -1,5 +1,5 @@
 import React from 'react';
-import { SystemMonitor } from './SystemMonitor';
+import { SystemMonitorTable } from './SystemMonitor';
 import { server, testRender } from '@tacc/tup-testing';
 import { waitFor } from '@testing-library/react';
 import { rest } from 'msw';
@@ -11,7 +11,7 @@ describe('System Monitor Component', () => {
         return res.once(ctx.json([]));
       })
     );
-    const { getByText } = testRender(<SystemMonitor />);
+    const { getByText } = testRender(<SystemMonitorTable />);
     await waitFor(() =>
       expect(getByText('No systems being monitored')).toBeDefined()
     );
@@ -22,13 +22,13 @@ describe('System Monitor Component', () => {
         res.once(ctx.status(404))
       )
     );
-    const { getByText } = testRender(<SystemMonitor />);
+    const { getByText } = testRender(<SystemMonitorTable />);
     await waitFor(() =>
       expect(getByText('Unable to gather system information')).toBeDefined()
     );
   });
   it('should display the system name in each row', async () => {
-    const { getByText } = testRender(<SystemMonitor />);
+    const { getByText } = testRender(<SystemMonitorTable />);
     await waitFor(() => expect(getByText('Frontera')).toBeDefined());
   });
 });
