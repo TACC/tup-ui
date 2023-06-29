@@ -1,6 +1,7 @@
 {% if article %}
 
   <article class="{% if article.updates %}has-update{% endif %}">
+  {% spaceless %}
     <time data-prefix="Published:" datetime="{{ article.postDateTime }}">
       <span>{{ article.postDate }}</span>
       {% if article.updates %}
@@ -20,6 +21,7 @@
     {% else %}
     <p>{{ article.content }}</p>
     {% endif %}
+  {% endspaceless %}
   </article>
 
 {% else %}
