@@ -1,4 +1,4 @@
-max_articles = 3
+max_articles = 4 # HACK: for testing tup-ui#249, do not merge
 
 urls = {
   'base': 'news/user-updates/',
