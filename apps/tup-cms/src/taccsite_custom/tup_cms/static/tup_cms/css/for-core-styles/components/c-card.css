@@ -16,7 +16,7 @@
 }
 
 :is(.card, .c-card, [class*="card--"]) h4 {
-    margin-bottom: 1em;
+    margin-bottom: 0.375em;
 }
 
 
