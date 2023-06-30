@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react';
 import { useTable, Column } from 'react-table';
 import { EmptyTablePlaceholder } from '../../utils';
-import { Link } from 'react-router-dom';
 import {
   LoadingSpinner,
+  Section,
   SectionTableWrapper,
   Pill,
-  Button,
 } from '@tacc/core-components';
 import { JobsQueue, useSystemQueue } from '@tacc/tup-hooks';
 import styles from './SystemDetails.module.css';
+import { SystemMonitor } from '../SystemMonitor';
 
 const SystemQueueTable: React.FC<{
   tas_name: string;
@@ -34,7 +34,7 @@ const SystemQueueTable: React.FC<{
       },
       {
         accessor: 'free',
-        Header: 'Free Nodes',
+        Header: 'Idle Nodes',
       },
       {
         accessor: ({ running }) => (running ? running : ' 0 '),
@@ -57,10 +57,7 @@ const SystemQueueTable: React.FC<{
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <table
-      {...getTableProps()}
-      className={`o-fixed-header-table ${styles['systems-table']}`}
-    >
+    <table {...getTableProps()} className={`${styles['systems-listing']}`}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -75,10 +72,7 @@ const SystemQueueTable: React.FC<{
           rows.map((row, idx) => {
             prepareRow(row);
             return (
-              <tr
-                className={styles['system-listing-row']}
-                {...row.getRowProps()}
-              >
+              <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => (
                   <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 ))}
@@ -98,11 +92,6 @@ const SystemQueueTable: React.FC<{
     </table>
   );
 };
-const ViewMonitor = () => (
-  <a href="/portal/system_monitor">
-    <Button type="primary">View All Systems</Button>
-  </a>
-);
 
 const SystemDetails: React.FC<{
   tas_name: string;
@@ -111,10 +100,7 @@ const SystemDetails: React.FC<{
 
   if (error)
     return (
-      <SectionTableWrapper
-        header={`System Queues`}
-        headerActions={<ViewMonitor />}
-      >
+      <SectionTableWrapper header={`System Queues`}>
         <EmptyTablePlaceholder>
           There was a problem loading the system queues
         </EmptyTablePlaceholder>
@@ -125,16 +111,15 @@ const SystemDetails: React.FC<{
 
   return (
     systemData && (
-      <SectionTableWrapper
-        header={`${systemData.display_name} Queues`}
-        headerActions={
-          <Link to="/system_monitor">
-            <Button type="primary">View All Systems</Button>
-          </Link>
+      <Section
+        contentLayoutName="twoColumn"
+        content={
+          <SectionTableWrapper className={`${styles['listing-section']}`}>
+            <SystemMonitor tas_name={tas_name} />
+            <SystemQueueTable tas_name={`${tas_name}`} />
+          </SectionTableWrapper>
         }
-      >
-        <SystemQueueTable tas_name={`${tas_name}`} />
-      </SectionTableWrapper>
+      />
     )
   );
 };

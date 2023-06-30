@@ -29,7 +29,7 @@ const Layout: React.FC = () => {
         <SectionHeader>Dashboard</SectionHeader>
         <main className={styles.panels}>
           <UserNews />
-          <SystemMonitor />
+          <SystemMonitor tas_name="" />
           <div className={styles['project-ticket-grid']}>
             <ProjectsDashboard />
             <TicketsDashboard />

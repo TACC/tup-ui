@@ -1,7 +1,7 @@
 .listing-section > div {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 40px;
 }
 
 .root td {
@@ -18,4 +18,8 @@
 
 .systems-listing-navbar > a > div {
   padding-left: var(--global-space--section-left);
+}
+/* systems listing */
+.systems-listing {
+  margin-bottom: unset; /* undo core-styles.base.css */
 }

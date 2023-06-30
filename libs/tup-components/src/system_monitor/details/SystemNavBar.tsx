@@ -25,7 +25,10 @@ export const SystemNavBar: React.FC = () => {
     <div className={`nav-content ${styles['systems-listing-navbar']}`}>
       {data &&
         data.map((system) => (
-          <NavItem to={`/system_monitor/${system.tas_name}`} key={`${system.tas_name}`}>
+          <NavItem
+            to={`/system_monitor/${system.tas_name}`}
+            key={`${system.tas_name}`}
+          >
             {system.display_name}
           </NavItem>
         ))}
