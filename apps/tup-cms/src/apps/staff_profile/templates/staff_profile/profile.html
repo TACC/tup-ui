@@ -1,0 +1,46 @@
+<p>
+    {{instance.name | safe}}
+</p>
+<p>
+    {{instance.title}}
+</p>
+<p>
+    {{instance.department}}
+</p>
+<p>{{instance.email}} {{instance.phone}} </p>
+<p>
+    <img src="{{instance.photo.url}}" alt="Staff headshot image.">
+</p>
+<p>
+    {{instance.description | safe}}
+</p>
+
+<p>
+    Publications:
+    {{instance.publications | safe}}
+</p>
+
+<p>
+    Projects:
+    {{instance.projects | safe}}
+</p>
+
+<p>
+    Education:
+    {{instance.education | safe}}
+</p>
+
+<p>
+    Research Areas:
+    {{instance.research_areas | safe}}
+</p>
+
+<p>
+    Memberships:
+    {{instance.memberships | safe}}
+</p>
+
+<p>
+    Experience:
+    {{instance.experience | safe}}
+</p>
