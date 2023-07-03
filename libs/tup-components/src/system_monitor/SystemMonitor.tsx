@@ -28,6 +28,7 @@ export const SystemMonitorTable: React.FC<{
   const { data: systemMonitorData, isLoading, error } = useSystemMonitor();
   let data = systemMonitorData;
   data = tas_name ? data?.filter((sys) => sys.tas_name === tas_name) : data;
+  const initialTableState = tas_name ? { hiddenColumns: ['display_name'] } : {};
   const columns = useMemo<Column<SystemMonitorRawSystem>[]>(
     () => [
       {
@@ -37,7 +38,8 @@ export const SystemMonitorTable: React.FC<{
       },
       {
         accessor: isSystemOnline,
-        Header: 'System Status',
+        // To display different column headings depending if on Dashboard or in System Status page
+        Header: (tas_name ? "System Status" : "Status"),
         Cell: Operational,
       },
       {
@@ -56,7 +58,7 @@ export const SystemMonitorTable: React.FC<{
     ],
     []
   );
-  const initialTableState = tas_name ? { hiddenColumns: ['display_name'] } : {};
+
 
   const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
     useTable({
