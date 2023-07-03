@@ -39,7 +39,7 @@ export const SystemMonitorTable: React.FC<{
       {
         accessor: isSystemOnline,
         // To display different column headings depending if on Dashboard or in System Status page
-        Header: (tas_name ? "System Status" : "Status"),
+        Header: tas_name ? 'System Status' : 'Status',
         Cell: Operational,
       },
       {
@@ -58,7 +58,6 @@ export const SystemMonitorTable: React.FC<{
     ],
     []
   );
-
 
   const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
     useTable({
