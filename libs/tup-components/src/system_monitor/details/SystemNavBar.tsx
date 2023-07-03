@@ -26,7 +26,7 @@ export const SystemNavBar: React.FC = () => {
       </div>
     );
 
-    // To set Frontera as active in navbar if no system selected
+  // To set Frontera as active in navbar if no system selected
   const defaultTasName = 'frontera';
   return (
     <div className={`nav-content ${styles['systems-listing-navbar']}`}>
@@ -36,7 +36,11 @@ export const SystemNavBar: React.FC = () => {
             to={`/system_monitor/${system.tas_name}`}
             key={`${system.tas_name}`}
             // To set Frontera as active in navbar if no system selected.
-            active={!tasName ? system.tas_name === defaultTasName : system.tas_name === tasName}
+            active={
+              !tasName
+                ? system.tas_name === defaultTasName
+                : system.tas_name === tasName
+            }
           >
             {system.display_name}
           </QueryNavItem>
