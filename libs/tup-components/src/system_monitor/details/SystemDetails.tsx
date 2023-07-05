@@ -56,7 +56,10 @@ const SystemQueueTable: React.FC<{
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <table {...getTableProps()} className={`${styles['systems-listing']} o-fixed-header-table`}>
+    <table
+      {...getTableProps()}
+      className={`${styles['systems-listing']} o-fixed-header-table`}
+    >
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -117,9 +120,7 @@ const SystemDetails: React.FC<{
             <SystemQueueTable tas_name={`${tas_name}`} />
           </SectionTableWrapper>
         </div>
-        <div className={`${styles['avgwait-panel']}`}>
-          Avg. Wait Time
-        </div>
+        <div className={`${styles['avgwait-panel']}`}>Avg. Wait Time</div>
       </div>
     )
   );
