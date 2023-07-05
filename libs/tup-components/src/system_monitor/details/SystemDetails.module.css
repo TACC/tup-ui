@@ -1,13 +1,3 @@
-.listing-section > div {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.root td {
-    vertical-align: middle;
-  }
-  
 /* systems navbar */
 .systems-listing-navbar {
   height: 100%;
@@ -19,7 +9,50 @@
 .systems-listing-navbar > a > div {
   padding-left: var(--global-space--section-left);
 }
-/* systems listing */
-.systems-listing {
-  margin-bottom: unset; /* undo core-styles.base.css */
+
+
+
+
+
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
+.panels {
+  display: grid;
+
+  /* To reproduce complex layout of design doc */
+  @media (--wide-and-above) {
+    gap: 25px;
+    grid-template-columns: 0.5fr 0.5fr;
+    overflow: auto;
+    grid-template-areas:
+      "monitor_queue avgwait";
+  }
+  /* To reproduce simple layout of narrow screens like CEPv2 */
+  @media (--wide-and-below) {
+    row-gap: 25px;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "monitor_queue"
+      "avgwait";
+  }
 }
+.panels > * {
+	overflow: auto; /* to force items to stay within their grid cells */
+}
+
+.monitor_queue-panel { grid-area: monitor_queue; }
+.avgwait-panel { grid-area: avgwait; }
+
+.monitor_queue-panel {
+  display: grid;
+  gap: 25px;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "monitor"
+    "queue";
+}
+.monitor_queue-panel > * {
+  overflow: auto;
+}
+.monitor_queue-panel > :nth-child(1) { grid-area: monitor; }
+.monitor_queue-panel > :nth-child(2) { grid-area: queue; }
