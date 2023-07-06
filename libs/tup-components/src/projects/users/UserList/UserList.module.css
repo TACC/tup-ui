@@ -9,6 +9,15 @@
     padding-left: var(--global-space--section-left);
 }
 
+.user-navactions {
+    margin-left: var(--global-space--section-left);
+    margin-right: var(--global-space--section-right);
+}
+.user-navactions button {
+    margin-bottom: 5px;
+    width:100%
+}
+
 .separator {
     border-top: 1px solid  #C7C7C7;
     margin: 5px;
@@ -19,7 +28,7 @@
     width: 175px;
 }
 
-.manage-team { 
+.manage-team {
     padding-right: var(--global-space--section-right);
     padding-left: var(--global-space--section-left);
 }
@@ -35,6 +44,37 @@
     font-size: 1.5rem;
 }
 
-.access-button {
-    width: 100%;
+.radio-group {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.radio-group input {
+    accent-color: var(--global-color-accent--normal);
+}
+
+.radio-group label {
+    margin-bottom: 0px;
+    height: fit-content;
+    margin-right: 10px;
+}
+
+.search-input-label {
+    font-weight: normal;
+    color: var(--global-color-primary--x-dark);
+    padding-top: 5px;
+}
+
+.search-button {
+    display: flex;
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding-top: 0px;
+    padding-bottom:0px;
+    align-items: center;
+}
+.search-button i {
+    font-size: 1.6rem;
 }
