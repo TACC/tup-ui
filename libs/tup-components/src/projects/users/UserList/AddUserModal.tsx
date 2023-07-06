@@ -3,6 +3,7 @@ import {
   LoadingSpinner,
   Icon,
   SectionMessage,
+  SectionTableWrapper,
 } from '@tacc/core-components';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Input } from 'reactstrap';
@@ -76,7 +77,7 @@ const UserSearchTable: React.FC<{
     );
 
   return (
-    <table>
+    <table className="o-fixed-header-table">
       <thead>
         <tr>
           <th>Name</th>
@@ -138,7 +139,7 @@ const AddUserModal: React.FC<{ projectId: number }> = ({ projectId }) => {
         <ModalHeader toggle={toggle} close={closeBtn}>
           <span>Add Users</span>
         </ModalHeader>
-        <ModalBody>
+        <ModalBody className={styles['body']}>
           <h3 style={{ marginBottom: '10px' }}>Search for User</h3>
           <form onSubmit={(e) => onSubmit(e)}>
             {/* Radio labels for selecting lastname/email/username for search */}
@@ -202,10 +203,15 @@ const AddUserModal: React.FC<{ projectId: number }> = ({ projectId }) => {
           </form>
           {/* Search result table */}
           {data && (
-            <UserSearchTable
-              users={data}
-              projectId={projectId}
-            ></UserSearchTable>
+            <SectionTableWrapper
+              className={styles['table-wrap']}
+              contentShouldScroll
+            >
+              <UserSearchTable
+                users={data}
+                projectId={projectId}
+              ></UserSearchTable>
+            </SectionTableWrapper>
           )}
         </ModalBody>
         <ModalFooter />

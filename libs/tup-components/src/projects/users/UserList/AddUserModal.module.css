@@ -2,3 +2,15 @@
 .root :global(.modal-content) {
   min-height: 50vh;
 }
+
+/* To activate scrolling from SectionTableWrapper contentShouldScroll */
+/* NOTE: I do not think this should be required in client CSS */
+/* HELP: What other solutions exist? If not, then…
+         should SectionTableWrapper apply this? */
+.table-wrap {
+  overflow-y: auto;
+}
+.body {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
