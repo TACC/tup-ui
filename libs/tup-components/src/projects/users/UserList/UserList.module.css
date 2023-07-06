@@ -19,7 +19,7 @@
     width: 175px;
 }
 
-.manage-team { 
+.manage-team {
     padding-right: var(--global-space--section-right);
     padding-left: var(--global-space--section-left);
 }
