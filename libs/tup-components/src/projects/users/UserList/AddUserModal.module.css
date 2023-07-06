@@ -17,6 +17,11 @@
 
 .add-remove-column {
   text-align: right;
+
+  /* To "shrink-wrap" table cell */
+  /* CAVEAT: Requires table `table-layout: auto` (browser default) */
+  width: 1%;
+  white-space: nowrap;
 }
 
 .success-icon  {
