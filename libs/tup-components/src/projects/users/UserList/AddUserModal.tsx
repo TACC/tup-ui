@@ -46,16 +46,16 @@ const RemoveUser: React.FC<{ username: string; projectId: number }> = ({
       </div>
     );
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <>
       <Icon
         name="approved-reverse"
-        className={stylesUserList['success']}
+        className={styles['success-icon']}
       ></Icon>{' '}
       Added &nbsp;| &nbsp;
       <Button type="link" onClick={() => mutate({})}>
         Remove
       </Button>
-    </div>
+    </>
   );
 };
 
@@ -83,7 +83,7 @@ const UserSearchTable: React.FC<{
           <th>Name</th>
           <th>Email</th>
           <th>Username</th>
-          <th></th>
+          <th className={styles['add-remove-column']}></th>
         </tr>
       </thead>
       <tbody>
@@ -92,7 +92,7 @@ const UserSearchTable: React.FC<{
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>{user.username}</td>
-            <td>
+            <td className={styles['add-remove-column']}>
               {userInProject(user.username) ? (
                 <RemoveUser projectId={projectId} username={user.username} />
               ) : (
