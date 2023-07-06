@@ -3,7 +3,6 @@ import { useTable, Column } from 'react-table';
 import { EmptyTablePlaceholder } from '../../utils';
 import {
   LoadingSpinner,
-  Section,
   SectionTableWrapper,
   Pill,
 } from '@tacc/core-components';
@@ -57,7 +56,10 @@ const SystemQueueTable: React.FC<{
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <table {...getTableProps()} className={`${styles['systems-listing']}`}>
+    <table
+      {...getTableProps()}
+      className={`${styles['systems-listing']} o-fixed-header-table`}
+    >
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -111,15 +113,15 @@ const SystemDetails: React.FC<{
 
   return (
     systemData && (
-      <Section
-        contentLayoutName="twoColumn"
-        content={
-          <SectionTableWrapper className={`${styles['listing-section']}`}>
-            <SystemMonitor tas_name={tas_name} />
+      <div className={styles['panels']}>
+        <div className={`${styles['monitor_queue-panel']}`}>
+          <SystemMonitor tas_name={tas_name} />
+          <SectionTableWrapper contentShouldScroll>
             <SystemQueueTable tas_name={`${tas_name}`} />
           </SectionTableWrapper>
-        }
-      />
+        </div>
+        <div className={`${styles['avgwait-panel']}`}>Avg. Wait Time</div>
+      </div>
     )
   );
 };
