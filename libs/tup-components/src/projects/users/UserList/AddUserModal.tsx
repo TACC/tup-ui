@@ -47,10 +47,7 @@ const RemoveUser: React.FC<{ username: string; projectId: number }> = ({
     );
   return (
     <>
-      <Icon
-        name="approved-reverse"
-        className={styles['success-icon']}
-      ></Icon>{' '}
+      <Icon name="approved-reverse" className={styles['success-icon']}></Icon>{' '}
       Added &nbsp;| &nbsp;
       <Button type="link" onClick={() => mutate({})}>
         Remove
