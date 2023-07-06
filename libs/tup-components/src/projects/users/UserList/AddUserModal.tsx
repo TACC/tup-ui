@@ -14,7 +14,9 @@ import {
   useAddProjectUser,
   useRemoveProjectUser,
 } from '@tacc/tup-hooks';
-import styles from './UserList.module.css';
+
+import styles from './AddUserModal.module.css';
+import stylesUserList from './UserList.module.css';
 
 type FieldValue = 'email' | 'username' | 'last_name';
 
@@ -44,8 +46,11 @@ const RemoveUser: React.FC<{ username: string; projectId: number }> = ({
     );
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Icon name="approved-reverse" className={styles['success']}></Icon> Added
-      &nbsp;| &nbsp;
+      <Icon
+        name="approved-reverse"
+        className={stylesUserList['success']}
+      ></Icon>{' '}
+      Added &nbsp;| &nbsp;
       <Button type="link" onClick={() => mutate({})}>
         Remove
       </Button>
@@ -128,7 +133,7 @@ const AddUserModal: React.FC<{ projectId: number }> = ({ projectId }) => {
         isOpen={isOpen}
         toggle={toggle}
         size="lg"
-        className="modal-dialog-centered"
+        className={`${styles['root']} modal-dialog-centered`}
       >
         <ModalHeader toggle={toggle} close={closeBtn}>
           <span>Add Users</span>
@@ -137,7 +142,7 @@ const AddUserModal: React.FC<{ projectId: number }> = ({ projectId }) => {
           <h3 style={{ marginBottom: '10px' }}>Search for User</h3>
           <form onSubmit={(e) => onSubmit(e)}>
             {/* Radio labels for selecting lastname/email/username for search */}
-            <div className={styles['radio-group']}>
+            <div className={stylesUserList['radio-group']}>
               <input
                 name="adduser-field"
                 id="adduser-radio-lastname"
@@ -172,7 +177,7 @@ const AddUserModal: React.FC<{ projectId: number }> = ({ projectId }) => {
             <div className="input-group">
               <div className="input-group-prepend">
                 <Button
-                  className={styles['search-button']}
+                  className={stylesUserList['search-button']}
                   type="secondary"
                   iconNameBefore="search"
                   attr="submit"
@@ -188,7 +193,10 @@ const AddUserModal: React.FC<{ projectId: number }> = ({ projectId }) => {
                 onChange={(e) => setQuery(e.target.value)}
               />
             </div>
-            <label className={styles['search-input-label']} htmlFor="add-user">
+            <label
+              className={stylesUserList['search-input-label']}
+              htmlFor="add-user"
+            >
               <i>Enter their exact name, email address, or username.</i>
             </label>
           </form>
