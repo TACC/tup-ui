@@ -107,6 +107,8 @@ const AddUserModal: React.FC<{ projectId: number }> = ({ projectId }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
+    setField('last_name');
+    setQuery('');
   };
 
   const [field, setField] = useState<FieldValue>('last_name');
