@@ -3,6 +3,7 @@ import {
   LoadingSpinner,
   Icon,
   SectionMessage,
+  SectionTableWrapper,
 } from '@tacc/core-components';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Input } from 'reactstrap';
@@ -14,7 +15,9 @@ import {
   useAddProjectUser,
   useRemoveProjectUser,
 } from '@tacc/tup-hooks';
-import styles from './UserList.module.css';
+
+import styles from './AddUserModal.module.css';
+import stylesUserList from './UserList.module.css';
 
 type FieldValue = 'email' | 'username' | 'last_name';
 
@@ -43,13 +46,13 @@ const RemoveUser: React.FC<{ username: string; projectId: number }> = ({
       </div>
     );
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Icon name="approved-reverse" className={styles['success']}></Icon> Added
-      &nbsp;| &nbsp;
+    <>
+      <Icon name="approved-reverse" className={styles['success-icon']}></Icon>{' '}
+      Added &nbsp;| &nbsp;
       <Button type="link" onClick={() => mutate({})}>
         Remove
       </Button>
-    </div>
+    </>
   );
 };
 
@@ -71,13 +74,13 @@ const UserSearchTable: React.FC<{
     );
 
   return (
-    <table>
+    <table className="o-fixed-header-table">
       <thead>
         <tr>
           <th>Name</th>
           <th>Email</th>
           <th>Username</th>
-          <th></th>
+          <th className={styles['add-remove-column']}></th>
         </tr>
       </thead>
       <tbody>
@@ -86,7 +89,7 @@ const UserSearchTable: React.FC<{
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>{user.username}</td>
-            <td>
+            <td className={styles['add-remove-column']}>
               {userInProject(user.username) ? (
                 <RemoveUser projectId={projectId} username={user.username} />
               ) : (
@@ -128,16 +131,16 @@ const AddUserModal: React.FC<{ projectId: number }> = ({ projectId }) => {
         isOpen={isOpen}
         toggle={toggle}
         size="lg"
-        className="modal-dialog-centered"
+        className={`${styles['root']} modal-dialog-centered`}
       >
         <ModalHeader toggle={toggle} close={closeBtn}>
           <span>Add Users</span>
         </ModalHeader>
-        <ModalBody>
+        <ModalBody className={styles['body']}>
           <h3 style={{ marginBottom: '10px' }}>Search for User</h3>
           <form onSubmit={(e) => onSubmit(e)}>
             {/* Radio labels for selecting lastname/email/username for search */}
-            <div className={styles['radio-group']}>
+            <div className={stylesUserList['radio-group']}>
               <input
                 name="adduser-field"
                 id="adduser-radio-lastname"
@@ -172,7 +175,7 @@ const AddUserModal: React.FC<{ projectId: number }> = ({ projectId }) => {
             <div className="input-group">
               <div className="input-group-prepend">
                 <Button
-                  className={styles['search-button']}
+                  className={stylesUserList['search-button']}
                   type="secondary"
                   iconNameBefore="search"
                   attr="submit"
@@ -188,16 +191,24 @@ const AddUserModal: React.FC<{ projectId: number }> = ({ projectId }) => {
                 onChange={(e) => setQuery(e.target.value)}
               />
             </div>
-            <label className={styles['search-input-label']} htmlFor="add-user">
+            <label
+              className={stylesUserList['search-input-label']}
+              htmlFor="add-user"
+            >
               <i>Enter their exact name, email address, or username.</i>
             </label>
           </form>
           {/* Search result table */}
           {data && (
-            <UserSearchTable
-              users={data}
-              projectId={projectId}
-            ></UserSearchTable>
+            <SectionTableWrapper
+              className={styles['table-wrap']}
+              contentShouldScroll
+            >
+              <UserSearchTable
+                users={data}
+                projectId={projectId}
+              ></UserSearchTable>
+            </SectionTableWrapper>
           )}
         </ModalBody>
         <ModalFooter />

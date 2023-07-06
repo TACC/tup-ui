@@ -78,8 +78,3 @@
 .search-button i {
     font-size: 1.6rem;
 }
-
-.success {
-    color: var(--global-color-success--normal);
-    margin-right: 0.5rem;
-}
