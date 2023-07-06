@@ -19,6 +19,12 @@ export type MfaPairingResponse = {
     description: string;
     img: string;
   };
+  otpkey: {
+    description: string;
+    img: string;
+    value: string;
+    value_b32: string;
+  }
   rollout_state: string;
   serial: string;
 };

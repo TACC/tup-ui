@@ -8,7 +8,17 @@ const MfaQRPanel: React.FC = () => {
   const { mutate, isLoading, data, isError } = useMfaPairTotp();
   return (
     <div>
-      <div>1. Open the app and scan the following QR code:</div>
+      <div>
+        1. Open an approved{' '}
+        <a
+          href="https://docs.tacc.utexas.edu/basics/mfa/#mfaapps"
+          target="_blank"
+          rel="noreferrer"
+        >
+          MFA pairing app
+        </a>{' '}
+        and scan the following QR code:
+      </div>
       <div className={styles['qr-code-box']}>
         <div>
           {!data && !isLoading && (
@@ -25,6 +35,20 @@ const MfaQRPanel: React.FC = () => {
           )}
         </div>
       </div>
+      {data && (
+        <div>
+          Text code (
+          <Button
+            type="link"
+            onClick={() => navigator.clipboard.writeText(data.otpkey.value_b32)}
+          >
+            copy to clipboard
+          </Button>
+          ):
+          <br />
+          <code>{data.otpkey.value_b32}</code>
+        </div>
+      )}
       {!data && isError && (
         <SectionMessage type="error">
           <div className={styles['qr-code-error']}>

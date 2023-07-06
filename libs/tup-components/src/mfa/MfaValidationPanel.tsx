@@ -35,6 +35,12 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
           </Button>
         </div>
       </form>
+      {tokenType === 'sms' && (
+        <span>
+          If you do not receive a text message within 5 minutes, please contact
+          the helpdesk by clicking "Get Help" above.
+        </span>
+      )}
       {error && (
         <div className={styles['verify-error-message']}>
           <SectionMessage type="error" scope="section">

@@ -76,6 +76,7 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               <br />
               <input
                 value={currentToken}
+                autoComplete="off"
                 onChange={(e) => setCurrentToken(e.target.value)}
                 id="current-mfa-token"
               />
@@ -116,6 +117,21 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
   );
 };
 
+const MfaSectionHeader: React.FC = () => (
+  <div className={styles['tap-header']}>
+    <strong>MFA Pairing</strong>
+    <div style={{ float: 'right' }}>
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://docs.tacc.utexas.edu/basics/mfa/"
+      >
+        <strong>MFA Documentation</strong>
+      </a>
+    </div>
+  </div>
+);
+
 export const AccountMfa: React.FC = () => {
   const TOKEN_TYPE = {
     sms: 'SMS Token',
@@ -125,9 +141,7 @@ export const AccountMfa: React.FC = () => {
   if (isError) {
     return (
       <>
-        <div className={styles['tap-header']}>
-          <strong>MFA Pairing</strong>
-        </div>
+        <MfaSectionHeader />
         <SectionMessage type="error">
           There was an error retrieving your multifactor authentication status.
           Your account may be in a non-valid state. if this error persists
@@ -142,9 +156,7 @@ export const AccountMfa: React.FC = () => {
   const hasPairing = data?.token?.rollout_state === 'enrolled';
   return (
     <>
-      <div className={styles['tap-header']}>
-        <strong>MFA Pairing</strong>
-      </div>
+      <MfaSectionHeader />
       {!hasPairing && (
         <Link to="/mfa" className={styles['tap-href']}>
           <Button type="primary">Pair Device</Button>
