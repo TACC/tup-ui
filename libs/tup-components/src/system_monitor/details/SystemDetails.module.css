@@ -1,3 +1,9 @@
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
+
+
+
+
 /* systems navbar */
 .systems-listing-navbar {
   height: 100%;
@@ -14,8 +20,6 @@
 
 
 
-@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
-
 .panels {
   display: grid;
 
@@ -23,36 +27,30 @@
   @media (--wide-and-above) {
     gap: 25px;
     grid-template-columns: 0.5fr 0.5fr;
-    overflow: auto;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
-      "monitor_queue avgwait";
+      "monitor avgwait"
+      "queue avgwait";
   }
   /* To reproduce simple layout of narrow screens like CEPv2 */
   @media (--wide-and-below) {
     row-gap: 25px;
     grid-template-rows: auto 1fr;
     grid-template-areas:
-      "monitor_queue"
+      "monitor"
+      "queue";
+    /* TODO: When avgwait table exists, show it using something like this: *//*
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-areas:
+      "monitor"
+      "queue"
       "avgwait";
+    */
   }
 }
 .panels > * {
 	overflow: auto; /* to force items to stay within their grid cells */
 }
-
-.monitor_queue-panel { grid-area: monitor_queue; }
-.avgwait-panel { grid-area: avgwait; }
-
-.monitor_queue-panel {
-  display: grid;
-  gap: 25px;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "monitor"
-    "queue";
-}
-.monitor_queue-panel > * {
-  overflow: auto;
-}
-.monitor_queue-panel > :nth-child(1) { grid-area: monitor; }
-.monitor_queue-panel > :nth-child(2) { grid-area: queue; }
+.panels > :nth-child(1) { grid-area: monitor; }
+.panels > :nth-child(2) { grid-area: queue; }
+.panels > :nth-child(3) { grid-area: avgwait; }
