@@ -114,13 +114,12 @@ const SystemDetails: React.FC<{
   return (
     systemData && (
       <div className={styles['panels']}>
-        <div className={`${styles['monitor_queue-panel']}`}>
-          <SystemMonitor tas_name={tas_name} />
-          <SectionTableWrapper contentShouldScroll>
-            <SystemQueueTable tas_name={`${tas_name}`} />
-          </SectionTableWrapper>
-        </div>
-        <div className={`${styles['avgwait-panel']}`}>Avg. Wait Time</div>
+        <SystemMonitor tas_name={tas_name} />
+        <SectionTableWrapper contentShouldScroll>
+          <SystemQueueTable tas_name={`${tas_name}`} />
+        </SectionTableWrapper>
+        {/* TODO: When avgwait table exists, update CSS grid to show it */}
+        {/* <div>Avg. Wait Time</div> */}
       </div>
     )
   );
