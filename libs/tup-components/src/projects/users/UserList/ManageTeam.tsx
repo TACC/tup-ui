@@ -12,7 +12,7 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
 
   if (chargeCode.startsWith('TG-')) {
     return (
-      <div className={styles['add-member-button']}>
+      <div className={styles['user-navactions']}>
         <a
           href="https://allocations.access-ci.org/user_management"
           target="_blank"
@@ -25,7 +25,7 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
   }
 
   return (
-    <div className={styles['add-member-button']}>
+    <div className={styles['user-navactions']}>
       <AddUserModal projectId={projectId} />
     </div>
   );
