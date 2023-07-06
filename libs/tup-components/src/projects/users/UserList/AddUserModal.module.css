@@ -1,0 +1,4 @@
+/* To prevent dynamic height adjustment */
+.root :global(.modal-content) {
+  min-height: 50vh;
+}
