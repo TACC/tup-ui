@@ -9,8 +9,17 @@ import styles from './UserNews.module.css';
 
 const formatDate = (datestring: string): string => {
   const date = new Date(datestring);
-  return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 };
+const formatDateTime = (datestring: string): string => {
+  const date = new Date(datestring);
+  return date.toISOString();
+};
+
 const ViewAllUpdates = () => (
   <a
     href={`/news/user-updates/`}
@@ -24,6 +33,8 @@ const ViewAllUpdates = () => (
 
 const UserNews: React.FC = () => {
   const { data, isLoading } = useUserNews();
+  const maxItems = 5;
+
   if (isLoading) return <LoadingSpinner />;
   return (
     <SectionTableWrapper
@@ -31,31 +42,35 @@ const UserNews: React.FC = () => {
       headerActions={<ViewAllUpdates />}
       contentShouldScroll
     >
-      <ul className={styles['news-list']}>
+      <div className={styles['news-list']}>
         {data &&
-          data.slice(0, 12).map((newsItem) => (
-            <li className={styles['news-list-item']} key={newsItem.ID}>
-              <div className={styles['posted-date']}>
-                <span>Posted {formatDate(newsItem.PostedDate)} </span>
+          data.slice(0, maxItems).map((newsItem) => (
+            <article className={styles['news-list-item']} key={newsItem.ID}>
+              <time
+                className={styles['posted-date']}
+                data-prefix="Published:"
+                dateTime={formatDateTime(newsItem.PostedDate)}
+              >
+                {formatDate(newsItem.PostedDate)}
                 {newsItem.Updates && (
                   <Pill type="updated" className={styles['status-pill']}>
-                    Updated
+                    Update
                   </Pill>
                 )}
-              </div>
-              <div className={styles['title']}>
+              </time>
+              <h3 className={styles['title']}>
                 <a
                   href={`/news/user-updates/${newsItem.ID}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {newsItem.WebTitle}
+                  {newsItem.WebTitle.trim()}
                 </a>
-              </div>
-              <div className={styles['body']}>{newsItem.Content}</div>
-            </li>
+              </h3>
+              <p className={styles['body']}>{newsItem.Content}</p>
+            </article>
           ))}
-      </ul>
+      </div>
     </SectionTableWrapper>
   );
 };
