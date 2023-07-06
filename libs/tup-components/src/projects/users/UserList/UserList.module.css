@@ -9,6 +9,15 @@
     padding-left: var(--global-space--section-left);
 }
 
+.user-navactions {
+    margin-left: var(--global-space--section-left);
+    margin-right: var(--global-space--section-right);
+}
+.user-navactions button {
+    margin-bottom: 5px;
+    width:100%
+}
+
 .separator {
     border-top: 1px solid  #C7C7C7;
     margin: 5px;
@@ -33,17 +42,6 @@
 }
 .manage-team strong {
     font-size: 1.5rem;
-}
-
-.add-member-button {
-    margin-left: var(--global-space--section-left);
-    margin-right: var(--global-space--section-right);
-
-}
-
-.add-member-button button {
-    margin-bottom: 5px;
-    width:100%
 }
 
 .radio-group {
