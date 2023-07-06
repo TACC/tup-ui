@@ -146,3 +146,8 @@ export const mockProjectGrants = [
     fieldId: 115,
   },
 ];
+
+export const mockUserSearchResult = [
+  { username: 'vg5726', name: 'Vanessa Gonzalez', email: 'test@test.test' },
+  { username: 'testuser', name: 'Test User', email: 'test@test.test' },
+];
