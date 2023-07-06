@@ -22,8 +22,13 @@ export const isSystemOnline = (rawSystem: SystemMonitorRawSystem): boolean => {
   return true;
 };
 
-export const SystemMonitorTable: React.FC = () => {
-  const { data, isLoading, error } = useSystemMonitor();
+export const SystemMonitorTable: React.FC<{
+  tas_name: string;
+}> = ({ tas_name }) => {
+  const { data: systemMonitorData, isLoading, error } = useSystemMonitor();
+  let data = systemMonitorData;
+  data = tas_name ? data?.filter((sys) => sys.tas_name === tas_name) : data;
+  const initialTableState = tas_name ? { hiddenColumns: ['display_name'] } : {};
   const columns = useMemo<Column<SystemMonitorRawSystem>[]>(
     () => [
       {
@@ -33,21 +38,22 @@ export const SystemMonitorTable: React.FC = () => {
       },
       {
         accessor: isSystemOnline,
-        Header: 'Status',
+        // To display different column headings depending if on Dashboard or in System Status page
+        Header: tas_name ? 'System Status' : 'Status',
         Cell: Operational,
       },
       {
         accessor: ({ load }) => (load ? Math.floor(load * 100) : ' -- '),
-        Header: 'Utilization',
+        Header: 'Load',
         Cell: Load,
       },
       {
         accessor: ({ running }) => (running ? running : ' 0 '),
-        Header: 'Running',
+        Header: 'Running Jobs',
       },
       {
         accessor: ({ waiting }) => (waiting ? waiting : ' 0 '),
-        Header: 'Waiting',
+        Header: 'Waiting Jobs',
       },
     ],
     []
@@ -57,6 +63,7 @@ export const SystemMonitorTable: React.FC = () => {
     useTable({
       columns,
       data: data ?? [],
+      initialState: initialTableState,
     });
 
   if (isLoading) {
@@ -72,10 +79,7 @@ export const SystemMonitorTable: React.FC = () => {
   }
 
   return (
-    <table
-      {...getTableProps()}
-      className={`o-fixed-header-table ${styles.root}`}
-    >
+    <table {...getTableProps()} className={`${styles['systems-listing']}`}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -90,7 +94,10 @@ export const SystemMonitorTable: React.FC = () => {
           rows.map((row, idx) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                className={styles['system-listing-row']}
+                {...row.getRowProps()}
+              >
                 {row.cells.map((cell) => (
                   <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 ))}
@@ -111,10 +118,15 @@ export const SystemMonitorTable: React.FC = () => {
   );
 };
 
-export const SystemMonitor = () => {
-  return (
-    <SectionTableWrapper header={'System Monitor'}>
-      <SystemMonitorTable />
-    </SectionTableWrapper>
-  );
+export const SystemMonitor: React.FC<{
+  tas_name: string;
+}> = ({ tas_name }) => {
+  /* To display a title for sys_mon table on dashboard only */
+  if (tas_name === '')
+    return (
+      <SectionTableWrapper header="System Status">
+        <SystemMonitorTable tas_name={tas_name} />
+      </SectionTableWrapper>
+    );
+  return <SystemMonitorTable tas_name={tas_name} />;
 };
