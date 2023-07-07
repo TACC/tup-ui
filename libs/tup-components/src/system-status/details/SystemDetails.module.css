@@ -1,0 +1,25 @@
+.listing-section > div {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.root td {
+    vertical-align: middle;
+  }
+  
+/* systems navbar */
+.systems-listing-navbar {
+  height: 100%;
+  min-width: 175px;
+  padding-top: var(--global-space--section-top);
+  border-right:var(--global-border-width--normal) solid var(--global-color-primary--light);
+}
+
+.systems-listing-navbar > a > div {
+  padding-left: var(--global-space--section-left);
+}
+/* systems listing */
+.systems-listing {
+  margin-bottom: unset; /* undo core-styles.base.css */
+}
