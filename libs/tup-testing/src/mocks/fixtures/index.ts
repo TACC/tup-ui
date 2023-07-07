@@ -6,6 +6,6 @@ export {
   MockProjectUsers,
   mockProjectFieldOfScience,
 } from './projects';
-export { rawSystemMonitorOutput } from './system_monitor';
+export { rawSystemMonitorOutput } from './system-status';
 export { mockTickets, mockTicketDetails, mockTicketHistory } from './tickets';
 export { enrolledToken, unverifiedToken } from './mfa';
