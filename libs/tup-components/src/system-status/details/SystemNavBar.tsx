@@ -6,8 +6,8 @@ import { InlineMessage, LoadingSpinner } from '@tacc/core-components';
 import { SystemDetailProps } from '.';
 
 export const SystemNavBar: React.FC<SystemDetailProps> = ({
-  // To set default prop for system if none selected 
-  tas_name ='frontera'
+  // To set default prop for system if none selected
+  tas_name = 'frontera',
 }) => {
   const { data, error, isLoading } = useSystemMonitor();
   if (error)

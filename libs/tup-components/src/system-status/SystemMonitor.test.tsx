@@ -11,9 +11,7 @@ describe('System Monitor Component', () => {
         return res.once(ctx.json([]));
       })
     );
-    await waitFor(() =>
-      expect('No systems being monitored').toBeDefined()
-    );
+    await waitFor(() => expect('No systems being monitored').toBeDefined());
   });
   it('should display an error message if an error is returned from useQuery', async () => {
     server.use(

@@ -12,7 +12,7 @@ import { SystemMonitor } from '../SystemMonitor';
 import { SystemDetailProps } from '.';
 
 const SystemQueueTable: React.FC<SystemDetailProps> = ({
-  tas_name = 'frontera'
+  tas_name = 'frontera',
 }) => {
   const { data: systemData, isLoading } = useSystemQueue(tas_name);
   const system: JobsQueue[] =
@@ -57,7 +57,10 @@ const SystemQueueTable: React.FC<SystemDetailProps> = ({
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <table {...getTableProps()} className={`${styles['systems-listing']} o-fixed-header-table`}>
+    <table
+      {...getTableProps()}
+      className={`${styles['systems-listing']} o-fixed-header-table`}
+    >
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -94,17 +97,16 @@ const SystemQueueTable: React.FC<SystemDetailProps> = ({
 };
 
 export const SystemDetails: React.FC<SystemDetailProps> = ({
-  tas_name = 'frontera'
+  tas_name = 'frontera',
 }) => {
   return (
-      <div className={styles['panels']}>
-        <SystemMonitor tas_name={tas_name} />
-        <SectionTableWrapper contentShouldScroll>
-          <SystemQueueTable tas_name={`${tas_name}`} />
-        </SectionTableWrapper>
-        {/* TODO: When avgwait table exists, update CSS grid to show it */}
-        {/* <div>Avg. Wait Time</div> */}
-      </div>
+    <div className={styles['panels']}>
+      <SystemMonitor tas_name={tas_name} />
+      <SectionTableWrapper contentShouldScroll>
+        <SystemQueueTable tas_name={`${tas_name}`} />
+      </SectionTableWrapper>
+      {/* TODO: When avgwait table exists, update CSS grid to show it */}
+      {/* <div>Avg. Wait Time</div> */}
+    </div>
   );
 };
-
