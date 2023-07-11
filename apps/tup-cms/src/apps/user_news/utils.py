@@ -66,7 +66,7 @@ def create_proxy_article(article):
 
   context_article = {
     'id': article['ID'],
-    'title': article['WebTitle'],
+    'title': article['WebTitle'].strip(),
     'content': article['Content'],
     'subtitle': article['Subtitle'],
     'author': article['Author'],
