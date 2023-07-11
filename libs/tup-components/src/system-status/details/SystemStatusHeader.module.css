@@ -1,0 +1,5 @@
+/* Page Layout top prop not putting in expected spacing on header */
+.system-header {
+    padding-top: var(--global-space--section-top);
+    padding-left: var(--global-space--section-left);
+}
