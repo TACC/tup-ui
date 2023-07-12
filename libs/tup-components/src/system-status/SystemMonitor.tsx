@@ -9,6 +9,7 @@ import { Display, Operational, Load } from './SystemMonitorCells';
 import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
 import styles from './SystemMonitor.module.css';
 import { EmptyTablePlaceholder } from '../utils';
+import { SystemDetailProps } from '.';
 
 export const isSystemOnline = (rawSystem: SystemMonitorRawSystem): boolean => {
   if (
@@ -22,9 +23,9 @@ export const isSystemOnline = (rawSystem: SystemMonitorRawSystem): boolean => {
   return true;
 };
 
-export const SystemMonitorTable: React.FC<{
-  tas_name: string;
-}> = ({ tas_name }) => {
+export const SystemMonitorTable: React.FC<SystemDetailProps> = ({
+  tas_name,
+}) => {
   const { data: systemMonitorData, isLoading, error } = useSystemMonitor();
   let data = systemMonitorData;
   data = tas_name ? data?.filter((sys) => sys.tas_name === tas_name) : data;
@@ -118,16 +119,12 @@ export const SystemMonitorTable: React.FC<{
   );
 };
 
-export const SystemMonitor: React.FC<{
-  tas_name: string;
-}> = ({ tas_name }) => {
+export const SystemMonitor: React.FC<SystemDetailProps> = ({ tas_name }) => {
   /* To display a title for sys_mon table on dashboard only */
-  if (tas_name)
-    return <SystemMonitorTable tas_name={tas_name} />;
+  if (tas_name) return <SystemMonitorTable tas_name={tas_name} />;
   return (
     <SectionTableWrapper header="System Status">
-      <SystemMonitorTable tas_name={tas_name} />
+      <SystemMonitorTable />
     </SectionTableWrapper>
   );
-
 };

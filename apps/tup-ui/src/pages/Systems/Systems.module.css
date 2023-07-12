@@ -7,12 +7,16 @@
     padding-left: var(--global-space--section-left);
 }
 
-.system-section > div > header button {
-    margin-right: var(--global-space--section-right);
-}
-
 .system-section nav {
     margin-top: -15px;
+    height: 100%;
+    min-width: 175px;
+    padding-top: var(--global-space--section-top);
+    border-right:var(--global-border-width--normal) solid var(--global-color-primary--light);
+  }
+
+.system-section > div > nav {
+    padding-left: var(--global-space--section-left);
 }
 
 .system-section > div > div {

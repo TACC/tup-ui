@@ -9,7 +9,7 @@ import {
 import { JobsQueue, useSystemQueue } from '@tacc/tup-hooks';
 import styles from './SystemDetails.module.css';
 import { SystemMonitor } from '../SystemMonitor';
-import { SystemDetailProps } from '.';
+import { SystemDetailProps } from '..';
 
 const SystemQueueTable: React.FC<SystemDetailProps> = ({
   tas_name = 'frontera',
@@ -59,7 +59,7 @@ const SystemQueueTable: React.FC<SystemDetailProps> = ({
   return (
     <table
       {...getTableProps()}
-      className={`${styles['systems-listing']} o-fixed-header-table`}
+      className={`o-fixed-header-table`}
     >
       <thead>
         {headerGroups.map((headerGroup) => (

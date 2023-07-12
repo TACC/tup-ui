@@ -1,12 +1,11 @@
 import React from 'react';
 import { useSystemMonitor } from '@tacc/tup-hooks';
-import styles from './SystemStatusHeader.module.css';
 import {
   LoadingSpinner,
   SectionHeader,
   InlineMessage,
 } from '@tacc/core-components';
-import { SystemDetailProps } from '.';
+import { SystemDetailProps } from '..';
 
 export const SystemStatusHeader: React.FC<SystemDetailProps> = ({
   tas_name = 'frontera',
@@ -18,7 +17,7 @@ export const SystemStatusHeader: React.FC<SystemDetailProps> = ({
 
   if (error)
     return (
-      <SectionHeader className={`${styles['system-header']}`}>
+      <SectionHeader>
         <InlineMessage type="warn">
           System Status / Unable to retrieve system name
         </InlineMessage>
@@ -26,8 +25,6 @@ export const SystemStatusHeader: React.FC<SystemDetailProps> = ({
     );
 
   return (
-    <SectionHeader className={`${styles['system-header']}`}>
-      System Status / {dataBySystem?.display_name}
-    </SectionHeader>
+    <SectionHeader>System Status / {dataBySystem?.display_name}</SectionHeader>
   );
 };

@@ -15,11 +15,11 @@ const Layout: React.FC = () => {
   return (
     <RequireAuth>
       <section className={styles['system-section']}>
-      <PageLayout
-        top={<SystemStatusHeader tas_name={tas_name} />}
-        left={<SystemNavBar tas_name={tas_name} />}
-        right={<SystemDetails tas_name={tas_name} />}
-      ></PageLayout>
+        <PageLayout
+          top={<SystemStatusHeader tas_name={tas_name} />}
+          left={<SystemNavBar tas_name={tas_name} />}
+          right={<SystemDetails tas_name={tas_name} />}
+        ></PageLayout>
       </section>
     </RequireAuth>
   );
