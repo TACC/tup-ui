@@ -188,8 +188,8 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
         {projectDetails?.description ?? '(No description provided)'}
 
         <div className={styles['pub-abstract-grants']}>
-          Your project and allocation information can be managed on the TXRAS
-          portal.
+          Your project and allocation information can be managed on the TXRAS or
+          ACCESS portals.
         </div>
       </SectionTableWrapper>
     </div>
