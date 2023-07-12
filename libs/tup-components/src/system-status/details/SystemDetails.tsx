@@ -57,10 +57,7 @@ const SystemQueueTable: React.FC<SystemDetailProps> = ({
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <table
-      {...getTableProps()}
-      className={`o-fixed-header-table`}
-    >
+    <table {...getTableProps()} className={`o-fixed-header-table`}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
