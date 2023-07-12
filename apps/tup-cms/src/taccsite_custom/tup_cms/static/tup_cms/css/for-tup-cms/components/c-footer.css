@@ -1,18 +1,3 @@
-/* FOR CORE-CMS */
-
-.c-footer {
-  /* TODO: Remove padding-top from core-styles.cms.css (then remove this) */
-  padding-top: 0;
-
-  /* TODO: Add comment+style below to core-styles.cms.css (then remove this) */
-  /* To prevent margin-collapse of children (<p>) with minimal side effects */
-  display: flow-root;
-}
-
-
-
-
-
 /* SVGs */
 
 /* To mimic Bootstrap _reboot img { vertical-align: middle } */
