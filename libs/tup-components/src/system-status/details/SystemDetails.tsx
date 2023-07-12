@@ -100,15 +100,13 @@ export const SystemDetails: React.FC<SystemDetailProps> = ({
   tas_name = 'frontera',
 }) => {
   return (
-    systemData && (
-      <div className={styles['panels']}>
-        <SystemMonitor tas_name={tas_name} />
-        <SectionTableWrapper contentShouldScroll>
-          <SystemQueueTable tas_name={`${tas_name}`} />
-        </SectionTableWrapper>
-        {/* TODO: When avgwait table exists, update CSS grid to show it */}
-        {/* <div>Avg. Wait Time</div> */}
-      </div>
-    )
+    <div className={styles['panels']}>
+      <SystemMonitor tas_name={tas_name} />
+      <SectionTableWrapper contentShouldScroll>
+        <SystemQueueTable tas_name={`${tas_name}`} />
+      </SectionTableWrapper>
+      {/* TODO: When avgwait table exists, update CSS grid to show it */}
+      {/* <div>Avg. Wait Time</div> */}
+    </div>
   );
 };
