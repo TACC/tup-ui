@@ -7,7 +7,7 @@ import { SystemMonitorRawSystem } from '@tacc/tup-hooks';
 export const Display: React.FC<{
   cell: Cell<SystemMonitorRawSystem, string>;
 }> = ({ cell: { row } }) => (
-  <Link to={`/system_monitor/${row.original.tas_name}`}>
+  <Link to={`/system-status/${row.original.tas_name}`}>
     {row.original.display_name}
   </Link>
 );

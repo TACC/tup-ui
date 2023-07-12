@@ -4,9 +4,10 @@ export { default as Tickets } from './Tickets';
 export { default as TicketModal } from './TicketDetailModal';
 
 export const QUEUE_MAP = {
-  Allocations: 'Accounting',
+  Allocations: 'Allocations',
+  'Login Issues': 'Accounts',
+  'Multi-factor Authentication': 'MFA',
   'Data Analytics or Storage Resources': 'Data Intensive Computing',
-  'Login/Authentication Issue': 'Accounting',
   'Running Jobs or Using TACC Resources': 'High Performance Computing',
   'Security Incident': 'NSO',
   Other: 'High Performance Computing',

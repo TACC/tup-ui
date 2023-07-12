@@ -17,7 +17,7 @@ const Sidebar: React.FC = () => {
         <NavItem icon="multiple-coversation" to={'/tickets'}>
           Tickets
         </NavItem>
-        <NavItem icon="data-files" to={'/system_monitor'}>
+        <NavItem icon="data-files" to={'/system-status'}>
           System Status
         </NavItem>
         <NavItem icon="user" to={'/account'}>
