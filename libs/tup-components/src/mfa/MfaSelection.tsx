@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button } from '@tacc/core-components';
 import styles from './Mfa.module.css';
-import { Link, Navigate } from 'react-router-dom';
-import { useMfa } from '@tacc/tup-hooks';
+import { Link } from 'react-router-dom';
 
 const MfaSelector: React.FC = () => {
   return (

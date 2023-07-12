@@ -35,6 +35,13 @@ export type AuthBody = {
   password: string;
 };
 
+export type UserSearchResult = {
+  username: string;
+  name: string;
+  email: string;
+};
+
 export { default as useAuth } from './useAuth';
 export { default as useJwt } from './useJwt';
 export { default as useProfile } from './useProfile';
+export { default as useUserLookup } from './useUserLookup';
