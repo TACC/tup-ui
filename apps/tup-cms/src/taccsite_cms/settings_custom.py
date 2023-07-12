@@ -54,7 +54,7 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
 ########################
 
 # To use during dev, Tracking Protection in browser needs to be turned OFF.
-GOOGLE_ANALYTICS_PROPERTY_ID = "UA-96034853-2"
+GOOGLE_ANALYTICS_PROPERTY_ID = "G-TRRRQZ0EHX"
 GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################

@@ -5,6 +5,7 @@ export {
   mockProjectUsage,
   MockProjectUsers,
   mockProjectFieldOfScience,
+  mockUserSearchResult,
 } from './projects';
 export { rawSystemMonitorOutput } from './system_monitor';
 export { mockTickets, mockTicketDetails, mockTicketHistory } from './tickets';
