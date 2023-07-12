@@ -9,10 +9,11 @@ import {
 import { JobsQueue, useSystemQueue } from '@tacc/tup-hooks';
 import styles from './SystemDetails.module.css';
 import { SystemMonitor } from '../SystemMonitor';
+import { SystemDetailProps } from '.';
 
-const SystemQueueTable: React.FC<{
-  tas_name: string;
-}> = ({ tas_name }) => {
+const SystemQueueTable: React.FC<SystemDetailProps> = ({
+  tas_name = 'frontera',
+}) => {
   const { data: systemData, isLoading } = useSystemQueue(tas_name);
   const system: JobsQueue[] =
     systemData?.queues?.filter((queue) => !queue.hidden) ?? [];
@@ -95,34 +96,17 @@ const SystemQueueTable: React.FC<{
   );
 };
 
-const SystemDetails: React.FC<{
-  tas_name: string;
-}> = ({ tas_name }) => {
-  const { data: systemData, isLoading, error } = useSystemQueue(tas_name);
-
-  if (error)
-    return (
-      <SectionTableWrapper header={`System Queues`}>
-        <EmptyTablePlaceholder>
-          There was a problem loading the system queues
-        </EmptyTablePlaceholder>
-      </SectionTableWrapper>
-    );
-
-  if (isLoading) return <LoadingSpinner />;
-
+export const SystemDetails: React.FC<SystemDetailProps> = ({
+  tas_name = 'frontera',
+}) => {
   return (
-    systemData && (
-      <div className={styles['panels']}>
-        <SystemMonitor tas_name={tas_name} />
-        <SectionTableWrapper contentShouldScroll>
-          <SystemQueueTable tas_name={`${tas_name}`} />
-        </SectionTableWrapper>
-        {/* TODO: When avgwait table exists, update CSS grid to show it */}
-        {/* <div>Avg. Wait Time</div> */}
-      </div>
-    )
+    <div className={styles['panels']}>
+      <SystemMonitor tas_name={tas_name} />
+      <SectionTableWrapper contentShouldScroll>
+        <SystemQueueTable tas_name={`${tas_name}`} />
+      </SectionTableWrapper>
+      {/* TODO: When avgwait table exists, update CSS grid to show it */}
+      {/* <div>Avg. Wait Time</div> */}
+    </div>
   );
 };
-
-export default SystemDetails;
