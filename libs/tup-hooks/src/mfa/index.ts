@@ -24,7 +24,7 @@ export type MfaPairingResponse = {
     img: string;
     value: string;
     value_b32: string;
-  }
+  };
   rollout_state: string;
   serial: string;
 };
