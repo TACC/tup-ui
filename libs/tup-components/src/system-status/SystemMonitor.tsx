@@ -122,11 +122,12 @@ export const SystemMonitor: React.FC<{
   tas_name: string;
 }> = ({ tas_name }) => {
   /* To display a title for sys_mon table on dashboard only */
-  if (tas_name === '')
-    return (
-      <SectionTableWrapper header="System Status">
-        <SystemMonitorTable tas_name={tas_name} />
-      </SectionTableWrapper>
-    );
-  return <SystemMonitorTable tas_name={tas_name} />;
+  if (tas_name)
+    return <SystemMonitorTable tas_name={tas_name} />;
+  return (
+    <SectionTableWrapper header="System Status">
+      <SystemMonitorTable tas_name={tas_name} />
+    </SectionTableWrapper>
+  );
+
 };
