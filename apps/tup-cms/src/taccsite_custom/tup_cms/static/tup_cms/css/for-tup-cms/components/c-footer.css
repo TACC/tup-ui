@@ -195,9 +195,6 @@ html#page-portal .c-footer p {
 /* PER CLIENT - CMS */
 
 /* To move footer padding into CMS footer */
-html:not(#page-portal) .c-footer {
-    padding-block: revert; /* undo core-styles.cms.css */
-}
 #cms-footer {
     padding-block: var(--pad-vert);
 }
