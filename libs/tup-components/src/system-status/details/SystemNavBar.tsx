@@ -9,16 +9,15 @@ export const SystemNavBar: React.FC<SystemDetailProps> = ({
   tas_name = 'frontera',
 }) => {
   const { data, error, isLoading } = useSystemMonitor();
+
   if (error)
     return (
       <InlineMessage type="warning">
         Unable to retrieve navigation bar.
       </InlineMessage>
     );
-  if (isLoading)
-    return (
-      <LoadingSpinner />
-  );
+  if (isLoading) return <LoadingSpinner />;
+
   return (
     data &&
     data.map((system) => (
