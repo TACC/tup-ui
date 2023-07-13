@@ -9,9 +9,6 @@
             <a href="/{{ urls.base }}{{ urls.item_prefix }}{{ article.id }}">
                 {{ article.title }}
             </a>
-            {% if article.updates %}
-                <span class="c-pill c-pill--is-updated">Update</span>
-            {% endif %}
         </{{ title_tag|default:"h3" }}>
         {% if article.subtitle %}
         <{{ subtitle_tag|default:"h4" }} class="c-news__subtitle">

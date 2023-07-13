@@ -11,6 +11,7 @@ import {
   mockTicketDetails,
   mockTicketHistory,
   unverifiedToken,
+  mockUserSearchResult,
 } from './fixtures';
 import { mockProjectGrants, mockProjectPubs } from './fixtures/projects';
 
@@ -31,9 +32,10 @@ export const handlers = [
     // Respond with mock active projects output
     return res(ctx.json(mockProjectsOutput));
   }),
-  rest.get('http://localhost:8001/projects', (req, res, ctx) => {
+
+  rest.get('http://localhost:8001/users/search', (req, res, ctx) => {
     // Respond with mock active projects output
-    return res(ctx.json(mockProjectsOutput));
+    return res(ctx.json(mockUserSearchResult));
   }),
   rest.get(
     'http://localhost:8001/projects/:projectId/publications',
