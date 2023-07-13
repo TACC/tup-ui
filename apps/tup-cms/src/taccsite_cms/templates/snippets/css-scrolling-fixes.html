@@ -1,13 +1,29 @@
 <style id="css-scrolling-fixes">
-/* To prevent decal SVG horz. body scroll on mobile */
-@media (max-width: 575px) {
-  .container {
-      overflow-x: clip;
-  }
+/* To prevent horz. body scroll because of header nav too wide, 1092px—1066px */
+/* WARNING: In Safari 16.2–16.3, this hides header dropdown behind content */
+/* HELP: Fix the bug, instead of just hiding the bug */
+/*
+header {
+    overflow-x: clip;
+}
+*/
+
+/* To prevent horz. body scroll because of offset SVG Icons */
+/* HELP: Fix the bug, instead of just hiding the bug */
+/* FAQ: 290px is our body min. width; narrower than that, user must scroll */
+/* SEE: /use-tacc/stem-evaluation-services/ */
+/* SEE: /partnerships/star-industry-program/ */
+/* SEE: / (i.e. home page) */
+@media (width >= 290px) {
+    /* FAQ: News articles may have images that overflow */
+    /* SEE: /news/latest-news/2023/04/18/welcome-new-tacc-website/ */
+    html:not(#page-news) main {
+        overflow-x: clip;
+    }
 }
 
-/* Prevent trackpad scroll to show white background beyond page height */
-/* TODO: Ask Designer if "scroll away into forever" bug has come back */
+/* Prevent trackpad scroll from showing white background beyond page height */
+/* TODO: Remove when Core-Styles#189 is loaded */
 body {
     overscroll-behavior-y: none;
 }

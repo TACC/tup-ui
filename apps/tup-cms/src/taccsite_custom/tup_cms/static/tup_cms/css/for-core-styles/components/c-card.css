@@ -16,7 +16,29 @@
 }
 
 :is(.card, .c-card, [class*="card--"]) h4 {
-    margin-bottom: 1em;
+    margin-bottom: 0.375em;
+}
+
+
+
+
+
+/* SUPPORT LIST IN CARD */
+
+/* FAQ: The Portal uses Bootstrap ".card" for ticket modal */
+:is(.card, .c-card, [class*="card--"]) ul {
+    /* list-style: none; *//* H.P. restored bullets, M.S. does not know */
+    padding-left: 1em; /* overwrite core-styles.cms */
+}
+/* To add space between line items */
+/* FAQ: Using margin and li:not(:first-of-type) because of multi-line items */
+:is(.card, .c-card, [class*="card--"]) li:not(:first-of-type) {
+    margin-top: 0.5em;
+}
+/* TODO: Consider changing this site wide; SEE:
+:where([role=main],main) li:not(td li) { line-height: 1.6; } */
+:is(.card, .c-card, [class*="card--"]) ul:last-child:where(:not(#page-portal *)) {
+    margin-bottom: 2rem;
 }
 
 

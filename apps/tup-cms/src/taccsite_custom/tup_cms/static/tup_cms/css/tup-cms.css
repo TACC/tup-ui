@@ -7,11 +7,14 @@
 /* GENERICS */
 /* (Base) */
 @import url("./for-core-styles/generics/attributes.css") layer(base);
+/* BASE: CMS) */
+@import url("./for-core-cms/generics/pseudo-elements.css") layer(base);
 /* (Project) */
 @import url("./for-tup-cms/generics/color.css") layer(project);
 
 /* ELEMENTS */
 /* (Project) */
+@import url("./for-tup-cms/elements/headings--cms.css") layer(project);
 @import url("./for-tup-cms/elements/mailto-link.css") layer(project);
 
 /* OBJECTS */
@@ -33,8 +36,13 @@
 @import url("./for-core-styles/components/c-pill.css") layer(base);
 @import url("./for-core-styles/components/c-update.css") layer(base);
 /* (Base: CMS) */
+@import url("./for-core-cms/components/c-footer.css") layer(base);
 @import url("./for-core-cms/components/django.cms.blog.app.item.css") layer(base);
+@import url("./for-core-cms/components/django.cms.blog.app.page.css") layer(base);
+@import url("./for-core-cms/components/django.cms.picture.css") layer(base);
+@import url("./for-core-cms/components/lightgallery.css") layer(base);
 /* (Project) */
+@import url("./for-tup-cms/components/agenda-table.css") layer(project);
 @import url("./for-tup-cms/components/banner.css") layer(project);
 @import url("./for-tup-cms/components/c-data-list.css") layer(project);
 @import url("./for-tup-cms/components/c-footer.css") layer(project);
