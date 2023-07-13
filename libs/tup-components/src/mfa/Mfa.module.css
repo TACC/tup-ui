@@ -5,6 +5,9 @@
     padding: var(--global-space--section);
     gap: 20px;
 }
+.pairing-container > div {
+    max-width: 375px;
+}
 
 .pairing-separator {
     border-left: 2px solid #D8D8D8

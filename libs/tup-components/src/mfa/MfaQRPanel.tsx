@@ -37,16 +37,17 @@ const MfaQRPanel: React.FC = () => {
       </div>
       {data && (
         <div>
-          Text code (
+          If your mobile device does not have a camera capable of scanning QR
+          codes, the following text code can be used:
+          <br />
+          <code>{data.otpkey.value_b32}</code> &nbsp;(
           <Button
             type="link"
             onClick={() => navigator.clipboard.writeText(data.otpkey.value_b32)}
           >
             copy to clipboard
           </Button>
-          ):
-          <br />
-          <code>{data.otpkey.value_b32}</code>
+          )
         </div>
       )}
       {!data && isError && (
