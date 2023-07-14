@@ -117,84 +117,84 @@ export const rawSystemMonitorOutput = [
 
 export const mockSystemStatus = [
   {
-    "display_name": "Frontera",
-    "tas_name": "frontera",
-    "hostname": "frontera.tacc.utexas.edu",
-    "system_type": "COMPUTE",
-    "timestamp": "2023-07-14T18:50:18.476296+00:00",
-    "queues": [
-        {
-            "name": "development",
-            "down": false,
-            "hidden": false,
-            "load": 0.9333333333333333,
-            "free": 24,
-            "running": 17,
-            "waiting": 7
-        },
-        {
-            "name": "flex",
-            "down": false,
-            "hidden": false,
-            "load": 0.9725181598062954,
-            "free": 227,
-            "running": 16,
-            "waiting": 0
-        },
-        {
-            "name": "large",
-            "down": false,
-            "hidden": false,
-            "load": 0.9736513486513486,
-            "free": 211,
-            "running": 3,
-            "waiting": 8
-        },
-        {
-            "name": "normal",
-            "down": false,
-            "hidden": false,
-            "load": 0.9736513486513486,
-            "free": 211,
-            "running": 135,
-            "waiting": 558
-        },
-        {
-            "name": "nvdimm",
-            "down": false,
-            "hidden": false,
-            "load": 0.5,
-            "free": 8,
-            "running": 3,
-            "waiting": 0
-        },
-        {
-            "name": "rtx",
-            "down": false,
-            "hidden": false,
-            "load": 0.7976190476190477,
-            "free": 17,
-            "running": 34,
-            "waiting": 0
-        },
-        {
-            "name": "rtx-dev",
-            "down": false,
-            "hidden": false,
-            "load": 0.16666666666666666,
-            "free": 5,
-            "running": 0,
-            "waiting": 0
-        },
-        {
-            "name": "small",
-            "down": false,
-            "hidden": false,
-            "load": 0.9629629629629629,
-            "free": 8,
-            "running": 116,
-            "waiting": 21
-        }
-    ]
-}
-]
+    display_name: 'Frontera',
+    tas_name: 'frontera',
+    hostname: 'frontera.tacc.utexas.edu',
+    system_type: 'COMPUTE',
+    timestamp: '2023-07-14T18:50:18.476296+00:00',
+    queues: [
+      {
+        name: 'development',
+        down: false,
+        hidden: false,
+        load: 0.9333333333333333,
+        free: 24,
+        running: 17,
+        waiting: 7,
+      },
+      {
+        name: 'flex',
+        down: false,
+        hidden: false,
+        load: 0.9725181598062954,
+        free: 227,
+        running: 16,
+        waiting: 0,
+      },
+      {
+        name: 'large',
+        down: false,
+        hidden: false,
+        load: 0.9736513486513486,
+        free: 211,
+        running: 3,
+        waiting: 8,
+      },
+      {
+        name: 'normal',
+        down: false,
+        hidden: false,
+        load: 0.9736513486513486,
+        free: 211,
+        running: 135,
+        waiting: 558,
+      },
+      {
+        name: 'nvdimm',
+        down: false,
+        hidden: false,
+        load: 0.5,
+        free: 8,
+        running: 3,
+        waiting: 0,
+      },
+      {
+        name: 'rtx',
+        down: false,
+        hidden: false,
+        load: 0.7976190476190477,
+        free: 17,
+        running: 34,
+        waiting: 0,
+      },
+      {
+        name: 'rtx-dev',
+        down: false,
+        hidden: false,
+        load: 0.16666666666666666,
+        free: 5,
+        running: 0,
+        waiting: 0,
+      },
+      {
+        name: 'small',
+        down: false,
+        hidden: false,
+        load: 0.9629629629629629,
+        free: 8,
+        running: 116,
+        waiting: 21,
+      },
+    ],
+  },
+];

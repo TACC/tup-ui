@@ -16,11 +16,8 @@ describe('System Monitor Component', () => {
     await screen.findAllByText(/Unable to gather system information/);
   });
   it('should display the title of table on dashboard', async () => {
-    const { getByTestId, getByText } = testRender(
-      <SystemMonitor />
-      );
-      await waitFor(() => expect(getByTestId('loading-spinner')).toBeDefined());
-      expect(getByText(/System Status/)).toBeDefined();
-    });
+    const { getByTestId, getByText } = testRender(<SystemMonitor />);
+    await waitFor(() => expect(getByTestId('loading-spinner')).toBeDefined());
+    expect(getByText(/System Status/)).toBeDefined();
+  });
 });
-
