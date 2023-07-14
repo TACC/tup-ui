@@ -1,0 +1,15 @@
+{% if instance.photo %}
+<div class="content-block">
+  <img
+    src="{{instance.photo.url}}"
+    title="{% spaceless %}
+        {% if instance.photo.default_alt_text %}
+            {{instance.photo.default_alt_text}}
+        {% elif fallback_alt_text %}
+            {{fallback_alt_text}}
+        {% endif %}
+    {% endspaceless %}"
+    class="align-center img-fluid"
+  >
+</div>
+{% endif %}

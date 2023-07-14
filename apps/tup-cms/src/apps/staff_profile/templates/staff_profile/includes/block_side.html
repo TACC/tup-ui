@@ -1,0 +1,6 @@
+{% if article.content %}
+<aside class="content-block">
+  <h3>{{article.title}}</h3>
+  {{article.content | safe}}
+</aside>
+{% endif %}

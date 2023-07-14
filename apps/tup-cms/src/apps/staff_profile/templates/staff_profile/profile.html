@@ -1,46 +1,35 @@
-<p>
-    {{instance.name | safe}}
-</p>
-<p>
-    {{instance.title}}
-</p>
-<p>
-    {{instance.department}}
-</p>
-<p>{{instance.email}} {{instance.phone}} </p>
-<p>
-    <img src="{{instance.photo.url}}" alt="Staff headshot image.">
-</p>
-<p>
-    {{instance.description | safe}}
-</p>
+{% load which_to_show %}
 
-<p>
-    Publications:
-    {{instance.publications | safe}}
-</p>
+<div class="row">
+	<div class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+		<h1>{{display_name}}</h1>
 
-<p>
-    Projects:
-    {{instance.projects | safe}}
-</p>
+		<h2>{{instance.department | safe}}</h2>
 
-<p>
-    Education:
-    {{instance.education | safe}}
-</p>
+		<p>
+		{% if instance.phone %}
+      Phone: <strong><a href="tel:{{instance.phone}}" target="_blank">{{instance.phone}}</a></strong>
+    {% endif %}
+		{% if instance.phone and instance.email %}
+      |
+    {% endif %}
+		{% if instance.email %}
+			Email: <strong><a href="mailto:{{instance.email}}" target="_blank">{{instance.email}}</a></strong>
+    {% endif %}
+		</p>
 
-<p>
-    Research Areas:
-    {{instance.research_areas | safe}}
-</p>
+		{{instance.description | safe}}
 
-<p>
-    Memberships:
-    {{instance.memberships | safe}}
-</p>
+    {% for article in articles|which_to_show_in_main %}
+        {% include "./includes/block_main.html" with article=article only %}
+    {% endfor %}
+	</div>
 
-<p>
-    Experience:
-    {{instance.experience | safe}}
-</p>
+	<div class="col col-12 col-sm-12 col-md-6 col-lg-4 offset-lg-1 col-xl-4 offset-xl-1">
+    {% include "./includes/photo.html" with instance=instance only %}
+
+    {% for article in articles|which_to_show_in_side %}
+        {% include "./includes/block_side.html" with article=article only %}
+    {% endfor %}
+	</div>
+</div>
