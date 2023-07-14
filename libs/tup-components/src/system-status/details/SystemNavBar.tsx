@@ -9,33 +9,26 @@ export const SystemNavBar: React.FC<SystemDetailProps> = ({
   tas_name = 'frontera',
 }) => {
   const { data, error, isLoading } = useSystemMonitor();
+
   if (error)
     return (
-      <div className={`nav-content`}>
-        <InlineMessage type="warning">
-          Unable to retrieve navigation bar.
-        </InlineMessage>
-      </div>
+      <InlineMessage type="warning">
+        Unable to retrieve navigation bar.
+      </InlineMessage>
     );
-  if (isLoading)
-    return (
-      <div className={`nav-content`}>
-        <LoadingSpinner />
-      </div>
-    );
+  if (isLoading) return <LoadingSpinner />;
+
   return (
-    <div className={`nav-content`}>
-      {data &&
-        data.map((system) => (
-          <QueryNavItem
-            to={`/system-status/${system.tas_name}`}
-            key={`${system.tas_name}`}
-            // To set default system as active in navbar if no system selected.
-            active={tas_name === `${system.tas_name}`}
-          >
-            {system.display_name}
-          </QueryNavItem>
-        ))}
-    </div>
+    data &&
+    data.map((system) => (
+      <QueryNavItem
+        to={`/system-status/${system.tas_name}`}
+        key={`${system.tas_name}`}
+        // To set default system as active in navbar if no system selected.
+        active={tas_name === `${system.tas_name}`}
+      >
+        {system.display_name}
+      </QueryNavItem>
+    ))
   );
 };
