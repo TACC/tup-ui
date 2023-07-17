@@ -6,3 +6,4 @@ export { default as Mfa } from './Mfa/Mfa';
 export { ProjectView, ProjectDetail, ProjectMember } from './ProjectView';
 export { default as TicketDetail } from './Tickets/TicketDetail';
 export { default as Impersonate } from './Impersonate';
+export { default as Systems } from './Systems';

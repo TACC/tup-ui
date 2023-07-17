@@ -3,7 +3,7 @@ export * from './layout';
 export * from './utils';
 export * from './profile';
 export * from './projects';
-export * from './system_monitor';
+export * from './system-status';
 export * from './tickets';
 export * from './mfa';
 export * from './news';
