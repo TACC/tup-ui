@@ -120,15 +120,6 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
 const MfaSectionHeader: React.FC = () => (
   <div className={styles['tap-header']}>
     <strong>MFA Pairing</strong>
-    <div style={{ float: 'right' }}>
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href="https://docs.tacc.utexas.edu/basics/mfa/"
-      >
-        <strong>MFA Documentation</strong>
-      </a>
-    </div>
   </div>
 );
 
