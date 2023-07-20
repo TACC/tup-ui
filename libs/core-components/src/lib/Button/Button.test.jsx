@@ -10,13 +10,12 @@ const TEST_SIZE = 'medium';
 
 function testClassnamesByType(type, size, getByRole, getByTestId) {
   const root = getByRole('button');
-  const text = getByTestId('text');
   const typeClassName = BTN.TYPE_MAP[type];
   const sizeClassName = BTN.SIZE_MAP[size];
   expect(root.className).toMatch('root');
   expect(root.className).toMatch(new RegExp(typeClassName));
   expect(root.className).toMatch(new RegExp(sizeClassName));
-  expect(text.className).toMatch('text');
+  expect(root.className).toMatch('text');
 }
 
 function isPropertyLimitation(type, size) {
@@ -34,8 +33,8 @@ function isPropertyLimitation(type, size) {
 
 describe('Button', () => {
   it('uses given text', () => {
-    const { getByTestId } = render(<Button>{TEST_TEXT}</Button>);
-    expect(getByTestId('text').textContent).toEqual(TEST_TEXT);
+    const { getByRole } = render(<Button>{TEST_TEXT}</Button>);
+    expect(getByRole('button').textContent).toEqual(TEST_TEXT);
   });
 
   describe('icons exist as expected when', () => {
