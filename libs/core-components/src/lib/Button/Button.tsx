@@ -105,9 +105,7 @@ const Button: React.FC<ButtonProps> = ({
       ) : (
         ''
       )}
-      <span className="c-button__text" data-testid="text">
-        {children}
-      </span>
+      {children}
       {iconNameAfter && (
         <Icon
           name={iconNameAfter}
