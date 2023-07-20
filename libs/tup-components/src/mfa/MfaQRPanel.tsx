@@ -6,6 +6,13 @@ import styles from './Mfa.module.css';
 
 const MfaQRPanel: React.FC = () => {
   const { mutate, isLoading, data, isError } = useMfaPairTotp();
+
+  const ticketCreateModalButton = document.getElementById('TicketCreateModal');
+  const hasTicketCreateModal = Boolean( ticketCreateModalButton );
+  const openTicketCreateModal = () => {
+    ticketCreateModalButton?.click()
+  };
+
   return (
     <div>
       <div>
@@ -55,9 +62,13 @@ const MfaQRPanel: React.FC = () => {
           <div className={styles['qr-code-error']}>
             There was an error generating your QR code. If this error persists,
             please{' '}
-            <TicketCreateModal display="link">
-              submit a ticket
-            </TicketCreateModal>{' '}
+            {hasTicketCreateModal ? (
+              <Button type="link" onClick={() => openTicketCreateModal()}>submit a ticket</Button>
+            ) : (
+              <TicketCreateModal display="link">
+                submit a ticket
+              </TicketCreateModal>
+            )}{' '}
             and TACC User Services will assist you.
           </div>
         </SectionMessage>
