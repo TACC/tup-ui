@@ -1,5 +1,5 @@
 /* To use new c-nav component not yet in TACC/Core-CMS core-styles.base.css */
-/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.13.0 */
+/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.13+ */
 /* CAVEAT: Duplicates older, unchanged, global c-nav styles */
 @import url("https://unpkg.com/@tacc/core-styles@2.13.0/dist/components/c-nav.css");
 
