@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMfaVerify } from '@tacc/tup-hooks';
 import { Button, SectionMessage } from '@tacc/core-components';
+import TicketCreateModal from '../tickets/TicketCreateModal';
 import styles from './Mfa.module.css';
 
 const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
@@ -11,6 +12,12 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     mutate({ password: tokenValue, type: tokenType });
+  };
+
+  const ticketCreateModalButton = document.getElementById('TicketCreateModal');
+  const hasTicketCreateModal = Boolean( ticketCreateModalButton );
+  const openTicketCreateModal = () => {
+    ticketCreateModalButton?.click()
   };
 
   const pairingMessage = {
@@ -37,8 +44,12 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
       </form>
       {tokenType === 'sms' && (
         <span>
-          If you do not receive a text message within 5 minutes, please contact
-          the helpdesk by clicking "Get Help" above.
+          Didn't receive a message within 5 minutes?
+          {hasTicketCreateModal ? (
+            <Button type="link" onClick={() => openTicketCreateModal()}>Get help.</Button>
+          ) : (
+            <TicketCreateModal display="link">Get Help</TicketCreateModal>
+          )}
         </span>
       )}
       {error && (

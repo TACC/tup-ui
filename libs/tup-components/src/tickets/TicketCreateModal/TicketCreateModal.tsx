@@ -22,7 +22,7 @@ const TicketCreateModal: React.FC<
 
   return (
     <>
-      <Button type={display} onClick={() => toggle()}>
+      <Button type={display} onClick={() => toggle()} id="TicketCreateModal">
         {children}
       </Button>
       <Modal

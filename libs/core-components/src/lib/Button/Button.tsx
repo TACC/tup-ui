@@ -39,6 +39,7 @@ type ButtonTypeOtherSize = {
 
 type ButtonProps = React.PropsWithChildren<{
   className?: string;
+  id?: string;
   iconNameBefore?: string;
   iconNameAfter?: string;
   dataTestid?: string;
@@ -54,6 +55,7 @@ const Button: React.FC<ButtonProps> = ({
   className,
   iconNameBefore,
   iconNameAfter,
+  id,
   type = 'secondary',
   size = '',
   dataTestid,
@@ -74,6 +76,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      id={id}
       className={`
         ${styles['root']}
         c-button
