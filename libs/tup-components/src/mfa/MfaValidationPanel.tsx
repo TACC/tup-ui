@@ -15,9 +15,9 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
   };
 
   const ticketCreateModalButton = document.getElementById('TicketCreateModal');
-  const hasTicketCreateModal = Boolean( ticketCreateModalButton );
+  const hasTicketCreateModal = Boolean(ticketCreateModalButton);
   const openTicketCreateModal = () => {
-    ticketCreateModalButton?.click()
+    ticketCreateModalButton?.click();
   };
 
   const pairingMessage = {
@@ -46,7 +46,9 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
         <span>
           Didn't receive a message within 5 minutes?
           {hasTicketCreateModal ? (
-            <Button type="link" onClick={() => openTicketCreateModal()}>Get help.</Button>
+            <Button type="link" onClick={() => openTicketCreateModal()}>
+              Get help.
+            </Button>
           ) : (
             <TicketCreateModal display="link">Get Help</TicketCreateModal>
           )}

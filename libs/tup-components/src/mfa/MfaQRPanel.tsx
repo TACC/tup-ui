@@ -8,9 +8,9 @@ const MfaQRPanel: React.FC = () => {
   const { mutate, isLoading, data, isError } = useMfaPairTotp();
 
   const ticketCreateModalButton = document.getElementById('TicketCreateModal');
-  const hasTicketCreateModal = Boolean( ticketCreateModalButton );
+  const hasTicketCreateModal = Boolean(ticketCreateModalButton);
   const openTicketCreateModal = () => {
-    ticketCreateModalButton?.click()
+    ticketCreateModalButton?.click();
   };
 
   return (
@@ -63,7 +63,9 @@ const MfaQRPanel: React.FC = () => {
             There was an error generating your QR code. If this error persists,
             please{' '}
             {hasTicketCreateModal ? (
-              <Button type="link" onClick={() => openTicketCreateModal()}>submit a ticket</Button>
+              <Button type="link" onClick={() => openTicketCreateModal()}>
+                submit a ticket
+              </Button>
             ) : (
               <TicketCreateModal display="link">
                 submit a ticket
