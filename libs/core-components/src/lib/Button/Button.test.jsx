@@ -15,7 +15,7 @@ function testClassnamesByType(type, size, getByRole, getByTestId) {
   expect(root.className).toMatch('root');
   expect(root.className).toMatch(new RegExp(typeClassName));
   expect(root.className).toMatch(new RegExp(sizeClassName));
-  expect(root.className).toMatch('text');
+  expect(root.textContent).toMatch(TEST_TEXT);
 }
 
 function isPropertyLimitation(type, size) {
