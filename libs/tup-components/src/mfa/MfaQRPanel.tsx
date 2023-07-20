@@ -35,7 +35,7 @@ const MfaQRPanel: React.FC = () => {
       </div>
       {data && (
         <p className={styles['qr-code-message']}>
-          Can't scan QR code? <code>data.otpkey.value_b32</code> &nbsp;(
+          Can't scan QR code? <code>{data.otpkey.value_b32}</code> &nbsp;(
           <Button
             type="link"
             onClick={() => navigator.clipboard.writeText(data.otpkey.value_b32)}
