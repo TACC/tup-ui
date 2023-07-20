@@ -3,14 +3,23 @@
     display: flex;
     flex-wrap: wrap;
     padding: var(--global-space--section);
-    gap: 20px;
+    gap: var(--global-space--section-left);
 }
-.pairing-container > div {
-    max-width: 375px;
+ol.pairing-container {
+    margin-bottom: 0; /* overwrite core-styles.base.css */
 }
 
 .pairing-separator {
-    border-left: 2px solid #D8D8D8
+    border-left: var(--global-border-width--normal) solid var(--global-color-primary--light);
+}
+li.pairing-separator {
+    list-style-type: none;
+}
+
+/* To add space between "2." and separator */
+.pairing-separator + li {
+    /* This assumes `list-style-position: outside` (browser default) */
+    margin-left: 1.25em;
 }
 
 .mfa-type-selection {

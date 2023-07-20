@@ -12,8 +12,8 @@ const MfaSmsPanel: React.FC = () => {
     smsMutation.mutate({ phoneNumber });
   };
   return (
-    <div>
-      <span>1. Enter your phone number:</span>
+    <>
+      <span>Enter your phone number:</span>
       <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
         <label htmlFor="mfa-phone-number" hidden>
           Enter your Phone Number:
@@ -44,7 +44,7 @@ const MfaSmsPanel: React.FC = () => {
           </div>
         </SectionMessage>
       )}
-    </div>
+    </>
   );
 };
 

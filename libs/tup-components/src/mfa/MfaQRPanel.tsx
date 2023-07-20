@@ -14,9 +14,9 @@ const MfaQRPanel: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       <div>
-        1. Open an approved{' '}
+        Open an approved{' '}
         <a
           href="https://docs.tacc.utexas.edu/basics/mfa/#mfaapps"
           target="_blank"
@@ -73,7 +73,7 @@ const MfaQRPanel: React.FC = () => {
           </div>
         </SectionMessage>
       )}
-    </div>
+    </>
   );
 };
 
