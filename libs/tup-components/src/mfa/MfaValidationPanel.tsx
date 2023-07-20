@@ -44,7 +44,7 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
       </form>
       {tokenType === 'sms' && (
         <span>
-          Didn't receive a message within 5 minutes?
+          Didn't receive a message within 5 minutes?{' '}
           {hasTicketCreateModal ? (
             <Button type="link" onClick={() => openTicketCreateModal()}>
               Get help.
