@@ -27,20 +27,18 @@ const MfaQRPanel: React.FC = () => {
         and scan the following QR code:
       </div>
       <div className={styles['qr-code-box']}>
-        <div>
-          {!data && !isLoading && (
-            <Button
-              className={styles['qr-button']}
-              onClick={() => mutate(null)}
-            >
-              Click to Generate QR Code
-            </Button>
-          )}
-          {!data && isLoading && <LoadingSpinner />}
-          {data && (
-            <img src={data.googleurl.img} alt="Google MFA QR Code"></img>
-          )}
-        </div>
+        {!data && !isLoading && (
+          <Button
+            className={styles['qr-button']}
+            onClick={() => mutate(null)}
+          >
+            Click to Generate QR Code
+          </Button>
+        )}
+        {!data && isLoading && <LoadingSpinner />}
+        {data && (
+          <img src={data.googleurl.img} alt="Google MFA QR Code"></img>
+        )}
       </div>
       {data && (
         <div>

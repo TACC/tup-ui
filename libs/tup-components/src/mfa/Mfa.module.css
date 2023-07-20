@@ -42,23 +42,14 @@
     text-overflow: none;
 }
 
-.qr-code-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.qr-code-box > div {
-    display: flex;
+.qr-code-box > * {
+    --border-width: var(--global-border-width--xx-thick);
+
     width: 200px;
     height: 200px;
-    border: 7px solid #D8D8D8;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    justify-content: center;
-}
-.qr-code-box > img {
-    width: 100%;
-    height: 100%;
+    outline: var(--border-width) solid #D8D8D8;
+    margin-block: 20px;
+    margin-inline: var(--border-width);
 }
 .qr-code-error {
     max-width: 200px;
