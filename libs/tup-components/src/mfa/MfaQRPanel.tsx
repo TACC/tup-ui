@@ -6,13 +6,6 @@ import styles from './Mfa.module.css';
 
 const MfaQRPanel: React.FC = () => {
   const { mutate, isLoading, data, isError } = useMfaPairTotp();
-
-  const ticketCreateModalButton = document.getElementById('TicketCreateModal');
-  const hasTicketCreateModal = Boolean(ticketCreateModalButton);
-  const openTicketCreateModal = () => {
-    ticketCreateModalButton?.click();
-  };
-
   return (
     <>
       <div>
@@ -54,17 +47,10 @@ const MfaQRPanel: React.FC = () => {
       )}
       {!data && isError && (
         <SectionMessage type="error" className={styles['qr-code-message']}>
-          Unable to display QR code. If this error persists,
-          please{' '}
-          {hasTicketCreateModal ? (
-            <Button type="link" onClick={() => openTicketCreateModal()}>
-              submit a ticket
-            </Button>
-          ) : (
-            <TicketCreateModal display="link">
-              submit a ticket
-            </TicketCreateModal>
-          )}{' '}
+          Unable to display QR code. If this error persists,{' '}
+          <TicketCreateModal display="link">
+            submit a ticket
+          </TicketCreateModal>
         </SectionMessage>
       )}
     </>

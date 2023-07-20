@@ -14,12 +14,6 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
     mutate({ password: tokenValue, type: tokenType });
   };
 
-  const ticketCreateModalButton = document.getElementById('TicketCreateModal');
-  const hasTicketCreateModal = Boolean(ticketCreateModalButton);
-  const openTicketCreateModal = () => {
-    ticketCreateModalButton?.click();
-  };
-
   const pairingMessage = {
     totp: 'Enter the token shown in the app to continue the pairing.',
     sms: 'Enter the token sent to your phone number.',
@@ -45,13 +39,7 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
       {tokenType === 'sms' && (
         <p className={styles['qr-code-message']}>
           Didn't receive a message within 5 minutes?{' '}
-          {hasTicketCreateModal ? (
-            <Button type="link" onClick={() => openTicketCreateModal()}>
-              Get help.
-            </Button>
-          ) : (
-            <TicketCreateModal display="link">Get Help</TicketCreateModal>
-          )}
+          <TicketCreateModal display="link">Get Help</TicketCreateModal>
         </p>
       )}
       {error && (
