@@ -33,15 +33,12 @@ const MfaSmsPanel: React.FC = () => {
         </div>
       </form>
       {smsMutation.isError && (
-        <SectionMessage type="error">
-          <div className={styles['qr-code-error']}>
-            There was an error generating your SMS pairing. If this error
-            persists, please{' '}
-            <TicketCreateModal display="link">
-              submit a ticket
-            </TicketCreateModal>{' '}
-            and TACC User Services will assist you.
-          </div>
+        <SectionMessage type="error" className={styles['qr-code-message']}>
+          Unable to pair via SMS. If this error
+          persists, please{' '}
+          <TicketCreateModal display="link">
+            submit a ticket
+          </TicketCreateModal>
         </SectionMessage>
       )}
     </>

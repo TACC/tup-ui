@@ -26,7 +26,7 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
   };
 
   return (
-    <div style={{ flex: '1 1 200px' }}>
+    <>
       {pairingMessage[tokenType]}
       <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
         <label htmlFor="confirm-pairing" hidden>
@@ -43,7 +43,7 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
         </div>
       </form>
       {tokenType === 'sms' && (
-        <span>
+        <p className={styles['qr-code-message']}>
           Didn't receive a message within 5 minutes?{' '}
           {hasTicketCreateModal ? (
             <Button type="link" onClick={() => openTicketCreateModal()}>
@@ -52,16 +52,14 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
           ) : (
             <TicketCreateModal display="link">Get Help</TicketCreateModal>
           )}
-        </span>
+        </p>
       )}
       {error && (
-        <div className={styles['verify-error-message']}>
-          <SectionMessage type="error" scope="section">
-            Error validating MFA token: {error.message}
-          </SectionMessage>
-        </div>
+        <SectionMessage type="error" scope="section" className={styles['qr-code-message']}>
+          Error validating MFA token: error.message
+        </SectionMessage>
       )}
-    </div>
+    </>
   );
 };
 

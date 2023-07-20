@@ -41,11 +41,8 @@ const MfaQRPanel: React.FC = () => {
         )}
       </div>
       {data && (
-        <div>
-          If your mobile device does not have a camera capable of scanning QR
-          codes, the following text code can be used:
-          <br />
-          <code>{data.otpkey.value_b32}</code> &nbsp;(
+        <p className={styles['qr-code-message']}>
+          Can't scan QR code? <code>data.otpkey.value_b32</code> &nbsp;(
           <Button
             type="link"
             onClick={() => navigator.clipboard.writeText(data.otpkey.value_b32)}
@@ -53,24 +50,21 @@ const MfaQRPanel: React.FC = () => {
             copy to clipboard
           </Button>
           )
-        </div>
+        </p>
       )}
       {!data && isError && (
-        <SectionMessage type="error">
-          <div className={styles['qr-code-error']}>
-            There was an error generating your QR code. If this error persists,
-            please{' '}
-            {hasTicketCreateModal ? (
-              <Button type="link" onClick={() => openTicketCreateModal()}>
-                submit a ticket
-              </Button>
-            ) : (
-              <TicketCreateModal display="link">
-                submit a ticket
-              </TicketCreateModal>
-            )}{' '}
-            and TACC User Services will assist you.
-          </div>
+        <SectionMessage type="error" className={styles['qr-code-message']}>
+          Unable to display QR code. If this error persists,
+          please{' '}
+          {hasTicketCreateModal ? (
+            <Button type="link" onClick={() => openTicketCreateModal()}>
+              submit a ticket
+            </Button>
+          ) : (
+            <TicketCreateModal display="link">
+              submit a ticket
+            </TicketCreateModal>
+          )}{' '}
         </SectionMessage>
       )}
     </>
