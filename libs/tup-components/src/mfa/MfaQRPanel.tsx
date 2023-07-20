@@ -33,7 +33,7 @@ const MfaQRPanel: React.FC = () => {
           <img src={data.googleurl.img} alt="Google MFA QR Code"></img>
         )}
       </div>
-      {data && (
+      {data && data.otpkey && (
         <p className={styles['qr-code-message']}>
           Can't scan QR code? <code>{data.otpkey.value_b32}</code> &nbsp;(
           <Button
@@ -43,6 +43,15 @@ const MfaQRPanel: React.FC = () => {
             copy to clipboard
           </Button>
           )
+        </p>
+      )}
+      {data && !data.otpkey && (
+        <p className={styles['qr-code-message']}>
+          Can't scan QR code?{' '}
+          <TicketCreateModal display="link">
+            submit a ticket
+          </TicketCreateModal>
+          .
         </p>
       )}
       {!data && isError && (
