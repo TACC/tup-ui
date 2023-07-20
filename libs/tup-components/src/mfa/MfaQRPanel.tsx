@@ -60,6 +60,7 @@ const MfaQRPanel: React.FC = () => {
           <TicketCreateModal display="link">
             submit a ticket
           </TicketCreateModal>
+          .
         </SectionMessage>
       )}
     </>
