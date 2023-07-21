@@ -6,7 +6,7 @@ export type FieldWrapperProps = {
   name: string;
   label: string;
   required?: boolean;
-  description?: string;
+  description?: React.ReactNode;
 };
 const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
   name,
