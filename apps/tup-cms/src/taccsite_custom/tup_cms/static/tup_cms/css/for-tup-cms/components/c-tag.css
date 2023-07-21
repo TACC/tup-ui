@@ -34,8 +34,7 @@
 
 /* System Status Update */
 [class*="tag--system"] {
-  /* To overwrite core-cms django.cms.blog.app.css */
-  background: var(--global-color-tertiary--normal) !important;
+  background: var(--global-color-tertiary--normal);
 }
 
 /* Feature Story (different than a "featured" article) */
@@ -47,6 +46,10 @@
 
 /* External Article */
 [class*="tag--external"] {
-  /* To overwrite core-cms django.cms.blog.app.css */
-  background: var(--global-color-secondary--normal) !important;
+  background: var(--global-color-secondary--normal);
+}
+
+/* Event */
+[class*="tag--event"] {
+  background: var(--global-color-tertiary--dark);
 }
