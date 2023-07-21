@@ -34,12 +34,8 @@ const MfaSmsPanel: React.FC = () => {
       </form>
       {smsMutation.isError && (
         <SectionMessage type="error" className={styles['qr-code-message']}>
-          Unable to pair via SMS. If this error
-          persists,{' '}
-          <TicketCreateModal display="link">
-            submit a ticket
-          </TicketCreateModal>
-          .
+          Unable to pair via SMS. If this error persists,{' '}
+          <TicketCreateModal display="link">submit a ticket</TicketCreateModal>.
         </SectionMessage>
       )}
     </>

@@ -21,17 +21,12 @@ const MfaQRPanel: React.FC = () => {
       </div>
       <div className={styles['qr-code-box']}>
         {!data && !isLoading && (
-          <Button
-            className={styles['qr-button']}
-            onClick={() => mutate(null)}
-          >
+          <Button className={styles['qr-button']} onClick={() => mutate(null)}>
             Click to Generate QR Code
           </Button>
         )}
         {!data && isLoading && <LoadingSpinner />}
-        {data && (
-          <img src={data.googleurl.img} alt="Google MFA QR Code"></img>
-        )}
+        {data && <img src={data.googleurl.img} alt="Google MFA QR Code"></img>}
       </div>
       {data && data.otpkey && (
         <p className={styles['qr-code-message']}>
@@ -48,19 +43,13 @@ const MfaQRPanel: React.FC = () => {
       {data && !data.otpkey && (
         <p className={styles['qr-code-message']}>
           Can't scan QR code?{' '}
-          <TicketCreateModal display="link">
-            submit a ticket
-          </TicketCreateModal>
-          .
+          <TicketCreateModal display="link">submit a ticket</TicketCreateModal>.
         </p>
       )}
       {!data && isError && (
         <SectionMessage type="error" className={styles['qr-code-message']}>
           Unable to display QR code. If this error persists,{' '}
-          <TicketCreateModal display="link">
-            submit a ticket
-          </TicketCreateModal>
-          .
+          <TicketCreateModal display="link">submit a ticket</TicketCreateModal>.
         </SectionMessage>
       )}
     </>

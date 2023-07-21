@@ -43,7 +43,11 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
         </p>
       )}
       {error && (
-        <SectionMessage type="error" scope="section" className={styles['qr-code-message']}>
+        <SectionMessage
+          type="error"
+          scope="section"
+          className={styles['qr-code-message']}
+        >
           Error validating MFA token: error.message
         </SectionMessage>
       )}
