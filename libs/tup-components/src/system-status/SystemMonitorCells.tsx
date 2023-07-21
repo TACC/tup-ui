@@ -1,11 +1,16 @@
 import React from 'react';
 import { Pill } from '@tacc/core-components';
 import { Cell } from 'react-table';
+import { Link } from 'react-router-dom';
 import { SystemMonitorRawSystem } from '@tacc/tup-hooks';
 
 export const Display: React.FC<{
   cell: Cell<SystemMonitorRawSystem, string>;
-}> = ({ cell: { value } }) => <strong>{value}</strong>;
+}> = ({ cell: { row } }) => (
+  <Link to={`/system-status/${row.original.tas_name}`}>
+    {row.original.display_name}
+  </Link>
+);
 
 export const Operational: React.FC<{
   cell: Cell<SystemMonitorRawSystem, boolean>;
