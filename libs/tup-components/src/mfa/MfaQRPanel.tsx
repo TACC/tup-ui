@@ -1,6 +1,11 @@
 import React from 'react';
 import { useMfaPairTotp } from '@tacc/tup-hooks';
-import { Button, LoadingSpinner, SectionMessage } from '@tacc/core-components';
+import {
+  Button,
+  LoadingSpinner,
+  SectionMessage,
+  TextCopyModal,
+} from '@tacc/core-components';
 import { TicketCreateModal } from '../tickets';
 import styles from './Mfa.module.css';
 
@@ -28,19 +33,33 @@ const MfaQRPanel: React.FC = () => {
         {!data && isLoading && <LoadingSpinner />}
         {data && <img src={data.googleurl.img} alt="Google MFA QR Code"></img>}
       </div>
-      {data && data.otpkey && (
+      {(
+      // {data && data.otpkey && (
         <p className={styles['qr-code-message']}>
-          Can't scan QR code? <code>{data.otpkey.value_b32}</code> &nbsp;(
-          <Button
-            type="link"
-            onClick={() => navigator.clipboard.writeText(data.otpkey.value_b32)}
+          Can't scan QR code?{' '}
+          <TextCopyModal
+            display="link"
+            title="Alternative Verification Code"
+            text="data.otpkey.value_b32"
+            hint={
+              <>
+                Enter this code into an approved{' '}
+                <a
+                  href="https://docs.tacc.utexas.edu/basics/mfa/#mfaapps"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  MFA pairing app
+                </a>
+                .
+              </>
+            }
           >
-            copy to clipboard
-          </Button>
-          )
+            View Alternative Verification Code
+          </TextCopyModal>
         </p>
       )}
-      {data && !data.otpkey && (
+      {false && data && !data.otpkey && (
         <p className={styles['qr-code-message']}>
           Can't scan QR code?{' '}
           <TicketCreateModal display="link">Submit a ticket.</TicketCreateModal>
