@@ -4,8 +4,8 @@ import './FieldWrapper.css';
 
 export type FieldWrapperProps = {
   label: string;
-  required: boolean;
-  description: string;
+  required?: boolean;
+  description: React.ReactNode;
   error?: string;
   children?: React.ReactNode;
 };
