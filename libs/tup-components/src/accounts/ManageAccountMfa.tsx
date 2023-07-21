@@ -135,8 +135,7 @@ export const AccountMfa: React.FC = () => {
         <MfaSectionHeader />
         <SectionMessage type="error">
           There was an error retrieving your multifactor authentication status.
-          Your account may be in a non-valid state. if this error persists
-          please{' '}
+          Your account may be in a non-valid state. If this error persists,{' '}
           <TicketCreateModal display="link">submit a ticket</TicketCreateModal>{' '}
           with this information and TACC User Services will assist you.
         </SectionMessage>
