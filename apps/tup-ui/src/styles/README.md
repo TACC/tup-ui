@@ -9,6 +9,7 @@
 - [Create Core Styles](#create-core-styles)
 - [Use Global Project Styles](#use-global-project-styles)
 - [Create Global Project Styles](#create-global-project-styles)
+- [Limit Use of Bootstrap](#limit-use-of-bootstrap)
 
 ## How to Style
 
@@ -162,5 +163,14 @@ selector {
 @import url('@tacc/core-styles/.../components/something-not-already-available-globally.css');
 ```
 
+### Limit Use of Bootstrap
+
+Prefer Core Styles to Bootstrap. [Learn how and why.][core styles bootstrap]
+
+As necessary, you may use Bootstrap ([available globally via Core CMS][core cms bootstrap]).
+
 [core styles]: https://github.com/TACC/Core-Styles
 [css style guide]: https://confluence.tacc.utexas.edu/display/~wbomar/Shared+UI+-+CSS+-+Style+Guide
+
+[core styles bootstrap]: https://github.com/TACC/Core-Styles/blob/main/docs/bootstrap.md
+[core cms bootstrap]: https://github.com/TACC/Core-CMS/blob/v3.11.4/taccsite_cms/templates/assets_core.html#L8
