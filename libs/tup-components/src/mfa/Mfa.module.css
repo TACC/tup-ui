@@ -65,6 +65,10 @@ li.pairing-separator {
     margin-block: 20px;
     margin-inline: var(--border-width);
 }
+/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles#204 */
+.qr-code-box > button {
+    width: 200px !important; /* overwrite Core-Styles, which is too specific */
+}
 
 
 /* Wide */
