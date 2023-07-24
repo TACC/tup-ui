@@ -1,11 +1,14 @@
 import React from 'react';
 import { ErrorMessage } from 'formik';
 import { Badge } from 'reactstrap';
-import styles from './FieldWrapperFormik.module.css';
+
+import styles from '../FieldWrapper/FieldWrapper.module.css';
+
 export type FieldWrapperProps = {
   name: string;
   label: string;
   required?: boolean;
+  className?: string;
   description?: React.ReactNode;
 };
 const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
@@ -13,10 +16,11 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
   label,
   required,
   description,
+  className,
   children,
 }) => {
   return (
-    <div className={`c-form__field ${required ? 'has-required' : ''}`}>
+    <div className={`c-form__field ${required ? 'has-required' : ''} ${className}`}>
       <label htmlFor={name} className={styles['label']}>
         {label}
         {required && (

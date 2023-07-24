@@ -1,45 +1,44 @@
 import React from 'react';
-import { FormGroup, Label, FormText, Badge } from 'reactstrap';
-import './FieldWrapper.css';
+import { Badge } from 'reactstrap';
+
+import styles from './FieldWrapper.module.css';
 
 export type FieldWrapperProps = {
+  name?: string;
   label: string;
   required?: boolean;
-  description: React.ReactNode;
+  className?: string;
+  description?: React.ReactNode;
   error?: string;
-  children?: React.ReactNode;
 };
-const FieldWrapper: React.FC<FieldWrapperProps> = ({
+const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
+  name,
   label,
   required,
   description,
   children,
+  className,
   error,
 }) => (
-  <FormGroup>
-    <Label
-      className="form-field__label"
-      size="sm"
-      style={{ display: 'flex', alignItems: 'center' }}
-    >
-      {label}{' '}
+    <div className={`c-form__field ${required ? 'has-required' : ''} ${className}`}>
+    <label htmlFor={name} className={styles['label']}>
+      {label}
       {required ? (
-        <Badge color="danger" style={{ marginLeft: '10px' }}>
-          Required
+        <Badge color="danger">
+          <span className={styles['required-badge']}>Required</span>
         </Badge>
       ) : null}
-    </Label>
+    </label>
     {children}
-    {error ? (
-      <div className="form-field__validation-error">{error}</div>
-    ) : (
-      description && (
-        <FormText className="form-field__help" color="muted">
-          {description}
-        </FormText>
-      )
+    {error && (
+      <ul className="c-form__errors">
+        <li className={styles['error-text']}>{error}</li>
+      </ul>
     )}
-  </FormGroup>
+    <div className="c-form__help">
+      {description}
+    </div>
+  </div>
 );
 
 export default FieldWrapper;
