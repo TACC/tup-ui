@@ -167,7 +167,7 @@ selector {
 
 Prefer Core Styles to Bootstrap. [Learn how and why.][core styles bootstrap]
 
-As necessary, you may use Bootstrap ([available globally via Core CMS][core cms bootstrap]).
+As necessary, use Bootstrap ([available globally via Core CMS][core cms bootstrap]).
 
 [core styles]: https://github.com/TACC/Core-Styles
 [css style guide]: https://confluence.tacc.utexas.edu/display/~wbomar/Shared+UI+-+CSS+-+Style+Guide
