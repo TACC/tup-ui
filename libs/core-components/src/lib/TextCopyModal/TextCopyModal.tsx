@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { FieldWrapper } from '@tacc/core-components';
-import { Button, TextCopyField } from '../../';
+import { Button, FieldWrapper, TextCopyField } from '../../';
 
 import styles from './TextCopyModal.module.css';
 

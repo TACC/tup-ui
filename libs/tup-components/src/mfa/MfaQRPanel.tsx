@@ -1,7 +1,11 @@
 import React from 'react';
 import { useMfaPairTotp } from '@tacc/tup-hooks';
-import { Button, LoadingSpinner, TextCopyModal } from '@tacc/core-components';
-import { FieldWrapper } from '@tacc/core-wrappers';
+import {
+  Button,
+  FieldWrapper,
+  LoadingSpinner,
+  TextCopyModal,
+} from '@tacc/core-components';
 import { TicketCreateModal } from '../tickets';
 import styles from './Mfa.module.css';
 

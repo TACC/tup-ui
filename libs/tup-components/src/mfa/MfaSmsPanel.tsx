@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useMfaPairSms } from '@tacc/tup-hooks';
-import { Button } from '@tacc/core-components';
-import { FieldWrapper } from '@tacc/core-wrappers';
+import { Button, FieldWrapper } from '@tacc/core-components';
 import styles from './Mfa.module.css';
 import { TicketCreateModal } from '../tickets';
 
