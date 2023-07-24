@@ -24,10 +24,6 @@ const TextCopyModal: React.FC<
     </button>
   );
 
-  const ButtonWrapper: React.FC<React.PropsWithChildren> = ({ children }) => {
-    return <div className="input-group-prepend">{children}</div>;
-  };
-
   return (
     <>
       <Button type={display} onClick={() => toggle()}>
