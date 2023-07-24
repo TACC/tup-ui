@@ -3,6 +3,10 @@
 /* CAVEAT: Duplicates older, unchanged, global c-nav styles */
 @import url("https://unpkg.com/@tacc/core-styles@2.14.0/dist/components/c-nav.css");
 
+/* To use s-affixed-input-wrapper which had been unused outside TACC/Core-CMS */
+/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.14+ */
+@import url("@tacc/core-styles/dist/trumps/s-affixed-input-wrapper.css");
+
 /* To overwrite @tacc/core-styles CEPv2 spacing */
 :root {
   /* TACC/Core-Styles/blob/823b7b9/src/lib/_imports/settings/space.css */

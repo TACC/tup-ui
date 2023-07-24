@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { Formik } from 'formik';
-import { FieldWrapperFormik as FieldWrapper } from '@tacc/core-wrappers';
+import { FieldWrapper } from '@tacc/core-wrappers';
 import { Button, TextCopyField } from '@tacc/core-components';
+
+import styles from './TextCopyModal.module.css';
 
 const TextCopyModal: React.FC<
   React.PropsWithChildren<{
@@ -35,7 +36,7 @@ const TextCopyModal: React.FC<
       <Modal
         isOpen={isOpen}
         toggle={toggle}
-        size="lg"
+        size="md"
         className="modal-dialog-centered"
       >
         <ModalHeader
@@ -44,20 +45,20 @@ const TextCopyModal: React.FC<
         >
           {title}
         </ModalHeader>
-        <ModalBody>
-          <Formik>
+        <ModalBody className={styles['modal-body']}>
+          <form>
             <FieldWrapper
               name='text'
               label='Code'
               description={hint}
-              className="s-affixed-input-wrapper s-affixed-input-wrapper__prepend"
+              className="s-affixed-input-wrapper s-affixed-input-wrapper--prepend s-affixed-input-wrapper--full-width"
             >
               <TextCopyField
                 value={text}
-                // ButtonWrapper={ButtonWrapper}
+                buttonClassName="s-affixed-input-wrapper__prepend"
               />
             </FieldWrapper>
-          </Formik>
+          </form>
         </ModalBody>
       </Modal>
     </>

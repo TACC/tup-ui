@@ -7,10 +7,12 @@ import styles from './TextCopyField.module.css';
 type TextCopyFieldProps = {
   value: string,
   placeholder?: string,
+  className?: string,
+  buttonClassName?: string,
   ButtonWrapper?: React.FC<React.PropsWithChildren>,
 };
 
-const TextCopyField: React.FC<TextCopyFieldProps> = ({ value, placeholder, ButtonWrapper })=> {
+const TextCopyField: React.FC<TextCopyFieldProps> = ({ value, placeholder, className, buttonClassName, ButtonWrapper })=> {
   /* WARNING: Must match CSS `--transition-duration` */
   const transitionDuration = 0.15; // second(s)
   const stateDuration = 1; // second(s)
@@ -40,7 +42,8 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({ value, placeholder, Butto
     <Button
       className={`${styles['copy-button']} ${
         isCopied ? styles['is-copied'] : ''
-      }`}
+      } ${buttonClassName}`}
+      size="small"
       onClick={onCopy}
       disabled={isEmpty}
       iconNameBefore={isCopied ? 'approved-reverse' : 'link'}
@@ -53,7 +56,7 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({ value, placeholder, Butto
       type="text"
       onChange={onChange}
       value={value}
-      className={styles['input']}
+      className={className}
       placeholder={placeholder}
       data-testid="input"
       readOnly
