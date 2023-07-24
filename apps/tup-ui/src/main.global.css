@@ -63,3 +63,16 @@ h3 {
 table {
   width: 100%;
 }
+
+/* Forms */
+/* TODO: Remove this after making it moot:
+         - either use c-form__star instead of <Badge> (like CMS)
+         - or add c-form__badge into TACC/Core-Styles
+*/
+.has-required .badge {
+  color: white;
+  font-weight: var(--medium);
+
+  margin-left: 0.5em;
+  vertical-align: top;
+}

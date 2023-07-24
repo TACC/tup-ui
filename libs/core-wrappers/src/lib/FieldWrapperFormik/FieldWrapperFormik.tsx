@@ -2,8 +2,6 @@ import React from 'react';
 import { ErrorMessage } from 'formik';
 import { Badge } from 'reactstrap';
 
-import styles from '../FieldWrapper/FieldWrapper.module.css';
-
 export type FieldWrapperProps = {
   name: string;
   label: React.ReactNode;
@@ -23,11 +21,11 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
     <div
       className={`c-form__field ${required ? 'has-required' : ''} ${className}`}
     >
-      <label htmlFor={name} className={styles['label']}>
+      <label htmlFor={name}>
         {label}
         {required && (
           <Badge color="danger">
-            <span className={styles['required-badge']}>Required</span>
+            <span>Required</span>
           </Badge>
         )}
       </label>
@@ -36,7 +34,7 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
         {(msg) => {
           return (
             <ul className="c-form__errors">
-              <li className={styles['error-text']}>{msg}</li>
+              <li>{msg}</li>
             </ul>
           );
         }}
