@@ -39,7 +39,7 @@ const MfaQRPanel: React.FC = () => {
           <TextCopyModal
             display="link"
             title="Alternative Verification Code"
-            text="data.otpkey.value_b32"
+            text={data.otpkey.value_b32}
             hint={
               <>
                 Enter this code into an approved{' '}
