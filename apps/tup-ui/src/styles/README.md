@@ -171,6 +171,5 @@ As necessary, use Bootstrap ([available globally via Core CMS][core cms bootstra
 
 [core styles]: https://github.com/TACC/Core-Styles
 [css style guide]: https://confluence.tacc.utexas.edu/display/~wbomar/Shared+UI+-+CSS+-+Style+Guide
-
 [core styles bootstrap]: https://github.com/TACC/Core-Styles/blob/main/docs/bootstrap.md
 [core cms bootstrap]: https://github.com/TACC/Core-CMS/blob/v3.11.4/taccsite_cms/templates/assets_core.html#L8
