@@ -83,7 +83,7 @@ li.pairing-separator {
         position: relative;
         width: max-content; /* to not let wide child change parent width */
     }
-    .qr-code-message {
+    .mfa-message {
         /* To position message beneath both paring steps */
         position: absolute;
         top: 100%;
