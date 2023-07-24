@@ -33,8 +33,8 @@ const MfaQRPanel: React.FC = () => {
         {!data && isLoading && <LoadingSpinner />}
         {data && <img src={data.googleurl.img} alt="Google MFA QR Code"></img>}
       </div>
-      {(
-      // {data && data.otpkey && (
+      {
+        // {data && data.otpkey && (
         <p className={styles['qr-code-message']}>
           Can't scan QR code?{' '}
           <TextCopyModal
@@ -58,7 +58,7 @@ const MfaQRPanel: React.FC = () => {
             View Alternative Verification Code
           </TextCopyModal>
         </p>
-      )}
+      }
       {false && data && !data.otpkey && (
         <p className={styles['qr-code-message']}>
           Can't scan QR code?{' '}

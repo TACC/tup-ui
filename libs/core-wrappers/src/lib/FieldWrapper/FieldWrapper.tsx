@@ -20,7 +20,9 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
   className,
   error,
 }) => (
-    <div className={`c-form__field ${required ? 'has-required' : ''} ${className}`}>
+  <div
+    className={`c-form__field ${required ? 'has-required' : ''} ${className}`}
+  >
     <label htmlFor={name} className={styles['label']}>
       {label}
       {required ? (
@@ -35,9 +37,7 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
         <li className={styles['error-text']}>{error}</li>
       </ul>
     )}
-    <div className="c-form__help">
-      {description}
-    </div>
+    <div className="c-form__help">{description}</div>
   </div>
 );
 

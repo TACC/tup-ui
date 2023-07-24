@@ -39,17 +39,14 @@ const TextCopyModal: React.FC<
         size="md"
         className="modal-dialog-centered"
       >
-        <ModalHeader
-          toggle={toggle}
-          close={closeBtn}
-        >
+        <ModalHeader toggle={toggle} close={closeBtn}>
           {title}
         </ModalHeader>
         <ModalBody className={styles['modal-body']}>
           <form>
             <FieldWrapper
-              name='text'
-              label='Code'
+              name="text"
+              label="Code"
               description={hint}
               className="s-affixed-input-wrapper s-affixed-input-wrapper--prepend s-affixed-input-wrapper--full-width"
             >
