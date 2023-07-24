@@ -5,11 +5,11 @@ import styles from './FieldWrapper.module.css';
 
 export type FieldWrapperProps = {
   name?: string;
-  label: string;
+  label: React.ReactNode;
   required?: boolean;
   className?: string;
   description?: React.ReactNode;
-  error?: string;
+  error?: React.ReactNode;
 };
 const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
   name,

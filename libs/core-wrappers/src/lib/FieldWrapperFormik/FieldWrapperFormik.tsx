@@ -6,7 +6,7 @@ import styles from '../FieldWrapper/FieldWrapper.module.css';
 
 export type FieldWrapperProps = {
   name: string;
-  label: string;
+  label: React.ReactNode;
   required?: boolean;
   className?: string;
   description?: React.ReactNode;
