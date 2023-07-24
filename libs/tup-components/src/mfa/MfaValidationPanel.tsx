@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMfaVerify } from '@tacc/tup-hooks';
-import { Button, SectionMessage } from '@tacc/core-components';
+import { Button } from '@tacc/core-components';
+import { FieldWrapper } from '@tacc/core-wrappers';
 import TicketCreateModal from '../tickets/TicketCreateModal';
 import styles from './Mfa.module.css';
 
@@ -21,35 +22,27 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
 
   return (
     <>
-      {pairingMessage[tokenType]}
       <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
-        <label htmlFor="confirm-pairing" hidden>
+        <FieldWrapper
+          name="confirm-pairing"
+          label={pairingMessage[tokenType]}
+          error={error && `Error validating MFA token: "${error.message}"`}
+        >
+          <input
+            required
+            id="confirm-pairing"
+            onChange={(e) => setTokenValue(e.target.value)}
+          ></input>
+        </FieldWrapper>
+        <Button type="primary" attr="submit" isLoading={isLoading}>
           Confirm Pairing
-        </label>
-        <input
-          id="confirm-pairing"
-          onChange={(e) => setTokenValue(e.target.value)}
-        ></input>
-        <div className={styles['submit-button']}>
-          <Button type="primary" attr="submit" isLoading={isLoading}>
-            Confirm Pairing
-          </Button>
-        </div>
+        </Button>
       </form>
       {tokenType === 'sms' && (
         <p className={styles['qr-code-message']}>
           Didn't receive a message within 5 minutes?{' '}
           <TicketCreateModal display="link">Get Help</TicketCreateModal>
         </p>
-      )}
-      {error && (
-        <SectionMessage
-          type="error"
-          scope="section"
-          className={styles['qr-code-message']}
-        >
-          Error validating MFA token: error.message
-        </SectionMessage>
       )}
     </>
   );

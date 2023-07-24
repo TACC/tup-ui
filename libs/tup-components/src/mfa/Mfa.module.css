@@ -11,7 +11,8 @@ ol.pairing-container {
 }
 
 .pairing-container > *:not(.pairing-separator) {
-    min-width: 200px;
+    min-width: 210px;
+    max-width: 375px;
 }
 
 .pairing-separator {
@@ -109,9 +110,12 @@ li.pairing-separator {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
-.submit-button {
-    padding-top: 20px;
+.mfa-form input {
+    /* To prevent input field from stretching */
+    /* FAQ: Input field stretched when long error message */
+    /* HELP: Can this be fixed in Core Styles? */
+    /* WARNING: This would cause bug: shrink login form field width */
+    width: fit-content;
 }
 
 
@@ -121,8 +125,7 @@ li.pairing-separator {
     height: fit-content;
     padding: var(--global-space--section)
 }
-
-.mfa-return-button {
+.mfa-success-container button {
     margin-top: 50px;
     font-size: 1.1rem;
 }

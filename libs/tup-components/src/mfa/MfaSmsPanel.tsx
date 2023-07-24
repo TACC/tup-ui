@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMfaPairSms } from '@tacc/tup-hooks';
-import { Button, SectionMessage } from '@tacc/core-components';
+import { Button } from '@tacc/core-components';
+import { FieldWrapper } from '@tacc/core-wrappers';
 import styles from './Mfa.module.css';
 import { TicketCreateModal } from '../tickets';
 
@@ -12,33 +13,32 @@ const MfaSmsPanel: React.FC = () => {
     smsMutation.mutate({ phoneNumber });
   };
   return (
-    <>
-      <span>Enter your phone number:</span>
-      <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
-        <label htmlFor="mfa-phone-number" hidden>
-          Enter your Phone Number:
-        </label>
+    <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
+      <FieldWrapper
+        name="mfa-phone-number"
+        label="Enter your Phone Number:"
+        error={
+          smsMutation.isError && (
+            <>
+              Unable to pair via SMS. If this error persists,{' '}
+              <TicketCreateModal display="link">
+                submit a ticket
+              </TicketCreateModal>
+              .
+            </>
+          )
+        }
+      >
         <input
+          required
           id="mfa-phone-number"
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
-        <div className={styles['submit-button']}>
-          <Button
-            type="primary"
-            attr="submit"
-            isLoading={smsMutation.isLoading}
-          >
-            Send Token
-          </Button>
-        </div>
-      </form>
-      {smsMutation.isError && (
-        <SectionMessage type="error" className={styles['qr-code-message']}>
-          Unable to pair via SMS. If this error persists,{' '}
-          <TicketCreateModal display="link">submit a ticket</TicketCreateModal>.
-        </SectionMessage>
-      )}
-    </>
+      </FieldWrapper>
+      <Button type="primary" attr="submit" isLoading={smsMutation.isLoading}>
+        Send Token
+      </Button>
+    </form>
   );
 };
 

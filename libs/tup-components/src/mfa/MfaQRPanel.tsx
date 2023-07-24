@@ -6,6 +6,7 @@ import {
   SectionMessage,
   TextCopyModal,
 } from '@tacc/core-components';
+import { FieldWrapper } from '@tacc/core-wrappers';
 import { TicketCreateModal } from '../tickets';
 import styles from './Mfa.module.css';
 
@@ -13,26 +14,52 @@ const MfaQRPanel: React.FC = () => {
   const { mutate, isLoading, data, isError } = useMfaPairTotp();
   return (
     <>
-      <div>
-        Open an approved{' '}
-        <a
-          href="https://docs.tacc.utexas.edu/basics/mfa/#mfaapps"
-          target="_blank"
-          rel="noreferrer"
+      <form className={styles['mfa-form']}>
+        <FieldWrapper
+          name="mfa-phone-number"
+          label={
+            <>
+              Open an approved{' '}
+              <a
+                href="https://docs.tacc.utexas.edu/basics/mfa/#mfaapps"
+                target="_blank"
+                rel="noreferrer"
+              >
+                MFA pairing app
+              </a>{' '}
+              and scan the following QR code:
+            </>
+          }
+          error={
+            !data &&
+            isError && (
+              <>
+                Unable to display QR code. If this error persists,{' '}
+                <TicketCreateModal display="link">
+                  submit a ticket
+                </TicketCreateModal>
+                .
+              </>
+            )
+          }
         >
-          MFA pairing app
-        </a>{' '}
-        and scan the following QR code:
-      </div>
-      <div className={styles['qr-code-box']}>
-        {!data && !isLoading && (
-          <Button className={styles['qr-button']} onClick={() => mutate(null)}>
-            Click to Generate QR Code
-          </Button>
-        )}
-        {!data && isLoading && <LoadingSpinner />}
-        {data && <img src={data.googleurl.img} alt="Google MFA QR Code"></img>}
-      </div>
+          <div className={styles['qr-code-box']}>
+            {!data && !isLoading && (
+              <Button
+                id=""
+                className={styles['qr-button']}
+                onClick={() => mutate(null)}
+              >
+                Click to Generate QR Code
+              </Button>
+            )}
+            {!data && isLoading && <LoadingSpinner />}
+            {data && (
+              <img src={data.googleurl.img} alt="Google MFA QR Code"></img>
+            )}
+          </div>
+        </FieldWrapper>
+      </form>
       {data && data.otpkey && (
         <p className={styles['qr-code-message']}>
           Can't scan QR code?{' '}
@@ -63,12 +90,6 @@ const MfaQRPanel: React.FC = () => {
           Can't scan QR code?{' '}
           <TicketCreateModal display="link">Submit a ticket.</TicketCreateModal>
         </p>
-      )}
-      {!data && isError && (
-        <SectionMessage type="error" className={styles['qr-code-message']}>
-          Unable to display QR code. If this error persists,{' '}
-          <TicketCreateModal display="link">submit a ticket</TicketCreateModal>.
-        </SectionMessage>
       )}
     </>
   );
