@@ -23,9 +23,7 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
   >
     <label htmlFor={name}>
       {label}
-      {required ? (
-        <Badge color="danger">Required</Badge>
-      ) : null}
+      {required ? <Badge color="danger">Required</Badge> : null}
     </label>
     {children}
     {error && (
@@ -33,7 +31,7 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
         <li>{error}</li>
       </ul>
     )}
-    {description && (<div className="c-form__help">{description}</div>)}
+    {description && <div className="c-form__help">{description}</div>}
   </div>
 );
 
