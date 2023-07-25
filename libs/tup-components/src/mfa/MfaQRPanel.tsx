@@ -80,7 +80,7 @@ const MfaQRPanel: React.FC = () => {
               </>
             }
           >
-            View Alternative Verification Code
+            View alternative verification code.
           </TextCopyModal>
         </p>
       )}
