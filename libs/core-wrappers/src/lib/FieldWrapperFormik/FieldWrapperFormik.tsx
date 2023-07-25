@@ -37,7 +37,7 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
           );
         }}
       </ErrorMessage>
-      <div className="c-form__help">{description}</div>
+      {description && (<div className="c-form__help">{description}</div>)}
     </div>
   );
 };
