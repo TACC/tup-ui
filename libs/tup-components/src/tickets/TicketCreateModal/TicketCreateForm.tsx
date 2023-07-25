@@ -93,9 +93,7 @@ export const TicketCreateForm: React.FC = () => {
           <FormikSelect name="category" label="Category" required>
             <option value="">Please Choose One</option>
             <option>Allocations</option>
-            <option>Data Analytics or Storage Resources</option>
             <option>Running Jobs or Using TACC Resources</option>
-            <option>Security Incident</option>
             <option>Login Issues</option>
             <option>Multi-factor Authentication</option>
             <option>Other</option>

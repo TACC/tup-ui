@@ -19,6 +19,7 @@ import {
   Mfa,
   TicketDetail,
   Impersonate,
+  Systems,
 } from './pages';
 
 const AppLayout = () => {
@@ -47,6 +48,8 @@ function App() {
           <Route path="" element={<ProjectDetail />}></Route>
           <Route path=":username" element={<ProjectMember />}></Route>
         </Route>
+        <Route path="system-status" element={<Systems />}></Route>
+        <Route path="system-status/:tas_name" element={<Systems />} />
         <Route path="mfa" element={<Mfa />}>
           <Route path="" element={<MfaSelection />} />
           <Route path="totp" element={<MfaPairingview method="totp" />} />
