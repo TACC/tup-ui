@@ -24,9 +24,7 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
     <label htmlFor={name}>
       {label}
       {required ? (
-        <Badge color="danger">
-          <span>Required</span>
-        </Badge>
+        <Badge color="danger">Required</Badge>
       ) : null}
     </label>
     {children}
