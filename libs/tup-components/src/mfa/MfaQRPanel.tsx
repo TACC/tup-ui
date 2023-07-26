@@ -59,10 +59,7 @@ const MfaQRPanel: React.FC = () => {
         >
           <div className={styles['qr-code-box']}>
             {!data && !isLoading && (
-              <Button
-                id="mfa-qr-code"
-                onClick={() => mutate(null)}
-              >
+              <Button id="mfa-qr-code" onClick={() => mutate(null)}>
                 Click to Generate QR Code
               </Button>
             )}
@@ -73,25 +70,29 @@ const MfaQRPanel: React.FC = () => {
           </div>
         </FieldWrapper>
       </form>
-      {data && data.otpkey && (
-        <p className={styles['mfa-message']}>
-          Can't scan QR code?{' '}
-          <TextCopyModal
-            display="link"
-            title="Alternative Verification Code"
-            text={data.otpkey.value_b32}
-            hint={<TextCopyModalHint />}
-          >
-            View alternative verification code.
-          </TextCopyModal>
-        </p>
-      )}
-      {data && !data.otpkey && (
-        <p className={styles['mfa-message']}>
-          Can't scan QR code?{' '}
-          <TicketCreateModal display="link">Submit a ticket.</TicketCreateModal>
-        </p>
-      )}
+      <p className={styles['mfa-message']} role="status">
+        {data && data.otpkey && (
+          <>
+            Can't scan QR code?{' '}
+            <TextCopyModal
+              display="link"
+              title="Alternative Verification Code"
+              text={data.otpkey.value_b32}
+              hint={<TextCopyModalHint />}
+            >
+              View alternative verification code.
+            </TextCopyModal>
+          </>
+        )}
+        {data && !data.otpkey && (
+          <>
+            Can't scan QR code?{' '}
+            <TicketCreateModal display="link">
+              Submit a ticket.
+            </TicketCreateModal>
+          </>
+        )}
+      </p>
     </>
   );
 };
