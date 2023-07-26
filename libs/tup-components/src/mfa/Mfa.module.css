@@ -52,7 +52,7 @@ li.pairing-separator {
 
 /* TOTP pairing styles */
 .qr-button {
-    width: 200px;
+    width: 16rem;
     white-space: normal;
     text-overflow: none;
 }
@@ -60,15 +60,15 @@ li.pairing-separator {
 .qr-code-box > * {
     --border-width: var(--global-border-width--xx-thick);
 
-    width: 200px;
-    height: 200px;
+    width: 16rem;
+    height: 16rem;
     outline: var(--border-width) solid #D8D8D8;
     margin-block: 20px;
     margin-inline: var(--border-width);
 }
 /* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles#204 */
 .qr-code-box > button {
-    width: 200px !important; /* overwrite Core-Styles, which is too specific */
+    width: 16rem !important; /* overwrite Core-Styles, which is too specific */
 }
 
 
