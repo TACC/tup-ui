@@ -46,6 +46,7 @@ const TextCopyModal: React.FC<
               className="s-affixed-input-wrapper s-affixed-input-wrapper--prepend s-affixed-input-wrapper--full-width"
             >
               <TextCopyField
+                id="text"
                 value={text}
                 buttonClassName="s-affixed-input-wrapper__prepend"
               />

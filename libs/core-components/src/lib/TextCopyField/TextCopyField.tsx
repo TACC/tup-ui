@@ -8,6 +8,7 @@ type TextCopyFieldProps = {
   value: string;
   placeholder?: string;
   className?: string;
+  id?: string,
   buttonClassName?: string;
 };
 
@@ -15,6 +16,7 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({
   value,
   placeholder,
   className,
+  id,
   buttonClassName,
 }) => {
   /* WARNING: Must match CSS `--transition-duration` */
@@ -56,6 +58,7 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({
         Copy
       </Button>
       <input
+        {...( id ? { id } : {} )}
         type="text"
         onChange={onChange}
         value={value}
