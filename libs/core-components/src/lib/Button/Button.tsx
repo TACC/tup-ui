@@ -41,6 +41,7 @@ type ButtonProps = React.PropsWithChildren<{
   className?: string;
   iconNameBefore?: string;
   iconNameAfter?: string;
+  id?: string;
   dataTestid?: string;
   disabled?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -54,6 +55,7 @@ const Button: React.FC<ButtonProps> = ({
   className,
   iconNameBefore,
   iconNameAfter,
+  id,
   type = 'secondary',
   size = '',
   dataTestid,
@@ -74,6 +76,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      {...( id ? { id } : {} )}
       className={`
         ${styles['root']}
         c-button
