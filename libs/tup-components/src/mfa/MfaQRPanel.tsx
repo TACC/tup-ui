@@ -30,7 +30,6 @@ const MfaQRPanel: React.FC = () => {
     <>
       <form className={styles['mfa-form']}>
         <FieldWrapper
-          name="mfa-qr-code"
           label={
             <>
               Open an approved{' '}
@@ -59,7 +58,7 @@ const MfaQRPanel: React.FC = () => {
         >
           <div className={styles['qr-code-box']}>
             {!data && !isLoading && (
-              <Button id="mfa-qr-code" onClick={() => mutate(null)}>
+              <Button onClick={() => mutate(null)}>
                 Click to Generate QR Code
               </Button>
             )}
