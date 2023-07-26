@@ -64,7 +64,7 @@ const MfaQRPanel: React.FC = () => {
             )}
             {!data && isLoading && <LoadingSpinner />}
             {data && (
-              <img src={data.googleurl.img} alt="Google MFA QR Code"></img>
+              <img src={data.googleurl.img} alt="Google MFA QR Code" title="Scan to use. Or read further for alternative."></img>
             )}
           </div>
         </FieldWrapper>
