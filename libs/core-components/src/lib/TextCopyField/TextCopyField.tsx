@@ -9,7 +9,6 @@ type TextCopyFieldProps = {
   placeholder?: string;
   className?: string;
   buttonClassName?: string;
-  ButtonWrapper?: React.FC<React.PropsWithChildren>;
 };
 
 const TextCopyField: React.FC<TextCopyFieldProps> = ({
@@ -17,7 +16,6 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({
   placeholder,
   className,
   buttonClassName,
-  ButtonWrapper,
 }) => {
   /* WARNING: Must match CSS `--transition-duration` */
   const transitionDuration = 0.15; // second(s)
@@ -44,8 +42,8 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({
     event.preventDefault();
   };
 
-  const CopyButton = () => {
-    return (
+  return (
+    <>
       <Button
         className={`${styles['copy-button']} ${
           isCopied ? styles['is-copied'] : ''
@@ -57,18 +55,6 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({
       >
         Copy
       </Button>
-    );
-  };
-
-  return (
-    <>
-      {ButtonWrapper ? (
-        <ButtonWrapper>
-          <CopyButton />
-        </ButtonWrapper>
-      ) : (
-        <CopyButton />
-      )}
       <input
         type="text"
         onChange={onChange}
