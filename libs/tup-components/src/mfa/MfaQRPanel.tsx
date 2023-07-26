@@ -24,7 +24,7 @@ const MfaQRPanel: React.FC = () => {
       </a>
       .
     </>
-  )
+  );
 
   return (
     <>

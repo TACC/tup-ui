@@ -76,7 +76,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      {...( id ? { id } : {} )}
+      {...(id ? { id } : {})}
       className={`
         ${styles['root']}
         c-button
