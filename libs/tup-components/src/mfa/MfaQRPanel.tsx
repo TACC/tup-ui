@@ -69,29 +69,25 @@ const MfaQRPanel: React.FC = () => {
           </div>
         </FieldWrapper>
       </form>
-      <p className={styles['mfa-message']} role="status">
-        {data && data.otpkey && (
-          <>
-            Can't scan QR code?{' '}
-            <TextCopyModal
-              display="link"
-              title="Alternative Verification Code"
-              text={data.otpkey.value_b32}
-              hint={<TextCopyModalHint />}
-            >
-              View alternative verification code.
-            </TextCopyModal>
-          </>
-        )}
-        {data && !data.otpkey && (
-          <>
-            Can't scan QR code?{' '}
-            <TicketCreateModal display="link">
-              Submit a ticket.
-            </TicketCreateModal>
-          </>
-        )}
-      </p>
+      {data && data.otpkey && (
+        <p className={styles['mfa-message']}>
+          Can't scan QR code?{' '}
+          <TextCopyModal
+            display="link"
+            title="Alternative Verification Code"
+            text={data.otpkey.value_b32}
+            hint={<TextCopyModalHint />}
+          >
+            View alternative verification code.
+          </TextCopyModal>
+        </p>
+      )}
+      {data && !data.otpkey && (
+        <p className={styles['mfa-message']}>
+          Can't scan QR code?{' '}
+          <TicketCreateModal display="link">Submit a ticket.</TicketCreateModal>
+        </p>
+      )}
     </>
   );
 };
