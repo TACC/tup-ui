@@ -11,6 +11,21 @@ import styles from './Mfa.module.css';
 
 const MfaQRPanel: React.FC = () => {
   const { mutate, isLoading, data, isError } = useMfaPairTotp();
+
+  const TextCopyModalHint = () => (
+    <>
+      Enter this code into an approved{' '}
+      <a
+        href="https://docs.tacc.utexas.edu/basics/mfa/#mfaapps"
+        target="_blank"
+        rel="noreferrer"
+      >
+        MFA pairing app
+      </a>
+      .
+    </>
+  )
+
   return (
     <>
       <form className={styles['mfa-form']}>
@@ -66,19 +81,7 @@ const MfaQRPanel: React.FC = () => {
             display="link"
             title="Alternative Verification Code"
             text={data.otpkey.value_b32}
-            hint={
-              <>
-                Enter this code into an approved{' '}
-                <a
-                  href="https://docs.tacc.utexas.edu/basics/mfa/#mfaapps"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  MFA pairing app
-                </a>
-                .
-              </>
-            }
+            hint={<TextCopyModalHint />}
           >
             View alternative verification code.
           </TextCopyModal>
