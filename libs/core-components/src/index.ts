@@ -6,7 +6,6 @@ export { default as InlineMessage } from './lib/InlineMessage';
 export { default as SectionMessage } from './lib/SectionMessage';
 export { default as LoadingSpinner } from './lib/LoadingSpinner';
 export { default as DescriptionList } from './lib/DescriptionList';
-export { default as FieldWrapper } from './lib/FieldWrapper';
 export { default as Message } from './lib/Message';
 export { default as Paginator } from './lib/Paginator';
 export { default as Pill } from './lib/Pill';
