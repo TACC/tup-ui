@@ -59,19 +59,6 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({
       </Button>
     );
   };
-  const CopyField = () => {
-    return (
-      <input
-        type="text"
-        onChange={onChange}
-        value={value}
-        className={className}
-        placeholder={placeholder}
-        data-testid="input"
-        readOnly
-      />
-    );
-  };
 
   return (
     <>
@@ -82,7 +69,15 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({
       ) : (
         <CopyButton />
       )}
-      <CopyField />
+      <input
+        type="text"
+        onChange={onChange}
+        value={value}
+        className={className}
+        placeholder={placeholder}
+        data-testid="input"
+        readOnly
+      />
     </>
   );
 };
