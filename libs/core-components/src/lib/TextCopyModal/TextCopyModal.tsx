@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { Button, FieldWrapper, TextCopyField } from '../../';
+import { Button, TextCopyField } from '../../';
 
 import styles from './TextCopyModal.module.css';
 
@@ -38,20 +38,15 @@ const TextCopyModal: React.FC<
           {title}
         </ModalHeader>
         <ModalBody className={styles['modal-body']}>
-          <form>
-            <FieldWrapper
-              name="text"
-              label="Code"
-              description={hint}
-              className="s-affixed-input-wrapper s-affixed-input-wrapper--prepend s-affixed-input-wrapper--full-width"
-            >
-              <TextCopyField
-                id="text"
-                value={text}
-                buttonClassName="s-affixed-input-wrapper__prepend"
-              />
-            </FieldWrapper>
-          </form>
+          <div className="s-affixed-input-wrapper s-affixed-input-wrapper--prepend s-affixed-input-wrapper--full-width s-form">
+            <label htmlFor="text">Code</label>
+            <TextCopyField
+              id="text"
+              value={text}
+              buttonClassName="s-affixed-input-wrapper__prepend"
+            />
+            <small>{hint}</small>
+          </div>
         </ModalBody>
       </Modal>
     </>

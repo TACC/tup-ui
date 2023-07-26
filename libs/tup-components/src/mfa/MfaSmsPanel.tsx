@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMfaPairSms } from '@tacc/tup-hooks';
-import { Button, FieldWrapper } from '@tacc/core-components';
+import { Button, InlineMessage } from '@tacc/core-components';
 import styles from './Mfa.module.css';
 import { TicketCreateModal } from '../tickets';
 
@@ -12,28 +12,24 @@ const MfaSmsPanel: React.FC = () => {
     smsMutation.mutate({ phoneNumber });
   };
   return (
-    <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
-      <FieldWrapper
-        name="mfa-phone-number"
-        label="Enter your Phone Number:"
-        error={
-          smsMutation.isError && (
-            <>
-              Unable to pair via SMS. If this error persists,{' '}
-              <TicketCreateModal display="link">
-                submit a ticket
-              </TicketCreateModal>
-              .
-            </>
-          )
-        }
-      >
+    <form
+      onSubmit={(e) => onSubmit(e)}
+      className={`${styles['mfa-form']} s-form`}
+    >
+      <div>
+        <label htmlFor="mfa-phone-number">Enter your Phone Number:</label>
         <input
           required
           id="mfa-phone-number"
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
-      </FieldWrapper>
+        {smsMutation.isError && (
+          <InlineMessage type="error" tagName="small">
+            Unable to pair via SMS. If this error persists,{' '}
+            <TicketCreateModal display="link">submit a ticket</TicketCreateModal>.
+          </InlineMessage>
+        )}
+      </div>
       <Button type="primary" attr="submit" isLoading={smsMutation.isLoading}>
         Send Token
       </Button>

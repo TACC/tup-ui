@@ -65,6 +65,11 @@ table {
 }
 
 /* Forms */
+/* To hide icon of a Message that is used as a form error */
+/* FAQ: Used by MfaValidationPanel, MfaSmsPanel */
+.s-form input + [role="status"] > .icon {
+  display: none;
+}
 /* To style "Required" flag on field */
 /* TODO: Remove this after making it moot:
          - either use c-form__star instead of <Badge> (like CMS)

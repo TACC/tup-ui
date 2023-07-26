@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMfaVerify } from '@tacc/tup-hooks';
-import { Button, FieldWrapper } from '@tacc/core-components';
+import { Button, InlineMessage } from '@tacc/core-components';
 import TicketCreateModal from '../tickets/TicketCreateModal';
 import styles from './Mfa.module.css';
 
@@ -21,18 +21,23 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
 
   return (
     <>
-      <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
-        <FieldWrapper
-          name="confirm-pairing"
-          label={pairingMessage[tokenType]}
-          error={error && `Error validating MFA token: "${error.message}"`}
-        >
+      <form
+        onSubmit={(e) => onSubmit(e)}
+        className={`${styles['mfa-form']} s-form`}
+      >
+        <div>
+          <label htmlFor="confirm-pairing">{pairingMessage[tokenType]}</label>
           <input
             required
             id="confirm-pairing"
             onChange={(e) => setTokenValue(e.target.value)}
-          ></input>
-        </FieldWrapper>
+          />
+          {error && (
+            <InlineMessage type="error" tagName="small">
+              Error validating MFA token: "{error.message}"
+            </InlineMessage>
+          )}
+        </div>
         <Button type="primary" attr="submit" isLoading={isLoading}>
           Confirm Pairing
         </Button>
