@@ -26,7 +26,10 @@ const MfaSmsPanel: React.FC = () => {
         {smsMutation.isError && (
           <InlineMessage type="error" tagName="small">
             Unable to pair via SMS. If this error persists,{' '}
-            <TicketCreateModal display="link">submit a ticket</TicketCreateModal>.
+            <TicketCreateModal display="link">
+              submit a ticket
+            </TicketCreateModal>
+            .
           </InlineMessage>
         )}
       </div>
