@@ -51,12 +51,6 @@ li.pairing-separator {
 
 
 /* TOTP pairing styles */
-.qr-button {
-    width: 16rem;
-    white-space: normal;
-    text-overflow: none;
-}
-
 .qr-code-box > * {
     --border-width: var(--global-border-width--xx-thick);
 
@@ -66,9 +60,14 @@ li.pairing-separator {
     margin-block: 20px;
     margin-inline: var(--border-width);
 }
+.qr-code-box > button {
+    /* To overwrite c-button */
+    white-space: normal;
+    text-overflow: initial;
+}
 /* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles#204 */
 .qr-code-box > button {
-    width: 16rem !important; /* overwrite Core-Styles, which is too specific */
+    width: 16rem !important; /* overwrite c-button, which is too specific */
 }
 
 

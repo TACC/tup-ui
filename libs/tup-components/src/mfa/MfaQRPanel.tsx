@@ -61,7 +61,6 @@ const MfaQRPanel: React.FC = () => {
             {!data && !isLoading && (
               <Button
                 id="mfa-qr-code"
-                className={styles['qr-button']}
                 onClick={() => mutate(null)}
               >
                 Click to Generate QR Code
