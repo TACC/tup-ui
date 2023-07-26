@@ -70,16 +70,3 @@ table {
 .s-form input + [role="status"] > .icon {
   display: none;
 }
-/* To style "Required" flag on field */
-/* TODO: Remove this after making it moot:
-         - either use c-form__star instead of <Badge> (like CMS)
-         - or add c-form__badge into TACC/Core-Styles
-*/
-/* FAQ: Used by FieldWrapperFormik */
-.has-required .badge {
-  color: white;
-  font-weight: var(--medium);
-
-  margin-left: 0.5em;
-  vertical-align: top;
-}
