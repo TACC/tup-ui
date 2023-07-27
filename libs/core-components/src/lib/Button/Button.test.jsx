@@ -39,10 +39,10 @@ describe('Button', () => {
   });
 
   it('uses given aria-label', () => {
-    const { getByLabelText } = render(
-      <Button ariaLabel={TEST_LABEL}>{TEST_TEXT}</Button>
+    const { getByRole } = render(
+      <Button aria-label={TEST_LABEL}>{TEST_TEXT}</Button>
     );
-    expect(getByLabelText(TEST_LABEL).textContent).toEqual(TEST_LABEL);
+    expect(getByRole('button').getAttribute('aria-label')).toEqual(TEST_LABEL);
   });
 
   describe('icons exist as expected when', () => {
