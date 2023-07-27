@@ -1,4 +1,3 @@
-
 import React, { useCallback, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import PropTypes from 'prop-types';
