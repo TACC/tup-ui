@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import Icon from '../Icon';
 import LoadingSpinner from '../LoadingSpinner';
 import styles from './Button.module.css';
@@ -43,10 +43,10 @@ type ButtonProps = React.PropsWithChildren<{
   iconNameAfter?: string;
   dataTestid?: string;
   disabled?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   attr?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
 }> &
+  ButtonHTMLAttributes<HTMLButtonElement> &
   (ButtonTypeLinkSize | ButtonTypePrimarySize | ButtonTypeOtherSize);
 
 const Button: React.FC<ButtonProps> = ({
@@ -58,20 +58,10 @@ const Button: React.FC<ButtonProps> = ({
   size = '',
   dataTestid,
   disabled,
-  onClick,
   attr = 'button',
   isLoading = false,
+  ...props
 }) => {
-  function onclick(e: React.MouseEvent<HTMLButtonElement>) {
-    if (disabled) {
-      e.preventDefault();
-      return;
-    }
-    if (onClick) {
-      return onClick(e);
-    }
-  }
-
   return (
     <button
       className={`
@@ -84,8 +74,8 @@ const Button: React.FC<ButtonProps> = ({
       `}
       disabled={disabled || isLoading}
       type={attr}
-      onClick={onclick}
       data-testid={dataTestid}
+      {...props}
     >
       {isLoading && (
         <LoadingSpinner

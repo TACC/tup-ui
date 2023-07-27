@@ -7,6 +7,7 @@ import Button, * as BTN from './Button';
 const TEST_TEXT = '…';
 const TEST_TYPE = 'primary';
 const TEST_SIZE = 'medium';
+const TEST_LABEL = 'alt. button label';
 
 function testClassnamesByType(type, size, getByRole, getByTestId) {
   const root = getByRole('button');
@@ -35,6 +36,13 @@ describe('Button', () => {
   it('uses given text', () => {
     const { getByRole } = render(<Button>{TEST_TEXT}</Button>);
     expect(getByRole('button').textContent).toEqual(TEST_TEXT);
+  });
+
+  it('uses given aria-label', () => {
+    const { getByLabelText } = render(
+      <Button ariaLabel={TEST_LABEL}>{TEST_TEXT}</Button>
+    );
+    expect(getByLabelText(TEST_LABEL).textContent).toEqual(TEST_LABEL);
   });
 
   describe('icons exist as expected when', () => {
