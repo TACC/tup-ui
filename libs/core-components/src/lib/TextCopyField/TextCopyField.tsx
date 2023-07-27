@@ -65,6 +65,7 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({
         className={className}
         placeholder={placeholder}
         data-testid="input"
+        disabled
         readOnly
       />
     </>
