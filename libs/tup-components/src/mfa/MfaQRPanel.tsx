@@ -57,7 +57,7 @@ const MfaQRPanel: React.FC = () => {
           <div className="s-affixed-input-wrapper s-affixed-input-wrapper--prepend s-affixed-input-wrapper--full-width">
             <TextCopyField
               id="text"
-              value="data.otpkey.value_b32"
+              value={data.otpkey.value_b32}
               buttonClassName="s-affixed-input-wrapper__prepend"
               firstElement="input"
             />
