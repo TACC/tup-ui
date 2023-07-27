@@ -48,7 +48,7 @@ const MfaQRPanel: React.FC = () => {
           <TicketCreateModal display="link">submit a ticket</TicketCreateModal>.
         </InlineMessage>
       )}
-      {true && (
+      {data && data.otpkey && (
         <p className={styles['mfa-message']}>
           Can't scan QR code?{' '}
           <label htmlFor="text" className={styles['qr-code-alt-label']}>
@@ -64,7 +64,7 @@ const MfaQRPanel: React.FC = () => {
           </div>
         </p>
       )}
-      {false && (
+      {data && !data.otpkey && (
         <p className={styles['mfa-message']}>
           Can't scan QR code?{' '}
           <TicketCreateModal display="link">Submit a ticket.</TicketCreateModal>
