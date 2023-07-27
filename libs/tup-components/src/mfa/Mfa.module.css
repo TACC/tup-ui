@@ -11,8 +11,7 @@ ol.pairing-container {
 }
 
 .pairing-container > *:not(.pairing-separator) {
-    min-width: 210px;
-    max-width: 375px;
+    width: 365px; /* FAQ: static width, so .mfa-message is centered */
 }
 
 .pairing-separator {
