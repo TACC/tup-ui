@@ -11,8 +11,6 @@ export { default as Paginator } from './lib/Paginator';
 export { default as Pill } from './lib/Pill';
 export { default as DropdownSelector } from './lib/DropdownSelector';
 export { default as ShowMore } from './lib/ShowMore';
-export { default as TextCopyField } from './lib/TextCopyField';
-export { default as TextCopyModal } from './lib/TextCopyModal';
 export { default as SectionTableWrapper } from './lib/SectionTableWrapper';
 export { default as InfiniteScrollTable } from './lib/InfiniteScrollTable';
 export { default as Sidebar } from './lib/Sidebar';
