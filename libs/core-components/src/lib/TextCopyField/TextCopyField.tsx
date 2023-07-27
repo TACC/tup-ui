@@ -58,7 +58,7 @@ const TextCopyField: React.FC<TextCopyFieldProps> = ({
         Copy
       </Button>
       <input
-        {...(id ? { id } : {})}
+        id={id}
         type="text"
         onChange={onChange}
         value={value}
