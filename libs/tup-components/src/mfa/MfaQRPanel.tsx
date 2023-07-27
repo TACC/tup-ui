@@ -4,27 +4,13 @@ import {
   Button,
   InlineMessage,
   LoadingSpinner,
-  TextCopyModal,
+  TextCopyField,
 } from '@tacc/core-components';
 import { TicketCreateModal } from '../tickets';
 import styles from './Mfa.module.css';
 
 const MfaQRPanel: React.FC = () => {
   const { mutate, isLoading, data, isError } = useMfaPairTotp();
-
-  const TextCopyModalHint = () => (
-    <>
-      Enter this code into an approved{' '}
-      <a
-        href="https://docs.tacc.utexas.edu/basics/mfa/#mfaapps"
-        target="_blank"
-        rel="noreferrer"
-      >
-        MFA pairing app
-      </a>
-      .
-    </>
-  );
 
   return (
     <>
@@ -62,20 +48,23 @@ const MfaQRPanel: React.FC = () => {
           <TicketCreateModal display="link">submit a ticket</TicketCreateModal>.
         </InlineMessage>
       )}
-      {data && data.otpkey && (
+      {true && (
         <p className={styles['mfa-message']}>
           Can't scan QR code?{' '}
-          <TextCopyModal
-            display="link"
-            title="Alternative Verification Code"
-            text={data.otpkey.value_b32}
-            hint={<TextCopyModalHint />}
-          >
-            View alternative verification code.
-          </TextCopyModal>
+          <label htmlFor="text" className={styles['qr-code-alt-label']}>
+            Enter this one-time password into an MFA app:
+          </label>
+          <div className="s-affixed-input-wrapper s-affixed-input-wrapper--prepend s-affixed-input-wrapper--full-width">
+            <TextCopyField
+              id="text"
+              value="data.otpkey.value_b32"
+              buttonClassName="s-affixed-input-wrapper__prepend"
+              firstElement="input"
+            />
+          </div>
         </p>
       )}
-      {data && !data.otpkey && (
+      {false && (
         <p className={styles['mfa-message']}>
           Can't scan QR code?{' '}
           <TicketCreateModal display="link">Submit a ticket.</TicketCreateModal>

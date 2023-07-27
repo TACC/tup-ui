@@ -69,6 +69,12 @@ li.pairing-separator {
 .qr-code-box > button {
     width: var(--qr-code-size) !important; /* overwrite c-button, which is too specific */
 }
+label.qr-code-alt-label {
+    font-weight: normal; /* to overwrite core-styles */
+}
+.s-affixed-input-wrapper {
+    display: inline-grid; /* to overwrite core-styles */
+}
 
 
 /* Wide */
