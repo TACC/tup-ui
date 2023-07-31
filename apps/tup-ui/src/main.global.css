@@ -7,6 +7,11 @@
 /* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.14+ */
 @import url("@tacc/core-styles/dist/trumps/s-affixed-input-wrapper.css");
 
+/* To use new form styles in core-styles.base.css */
+/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.15+ */
+@import url("@tacc/core-styles/dist/elements/form.css");
+@import url("@tacc/core-styles/dist/trumps/s-form.css");
+
 /* To overwrite @tacc/core-styles CEPv2 spacing */
 :root {
   /* TACC/Core-Styles/blob/823b7b9/src/lib/_imports/settings/space.css */

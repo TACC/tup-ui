@@ -47,28 +47,3 @@ hr {
 :root {
   --global-color-danger--normal: #dc393b;
 }
-
-/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles with `s-form` */
-/* To mimic `c-form__field` layout */
-.s-form > div > label + input {
-  display: block;
-}
-.s-form > div + button {
-  display: block;
-  margin-top: 2rem; /* to mimic c-form__field margin-bottom */
-}
-/* To mimic `c-form__help` */
-.s-form small {
-  display: block;
-  font-size: var(--global-font-size--small);
-  font-style: italic;
-}
-.s-form :not(ul,label) + small {
-  margin-top: 0.3em;
-}
-.s-form small > :not(details, a, samp) {
-  font-style: initial;
-}
-.s-affixed-input-wrapper.s-form small {
-  grid-area: help;
-}

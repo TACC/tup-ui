@@ -41,7 +41,7 @@
     "@nrwl/vite": "^15.6.3",
     "@nrwl/web": "15.6.3",
     "@nrwl/workspace": "15.6.3",
-    "@tacc/core-styles": "^2.14.0",
+    "@tacc/core-styles": "^2.15.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "^14.4.3",

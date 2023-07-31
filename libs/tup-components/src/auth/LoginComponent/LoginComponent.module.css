@@ -1,6 +1,3 @@
-/* So login form is built off CMS styles */
-@import url('@tacc/core-styles/dist/elements/form.cms.css') layer(base);
-
 /* CONTAINER */
 
 .root {
@@ -54,10 +51,8 @@
   display: none;
 }
 .field {
-  max-width: unset; /* undo forms.cms.css `input...` */
-
   /* To use larger field inputs, always (not just coarse pointer devices) */
-  padding: 12px 12px; /* mimic forms.cms.css `@media (pointer: coarse)` */
+  padding: 12px 12px; /* mimic Core Styles forms.css @media (pointer: coarse) */
 }
 
 
