@@ -16,4 +16,5 @@ export { default as InfiniteScrollTable } from './lib/InfiniteScrollTable';
 export { default as Sidebar } from './lib/Sidebar';
 export { default as HistoryBadge } from './lib/HistoryBadge';
 export { default as Collapse } from './lib/Collapse';
+export { default as TextCopyField } from './lib/TextCopyField';
 export * from './lib/Form';

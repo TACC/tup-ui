@@ -1,13 +1,30 @@
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
 /* Layout styles */
 .pairing-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     padding: var(--global-space--section);
-    gap: 20px;
+    gap: var(--global-space--section-left);
+}
+ol.pairing-container {
+    margin-bottom: 0; /* overwrite core-styles.base.css */
+}
+
+.pairing-container > *:not(.pairing-separator) {
+    width: 365px; /* FAQ: static width, so .mfa-message is centered */
 }
 
 .pairing-separator {
-    border-left: 2px solid #D8D8D8
+    border-left: var(--global-border-width--normal) solid var(--global-color-primary--light);
+}
+li.pairing-separator {
+    list-style-type: none;
+}
+
+/* To add space between "2." and separator */
+.pairing-separator + li {
+    /* This assumes `list-style-position: outside` (browser default) */
+    margin-left: 1.25em;
 }
 
 .mfa-type-selection {
@@ -33,47 +50,77 @@
 
 
 /* TOTP pairing styles */
-.qr-button {
-    width: 200px;
+.qr-code-box > * {
+    --border-width: var(--global-border-width--xx-thick);
+    --qr-code-size: 20rem;
+
+    width: var(--qr-code-size);
+    height: var(--qr-code-size);
+    outline: var(--border-width) solid #D8D8D8;
+    margin-block: 20px;
+    margin-inline: var(--border-width);
+}
+.qr-code-box > button {
+    /* To overwrite c-button */
     white-space: normal;
-    text-overflow: none;
+    text-overflow: initial;
+}
+/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles#204 */
+.qr-code-box > button {
+    width: var(--qr-code-size) !important; /* overwrite c-button, which is too specific */
+}
+label.qr-code-alt-label {
+    font-weight: normal; /* to overwrite core-styles */
+}
+.s-affixed-input-wrapper {
+    display: inline-grid; /* to overwrite core-styles */
 }
 
-.qr-code-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+/* Wide */
+@media screen and (--medium-and-above) {
+    .pairing-container {
+        /* To layout items on one left-aligned row */
+        grid-auto-flow: column;
+        justify-content: start;
+
+        /* To support `position: absolute` child */
+        position: relative;
+        width: max-content; /* to not let wide child change parent width */
+    }
+    .mfa-message {
+        /* To position message beneath both paring steps */
+        position: absolute;
+        top: 100%;
+
+        /* To constrain width within parent given 100% would exceed parent */
+        max-width: calc(
+            100%
+            - var(--global-space--section-left)
+            - var(--global-space--section-right)
+        );
+
+        /* To horizontally center content (not text) */
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: max-content;
+    }
 }
-.qr-code-box > div {
-    display: flex;
-    width: 200px;
-    height: 200px;
-    border: 7px solid #D8D8D8;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    justify-content: center;
-}
-.qr-code-box > img {
-    width: 100%;
-    height: 100%;
-}
-.qr-code-error {
-    max-width: 200px;
-}
+
+
 
 .mfa-form {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
-.submit-button {
-    padding-top: 20px;
-}
-
-.verify-error-message {
+.mfa-form input {
+    /* To prevent input field from stretching */
+    /* FAQ: Input field stretched when long error message */
+    /* HELP: Can this be fixed in Core Styles? */
+    /* WARNING: This would cause bug: shrink login form field width */
     width: fit-content;
-    height: fit-content;
-    padding-top: 15px;
 }
 
 
@@ -83,8 +130,7 @@
     height: fit-content;
     padding: var(--global-space--section)
 }
-
-.mfa-return-button {
+.mfa-success-container button {
     margin-top: 50px;
     font-size: 1.1rem;
 }

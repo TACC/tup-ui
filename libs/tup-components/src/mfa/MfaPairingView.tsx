@@ -6,12 +6,16 @@ import styles from './Mfa.module.css';
 
 const MfaPairingLayout: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
   return (
-    <div className={styles['pairing-container']}>
-      {method === 'totp' && <MfaQRPanel />}
-      {method === 'sms' && <MfaSmsPanel />}
-      <div className={styles['pairing-separator']} />
-      <MfaValidationPanel tokenType={method} />
-    </div>
+    <ol className={styles['pairing-container']}>
+      <li>
+        {method === 'totp' && <MfaQRPanel />}
+        {method === 'sms' && <MfaSmsPanel />}
+      </li>
+      <li aria-hidden className={styles['pairing-separator']} />
+      <li value="2">
+        <MfaValidationPanel tokenType={method} />
+      </li>
+    </ol>
   );
 };
 
