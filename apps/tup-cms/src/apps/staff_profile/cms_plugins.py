@@ -10,7 +10,7 @@ from django import forms
 from djangocms_text_ckeditor.widgets import TextEditorWidget
 
 from .models import StaffProfilePlugin
-
+from .forms import StaffProfilePluginForm
 
 def get_display_name(instance):
     if instance.title:
@@ -43,6 +43,7 @@ def get_articles(instance):
 class StaffProfilePlugin(CMSPluginBase):
     module = "TUP CMS"
     name = "Staff Profile"
+    form = StaffProfilePluginForm
     model = StaffProfilePlugin
     render_template = "staff_profile/profile.html"
     cache = False
