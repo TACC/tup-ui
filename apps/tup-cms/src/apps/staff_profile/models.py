@@ -9,18 +9,18 @@ class StaffProfilePlugin(CMSPlugin):
     Model for CMS staff profile pages.
     """
     name = models.CharField(max_length=200)
-    title = models.CharField(max_length=100, blank=True)
+    title = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     department = models.CharField(max_length=100)
-    phone = models.CharField(max_length=50, blank=True)
+    phone = models.CharField(max_length=50, null=True)
 
     description = models.TextField()
 
-    photo = FilerImageField(on_delete=models.CASCADE, blank=True)
+    photo = FilerImageField(on_delete=models.CASCADE, null=True)
 
-    publications = models.TextField(blank=True)
-    projects = models.TextField(blank=True)
-    education = models.TextField(blank=True)
-    research_areas = models.TextField(blank=True)
-    memberships = models.TextField(blank=True)
-    experience = models.TextField(blank=True)
+    publications = models.TextField(null=True)
+    projects = models.TextField(null=True)
+    education = models.TextField(null=True)
+    research_areas = models.TextField(null=True)
+    memberships = models.TextField(null=True)
+    experience = models.TextField(null=True)
