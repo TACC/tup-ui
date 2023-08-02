@@ -60,6 +60,9 @@ li.pairing-separator {
     margin-block: 20px;
     margin-inline: var(--border-width);
 }
+.qr-code-box > div:global(.loading-icon) {
+    display: inline-flex; /* so space above matches button and img */
+}
 .qr-code-box > button {
     /* To overwrite c-button */
     white-space: normal;
