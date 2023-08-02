@@ -1,12 +1,8 @@
 @import url('@tacc/core-styles/dist/settings/color--portal.css');
 
-.input {
-  /* composes: input from '@tacc/core-styles/dist/components/...form.css'; */
-}
-
 .copy-button {
-  /* So JavaScript can set this (JavaScript also needs the value) */
-  --transition-duration: 0;
+  /* WARNING: Must match JavaScript `transitionDuration` */
+  --transition-duration: 0.15;
 
   transition: color var(--transition-duration),
     background-color var(--transition-duration);

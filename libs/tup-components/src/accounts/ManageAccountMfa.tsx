@@ -73,7 +73,6 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
             )}
             <p>
               <label htmlFor="current-mfa-token">Enter MFA Token:&nbsp;</label>
-              <br />
               <input
                 value={currentToken}
                 autoComplete="off"
@@ -120,15 +119,6 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
 const MfaSectionHeader: React.FC = () => (
   <div className={styles['tap-header']}>
     <strong>MFA Pairing</strong>
-    <div style={{ float: 'right' }}>
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href="https://docs.tacc.utexas.edu/basics/mfa/"
-      >
-        <strong>MFA Documentation</strong>
-      </a>
-    </div>
   </div>
 );
 
@@ -144,8 +134,7 @@ export const AccountMfa: React.FC = () => {
         <MfaSectionHeader />
         <SectionMessage type="error">
           There was an error retrieving your multifactor authentication status.
-          Your account may be in a non-valid state. if this error persists
-          please{' '}
+          Your account may be in a non-valid state. If this error persists,{' '}
           <TicketCreateModal display="link">submit a ticket</TicketCreateModal>{' '}
           with this information and TACC User Services will assist you.
         </SectionMessage>
