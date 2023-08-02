@@ -73,7 +73,6 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
             )}
             <p>
               <label htmlFor="current-mfa-token">Enter MFA Token:&nbsp;</label>
-              <br />
               <input
                 value={currentToken}
                 autoComplete="off"
