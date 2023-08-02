@@ -3,7 +3,8 @@
 /* Layout styles */
 .pairing-container {
     display: grid;
-    padding: var(--global-space--section);
+    padding-inline: var(--global-space--section-left);
+    padding-bottom: var(--global-space--section-bottom);
     gap: var(--global-space--section-left);
 }
 ol.pairing-container {
@@ -32,22 +33,6 @@ li.pairing-separator {
     gap: 20px;
     margin-top: 30px; /* match .mfa-success-container button */
 }
-
-.mfa-type-container {
-    padding: var(--global-space--section);
-}
-
-.mfa-header {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid black;
-    padding: 10px;
-
-}
-.mfa-header > div:first-child {
-    font-size: 2rem;
-}
-
 
 /* TOTP pairing styles */
 .qr-code-box > * {
@@ -135,7 +120,6 @@ label.qr-code-alt-label {
 /* Success view */
 .mfa-success-container {
     width: fit-content;
-    padding: var(--global-space--section);
 }
 .mfa-success-container button {
     margin-top: 30px; /* match .mfa-type-selection */

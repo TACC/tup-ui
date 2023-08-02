@@ -1,10 +1,8 @@
-import styles from './Mfa.module.css';
+import { SectionHeader } from '@tacc/core-components';
 import TicketCreateModal from '../tickets/TicketCreateModal';
 
 const MfaHeader: React.FC = () => {
-  return (
-    <div className={styles['mfa-header']}>
-      <div>Multifactor Authentication Pairing</div>
+  const Actions = (
       <nav className="c-nav c-nav--no-list c-nav--piped">
         <TicketCreateModal display="link">Get Help</TicketCreateModal>
         <a
@@ -15,7 +13,12 @@ const MfaHeader: React.FC = () => {
           MFA Documentation
         </a>
       </nav>
-    </div>
+  );
+
+  return (
+    <SectionHeader actions={Actions}>
+      Multifactor Authentication Pairing
+    </SectionHeader>
   );
 };
 
