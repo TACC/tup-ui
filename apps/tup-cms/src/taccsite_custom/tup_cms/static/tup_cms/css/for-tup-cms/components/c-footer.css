@@ -179,7 +179,7 @@ html:not(#page-portal) .c-footer {
 /* To reduce size of Portal footer */
 html#page-portal .c-footer {
     --pad-vert: 0;
-    --pad-horz: 15px;
+    --pad-horz: 15px; /* WARNING: any less causes unexplained scrollbar */
 }
 html#page-portal .c-footer p {
     margin-bottom: revert; /* undo Bootstrap */
