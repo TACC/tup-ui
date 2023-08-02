@@ -29,7 +29,7 @@ describe('LoginComponent', () => {
     const { getByLabelText, getByRole } = testRender(<LoginComponent />);
     const username = getByLabelText(/User Name/);
     const password = getByLabelText(/Password/);
-    const submit = getByRole("button");
+    const submit = getByRole('button');
     await act(async () => {
       await fireEvent.change(username, { target: { value: 'mockuser' } });
       await fireEvent.change(password, { target: { value: 'password' } });
@@ -52,7 +52,7 @@ describe('LoginComponent', () => {
     );
     const username = getByLabelText(/User Name/);
     const password = getByLabelText(/Password/);
-    const submit = getByRole("button");
+    const submit = getByRole('button');
     await act(async () => {
       await fireEvent.change(username, { target: { value: 'mockuser' } });
       await fireEvent.change(password, { target: { value: 'password' } });
@@ -81,7 +81,7 @@ describe('LoginComponent', () => {
     );
     const username = getByLabelText(/User Name/);
     const password = getByLabelText(/Password/);
-    const submit = getByRole("button");
+    const submit = getByRole('button');
     await act(async () => {
       await fireEvent.change(username, { target: { value: 'mockuser' } });
       await fireEvent.change(password, { target: { value: 'password' } });
