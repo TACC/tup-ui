@@ -30,11 +30,11 @@ li.pairing-separator {
 .mfa-type-selection {
     display: flex;
     gap: 20px;
-    margin-top: 30px;
+    margin-top: 30px; /* match .mfa-success-container button */
 }
 
 .mfa-type-container {
-    padding-top: var(--global-space--section-top);
+    padding: var(--global-space--section);
 }
 
 .mfa-header {
@@ -135,10 +135,8 @@ label.qr-code-alt-label {
 /* Success view */
 .mfa-success-container {
     width: fit-content;
-    height: fit-content;
-    padding: var(--global-space--section)
+    padding: var(--global-space--section);
 }
 .mfa-success-container button {
-    margin-top: 50px;
-    font-size: 1.1rem;
+    margin-top: 30px; /* match .mfa-type-selection */
 }
