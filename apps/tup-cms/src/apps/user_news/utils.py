@@ -34,7 +34,7 @@ def get_latest_articles(count = max_articles, sanitize = True):
 
 def get_article(id_, sanitize = True):
   articles = get_articles(sanitize)
-  filtered_articles = filter(lambda article: article['ID'] == id_, articles)
+  filtered_articles = filter(lambda article: article['ID'] == int(id_), articles)
   article = list(filtered_articles)[0]
 
   return create_proxy_article(article)
