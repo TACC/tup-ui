@@ -108,6 +108,9 @@ label.qr-code-alt-label {
         margin-left: auto;
         margin-right: auto;
         width: max-content;
+
+        /* To add space between message and bottom of section when it scrolls */
+        padding-bottom: 2rem;
     }
 }
 
