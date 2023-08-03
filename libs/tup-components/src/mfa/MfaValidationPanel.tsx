@@ -42,12 +42,6 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
           Confirm Pairing
         </Button>
       </form>
-      {tokenType === 'sms' && (
-        <p className={styles['mfa-message']}>
-          Didn't receive a message within 5 minutes?{' '}
-          <TicketCreateModal display="link">Get Help</TicketCreateModal>
-        </p>
-      )}
     </>
   );
 };
