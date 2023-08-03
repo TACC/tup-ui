@@ -7,14 +7,16 @@
 - [Browse Core Styles](#browse-core-styles)
 - [Use Core Styles](#use-core-styles)
 - [Create Core Styles](#create-core-styles)
-- [Use Global Project Styles](#use-global-project-styles)
-- [Create Global Project Styles](#create-global-project-styles)
+- [Use Project Styles](#create-project-styles)
+- [Create Project Styles](#create-project-styles)
+- [Use Global Styles](#use-global-styles)
+- [Create Global Styles](#create-global-styles)
 
 ## How to Style
 
 1. **Avoid** Global Project styles.
 2. Do use and create [Component Styles](#component-styles).
-3. Do use and create [Core Styles].
+3. Do use and create [Core Styles] or [Project Styles].
 4. Do follow our [CSS Style Guide].
 
 ## Component Styles
@@ -107,42 +109,38 @@ selector {
 
 ## Create [Core Styles]
 
-1. Clone [Core Styles].
+1. Clone/Fork [Core Styles].
 2. Develop component.
-3. Request review.\*
+3. Request review.
 
-<sub>\* You might need to request repository access.</sub>
+## Use Project Styles
 
-## Use Global Project Styles
+For new patterns not mature enough for [Core Styles], create it for one project.
 
-### In `main.css`, Import from Global Project Styles
+### In Component Styles, Import from Project Styles
 
-**`/main.global.css`**
+**`.../SomeComponent.module.css`**
 
 ```css
-@import url('/styles/(.../)something-not-already-available-globally.css');
+@import url('../../styles/(.../)something-for-just-one-project-not-global.css');
 ```
 
-<sub>\* A `main.css` might not exist (because no global project styles exist).</sub>
+## Create Project Styles
 
-## Create Global Project Styles
+### In Project Styles, Append to [Core Styles]
 
-If you need global styles, then evaluate these options.
-
-### In Global Styles, Append to [Core Styles]
-
-**`/styles/(.../)some-global-stylesheet.css`**
+**`/libs/*/styles/(.../)some-project-stylesheet.css`**
 
 ```css
 :root {
   /* To overwrite @tacc/core-styles/.../settings/color.css */
-  --some-global-prop: 'value';
+  --some-project-prop: 'value';
 }
 ```
 
-### In Global Project Styles, Extend from [Core Styles]
+### In Project Styles, Extend from [Core Styles]
 
-**`/styles/(.../)some-global-stylesheet.css`**
+**`/libs/*/styles/(.../)some-project-stylesheet.css`**
 
 ```css
 @import url('@tacc/core-styles/.../tools/x-truncate.css');
@@ -154,7 +152,48 @@ selector {
 }
 ```
 
-### In Global Project Styles, Import from [Core Styles]
+## Use Global Styles
+
+### In `main.css`, Import from Global Styles
+
+**`/main.global.css`\***
+
+```css
+@import url('./styles/(.../)something-not-already-available-globally.css');
+```
+
+<sub>\* A `main.css` might not exist (because no global project styles exist).</sub>
+
+## Create Global Styles
+
+If you need global styles, then evaluate these options.
+
+### In Global Styles, Append to [Core Styles]
+
+**`/apps/tup-ui/styles/(.../)some-global-stylesheet.css`**
+
+```css
+:root {
+  /* To overwrite @tacc/core-styles/.../settings/color.css */
+  --some-global-prop: 'value';
+}
+```
+
+### In Global Styles, Extend from [Core Styles]
+
+**`/apps/tup-ui/styles/(.../)some-global-stylesheet.css`**
+
+```css
+@import url('@tacc/core-styles/.../tools/x-truncate.css');
+
+selector {
+  @extend .x-truncate--one-line;
+
+  global: 'styles';
+}
+```
+
+### In Global Styles, Import from [Core Styles]
 
 **`/main.global.css`**
 
