@@ -7,7 +7,7 @@ import { TicketCreateModal } from '../tickets';
 const MfaSmsPanel: React.FC = () => {
   const smsMutation = useMfaPairSms();
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [hasAttemptedSMS, setHasAttemptedSMS] = useState<boolean>('');
+  const [hasAttemptedSMS, setHasAttemptedSMS] = useState<boolean>(false);
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setHasAttemptedSMS(true);
