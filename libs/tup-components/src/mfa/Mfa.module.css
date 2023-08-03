@@ -2,30 +2,18 @@
 
 /* Layout styles */
 .pairing-container {
-    display: grid;
-    padding-inline: var(--global-space--section-left);
-    padding-bottom: var(--global-space--section-bottom);
-    gap: var(--global-space--section-left);
+    composes: c-step-panels from '../../styles/c-step-panels.css';
 }
-ol.pairing-container {
-    margin-bottom: 0; /* overwrite core-styles.base.css */
-}
-
-.pairing-container > *:not(.pairing-separator) {
-    width: 365px; /* FAQ: static width, so .mfa-message is centered */
-}
-
 .pairing-separator {
-    border-left: var(--global-border-width--normal) solid var(--global-color-primary--light);
+    composes: c-step-panels__separator from '../../styles/c-step-panels.css';
 }
-li.pairing-separator {
-    list-style-type: none;
-}
-
-/* To add space between "2." and separator */
-.pairing-separator + li {
-    /* This assumes `list-style-position: outside` (browser default) */
-    margin-left: 1.25em;
+@media screen and (--medium-and-above) {
+    .pairing-container {
+        composes: c-step-panels--horizontal from '../../styles/c-step-panels.css';
+    }
+    .mfa-message {
+        composes: c-step-panels__message from '../../styles/c-step-panels.css';
+    }
 }
 
 .mfa-type-selection {
@@ -64,42 +52,6 @@ label.qr-code-alt-label {
 }
 .s-affixed-input-wrapper {
     display: inline-grid; /* to overwrite core-styles */
-}
-
-
-/* Wide */
-@media screen and (--medium-and-above) {
-    .pairing-container {
-        /* To layout items on one left-aligned row */
-        grid-auto-flow: column;
-        justify-content: start;
-
-        /* To support `position: absolute` child */
-        position: relative;
-        width: max-content; /* to not let wide child change parent width */
-    }
-    .mfa-message {
-        /* To position message beneath both paring steps */
-        position: absolute;
-        top: 100%;
-
-        /* To constrain width within parent given 100% would exceed parent */
-        max-width: calc(
-            100%
-            - var(--global-space--section-left)
-            - var(--global-space--section-right)
-        );
-
-        /* To horizontally center content (not text) */
-        left: 0;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        width: max-content;
-
-        /* To add space between message and bottom of section when it scrolls */
-        padding-bottom: 2rem;
-    }
 }
 
 
