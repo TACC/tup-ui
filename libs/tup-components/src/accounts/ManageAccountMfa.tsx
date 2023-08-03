@@ -54,7 +54,7 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
       <Modal
         isOpen={isOpen}
         toggle={toggle}
-        size={useSms ? 'lg' : 'md'}
+        size="md"
         className="modal-dialog-centered"
       >
         <ModalHeader
