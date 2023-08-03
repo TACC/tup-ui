@@ -2,10 +2,15 @@
 
 /* Layout styles */
 .pairing-container {
-    composes: c-step-panels from '../../styles/c-step-panels.css';
+    --extra-space-below-panel-for-message: 50px; /* text copy input height ++ */
+
+    composes: c-step-panels c-step-panels--has-scroll-parent from '../../styles/c-step-panels.css';
 }
 .pairing-separator {
     composes: c-step-panels__separator from '../../styles/c-step-panels.css';
+}
+.pairing-container > *:not(.pairing-separator) {
+    width: 365px; /* FAQ: static width, so .c-step-panels__message is centered */
 }
 @media screen and (--medium-and-above) {
     .pairing-container {
@@ -57,8 +62,7 @@ label.qr-code-alt-label {
 
 
 .mfa-form {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    composes: c-step-panels__content from '../../styles/c-step-panels.css';
 }
 .mfa-form input {
     /* To prevent input field from stretching */

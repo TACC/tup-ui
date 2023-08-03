@@ -1,66 +1,92 @@
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
+/* Layout styles */
+.unpairing-container {
+  composes: c-step-panels c-step-panels--has-scroll-parent from '../../styles/c-step-panels.css';
+}
+.unpairing-separator {
+  composes: c-step-panels__separator from '../../styles/c-step-panels.css';
+}
+.has-sms {
+    width: 100%;
+    max-width: 375px;
+    grid-template-columns: 1fr auto 1fr;
+}
+@media screen and (--medium-and-above) {
+  .unpairing-container {
+    composes: c-step-panels--horizontal from '../../styles/c-step-panels.css';
+  }
+  .mfa-message {
+    composes: c-step-panels__message from '../../styles/c-step-panels.css';
+  }
+}
+.mfa-fieldwrap {
+  composes: c-step-panels__content from '../../styles/c-step-panels.css';
+}
+
 .account-layout{
-    padding: var(--global-space--section);
-    padding-right: 30px;
+  padding: var(--global-space--section);
+  padding-right: 30px;
 }
 
 .account-header {
-    font-size: 2rem;
-    border-bottom: 1px solid #707070;
-    padding: 10px;
+  font-size: 2rem;
+  border-bottom: 1px solid #707070;
+  padding: 10px;
 }
 .account-header > i {
-    font-size: 32px;
-    margin-bottom: -6px;
-    margin-right: 0.5rem;
+  font-size: 32px;
+  margin-bottom: -6px;
+  margin-right: 0.5rem;
 
 }
 
 .account-body {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: row;
-    gap: 3%;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 3%;
 }
 .account-body > section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
 }
 .account-body > section:nth-of-type(1) {
-    flex: 1.5;
+  flex: 1.5;
 }
 .account-body > section:nth-of-type(2) {
-    flex: 1;
+  flex: 1;
 }
 
 .tap-header {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #707070;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #707070;
 }
 
 .tap-description {
-    font-size: 1rem;
-    font-style: italic;
-    color: #484848;
+  font-size: 1rem;
+  font-style: italic;
+  color: #484848;
 }
 
 .tap-button {
-    width: 200px;
+  width: 200px;
 }
 
 .tap-href {
-    width: fit-content;
+  width: fit-content;
 }
 
 .tap-separator {
-    border-right: 1px solid #707070;
-    margin-top: 10px;
+  border-right: 1px solid #707070;
+  margin-top: 10px;
 }
 
 .mfa-options {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

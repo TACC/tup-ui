@@ -5,9 +5,25 @@
     padding-inline: var(--global-space--section-left);
     padding-bottom: var(--global-space--section-bottom);
     gap: var(--global-space--section-left);
+
+    --space-below-panel-before-message: var(--global-space--section-bottom);
+    --extra-space: var(--extra-space-below-panel-for-message, 0px);
+
+    /* FAQ: body font-size * body line-height + button vert. border + extra … */
+    --space-below-panel-for-message: calc(
+        var(--global-font-size--small)
+        * 1.4
+        + (var(--global-border-width--normal) * 2)
+        + var(--extra-space)
+        + var(--space-below-panel-before-message)
+    )
 }
 ol.c-step-panels {
     margin-bottom: 0; /* overwrite core-styles.base.css */
+}
+/* HACK: Add space for c-step-panels__message to avoid causing scrollbar */
+.c-step-panels--has-scroll-parent {
+    padding-bottom: var(--space-below-panel-for-message);
 }
 
 
@@ -15,10 +31,6 @@ ol.c-step-panels {
 
 
 /* Elements */
-
-.c-step-panels > *:not(.c-step-panels__separator) {
-    width: 365px; /* FAQ: static width, so .c-step-panels__message is centered */
-}
 
 .c-step-panels__separator {
     border-left: var(--global-border-width--normal) solid var(--global-color-primary--light);
@@ -31,6 +43,11 @@ li.c-step-panels__separator {
 .c-step-panels__separator + li {
     /* This assumes `list-style-position: outside` (browser default) */
     margin-left: 1.25em;
+}
+
+.c-step-panels__content {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 
@@ -58,16 +75,21 @@ li.c-step-panels__separator {
     position: relative;
     width: max-content; /* to not let wide child change parent width */
 }
-.c-step-panels--horizontal .c-step-panels__message {
+.c-step-panels--horizontal li:not(:only-child) .c-step-panels__message {
     /* To position message beneath both paring steps */
     position: absolute;
-    top: 100%;
-
-    /* To constrain width within parent given 100% would exceed parent */
-    max-width: calc(
+    top: calc(
         100%
-        - var(--global-space--section-left)
-        - var(--global-space--section-right)
+        - var(--space-below-panel-for-message)
+        + var(--space-below-panel-before-message)
+    );
+
+    /* To stretch content */
+    width: max-content;
+    max-width: calc(
+      100%
+      - var(--global-space--section-left)
+      - var(--global-space--section-right)
     );
 
     /* To horizontally center content (not text) */
@@ -75,8 +97,4 @@ li.c-step-panels__separator {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    width: max-content;
-
-    /* To add space between message and bottom of section when it scrolls */
-    padding-bottom: 2rem;
 }

@@ -1,4 +1,9 @@
-import { Button, LoadingSpinner, SectionMessage } from '@tacc/core-components';
+import {
+  Button,
+  InlineMessage,
+  LoadingSpinner,
+  SectionMessage,
+} from '@tacc/core-components';
 import {
   MfaTokenResponse,
   useMfa,
@@ -38,6 +43,9 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
       otpcode: currentToken,
     });
   };
+
+  const useSms = pairing.token?.tokentype === 'sms';
+
   return (
     <>
       <Button type="link" onClick={() => toggle()}>
@@ -46,7 +54,7 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
       <Modal
         isOpen={isOpen}
         toggle={toggle}
-        size="md"
+        size={useSms ? 'lg' : 'md'}
         className="modal-dialog-centered"
       >
         <ModalHeader
@@ -63,43 +71,53 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               account.
             </SectionMessage>
             <br />
-            <p>Enter your current MFA token to unpair your device.</p>
-            {pairing.token?.tokentype === 'sms' && (
-              <p>
-                <Button type="primary" onClick={() => sendChallenge(null)}>
-                  Send SMS Token
-                </Button>
-              </p>
-            )}
-            <p>
-              <label htmlFor="current-mfa-token">Enter MFA Token:&nbsp;</label>
-              <input
-                value={currentToken}
-                autoComplete="off"
-                onChange={(e) => setCurrentToken(e.target.value)}
-                id="current-mfa-token"
-              />
-            </p>
+            <ol className={`
+              ${styles['unpairing-container']}
+              ${useSms ? styles['has-sms'] : ''}
+            `}>
+              {useSms && (
+                <>
+                  <li>
+                    <label className={`${styles['mfa-fieldwrap']}`}>
+                      <Button type="link" onClick={() => sendChallenge(null)}>
+                        Send SMS token.
+                      </Button>
+                    </label>
+                  </li>
+                  <li aria-hidden className={styles['unpairing-separator']} />
+                </>
+              )}
+              <li value={useSms ? '2' : undefined}>
+                <div className={`${styles['mfa-fieldwrap']}`}>
+                  <label htmlFor="current-mfa-token">Enter MFA Token:</label>
+                  <input
+                    value={currentToken}
+                    autoComplete="off"
+                    onChange={(e) => setCurrentToken(e.target.value)}
+                    id="current-mfa-token"
+                  />
+                </div>
 
-            {isError && (
-              <p>
-                <SectionMessage type="error">
-                  There was an error verifying your MFA token.
-                </SectionMessage>
-              </p>
-            )}
+                <p className={styles['mfa-message']}>
+                  Alternatively,{' '}
+                  <Button type="link" onClick={() => unpairWithEmail(null)}>
+                    unpair via email
+                  </Button>
+                  .
+                </p>
 
-            <p>If you lost your phone, you can unpair via email.</p>
-            <p>
-              <Button onClick={() => unpairWithEmail(null)}>Send Email</Button>
-            </p>
+                {isError && (
+                  <InlineMessage type="error">
+                    There was an error verifying your MFA token.
+                  </InlineMessage>
+                )}
+              </li>
+            </ol>
             {emailSentSuccess && (
-              <p>
-                <SectionMessage type="info">
-                  An email has been sent to the address listed on your account.
-                  Follow its instructions to continue the unpairing.
-                </SectionMessage>
-              </p>
+              <SectionMessage type="info">
+                An email has been sent to the address listed on your account.
+                Follow its instructions to continue the unpairing.
+              </SectionMessage>
             )}
           </ModalBody>
           <ModalFooter>
