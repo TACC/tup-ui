@@ -40,7 +40,7 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
   };
   return (
     <>
-      <Button type="link" onClick={() => toggle()}>
+      <Button type="secondary" onClick={() => toggle()}>
         Unpair
       </Button>
       <Modal
@@ -156,9 +156,7 @@ export const AccountMfa: React.FC = () => {
       )}
       {hasPairing && data.token && (
         <div className={styles['mfa-options']}>
-          <span>
-            {TOKEN_TYPE[data.token.tokentype]} ({data.token.serial})
-          </span>
+          <p>{TOKEN_TYPE[data.token.tokentype]} ({data.token.serial})</p>
           <MfaUnpair pairing={data} />
         </div>
       )}
