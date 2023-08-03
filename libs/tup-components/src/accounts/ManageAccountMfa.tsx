@@ -89,9 +89,12 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               </p>
             )}
 
-            <p>If you lost your phone, you can unpair via email.</p>
             <p>
-              <Button onClick={() => unpairWithEmail(null)}>Send Email</Button>
+              Alternatively,{' '}
+              <Button type="link" onClick={() => unpairWithEmail(null)}>
+                unpair via email
+              </Button>
+              .
             </p>
             {emailSentSuccess && (
               <p>
