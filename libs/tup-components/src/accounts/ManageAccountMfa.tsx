@@ -71,10 +71,12 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               account.
             </SectionMessage>
             <br />
-            <ol className={`
+            <ol
+              className={`
               ${styles['unpairing-container']}
               ${useSms ? styles['has-sms'] : ''}
-            `}>
+            `}
+            >
               {useSms && (
                 <>
                   <li>
