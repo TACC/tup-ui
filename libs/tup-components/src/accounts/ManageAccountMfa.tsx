@@ -156,7 +156,9 @@ export const AccountMfa: React.FC = () => {
       )}
       {hasPairing && data.token && (
         <div className={styles['mfa-options']}>
-          <p>{TOKEN_TYPE[data.token.tokentype]} ({data.token.serial})</p>
+          <p>
+            {TOKEN_TYPE[data.token.tokentype]} ({data.token.serial})
+          </p>
           <MfaUnpair pairing={data} />
         </div>
       )}
