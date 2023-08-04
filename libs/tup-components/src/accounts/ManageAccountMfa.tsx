@@ -94,12 +94,10 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               <Button onClick={() => unpairWithEmail(null)}>Send Email</Button>
             </p>
             {emailSentSuccess && (
-              <p>
-                <SectionMessage type="info">
-                  An email has been sent to the address listed on your account.
+              <SectionMessage type="info">
+                An email has been sent to the address listed on your account.
                   Follow its instructions to continue the unpairing.
-                </SectionMessage>
-              </p>
+              </SectionMessage>
             )}
           </ModalBody>
           <ModalFooter>
