@@ -41,3 +41,10 @@ hr {
   margin-right: 0.25ch;
   text-transform: none;
 }
+
+/* TODO: Remove this after:
+         0. CEP v2 colors are removed from Core-Styles settings/color--portal */
+:root {
+  /* FAQ: The `!important` is only necessary for dev (and thus prod) server */
+  --global-color-danger--normal: #dc393b !important;
+}

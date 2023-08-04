@@ -73,9 +73,9 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
             )}
             <p>
               <label htmlFor="current-mfa-token">Enter MFA Token:&nbsp;</label>
-              <br />
               <input
                 value={currentToken}
+                autoComplete="off"
                 onChange={(e) => setCurrentToken(e.target.value)}
                 id="current-mfa-token"
               />
@@ -116,6 +116,12 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
   );
 };
 
+const MfaSectionHeader: React.FC = () => (
+  <div className={styles['tap-header']}>
+    <strong>MFA Pairing</strong>
+  </div>
+);
+
 export const AccountMfa: React.FC = () => {
   const TOKEN_TYPE = {
     sms: 'SMS Token',
@@ -125,13 +131,10 @@ export const AccountMfa: React.FC = () => {
   if (isError) {
     return (
       <>
-        <div className={styles['tap-header']}>
-          <strong>MFA Pairing</strong>
-        </div>
+        <MfaSectionHeader />
         <SectionMessage type="error">
           There was an error retrieving your multifactor authentication status.
-          Your account may be in a non-valid state. if this error persists
-          please{' '}
+          Your account may be in a non-valid state. If this error persists,{' '}
           <TicketCreateModal display="link">submit a ticket</TicketCreateModal>{' '}
           with this information and TACC User Services will assist you.
         </SectionMessage>
@@ -142,9 +145,10 @@ export const AccountMfa: React.FC = () => {
   const hasPairing = data?.token?.rollout_state === 'enrolled';
   return (
     <>
-      <div className={styles['tap-header']}>
-        <strong>MFA Pairing</strong>
-      </div>
+      <MfaSectionHeader />
+      <span className={styles['tap-description']}>
+        Set up multi-factor authentication using a token app or SMS.
+      </span>
       {!hasPairing && (
         <Link to="/mfa" className={styles['tap-href']}>
           <Button type="primary">Pair Device</Button>

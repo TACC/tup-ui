@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMfaPairSms } from '@tacc/tup-hooks';
-import { Button, SectionMessage } from '@tacc/core-components';
+import { Button, InlineMessage } from '@tacc/core-components';
 import styles from './Mfa.module.css';
 import { TicketCreateModal } from '../tickets';
 
@@ -12,39 +12,31 @@ const MfaSmsPanel: React.FC = () => {
     smsMutation.mutate({ phoneNumber });
   };
   return (
-    <div>
-      <span>1. Enter your phone number:</span>
-      <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
-        <label htmlFor="mfa-phone-number" hidden>
-          Enter your Phone Number:
-        </label>
+    <form
+      onSubmit={(e) => onSubmit(e)}
+      className={`${styles['mfa-form']} s-form`}
+    >
+      <div>
+        <label htmlFor="mfa-phone-number">Enter your Phone Number:</label>
         <input
+          required
           id="mfa-phone-number"
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
-        <div className={styles['submit-button']}>
-          <Button
-            type="primary"
-            attr="submit"
-            isLoading={smsMutation.isLoading}
-          >
-            Send Token
-          </Button>
-        </div>
-      </form>
-      {smsMutation.isError && (
-        <SectionMessage type="error">
-          <div className={styles['qr-code-error']}>
-            There was an error generating your SMS pairing. If this error
-            persists, please{' '}
+        {smsMutation.isError && (
+          <InlineMessage type="error" tagName="small">
+            Unable to pair via SMS. If this error persists,{' '}
             <TicketCreateModal display="link">
               submit a ticket
-            </TicketCreateModal>{' '}
-            and TACC User Services will assist you.
-          </div>
-        </SectionMessage>
-      )}
-    </div>
+            </TicketCreateModal>
+            .
+          </InlineMessage>
+        )}
+      </div>
+      <Button type="primary" attr="submit" isLoading={smsMutation.isLoading}>
+        Send Token
+      </Button>
+    </form>
   );
 };
 
