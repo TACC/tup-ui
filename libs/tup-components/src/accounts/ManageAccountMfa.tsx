@@ -63,7 +63,6 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               account.
             </SectionMessage>
             <br />
-            <p>Enter your current MFA token to unpair your device.</p>
             {pairing.token?.tokentype === 'sms' && (
               <p>
                 <Button type="primary" onClick={() => sendChallenge(null)}>
@@ -72,7 +71,7 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               </p>
             )}
             <p>
-              <label htmlFor="current-mfa-token">Enter MFA Token:&nbsp;</label>
+              <label htmlFor="current-mfa-token">Enter MFA Token:</label>
               <input
                 value={currentToken}
                 autoComplete="off"
