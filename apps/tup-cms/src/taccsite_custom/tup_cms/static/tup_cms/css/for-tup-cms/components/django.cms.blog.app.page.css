@@ -14,7 +14,7 @@ article.post-detail .blog-visual {
     /* To continue hiding news article image on mobile */
     /* TODO: Determine how best to hide on TUP, but not every site */
     /* FAQ: Core-CMS (in dev/tup-cms) sets .blog-visual to `display: grid` */
-    /* SEE: https://github.com/TACC/Core-CMS/blob/dev/tup-cms/taccsite_cms/static/site_cms/css/src/_imports/components/django.cms.blog.app.page.css#L86-L93 */
+    /* SEE: https://github.com/TACC/Core-CMS/blob/v3.12.0-alpha.9/taccsite_cms/static/site_cms/css/src/_imports/components/django.cms.blog.app.page.css#L86-L93 */
     article.post-detail .blog-visual {
         display: none;
     }
