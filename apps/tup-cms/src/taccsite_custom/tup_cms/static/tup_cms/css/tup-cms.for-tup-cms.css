@@ -1,0 +1,34 @@
+/* Organize via ITCSS */
+/* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
+
+/* SETTINGS */
+/* ... */
+
+/* GENERICS */
+@import url("./for-tup-cms/generics/color.css");
+
+/* ELEMENTS */
+@import url("./for-tup-cms/elements/headings--cms.css");
+@import url("./for-tup-cms/elements/mailto-link.css");
+
+/* OBJECTS */
+@import url("./for-tup-cms/objects/o-section.css");
+@import url("./for-tup-cms/objects/people-grid.css");
+
+/* COMPONENTS */
+@import url("./for-tup-cms/components/agenda-table.css");
+@import url("./for-tup-cms/components/banner.css");
+@import url("./for-tup-cms/components/c-data-list.css");
+@import url("./for-tup-cms/components/c-footer.css");
+@import url("./for-tup-cms/components/c-news.css");
+@import url("./for-tup-cms/components/c-tag.css");
+@import url("./for-tup-cms/components/c-update.css");
+@import url("./for-tup-cms/components/c-widget.css");
+@import url("./for-tup-cms/components/content-block.css");
+@import url("./for-tup-cms/components/django-cms-forms.css");
+@import url("./for-tup-cms/components/django.cms.blog.app.page.css");
+@import url("./for-tup-cms/components/layered-image.css");
+
+/* TRUMPS */
+@import url("./for-tup-cms/trumps/s-abbr-list.css");
+@import url("./for-tup-cms/trumps/s-breadcrumbs.css");
