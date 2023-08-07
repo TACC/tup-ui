@@ -5,7 +5,7 @@ import {
   InlineMessage,
   SectionTableWrapper,
 } from '@tacc/core-components';
-import { Display, Operational, Load } from './SystemMonitorCells';
+import { Display, Operational, Load, TextDisplay } from './SystemMonitorCells';
 import { SystemMonitorRawSystem, useSystemMonitor } from '@tacc/tup-hooks';
 import styles from './SystemMonitor.module.css';
 import { EmptyTablePlaceholder } from '../utils';
@@ -25,6 +25,7 @@ export const isSystemOnline = (rawSystem: SystemMonitorRawSystem): boolean => {
 
 export const SystemMonitorTable: React.FC<SystemDetailProps> = ({
   tas_name,
+  useLinks = true,
 }) => {
   const { data: systemMonitorData, isLoading, error } = useSystemMonitor();
   let data = systemMonitorData;
@@ -35,7 +36,7 @@ export const SystemMonitorTable: React.FC<SystemDetailProps> = ({
       {
         accessor: 'display_name',
         Header: 'System',
-        Cell: Display,
+        Cell: useLinks ? Display : TextDisplay,
       },
       {
         accessor: isSystemOnline,
