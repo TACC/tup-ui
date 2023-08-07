@@ -1,4 +1,5 @@
 
 .lg-sub-html a {
-  color: var(--global-color-link-on-dark--normal);
+  /* FAQ: The `!important` overrides styles from plugin, in <anonymous> layer */
+  color: var(--global-color-link-on-dark--normal) !important;
 }
