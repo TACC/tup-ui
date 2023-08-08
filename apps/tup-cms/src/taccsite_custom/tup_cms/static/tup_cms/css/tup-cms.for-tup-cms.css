@@ -5,30 +5,30 @@
 /* ... */
 
 /* GENERICS */
-@import url("./for-tup-cms/generics/color.css");
+@import url("./for-tup-cms/generics/color.css") layer(project);
 
 /* ELEMENTS */
-@import url("./for-tup-cms/elements/headings--cms.css");
-@import url("./for-tup-cms/elements/mailto-link.css");
+@import url("./for-tup-cms/elements/headings--cms.css") layer(project);
+@import url("./for-tup-cms/elements/mailto-link.css") layer(project);
 
 /* OBJECTS */
-@import url("./for-tup-cms/objects/o-section.css");
-@import url("./for-tup-cms/objects/people-grid.css");
+@import url("./for-tup-cms/objects/o-section.css") layer(project);
+@import url("./for-tup-cms/objects/people-grid.css") layer(project);
 
 /* COMPONENTS */
-@import url("./for-tup-cms/components/agenda-table.css");
-@import url("./for-tup-cms/components/banner.css");
-@import url("./for-tup-cms/components/c-data-list.css");
-@import url("./for-tup-cms/components/c-footer.css");
-@import url("./for-tup-cms/components/c-news.css");
-@import url("./for-tup-cms/components/c-tag.css");
-@import url("./for-tup-cms/components/c-update.css");
-@import url("./for-tup-cms/components/c-widget.css");
-@import url("./for-tup-cms/components/content-block.css");
-@import url("./for-tup-cms/components/django-cms-forms.css");
-@import url("./for-tup-cms/components/django.cms.blog.app.page.css");
-@import url("./for-tup-cms/components/layered-image.css");
+@import url("./for-tup-cms/components/agenda-table.css") layer(project);
+@import url("./for-tup-cms/components/banner.css") layer(project);
+@import url("./for-tup-cms/components/c-data-list.css") layer(project);
+@import url("./for-tup-cms/components/c-footer.css") layer(project);
+@import url("./for-tup-cms/components/c-news.css") layer(project);
+@import url("./for-tup-cms/components/c-tag.css") layer(project);
+@import url("./for-tup-cms/components/c-update.css") layer(project);
+@import url("./for-tup-cms/components/c-widget.css") layer(project);
+@import url("./for-tup-cms/components/content-block.css") layer(project);
+@import url("./for-tup-cms/components/django-cms-forms.css") layer(project);
+@import url("./for-tup-cms/components/django.cms.blog.app.page.css") layer(project);
+@import url("./for-tup-cms/components/layered-image.css") layer(project);
 
 /* TRUMPS */
-@import url("./for-tup-cms/trumps/s-abbr-list.css");
-@import url("./for-tup-cms/trumps/s-breadcrumbs.css");
+@import url("./for-tup-cms/trumps/s-abbr-list.css") layer(project);
+@import url("./for-tup-cms/trumps/s-breadcrumbs.css") layer(project);

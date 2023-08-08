@@ -34,8 +34,6 @@
 <script src="{% static 'tup_cms/js/modules/breadcrumbs.js' %}" type="module"></script>
 
 <!-- TUP CMS UI Styles -->
-<style>
-    @import url("{% static 'tup_cms/css/tup-cms.for-core-styles.css' %}") layer(base);
-    @import url("{% static 'tup_cms/css/tup-cms.for-core-cms.css' %}") layer(project);
-    @import url("{% static 'tup_cms/css/tup-cms.for-tup-cms.css' %}") layer(project);
-</style>
+<link rel="stylesheet" href="{% static 'tup_cms/css/tup-cms.for-core-styles.css' %}" />
+<link rel="stylesheet" href="{% static 'tup_cms/css/tup-cms.for-core-cms.css' %}" />
+<link rel="stylesheet" href="{% static 'tup_cms/css/tup-cms.for-tup-cms.css' %}" />
