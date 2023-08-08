@@ -6,8 +6,8 @@ def is_below_threshold(articles, total_sum):
     current_sum = sum(article['char_count'] for article in articles)
     return current_sum < total_sum * 0.75
 
-def is_within_limit(article):
-    return article['char_count'] < 1000
+def has_large_content(article):
+    return article['char_count'] > 1000
 
 @register.filter
 def which_to_show_in_main(articles):
@@ -34,7 +34,7 @@ def which_to_show_in_main(articles):
 
     for article in articles:
         if (
-            is_within_limit(article) and
+            has_large_content(article) and
             is_below_threshold(filtered_articles + [article], total_sum)
         ):
             filtered_articles.append(article)
