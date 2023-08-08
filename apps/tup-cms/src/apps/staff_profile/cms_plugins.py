@@ -29,11 +29,11 @@ def get_articles(instance):
         'Memberships': instance.memberships,
     }
 
-    for title, data in article_dict.items():
-        char_count = len(data)
+    for title, content in article_dict.items():
+        char_count = len(content)
         articles.append({
             'title': title,
-            'data': data,
+            'content': content,
             'char_count': char_count,
         })
 
