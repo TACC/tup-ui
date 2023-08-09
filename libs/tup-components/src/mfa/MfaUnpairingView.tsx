@@ -32,7 +32,7 @@ const MfaUnpairingView: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
     });
   };
 
-  if (data?.token?.rollout_state === 'verify') return <MfaSuccessView method={method} />;
+  if (data?.token?.rollout_state === 'verify') return <MfaSuccessView task="unpair" />;
 
   return (
     <>
