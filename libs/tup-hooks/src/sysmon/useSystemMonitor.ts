@@ -16,8 +16,8 @@ export const useSystemMonitor = (): UseQueryResult<
 // Query to get jobs queue for each system
 export const useSystemQueue = (
   tas_name: string
-): UseQueryResult<SystemQueue[]> => {
-  const query = useGet<SystemQueue[]>({
+): UseQueryResult<SystemQueue> => {
+  const query = useGet<SystemQueue>({
     endpoint: `/system_monitor/${tas_name}`,
     key: [`system_monitor/${tas_name}`],
   });

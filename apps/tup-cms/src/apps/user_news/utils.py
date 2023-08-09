@@ -1,5 +1,7 @@
 import requests
 from datetime import datetime
+from dateutil.parser import isoparse
+from requests import HTTPError
 
 from django.conf import settings
 
@@ -13,10 +15,13 @@ if settings.DEBUG:
 
 def get_articles(sanitize = True):
   url = f'{service_url}/news?sanitize={sanitize}'
-  r = requests.get(url)
-  articles = r.json();
-
-  return articles
+  try:
+    r = requests.get(url)
+    r.raise_for_status()
+    articles = r.json()
+    return articles
+  except HTTPError:
+    return []
 
 def get_latest_articles(count = max_articles, sanitize = True):
   articles = get_articles(sanitize)
@@ -29,13 +34,13 @@ def get_latest_articles(count = max_articles, sanitize = True):
 
 def get_article(id_, sanitize = True):
   articles = get_articles(sanitize)
-  filtered_articles = filter(lambda article: article['ID'] == id_, articles)
+  filtered_articles = filter(lambda article: article['ID'] == int(id_), articles)
   article = list(filtered_articles)[0]
 
   return create_proxy_article(article)
 
 def get_datetime(str_):
-  return datetime.fromisoformat(str_)
+  return isoparse(str_)
 
 def format_date(datetime):
   return datetime.strftime('%B %d, %Y')
