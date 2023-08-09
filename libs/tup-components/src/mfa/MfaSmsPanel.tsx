@@ -40,7 +40,7 @@ const MfaSmsPanel: React.FC = () => {
           Send Token
         </Button>
       </form>
-      {hasAttemptedSMS && (
+      {(smsMutation.data || smsMutation.isLoading) && (
         <p className={styles['mfa-message']}>
           Didn't receive a message within 5 minutes?{' '}
           <TicketCreateModal display="link">Get Help</TicketCreateModal>
