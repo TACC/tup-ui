@@ -87,13 +87,14 @@ const Message = ({
   onDismiss,
   canDismiss,
   isVisible,
+  tagName,
   scope,
   type,
 }) => {
   const typeMap = TYPE_MAP[type];
   const scopeMap = SCOPE_MAP[scope || DEFAULT_SCOPE];
   const { iconName, iconText, className: typeClassName } = typeMap;
-  const { role, tagName, className: scopeClassName } = scopeMap;
+  const { role, tagName: autoTagName, className: scopeClassName } = scopeMap;
 
   const hasDismissSupport = scope === 'section';
 
@@ -137,7 +138,7 @@ const Message = ({
       // Avoid manually syncing Reactstrap <Fade>'s default props
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...fadeProps}
-      tag={tagName}
+      tag={tagName || autoTagName}
       className={`${className} ${containerStyleNames}`}
       role={role}
       in={isVisible}
@@ -186,6 +187,8 @@ Message.propTypes = {
   onDismiss: PropTypes.func,
   /** How to place the message within the layout */
   scope: PropTypes.oneOf(SCOPES), // RFE: Require scope; change all instances
+  /** Message HTML tag (overwrites tag based on scope) */
+  tagName: PropTypes.string,
   /** Message type or severity */
   type: PropTypes.oneOf(TYPES).isRequired,
 };

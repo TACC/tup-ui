@@ -10,11 +10,9 @@ const MfaSuccessView: React.FC = () => {
       <SectionMessage type="success" scope="section">
         Pairing Successful
       </SectionMessage>
-      <div className={styles['mfa-return-button']}>
-        <Button type="primary" onClick={() => navigate('/')}>
-          Return to Dashboard
-        </Button>
-      </div>
+      <Button type="primary" onClick={() => navigate('/')}>
+        Return to Dashboard
+      </Button>
     </div>
   );
 };
