@@ -1,10 +1,16 @@
 import React from 'react';
+import { useMfa } from '@tacc/tup-hooks';
 import MfaQRPanel from './MfaQRPanel';
 import MfaSmsPanel from './MfaSmsPanel';
 import MfaValidationPanel from './MfaValidationPanel';
+import MfaSuccessView from './MfaSuccessView';
 import styles from './Mfa.module.css';
 
 const MfaPairingLayout: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
+  const { data } = useMfa();
+
+  if (data?.token?.rollout_state === 'enrolled') return <MfaSuccessView task="pair" />;
+
   return (
     <ol className={styles['pairing-container']}>
       <li>
