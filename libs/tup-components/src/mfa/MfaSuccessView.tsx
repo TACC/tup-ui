@@ -8,12 +8,8 @@ const MfaSuccessView: React.FC<{ task: 'pair' | 'unpair' }> = ({ task }) => {
   return (
     <div className={styles['mfa-success-container']}>
       <SectionMessage type="success" scope="section">
-        {task === 'pair' && (
-          'Pairing successful'
-        )}
-        {task === 'unpair' && (
-          'Unpairing successful'
-        )}
+        {task === 'pair' && 'Pairing successful'}
+        {task === 'unpair' && 'Unpairing successful'}
       </SectionMessage>
       <Button type="primary" onClick={() => navigate('/')}>
         Return to Dashboard

@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  Button,
-  LoadingSpinner,
-  SectionMessage,
-} from '@tacc/core-components';
-import {
-  useMfa
-} from '@tacc/tup-hooks';
+import { Button, LoadingSpinner, SectionMessage } from '@tacc/core-components';
+import { useMfa } from '@tacc/tup-hooks';
 import { TicketCreateModal } from '../tickets';
 import { Link } from 'react-router-dom';
 import styles from './ManageAccount.module.css';
@@ -42,8 +36,8 @@ export const AccountMfa: React.FC = () => {
         <MfaSectionHeader />
         <LoadingSpinner />
       </>
-    )
-  };
+    );
+  }
   const hasPairing = data?.token?.rollout_state === 'enrolled';
   return (
     <>
@@ -61,7 +55,10 @@ export const AccountMfa: React.FC = () => {
           <p>
             {TOKEN_TYPE[data.token.tokentype]} ({data.token.serial})
           </p>
-          <Link to={`/mfa/unpair/${data.token.tokentype}`} className={styles['tap-href']}>
+          <Link
+            to={`/mfa/unpair/${data.token.tokentype}`}
+            className={styles['tap-href']}
+          >
             <Button type="secondary">Unpair</Button>
           </Link>
         </div>

@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  InlineMessage,
-  SectionMessage,
-} from '@tacc/core-components';
+import { Button, InlineMessage, SectionMessage } from '@tacc/core-components';
 import {
   useMfaDelete,
   useMfaChallenge,
@@ -17,7 +13,8 @@ const MfaUnpairingView: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
   const { mutate: unpairWithCode, isError } = useMfaDelete();
   const { mutate: unpairWithEmail, isSuccess: emailSentSuccess } =
     useMfaEmailUnpair();
-  const { mutate: sendChallenge, isSuccess: sendChallengeSuccess } = useMfaChallenge();
+  const { mutate: sendChallenge, isSuccess: sendChallengeSuccess } =
+    useMfaChallenge();
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,23 +29,20 @@ const MfaUnpairingView: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
   return (
     <>
       <SectionMessage type="warning">
-        You are about to remove multifactor authentication from your
-        account.
+        You are about to remove multifactor authentication from your account.
       </SectionMessage>
       <br />
       <ol className={styles['pairing-container']}>
         <li className={`${styles['mfa-form']}`}>
-        {method === 'sms' && (
-          <>
-            <label>Send SMS token to your phone</label>
-            <Button type="secondary" onClick={() => sendChallenge(null)}>
-              Send Token
-            </Button>
-          </>
-        )}
-        {method === 'totp' && (
-          <label>Open the MFA token app.</label>
-        )}
+          {method === 'sms' && (
+            <>
+              <label>Send SMS token to your phone</label>
+              <Button type="secondary" onClick={() => sendChallenge(null)}>
+                Send Token
+              </Button>
+            </>
+          )}
+          {method === 'totp' && <label>Open the MFA token app.</label>}
         </li>
         <li aria-hidden className={styles['pairing-separator']} />
         <li value="2">
