@@ -5,7 +5,6 @@ import {
   SectionMessage,
 } from '@tacc/core-components';
 import {
-  useMfa,
   useMfaDelete,
   useMfaChallenge,
   useMfaEmailUnpair,
@@ -14,7 +13,6 @@ import TicketCreateModal from '../tickets/TicketCreateModal';
 import styles from './Mfa.module.css';
 
 const MfaUnpairingView: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
-  const { data } = useMfa();
   const [currentToken, setCurrentToken] = useState('');
   const { mutate: unpairWithCode, isError } = useMfaDelete();
   const { mutate: unpairWithEmail, isSuccess: emailSentSuccess } =
