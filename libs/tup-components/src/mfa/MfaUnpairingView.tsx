@@ -11,7 +11,6 @@ import {
   useMfaEmailUnpair,
 } from '@tacc/tup-hooks';
 import TicketCreateModal from '../tickets/TicketCreateModal';
-import MfaSuccessView from './MfaSuccessView';
 import styles from './Mfa.module.css';
 
 const MfaUnpairingView: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
@@ -31,8 +30,6 @@ const MfaUnpairingView: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
       otpcode: currentToken,
     });
   };
-
-  if (data?.token?.rollout_state === 'verify') return <MfaSuccessView task="unpair" />;
 
   return (
     <>
