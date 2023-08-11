@@ -11,6 +11,7 @@ class StaffProfilePlugin(CMSPlugin):
     first_name = models.CharField(max_length=100, blank=False)
     last_name = models.CharField(max_length=100, blank=False)
     title = models.CharField(max_length=100, blank=False)
+    title2 = models.CharField(max_length=100, blank=True)
     email = models.CharField(max_length=100, blank=False)
     department = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=50, null=True, blank=True)
