@@ -1,5 +1,3 @@
-{% load which_to_show %}
-
 <div class="row">
 	<div class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 		<h1>{{display_name}}</h1>
@@ -25,16 +23,16 @@
 
 		{{instance.description | safe}}
 
-    {% for article in articles|which_to_show_in_main %}
-        {% include "./includes/block_main.html" with article=article only %}
-    {% endfor %}
+    {% include "./includes/block_main.html" with title="Professional Experience" content=instance.experience only %}
+    {% include "./includes/block_main.html" with title="Selected Publications" content=instance.publications only %}
+    {% include "./includes/block_main.html" with title="Current Projects" content=instance.projects only %}
+    {% include "./includes/block_main.html" with title="Areas of Research" content=instance.research_areas only %}
+    {% include "./includes/block_main.html" with title="Memberships" content=instance.memberships only %}
 	</div>
 
 	<div class="col col-12 col-sm-12 col-md-6 col-lg-4 offset-lg-1 col-xl-4 offset-xl-1">
     {% include "./includes/photo.html" with instance=instance only %}
 
-    {% for article in articles|which_to_show_in_side %}
-        {% include "./includes/block_side.html" with article=article only %}
-    {% endfor %}
+    {% include "./includes/block_side.html" with title="Education" content=instance.education only %}
 	</div>
 </div>

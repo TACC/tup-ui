@@ -20,27 +20,6 @@ def get_display_name(instance):
     else:
         return name
 
-def get_articles(instance):
-    articles = []
-    article_dict = {
-        'Professional Experience': instance.experience,
-        'Selected Publications': instance.publications,
-        'Current Projects': instance.projects,
-        'Education': instance.education,
-        'Areas of Research': instance.research_areas,
-        'Memberships': instance.memberships,
-    }
-
-    for title, content in article_dict.items():
-        char_count = len(content)
-        articles.append({
-            'title': title,
-            'content': content,
-            'char_count': char_count,
-        })
-
-    return articles
-
 @plugin_pool.register_plugin
 class StaffProfilePlugin(CMSPluginBase):
     module = "TUP CMS"
@@ -56,8 +35,7 @@ class StaffProfilePlugin(CMSPluginBase):
 
         context.update({
             'display_name': escape(get_display_name(instance)),
-            'fallback_alt_text': escape(get_display_name(instance)),
-            'articles': get_articles(instance)
+            'fallback_alt_text': escape(get_display_name(instance))
         })
 
         return context
