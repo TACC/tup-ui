@@ -21,6 +21,40 @@ class StaffProfilePlugin(CMSPluginBase):
     render_template = "staff_profile/profile.html"
     cache = False
 
+    fieldsets = [
+        (_('Name'), {
+            'fields': (
+                ('first_name', 'last_name', 'post_nomial'),
+            )
+        }),
+        (_('Role'), {
+            'fields': (
+                ('title', 'title2'),
+                ('department'),
+            )
+        }),
+        (_('Contact'), {
+            'fields': (
+                ('email', 'phone'),
+            )
+        }),
+        (_('Introduction'), {
+            'fields': (
+                'photo',
+                'description',
+            )
+        }),
+        (_('Other'), {
+            'fields': (
+                'publications',
+                'projects',
+                'education',
+                'research_areas',
+                'memberships',
+                'experience',
+            )
+        }),
+    ]
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)

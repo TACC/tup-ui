@@ -10,20 +10,31 @@ class StaffProfilePlugin(CMSPlugin):
     """
     first_name = models.CharField(max_length=100, blank=False)
     last_name = models.CharField(max_length=100, blank=False)
-    post_nomial = models.CharField(max_length=100, blank=True)
-    title = models.CharField(max_length=100, blank=False)
-    title2 = models.CharField(max_length=100, blank=True)
+    post_nomial = models.CharField(max_length=100, blank=True,
+        verbose_name=_('Post-nomial'))
+    title = models.CharField(max_length=100, blank=False,
+        verbose_name=_('Job title'))
+    title2 = models.CharField(max_length=100, blank=True,
+        verbose_name=_('Secondary job title'))
     email = models.CharField(max_length=100, blank=False)
-    department = models.CharField(max_length=100, blank=True)
-    phone = models.CharField(max_length=50, null=True, blank=True)
+    department = models.CharField(max_length=100, blank=True,
+        verbose_name=_('Group / Department'))
+    phone = models.CharField(max_length=50, null=True, blank=True,
+        verbose_name=_('Phone number'))
 
-    description = models.TextField()
+    description = models.TextField(
+        verbose_name=_('Biography'))
 
     photo = FilerImageField(on_delete=models.CASCADE, null=True, blank=True)
 
-    publications = models.TextField(null=True, blank=True)
-    projects = models.TextField(null=True, blank=True)
+    publications = models.TextField(null=True, blank=True,
+        verbose_name=_('Selected Publications'))
+    projects = models.TextField(null=True, blank=True,
+        verbose_name=_('Current Projects'))
     education = models.TextField(null=True, blank=True)
-    research_areas = models.TextField(null=True, blank=True)
-    memberships = models.TextField(null=True, blank=True)
-    experience = models.TextField(null=True, blank=True)
+    research_areas = models.TextField(null=True, blank=True,
+        verbose_name=_('Areas of Research'))
+    memberships = models.TextField(null=True, blank=True,
+        verbose_name=_('System Description'))
+    experience = models.TextField(null=True, blank=True,
+        verbose_name=_('Professional Experience'))
