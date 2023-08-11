@@ -10,6 +10,7 @@ class StaffProfilePlugin(CMSPlugin):
     """
     first_name = models.CharField(max_length=100, blank=False)
     last_name = models.CharField(max_length=100, blank=False)
+    post_nomial = models.CharField(max_length=100, blank=True)
     title = models.CharField(max_length=100, blank=False)
     title2 = models.CharField(max_length=100, blank=True)
     email = models.CharField(max_length=100, blank=False)

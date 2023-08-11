@@ -15,9 +15,8 @@ from .forms import StaffProfilePluginForm
 def get_display_name(instance):
     name = f'{instance.first_name} {instance.first_name}'
 
-    if instance.title:
-        return f'{name}'
-        # return f'{name} {instance.post_nomial}'
+    if instance.post_nomial:
+        return f'{name}, {instance.post_nomial}'
     else:
         return name
 
