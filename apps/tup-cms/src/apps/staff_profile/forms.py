@@ -8,7 +8,11 @@ from .models import StaffProfilePlugin
 
 class StaffProfilePluginForm(ModelForm):
     first_name = forms.CharField(
+        required=True,
         help_text=_('If desired, include middle name.')
+    )
+    last_name = forms.CharField(
+        required=True
     )
     post_nomials = forms.CharField(
         required=False,
@@ -23,9 +27,15 @@ class StaffProfilePluginForm(ModelForm):
         required=False,
         label=_('Secondary job title')
     )
+    email = forms.CharField(
+        required=True
+    )
     department = forms.CharField(
         required=False,
         label=_('Group / Department')
+    )
+    phone = forms.CharField(
+        required=False
     )
 
     description = forms.CharField(
