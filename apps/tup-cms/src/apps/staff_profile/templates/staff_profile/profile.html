@@ -3,15 +3,18 @@
 		<h1>{{display_name}}</h1>
 
 		<h2>
-      {{instance.department | safe}}
-      {% if instance.title %}
-      <br /><small>{{ instance.title }}</small>
+      {% if instance.title2 %}
+      {{ instance.title }}, {{instance.department | safe}}
+      <br />{{ instance.title2 }}
+      {% else %}
+      {{ instance.title }}
+      <br /><small>{{ instance.department }}</small>
       {% endif %}
     </h2>
 
 		<p>
 		{% if instance.phone %}
-      Phone: <strong><a href="tel:{{instance.phone}}" target="_blank">{{instance.phone}}</a></strong>
+      Phone: <strong>{{instance.phone}}</strong>
     {% endif %}
 		{% if instance.phone and instance.email %}
       |
