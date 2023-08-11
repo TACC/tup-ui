@@ -8,8 +8,8 @@ class StaffProfilePlugin(CMSPlugin):
     """
     Model for CMS staff profile pages.
     """
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     department = models.CharField(max_length=100)
