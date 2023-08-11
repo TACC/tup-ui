@@ -11,6 +11,7 @@ from djangocms_text_ckeditor.widgets import TextEditorWidget
 from .models import StaffProfilePlugin
 from .forms import StaffProfilePluginForm
 
+
 @plugin_pool.register_plugin
 class StaffProfilePlugin(CMSPluginBase):
     module = "TUP CMS"
@@ -23,5 +24,4 @@ class StaffProfilePlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
-
         return context
