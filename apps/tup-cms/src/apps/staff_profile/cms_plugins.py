@@ -13,10 +13,13 @@ from .models import StaffProfilePlugin
 from .forms import StaffProfilePluginForm
 
 def get_display_name(instance):
+    name = f'{instance.first_name} {instance.first_name}'
+
     if instance.title:
-        return f'{instance.name}, {instance.title}'
+        return f'{name}'
+        # return f'{name} {instance.post_nomial}'
     else:
-        return instance.name
+        return name
 
 def get_articles(instance):
     articles = []
