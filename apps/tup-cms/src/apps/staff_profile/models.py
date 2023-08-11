@@ -1,5 +1,4 @@
 from cms.models.pluginmodel import CMSPlugin
-from django.utils.translation import gettext_lazy as _
 from filer.fields.image import FilerImageField
 from django.db import models
 
@@ -8,23 +7,16 @@ class StaffProfilePlugin(CMSPlugin):
     """
     Model for CMS staff profile pages.
     """
-    first_name = models.CharField(max_length=100, blank=False,
-        help_text=_('If desired, include middle name.'))
+    first_name = models.CharField(max_length=100, blank=False)
     last_name = models.CharField(max_length=100, blank=False)
-    post_nomials = models.CharField(max_length=100, blank=True,
-        verbose_name=_('Post-nomials'),
-        help_text=_('E.g. Ph.D., B.S., M.B.A.'))
-    title = models.CharField(max_length=100, blank=False,
-        verbose_name=_('Job title'))
-    title2 = models.CharField(max_length=100, blank=True,
-        verbose_name=_('Secondary job title'))
+    post_nomials = models.CharField(max_length=100, blank=True)
+    title = models.CharField(max_length=100, blank=False)
+    title2 = models.CharField(max_length=100, blank=True)
     email = models.CharField(max_length=100, blank=False)
-    department = models.CharField(max_length=100, blank=True,
-        verbose_name=_('Group / Department'))
+    department = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=50, null=True, blank=True)
 
-    description = models.TextField(
-        verbose_name=_('Biography'))
+    description = models.TextField()
 
     photo = FilerImageField(on_delete=models.CASCADE, null=True, blank=True)
 

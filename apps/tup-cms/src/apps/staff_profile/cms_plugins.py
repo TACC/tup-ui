@@ -24,7 +24,7 @@ class StaffProfilePlugin(CMSPluginBase):
     fieldsets = [
         (_('Name'), {
             'fields': (
-                ('first_name', 'last_name', 'post_nomial'),
+                ('first_name', 'last_name', 'post_nomials'),
             )
         }),
         (_('Role'), {
