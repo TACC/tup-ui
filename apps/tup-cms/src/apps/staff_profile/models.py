@@ -8,10 +8,12 @@ class StaffProfilePlugin(CMSPlugin):
     """
     Model for CMS staff profile pages.
     """
-    first_name = models.CharField(max_length=100, blank=False)
+    first_name = models.CharField(max_length=100, blank=False,
+        help_text=_('If desired, include middle name.'))
     last_name = models.CharField(max_length=100, blank=False)
     post_nomial = models.CharField(max_length=100, blank=True,
-        verbose_name=_('Post-nomial'))
+        verbose_name=_('Post-nomial'),
+        help_text=_('E.g. Ph.D., B.S., M.B.A.'))
     title = models.CharField(max_length=100, blank=False,
         verbose_name=_('Job title'))
     title2 = models.CharField(max_length=100, blank=True,
