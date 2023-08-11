@@ -18,7 +18,7 @@ class StaffProfilePlugin(CMSPlugin):
 
     description = models.TextField()
 
-    photo = FilerImageField(on_delete=models.CASCADE, null=True)
+    photo = FilerImageField(on_delete=models.CASCADE, null=True, blank=True)
 
     publications = models.TextField(null=True)
     projects = models.TextField(null=True)
