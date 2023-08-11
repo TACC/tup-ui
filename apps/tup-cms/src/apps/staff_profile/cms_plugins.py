@@ -39,6 +39,7 @@ class StaffProfilePlugin(CMSPluginBase):
             )
         }),
         (_('Introduction'), {
+            'description': 'We encourage all staff to have a professional photo and a brief professional bio.',
             'fields': (
                 'photo',
                 'description',
