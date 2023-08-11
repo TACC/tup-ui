@@ -21,8 +21,7 @@ class StaffProfilePlugin(CMSPlugin):
     email = models.CharField(max_length=100, blank=False)
     department = models.CharField(max_length=100, blank=True,
         verbose_name=_('Group / Department'))
-    phone = models.CharField(max_length=50, null=True, blank=True,
-        verbose_name=_('Phone number'))
+    phone = models.CharField(max_length=50, null=True, blank=True)
 
     description = models.TextField(
         verbose_name=_('Biography'))
