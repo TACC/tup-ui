@@ -5,8 +5,8 @@
     title="{% spaceless %}
         {% if instance.photo.default_alt_text %}
             {{instance.photo.default_alt_text}}
-        {% elif fallback_alt_text %}
-            {{fallback_alt_text}}
+        {% else %}
+            {% include './display_name.html' %}
         {% endif %}
     {% endspaceless %}"
     class="img-fluid"
