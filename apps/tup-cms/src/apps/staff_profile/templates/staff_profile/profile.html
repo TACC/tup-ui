@@ -4,8 +4,9 @@
 
 		<h2>
       {% if instance.title2 %}
-      {{ instance.title }}, {{instance.department | safe}}
-      <br />{{ instance.title2 }}
+      {{ instance.title }}{% spaceless %}
+      {% if instance.department %}, {{instance.department}}{% endif %}
+      {% endspaceless %}<br />{{ instance.title2 }}
       {% else %}
       {{ instance.title }}
       <br /><small>{{ instance.department }}</small>
@@ -14,14 +15,9 @@
 
 		<p>
 		{% if instance.phone %}
-      Phone: <strong>{{instance.phone}}</strong>
+      Phone: <strong>{{instance.phone}}</strong> |
     {% endif %}
-		{% if instance.phone and instance.email %}
-      |
-    {% endif %}
-		{% if instance.email %}
-			Email: <strong><a href="mailto:{{instance.email}}" target="_blank">{{instance.email}}</a></strong>
-    {% endif %}
+		Email: <strong><a href="mailto:{{instance.email}}" target="_blank">{{instance.email}}</a></strong>
 		</p>
 
 		{{instance.description | safe}}
