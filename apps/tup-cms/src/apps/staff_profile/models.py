@@ -29,14 +29,9 @@ class StaffProfilePlugin(CMSPlugin):
 
     photo = FilerImageField(on_delete=models.CASCADE, null=True, blank=True)
 
-    publications = models.TextField(null=True, blank=True,
-        verbose_name=_('Selected Publications'))
-    projects = models.TextField(null=True, blank=True,
-        verbose_name=_('Current Projects'))
+    publications = models.TextField(null=True, blank=True)
+    projects = models.TextField(null=True, blank=True)
     education = models.TextField(null=True, blank=True)
-    research_areas = models.TextField(null=True, blank=True,
-        verbose_name=_('Areas of Research'))
-    memberships = models.TextField(null=True, blank=True,
-        verbose_name=_('System Description'))
-    experience = models.TextField(null=True, blank=True,
-        verbose_name=_('Professional Experience'))
+    research_areas = models.TextField(null=True, blank=True)
+    memberships = models.TextField(null=True, blank=True)
+    experience = models.TextField(null=True, blank=True)
