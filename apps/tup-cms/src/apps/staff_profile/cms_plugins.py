@@ -14,8 +14,8 @@ from .forms import StaffProfilePluginForm
 
 @plugin_pool.register_plugin
 class StaffProfilePlugin(CMSPluginBase):
-    module = "TUP CMS"
-    name = "Staff Profile"
+    module = 'TUP CMS'
+    name = _('Staff Profile')
     form = StaffProfilePluginForm
     model = StaffProfilePlugin
     render_template = "staff_profile/profile.html"
