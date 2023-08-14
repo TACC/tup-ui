@@ -33,8 +33,12 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
             onChange={(e) => setTokenValue(e.target.value)}
           />
           {error && (
-            <InlineMessage type="error" tagName="small">
-              Error validating MFA token: "{error.message}"
+            <InlineMessage
+              type="error"
+              tagName="small"
+              className={styles['field-error']}
+            >
+              Your token is invalid.
             </InlineMessage>
           )}
         </div>

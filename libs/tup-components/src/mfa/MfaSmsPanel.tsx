@@ -25,7 +25,11 @@ const MfaSmsPanel: React.FC = () => {
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
           {smsMutation.isError && (
-            <InlineMessage type="error" tagName="small">
+            <InlineMessage
+              type="error"
+              tagName="small"
+              className={styles['field-error']}
+            >
               Unable to pair via SMS. If this error persists,{' '}
               <TicketCreateModal display="link">
                 submit a ticket
