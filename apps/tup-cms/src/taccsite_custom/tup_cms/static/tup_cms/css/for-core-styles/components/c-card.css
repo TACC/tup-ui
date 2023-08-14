@@ -15,6 +15,7 @@
     font-weight: var(--bold);
 }
 
+/* FAQ: Used on image cards for staff like on /education/k-12-students/ */
 :is(.card, .c-card, [class*="card--"]) h4 {
     margin-bottom: 0.375em;
 }
