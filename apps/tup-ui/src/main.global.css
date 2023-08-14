@@ -75,3 +75,9 @@ table {
 .s-form input + [role="status"] > .icon {
   display: none;
 }
+
+/* Inline text semantics */
+code {
+  color: inherit;
+  font-family: var(--global-font-family--mono);
+}
