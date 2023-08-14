@@ -9,14 +9,18 @@
 }
 
 /* Press Release */
-[class*="tag--pr"],
+[class*="tag--pr"] {
+  background: #723B0C;
+}
 .blog-category-press-release {
   /* To overwrite core-cms django.cms.blog.app.css */
   background: #723B0C !important;
 }
 
 /* Q&A, Human Interest */
-[class*="tag--qa"],
+[class*="tag--qa"] {
+  background: var(--global-color-accent--light);
+}
 .blog-category-qa,
 .blog-category-welcome-profile,
 .blog-category-staff-highlight {
@@ -25,7 +29,9 @@
 }
 
 /* Has Video, Audio, or other media beyond statc image */
-[class*="tag--media"],
+[class*="tag--media"] {
+  background: var(--global-color-primary--dark);
+}
 .blog-category-podcast,
 .blog-category-multimedia {
   /* To overwrite core-cms django.cms.blog.app.css */
@@ -38,7 +44,9 @@
 }
 
 /* Feature Story (different than a "featured" article) */
-[class*="tag--feature"],
+[class*="tag--feature"] {
+  background: var(--global-color-accent--normal);
+}
 .blog-category-feature-story {
   /* To overwrite core-cms django.cms.blog.app.css */
   background: var(--global-color-accent--normal) !important;
