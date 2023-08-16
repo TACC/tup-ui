@@ -25,7 +25,8 @@ class StaffProfilePluginForm(ModelForm):
     )
     title2 = forms.CharField(
         required=False,
-        label=_('Secondary job title')
+        label=_('Secondary job title'),
+        help_text=_('Only necessary if the first job title is "Manager".')
     )
     email = forms.CharField(
         required=True
