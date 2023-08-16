@@ -1,5 +1,6 @@
 /* Staff Profile Pages */
 /* https://www.tacc.utexas.edu/about/staff-directory/.../ */
+/* FAQ: Added as global CSS, not plugin CSS, cuz manual staff profiles exist */
 
 /* To add more space beneath lists */
 /* TODO: Consider changing this in core-styles.base.css */
