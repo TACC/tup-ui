@@ -1,17 +1,16 @@
 /* Staff Profile Pages */
 /* https://www.tacc.utexas.edu/about/staff-directory/.../ */
-/* FAQ: Added as global CSS, not plugin CSS, cuz manual staff profiles exist */
+/* FAQ: Not specific to plugin, because manual staff profiles use this too */
 
 /* To add more space beneath lists */
 /* TODO: Consider changing this in core-styles.base.css */
 /* TODO: Alternatively, consider adding this to core-styles.cms.css */
-:is(.staff-profile, .s-staff-profile) :is(dl, ul, ol) {
+.c-staff-profile :is(dl, ul, ol) {
   /* To mimic core-styles.cms.css <p> */
   margin-bottom: 2rem; /* overwrites core-styles.base.css */
 }
 
 /* When sidebar is under main content */
-/* WARNING: This query assumes Bootstrap 4 grid classes "col-sm-12 col-md-6" */
 @media only screen and (max-width: 767px) {
 
   /* To remove bullets in a c-content-block */
@@ -37,4 +36,5 @@
   :is(.c-content-block, .content-block) + :is(.c-content-block, .content-block) {
       margin-top: unset;
   }
+
 }
