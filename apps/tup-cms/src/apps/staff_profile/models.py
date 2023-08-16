@@ -25,4 +25,3 @@ class StaffProfilePlugin(CMSPlugin):
     education = models.TextField(null=True)
     research_areas = models.TextField(null=True)
     memberships = models.TextField(null=True)
-    experience = models.TextField(null=True)
