@@ -4,7 +4,7 @@
 
 const mainColumn = document.querySelector('.row.c-staff-profile > .col:nth-child(1)');
 const sideColumn = document.querySelector('.row.c-staff-profile > .col:nth-child(2)');
-const mainHeader = mainColumn.querySelector(':scope > *:first-child');
+const mainHeader = mainColumn.querySelector(':scope > h2');
 const image = sideColumn.querySelector(':scope > *:first-child');
 
 /** Move image to side column on wide screen, otherwise to main column */
