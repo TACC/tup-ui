@@ -1,4 +1,4 @@
-/* Staff Profile Pages */
+/* Move image on load and on window resize */
 
 const mainColumn = document.querySelector(
   '.row.s-staff-profile > .col:nth-child(1)'
@@ -27,7 +27,6 @@ function moveImage() {
 }
 
 moveImage();
-
 // HELP: Can event be limited to width resize only? Is it worth it?
 // SEE: https://stackoverflow.com/a/71782892/11817077
 window.addEventListener('resize', () => {
