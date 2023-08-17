@@ -35,9 +35,6 @@ class StaffProfilePluginForm(ModelForm):
         required=False,
         label=_('Group / Department')
     )
-    phone = forms.CharField(
-        required=False
-    )
 
     description = forms.CharField(
         widget=TextEditorWidget,
