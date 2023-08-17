@@ -1,6 +1,5 @@
 /* Staff Profile Pages */
 /* https://www.tacc.utexas.edu/about/staff-directory/.../ */
-/* FAQ: Not specific to plugin, because manual staff profiles use this too */
 
 const mainColumn = document.querySelector(
   '.row.s-staff-profile > .col:nth-child(1)'
