@@ -65,11 +65,6 @@ class StaffProfilePluginForm(ModelForm):
         widget=TextEditorWidget,
         required=False
     )
-    experience = forms.CharField(
-        widget=TextEditorWidget,
-        required=False,
-        label=_('Professional Experience')
-    )
 
 fieldsets = [
     (_('Name'), {
@@ -102,7 +97,6 @@ fieldsets = [
             'education',
             'research_areas',
             'memberships',
-            'experience',
         )
     }),
 ]
