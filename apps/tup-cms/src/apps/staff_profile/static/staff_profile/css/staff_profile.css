@@ -11,6 +11,7 @@
 }
 
 /* When sidebar is under main content */
+/* WARNING: This query assumes Bootstrap 4 grid classes "col-sm-12 col-md-6" */
 @media only screen and (max-width: 767px) {
 
   /* To remove bullets in a c-content-block */
