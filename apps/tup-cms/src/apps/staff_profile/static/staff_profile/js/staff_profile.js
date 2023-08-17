@@ -3,10 +3,10 @@
 /* FAQ: Not specific to plugin, because manual staff profiles use this too */
 
 const mainColumn = document.querySelector(
-  '.row.c-staff-profile > .col:nth-child(1)'
+  '.row.s-staff-profile > .col:nth-child(1)'
 );
 const sideColumn = document.querySelector(
-  '.row.c-staff-profile > .col:nth-child(2)'
+  '.row.s-staff-profile > .col:nth-child(2)'
 );
 const mainHeader = mainColumn.querySelector(':scope > h2');
 const image = sideColumn.querySelector(':scope > *:first-child');

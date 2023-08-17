@@ -5,7 +5,7 @@
 /* To add more space beneath lists */
 /* TODO: Consider changing this in core-styles.base.css */
 /* TODO: Alternatively, consider adding this to core-styles.cms.css */
-.c-staff-profile :is(dl, ul, ol) {
+.s-staff-profile :is(dl, ul, ol) {
   /* To mimic core-styles.cms.css <p> */
   margin-bottom: 2rem; /* overwrites core-styles.base.css */
 }
