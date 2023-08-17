@@ -2,8 +2,12 @@
 /* https://www.tacc.utexas.edu/about/staff-directory/.../ */
 /* FAQ: Not specific to plugin, because manual staff profiles use this too */
 
-const mainColumn = document.querySelector('.row.c-staff-profile > .col:nth-child(1)');
-const sideColumn = document.querySelector('.row.c-staff-profile > .col:nth-child(2)');
+const mainColumn = document.querySelector(
+  '.row.c-staff-profile > .col:nth-child(1)'
+);
+const sideColumn = document.querySelector(
+  '.row.c-staff-profile > .col:nth-child(2)'
+);
 const mainHeader = mainColumn.querySelector(':scope > h2');
 const image = sideColumn.querySelector(':scope > *:first-child');
 
@@ -11,15 +15,15 @@ const image = sideColumn.querySelector(':scope > *:first-child');
 function moveImage() {
   const isWideScreen = window.matchMedia('(min-width: 768px)').matches;
 
-  if ( isWideScreen ) {
-    if ( ! sideColumn.contains( image ) ) {
-      sideColumn.prepend( image );
-      if ( window.DEBUG ) console.log('Staff image should be in side column');
+  if (isWideScreen) {
+    if (!sideColumn.contains(image)) {
+      sideColumn.prepend(image);
+      if (window.DEBUG) console.log('Staff image should be in side column');
     }
   } else {
-    if ( ! mainColumn.contains( image ) ) {
-      mainHeader.after( image );
-      if ( window.DEBUG ) console.log('Staff image should be in main column');
+    if (!mainColumn.contains(image)) {
+      mainHeader.after(image);
+      if (window.DEBUG) console.log('Staff image should be in main column');
     }
   }
 }
