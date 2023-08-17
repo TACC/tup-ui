@@ -18,7 +18,7 @@
     list-style-type: none;
   }
 
-  /* To undo core-styles c-content-block styles */
+  /* To undo Core-Styles c-content-block styles */
   :is(.c-content-block, .content-block) {
       margin-bottom: unset;
       padding: unset;
@@ -32,7 +32,7 @@
     margin-bottom: var(--global-space--pattern-pad); /* mimics c-content-block padding */
   }
 
-  /* To undo tup-cms c-content-block styles */
+  /* To undo TUP-CMS c-content-block styles */
   :is(.c-content-block, .content-block) + :is(.c-content-block, .content-block) {
       margin-top: unset;
   }
