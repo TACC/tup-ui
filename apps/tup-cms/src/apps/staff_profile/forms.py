@@ -94,9 +94,9 @@ fieldsets = [
         'fields': (
             'publications',
             'projects',
-            'education',
             'research_areas',
             'memberships',
+            'education',
         )
     }),
 ]
