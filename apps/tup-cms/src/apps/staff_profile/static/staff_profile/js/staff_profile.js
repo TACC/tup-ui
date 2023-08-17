@@ -2,30 +2,32 @@
 /* https://www.tacc.utexas.edu/about/staff-directory/.../ */
 /* FAQ: Not specific to plugin, because manual staff profiles use this too */
 
-const col1 = document.querySelector('.row.c-staff-profile > .col:nth-child(1)');
-const col2 = document.querySelector('.row.c-staff-profile > .col:nth-child(2)');
-const image = col2.querySelector(':scope > *:first-child');
-const header = col1.querySelector(':scope > *:first-child');
+const mainColumn = document.querySelector('.row.c-staff-profile > .col:nth-child(1)');
+const sideColumn = document.querySelector('.row.c-staff-profile > .col:nth-child(2)');
+const mainHeader = mainColumn.querySelector(':scope > *:first-child');
+const image = sideColumn.querySelector(':scope > *:first-child');
 
+/** Move image to side column on wide screen, otherwise to main column */
 function moveImage() {
-  const isWideScreen = window.matchMedia('(min-width: 768px)');
-  const isImageInWideSpot = col2.contains( image );
-  const shouldMoveImage = ( isWideScreen.matches && ! isImageInWideSpot );
+  const isWideScreen = window.matchMedia('(min-width: 768px)').matches;
 
-  console.log({
-    isImageInWideSpot,
-    isWideScreen: isWideScreen.matches,
-    image,
-    shouldMoveImage,
-    imagePreviousSibling: image.previousSibling.outerHTML
-  })
-
-  if ( shouldMoveImage ) {
-    col2.prepend( image );
+  if ( isWideScreen ) {
+    if ( ! sideColumn.contains( image ) ) {
+      sideColumn.prepend( image );
+      if ( window.DEBUG ) console.log('Staff image should be in side column');
+    }
   } else {
-    header.after( image );
+    if ( ! mainColumn.contains( image ) ) {
+      mainHeader.after( image );
+      if ( window.DEBUG ) console.log('Staff image should be in main column');
+    }
   }
 }
 
 moveImage();
-window.addEventListener('resize', () => moveImage() );
+
+// HELP: Can event be limited to width resize only? Is it worth it?
+// SEE: https://stackoverflow.com/a/71782892/11817077
+window.addEventListener('resize', () => {
+  moveImage();
+});
