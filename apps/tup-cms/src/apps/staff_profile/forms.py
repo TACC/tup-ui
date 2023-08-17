@@ -73,3 +73,39 @@ class StaffProfilePluginForm(ModelForm):
         required=False,
         label=_('Professional Experience')
     )
+
+fieldsets = [
+    (_('Name'), {
+        'fields': (
+            ('first_name', 'last_name', 'post_nomials'),
+        )
+    }),
+    (_('Role'), {
+        'fields': (
+            ('title', 'title2'),
+            ('department'),
+        )
+    }),
+    (_('Contact'), {
+        'fields': (
+            ('email', 'phone'),
+        )
+    }),
+    (_('Introduction'), {
+        'description': 'We encourage all staff to have a professional photo and a brief professional bio.',
+        'fields': (
+            'photo',
+            'description',
+        )
+    }),
+    (_('Other'), {
+        'fields': (
+            'publications',
+            'projects',
+            'education',
+            'research_areas',
+            'memberships',
+            'experience',
+        )
+    }),
+]

@@ -9,7 +9,7 @@ from django import forms
 from djangocms_text_ckeditor.widgets import TextEditorWidget
 
 from .models import StaffProfilePlugin
-from .forms import StaffProfilePluginForm
+from .forms import StaffProfilePluginForm, fieldsets
 
 
 @plugin_pool.register_plugin
@@ -21,41 +21,7 @@ class StaffProfilePlugin(CMSPluginBase):
     render_template = "staff_profile/profile.html"
     cache = False
 
-    fieldsets = [
-        (_('Name'), {
-            'fields': (
-                ('first_name', 'last_name', 'post_nomials'),
-            )
-        }),
-        (_('Role'), {
-            'fields': (
-                ('title', 'title2'),
-                ('department'),
-            )
-        }),
-        (_('Contact'), {
-            'fields': (
-                ('email', 'phone'),
-            )
-        }),
-        (_('Introduction'), {
-            'description': 'We encourage all staff to have a professional photo and a brief professional bio.',
-            'fields': (
-                'photo',
-                'description',
-            )
-        }),
-        (_('Other'), {
-            'fields': (
-                'publications',
-                'projects',
-                'education',
-                'research_areas',
-                'memberships',
-                'experience',
-            )
-        }),
-    ]
+    fieldsets = fieldsets
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
