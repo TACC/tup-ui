@@ -32,6 +32,9 @@ class StaffProfilePluginForm(ModelForm):
     email = forms.CharField(
         required=True
     )
+    phone = forms.CharField(
+        required=False
+    )
     department = forms.CharField(
         required=False,
         label=_('Group / Department')
