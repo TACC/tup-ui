@@ -19,7 +19,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
 
-      - uses: nrwl/nx-set-shas@v2
+      - uses: nrwl/nx-set-shas@v3
 
       # Check linting/formatting of workspace files.
       - run: npx nx workspace-lint

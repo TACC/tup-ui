@@ -1,4 +1,5 @@
 {
+  "name": "tup-cms",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/tup-cms/src/",
   "projectType": "application",
@@ -8,8 +9,8 @@
       "executor": "nx:run-commands",
       "dependsOn": [
         {
-          "projects": "dependencies",
-          "target": "build"
+          "target": "build",
+          "dependencies": true
         }
       ],
       "options": {
@@ -39,7 +40,6 @@
     "push": {
       "dependsOn": [
         {
-          "projects": "self",
           "target": "build"
         }
       ],
@@ -63,6 +63,5 @@
         "parallel": false
       }
     }
-  },
-  "name": "tup-cms"
+  }
 }

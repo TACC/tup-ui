@@ -9,6 +9,7 @@ export const QUEUE_MAP = {
   'Multi-factor Authentication': 'MFA',
   'Data Analytics or Storage Resources': 'Data Intensive Computing',
   'Running Jobs or Using TACC Resources': 'High Performance Computing',
+  'Arecibo Data': 'High Performance Computing',
   'Security Incident': 'NSO',
   Other: 'High Performance Computing',
 };
