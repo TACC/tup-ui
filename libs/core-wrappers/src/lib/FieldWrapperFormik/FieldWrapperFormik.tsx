@@ -1,41 +1,43 @@
 import React from 'react';
 import { ErrorMessage } from 'formik';
 import { Badge } from 'reactstrap';
-import styles from './FieldWrapperFormik.module.css';
+
+import './FieldWrapperFormik.global.css';
+
 export type FieldWrapperProps = {
   name: string;
-  label: string;
+  label: React.ReactNode;
   required?: boolean;
-  description?: string;
+  className?: string;
+  description?: React.ReactNode;
 };
 const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
   name,
   label,
   required,
   description,
+  className,
   children,
 }) => {
   return (
-    <div className={`c-form__field ${required ? 'has-required' : ''}`}>
-      <label htmlFor={name} className={styles['label']}>
+    <div
+      className={`c-form__field ${required ? 'has-required' : ''} ${className}`}
+    >
+      <label htmlFor={name}>
         {label}
-        {required && (
-          <Badge color="danger">
-            <span className={styles['required-badge']}>Required</span>
-          </Badge>
-        )}
+        {required && <Badge color="danger">Required</Badge>}
       </label>
       {children}
       <ErrorMessage name={name}>
         {(msg) => {
           return (
             <ul className="c-form__errors">
-              <li className={styles['error-text']}>{msg}</li>
+              <li>{msg}</li>
             </ul>
           );
         }}
       </ErrorMessage>
-      <div className="c-form__help">{description}</div>
+      {description && <div className="c-form__help">{description}</div>}
     </div>
   );
 };
