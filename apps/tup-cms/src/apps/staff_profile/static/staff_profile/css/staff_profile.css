@@ -14,18 +14,12 @@
 /* WARNING: This query assumes Bootstrap 4 grid classes "col-sm-12 col-md-6" */
 @media only screen and (max-width: 767px) {
 
-
-
-  /* To make simple tweaks */
+  /* To make sidebar content look like main content */
 
   /* To remove bullets in a c-content-block */
   :is(.c-content-block, .content-block) ul {
     list-style-type: none;
   }
-
-
-
-  /* To make sidebar content look like main content */
 
   /* To undo c-content-block styles (Core-Styles) */
   :is(.c-content-block, .content-block) {
