@@ -9,18 +9,19 @@ from django import forms
 from djangocms_text_ckeditor.widgets import TextEditorWidget
 
 from .models import StaffProfilePlugin
-from .forms import StaffProfilePluginForm
+from .forms import StaffProfilePluginForm, fieldsets
 
 
 @plugin_pool.register_plugin
 class StaffProfilePlugin(CMSPluginBase):
-    module = "TUP CMS"
-    name = "Staff Profile"
+    module = 'TUP CMS'
+    name = _('Staff Profile')
     form = StaffProfilePluginForm
     model = StaffProfilePlugin
     render_template = "staff_profile/profile.html"
     cache = False
 
+    fieldsets = fieldsets
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
