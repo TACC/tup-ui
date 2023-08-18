@@ -6,6 +6,10 @@
   margin-bottom: 2rem; /* overwrites core-styles.base.css */
 }
 
+.s-staff-profile :not(.c-content-block, .content-block) > h3 {
+    margin-bottom: 0.5em; /* halved from Core-Styles headings--cms.css */
+}
+
 /* When sidebar is under main content */
 /* WARNING: This query assumes Bootstrap 4 grid classes "col-sm-12 col-md-6" */
 @media only screen and (max-width: 767px) {
@@ -32,6 +36,11 @@
   /* To undo c-content-block styles (TUP-CMS) */
   :is(.c-content-block, .content-block) + :is(.c-content-block, .content-block) {
       margin-top: unset;
+  }
+
+  /* To replicate non–c-content-block styles (Staff Profile) */
+  .s-staff-profile :is(.c-content-block, .content-block) > h3 {
+      margin-bottom: 0.5em; /* halved from Core-Styles headings--cms.css */
   }
 
 }
