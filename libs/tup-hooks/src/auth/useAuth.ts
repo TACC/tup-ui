@@ -21,7 +21,10 @@ const useAuth = () => {
   const onSuccess = useCallback(
     (response: AuthResponse) => {
       const expirationDate = new Date(Date.now() + response.ttl * 1000);
-      Cookies.set('x-tup-token', response.jwt, { expires: expirationDate });
+      Cookies.set('x-tup-token', response.jwt, {
+        expires: expirationDate,
+        secure: true,
+      });
       // Invalidate the jwt query to trigger rerender of any component that uses it.
       queryClient.invalidateQueries(['jwt']);
     },

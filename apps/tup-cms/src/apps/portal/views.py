@@ -48,7 +48,7 @@ def ImpersonateView(request):
                                        headers=headers,
                                        json=data)
     user_jwt = impersonation_resp.json()['jwt']
-    resp.set_cookie("x-tup-token", user_jwt)
+    resp.set_cookie("x-tup-token", user_jwt, secure=True)
     return resp
 
 
