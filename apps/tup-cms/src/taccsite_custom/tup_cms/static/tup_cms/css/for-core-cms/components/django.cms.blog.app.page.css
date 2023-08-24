@@ -1,3 +1,29 @@
+/* Media & Content - Alignment */
+
+
+
+/* ... */
+
+
+
+/* Media & Content - Alignment */
+
+/* To remove margin on narrow screens */
+/* To overwrite @tacc/core-styles/…/components/align.css */
+@media (max-width: 767px) {
+  /*
+  :--article-page .blog-content .align-center,
+  :--article-page .blog-content .align-right,
+  :--article-page .blog-content .align-left {
+  */
+  article.post-detail .blog-content .align-center,
+  article.post-detail .blog-content .align-left,
+  article.post-detail .blog-content .align-right {
+    max-width: 100%;
+  }
+
+  /* ... */
+}
 
 
 
