@@ -11,21 +11,17 @@ const MfaWrapper: React.FC<React.PropsWithChildren> = ({ children }) => {
   const isPairing = location.pathname.includes('pair') && !isUnpairing;
   const { isLoading, data } = useMfa();
 
-  return (
-    <>
-      {isLoading ? (
-        <LoadingSpinner />
-      ) : data?.token?.rollout_state === 'enrolled' && isPairing ? (
-        <MfaSuccessView task="pair" />
-      ) : data?.token?.rollout_state === 'verify' && isUnpairing ? (
-        <MfaSuccessView task="unpair" />
-      ) : !data ? (
-        <MfaSelection />
-      ) : (
-        <>{children}</>
-      )}
-    </>
-  );
+  if (isLoading) {
+    return <LoadingSpinner />;
+  } else if (data?.token?.rollout_state === 'enrolled' && isPairing) {
+    return <MfaSuccessView task="pair" />;
+  } else if (data?.token?.rollout_state === 'verify' && isUnpairing) {
+    return <MfaSuccessView task="unpair" />;
+  } else if (!data) {
+    return <MfaSelection />;
+  } else {
+    return {children};
+  }
 };
 
 export default MfaWrapper;
