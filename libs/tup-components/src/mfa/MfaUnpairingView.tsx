@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Button, InlineMessage, SectionMessage } from '@tacc/core-components';
+import { useMfa } from '@tacc/tup-hooks';
+import {
+  Button,
+  InlineMessage,
+  LoadingSpinner,
+  SectionMessage,
+} from '@tacc/core-components';
 import {
   useMfaDelete,
   useMfaChallenge,
@@ -8,13 +14,16 @@ import {
 import TicketCreateModal from '../tickets/TicketCreateModal';
 import styles from './Mfa.module.css';
 
-const MfaUnpairingView: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
+const MfaUnpairingView: React.FC = () => {
   const [currentToken, setCurrentToken] = useState('');
-  const { mutate: unpairWithCode, isError } = useMfaDelete();
+  const { data, isLoading } = useMfa();
+  const { mutate: unpairWithCode, isError: isError } = useMfaDelete();
   const { mutate: unpairWithEmail, isSuccess: emailSentSuccess } =
     useMfaEmailUnpair();
   const { mutate: sendChallenge, isSuccess: sendChallengeSuccess } =
     useMfaChallenge();
+
+  const method = data?.token?.tokentype;
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,6 +34,10 @@ const MfaUnpairingView: React.FC<{ method: 'sms' | 'totp' }> = ({ method }) => {
       otpcode: currentToken,
     });
   };
+
+  if (isLoading || !data) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <>
