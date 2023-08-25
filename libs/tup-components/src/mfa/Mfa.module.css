@@ -8,7 +8,7 @@
 }
 
 .pairing-container > *:not(.pairing-separator) {
-    width: 365px; /* FAQ: static width, so .c-step-panels__message is centered */
+    width: 365px; /* FAQ: static width, so .mfa-message is centered */
 }
 
 .pairing-separator {
