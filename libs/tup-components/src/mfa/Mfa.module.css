@@ -69,6 +69,8 @@ label.qr-code-alt-label {
     }
 }
 
+
+
 .mfa-form {
     composes: c-step-panels__content from '../../styles/c-step-panels.css';
 }
