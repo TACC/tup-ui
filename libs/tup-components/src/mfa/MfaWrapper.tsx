@@ -6,12 +6,9 @@ import { LoadingSpinner } from '@tacc/core-components';
 const MfaWrapper: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { isLoading, data } = useMfa();
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-  if (data?.token?.rollout_state === 'enrolled') {
+  if (isLoading) return <LoadingSpinner />;
+  if (data?.token?.rollout_state === 'enrolled')
     return <MfaSuccessView task="pair" />;
-  }
 
   /*eslint-disable-next-line react/jsx-no-useless-fragment */
   return <>{children}</>;
