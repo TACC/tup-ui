@@ -13,11 +13,14 @@ const MfaWrapper: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   if (isLoading) {
     return <LoadingSpinner />;
-  } else if (data?.token?.rollout_state === 'enrolled' && isPairing) {
+  }
+  if (data?.token?.rollout_state === 'enrolled' && isPairing) {
     return <MfaSuccessView task="pair" />;
-  } else if (data?.token?.rollout_state === 'verify' && isUnpairing) {
+  }
+  if (data?.token?.rollout_state === 'verify' && isUnpairing) {
     return <MfaSuccessView task="unpair" />;
-  } else if (!data) {
+  }
+  if (!data) {
     return <MfaSelection />;
   }
 
