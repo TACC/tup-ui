@@ -6,7 +6,7 @@ import { LoadingSpinner } from '@tacc/core-components';
 
 const MfaWrapper: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { isLoading, data } = useMfa();
-  const hasToken = Boolean( data?.token?.tokentype );
+  const hasToken = Boolean(data?.token?.tokentype);
 
   if (isLoading) {
     return <LoadingSpinner />;
