@@ -15,7 +15,7 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
   };
 
   const pairingMessage = {
-    totp: 'Enter the token shown in the app to continue the pairing.',
+    totp: 'Enter the token shown in the app.',
     sms: 'Enter the token sent to your phone number.',
   };
 
@@ -33,8 +33,12 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
             onChange={(e) => setTokenValue(e.target.value)}
           />
           {error && (
-            <InlineMessage type="error" tagName="small">
-              Error validating MFA token: "{error.message}"
+            <InlineMessage
+              type="error"
+              tagName="small"
+              className={styles['field-error']}
+            >
+              Your token is invalid.
             </InlineMessage>
           )}
         </div>
@@ -42,12 +46,6 @@ const MfaValidationPanel: React.FC<{ tokenType: 'totp' | 'sms' }> = ({
           Confirm Pairing
         </Button>
       </form>
-      {tokenType === 'sms' && (
-        <p className={styles['mfa-message']}>
-          Didn't receive a message within 5 minutes?{' '}
-          <TicketCreateModal display="link">Get Help</TicketCreateModal>
-        </p>
-      )}
     </>
   );
 };
