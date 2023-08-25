@@ -6,6 +6,7 @@ import {
   Tickets,
   MfaPairingview,
   MfaUnpairingview,
+  MfaSuccessview,
   MfaSelection,
   ManageAccount,
   RequireAuth,
@@ -51,11 +52,14 @@ function App() {
         </Route>
         <Route path="system-status" element={<Systems />}></Route>
         <Route path="system-status/:tas_name" element={<Systems />} />
-        <Route path="mfa" element={<Mfa />}>
+        <Route path="mfa" element={<Mfa task="pair" />}>
           <Route path="" element={<MfaSelection />} />
           <Route path="totp" element={<MfaPairingview method="totp" />} />
           <Route path="sms" element={<MfaPairingview method="sms" />} />
-          <Route path="unpair" element={<MfaUnpairingview />} />
+        </Route>
+        <Route path="mfa/unpair" element={<Mfa task="unpair" />}>
+          <Route path="" element={<MfaUnpairingview />} />
+          <Route path="success" element={<MfaSuccessview task="unpair" />} />
         </Route>
         <Route
           path="account"

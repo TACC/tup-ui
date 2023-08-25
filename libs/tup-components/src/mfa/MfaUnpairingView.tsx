@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useMfa } from '@tacc/tup-hooks';
 import {
   Button,
@@ -17,7 +18,7 @@ import styles from './Mfa.module.css';
 const MfaUnpairingView: React.FC = () => {
   const [currentToken, setCurrentToken] = useState('');
   const { data, isLoading } = useMfa();
-  const { mutate: unpairWithCode, isError: isError } = useMfaDelete();
+  const { mutate: unpairWithCode, isError, isSuccess } = useMfaDelete();
   const { mutate: unpairWithEmail, isSuccess: emailSentSuccess } =
     useMfaEmailUnpair();
   const { mutate: sendChallenge, isSuccess: sendChallengeSuccess } =
@@ -72,7 +73,7 @@ const MfaUnpairingView: React.FC = () => {
                 id="current-mfa-token"
               />
             </div>
-            <Button type="primary" attr="submit">
+            <Button type="primary" attr="submit" isLoading={isLoading}>
               Confirm Unpairing
             </Button>
           </form>
@@ -105,6 +106,8 @@ const MfaUnpairingView: React.FC = () => {
               There was an error verifying your MFA token.
             </InlineMessage>
           )}
+
+          {isSuccess && <Navigate to="/mfa/unpair/success" />}
         </li>
       </ol>
     </>
