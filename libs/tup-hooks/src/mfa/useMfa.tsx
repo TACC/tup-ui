@@ -13,7 +13,7 @@ export const useMfa = (): UseQueryResult<MfaTokenResponse> => {
 
 export const useMfaPairTotp = () => {
   const mutation = usePost<null, MfaPairingResponse>({
-    endpoint: '/mfa/pair/totp',
+    endpoint: '/mfa/totp',
     options: { mutationKey: ['mfapair'] },
   });
   return mutation;
@@ -21,7 +21,7 @@ export const useMfaPairTotp = () => {
 
 export const useMfaPairSms = () => {
   const mutation = usePost<{ phoneNumber: string }, MfaPairingResponse>({
-    endpoint: '/mfa/pair/sms',
+    endpoint: '/mfa/sms',
     options: { mutationKey: ['mfapair'] },
   });
   return mutation;

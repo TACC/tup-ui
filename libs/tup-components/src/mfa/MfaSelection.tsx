@@ -9,10 +9,10 @@ const MfaSelector: React.FC = () => {
       Select whether you want to use an MFA token app or SMS texting for
       authenticating to your TACC account.
       <div className={styles['mfa-type-selection']}>
-        <Link to="pair/totp">
+        <Link to="totp">
           <Button type="secondary">Token App</Button>
         </Link>
-        <Link to="pair/sms">
+        <Link to="sms">
           <Button type="secondary">SMS Text</Button>
         </Link>
       </div>

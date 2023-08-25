@@ -55,10 +55,7 @@ export const AccountMfa: React.FC = () => {
           <p>
             {TOKEN_TYPE[data.token.tokentype]} ({data.token.serial})
           </p>
-          <Link
-            to={`/mfa/unpair/${data.token.tokentype}`}
-            className={styles['tap-href']}
-          >
+          <Link to="/mfa/unpair" className={styles['tap-href']}>
             <Button type="secondary">Unpair</Button>
           </Link>
         </div>

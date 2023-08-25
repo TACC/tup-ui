@@ -53,8 +53,8 @@ function App() {
         <Route path="system-status/:tas_name" element={<Systems />} />
         <Route path="mfa" element={<Mfa />}>
           <Route path="" element={<MfaSelection />} />
-          <Route path="pair/totp" element={<MfaPairingview method="totp" />} />
-          <Route path="pair/sms" element={<MfaPairingview method="sms" />} />
+          <Route path="totp" element={<MfaPairingview method="totp" />} />
+          <Route path="sms" element={<MfaPairingview method="sms" />} />
           <Route path="unpair" element={<MfaUnpairingview />} />
         </Route>
         <Route
