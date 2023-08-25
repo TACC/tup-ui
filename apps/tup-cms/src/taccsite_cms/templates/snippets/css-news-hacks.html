@@ -1,0 +1,15 @@
+<style class="css-news-hacks">
+    /* To hide byline of an article by another outlet */
+    /* NOTE: Requires author add "external" tag to the article */
+    /* TODO: Figure out how to show external author that user enters */
+    .has-blog-tag-external .byline {
+        display: none;
+    }
+
+    /* To hide the "by: " in the byline */
+    /* CAVEAT: The &nbsp; between "by:" and author name is still visible */
+    /* TODO: (TUP-552) Whether to hide this in Core, TUP, or any CMS */
+    .byline span {
+        display: none;
+    }
+</style>

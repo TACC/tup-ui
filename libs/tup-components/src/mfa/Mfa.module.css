@@ -21,6 +21,11 @@
     margin-top: 30px; /* match .mfa-success-container button */
 }
 
+.field-error {
+  /* so message with very littel text still appears beneath input */
+  display: flex;
+}
+
 /* TOTP pairing styles */
 .qr-code-box > * {
     --border-width: var(--global-border-width--xx-thick);

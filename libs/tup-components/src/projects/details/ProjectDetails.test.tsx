@@ -27,7 +27,7 @@ describe('Project Details Component', () => {
     testRender(<ProjectDetails projectId={59184} />);
     await screen.findByText(/This project has no publications./);
     await screen.findByText(
-      /Your project and allocation information can be managed on the TXRAS portal./
+      /If your allocation was awarded through ACCESS, it can be managed in the ACCESS portal/
     );
   });
 });
