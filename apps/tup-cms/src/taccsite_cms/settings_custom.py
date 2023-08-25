@@ -9,6 +9,15 @@ from django.utils.translation import gettext_lazy as _
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ########################
+# CORE CMS SETTINGS
+# FAQ: These are in future versions of Core-CMS
+########################
+
+# NOTE: Already in Core-CMS v3.12.0-beta.2
+# whether the session cookie should be secure (https:// only)
+SESSION_COOKIE_SECURE = True
+
+########################
 # DJANGO CMS SETTINGS
 ########################
 

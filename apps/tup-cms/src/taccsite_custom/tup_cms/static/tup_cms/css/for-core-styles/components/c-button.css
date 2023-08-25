@@ -9,3 +9,11 @@ main > .container   .c-button--is-active {
   /* FAQ: Design shows 10px font */
   font-size: var(--global-font-size--x-small);
 }
+
+/* TODO: Remove from c-button (once it becomes redundant there) */
+/* FAQ: This is now added in generics/attributes.css */
+/*
+[disabled] {
+  pointer-events: none;
+}
+*/
