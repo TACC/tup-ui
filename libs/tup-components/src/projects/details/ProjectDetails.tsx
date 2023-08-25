@@ -188,8 +188,24 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
         {projectDetails?.description ?? '(No description provided)'}
 
         <div className={styles['pub-abstract-grants']}>
-          Your project and allocation information can be managed on the TXRAS or
-          ACCESS portals.
+          If your allocation was awarded through ACCESS, it can be managed in
+          the ACCESS portal (
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href="https://allocations.access-ci.org/"
+          >
+            https://allocations.access-ci.org/
+          </a>
+          ); all other allocations can be managed in the XRAS portal (
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href="https://submit-tacc.xras.org/"
+          >
+            https://submit-tacc.xras.org/
+          </a>
+          )
         </div>
       </SectionTableWrapper>
     </div>
