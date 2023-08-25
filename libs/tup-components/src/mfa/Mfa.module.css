@@ -6,19 +6,13 @@
 
     composes: c-step-panels c-step-panels--has-scroll-parent from '../../styles/c-step-panels.css';
 }
-.pairing-separator {
-    composes: c-step-panels__separator from '../../styles/c-step-panels.css';
-}
+
 .pairing-container > *:not(.pairing-separator) {
     width: 365px; /* FAQ: static width, so .c-step-panels__message is centered */
 }
-@media screen and (--medium-and-above) {
-    .pairing-container {
-        composes: c-step-panels--horizontal from '../../styles/c-step-panels.css';
-    }
-    .mfa-message {
-        composes: c-step-panels__message from '../../styles/c-step-panels.css';
-    }
+
+.pairing-separator {
+    composes: c-step-panels__separator from '../../styles/c-step-panels.css';
 }
 
 .mfa-type-selection {
@@ -60,6 +54,15 @@ label.qr-code-alt-label {
 }
 
 
+/* Wide */
+@media screen and (--medium-and-above) {
+    .pairing-container {
+        composes: c-step-panels--horizontal from '../../styles/c-step-panels.css';
+    }
+    .mfa-message {
+        composes: c-step-panels__message from '../../styles/c-step-panels.css';
+    }
+}
 
 .mfa-form {
     composes: c-step-panels__content from '../../styles/c-step-panels.css';
