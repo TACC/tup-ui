@@ -21,8 +21,11 @@ const MfaUnpairingView: React.FC = () => {
   const { mutate: unpairWithCode, isError, isSuccess } = useMfaDelete();
   const { mutate: unpairWithEmail, isSuccess: emailSentSuccess } =
     useMfaEmailUnpair();
-  const { mutate: sendChallenge, isSuccess: sendChallengeSuccess, isLoading: isChallengeLoading } =
-    useMfaChallenge();
+  const {
+    mutate: sendChallenge,
+    isSuccess: sendChallengeSuccess,
+    isLoading: isChallengeLoading,
+  } = useMfaChallenge();
 
   const method = data?.token?.tokentype;
 
@@ -51,7 +54,11 @@ const MfaUnpairingView: React.FC = () => {
           {method === 'sms' && (
             <>
               <label>Send SMS token to your phone</label>
-              <Button type="secondary" onClick={() => sendChallenge(null)} isLoading={isChallengeLoading}>
+              <Button
+                type="secondary"
+                onClick={() => sendChallenge(null)}
+                isLoading={isChallengeLoading}
+              >
                 Send Token
               </Button>
             </>

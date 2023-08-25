@@ -10,9 +10,9 @@ const Mfa: React.FC<{ task: 'pair' | 'unpair' }> = ({ task }) => {
         <MfaHeader />
         {/* Default to a "success" view if user has a verified token */}
         {task === 'pair' ? (
-        <MfaWrapper>
-          <Outlet />
-        </MfaWrapper>
+          <MfaWrapper>
+            <Outlet />
+          </MfaWrapper>
         ) : (
           <Outlet />
         )}
