@@ -12,6 +12,12 @@ export const Display: React.FC<{
   </Link>
 );
 
+export const TextDisplay: React.FC<{
+  cell: Cell<SystemMonitorRawSystem, string>;
+}> = ({ cell: { row } }) => {
+  return row.original.display_name;
+};
+
 export const Operational: React.FC<{
   cell: Cell<SystemMonitorRawSystem, boolean>;
 }> = ({ cell: { value } }) => {

@@ -6,13 +6,13 @@ import { Outlet } from 'react-router-dom';
 const Mfa: React.FC = () => {
   return (
     <RequireAuth>
-      <div className={styles['mfa-layout']}>
+      <section className={styles['mfa-layout']}>
         <MfaHeader />
         {/* Default to a "success" view if user has a verified token */}
         <MfaWrapper>
           <Outlet />
         </MfaWrapper>
-      </div>
+      </section>
     </RequireAuth>
   );
 };

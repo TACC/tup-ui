@@ -40,7 +40,7 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
   };
   return (
     <>
-      <Button type="link" onClick={() => toggle()}>
+      <Button type="secondary" onClick={() => toggle()}>
         Unpair
       </Button>
       <Modal
@@ -63,7 +63,6 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               account.
             </SectionMessage>
             <br />
-            <p>Enter your current MFA token to unpair your device.</p>
             {pairing.token?.tokentype === 'sms' && (
               <p>
                 <Button type="primary" onClick={() => sendChallenge(null)}>
@@ -72,10 +71,10 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               </p>
             )}
             <p>
-              <label htmlFor="current-mfa-token">Enter MFA Token:&nbsp;</label>
-              <br />
+              <label htmlFor="current-mfa-token">Enter MFA Token:</label>
               <input
                 value={currentToken}
+                autoComplete="off"
                 onChange={(e) => setCurrentToken(e.target.value)}
                 id="current-mfa-token"
               />
@@ -94,12 +93,10 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
               <Button onClick={() => unpairWithEmail(null)}>Send Email</Button>
             </p>
             {emailSentSuccess && (
-              <p>
-                <SectionMessage type="info">
-                  An email has been sent to the address listed on your account.
-                  Follow its instructions to continue the unpairing.
-                </SectionMessage>
-              </p>
+              <SectionMessage type="info">
+                An email has been sent to the address listed on your account.
+                Follow its instructions to continue the unpairing.
+              </SectionMessage>
             )}
           </ModalBody>
           <ModalFooter>
@@ -116,6 +113,12 @@ const MfaUnpair: React.FC<{ pairing: MfaTokenResponse }> = ({ pairing }) => {
   );
 };
 
+const MfaSectionHeader: React.FC = () => (
+  <div className={styles['tap-header']}>
+    <strong>MFA Pairing</strong>
+  </div>
+);
+
 export const AccountMfa: React.FC = () => {
   const TOKEN_TYPE = {
     sms: 'SMS Token',
@@ -125,13 +128,10 @@ export const AccountMfa: React.FC = () => {
   if (isError) {
     return (
       <>
-        <div className={styles['tap-header']}>
-          <strong>MFA Pairing</strong>
-        </div>
+        <MfaSectionHeader />
         <SectionMessage type="error">
           There was an error retrieving your multifactor authentication status.
-          Your account may be in a non-valid state. if this error persists
-          please{' '}
+          Your account may be in a non-valid state. If this error persists,{' '}
           <TicketCreateModal display="link">submit a ticket</TicketCreateModal>{' '}
           with this information and TACC User Services will assist you.
         </SectionMessage>
@@ -142,9 +142,10 @@ export const AccountMfa: React.FC = () => {
   const hasPairing = data?.token?.rollout_state === 'enrolled';
   return (
     <>
-      <div className={styles['tap-header']}>
-        <strong>MFA Pairing</strong>
-      </div>
+      <MfaSectionHeader />
+      <span className={styles['tap-description']}>
+        Set up multi-factor authentication using a token app or SMS.
+      </span>
       {!hasPairing && (
         <Link to="/mfa" className={styles['tap-href']}>
           <Button type="primary">Pair Device</Button>
@@ -152,9 +153,9 @@ export const AccountMfa: React.FC = () => {
       )}
       {hasPairing && data.token && (
         <div className={styles['mfa-options']}>
-          <span>
+          <p>
             {TOKEN_TYPE[data.token.tokentype]} ({data.token.serial})
-          </span>
+          </p>
           <MfaUnpair pairing={data} />
         </div>
       )}
