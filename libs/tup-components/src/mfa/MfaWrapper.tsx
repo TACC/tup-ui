@@ -19,9 +19,10 @@ const MfaWrapper: React.FC<React.PropsWithChildren> = ({ children }) => {
     return <MfaSuccessView task="unpair" />;
   } else if (!data) {
     return <MfaSelection />;
-  } else {
-    return {children};
   }
+
+  /*eslint-disable-next-line react/jsx-no-useless-fragment */
+  return <>{children}</>;
 };
 
 export default MfaWrapper;
