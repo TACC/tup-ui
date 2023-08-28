@@ -1,7 +1,11 @@
 import React from 'react';
 
 import { Formik, Form, FormikHelpers } from 'formik';
-import { FormikFileInput, FormikTextarea } from '@tacc/core-wrappers';
+import {
+  FormikFileInput,
+  FormikTextarea,
+  FormikSelect,
+} from '@tacc/core-wrappers';
 import { FormGroup } from 'reactstrap';
 import { Button, InlineMessage } from '@tacc/core-components';
 import { useTicketReply } from '@tacc/tup-hooks';
@@ -11,22 +15,24 @@ import './TicketModal.global.css';
 interface TicketReplyFormValues {
   text: string;
   files: File[];
+  status: string;
 }
 
 const formSchema = Yup.object().shape({
   text: Yup.string().required('Required'),
 });
 
-const defaultValues: TicketReplyFormValues = {
-  text: '',
-  files: [],
-};
-
 export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
   ticketId,
 }) => {
   const mutation = useTicketReply(ticketId);
   const { mutate, isLoading, isError } = mutation;
+
+  const defaultValues: TicketReplyFormValues = {
+    text: '',
+    files: [],
+    status: '',
+  };
 
   const onSubmit = (
     values: TicketReplyFormValues,
@@ -35,6 +41,7 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
     const formData = new FormData();
     formData.append('text', values['text']);
     (values.files || []).forEach((file) => formData.append('files', file));
+    if (values.status) formData.append('status', values.status);
     mutate(formData, {
       onSuccess: () => resetForm(),
     });
@@ -58,6 +65,14 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
               style={{ maxWidth: '100%' }}
               required
             />
+            <FormikSelect name="status" label="Status">
+              <option value="">--</option>
+              <option value="new">New</option>
+              <option value="resolved">Resolved</option>
+              <option value="open">In Progress</option>
+              <option value="user_wait">Reply Required</option>
+              <option value="internal_wait">Reply Sent</option>
+            </FormikSelect>
             <FormikFileInput
               name="files"
               required={false}

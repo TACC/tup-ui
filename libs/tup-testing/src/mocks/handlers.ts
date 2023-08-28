@@ -11,6 +11,8 @@ import {
   mockTicketDetails,
   mockTicketHistory,
   unverifiedToken,
+  mockUserSearchResult,
+  mockSystemStatus,
 } from './fixtures';
 import { mockProjectGrants, mockProjectPubs } from './fixtures/projects';
 
@@ -27,13 +29,21 @@ export const handlers = [
     // Respond with mock system monitor output
     return res(ctx.json(rawSystemMonitorOutput));
   }),
+  rest.get(
+    'http://localhost:8001/system_monitor/:tas_name',
+    (req, res, ctx) => {
+      // Respond with mock system monitor output
+      return res(ctx.json(mockSystemStatus));
+    }
+  ),
   rest.get('http://localhost:8001/projects', (req, res, ctx) => {
     // Respond with mock active projects output
     return res(ctx.json(mockProjectsOutput));
   }),
-  rest.get('http://localhost:8001/projects', (req, res, ctx) => {
+
+  rest.get('http://localhost:8001/users/search', (req, res, ctx) => {
     // Respond with mock active projects output
-    return res(ctx.json(mockProjectsOutput));
+    return res(ctx.json(mockUserSearchResult));
   }),
   rest.get(
     'http://localhost:8001/projects/:projectId/publications',

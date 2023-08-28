@@ -9,6 +9,15 @@ from django.utils.translation import gettext_lazy as _
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ########################
+# CORE CMS SETTINGS
+# FAQ: These are in future versions of Core-CMS
+########################
+
+# NOTE: Already in Core-CMS v3.12.0-beta.2
+# whether the session cookie should be secure (https:// only)
+SESSION_COOKIE_SECURE = True
+
+########################
 # DJANGO CMS SETTINGS
 ########################
 
@@ -47,12 +56,14 @@ CMS_CACHE_DURATIONS = {
 RECAPTCHA_PRIVATE_KEY = ''
 RECAPTCHA_PUBLIC_KEY = ''
 
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
+
 ########################
 # TACC: GOOGLE ANALYTICS
 ########################
 
 # To use during dev, Tracking Protection in browser needs to be turned OFF.
-GOOGLE_ANALYTICS_PROPERTY_ID = "UA-96034853-2"
+GOOGLE_ANALYTICS_PROPERTY_ID = "G-TRRRQZ0EHX"
 GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
@@ -176,7 +187,7 @@ TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
 # TACC: CORE STYLES
 ########################
 
-TACC_CORE_STYLES_VERSION = 1
+TACC_CORE_STYLES_VERSION = 2
 
 ########################
 # PLUGIN SETTINGS

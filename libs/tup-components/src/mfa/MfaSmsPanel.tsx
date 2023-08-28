@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMfaPairSms } from '@tacc/tup-hooks';
-import { Button, SectionMessage } from '@tacc/core-components';
+import { Button, InlineMessage } from '@tacc/core-components';
 import styles from './Mfa.module.css';
 import { TicketCreateModal } from '../tickets';
 
@@ -12,39 +12,43 @@ const MfaSmsPanel: React.FC = () => {
     smsMutation.mutate({ phoneNumber });
   };
   return (
-    <div>
-      <span>1. Enter your phone number:</span>
-      <form onSubmit={(e) => onSubmit(e)} className={styles['mfa-form']}>
-        <label htmlFor="mfa-phone-number" hidden>
-          Enter your Phone Number:
-        </label>
-        <input
-          id="mfa-phone-number"
-          onChange={(e) => setPhoneNumber(e.target.value)}
-        />
-        <div className={styles['submit-button']}>
-          <Button
-            type="primary"
-            attr="submit"
-            isLoading={smsMutation.isLoading}
-          >
-            Send Token
-          </Button>
+    <>
+      <form
+        onSubmit={(e) => onSubmit(e)}
+        className={`${styles['mfa-form']} s-form`}
+      >
+        <div>
+          <label htmlFor="mfa-phone-number">Enter your Phone Number:</label>
+          <input
+            required
+            id="mfa-phone-number"
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+          {smsMutation.isError && (
+            <InlineMessage
+              type="error"
+              tagName="small"
+              className={styles['field-error']}
+            >
+              Unable to pair via SMS. If this error persists,{' '}
+              <TicketCreateModal display="link">
+                submit a ticket
+              </TicketCreateModal>
+              .
+            </InlineMessage>
+          )}
         </div>
+        <Button type="primary" attr="submit" isLoading={smsMutation.isLoading}>
+          Send Token
+        </Button>
       </form>
-      {smsMutation.isError && (
-        <SectionMessage type="error">
-          <div className={styles['qr-code-error']}>
-            There was an error generating your SMS pairing. If this error
-            persists, please{' '}
-            <TicketCreateModal display="link">
-              submit a ticket
-            </TicketCreateModal>{' '}
-            and TACC User Services will assist you.
-          </div>
-        </SectionMessage>
+      {(smsMutation.data || smsMutation.isLoading) && (
+        <p className={styles['mfa-message']}>
+          Didn't receive a message within 5 minutes?{' '}
+          <TicketCreateModal display="link">Get Help</TicketCreateModal>
+        </p>
       )}
-    </div>
+    </>
   );
 };
 

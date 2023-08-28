@@ -93,10 +93,10 @@ export const TicketCreateForm: React.FC = () => {
           <FormikSelect name="category" label="Category" required>
             <option value="">Please Choose One</option>
             <option>Allocations</option>
-            <option>Data Analytics or Storage Resources</option>
-            <option>Login/Authentication Issue</option>
             <option>Running Jobs or Using TACC Resources</option>
-            <option>Security Incident</option>
+            <option>Login Issues</option>
+            <option>Multi-factor Authentication</option>
+            <option>Arecibo Data</option>
             <option>Other</option>
           </FormikSelect>
           <FormikSelect name="resource" label="System/Resource" required>
@@ -108,7 +108,6 @@ export const TicketCreateForm: React.FC = () => {
             <option>Jetstream(jetstream.tacc.utexas.edu)</option>
             <option>Lonestar6(lonestar6.tacc.utexas.edu)</option>
             <option>Longhorn(longhorn.tacc.utexas.edu)</option>
-            <option>Maverick2(maverick2.tacc.utexas.edu)</option>
             <option>Ranch(ranch.tacc.utexas.edu)</option>
             <option>Stampede2(stampede2.tacc.utexas.edu)</option>
             <option>Vislab(stallion.tacc.utexas.edu)</option>

@@ -31,3 +31,20 @@ hr {
   width: 16px;
   height: 16px;
 }
+
+/* TODO: Remove this after:
+         0. attributes.css is migrated to Core-Styles
+         1. attributes.css is loaded by Portal */
+[data-prefix]::before {
+  display: inline-block;
+  content: attr(data-prefix);
+  margin-right: 0.25ch;
+  text-transform: none;
+}
+
+/* TODO: Remove this after:
+         0. CEP v2 colors are removed from Core-Styles settings/color--portal */
+:root {
+  /* FAQ: The `!important` is only necessary for dev (and thus prod) server */
+  --global-color-danger--normal: #dc393b !important;
+}
