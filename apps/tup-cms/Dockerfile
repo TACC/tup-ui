@@ -1,5 +1,5 @@
-# TACC/Core-CMS#v3.12.0-alpha.9
-FROM taccwma/core-cms:afb6f21
+# TACC/Core-CMS#v3.12.0-beta.3 candidate
+FROM taccwma/core-cms:bebad4e
 
 WORKDIR /code
 
@@ -12,3 +12,5 @@ COPY dist/apps/tup-ui/assets/ /code/taccsite_cms/static/assets/
 
 COPY dist/apps/tup-cms-react/assets /code/taccsite_cms/static/cms-react/assets
 COPY /dist/apps/tup-cms-react/imports.html /code/taccsite_cms/templates/tup-cms-react.html
+
+RUN npm run build:ui-demo
