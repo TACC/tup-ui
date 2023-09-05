@@ -1,0 +1,48 @@
+/* To add more space beneath lists */
+/* TODO: Consider changing this in core-styles.base.css */
+/* TODO: Alternatively, consider adding this to core-styles.cms.css */
+.s-staff-profile :is(dl, ul, ol) {
+  /* To mimic core-styles.cms.css <p> */
+  margin-bottom: 2rem; /* overwrites core-styles.base.css */
+}
+
+.s-staff-profile :not(.c-content-block, .content-block) > h3 {
+    margin-bottom: 0.5em; /* halved from Core-Styles headings--cms.css */
+}
+
+/* When sidebar is under main content */
+/* WARNING: This query assumes Bootstrap 4 grid classes "col-sm-12 col-md-6" */
+@media only screen and (max-width: 767px) {
+
+  /* Make Sidebar Content Mimic Main Content */
+
+  /* To remove bullets in a c-content-block */
+  :is(.c-content-block, .content-block) ul {
+    list-style-type: none;
+  }
+
+  /* To undo c-content-block styles (Core-Styles) */
+  :is(.c-content-block, .content-block) {
+      margin-bottom: unset;
+      padding: unset;
+  }
+  :is(.c-content-block, .content-block) :is(h1, h2, h3, h4, h5, h6) {
+      border-left: unset;
+      padding-left: unset;
+  }
+  /* To retain space between staff image and a content block beneath */
+  :is(.c-content-block, .content-block) img {
+    margin-bottom: var(--global-space--pattern-pad); /* mimics c-content-block padding */
+  }
+
+  /* To undo c-content-block styles (TUP-CMS) */
+  :is(.c-content-block, .content-block) + :is(.c-content-block, .content-block) {
+      margin-top: unset;
+  }
+
+  /* To replicate non–c-content-block styles (Staff Profile) */
+  .s-staff-profile :is(.c-content-block, .content-block) > h3 {
+      margin-bottom: 0.5em; /* halved from Core-Styles headings--cms.css */
+  }
+
+}

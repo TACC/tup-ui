@@ -1,0 +1,23 @@
+{% load static %}
+
+<div class="content-block">
+  {% if instance.photo %}
+  <img
+    src="{{instance.photo.url}}"
+    title="{% spaceless %}
+        {% if instance.photo.default_alt_text %}
+            {{instance.photo.default_alt_text}}
+        {% else %}
+            {% include './display_name.html' %}
+        {% endif %}
+    {% endspaceless %}"
+    class="img-fluid"
+  />
+  {% else %}
+  <img
+    src="{% static 'staff_profile/img/ut-seal.svg' %}"
+    title="University of Texas at Austin"
+    class="img-fluid"
+  />
+  {% endif %}
+</div>

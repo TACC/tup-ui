@@ -1,0 +1,5 @@
+{% if instance.post_nomials %}
+  {{instance.first_name}} {{instance.last_name}}, {{instance.post_nomials}}
+{% else %}
+  {{instance.first_name}} {{instance.last_name}}
+{% endif %}

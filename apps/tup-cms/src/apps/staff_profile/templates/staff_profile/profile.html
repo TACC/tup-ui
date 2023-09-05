@@ -1,0 +1,42 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'staff_profile/css/staff_profile.css' %}" />
+
+<div class="row  s-staff-profile">
+	<div class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+		<h1>{% include "./includes/display_name.html" %}</h1>
+
+		<h2>
+      {% if instance.title2 %}
+      {{ instance.title }}{% spaceless %}
+      {% if instance.department %}, {{instance.department}}{% endif %}
+      {% endspaceless %}<br />{{ instance.title2 }}
+      {% else %}
+      {{ instance.title }}
+      <br /><small>{{ instance.department }}</small>
+      {% endif %}
+    </h2>
+
+		<p>
+		{% if instance.phone %}
+      Phone: <strong>{{instance.phone}}</strong> |
+    {% endif %}
+		Email: <strong><a href="mailto:{{instance.email}}" target="_blank">{{instance.email}}</a></strong>
+		</p>
+
+		{{instance.description | safe}}
+
+    {% include "./includes/block_main.html" with title="Selected Publications" content=instance.publications only %}
+    {% include "./includes/block_main.html" with title="Current Projects" content=instance.projects only %}
+    {% include "./includes/block_main.html" with title="Areas of Research" content=instance.research_areas only %}
+    {% include "./includes/block_main.html" with title="Memberships" content=instance.memberships only %}
+	</div>
+
+	<div class="col col-12 col-sm-12 col-md-6 col-lg-4 offset-lg-1 col-xl-4 offset-xl-1">
+    {% include "./includes/photo.html" with instance=instance only %}
+
+    {% include "./includes/block_side.html" with title="Education" content=instance.education only %}
+	</div>
+</div>
+
+<script type="module" src="{% static 'staff_profile/js/staff_profile.js' %}"></script>
