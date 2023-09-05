@@ -17,7 +17,7 @@
 
 1. **Avoid** Global Project styles.
 2. Do use and create [Component Styles](#component-styles).
-3. Do use and create [Core Styles] or [Project Styles].
+3. Do use and create [Core Styles] or [Project Styles](#use-project-styles).
 4. Do follow our [CSS Style Guide].
 
 ## Component Styles
