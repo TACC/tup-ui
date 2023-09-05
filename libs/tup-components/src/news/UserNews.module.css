@@ -1,5 +1,5 @@
 .news-list {
-  font-size: var(--global-font-size--small);
+  font-size: var(--global-font-size--x-small);
 }
 
 .news-list-item {
@@ -39,6 +39,8 @@
 
   margin-top: 10px;
   margin-bottom: 5px;
+
+  font-size: var(--global-font-size--small);
 }
 
 .news-error {
