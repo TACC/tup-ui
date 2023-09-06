@@ -21,11 +21,6 @@
     margin-top: 30px; /* match .mfa-success-container button */
 }
 
-.mfa-message {
-    /* So OTP code copy field will not stretch to fill narrow-width screen */
-    width: max-content;
-}
-
 .field-error {
   /* So message with very little text still appears beneath input */
   display: flex;
@@ -113,6 +108,12 @@ label.qr-code-alt-label {
         );
 
         padding-bottom: var(--space-below-panel-for-message);
+    }
+
+    /* To not let message content stretch wider than necessary */
+    /* FAQ: A TextCopyField in a message would stretch as wide as possible */
+    .mfa-message {
+        width: max-content;
     }
 
     /* HACK: Position .mfa-message at the bottom and "outside" of the panels */
