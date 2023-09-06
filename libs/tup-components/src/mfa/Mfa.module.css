@@ -8,7 +8,9 @@
 }
 
 .pairing-container > *:not(.pairing-separator) {
-    width: 365px; /* FAQ: static width, so .mfa-message is centered */
+    /* To let panels easily become equal width so .mfa-message is centered */
+    /* FAQ: Using a var makes width easy to change (e.g. in a @media query) */
+    width: var(--panel-width, auto);
 }
 
 .pairing-separator {
@@ -88,6 +90,15 @@ label.qr-code-alt-label {
 
 
 /* Responsive layout */
+@media screen and (--medium-and-below) {
+    .pairing-container { --panel-width: 365px; }
+}
+@media screen and (--medium-to-wide) {
+    .pairing-container { --panel-width: 330px; }
+}
+@media screen and (--wide-and-above) {
+    .pairing-container { --panel-width: 365px; }
+}
 @media screen and (--medium-and-above) {
     .pairing-container {
         /* To layout items on one left-aligned row */
