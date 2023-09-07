@@ -29,7 +29,7 @@ const ViewAllUpdates = () => (
     target="_blank"
     rel="noopener noreferrer"
   >
-    View All Updates
+    View all Updates
   </a>
 );
 
