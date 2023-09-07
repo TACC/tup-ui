@@ -4,6 +4,8 @@ import { ProjectsAllocations, useProjects } from '@tacc/tup-hooks';
 import { Link } from 'react-router-dom';
 import { EmptyTablePlaceholder } from '../utils';
 
+const PROJECTS_DASHBOARD_DISPLAY_LIMIT = 7;
+
 const allocationDisplay = (allocations: ProjectsAllocations[]) => {
   return allocations.length
     ? Array.from(
@@ -20,7 +22,7 @@ export const ProjectsTable: React.FC = () => {
   const { data, isLoading, error } = useProjects();
   const projectData = data?.filter((prj) =>
     prj.allocations?.some((alloc) => alloc.status === 'Active')
-  );
+  ).slice(0, PROJECTS_DASHBOARD_DISPLAY_LIMIT);
 
   if (isLoading) {
     return <LoadingSpinner />;
