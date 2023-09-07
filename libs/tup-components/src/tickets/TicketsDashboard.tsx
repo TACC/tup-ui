@@ -13,7 +13,7 @@ const TicketsDashboard: React.FC = () => {
       headerActions={
         <>
           <Link to="/tickets" className={styles['viewall-action']}>
-            View all tickets
+            View all Tickets
           </Link>
           <TicketCreateModal display="secondary">
             + New Ticket
