@@ -20,9 +20,11 @@ const allocationDisplay = (allocations: ProjectsAllocations[]) => {
 
 export const ProjectsTable: React.FC = () => {
   const { data, isLoading, error } = useProjects();
-  const projectData = data?.filter((prj) =>
-    prj.allocations?.some((alloc) => alloc.status === 'Active')
-  ).slice(0, PROJECTS_DASHBOARD_DISPLAY_LIMIT);
+  const projectData = data
+    ?.filter((prj) =>
+      prj.allocations?.some((alloc) => alloc.status === 'Active')
+    )
+    .slice(0, PROJECTS_DASHBOARD_DISPLAY_LIMIT);
 
   if (isLoading) {
     return <LoadingSpinner />;
