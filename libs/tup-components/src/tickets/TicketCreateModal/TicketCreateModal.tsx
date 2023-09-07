@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { Button } from '@tacc/core-components';
+import { Button, ButtonTypeSizeProps } from '@tacc/core-components';
 import { TicketCreateForm } from './TicketCreateForm';
 import styles from './TicketCreateModal.module.css';
 
-const TicketCreateModal: React.FC<
-  React.PropsWithChildren<{
-    display: 'secondary' | 'link';
-  }>
-> = ({ children, display }) => {
+type ButtonProps = {
+  [Property in keyof ButtonTypeSizeProps as Property extends 'type'
+    ? 'display'
+    : Property]: ButtonTypeSizeProps[Property];
+};
+
+const TicketCreateModal: React.FC<React.PropsWithChildren<ButtonProps>> = ({
+  children,
+  display,
+  size,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -22,7 +28,7 @@ const TicketCreateModal: React.FC<
 
   return (
     <>
-      <Button type={display} onClick={() => toggle()}>
+      <Button type={display} size={size} onClick={() => toggle()}>
         {children}
       </Button>
       <Modal

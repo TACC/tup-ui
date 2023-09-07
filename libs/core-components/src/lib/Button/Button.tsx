@@ -37,6 +37,11 @@ type ButtonTypeOtherSize = {
   size?: 'short' | 'medium' | 'long' | 'small';
 };
 
+export type ButtonTypeSizeProps =
+  | ButtonTypeLinkSize
+  | ButtonTypePrimarySize
+  | ButtonTypeOtherSize;
+
 type ButtonProps = React.PropsWithChildren<{
   className?: string;
   iconNameBefore?: string;
@@ -48,7 +53,7 @@ type ButtonProps = React.PropsWithChildren<{
   attr?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
 }> &
-  (ButtonTypeLinkSize | ButtonTypePrimarySize | ButtonTypeOtherSize);
+  ButtonTypeSizeProps;
 
 const Button: React.FC<ButtonProps> = ({
   children,
