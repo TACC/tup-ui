@@ -6,7 +6,7 @@ import './TicketsTable.global.css';
 import { formatDate } from '../utils/timeFormat';
 import { EmptyTablePlaceholder } from '../utils';
 
-const TICKETS_DASHBOARD_DISPLAY_LIMIT = 12;
+const TICKETS_DASHBOARD_DISPLAY_LIMIT = 8;
 
 export const getStatusText = (status: string) => {
   switch (status) {
