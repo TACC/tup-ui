@@ -1,5 +1,5 @@
-import { SectionTableWrapper } from '@tacc/core-components';
 import React from 'react';
+import { Button, SectionTableWrapper } from '@tacc/core-components';
 import TicketCreateModal from './TicketCreateModal';
 import { TicketsTable } from './TicketsTable';
 
@@ -8,7 +8,11 @@ const TicketsDashboard: React.FC = () => {
     <SectionTableWrapper
       header="My Tickets"
       headerActions={
-        <TicketCreateModal display="secondary">+ New Ticket</TicketCreateModal>
+        <TicketCreateModal>
+          <Button type="secondary" size="small">
+            + New Ticket
+          </Button>
+        </TicketCreateModal>
       }
       contentShouldScroll
     >

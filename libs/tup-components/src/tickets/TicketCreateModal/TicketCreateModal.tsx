@@ -6,13 +6,23 @@ import styles from './TicketCreateModal.module.css';
 
 const TicketCreateModal: React.FC<
   React.PropsWithChildren<{
-    display: 'secondary' | 'link';
+    display?: 'secondary' | 'link';
   }>
 > = ({ children, display }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
+  const action = React.isValidElement(children) ? (
+    React.cloneElement(children as React.ReactElement, {
+      onClick: () => toggle(),
+    })
+  ) : (
+    <Button type={display} onClick={() => toggle()}>
+      {children}
+    </Button>
+  );
 
   const closeBtn = (
     <button className="close" onClick={toggle} type="button">
@@ -22,9 +32,7 @@ const TicketCreateModal: React.FC<
 
   return (
     <>
-      <Button type={display} onClick={() => toggle()}>
-        {children}
-      </Button>
+      {action}
       <Modal
         isOpen={isOpen}
         toggle={toggle}
