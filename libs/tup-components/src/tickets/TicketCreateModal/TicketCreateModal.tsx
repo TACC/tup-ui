@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { Button, ButtonTypeSizeProps } from '@tacc/core-components';
+import {
+  Button,
+  ButtonTypeLinkSize,
+  ButtonTypePrimarySize,
+  ButtonTypeOtherSize,
+} from '@tacc/core-components';
 import { TicketCreateForm } from './TicketCreateForm';
 import styles from './TicketCreateModal.module.css';
 
 type ButtonProps = {
-  [Property in keyof ButtonTypeSizeProps as Property extends 'type'
+  [Property in keyof ButtonTypeLinkSize as Property extends 'type'
     ? 'display'
-    : Property]: ButtonTypeSizeProps[Property];
+    : Property]: ButtonTypeLinkSize[Property];
+} | {
+  [Property in keyof ButtonTypePrimarySize as Property extends 'type'
+    ? 'display'
+    : Property]: ButtonTypePrimarySize[Property];
+} | {
+  [Property in keyof ButtonTypeOtherSize as Property extends 'type'
+    ? 'display'
+    : Property]: ButtonTypeOtherSize[Property];
 };
 
 const TicketCreateModal: React.FC<React.PropsWithChildren<ButtonProps>> = ({

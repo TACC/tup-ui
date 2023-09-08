@@ -1,1 +1,6 @@
-export { default, ButtonTypeSizeProps } from './Button';
+export {
+  default,
+  ButtonTypeLinkSize,
+  ButtonTypePrimarySize,
+  ButtonTypeOtherSize,
+} from './Button';

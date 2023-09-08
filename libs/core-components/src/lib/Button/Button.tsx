@@ -24,23 +24,18 @@ export const SIZES = [''].concat(Object.keys(SIZE_MAP));
 
 export const ATTRIBUTES = ['button', 'submit', 'reset'];
 
-type ButtonTypeLinkSize = {
+export type ButtonTypeLinkSize = {
   type?: 'link';
   size?: never;
 };
-type ButtonTypePrimarySize = {
+export type ButtonTypePrimarySize = {
   type?: 'primary';
   size?: 'short' | 'medium' | 'long';
 };
-type ButtonTypeOtherSize = {
+export type ButtonTypeOtherSize = {
   type?: 'secondary' | 'tertiary' | 'active';
   size?: 'short' | 'medium' | 'long' | 'small';
 };
-
-export type ButtonTypeSizeProps =
-  | ButtonTypeLinkSize
-  | ButtonTypePrimarySize
-  | ButtonTypeOtherSize;
 
 type ButtonProps = React.PropsWithChildren<{
   className?: string;
@@ -53,7 +48,7 @@ type ButtonProps = React.PropsWithChildren<{
   attr?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
 }> &
-  ButtonTypeSizeProps;
+  (ButtonTypeLinkSize | ButtonTypePrimarySize | ButtonTypeOtherSize);
 
 const Button: React.FC<ButtonProps> = ({
   children,
