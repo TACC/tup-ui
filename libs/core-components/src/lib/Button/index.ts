@@ -1,6 +1,3 @@
-export {
-  default,
-  ButtonTypeLinkSize,
-  ButtonTypePrimarySize,
-  ButtonTypeOtherSize,
-} from './Button';
+import Button from './Button';
+
+export default Button;

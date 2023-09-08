@@ -1,9 +1,4 @@
-export {
-  default as Button,
-  ButtonTypeLinkSize,
-  ButtonTypePrimarySize,
-  ButtonTypeOtherSize,
-} from './lib/Button';
+export { default as Button } from './lib/Button';
 export { default as Icon } from './lib/Icon';
 export { default as Section } from './lib/Section';
 export { default as SectionHeader } from './lib/SectionHeader';

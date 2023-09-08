@@ -1,37 +1,28 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import {
-  Button,
-  ButtonTypeLinkSize,
-  ButtonTypePrimarySize,
-  ButtonTypeOtherSize,
-} from '@tacc/core-components';
+import { Button } from '@tacc/core-components';
 import { TicketCreateForm } from './TicketCreateForm';
 import styles from './TicketCreateModal.module.css';
 
-type ButtonProps = {
-  [Property in keyof ButtonTypeLinkSize as Property extends 'type'
-    ? 'display'
-    : Property]: ButtonTypeLinkSize[Property];
-} | {
-  [Property in keyof ButtonTypePrimarySize as Property extends 'type'
-    ? 'display'
-    : Property]: ButtonTypePrimarySize[Property];
-} | {
-  [Property in keyof ButtonTypeOtherSize as Property extends 'type'
-    ? 'display'
-    : Property]: ButtonTypeOtherSize[Property];
-};
-
-const TicketCreateModal: React.FC<React.PropsWithChildren<ButtonProps>> = ({
-  children,
-  display,
-  size,
-}) => {
+const TicketCreateModal: React.FC<
+  React.PropsWithChildren<{
+    display?: 'secondary' | 'link';
+  }>
+> = ({ children, display }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
+  const action = React.isValidElement(children) ? (
+    React.cloneElement(children as React.ReactElement<any>, {
+      onClick: () => toggle(),
+    })
+  ) : (
+    <Button type={display} onClick={() => toggle()}>
+      {children}
+    </Button>
+  );
 
   const closeBtn = (
     <button className="close" onClick={toggle} type="button">
@@ -41,9 +32,7 @@ const TicketCreateModal: React.FC<React.PropsWithChildren<ButtonProps>> = ({
 
   return (
     <>
-      <Button type={display} size={size} onClick={() => toggle()}>
-        {children}
-      </Button>
+      {action}
       <Modal
         isOpen={isOpen}
         toggle={toggle}

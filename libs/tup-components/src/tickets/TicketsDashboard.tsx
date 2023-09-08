@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SectionTableWrapper } from '@tacc/core-components';
+import { Button, SectionTableWrapper } from '@tacc/core-components';
 import TicketCreateModal from './TicketCreateModal';
 import { TicketsTable } from './TicketsTable';
 
@@ -15,8 +15,10 @@ const TicketsDashboard: React.FC = () => {
           <Link to="/tickets" className={styles['viewall-action']}>
             View all Tickets
           </Link>
-          <TicketCreateModal display="secondary">
-            + New Ticket
+          <TicketCreateModal>
+            <Button type="secondary" size="small">
+              + New Ticket
+            </Button>
           </TicketCreateModal>
         </>
       }

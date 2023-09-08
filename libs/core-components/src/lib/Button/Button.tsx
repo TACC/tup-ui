@@ -24,15 +24,15 @@ export const SIZES = [''].concat(Object.keys(SIZE_MAP));
 
 export const ATTRIBUTES = ['button', 'submit', 'reset'];
 
-export type ButtonTypeLinkSize = {
+type ButtonTypeLinkSize = {
   type?: 'link';
   size?: never;
 };
-export type ButtonTypePrimarySize = {
+type ButtonTypePrimarySize = {
   type?: 'primary';
   size?: 'short' | 'medium' | 'long';
 };
-export type ButtonTypeOtherSize = {
+type ButtonTypeOtherSize = {
   type?: 'secondary' | 'tertiary' | 'active';
   size?: 'short' | 'medium' | 'long' | 'small';
 };
