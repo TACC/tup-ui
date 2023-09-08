@@ -15,7 +15,7 @@ const TicketCreateModal: React.FC<
   };
 
   const action = React.isValidElement(children) ? (
-    React.cloneElement(children as React.ReactElement<any>, {
+    React.cloneElement(children as React.ReactElement, {
       onClick: () => toggle(),
     })
   ) : (
