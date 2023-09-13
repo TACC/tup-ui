@@ -1,5 +1,6 @@
 from functools import wraps
 from django.shortcuts import redirect
+import urllib
 from django.contrib.auth import authenticate, login
 
 def tup_login_required(login_url="/portal/login"):
@@ -14,7 +15,7 @@ def tup_login_required(login_url="/portal/login"):
             user = authenticate(request)
 
             if user is None:
-                from_path = request.path
+                from_path = urllib.parse.quote(request.get_full_path())
                 return redirect(f'{login_url}?from={from_path}')
 
             login(request, user)
