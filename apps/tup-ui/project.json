@@ -56,7 +56,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/tup-ui"],
+      "outputs": ["{workspaceRoot}/coverage/apps/tup-ui"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/tup-ui"

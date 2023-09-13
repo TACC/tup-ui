@@ -57,7 +57,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/tup-cms-react"],
+      "outputs": ["{workspaceRoot}/coverage/apps/tup-cms-react"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/tup-cms-react"

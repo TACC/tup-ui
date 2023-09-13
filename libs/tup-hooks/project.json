@@ -14,7 +14,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/tup-hooks"],
+      "outputs": ["{workspaceRoot}/coverage/libs/tup-hooks"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/tup-hooks"

@@ -14,7 +14,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/tup-testing"],
+      "outputs": ["{workspaceRoot}/coverage/libs/tup-testing"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/tup-testing"

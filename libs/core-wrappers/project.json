@@ -14,7 +14,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/core-wrappers"],
+      "outputs": ["{workspaceRoot}/coverage/libs/core-wrappers"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/core-wrappers"
