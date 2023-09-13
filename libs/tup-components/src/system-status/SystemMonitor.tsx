@@ -58,7 +58,7 @@ export const SystemMonitorTable: React.FC<SystemDetailProps> = ({
         Header: 'Waiting Jobs',
       },
     ],
-    []
+    [useLinks, tas_name]
   );
 
   const { getTableProps, getTableBodyProps, rows, prepareRow, headerGroups } =
