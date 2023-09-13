@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { useGetTicketDetails } from '@tacc/tup-hooks';
 import './TicketModal.global.css';
@@ -11,7 +11,14 @@ const TicketModal: React.FC<{ ticketId: string; baseRoute: string }> = ({
   baseRoute,
 }) => {
   const navigate = useNavigate();
-  const close = () => navigate(baseRoute);
+  const { state } = useLocation();
+  const close = () => {
+    if (state?.fromLink) return navigate(-1);
+
+    // If the user got here from outside the portal,
+    // navigate(-1) might take them somewhere unexpected.
+    return navigate(baseRoute, { replace: true });
+  };
   const modalAlwaysOpen = true;
   const { data } = useGetTicketDetails(ticketId);
 

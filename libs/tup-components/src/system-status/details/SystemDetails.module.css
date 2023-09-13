@@ -6,11 +6,16 @@
   /* To reproduce complex layout of design doc */
   @media (--wide-and-above) {
     gap: 25px;
-    grid-template-columns: 0.5fr 0.5fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
       "monitor avgwait"
       "queue avgwait";
+  }
+  @media (--wide-to-x-wide) {
+    grid-template-columns: 0.75fr 0.25fr;
+  }
+  @media (--x-wide-and-above) {
+    grid-template-columns: 0.5fr 0.5fr;
   }
   /* To reproduce simple layout of narrow screens like CEPv2 */
   @media (--wide-and-below) {
