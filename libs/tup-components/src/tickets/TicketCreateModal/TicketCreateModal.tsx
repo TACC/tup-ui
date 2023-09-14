@@ -14,15 +14,9 @@ const TicketCreateModal: React.FC<
     setIsOpen(!isOpen);
   };
 
-  interface SecondaryButton {
-    type: 'secondary';
-    size?: 'small' | undefined;
-  }
-  interface LinkButton {
-    type: 'link';
-    size: undefined;
-  }
-  const buttonAttrs: SecondaryButton | LinkButton =
+  const buttonAttrs:
+    | { type: 'secondary'; size?: 'small' | undefined }
+    | { type: 'link'; size: undefined } =
     display === 'secondary-small'
       ? { type: 'secondary', size: 'small' }
       : { type: 'link', size: undefined };
