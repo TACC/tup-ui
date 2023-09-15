@@ -20,7 +20,7 @@ hr {
 
 /* TODO: Remove this after:
          0. update in TACC/Core-Styles:/…/settings/font--portal.css instead */
-#page-portal {
+#page-portal main /* i.e. global-safe :root */ {
   --global-font-size--x-small: 1.2rem;
   --global-font-size--small: 1.4rem;
   --global-font-size--medium: 1.6rem;
