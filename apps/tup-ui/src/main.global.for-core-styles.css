@@ -12,7 +12,6 @@ hr {
          0. confirming this new spacing with lead designer
          1. and updating these in core-styles.base
          2. (and maybe) moving those fixed styles to core-styles.portal */
-/* FAQ: Limited to portal, to prevent global effect via imports-….css on CMS */
 #page-portal /* i.e. global-safe :root */ {
   --global-space--section-top: 15px;
   --global-space--section-left: 20px;
@@ -45,7 +44,6 @@ hr {
 
 /* TODO: Remove this after:
          0. CEP v2 colors are removed from Core-Styles settings/color--portal */
-/* FAQ: Limited to portal, to prevent global effect via imports-….css on CMS */
 #page-portal /* i.e. global-safe :root */ {
   /* FAQ: The `!important` is only necessary for dev (and thus prod) server */
   --global-color-danger--normal: #dc393b !important;
