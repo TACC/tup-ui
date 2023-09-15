@@ -19,6 +19,18 @@ hr {
 }
 
 /* TODO: Remove this after:
+         0. update in TACC/Core-Styles:/…/settings/font--portal.css instead */
+#page-portal main /* i.e. global-safe :root */ {
+  --global-font-size--x-small: 1.2rem;
+  --global-font-size--small: 1.4rem;
+  --global-font-size--medium: 1.6rem;
+  --global-font-size--large: 1.8rem;
+  --global-font-size--x-large: 2.1rem;
+  --global-font-size--xx-large: 2.8rem;
+  --global-font-size--xxx-large: 3.2rem;
+}
+
+/* TODO: Remove this after:
          0. confirming this size with lead designer
          1. adding these to core-styles.base */
 .icon-xs {
