@@ -13,7 +13,7 @@
 @import url("@tacc/core-styles/dist/trumps/s-form.css");
 
 /* To overwrite @tacc/core-styles CEPv2 spacing */
-#page-portal /* i.e. global-safe :root */ {
+#page-portal main /* i.e. global-safe :root */ {
   /* TACC/Core-Styles/blob/823b7b9/src/lib/_imports/settings/space.css */
   --global-space--section-top: 15px;
   --global-space--section-bottom: 30px;
