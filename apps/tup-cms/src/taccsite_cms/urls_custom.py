@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from django.conf.urls import url
+from django.urls import re_path as url
 from apps.user_news.urls import urls as user_news_urls
 from django.views.generic.base import RedirectView
 
