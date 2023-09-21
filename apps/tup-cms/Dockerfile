@@ -1,4 +1,4 @@
-# TACC/Core-CMS#707 (v3.12.0-beta.4 candidate)
+# TACC/Core-CMS#707 (sans commits irrelevant to TACC) (v3.12.0-beta.4 candidate)
 FROM taccwma/core-cms:1f7b95d
 
 WORKDIR /code
