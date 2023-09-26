@@ -6,20 +6,14 @@ import styles from './TicketCreateModal.module.css';
 
 const TicketCreateModal: React.FC<
   React.PropsWithChildren<{
-    display: 'secondary' | 'secondary-small' | 'link';
+    display: 'secondary' | 'link';
+    size?: 'small';
   }>
-> = ({ children, display }) => {
+> = ({ children, size, display }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
-
-  const buttonAttrs:
-    | { type: 'secondary'; size?: 'small' | undefined }
-    | { type: 'link'; size: undefined } =
-    display === 'secondary-small'
-      ? { type: 'secondary', size: 'small' }
-      : { type: 'link', size: undefined };
 
   const closeBtn = (
     <button className="close" onClick={toggle} type="button">
@@ -29,9 +23,17 @@ const TicketCreateModal: React.FC<
 
   return (
     <>
-      <Button onClick={() => toggle()} {...buttonAttrs}>
-        {children}
-      </Button>
+      {display === 'secondary' && (
+        <Button onClick={() => toggle()} type="secondary" size={size}>
+          {children}
+        </Button>
+      )}
+      {display === 'link' && (
+        <Button onClick={() => toggle()} type="link">
+          {children}
+        </Button>
+      )}
+
       <Modal
         isOpen={isOpen}
         toggle={toggle}
