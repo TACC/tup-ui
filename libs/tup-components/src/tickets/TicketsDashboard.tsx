@@ -15,7 +15,7 @@ const TicketsDashboard: React.FC = () => {
           <Link to="/tickets" className={styles['viewall-action']}>
             View all Tickets
           </Link>
-          <TicketCreateModal display="secondary">
+          <TicketCreateModal display="secondary" size="small">
             + New Ticket
           </TicketCreateModal>
         </>
