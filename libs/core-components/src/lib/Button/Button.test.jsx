@@ -23,7 +23,6 @@ function isPropertyLimitation(type, size) {
 
   if (
     (type === 'primary' && size === 'small') ||
-    (type !== 'link' && !size) ||
     (type === 'link' && size)
   )
     isLimited = true;
