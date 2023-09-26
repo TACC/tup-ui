@@ -12,10 +12,22 @@ hr {
          0. confirming this new spacing with lead designer
          1. and updating these in core-styles.base
          2. (and maybe) moving those fixed styles to core-styles.portal */
-:root {
+#page-portal main /* i.e. global-safe :root */ {
   --global-space--section-top: 15px;
   --global-space--section-left: 20px;
   --global-space--section-right: 15px;
+}
+
+/* TODO: Remove this after:
+         0. update in TACC/Core-Styles:/…/settings/font--portal.css instead */
+#page-portal main /* i.e. global-safe :root */ {
+  --global-font-size--x-small: 1.2rem;
+  --global-font-size--small: 1.4rem;
+  --global-font-size--medium: 1.6rem;
+  --global-font-size--large: 1.8rem;
+  --global-font-size--x-large: 2.1rem;
+  --global-font-size--xx-large: 2.8rem;
+  --global-font-size--xxx-large: 3.2rem;
 }
 
 /* TODO: Remove this after:
@@ -44,7 +56,7 @@ hr {
 
 /* TODO: Remove this after:
          0. CEP v2 colors are removed from Core-Styles settings/color--portal */
-:root {
+#page-portal main /* i.e. global-safe :root */ {
   /* FAQ: The `!important` is only necessary for dev (and thus prod) server */
   --global-color-danger--normal: #dc393b !important;
 }

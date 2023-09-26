@@ -133,7 +133,7 @@ For new patterns not mature enough for [Core Styles], create it for one project.
 **`/libs/*/styles/(.../)some-project-stylesheet.css`**
 
 ```css
-:root {
+#page-portal main /* i.e. global-safe :root */ {
   /* To overwrite @tacc/core-styles/.../settings/color.css */
   --some-project-prop: 'value';
 }
@@ -174,7 +174,7 @@ If you need global styles, then evaluate these options.
 **`/apps/tup-ui/styles/(.../)some-global-stylesheet.css`**
 
 ```css
-:root {
+#page-portal main /* i.e. global-safe :root */ {
   /* To overwrite @tacc/core-styles/.../settings/color.css */
   --some-global-prop: 'value';
 }
