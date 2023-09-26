@@ -24,19 +24,6 @@ export const SIZES = [''].concat(Object.keys(SIZE_MAP));
 
 export const ATTRIBUTES = ['button', 'submit', 'reset'];
 
-type ButtonTypeLinkSize = {
-  type?: 'link';
-  size?: never;
-};
-type ButtonTypePrimarySize = {
-  type?: 'primary';
-  size?: 'short' | 'medium' | 'long';
-};
-type ButtonTypeOtherSize = {
-  type?: 'secondary' | 'tertiary' | 'active';
-  size?: 'short' | 'medium' | 'long' | 'small';
-};
-
 type ButtonProps = React.PropsWithChildren<{
   className?: string;
   iconNameBefore?: string;
@@ -47,8 +34,9 @@ type ButtonProps = React.PropsWithChildren<{
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   attr?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
-}> &
-  (ButtonTypeLinkSize | ButtonTypePrimarySize | ButtonTypeOtherSize);
+  type?: 'primary' | 'secondary' | 'tertiary' | 'active' | 'link';
+  size?: 'short' | 'medium' | 'long' | 'small';
+}>;
 
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -64,6 +52,15 @@ const Button: React.FC<ButtonProps> = ({
   attr = 'button',
   isLoading = false,
 }) => {
+  if (size && type === 'link') {
+    console.error('<Button type="link"> must not set `size` prop.');
+    return;
+  }
+  if (size === 'small' && type === 'primary') {
+    console.error('<Button type="primary"> must not be `size="small"`.');
+    return;
+  }
+
   function onclick(e: React.MouseEvent<HTMLButtonElement>) {
     if (disabled) {
       e.preventDefault();
