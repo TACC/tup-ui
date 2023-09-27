@@ -3,7 +3,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
 from django.utils.translation import gettext_lazy as _
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str as force_text
 
 from .defaults import max_articles, urls
 from .utils import get_latest_articles
