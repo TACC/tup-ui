@@ -13,10 +13,12 @@ class TupServicesBackend(ModelBackend):
 
         profile_url = f"{service_url}/users/profile"
         headers = {"x-tup-token": token}
-
-        req = requests.get(profile_url, headers=headers)
-        if req.status_code != 200:
-            raise PermissionDenied
+        
+        try:
+            req = requests.get(profile_url, headers=headers, timeout=10)
+            req.raise_for_status()
+        except Exception as exc:
+            raise PermissionDenied from exc
 
         profile = req.json()
         username = profile['username']
