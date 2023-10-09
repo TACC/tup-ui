@@ -12,7 +12,7 @@ const Tickets: React.FC = () => {
       <section className={styles['tickets-section']}>
         <SectionHeader
           actions={
-            <TicketCreateModal display="secondary">
+            <TicketCreateModal display="secondary" size="small">
               + New Ticket
             </TicketCreateModal>
           }
