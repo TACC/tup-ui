@@ -1,6 +1,7 @@
 import { Button } from '@tacc/core-components';
 import { useProject, useRoleForCurrentUser } from '@tacc/tup-hooks';
 import styles from './UserList.module.css';
+import AddUserModal from './AddUserModal';
 
 const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
   const currentUserRole = useRoleForCurrentUser(projectId) ?? '';
@@ -25,13 +26,7 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
 
   return (
     <div className={styles['user-navactions']}>
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href={`https://accounts.tacc.utexas.edu/project_invite?project_id=${projectId}`}
-      >
-        <Button>+ Add Users</Button>
-      </a>
+      <AddUserModal projectId={projectId} />
     </div>
   );
 };
