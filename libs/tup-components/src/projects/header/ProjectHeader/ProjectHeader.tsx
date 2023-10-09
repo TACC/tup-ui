@@ -86,7 +86,7 @@ export const ProjectHeader: React.FC<{ projectId: number }> = ({
 
   return (
     <div className={styles['project-header']}>
-      <SectionHeader>
+      <SectionHeader isNestedHeader>
         {isActive && <Link to={'/projects?show=active'}>Active Projects </Link>}
         {!isActive && (
           <Link to={'/projects?show=inactive'}>Inactive Projects </Link>
