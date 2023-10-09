@@ -6,13 +6,12 @@
 .account-header {
     font-size: 2rem;
     border-bottom: 1px solid #707070;
-    padding: 10px;
+    padding: 10px 0;
 }
 .account-header > i {
-    font-size: 32px;
-    margin-bottom: -6px;
+    vertical-align: middle;
+    margin-top: -0.25em;
     margin-right: 0.5rem;
-
 }
 
 .account-body {
