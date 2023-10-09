@@ -28,12 +28,8 @@ type ButtonTypeLinkSize = {
   type?: 'link';
   size?: never;
 };
-type ButtonTypePrimarySize = {
-  type?: 'primary';
-  size?: 'short' | 'medium' | 'long';
-};
 type ButtonTypeOtherSize = {
-  type?: 'secondary' | 'tertiary' | 'active';
+  type?: 'primary' | 'secondary' | 'tertiary' | 'active';
   size?: 'short' | 'medium' | 'long' | 'small';
 };
 
@@ -48,7 +44,7 @@ type ButtonProps = React.PropsWithChildren<{
   attr?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
 }> &
-  (ButtonTypeLinkSize | ButtonTypePrimarySize | ButtonTypeOtherSize);
+  (ButtonTypeLinkSize | ButtonTypeOtherSize);
 
 const Button: React.FC<ButtonProps> = ({
   children,
