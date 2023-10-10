@@ -19,6 +19,13 @@
   --global-space--section-bottom: 30px;
   --global-space--section-left: 20px;
   --global-space--section-right: 30px;
+  /* NOTE: Unexpectedly required to apply the above var changes */
+  /* HELP: Why isn't Core-Styles `--global-space--section` auto-updated? */
+  --global-space--section:
+    var(--global-space--section-top)
+    var(--global-space--section-right)
+    var(--global-space--section-bottom)
+    var(--global-space--section-left);
 }
 
 /* To stretch application height to available space */
