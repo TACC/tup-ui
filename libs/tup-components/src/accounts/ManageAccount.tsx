@@ -92,8 +92,8 @@ const ManageUpload = () => (
 const ManageAccount: React.FC = () => {
   const { data } = useProfile();
   return (
-    <section className={styles['account-layout']}>
-      <article>
+    <section>
+      <article className={styles['account-layout']}>
         <SectionHeader className={styles['account-header']} isNestedHeader>
           <Icon name="user" />
           <span>
