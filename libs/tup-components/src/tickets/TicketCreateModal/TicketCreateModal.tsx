@@ -6,7 +6,7 @@ import styles from './TicketCreateModal.module.css';
 
 const TicketCreateModal: React.FC<
   React.PropsWithChildren<{
-    display: 'secondary' | 'link';
+    display: 'secondary' | 'link' | 'primary';
     size?: 'small';
   }>
 > = ({ children, size, display }) => {
@@ -23,8 +23,8 @@ const TicketCreateModal: React.FC<
 
   return (
     <>
-      {display === 'secondary' && (
-        <Button onClick={() => toggle()} type="secondary" size={size}>
+      {display !== 'link' && (
+        <Button onClick={() => toggle()} type={display} size={size}>
           {children}
         </Button>
       )}
