@@ -1,12 +1,3 @@
-/* To render data-prefix value as prefixed text */
-[data-prefix]::before {
-  display: inline-block;
-  content: attr(data-prefix);
-  margin-right: 0.25ch;
-
-  text-transform: none;
-}
-
 /* TODO: Remove from c-button in Core-Styles */
 [disabled] {
   pointer-events: none;
