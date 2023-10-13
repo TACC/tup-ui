@@ -142,11 +142,9 @@
   display: none;
 }
 
-/* To style "Update" pill in title */
-.c-news .c-pill {
+/* To style a pill (e.g. "Update" pill in a title) */
+.c-news--list .c-pill:not(:first-child) {
   margin-left: 0.5ch;
-  vertical-align: middle;
-  transform: translateY(-0.125em);
 }
 
 
