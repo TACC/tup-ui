@@ -3,6 +3,9 @@
   vertical-align: middle;
   transform: translateY(-0.125em);
 }
+.c-update__title .c-pill:not([class*="c-pill--"]) {
+  background-color: var(--global-color-primary--light);
+}
 
 /* To reduce space between "Original Update" and its content */
 .c-update__header + .c-news__content {
