@@ -4,12 +4,6 @@
   transform: translateY(-0.125em);
 }
 
-/* To style "Update" pill in big article page title */
-.c-update__title .c-pill {
-  font-size: var(--global-font-size--large);
-  min-width: unset; /* overwrite .c-pill */
-}
-
 /* To reduce space between "Original Update" and its content */
 .c-update__header + .c-news__content {
   margin-top: unset; /* ovewrite c-news--read.css */
