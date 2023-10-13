@@ -22,7 +22,6 @@
 @import url("./for-core-styles/components/c-feed-list.css") layer(base);
 @import url("./for-core-styles/components/c-news.css") layer(base);
 @import url("./for-core-styles/components/c-pill.css") layer(base);
-@import url("./for-core-styles/components/c-update.css") layer(base);
 
 /* TRUMPS */
 @import url("./for-core-styles/trumps/u-highlight.css") layer(base);
