@@ -12,7 +12,6 @@
 
 /* OBJECTS */
 @import url("./for-core-styles/objects/o-section.css") layer(base);
-@import url("./for-core-styles/objects/o-heading-steps.css") layer(base);
 
 /* COMPONENTS */
 @import url("./for-core-styles/components/c-button.css") layer(base);
