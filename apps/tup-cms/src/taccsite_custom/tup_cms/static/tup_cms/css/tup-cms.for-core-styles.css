@@ -15,7 +15,6 @@
 @import url("./for-core-styles/objects/o-heading-steps.css") layer(base);
 
 /* COMPONENTS */
-@import url("./for-core-styles/components/c-button.css") layer(base);
 @import url("./for-core-styles/components/c-card.css") layer(base);
 @import url("./for-core-styles/components/c-card--frontera-about-page.css") layer(base);
 @import url("./for-core-styles/components/c-feed-list.css") layer(base);
