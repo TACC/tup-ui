@@ -1,5 +1,5 @@
-# TACC/Core-CMS#707 (sans commits irrelevant to TACC) (v3.12.0-beta.4 candidate)
-FROM taccwma/core-cms:77edfbc
+# TACC/Core-CMS#736 (cms-forms export hotfix)
+FROM taccwma/core-cms:5ceecdd
 
 WORKDIR /code
 
