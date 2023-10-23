@@ -17,7 +17,6 @@
 @import url("./for-core-cms/components/c-footer.css") layer(project);
 @import url("./for-core-cms/components/django.cms.blog.app.item.css") layer(project);
 @import url("./for-core-cms/components/django.cms.blog.app.page.css") layer(project);
-@import url("./for-core-cms/components/django.cms.picture.css") layer(project);
 @import url("./for-core-cms/components/lightgallery.css") layer(project);
 
 /* TRUMPS */
