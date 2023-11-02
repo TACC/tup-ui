@@ -1,6 +1,9 @@
 /* Highlight */
 /* TODO: Create an .x-highlight used to extend a <mark> and a .u-highlight */
 
+/* TODO: Consider whether <mark> should be in Core-Styles…
+         Perhaps the client should decide what tag to use. */
+/* SEE: https://tacc-team.slack.com/archives/CQUA4D5KJ/p1696285622741979 */
 mark,
 .x-highlight,
 :is(.u-highlight, .highlight) {
