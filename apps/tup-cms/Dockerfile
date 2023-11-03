@@ -1,4 +1,4 @@
-# TACC/Core-CMS#742 (Core-Styles v2.11 to v2.19)
+# TACC/Core-CMS#742 (core-styles v2.11 to v2.19)
 FROM taccwma/core-cms:7975138
 
 WORKDIR /code
