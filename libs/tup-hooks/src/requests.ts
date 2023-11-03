@@ -45,12 +45,14 @@ type UsePostParams<BodyType, ResponseType> = {
   endpoint: string;
   options?: UseMutationOptions<ResponseType, AxiosError, BodyType>;
   baseUrl?: string;
+  timeout?: number;
 };
 
 export function usePost<BodyType, ResponseType>({
   endpoint,
   options = {},
   baseUrl: alternateBaseUrl,
+  timeout=undefined
 }: UsePostParams<BodyType, ResponseType>) {
   const client = axios;
   const { baseUrl } = useConfig();
@@ -61,6 +63,7 @@ export function usePost<BodyType, ResponseType>({
       body,
       {
         headers: { 'x-tup-token': jwt ?? '' },
+        timeout,
       }
     );
     return response.data;
