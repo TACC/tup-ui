@@ -52,7 +52,7 @@ export function usePost<BodyType, ResponseType>({
   endpoint,
   options = {},
   baseUrl: alternateBaseUrl,
-  timeout=undefined
+  timeout = undefined,
 }: UsePostParams<BodyType, ResponseType>) {
   const client = axios;
   const { baseUrl } = useConfig();
