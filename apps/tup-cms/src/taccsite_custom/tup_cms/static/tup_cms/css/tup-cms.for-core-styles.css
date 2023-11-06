@@ -16,10 +16,10 @@
 /* COMPONENTS */
 @import url("./for-core-styles/components/c-button.css") layer(base);
 @import url("./for-core-styles/components/c-card.css") layer(base);
-@import url("./for-core-styles/components/c-card--frontera-about-page.css") layer(base);
+@import url("./for-core-styles/components/c-content-block.css") layer(base);
 @import url("./for-core-styles/components/c-feed-list.css") layer(base);
 @import url("./for-core-styles/components/c-news.css") layer(base);
 @import url("./for-core-styles/components/c-pill.css") layer(base);
 
 /* TRUMPS */
-@import url("./for-core-styles/trumps/s-header.css") layer(base);
+/* … */

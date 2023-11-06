@@ -1,4 +1,0 @@
-/* To add font-weight that (before Core-Styles v1) was assummed */
-.c-card--frontera-about-page img+h3 {
-    font-weight: var(--bold);
-}
