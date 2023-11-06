@@ -1,27 +1,3 @@
-/* FIX CARD */
-
-/* !!!: When migrated:
-        1. Remove `:where(:not(…` (e.g. "not in portal").
-        2. Prevent these styles in apps/tup-ui TicketHistory CSS */
-:is(.card, .c-card, [class*="card--"]) p:last-child:where(:not(#page-portal *)) {
-    margin-bottom: 2rem; /* restore <p> `margin-bottom `*/
-}
-
-/* To more specifically control c-card link font weight */
-/* !!!: When migrated:
-        1. Remove `:where(:not(…` (e.g. "not in portal").
-        2. Prevent these styles in apps/tup-ui TicketHistory CSS */
-:is(.card, .c-card, [class*="card--"]) a.c-button:where(:not(#page-portal *)) {
-    font-weight: var(--bold);
-}
-
-/* FAQ: Used on image cards for staff like on /education/k-12-students/ */
-:is(.card, .c-card, [class*="card--"]) h4 {
-    margin-bottom: 0.375em;
-}
-
-
-
 /* ADD CARD--IMAGE */
 
 /* Image */
