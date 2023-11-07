@@ -15,7 +15,7 @@ class TupServicesBackend(ModelBackend):
         headers = {"x-tup-token": token}
         
         try:
-            req = requests.get(profile_url, headers=headers, timeout=10)
+            req = requests.get(profile_url, headers=headers, timeout=15)
             req.raise_for_status()
         except Exception as exc:
             raise PermissionDenied from exc

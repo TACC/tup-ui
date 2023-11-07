@@ -1,5 +1,5 @@
-# TACC/Core-CMS#707 (sans commits irrelevant to TACC) (v3.12.0-beta.4 candidate)
-FROM taccwma/core-cms:1f7b95d
+# TACC/Core-CMS#742 (core-styles v2.11 to v2.19)
+FROM taccwma/core-cms:7975138
 
 WORKDIR /code
 

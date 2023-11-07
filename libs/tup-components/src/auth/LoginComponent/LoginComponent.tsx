@@ -17,8 +17,11 @@ type LoginProps = {
   className?: string;
 };
 
-const LoginError: React.FC<{ status?: number }> = ({ status }) => {
-  if (status === 200 || status === undefined) {
+const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
+  status,
+  isError,
+}) => {
+  if (!isError && (status === 200 || status === undefined)) {
     return null;
   }
   if (status === 403) {
@@ -85,7 +88,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const authCallback = useCallback(() => {
     window.location.replace(from);
   }, [from]);
-  const { login, data, error, isLoading } = useAuth();
+  const { login, data, error, isLoading, isError } = useAuth();
 
   // FAQ: To use inline messaging for required fields (instead of browser):
   //      1. Uncomment this constant definition
@@ -121,7 +124,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       </p>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form className="c-form">
-          <LoginError status={status} />
+          <LoginError status={status} isError={isError} />
           <FormikInput
             name="username"
             label="User Name"
