@@ -45,14 +45,14 @@
   display: grid;
   gap: 25px;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 0.5fr 1fr;
   grid-template-areas:
     "projects"
     "tickets";
 
   @media (--wide-and-below) {
     row-gap: 25px;
-    grid-template-rows: auto auto;
+    grid-template-rows: 300px 300px;
   }
 }
 
