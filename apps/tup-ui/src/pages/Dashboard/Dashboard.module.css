@@ -3,6 +3,15 @@
 .panels {
   display: grid;
 
+  /* To reproduce simple layout of narrow screens like CEPv2 */
+  @media (--wide-and-below) {
+    row-gap: 25px;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "systems"
+      "projects_tickets"
+      "updates";
+  }
   /* To reproduce complex layout of design doc */
   @media (--wide-and-above) {
     gap: 25px;
@@ -21,15 +30,6 @@
   }
   @media (--x-wide-and-above) {
     grid-template-columns: 0.65fr 0.35fr;
-  }
-  /* To reproduce simple layout of narrow screens like CEPv2 */
-  @media (--wide-and-below) {
-    row-gap: 25px;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      "systems"
-      "projects_tickets"
-      "updates";
   }
 }
 .panels > * {
