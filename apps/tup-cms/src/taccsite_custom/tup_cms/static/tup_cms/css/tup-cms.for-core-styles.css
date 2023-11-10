@@ -14,8 +14,6 @@
 /* … */
 
 /* COMPONENTS */
-@import url("./for-core-styles/components/c-card.css") layer(base);
-@import url("./for-core-styles/components/c-content-block.css") layer(base);
 @import url("./for-core-styles/components/c-feed-list.css") layer(base);
 @import url("./for-core-styles/components/c-news.css") layer(base);
 
