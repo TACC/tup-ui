@@ -18,7 +18,9 @@
     {% if article.updates %}
     {% include './updates.html' with updates=article.updates %}
     <header class="c-update__header">
-      <h3 class="c-update__title">{% trans "Original Message" %}</h3>
+      <h3 class="c-update__title">
+        <span class="c-pill">{% trans "Original Message" %}</span>
+      </h3>
       <span>{% trans "Published" %}</span>&nbsp;
       <time datetime="{{ article.postDateTime }}">
           {{ article.postDate }}
