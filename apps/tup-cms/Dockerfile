@@ -1,5 +1,5 @@
-# TACC/Core-CMS#735 (cms-forms export hotfix)
-FROM taccwma/core-cms:5ceecdd
+# TACC/Core-CMS#742 (core-styles v2.11 to v2.20; migrate css to core-cms|styles)
+FROM taccwma/core-cms:82454ef
 
 WORKDIR /code
 
