@@ -20,7 +20,7 @@ const Layout: React.FC = () => {
       <section className={styles['project-section']}>
         <PageLayout
           top={
-            <SectionHeader actions={<NewProject />}>
+            <SectionHeader actions={<NewProject />} isNestedHeader>
               Projects & Allocations
             </SectionHeader>
           }
