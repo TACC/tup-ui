@@ -5,17 +5,24 @@
 /* … */
 
 /* GENERICS */
-/* … */
+@import url("./for-core-styles/generics/attributes.css") layer(base);
 
 /* ELEMENTS */
 /* … */
 
 /* OBJECTS */
-/* … */
+@import url("./for-core-styles/objects/o-section.css") layer(base);
+@import url("./for-core-styles/objects/o-heading-steps.css") layer(base);
 
 /* COMPONENTS */
+@import url("./for-core-styles/components/c-button.css") layer(base);
+@import url("./for-core-styles/components/c-card.css") layer(base);
+@import url("./for-core-styles/components/c-content-block.css") layer(base);
 @import url("./for-core-styles/components/c-feed-list.css") layer(base);
 @import url("./for-core-styles/components/c-news.css") layer(base);
+@import url("./for-core-styles/components/c-pill.css") layer(base);
+@import url("./for-core-styles/components/c-update.css") layer(base);
 
 /* TRUMPS */
-/* … */
+@import url("./for-core-styles/trumps/u-highlight.css") layer(base);
+@import url("./for-core-styles/trumps/s-header.css") layer(base);

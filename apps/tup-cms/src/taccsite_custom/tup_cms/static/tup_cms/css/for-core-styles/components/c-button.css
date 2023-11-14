@@ -1,0 +1,19 @@
+/* TODO: When migrated to Core, remove `main > .container` (i.e. "in CMS") */
+main > .container   .c-button--primary,
+main > .container   .c-button--secondary,
+main > .container   .c-button--tertiary,
+main > .container   .c-button--is-active {
+  /* FAQ: Design looks like 10px 20px, but M.S. requests more */
+  padding: 10px 30px;
+
+  /* FAQ: Design shows 10px font */
+  font-size: var(--global-font-size--x-small);
+}
+
+/* TODO: Remove from c-button (once it becomes redundant there) */
+/* FAQ: This is now added in generics/attributes.css */
+/*
+[disabled] {
+  pointer-events: none;
+}
+*/
