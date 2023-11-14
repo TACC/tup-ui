@@ -7,6 +7,8 @@ import {
 } from '@tacc/core-components';
 import styles from './UserNews.module.css';
 
+const NEWS_DASHBOARD_DISPLAY_LIMIT = 3;
+
 const formatDate = (datestring: string): string => {
   const date = new Date(datestring);
   return date.toLocaleDateString('en-US', {
@@ -27,13 +29,13 @@ const ViewAllUpdates = () => (
     target="_blank"
     rel="noopener noreferrer"
   >
-    View All Updates
+    View all Updates
   </a>
 );
 
 const UserNews: React.FC = () => {
   const { data, isLoading } = useUserNews();
-  const maxItems = 5;
+  const maxItems = NEWS_DASHBOARD_DISPLAY_LIMIT;
 
   if (isLoading) return <LoadingSpinner />;
   return (
