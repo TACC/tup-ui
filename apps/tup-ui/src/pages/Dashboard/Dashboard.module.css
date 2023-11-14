@@ -42,6 +42,7 @@
 
 .section {
   display: grid;
+  grid-template-rows: auto 1fr;
   padding: var(--global-space--section)
 }
 
@@ -50,7 +51,7 @@
   display: grid;
   gap: 25px;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     "projects"
     "tickets";
