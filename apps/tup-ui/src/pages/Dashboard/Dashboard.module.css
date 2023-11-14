@@ -29,7 +29,7 @@
     grid-template-columns: 0.5fr 0.5fr;
   }
   @media (--x-wide-and-above) {
-    grid-template-columns: 0.65fr 0.35fr;
+    grid-template-columns: 0.6fr 0.4fr;
   }
 }
 .panels > * {
