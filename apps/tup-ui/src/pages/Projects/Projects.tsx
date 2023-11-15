@@ -10,7 +10,9 @@ import styles from './Projects.module.css';
 
 const NewProject = () => (
   <a href="https://submit-tacc.xras.org/" target="_blank" rel="noreferrer">
-    <Button type="primary">+ New Project</Button>
+    <Button type="primary" size="small">
+      + New Project
+    </Button>
   </a>
 );
 
@@ -20,7 +22,7 @@ const Layout: React.FC = () => {
       <section className={styles['project-section']}>
         <PageLayout
           top={
-            <SectionHeader actions={<NewProject />}>
+            <SectionHeader actions={<NewProject />} isNestedHeader>
               Projects & Allocations
             </SectionHeader>
           }

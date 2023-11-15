@@ -29,7 +29,7 @@
     grid-template-columns: 0.5fr 0.5fr;
   }
   @media (--x-wide-and-above) {
-    grid-template-columns: 0.65fr 0.35fr;
+    grid-template-columns: 0.6fr 0.4fr;
   }
 }
 .panels > * {
@@ -42,6 +42,7 @@
 
 .section {
   display: grid;
+  grid-template-rows: auto 1fr;
   padding: var(--global-space--section)
 }
 
@@ -50,14 +51,14 @@
   display: grid;
   gap: 25px;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr;
   grid-template-areas:
     "projects"
     "tickets";
 
   @media (--wide-and-below) {
     row-gap: 25px;
-    grid-template-rows: auto auto;
+    grid-template-rows: 300px 300px;
   }
 }
 
