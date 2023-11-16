@@ -17,7 +17,7 @@ export const SystemStatusHeader: React.FC<SystemDetailProps> = ({
 
   if (error)
     return (
-      <SectionHeader>
+      <SectionHeader isNestedHeader>
         <InlineMessage type="warn">
           System Status / Unable to retrieve system name
         </InlineMessage>
@@ -25,6 +25,8 @@ export const SystemStatusHeader: React.FC<SystemDetailProps> = ({
     );
 
   return (
-    <SectionHeader>System Status / {dataBySystem?.display_name}</SectionHeader>
+    <SectionHeader isNestedHeader>
+      System Status / {dataBySystem?.display_name}
+    </SectionHeader>
   );
 };

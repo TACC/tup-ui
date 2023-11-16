@@ -3,10 +3,18 @@
 .panels {
   display: grid;
 
+  /* To reproduce simple layout of narrow screens like CEPv2 */
+  @media (--wide-and-below) {
+    row-gap: 25px;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "systems"
+      "projects_tickets"
+      "updates";
+  }
   /* To reproduce complex layout of design doc */
   @media (--wide-and-above) {
     gap: 25px;
-    grid-template-columns: 0.65fr 0.35fr;
     /*set first row as auto to prevent cutting off the sysmon*/
     grid-template-rows: auto 1fr 1fr 1fr;
     overflow:auto;
@@ -16,14 +24,12 @@
       "projects_tickets updates"
       "projects_tickets updates";
   }
-  /* To reproduce simple layout of narrow screens like CEPv2 */
-  @media (--wide-and-below) {
-    row-gap: 25px;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      "systems"
-      "projects_tickets"
-      "updates";
+  /* To avoid System Status columns being cut off if at 0.65fr 0.35fr */
+  @media (--wide-to-x-wide) {
+    grid-template-columns: 0.5fr 0.5fr;
+  }
+  @media (--x-wide-and-above) {
+    grid-template-columns: 0.6fr 0.4fr;
   }
 }
 .panels > * {
@@ -36,6 +42,7 @@
 
 .section {
   display: grid;
+  grid-template-rows: auto 1fr;
   padding: var(--global-space--section)
 }
 
@@ -44,14 +51,14 @@
   display: grid;
   gap: 25px;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: 
+  grid-template-rows: 0.5fr 1fr;
+  grid-template-areas:
     "projects"
     "tickets";
 
   @media (--wide-and-below) {
     row-gap: 25px;
-    grid-template-rows: auto auto;
+    grid-template-rows: 300px 300px;
   }
 }
 

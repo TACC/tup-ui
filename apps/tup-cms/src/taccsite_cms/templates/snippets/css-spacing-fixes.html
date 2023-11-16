@@ -1,10 +1,14 @@
 <style id="css-spacing-fixes">
+/* HELP: Is this ready for tup-cms CSS? */
+/* FAQ: It seems too messy for core-cms */
+
 /* FAQ: Columns that explcitely or automatically span 12, get margin bottom */
 .col-12:not(
   :last-child,
   [class*="banner-cell"],
   #page-scivis-gallery *,
   #page-all-systems *,
+  #page-stampede2 *, /* IMPORTANT: Added on 2023-10-13 */
   :has(h1:only-child) /* /research/tacc-software/, /use-tacc/software-list/ */
 ),
 .col:not(

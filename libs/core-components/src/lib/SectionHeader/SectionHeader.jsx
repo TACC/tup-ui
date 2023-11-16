@@ -42,9 +42,11 @@ function SectionHeader({
   isForForm,
   isForTable,
   isForList,
+  isNestedHeader,
 }) {
   let styleName = '';
   const styleNameList = [styles['root']];
+  const HeaderTagName = isNestedHeader ? 'div' : 'header';
   const HeadingTagName = isForForm || isForTable || isForList ? 'h2' : 'h1';
 
   if (isForForm) styleNameList.push(styles['for-form']);
@@ -55,14 +57,14 @@ function SectionHeader({
   styleName = styleNameList.join(' ');
 
   return (
-    <header className={`${className} ${styleName}`}>
+    <HeaderTagName className={`${className} ${styleName}`}>
       {children && (
         <HeadingTagName className={styles['heading']}>
           {children}
         </HeadingTagName>
       )}
       {actions}
-    </header>
+    </HeaderTagName>
   );
 }
 SectionHeader.propTypes = {

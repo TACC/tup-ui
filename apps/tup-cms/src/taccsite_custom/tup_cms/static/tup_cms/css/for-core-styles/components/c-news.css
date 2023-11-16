@@ -117,3 +117,9 @@
 .c-news__data address {
   display: inline;
 }
+
+/* To style a pill (e.g. "Update" pill in a title) */
+.c-news .c-pill {
+  vertical-align: middle;
+  transform: translateY(-0.125em);
+}

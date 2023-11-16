@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Button } from '@tacc/core-components';
+import { Icon, Button, SectionHeader } from '@tacc/core-components';
 import { useProfile } from '@tacc/tup-hooks';
 import { AccountMfa } from './ManageAccountMfa';
 import styles from './ManageAccount.module.css';
@@ -94,12 +94,12 @@ const ManageAccount: React.FC = () => {
   return (
     <section>
       <article className={styles['account-layout']}>
-        <header className={styles['account-header']}>
+        <SectionHeader className={styles['account-header']} isNestedHeader>
           <Icon name="user" />
           <span>
             {data?.firstName} {data?.lastName}
           </span>
-        </header>
+        </SectionHeader>
         <div className={styles['account-body']}>
           <section>
             <ManageUser />
