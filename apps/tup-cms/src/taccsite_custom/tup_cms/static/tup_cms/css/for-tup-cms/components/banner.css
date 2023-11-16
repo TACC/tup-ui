@@ -73,7 +73,7 @@
   margin-bottom: 2.0rem;
 }
 
-[class*="banner-cell--"] .highlight {
+[class*="banner-cell--"] .u-highlight {
 	padding-inline: var(--tag-padding);
 
 	color: var(--global-color-primary--xx-light);
