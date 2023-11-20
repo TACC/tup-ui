@@ -27,11 +27,12 @@ svg {
 .c-footer .logos--branding {
     --gap: 2rem;
 
-    min-height: 60px;
-    max-height: 120px;
-
     /* NOTE: Test any changes on all browsers and screen sizes */
     grid-template-columns: repeat( 3, minmax(0, 1fr) );
+}
+.c-footer .logos--branding a {
+    min-height: 60px;
+    max-height: 120px;
 }
 
 .c-footer [class*="logos--"] a {
