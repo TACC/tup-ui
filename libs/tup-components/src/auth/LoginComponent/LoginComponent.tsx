@@ -114,7 +114,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const status = (error as AxiosError)?.response?.status;
 
   return (
-    <div className={`${styles.root} ${className}`}>
+    <div className={`c-form c-form--login ${styles.root} ${className}`}>
       <h3 className={`c-form__title ${styles.title}`}>
         <img src={blackLogo} className={styles.logo} alt="TACC Logo" />
         <span>Log In</span>
@@ -123,7 +123,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
         to continue to the TACC User Portal
       </p>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form className="c-form">
+        <Form>
           <LoginError status={status} isError={isError} />
           <FormikInput
             name="username"

@@ -12,6 +12,9 @@
 @import url("@tacc/core-styles/dist/elements/form.css");
 @import url("@tacc/core-styles/dist/trumps/s-form.css");
 
+/* To use login form styles */
+@import url('@tacc/core-styles/dist/components/c-form--login.css');
+
 /* To overwrite @tacc/core-styles CEPv2 spacing */
 #page-portal main /* i.e. global-safe :root */ {
   /* TACC/Core-Styles/blob/823b7b9/src/lib/_imports/settings/space.css */
