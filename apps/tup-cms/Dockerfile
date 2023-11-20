@@ -1,5 +1,5 @@
-# TACC/Core-CMS#735 (cms-forms export hotfix)
-FROM taccwma/core-cms:5ceecdd
+# TACC/Core-CMS#752 (custom news feed)
+FROM taccwma/core-cms:7d3934c
 
 WORKDIR /code
 

@@ -1,0 +1,18 @@
+{# https://github.com/TACC/Core-CMS/blob/feat/cmd-57-allow-custom-news-feed/taccsite_cms/templates/djangocms_blog/post_list.html #}
+{% extends "djangocms_blog/tacc/post_list.html" %}
+{% load i18n blog_post_is_in_category %}
+
+{% block post_loop %}
+{% spaceless %}
+    {% for post in post_list %}
+        {# TACC (when listing, exclude posts that are not of certain categories): #}
+        {% blog_post_is_in_category post category 'feature-story' as should_exclude_post %}
+        {% if not should_exclude_post %}
+            {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+        {% endif %}
+        {# /TACC #}
+    {% empty %}
+        <p class="blog-empty">{% trans "No article found." %}</p>
+    {% endfor %}
+{% endspaceless %}
+{% endblock %}
