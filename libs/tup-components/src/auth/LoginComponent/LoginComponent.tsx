@@ -114,7 +114,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const status = (error as AxiosError)?.response?.status;
 
   return (
-    <div className={`${styles.root} ${className}`}>
+    <div className={`c-form c-form--login ${styles.root} ${className}`}>
       <h3 className={`c-form__title ${styles.title}`}>
         <img src={blackLogo} className={styles.logo} alt="TACC Logo" />
         <span>Log In</span>
