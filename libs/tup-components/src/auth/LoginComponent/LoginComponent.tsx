@@ -52,11 +52,7 @@ const CreateAccountLink = () => (
 );
 
 const AccountHelpLink = () => (
-  <a
-    href="/about/help/"
-    target="_blank"
-    rel="noreferrer"
-  >
+  <a href="/about/help/" target="_blank" rel="noreferrer">
     Account Help
   </a>
 );
@@ -116,9 +112,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
         <img src={blackLogo} alt="TACC Logo" />
         <span>Log In</span>
       </h3>
-      <p className="c-form__desc">
-        to continue to the TACC User Portal
-      </p>
+      <p className="c-form__desc">to continue to the TACC User Portal</p>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form>
           <LoginError status={status} isError={isError} />
