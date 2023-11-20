@@ -123,7 +123,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
         to continue to the TACC User Portal
       </p>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form className="c-form">
+        <Form>
           <LoginError status={status} isError={isError} />
           <FormikInput
             name="username"
