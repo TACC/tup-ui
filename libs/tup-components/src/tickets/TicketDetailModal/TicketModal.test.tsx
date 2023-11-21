@@ -90,4 +90,3 @@ it('should render an success message if an reply success is returned from the us
     expect(getByText(/Your reply has been sent/)).toBeDefined()
   );
 });
-
