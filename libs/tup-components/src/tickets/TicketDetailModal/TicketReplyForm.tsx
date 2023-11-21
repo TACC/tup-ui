@@ -79,27 +79,33 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
             />
 
             <FormGroup className="ticket-reply-submission">
-            <ModalFooter>
-            <div>
-              {isSuccess && (
-                <InlineMessage type="success">
-                  Your reply has been sent.
-                </InlineMessage>
-              )}
-              {isError && (
-                <InlineMessage type="error">
-                  Something went wrong.
-                </InlineMessage>
-              )}
-            </div>
-              <Button
-                attr="submit"
-                type="primary"
-                disabled={!isValid || isSubmitting || isLoading || isError || isSuccess }
-                isLoading={isLoading}
-              >
-                Reply
-              </Button>
+              <ModalFooter>
+                <div>
+                  {isSuccess && (
+                    <InlineMessage type="success">
+                      Your reply has been sent.
+                    </InlineMessage>
+                  )}
+                  {isError && (
+                    <InlineMessage type="error">
+                      Something went wrong.
+                    </InlineMessage>
+                  )}
+                </div>
+                <Button
+                  attr="submit"
+                  type="primary"
+                  disabled={
+                    !isValid ||
+                    isSubmitting ||
+                    isLoading ||
+                    isError ||
+                    isSuccess
+                  }
+                  isLoading={isLoading}
+                >
+                  Reply
+                </Button>
               </ModalFooter>
             </FormGroup>
           </Form>
