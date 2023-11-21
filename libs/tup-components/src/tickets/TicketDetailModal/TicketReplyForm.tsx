@@ -6,7 +6,7 @@ import {
   FormikTextarea,
   FormikSelect,
 } from '@tacc/core-wrappers';
-import { FormGroup } from 'reactstrap';
+import { FormGroup, ModalFooter } from 'reactstrap';
 import { Button, InlineMessage } from '@tacc/core-components';
 import { useTicketReply } from '@tacc/tup-hooks';
 import * as Yup from 'yup';
@@ -26,7 +26,7 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
   ticketId,
 }) => {
   const mutation = useTicketReply(ticketId);
-  const { mutate, isLoading, isError } = mutation;
+  const { mutate, isSuccess, isLoading, isError } = mutation;
 
   const defaultValues: TicketReplyFormValues = {
     text: '',
@@ -77,20 +77,30 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
               maxSizeMessage="Max File Size: 3MB"
               maxSize={3145728}
             />
+
             <FormGroup className="ticket-reply-submission">
+            <ModalFooter>
+            <div>
+              {isSuccess && (
+                <InlineMessage type="success">
+                  Your reply has been sent.
+                </InlineMessage>
+              )}
               {isError && (
                 <InlineMessage type="error">
                   Something went wrong.
                 </InlineMessage>
               )}
+            </div>
               <Button
                 attr="submit"
                 type="primary"
-                disabled={!isValid || isSubmitting || isLoading || isError}
+                disabled={!isValid || isSubmitting || isLoading || isError || isSuccess }
                 isLoading={isLoading}
               >
                 Reply
               </Button>
+              </ModalFooter>
             </FormGroup>
           </Form>
         );
