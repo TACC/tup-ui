@@ -1,5 +1,4 @@
 import React from 'react';
-import './Icon.css';
 
 type sizes = 'xs' | 'sm' | 'md' | 'lg';
 
