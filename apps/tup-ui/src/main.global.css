@@ -1,5 +1,5 @@
 /* To use login form styles */
-@import url('@tacc/core-styles/dist/components/c-form--login.css');
+@import url('@tacc/core-styles/dist/components/c-form--login.css') layer(base);
 
 /* To overwrite @tacc/core-styles CEPv2 spacing */
 #page-portal main /* i.e. global-safe :root */ {
