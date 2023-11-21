@@ -38,7 +38,7 @@ export const UIPatternsComplexWizardRender: React.FC<{
         ...stepProps,
       };
     });
-  }, [wizardSteps, extra]);
+  }, [wizardSteps, extra, values]);
 
   return (
     <Wizard steps={steps} memo={`${extra.memo}`} formSubmit={formSubmit} />
