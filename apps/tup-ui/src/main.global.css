@@ -44,20 +44,25 @@ body > main {
 }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
-  margin-block: 0; /* overwrite Bootstrap <h1> through <h6> */
-}
-h1 {
-  font-size: var(--global-font-size--x-large);
-  font-weight: var(--regular);
-}
-h2 {
-  font-size: var(--global-font-size--large);
-  font-weight: var(--bold);
-}
-h3 {
-  font-size: var(--global-font-size--medium);
-  font-weight: var(--bold);
+/* TODO: Consider creating Core-Styles `…/elements/headings--portal.css` */
+/* FAQ: Put in base layer (like Core-Styles),
+        so Core-Styles classes take precedence */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    margin-block: 0; /* overwrite Bootstrap <h1> through <h6> */
+  }
+  h1 {
+    font-size: var(--global-font-size--x-large);
+    font-weight: var(--regular);
+  }
+  h2 {
+    font-size: var(--global-font-size--large);
+    font-weight: var(--bold);
+  }
+  h3 {
+    font-size: var(--global-font-size--medium);
+    font-weight: var(--bold);
+  }
 }
 
 /* Tables */
