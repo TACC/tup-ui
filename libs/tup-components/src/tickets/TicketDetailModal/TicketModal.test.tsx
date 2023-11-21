@@ -69,3 +69,25 @@ describe('Ticket Modal', () => {
     );
   });
 });
+
+it('should render an success message if an reply success is returned from the useMutation hook', async () => {
+  const user = userEvent.setup();
+  server.use(
+    rest.post('http://localhost:8001/tickets/85411/reply', (req, res, ctx) =>
+      res.once(ctx.status(200))
+    )
+  );
+  const { getByLabelText, getByText, getByRole } = testRender(
+    <TicketReplyForm ticketId="85411" />
+  );
+
+  const reply = getByLabelText(/Reply/);
+  const submit = getByRole('button', { name: 'Reply' });
+  await user.type(reply, 'success message?');
+  fireEvent.click(submit);
+
+  await waitFor(() =>
+    expect(getByText(/Your reply has been sent/)).toBeDefined()
+  );
+});
+
