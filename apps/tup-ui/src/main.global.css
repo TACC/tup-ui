@@ -44,6 +44,7 @@ body > main {
 }
 
 /* Headings */
+/* TODO: Consider creating Core-Styles `…/elements/headings--portal.css` */
 /* FAQ: Put in base layer (like Core-Styles),
         so Core-Styles classes take precedence */
 @layer base {
