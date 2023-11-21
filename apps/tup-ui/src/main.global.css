@@ -1,16 +1,5 @@
-/* To use new c-nav component not yet in TACC/Core-CMS core-styles.base.css */
-/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.13+ */
-/* CAVEAT: Duplicates older, unchanged, global c-nav styles */
-@import url("@tacc/core-styles/dist/components/c-nav.css");
-
-/* To use s-affixed-input-wrapper which had been unused outside TACC/Core-CMS */
-/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.14+ */
-@import url("@tacc/core-styles/dist/trumps/s-affixed-input-wrapper.css");
-
-/* To use new form styles in core-styles.base.css */
-/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.15+ */
-@import url("@tacc/core-styles/dist/elements/form.css");
-@import url("@tacc/core-styles/dist/trumps/s-form.css");
+/* To use login form styles */
+@import url('@tacc/core-styles/dist/components/c-form--login.css');
 
 /* To overwrite @tacc/core-styles CEPv2 spacing */
 #page-portal main /* i.e. global-safe :root */ {

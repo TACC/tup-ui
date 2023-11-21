@@ -27,11 +27,12 @@ svg {
 .c-footer .logos--branding {
     --gap: 2rem;
 
-    min-height: 60px;
-    max-height: 120px;
-
     /* NOTE: Test any changes on all browsers and screen sizes */
     grid-template-columns: repeat( 3, minmax(0, 1fr) );
+}
+.c-footer .logos--branding a {
+    min-height: 60px;
+    max-height: 120px;
 }
 
 .c-footer [class*="logos--"] a {
@@ -168,12 +169,15 @@ html:not(#page-portal) #portal-footer /* trans id */ {
 
 /* PER CLIENT - PORTAL */
 
-/* To add a full-width border above CMS footer */
-/* TODO: Evaluate for tup-ui or Core-CMS CSS */
 html:not(#page-portal) .c-footer {
+    /* To add a full-width border above CMS footer */
+    /* TODO: Evaluate for tup-ui or Core-CMS CSS */
     border-width: var(--global-border-width--thick) 0 0 0;
     border-style: solid;
     border-color: var(--global-color-secondary--light);
+
+    /* To remove padding-block on CMS footer */
+    padding-block: unset;
 }
 
 /* To reduce size of Portal footer */
