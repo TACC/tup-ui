@@ -31,11 +31,17 @@
         border: unset;
         padding-inline: unset;
         background: unset;
+        vertical-align: middle;
     }
 
     & .gsc-selected-option-container {
         background: #fff;
         border: var(--global-border--normal);
+    }
+
+    & .gsc-result-info {
+        padding: unset;
+        font-size: var(--global-font-size--medium);
     }
 
 
@@ -122,5 +128,10 @@
     & .gcsc-find-more-on-google:hover {
         text-decoration-line: underline;
         text-decoration-style: solid;
+    }
+
+    & .gcsc-branding-img-noclear {
+        vertical-align: unset;
+        top: 1px;
     }
 }
