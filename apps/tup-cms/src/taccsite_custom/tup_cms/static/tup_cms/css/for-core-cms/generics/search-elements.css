@@ -1,0 +1,60 @@
+#cms-content {
+
+    /* Effects suggestion phrase after "Did you mean:" */
+    & .gs-spelling a {
+        color: var(--global-color-accent--normal);
+    }
+
+    /* search result body text */
+    & .gs-snippet {
+        color: var(--global-color-primary--dark);
+    }
+
+    /* url under search result title */
+    & .gs-webResult div.gs-visibleUrl {
+        color: var(--global-color-accent--secondary);
+    }
+
+    /* search result titles */
+    & a.gs-title:link {
+        color: var(--global-color-accent--normal);
+        text-decoration: none;
+        text-decoration-thickness: var(--global-border-width--normal);
+        text-underline-offset: 0.2em;
+    }
+
+    & a.gs-title:link:hover {
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+    }
+
+    & .gsc-cursor-current-page {
+        color: var(--global-color-accent--normal);
+        text-decoration: none;
+        text-decoration-thickness: var(--global-border-width--normal);
+        text-underline-offset: 0.2em;
+    }
+
+    & .gsc-cursor-current-page:hover {
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+    }
+
+    & .gcsc-find-more-on-google {
+        color: var(--global-color-accent--normal);
+        text-decoration: none;
+        text-decoration-thickness: var(--global-border-width--normal);
+        text-underline-offset: 0.2em;
+    }
+
+    & .gcsc-find-more-on-google:hover {
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+    }
+
+
+
+    h1 {
+        color: var(--global-color-primary--x-dark);
+    }
+}
