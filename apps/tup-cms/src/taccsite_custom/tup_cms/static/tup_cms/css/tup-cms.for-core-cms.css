@@ -22,3 +22,5 @@
 
 /* TRUMPS */
 /* … */
+/* FAQ: To certainly override third-party CSS, these load in anonymous layer */
+@import url("./for-core-cms/trumps/search-elements.css");
