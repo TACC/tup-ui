@@ -35,7 +35,7 @@
     }
 
     & .gsc-selected-option-container {
-        background: #fff;
+        background: var(--global-color-primary--xx-light);
         border: var(--global-border--normal);
     }
 
