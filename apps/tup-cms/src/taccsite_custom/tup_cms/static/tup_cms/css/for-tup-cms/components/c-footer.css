@@ -17,6 +17,12 @@ svg {
 .c-footer .c-button,
 .c-footer [class*="button--"] {
     --max-width: auto; /* override core-styles.base.css */
+    font-size: 80%; /* mimic Botstrap .small and <small> */
+
+    /* TODO: (1) Remove <small> from footer buttons (2) Remove this font-size */
+    & small {
+        font-size: inherit; /* gracefully deprecate use of <small> */
+    }
 }
 
 
