@@ -11,6 +11,18 @@ svg {
 
 
 
+/* BUTTONS */
+
+/* To style buttons differently than in body */
+.c-footer .c-button,
+.c-footer [class*="button--"] {
+    --max-width: auto; /* override core-styles.base.css */
+}
+
+
+
+
+
 /* LOGOS */
 
 /* To set baseline styles for footer logos */
