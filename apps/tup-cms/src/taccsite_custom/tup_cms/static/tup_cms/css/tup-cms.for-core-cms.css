@@ -6,7 +6,6 @@
 
 /* GENERICS */
 @import url("./for-core-cms/generics/pseudo-elements.css") layer(project);
-@import url("./for-core-cms/trumps/search-elements.css");
 
 /* ELEMENTS */
 /* … */
@@ -22,4 +21,4 @@
 @import url("./for-core-cms/components/lightgallery.css") layer(project);
 
 /* TRUMPS */
-/* … */
+@import url("./for-core-cms/trumps/search-elements.css");
