@@ -5,11 +5,6 @@
         padding: unset;
     }
 
-    /* make header same as news */
-    & h1 {
-        color: var(--global-color-primary--x-dark);
-    }
-
 
 
 
