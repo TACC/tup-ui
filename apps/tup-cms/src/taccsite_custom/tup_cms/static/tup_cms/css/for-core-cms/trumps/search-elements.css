@@ -22,7 +22,8 @@
         border-bottom: unset;
     }
 
-    & tbody>tr:first-child>:is(td, th) {
+    /* To override Core-Styles tables */
+    & tbody > tr:first-child > :is(td, th) {
         border: unset;
         padding-inline: unset;
         background: unset;
