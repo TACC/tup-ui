@@ -1,5 +1,5 @@
-# TACC/Core-CMS#753 (core-styles v2.11 to v2.22; migrate css to core-cms|styles)
-FROM taccwma/core-cms:fcb82f2
+# TACC/Core-CMS#v4.2.0
+FROM taccwma/core-cms:5d26e2b
 
 WORKDIR /code
 
