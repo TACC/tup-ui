@@ -1,97 +1,11 @@
-/* CONTAINER */
-
-.root {
-  font-size: 1.6rem;
-  font-family: var(--global-font-family--sans--cms);
-}
-
-
-
-/* LINKS */
-
-.link {
-  font-weight: var(--medium);
-}
-
-
-
-/* TITLE */
-
-.title,
-.subtitle {
-  text-align: center;
-  color: var(--global-color-primary--xx-dark);
-}
-.title {
-  font-size: 2.4rem;
-  font-weight: var(--black);
-}
-.subtitle {
-  font-size: 1.6rem;
-}
-
-.logo {
-  display: block; /* to collapse margins with heading */
-  margin-inline: auto; /* to re-center image */
-  height: 75px;
-  margin-bottom: 45px;
-}
-
-.subtitle {
-  font-weight: var(--medium); /* mimics value (not appearance) from design */
-  margin-block: 25px; /* mimics django-cms-forms.css `.description` */
-}
-
-
-
-/* FORM */
-
 /* To hide "(required)" (which is an obvious attribute on a login form) */
+/* FAQ: Core-Styles does this for `c-form--star` but not Bootstrap's `badge` */
 .root label :global(.badge) {
   display: none;
-}
-.field {
-  /* To use larger field inputs, always (not just coarse pointer devices) */
-  padding: 12px 12px; /* mimic Core Styles forms.css @media (pointer: coarse) */
-}
-
-
-
-.submit {
-  padding-block: 10px; /* overrides core-styles.base.css button styles */
-}
-
-.submit-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-
-
-/* FOOTER */
-
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 12px;
-
-  margin-top: 35px; /* mimics django-cms-forms.css `.button-wrapper` */
-}
-.footer > p {
-  margin-block: 0; /* overwrite browser */
-}
-
-
-/* ERRORS */
-
-.error {
-  margin-bottom: 2rem; /* TODO: move to @tacc/core-styles */
 }
 
 /* When (the only known) error would wrap, move all lines to one line */
 @media screen and (max-width: 435px) {
-  .error br { content: ""; } /* to remove new line */
-  .error br::after { content: " "; } /* to add space */
+  .root :global(.c-form-errors) br { content: ""; } /* to remove new line */
+  .root :global(.c-form-errors) br::after { content: " "; } /* to add space */
 }

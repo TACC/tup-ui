@@ -1,5 +1,5 @@
-# TACC/Core-CMS#735 (cms-forms export hotfix)
-FROM taccwma/core-cms:5ceecdd
+# TACC/Core-CMS#v4.2.0
+FROM taccwma/core-cms:5d26e2b
 
 WORKDIR /code
 
