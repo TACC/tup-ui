@@ -1,9 +1,0 @@
-/* !!!: Some or all of this may be moot since TACC/Core-Styles/pull/215 */
-.c-footer {
-  /* TODO: Remove padding-top from core-styles.cms.css (then remove this) */
-  padding-top: 0;
-
-  /* TODO: Add comment+style below to core-styles.cms.css (then remove this) */
-  /* To prevent margin-collapse of children (<p>) with minimal side effects */
-  display: flow-root;
-}

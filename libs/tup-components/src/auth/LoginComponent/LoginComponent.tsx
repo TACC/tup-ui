@@ -26,7 +26,7 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
   }
   if (status === 403) {
     return (
-      <div className={`c-form__errors ${styles.error}`}>
+      <div className="c-form__errors">
         Sorry, we can't find an account matching those credentials.
         <br />
         Please try again or <a href="/account/create">create a new account</a>.
@@ -34,7 +34,7 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
     );
   }
   return (
-    <div className={`c-form__errors ${styles.error}`}>
+    <div className="c-form__errors">
       Sorry. Something went wrong while trying to log in. Please try again
       later.
     </div>
@@ -46,19 +46,13 @@ const CreateAccountLink = () => (
     href="https://accounts.tacc.utexas.edu/register"
     target="_blank"
     rel="noreferrer"
-    className={styles.link}
   >
     Create Account
   </a>
 );
 
 const AccountHelpLink = () => (
-  <a
-    href="/about/help/"
-    target="_blank"
-    rel="noreferrer"
-    className={styles.link}
-  >
+  <a href="/about/help/" target="_blank" rel="noreferrer">
     Account Help
   </a>
 );
@@ -68,7 +62,6 @@ const ResetPasswordLink = () => (
     href="https://accounts.tacc.utexas.edu/forgot_password"
     target="_blank"
     rel="noreferrer"
-    className={styles.link}
   >
     Reset Password
   </a>
@@ -114,22 +107,19 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const status = (error as AxiosError)?.response?.status;
 
   return (
-    <div className={`${styles.root} ${className}`}>
-      <h3 className={`c-form__title ${styles.title}`}>
-        <img src={blackLogo} className={styles.logo} alt="TACC Logo" />
+    <div className={`c-form c-form--login ${styles.root} ${className}`}>
+      <h3 className="c-form__title">
+        <img src={blackLogo} alt="TACC Logo" />
         <span>Log In</span>
       </h3>
-      <p className={`c-form__desc ${styles.subtitle}`}>
-        to continue to the TACC User Portal
-      </p>
+      <p className="c-form__desc">to continue to the TACC User Portal</p>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form className="c-form">
+        <Form>
           <LoginError status={status} isError={isError} />
           <FormikInput
             name="username"
             label="User Name"
             type="text"
-            className={styles.field}
             autoComplete="username"
             required
           />
@@ -137,17 +127,15 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
             name="password"
             label="Password"
             type="password"
-            className={styles.field}
             autoComplete="current-password"
             required
           />
-          <div className={`c-form__buttons ${styles['submit-container']}`}>
+          <div className="c-form__buttons">
             <CreateAccountLink />
             <Button
               type="primary"
               attr="submit"
               size="long"
-              className={styles.submit}
               isLoading={isLoading || !!data}
             >
               Log In
@@ -155,7 +143,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
           </div>
         </Form>
       </Formik>
-      <div className={styles.footer}>
+      <div className="c-form__nav">
         <p>Having trouble logging in?</p>
         <ResetPasswordLink />
         <AccountHelpLink />

@@ -11,6 +11,24 @@ svg {
 
 
 
+/* BUTTONS */
+
+/* To style buttons differently than in body */
+.c-footer .c-button,
+.c-footer [class*="button--"] {
+    --max-width: auto; /* override core-styles.base.css */
+    font-size: 80%; /* mimic Botstrap .small and <small> */
+
+    /* TODO: (1) Remove <small> from footer buttons (2) Remove this font-size */
+    & small {
+        font-size: inherit; /* gracefully deprecate use of <small> */
+    }
+}
+
+
+
+
+
 /* LOGOS */
 
 /* To set baseline styles for footer logos */
@@ -169,12 +187,15 @@ html:not(#page-portal) #portal-footer /* trans id */ {
 
 /* PER CLIENT - PORTAL */
 
-/* To add a full-width border above CMS footer */
-/* TODO: Evaluate for tup-ui or Core-CMS CSS */
 html:not(#page-portal) .c-footer {
+    /* To add a full-width border above CMS footer */
+    /* TODO: Evaluate for tup-ui or Core-CMS CSS */
     border-width: var(--global-border-width--thick) 0 0 0;
     border-style: solid;
     border-color: var(--global-color-secondary--light);
+
+    /* To remove padding-block on CMS footer */
+    padding-block: unset;
 }
 
 /* To reduce size of Portal footer */

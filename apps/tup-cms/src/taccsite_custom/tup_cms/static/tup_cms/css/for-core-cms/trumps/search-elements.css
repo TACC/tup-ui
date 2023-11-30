@@ -1,13 +1,8 @@
-#cms-content {
+#tacc-google-search {
     /* Whole Search Container */
     /* removes padding from search container */
     & .gsc-control-cse {
         padding: unset;
-    }
-
-    /* make header same as news */
-    & h1 {
-        color: var(--global-color-primary--x-dark);
     }
 
 
@@ -27,7 +22,8 @@
         border-bottom: unset;
     }
 
-    & tbody>tr:first-child>:is(td, th) {
+    /* To override Core-Styles tables */
+    & tbody > tr:first-child > :is(td, th) {
         border: unset;
         padding-inline: unset;
         background: unset;
@@ -35,7 +31,7 @@
     }
 
     & .gsc-selected-option-container {
-        background: #fff;
+        background: var(--global-color-primary--xx-light);
         border: var(--global-border--normal);
     }
 
