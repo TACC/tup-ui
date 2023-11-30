@@ -1,16 +1,5 @@
-/* To use new c-nav component not yet in TACC/Core-CMS core-styles.base.css */
-/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.13+ */
-/* CAVEAT: Duplicates older, unchanged, global c-nav styles */
-@import url("@tacc/core-styles/dist/components/c-nav.css");
-
-/* To use s-affixed-input-wrapper which had been unused outside TACC/Core-CMS */
-/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.14+ */
-@import url("@tacc/core-styles/dist/trumps/s-affixed-input-wrapper.css");
-
-/* To use new form styles in core-styles.base.css */
-/* TODO: Remove when TACC/Core-CMS loads TACC/Core-Styles v2.15+ */
-@import url("@tacc/core-styles/dist/elements/form.css");
-@import url("@tacc/core-styles/dist/trumps/s-form.css");
+/* To use login form styles */
+@import url('@tacc/core-styles/dist/components/c-form--login.css') layer(base);
 
 /* To overwrite @tacc/core-styles CEPv2 spacing */
 #page-portal main /* i.e. global-safe :root */ {
@@ -55,20 +44,25 @@ body > main {
 }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
-  margin-block: 0; /* overwrite Bootstrap <h1> through <h6> */
-}
-h1 {
-  font-size: var(--global-font-size--x-large);
-  font-weight: var(--regular);
-}
-h2 {
-  font-size: var(--global-font-size--large);
-  font-weight: var(--bold);
-}
-h3 {
-  font-size: var(--global-font-size--medium);
-  font-weight: var(--bold);
+/* TODO: Consider creating Core-Styles `…/elements/headings--portal.css` */
+/* FAQ: Put in base layer (like Core-Styles),
+        so Core-Styles classes take precedence */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    margin-block: 0; /* overwrite Bootstrap <h1> through <h6> */
+  }
+  h1 {
+    font-size: var(--global-font-size--x-large);
+    font-weight: var(--regular);
+  }
+  h2 {
+    font-size: var(--global-font-size--large);
+    font-weight: var(--bold);
+  }
+  h3 {
+    font-size: var(--global-font-size--medium);
+    font-weight: var(--bold);
+  }
 }
 
 /* Tables */
