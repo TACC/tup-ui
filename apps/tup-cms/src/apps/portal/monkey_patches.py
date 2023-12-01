@@ -1,4 +1,6 @@
+from djangocms_blog import views as cms_blog_views
 from djangocms_blog.views import BaseBlogListView
+import logging
 
 logger = logging.getLogger(__name__)
 
@@ -23,3 +25,6 @@ class OurBlogListView(BaseBlogListView):
         # /TACC
         setattr(self.request, get_setting("CURRENT_NAMESPACE"), self.config)
         return self.optimize(queryset.on_site())
+
+def patch_blog_list():
+    cms_blog_views.BaseBlogListView = OurBlogListView

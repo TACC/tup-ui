@@ -4,6 +4,7 @@ import requests
 from django.dispatch import receiver
 from djangocms_forms.signals import form_submission
 from django.conf import settings
+from .monkey_patches import patch_blog_list
 
 
 logger = logging.getLogger(f"portal.{__name__}")
@@ -53,4 +54,5 @@ class PortalConfig(AppConfig):
 
     def ready(self):
         form_submission.connect(callback)
+        patch_blog_list()
 
