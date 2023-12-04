@@ -21,7 +21,7 @@ svg {
 
     /* TODO: (1) Remove <small> from footer buttons (2) Remove this font-size */
     & small {
-        font-size: inherit; /* gracefully deprecate use of <small> */
+        font-size: 10px; /* gracefully deprecate use of <small> */
     }
 }
 
