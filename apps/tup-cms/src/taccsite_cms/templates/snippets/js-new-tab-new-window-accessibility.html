@@ -1,0 +1,23 @@
+
+<script id="new-tab-new-window-accessibility" type="text/javascript">
+
+    // // NOTE: Some links have `target="_blank"` even though they should not
+    const pathsOfManualNewTabLinks = document.querySelectorAll(
+        '[target="_blank"]:not([aria-describedby])'
+    );
+
+    // /** Adds accessibility attribute to links that open in new tab */
+    function supportA11y( link ) {
+        const hasA11yNote = link.querySelector('span.sr-only');
+        const hasA11yDesc = link.hasAttribute('aria-describedby');
+        if ( ! hasA11yNote && ! hasA11yDesc ) {
+            link.setAttribute('aria-describedby', 'msg-open-new-window');
+            if (window.DEBUG) {
+                console.debug(`Link ${link} now has "aria-describedby"`);
+            }
+        }
+    }
+
+    // /* To apply a11y attribute to manual new tab links */
+    [ ...pathsOfManualNewTabLinks ].forEach( supportA11y );
+</script>
