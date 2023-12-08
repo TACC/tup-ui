@@ -6,15 +6,10 @@
 
 ## Changes
 
-
-
 ## Testing
 
 1.
 
 ## UI
 
-
-
 ## Notes
-
