@@ -26,7 +26,7 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
   ticketId,
 }) => {
   const mutation = useTicketReply(ticketId);
-  const { mutate, isLoading, isError } = mutation;
+  const { mutate, isSuccess, isLoading, isError } = mutation;
 
   const defaultValues: TicketReplyFormValues = {
     text: '',
@@ -44,6 +44,11 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
     if (values.status) formData.append('status', values.status);
     mutate(formData, {
       onSuccess: () => resetForm(),
+      onSettled: () => {
+        setTimeout(() => {
+          mutation.reset();
+        }, 5000);
+      },
     });
   };
 
@@ -77,7 +82,13 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
               maxSizeMessage="Max File Size: 3MB"
               maxSize={3145728}
             />
+
             <FormGroup className="ticket-reply-submission">
+              {isSuccess && (
+                <InlineMessage type="success">
+                  Your reply has been sent.
+                </InlineMessage>
+              )}
               {isError && (
                 <InlineMessage type="error">
                   Something went wrong.
