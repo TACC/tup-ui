@@ -32,9 +32,6 @@ DATABASES = {
     }
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "relay.tacc.utexas.edu"
-
 SESSION_COOKIE_AGE = 14400
 
 CMS_TEMPLATES = (
