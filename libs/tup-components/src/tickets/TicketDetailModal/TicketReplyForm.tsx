@@ -44,6 +44,11 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
     if (values.status) formData.append('status', values.status);
     mutate(formData, {
       onSuccess: () => resetForm(),
+      onSettled: () => {
+        setTimeout(() => {
+          mutation.reset();
+        }, 5000);
+      },
     });
   };
 
@@ -79,34 +84,24 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
             />
 
             <FormGroup className="ticket-reply-submission">
-              <ModalFooter>
-                <div>
-                  {isSuccess && (
-                    <InlineMessage type="success">
-                      Your reply has been sent.
-                    </InlineMessage>
-                  )}
-                  {isError && (
-                    <InlineMessage type="error">
-                      Something went wrong.
-                    </InlineMessage>
-                  )}
-                </div>
-                <Button
-                  attr="submit"
-                  type="primary"
-                  disabled={
-                    !isValid ||
-                    isSubmitting ||
-                    isLoading ||
-                    isError ||
-                    isSuccess
-                  }
-                  isLoading={isLoading}
-                >
-                  Reply
-                </Button>
-              </ModalFooter>
+              {isSuccess && (
+                <InlineMessage type="success">
+                  Your reply has been sent.
+                </InlineMessage>
+              )}
+              {isError && (
+                <InlineMessage type="error">
+                  Something went wrong.
+                </InlineMessage>
+              )}
+              <Button
+                attr="submit"
+                type="primary"
+                disabled={!isValid || isSubmitting || isLoading || isError}
+                isLoading={isLoading}
+              >
+                Reply
+              </Button>
             </FormGroup>
           </Form>
         );
