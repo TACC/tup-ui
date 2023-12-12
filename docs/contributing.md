@@ -35,9 +35,18 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
 
 Only appointed team members may release versions.
 
-1. Create release and tag on GitHub.
+1. Create release **or** pre-release and tag on GitHub.
 
-   | type        | tag format                                                                               | example                                                                              |
-   | ----------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-   | release     | `vX.X.X` following [SemVer](https://semver.org/)                                         | `v1.1.3`                                                                             |
-   | pre-release | `vX.X.X-YYYYMMZZ`<br /><sub>Where `ZZ` is the _number_ of pre-releases this month.</sub> | `v1.1.3-20231203`<br /><sub>Where `03` is the _third_ pre-release of December.</sub> |
+   | type        | use case | tag format                                                                               | example                                                                              |
+   | - | - | - | - |
+   | release | deploy to prod. | `vX.X.X` following [SemVer](https://semver.org/)                                         | `v1.1.3`                                                                             |
+   | pre-release | deploy to dev. | `vX.X.X-YYYYMMZZ`<br /><sub>Where `ZZ` is the _number_ of pre-releases this month.</sub> | `v1.1.3-20231203`<br /><sub>Where `03` is the _third_ pre-release of December.</sub> |
+
+2. If a **pre-release** is off of a `dev` branch, i.e. has code from branches of un-merged PRs, then add those PRs to the changelog e.g.
+
+    ```markdown
+    * feat: TUP-631 migrate blog page css to core-cms by @wesleyboar in #385 at b7f6651
+    * TUP-609 Improve feedback when users reply to tickets by @sophia-massie in #382 at 53cd648
+    ```
+
+    (The `at 123abc0` refers to the commit at which the PR's branch was merged.)
