@@ -45,14 +45,18 @@ def submit_ticket(form_data):
 
 def send_confirmation_email(form_name, form_data):
     email_body = """
-            <p>Hello,</p>
+            <p>Greetings,</p>
             <p>
-                Thank you for submitting a form on the TACC website.
+                Your have successfully submitted a form on the TACC website. Thank you for your submission.
             </p>
             <p>
-                We will act on your request according to the information provided on the form webpage.
+                Business hours are Monday - Friday, 8AM to 5PM Central. We will respond to your submission
+                according to the information provided on the form webpage.
             </p>
-            - TACC
+            <p>
+            Sincerely,<br>
+            TACC Communications
+            </p>
             """
     send_mail(
     f"TACC Form Submission Received: {form_name}",
