@@ -184,6 +184,12 @@ TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
 
 ########################
+# TACC: SOCIAL MEDIA
+########################
+
+TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'email']
+
+########################
 # TACC: CORE STYLES
 ########################
 
