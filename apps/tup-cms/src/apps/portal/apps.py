@@ -70,7 +70,7 @@ def callback(form, cleaned_data, **kwargs):
     logger.debug(f"received submission from {form.name}")
     if form.name == 'rt-ticket-form':
         submit_ticket(cleaned_data)
-    elif cleaned_data["email"]:
+    elif hasattr(cleaned_data, "email"):
         send_confirmation_email(form.name, cleaned_data)
 
 
