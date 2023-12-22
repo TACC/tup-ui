@@ -1,14 +1,4 @@
-a[data-user][data-domain] {
-    font-size: 0;
-    visibility: hidden;
-}
-
-a[data-user][data-domain]:before {
-content: attr(data-user) "@" attr(data-domain);
-display: inline;
-font-size: medium;
-visibility: visible;
-}
+@import url("../../../../site_cms/css/build/mailto-link.css");
 
 /* TODO: Consider a new, different inheritence trick */
 /* TODO: Consider for Core-CMS, not Core-Styles */
