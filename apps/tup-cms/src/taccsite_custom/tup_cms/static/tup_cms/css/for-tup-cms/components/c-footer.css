@@ -57,7 +57,6 @@ svg {
     display: inline-flex;
     align-items: center;
     justify-content: center; /* horz align when image narrower than grid cell */
-    min-height: 0;
 }
 
 /* For independent logo sizes */
