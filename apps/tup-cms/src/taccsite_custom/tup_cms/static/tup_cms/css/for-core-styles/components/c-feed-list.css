@@ -103,9 +103,6 @@
 /* Elements: Link */
 
 .c-feed-list > a:last-child {
-  font-weight: var(--bold);
-}
-.c-feed-list > a:last-child {
   padding-top: 15px;
 
   /* TODO: When migrated to core-styles, use @extend instead */
@@ -114,6 +111,9 @@
   overflow: hidden;
   white-space: nowrap;
   /* max-width: 100%; /* SEE: https://stackoverflow.com/a/44521595 */
+
+  font-weight: var(--bold);
+  font-size: var(--global-font-size--medium)
 }
 .o-section--style-dark .c-feed-list > a:last-child {
   color: var(--global-color-primary--xx-light);
