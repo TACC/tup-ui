@@ -22,6 +22,8 @@ const formSchema = Yup.object().shape({
   text: Yup.string().required('Required'),
 });
 
+const shouldShowError = false;
+
 export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
   ticketId,
 }) => {
@@ -68,6 +70,9 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
               label="Reply"
               description=""
               style={{ maxWidth: '100%' }}
+              errorComponent={({ msg }) => (
+                shouldShowError && msg
+              )}
               required
             />
             <FormikSelect name="status" label="Status">

@@ -10,6 +10,7 @@ export type FieldWrapperProps = {
   required?: boolean;
   className?: string;
   description?: React.ReactNode;
+  errorComponent?: React.FC;
 };
 const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
   name,
@@ -17,6 +18,7 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
   required,
   description,
   className,
+  errorComponent: ErrorComponent,
   children,
 }) => {
   return (
@@ -28,7 +30,10 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
         {required && <Badge color="danger">Required</Badge>}
       </label>
       {children}
-      <ErrorMessage name={name}>
+      <ErrorMessage
+        name={name}
+        {...(ErrorComponent ? { component: <ErrorComponent /> } : {})}
+      >
         {(msg) => {
           return (
             <ul className="c-form__errors">

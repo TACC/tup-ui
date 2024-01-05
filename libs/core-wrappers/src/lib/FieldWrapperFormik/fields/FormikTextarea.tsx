@@ -3,13 +3,14 @@ import FieldWrapper from '../FieldWrapperFormik';
 import { useField } from 'formik';
 import { FormikTextareaProps } from '.';
 
-const FormikTextarea: React.FC<FormikTextareaProps> = ({
+const FormikTextarea: React.FC<FormikTextareaProps & { errorComponent?: React.FC<any> }> = ({
   name,
   label,
   required,
   description,
+  errorComponent: ErrorComponent,
   ...props
-}: FormikTextareaProps) => {
+}) => {
   const [field] = useField(name);
   return (
     <FieldWrapper
@@ -17,6 +18,7 @@ const FormikTextarea: React.FC<FormikTextareaProps> = ({
       label={label}
       required={required}
       description={description}
+      errorComponent={ErrorComponent}
     >
       <textarea {...field} {...props} id={name} />
     </FieldWrapper>
