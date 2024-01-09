@@ -1,47 +1,57 @@
 import React from 'react';
 
-import { Formik, Form, FormikHelpers } from 'formik';
+import { Formik, Form, FormikHelpers, Field } from 'formik';
 import {
+  FormikCheck,
   FormikFileInput,
-  FormikTextarea,
-  FormikSelect,
+  FormikTextarea
 } from '@tacc/core-wrappers';
-import { FormGroup } from 'reactstrap';
+import { FormGroup, Label } from 'reactstrap';
 import { Button, InlineMessage } from '@tacc/core-components';
-import { useTicketReply } from '@tacc/tup-hooks';
+import { Ticket, useTicketReply } from '@tacc/tup-hooks';
 import * as Yup from 'yup';
 import './TicketModal.global.css';
 
 interface TicketReplyFormValues {
   text: string;
   files: File[];
-  status: string;
+  status: boolean;
 }
 
+/* This validates the form for the first textarea in the form.
+This will also show the red required text underneath the textarea.
+If this is implemented, you must also add the `validationSchema={formSchema}` attribute to the Formik component. 
+***
 const formSchema = Yup.object().shape({
-  text: Yup.string().required('Required'),
+   text: Yup.string().required('Required'),
 });
+***
+*/
 
-export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
-  ticketId,
+export const TicketReplyForm: React.FC<{ ticketId: string, ticketData: Ticket | undefined }> = ({
+  ticketId, ticketData
 }) => {
   const mutation = useTicketReply(ticketId);
   const { mutate, isSuccess, isLoading, isError } = mutation;
 
   const defaultValues: TicketReplyFormValues = {
-    text: '',
+    text: "",
     files: [],
-    status: '',
+    status: false,
   };
 
-  const onSubmit = (
-    values: TicketReplyFormValues,
-    { resetForm }: FormikHelpers<TicketReplyFormValues>
-  ) => {
+  const onSubmit = (values: TicketReplyFormValues, { resetForm }: FormikHelpers<TicketReplyFormValues>) => {
     const formData = new FormData();
-    formData.append('text', values['text']);
+
+    if (values.text.length === 0) {
+      formData.append('text', "(Resolved with no reply.)");
+    } else {
+      formData.append('text', values['text']);
+    }
+
     (values.files || []).forEach((file) => formData.append('files', file));
-    if (values.status) formData.append('status', values.status);
+    values.status ? formData.append('status', "resolved") : formData.append('status', "");
+
     mutate(formData, {
       onSuccess: () => resetForm(),
       onSettled: () => {
@@ -55,12 +65,27 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
   return (
     <Formik
       enableReinitialize
+      // enable this line 25 for form validation.
+      // validationSchema={formSchema}
       initialValues={defaultValues}
-      validationSchema={formSchema}
       onSubmit={onSubmit}
     >
-      {({ isSubmitting, isValid }) => {
+      {({ isSubmitting, isValid, dirty, values }) => {
+        const isResolved = values.status;
+        const replyIsEmpty = !values.text;
+
+        let buttonText = 'Reply';
+
+        if (isResolved) {
+          if (replyIsEmpty) {
+            buttonText = 'Resolve';
+          } else {
+            buttonText = 'Resolve with Reply';
+          }
+        }
+
         return (
+
           <Form className="ticket-reply-form">
             <FormikTextarea
               rows={4}
@@ -68,12 +93,8 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
               label="Reply"
               description=""
               style={{ maxWidth: '100%' }}
-              required
+              required={!isResolved}
             />
-            <FormikSelect name="status" label="Status">
-              <option value="">--</option>
-              <option value="resolved">Resolved</option>
-            </FormikSelect>
             <FormikFileInput
               name="files"
               required={false}
@@ -83,7 +104,34 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
               maxSize={3145728}
             />
 
+            <div className="status-wrapper">
+              <Label>Ticket Status</Label>
+              {ticketData?.Status !== "resolved" ? (
+                <div className='status-checkbox'>
+                  <Field type="checkbox" name="status" />
+                  My issue has been resolved
+                </div>
+              ) :
+                (<div className='status-checkbox'>
+                  <Field type="checkbox" name="status" checked disabled /> My issue has been resolved
+                  </div>
+                )}
+              {ticketData?.Status === "resolved" ? (<em>*Replying will reopen this ticket</em>) : (<em>This helps us determine which users still need assistance</em>)}
+            </div>
+            {/* <FormikCheck 
+              name="status"
+              label="Ticket Status"
+              description="This helps us determine which users still need assistance"
+            /> */}
             <FormGroup className="ticket-reply-submission">
+              <Button
+                attr="submit"
+                type="primary"
+                disabled={!isValid || isSubmitting || isLoading || isError || !dirty}
+                isLoading={isLoading}
+              >
+                {buttonText}
+              </Button>
               {isSuccess && (
                 <InlineMessage type="success">
                   Your reply has been sent.
@@ -94,14 +142,6 @@ export const TicketReplyForm: React.FC<{ ticketId: string }> = ({
                   Something went wrong.
                 </InlineMessage>
               )}
-              <Button
-                attr="submit"
-                type="primary"
-                disabled={!isValid || isSubmitting || isLoading || isError}
-                isLoading={isLoading}
-              >
-                Reply
-              </Button>
             </FormGroup>
           </Form>
         );
