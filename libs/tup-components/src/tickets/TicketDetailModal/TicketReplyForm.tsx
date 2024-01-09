@@ -1,15 +1,10 @@
 import React from 'react';
 
 import { Formik, Form, FormikHelpers, Field } from 'formik';
-import {
-  FormikCheck,
-  FormikFileInput,
-  FormikTextarea
-} from '@tacc/core-wrappers';
+import { FormikFileInput, FormikTextarea } from '@tacc/core-wrappers';
 import { FormGroup, Label } from 'reactstrap';
 import { Button, InlineMessage } from '@tacc/core-components';
 import { Ticket, useTicketReply } from '@tacc/tup-hooks';
-import * as Yup from 'yup';
 import './TicketModal.global.css';
 
 interface TicketReplyFormValues {
@@ -28,29 +23,35 @@ const formSchema = Yup.object().shape({
 ***
 */
 
-export const TicketReplyForm: React.FC<{ ticketId: string, ticketData: Ticket | undefined }> = ({
-  ticketId, ticketData
-}) => {
+export const TicketReplyForm: React.FC<{
+  ticketId: string;
+  ticketData: Ticket | undefined;
+}> = ({ ticketId, ticketData }) => {
   const mutation = useTicketReply(ticketId);
   const { mutate, isSuccess, isLoading, isError } = mutation;
 
   const defaultValues: TicketReplyFormValues = {
-    text: "",
+    text: '',
     files: [],
     status: false,
   };
 
-  const onSubmit = (values: TicketReplyFormValues, { resetForm }: FormikHelpers<TicketReplyFormValues>) => {
+  const onSubmit = (
+    values: TicketReplyFormValues,
+    { resetForm }: FormikHelpers<TicketReplyFormValues>
+  ) => {
     const formData = new FormData();
 
     if (values.text.length === 0) {
-      formData.append('text', "(Resolved with no reply.)");
+      formData.append('text', '(Resolved with no reply.)');
     } else {
       formData.append('text', values['text']);
     }
 
     (values.files || []).forEach((file) => formData.append('files', file));
-    values.status ? formData.append('status', "resolved") : formData.append('status', "");
+    values.status
+      ? formData.append('status', 'resolved')
+      : formData.append('status', '');
 
     mutate(formData, {
       onSuccess: () => resetForm(),
@@ -85,7 +86,6 @@ export const TicketReplyForm: React.FC<{ ticketId: string, ticketData: Ticket | 
         }
 
         return (
-
           <Form className="ticket-reply-form">
             <FormikTextarea
               rows={4}
@@ -106,17 +106,24 @@ export const TicketReplyForm: React.FC<{ ticketId: string, ticketData: Ticket | 
 
             <div className="status-wrapper">
               <Label>Ticket Status</Label>
-              {ticketData?.Status !== "resolved" ? (
-                <div className='status-checkbox'>
+              {ticketData?.Status !== 'resolved' ? (
+                <div className="status-checkbox">
                   <Field type="checkbox" name="status" />
                   My issue has been resolved
                 </div>
-              ) :
-                (<div className='status-checkbox'>
-                  <Field type="checkbox" name="status" checked disabled /> My issue has been resolved
+              ) : (
+                <div className="status-checkbox">
+                  <Field type="checkbox" name="status" checked disabled /> My
+                  issue has been resolved
                 </div>
-                )}
-              {ticketData?.Status === "resolved" ? (<em>*Replying will reopen this ticket</em>) : (<em>This helps us determine which users still need assistance</em>)}
+              )}
+              {ticketData?.Status === 'resolved' ? (
+                <em>*Replying will reopen this ticket</em>
+              ) : (
+                <em>
+                  This helps us determine which users still need assistance
+                </em>
+              )}
             </div>
             {/* <FormikCheck 
               name="status"
@@ -127,7 +134,9 @@ export const TicketReplyForm: React.FC<{ ticketId: string, ticketData: Ticket | 
               <Button
                 attr="submit"
                 type="primary"
-                disabled={!isValid || isSubmitting || isLoading || isError || !dirty}
+                disabled={
+                  !isValid || isSubmitting || isLoading || isError || !dirty
+                }
                 isLoading={isLoading}
               >
                 {buttonText}
