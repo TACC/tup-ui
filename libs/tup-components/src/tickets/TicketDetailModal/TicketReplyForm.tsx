@@ -114,7 +114,7 @@ export const TicketReplyForm: React.FC<{ ticketId: string, ticketData: Ticket | 
               ) :
                 (<div className='status-checkbox'>
                   <Field type="checkbox" name="status" checked disabled /> My issue has been resolved
-                  </div>
+                </div>
                 )}
               {ticketData?.Status === "resolved" ? (<em>*Replying will reopen this ticket</em>) : (<em>This helps us determine which users still need assistance</em>)}
             </div>
