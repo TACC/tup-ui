@@ -109,24 +109,22 @@ export const TicketReplyForm: React.FC<{
               <menu>
                 <li>
                   {ticketData?.Status !== 'resolved' ? (
-                  <label>
-                    <Field type="checkbox" name="status" />
-                    My issue has been resolved
-                  </label>
+                    <label>
+                      <Field type="checkbox" name="status" />
+                      My issue has been resolved
+                    </label>
                   ) : (
-                  <label>
-                    <Field type="checkbox" name="status" checked disabled />
-                    My issue has been resolved
-                  </label>
+                    <label>
+                      <Field type="checkbox" name="status" checked disabled />
+                      My issue has been resolved
+                    </label>
                   )}
                 </li>
               </menu>
               <div className="c-form__help">
-                {ticketData?.Status === 'resolved' ? (
-                  "* Replying will reopen this ticket"
-                ) : (
-                  "This helps us determine which users still need assistance"
-                )}
+                {ticketData?.Status === 'resolved'
+                  ? '* Replying will reopen this ticket'
+                  : 'This helps us determine which users still need assistance'}
               </div>
             </div>
             <FormGroup className="ticket-reply-submission">
