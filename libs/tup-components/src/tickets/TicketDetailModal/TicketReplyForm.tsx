@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Formik, Form, FormikHelpers, Field } from 'formik';
 import { FormikFileInput, FormikTextarea } from '@tacc/core-wrappers';
-import { FormGroup, Label } from 'reactstrap';
+import { FormGroup } from 'reactstrap';
 import { Button, InlineMessage } from '@tacc/core-components';
 import { Ticket, useTicketReply } from '@tacc/tup-hooks';
 import './TicketModal.global.css';
@@ -15,7 +15,7 @@ interface TicketReplyFormValues {
 
 /* This validates the form for the first textarea in the form.
 This will also show the red required text underneath the textarea.
-If this is implemented, you must also add the `validationSchema={formSchema}` attribute to the Formik component. 
+If this is implemented, you must also add the `validationSchema={formSchema}` attribute to the Formik component.
 ***
 const formSchema = Yup.object().shape({
    text: Yup.string().required('Required'),
@@ -104,32 +104,28 @@ export const TicketReplyForm: React.FC<{
               maxSize={3145728}
             />
 
-            <div className="status-wrapper">
-              <Label>Ticket Status</Label>
-              {ticketData?.Status !== 'resolved' ? (
-                <div className="status-checkbox">
-                  <Field type="checkbox" name="status" />
-                  My issue has been resolved
-                </div>
-              ) : (
-                <div className="status-checkbox">
-                  <Field type="checkbox" name="status" checked disabled /> My
-                  issue has been resolved
-                </div>
-              )}
-              {ticketData?.Status === 'resolved' ? (
-                <em>*Replying will reopen this ticket</em>
-              ) : (
-                <em>
-                  This helps us determine which users still need assistance
-                </em>
-              )}
+            <div className="c-form__field">
+              <label>Ticket Status</label>
+              <menu>
+                <li>
+                  <label>
+                  <Field
+                    type="checkbox"
+                    name="status"
+                    checked={ticketData?.Status === 'resolved'}
+                    disabled={ticketData?.Status === 'resolved'}
+                  />{' '}
+                  My issue has been resolved</label>
+                </li>
+              </menu>
+              <div className="c-form__help">
+                {ticketData?.Status === 'resolved' ? (
+                  "* Replying will reopen this ticket"
+                ) : (
+                  "This helps us determine which users still need assistance"
+                )}
+              </div>
             </div>
-            {/* <FormikCheck 
-              name="status"
-              label="Ticket Status"
-              description="This helps us determine which users still need assistance"
-            /> */}
             <FormGroup className="ticket-reply-submission">
               <Button
                 attr="submit"

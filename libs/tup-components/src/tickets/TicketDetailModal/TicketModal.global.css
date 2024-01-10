@@ -135,22 +135,6 @@
   margin-left: 1rem;
 }
 
-.status-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-}
-
-.status-checkbox {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.75em;
-}
-
-.status-checkbox > input {
-  margin-right: 0.5em;
-}
-
 .button-hint {
   display: flex;
   flex-direction: column;
