@@ -15,7 +15,7 @@ interface TicketReplyFormValues {
 
 /* This validates the form for the first textarea in the form.
 This will also show the red required text underneath the textarea.
-If this is implemented, you must also add the `validationSchema={formSchema}` attribute to the Formik component.
+If this is implemented, you must also add the `validationSchema={formSchema}` attribute to the Formik component. 
 ***
 const formSchema = Yup.object().shape({
    text: Yup.string().required('Required'),
