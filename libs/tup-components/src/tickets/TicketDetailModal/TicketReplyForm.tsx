@@ -108,14 +108,17 @@ export const TicketReplyForm: React.FC<{
               <label>Ticket Status</label>
               <menu>
                 <li>
+                  {ticketData?.Status !== 'resolved' ? (
                   <label>
-                  <Field
-                    type="checkbox"
-                    name="status"
-                    checked={ticketData?.Status === 'resolved'}
-                    disabled={ticketData?.Status === 'resolved'}
-                  />{' '}
-                  My issue has been resolved</label>
+                    <Field type="checkbox" name="status" />
+                    My issue has been resolved
+                  </label>
+                  ) : (
+                  <label>
+                    <Field type="checkbox" name="status" checked disabled />
+                    My issue has been resolved
+                  </label>
+                  )}
                 </li>
               </menu>
               <div className="c-form__help">
