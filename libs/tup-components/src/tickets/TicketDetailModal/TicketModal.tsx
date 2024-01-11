@@ -46,7 +46,7 @@ const TicketModal: React.FC<{ ticketId: string; baseRoute: string }> = ({
               <TicketHistory ticketId={ticketId} />
             </Col>
             <Col lg="5">
-              <TicketReplyForm ticketId={ticketId} ticketData={data}/>
+              <TicketReplyForm ticketId={ticketId} ticketData={data} />
             </Col>
           </Row>
         </Container>

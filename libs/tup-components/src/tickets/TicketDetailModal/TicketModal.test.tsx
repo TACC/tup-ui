@@ -1,6 +1,13 @@
 import React from 'react';
 import { server, testRender } from '@tacc/tup-testing';
-import { fireEvent, getAllByRole, getByText, screen, waitFor, within } from '@testing-library/react';
+import {
+  fireEvent,
+  getAllByRole,
+  getByText,
+  screen,
+  waitFor,
+  within,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
 import { TicketHistory } from './TicketHistory';
@@ -12,60 +19,58 @@ import { act } from 'react-dom/test-utils';
 window.HTMLElement.prototype.scrollIntoView = vi.fn();
 
 const dataModelResolved: Ticket = {
-  "AdminCc": [],
-  "CF.{Resource}": "tup_services",
-  "Created": "Mon Jan 08 18:06:39 2024",
-  "Creator": "rtprod",
-  "Due": "Not set",
-  "FinalPriority": "0",
-  "InitialPriority": "0",
-  "LastUpdated": "Tue Jan 09 11:22:59 2024",
-  "Owner": "Nobody",
-  "Priority": "0",
-  "Queue": "High Performance Computing",
-  "Requestors": [
-    "tgonzalez@tacc.utexas.edu"
-  ],
-  "Resolved": "Tue Jan 09 11:22:59 2024",
-  "Started": "Mon Jan 08 18:10:58 2024",
-  "Starts": "Not set",
-  "Status": "resolved",
-  "Subject": "Testing for Tomas. Please do not resolve or open. Developer will handle",
-  "TimeEstimated": "0",
-  "TimeLeft": "0",
-  "TimeWorked": "0",
-  "Told": "Tue Jan 09 11:22:59 2024",
-  "id": "ticket/85411",
-  "numerical_id": "85411"
-}
+  AdminCc: [],
+  'CF.{Resource}': 'tup_services',
+  Created: 'Mon Jan 08 18:06:39 2024',
+  Creator: 'rtprod',
+  Due: 'Not set',
+  FinalPriority: '0',
+  InitialPriority: '0',
+  LastUpdated: 'Tue Jan 09 11:22:59 2024',
+  Owner: 'Nobody',
+  Priority: '0',
+  Queue: 'High Performance Computing',
+  Requestors: ['tgonzalez@tacc.utexas.edu'],
+  Resolved: 'Tue Jan 09 11:22:59 2024',
+  Started: 'Mon Jan 08 18:10:58 2024',
+  Starts: 'Not set',
+  Status: 'resolved',
+  Subject:
+    'Testing for Tomas. Please do not resolve or open. Developer will handle',
+  TimeEstimated: '0',
+  TimeLeft: '0',
+  TimeWorked: '0',
+  Told: 'Tue Jan 09 11:22:59 2024',
+  id: 'ticket/85411',
+  numerical_id: '85411',
+};
 
 const dataModelUnresolved: Ticket = {
-  "AdminCc": [],
-  "CF.{Resource}": "tup_services",
-  "Created": "Mon Jan 08 18:06:39 2024",
-  "Creator": "rtprod",
-  "Due": "Not set",
-  "FinalPriority": "0",
-  "InitialPriority": "0",
-  "LastUpdated": "Tue Jan 09 11:22:59 2024",
-  "Owner": "Nobody",
-  "Priority": "0",
-  "Queue": "High Performance Computing",
-  "Requestors": [
-    "tgonzalez@tacc.utexas.edu"
-  ],
-  "Resolved": "",
-  "Started": "Mon Jan 08 18:10:58 2024",
-  "Starts": "Not set",
-  "Status": "",
-  "Subject": "Testing for Tomas. Please do not resolve or open. Developer will handle",
-  "TimeEstimated": "0",
-  "TimeLeft": "0",
-  "TimeWorked": "0",
-  "Told": "Tue Jan 09 11:22:59 2024",
-  "id": "ticket/85411",
-  "numerical_id": "85411"
-}
+  AdminCc: [],
+  'CF.{Resource}': 'tup_services',
+  Created: 'Mon Jan 08 18:06:39 2024',
+  Creator: 'rtprod',
+  Due: 'Not set',
+  FinalPriority: '0',
+  InitialPriority: '0',
+  LastUpdated: 'Tue Jan 09 11:22:59 2024',
+  Owner: 'Nobody',
+  Priority: '0',
+  Queue: 'High Performance Computing',
+  Requestors: ['tgonzalez@tacc.utexas.edu'],
+  Resolved: '',
+  Started: 'Mon Jan 08 18:10:58 2024',
+  Starts: 'Not set',
+  Status: '',
+  Subject:
+    'Testing for Tomas. Please do not resolve or open. Developer will handle',
+  TimeEstimated: '0',
+  TimeLeft: '0',
+  TimeWorked: '0',
+  Told: 'Tue Jan 09 11:22:59 2024',
+  id: 'ticket/85411',
+  numerical_id: '85411',
+};
 describe('Ticket Modal', () => {
   it('should render ticket history information and reply form', async () => {
     const { getByText, getAllByText, getByTestId } = testRender(
@@ -160,7 +165,9 @@ describe('Ticket Modal', () => {
     );
 
     //If reply is empty, the button should be disabled
-    const replyButton = getByRole('button', { name: 'Reply' }) as HTMLButtonElement;
+    const replyButton = getByRole('button', {
+      name: 'Reply',
+    }) as HTMLButtonElement;
     expect(replyButton.disabled).toBe(true);
 
     //If reply is filled, button should be enabled
@@ -171,8 +178,7 @@ describe('Ticket Modal', () => {
     //Changing back to empty reply
     await user.clear(reply);
     expect(replyButton.disabled).toBe(true);
-  })
-
+  });
 
   it('should disable the reply button on load and enable it when checkbox is checked', async () => {
     server.use(
@@ -186,24 +192,28 @@ describe('Ticket Modal', () => {
     );
 
     //If reply is empty, the button should be disabled
-    const replyButton = getByRole('button', { name: 'Reply' }) as HTMLButtonElement;
+    const replyButton = getByRole('button', {
+      name: 'Reply',
+    }) as HTMLButtonElement;
     expect(replyButton.disabled).toBe(true);
 
     //If checkbox is checked, button should be enabled
-    const checkbox = getByRole('checkbox', { name: /ticket status/i }) as HTMLInputElement;
+    const checkbox = getByRole('checkbox', {
+      name: /ticket status/i,
+    }) as HTMLInputElement;
 
     waitFor(() => {
       fireEvent.click(checkbox);
-    })
+    });
 
     expect(replyButton.disabled).toBe(false);
 
     waitFor(() => {
       fireEvent.click(checkbox);
-    })
+    });
 
     expect(replyButton.disabled).toBe(true);
-  })
+  });
 
   it('should remove required reply when checkbox is checked', () => {
     server.use(
@@ -219,17 +229,19 @@ describe('Ticket Modal', () => {
     // The required label needs to be present
     // Will result in error if not present - hence getbytext
     getByText(/required/i);
-    
+
     //If checkbox is checked, button should be enabled
     waitFor(() => {
-      const checkbox = getByRole('checkbox', { name: /ticket status/i }) as HTMLInputElement;
+      const checkbox = getByRole('checkbox', {
+        name: /ticket status/i,
+      }) as HTMLInputElement;
       fireEvent.click(checkbox);
-    })
+    });
 
     // The required label should not be there - hence querybytext
     const requiredLabelAfterClick = queryByText(/required/i);
     expect(requiredLabelAfterClick).toBeNull();
-  })
+  });
 
   it('should check the checkbox and disable it if status is resolved - replying will reopen the ticket should appear', async () => {
     server.use(
@@ -243,18 +255,18 @@ describe('Ticket Modal', () => {
       <TicketReplyForm ticketId="85411" ticketData={dataModelResolved} />
     );
 
-   await waitFor(() => {
-    const checkbox = getByRole('checkbox', { name: /ticket status/i }) as HTMLInputElement;
-    
-    // Expect the checkbox to be checked
-    expect(checkbox.checked).toBe(true);
+    await waitFor(() => {
+      const checkbox = getByRole('checkbox', {
+        name: /ticket status/i,
+      }) as HTMLInputElement;
 
-    // Expect the checkbox to be disabled
-    expect(checkbox.disabled).toBe(true);
-    })
+      // Expect the checkbox to be checked
+      expect(checkbox.checked).toBe(true);
+
+      // Expect the checkbox to be disabled
+      expect(checkbox.disabled).toBe(true);
+    });
 
     getByText(/replying will reopen this ticket/i);
-  })
-
+  });
 });
-

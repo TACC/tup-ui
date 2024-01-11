@@ -23,7 +23,10 @@ const formSchema = Yup.object().shape({
 ***
 */
 
-export const TicketReplyForm: React.FC<{ ticketId: string, ticketData?: Ticket }> = ({ ticketId, ticketData }) => {
+export const TicketReplyForm: React.FC<{
+  ticketId: string;
+  ticketData?: Ticket;
+}> = ({ ticketId, ticketData }) => {
   const mutation = useTicketReply(ticketId);
   const { mutate, isSuccess, isLoading, isError } = mutation;
 
@@ -69,6 +72,7 @@ export const TicketReplyForm: React.FC<{ ticketId: string, ticketData?: Ticket }
       onSubmit={onSubmit}
     >
       {({ isSubmitting, isValid, dirty, values }) => {
+        console.log(values);
         const isResolved = values.status;
         const replyIsEmpty = !values.text;
 
@@ -110,8 +114,14 @@ export const TicketReplyForm: React.FC<{ ticketId: string, ticketData?: Ticket }
                 </div>
               ) : (
                 <div className="status-checkbox">
-                  <Field type="checkbox" name="status" id="status" checked disabled /> My
-                  issue has been resolved
+                  <Field
+                    type="checkbox"
+                    name="status"
+                    id="status"
+                    checked
+                    disabled
+                  />{' '}
+                  My issue has been resolved
                 </div>
               )}
               {ticketData?.Status === 'resolved' ? (
