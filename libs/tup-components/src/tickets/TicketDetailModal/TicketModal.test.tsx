@@ -1,10 +1,6 @@
 import React from 'react';
 import { server, testRender } from '@tacc/tup-testing';
-import {
-  fireEvent,
-  waitFor,
-  within,
-} from '@testing-library/react';
+import { fireEvent, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
 import { TicketHistory } from './TicketHistory';
@@ -14,8 +10,7 @@ import { vi } from 'vitest';
 window.HTMLElement.prototype.scrollIntoView = vi.fn();
 
 const resolvedStatus = 'resolved';
-const unresolvedStatus = ''
-
+const unresolvedStatus = '';
 
 describe('Ticket Modal', () => {
   it('should render ticket history information and reply form', async () => {
