@@ -15,7 +15,7 @@ interface TicketReplyFormValues {
 
 /* This validates the form for the first textarea in the form.
 This will also show the red required text underneath the textarea.
-If this is implemented, you must also add the `validationSchema={formSchema}` attribute to the Formik component. 
+If this is implemented, you must also add the `validationSchema={formSchema}` attribute to the Formik component.
 ***
 const formSchema = Yup.object().shape({
    text: Yup.string().required('Required'),
@@ -25,7 +25,7 @@ const formSchema = Yup.object().shape({
 
 export const TicketReplyForm: React.FC<{
   ticketId: string;
-  ticketData: Ticket | undefined;
+  ticketData?: Ticket;
 }> = ({ ticketId, ticketData }) => {
   const mutation = useTicketReply(ticketId);
   const { mutate, isSuccess, isLoading, isError } = mutation;
@@ -72,6 +72,7 @@ export const TicketReplyForm: React.FC<{
       onSubmit={onSubmit}
     >
       {({ isSubmitting, isValid, dirty, values }) => {
+        console.log(values);
         const isResolved = values.status;
         const replyIsEmpty = !values.text;
 
@@ -103,19 +104,28 @@ export const TicketReplyForm: React.FC<{
               maxSizeMessage="Max File Size: 3MB"
               maxSize={3145728}
             />
-
             <div className="c-form__field">
               <label>Ticket Status</label>
               <menu>
                 <li>
                   {ticketData?.Status !== 'resolved' ? (
                     <label>
-                      <Field type="checkbox" name="status" />
+                      <Field
+                        type="checkbox"
+                        name="status"
+                        id="status"
+                      />{' '}
                       My issue has been resolved
                     </label>
                   ) : (
                     <label>
-                      <Field type="checkbox" name="status" checked disabled />
+                      <Field
+                        type="checkbox"
+                        name="status"
+                        id="status"
+                        checked
+                        disabled
+                      />{' '}
                       My issue has been resolved
                     </label>
                   )}
