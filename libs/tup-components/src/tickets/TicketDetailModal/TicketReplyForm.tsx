@@ -10,7 +10,7 @@ import './TicketModal.global.css';
 interface TicketReplyFormValues {
   text: string;
   files: File[];
-  status: boolean;
+  status: string;
 }
 
 /* This validates the form for the first textarea in the form.
@@ -25,15 +25,15 @@ const formSchema = Yup.object().shape({
 
 export const TicketReplyForm: React.FC<{
   ticketId: string;
-  ticketData?: Ticket;
-}> = ({ ticketId, ticketData }) => {
+  ticketStatus: string;
+}> = ({ ticketId, ticketStatus }) => {
   const mutation = useTicketReply(ticketId);
   const { mutate, isSuccess, isLoading, isError } = mutation;
 
   const defaultValues: TicketReplyFormValues = {
     text: '',
     files: [],
-    status: false,
+    status: '',
   };
 
   const onSubmit = (
@@ -72,13 +72,13 @@ export const TicketReplyForm: React.FC<{
       onSubmit={onSubmit}
     >
       {({ isSubmitting, isValid, dirty, values }) => {
-        console.log(values);
-        const isResolved = values.status;
+        const isResolved = ticketStatus === 'resolved';
+        const isChecked = values.status;
         const replyIsEmpty = !values.text;
 
         let buttonText = 'Reply';
 
-        if (isResolved) {
+        if (isChecked) {
           if (replyIsEmpty) {
             buttonText = 'Resolve';
           } else {
@@ -94,7 +94,7 @@ export const TicketReplyForm: React.FC<{
               label="Reply"
               description=""
               style={{ maxWidth: '100%' }}
-              required={!isResolved}
+              required={!isChecked}
             />
             <FormikFileInput
               name="files"
@@ -104,10 +104,14 @@ export const TicketReplyForm: React.FC<{
               maxSizeMessage="Max File Size: 3MB"
               maxSize={3145728}
             />
-
             <div className="status-wrapper">
               <label htmlFor="status"> Ticket Status</label>
-              {ticketData?.Status !== 'resolved' ? (
+              {/* <div className="status-checkbox">
+                <Field type="checkbox" name="status" id="status" checked={isResolved  || values.status} disabled={isResolved}/>
+                My issue has been resolved
+              </div> */}
+
+              {!isResolved ? (
                 <div className="status-checkbox">
                   <Field type="checkbox" name="status" id="status" />
                   My issue has been resolved
@@ -120,11 +124,12 @@ export const TicketReplyForm: React.FC<{
                     id="status"
                     checked
                     disabled
-                  />{' '}
+                  />
                   My issue has been resolved
                 </div>
               )}
-              {ticketData?.Status === 'resolved' ? (
+
+              {isResolved ? (
                 <em>*Replying will reopen this ticket</em>
               ) : (
                 <em>
@@ -132,18 +137,11 @@ export const TicketReplyForm: React.FC<{
                 </em>
               )}
             </div>
-            {/* <FormikCheck 
-              name="status"
-              label="Ticket Status"
-              description="This helps us determine which users still need assistance"
-            /> */}
             <FormGroup className="ticket-reply-submission">
               <Button
                 attr="submit"
                 type="primary"
-                disabled={
-                  !isValid || isSubmitting || isLoading || isError || !dirty
-                }
+                disabled={values.text.length === 0 && !isChecked}
                 isLoading={isLoading}
               >
                 {buttonText}

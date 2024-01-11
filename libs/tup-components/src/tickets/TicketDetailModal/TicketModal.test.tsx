@@ -2,9 +2,6 @@ import React from 'react';
 import { server, testRender } from '@tacc/tup-testing';
 import {
   fireEvent,
-  getAllByRole,
-  getByText,
-  screen,
   waitFor,
   within,
 } from '@testing-library/react';
@@ -13,64 +10,13 @@ import { rest } from 'msw';
 import { TicketHistory } from './TicketHistory';
 import { TicketReplyForm } from './TicketReplyForm';
 import { vi } from 'vitest';
-import { Ticket } from '@tacc/tup-hooks';
-import { act } from 'react-dom/test-utils';
 
 window.HTMLElement.prototype.scrollIntoView = vi.fn();
 
-const dataModelResolved: Ticket = {
-  AdminCc: [],
-  'CF.{Resource}': 'tup_services',
-  Created: 'Mon Jan 08 18:06:39 2024',
-  Creator: 'rtprod',
-  Due: 'Not set',
-  FinalPriority: '0',
-  InitialPriority: '0',
-  LastUpdated: 'Tue Jan 09 11:22:59 2024',
-  Owner: 'Nobody',
-  Priority: '0',
-  Queue: 'High Performance Computing',
-  Requestors: ['tgonzalez@tacc.utexas.edu'],
-  Resolved: 'Tue Jan 09 11:22:59 2024',
-  Started: 'Mon Jan 08 18:10:58 2024',
-  Starts: 'Not set',
-  Status: 'resolved',
-  Subject:
-    'Testing for Tomas. Please do not resolve or open. Developer will handle',
-  TimeEstimated: '0',
-  TimeLeft: '0',
-  TimeWorked: '0',
-  Told: 'Tue Jan 09 11:22:59 2024',
-  id: 'ticket/85411',
-  numerical_id: '85411',
-};
+const resolvedStatus = 'resolved';
+const unresolvedStatus = ''
 
-const dataModelUnresolved: Ticket = {
-  AdminCc: [],
-  'CF.{Resource}': 'tup_services',
-  Created: 'Mon Jan 08 18:06:39 2024',
-  Creator: 'rtprod',
-  Due: 'Not set',
-  FinalPriority: '0',
-  InitialPriority: '0',
-  LastUpdated: 'Tue Jan 09 11:22:59 2024',
-  Owner: 'Nobody',
-  Priority: '0',
-  Queue: 'High Performance Computing',
-  Requestors: ['tgonzalez@tacc.utexas.edu'],
-  Resolved: '',
-  Started: 'Mon Jan 08 18:10:58 2024',
-  Starts: 'Not set',
-  Status: '',
-  Subject:
-    'Testing for Tomas. Please do not resolve or open. Developer will handle',
-  TimeEstimated: '0',
-  TimeLeft: '0',
-  TimeWorked: '0',
-  Told: 'Tue Jan 09 11:22:59 2024',
-  id: 'ticket/85411',
-  numerical_id: '85411',
-};
+
 describe('Ticket Modal', () => {
   it('should render ticket history information and reply form', async () => {
     const { getByText, getAllByText, getByTestId } = testRender(
@@ -93,7 +39,7 @@ describe('Ticket Modal', () => {
       )
     );
     const { getByLabelText, getByRole } = testRender(
-      <TicketReplyForm ticketId="85411" ticketData={dataModelResolved} />
+      <TicketReplyForm ticketId="85411" ticketStatus={resolvedStatus} />
     );
     const reply = getByLabelText(/Reply/);
     await user.type(reply, 'it works!');
@@ -118,7 +64,7 @@ describe('Ticket Modal', () => {
       )
     );
     const { getByLabelText, getByText, getByRole } = testRender(
-      <TicketReplyForm ticketId="85411" ticketData={dataModelResolved} />
+      <TicketReplyForm ticketId="85411" ticketStatus={resolvedStatus} />
     );
 
     const reply = getByLabelText(/Reply/);
@@ -139,7 +85,7 @@ describe('Ticket Modal', () => {
       )
     );
     const { getByLabelText, getByText, getByRole } = testRender(
-      <TicketReplyForm ticketId="85411" ticketData={dataModelResolved} />
+      <TicketReplyForm ticketId="85411" ticketStatus={resolvedStatus} />
     );
 
     const reply = getByLabelText(/Reply/);
@@ -161,7 +107,7 @@ describe('Ticket Modal', () => {
     );
 
     const { getByLabelText, getByRole } = testRender(
-      <TicketReplyForm ticketId="85411" ticketData={dataModelUnresolved} />
+      <TicketReplyForm ticketId="85411" ticketStatus={unresolvedStatus} />
     );
 
     //If reply is empty, the button should be disabled
@@ -188,7 +134,7 @@ describe('Ticket Modal', () => {
     );
 
     const { getByRole } = testRender(
-      <TicketReplyForm ticketId="85411" ticketData={dataModelUnresolved} />
+      <TicketReplyForm ticketId="85411" ticketStatus={unresolvedStatus} />
     );
 
     //If reply is empty, the button should be disabled
@@ -201,6 +147,8 @@ describe('Ticket Modal', () => {
     const checkbox = getByRole('checkbox', {
       name: /ticket status/i,
     }) as HTMLInputElement;
+
+    console.log(checkbox);
 
     waitFor(() => {
       fireEvent.click(checkbox);
@@ -223,7 +171,7 @@ describe('Ticket Modal', () => {
     );
 
     const { getByRole, queryByText, getByText } = testRender(
-      <TicketReplyForm ticketId="85411" ticketData={dataModelUnresolved} />
+      <TicketReplyForm ticketId="85411" ticketStatus={unresolvedStatus} />
     );
 
     // The required label needs to be present
@@ -252,7 +200,7 @@ describe('Ticket Modal', () => {
 
     const { getByRole, getByText } = testRender(
       //If ticket were not resolved, this test will fail
-      <TicketReplyForm ticketId="85411" ticketData={dataModelResolved} />
+      <TicketReplyForm ticketId="85411" ticketStatus={resolvedStatus} />
     );
 
     await waitFor(() => {

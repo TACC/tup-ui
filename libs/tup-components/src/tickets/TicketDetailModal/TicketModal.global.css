@@ -150,12 +150,3 @@
 .status-checkbox > input {
   margin-right: 0.5em;
 }
-
-.button-hint {
-  display: flex;
-  flex-direction: column;
-}
-
-.button-hint > p {
-  margin-top: 1em;
-}
