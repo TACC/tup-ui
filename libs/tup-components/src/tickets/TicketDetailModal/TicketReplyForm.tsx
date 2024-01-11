@@ -110,12 +110,8 @@ export const TicketReplyForm: React.FC<{
                 <li>
                   {ticketData?.Status !== 'resolved' ? (
                     <label>
-                      <Field
-                        type="checkbox"
-                        name="status"
-                        id="status"
-                      />{' '}
-                      My issue has been resolved
+                      <Field type="checkbox" name="status" id="status" /> My
+                      issue has been resolved
                     </label>
                   ) : (
                     <label>
