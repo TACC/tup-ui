@@ -32838,22 +32838,18 @@
                         g = e.findNearestElement(o[2], o[3], !0, !0);
                       return (
                         v && v.isNode()
-                          ? (v
-                              .activate()
-                              .emit({
-                                originalEvent: t,
-                                type: 'cxttapstart',
-                                position: { x: o[0], y: o[1] },
-                              }),
+                          ? (v.activate().emit({
+                              originalEvent: t,
+                              type: 'cxttapstart',
+                              position: { x: o[0], y: o[1] },
+                            }),
                             (e.touchData.start = v))
                           : g && g.isNode()
-                          ? (g
-                              .activate()
-                              .emit({
-                                originalEvent: t,
-                                type: 'cxttapstart',
-                                position: { x: o[0], y: o[1] },
-                              }),
+                          ? (g.activate().emit({
+                              originalEvent: t,
+                              type: 'cxttapstart',
+                              position: { x: o[0], y: o[1] },
+                            }),
                             (e.touchData.start = g))
                           : r.emit({
                               originalEvent: t,
