@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Formik, Form, FormikHelpers, Field } from 'formik';
 import { FormikFileInput, FormikTextarea } from '@tacc/core-wrappers';
-import { FormGroup, Label } from 'reactstrap';
+import { FormGroup } from 'reactstrap';
 import { Button, InlineMessage } from '@tacc/core-components';
 import { Ticket, useTicketReply } from '@tacc/tup-hooks';
 import './TicketModal.global.css';
@@ -23,10 +23,7 @@ const formSchema = Yup.object().shape({
 ***
 */
 
-export const TicketReplyForm: React.FC<{
-  ticketId: string;
-  ticketData: Ticket | undefined;
-}> = ({ ticketId, ticketData }) => {
+export const TicketReplyForm: React.FC<{ ticketId: string, ticketData?: Ticket }> = ({ ticketId, ticketData }) => {
   const mutation = useTicketReply(ticketId);
   const { mutate, isSuccess, isLoading, isError } = mutation;
 
@@ -105,15 +102,15 @@ export const TicketReplyForm: React.FC<{
             />
 
             <div className="status-wrapper">
-              <Label>Ticket Status</Label>
+              <label htmlFor="status"> Ticket Status</label>
               {ticketData?.Status !== 'resolved' ? (
                 <div className="status-checkbox">
-                  <Field type="checkbox" name="status" />
+                  <Field type="checkbox" name="status" id="status" />
                   My issue has been resolved
                 </div>
               ) : (
                 <div className="status-checkbox">
-                  <Field type="checkbox" name="status" checked disabled /> My
+                  <Field type="checkbox" name="status" id="status" checked disabled /> My
                   issue has been resolved
                 </div>
               )}
