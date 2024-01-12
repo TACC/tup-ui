@@ -128,7 +128,7 @@ export const TicketReplyForm: React.FC<{
                 </li>
               </menu>
               <div className="c-form__help">
-                {ticketData?.Status === 'resolved'
+                {isResolved
                   ? '* Replying will reopen this ticket'
                   : 'This helps us determine which users still need assistance'}
               </div>
