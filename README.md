@@ -14,6 +14,7 @@ Local dev setup:
 
 - a) `docker exec -it tup_cms /bin/bash`
 - b) `python manage.py migrate`
+
 8.  (if CMS assets change) Collect updated CMS assets:
 
 - a) `docker exec -it tup_cms /bin/bash`
