@@ -41,8 +41,14 @@ export const TicketReplyForm: React.FC<{
     { resetForm }: FormikHelpers<TicketReplyFormValues>
   ) => {
     const formData = new FormData();
+    const isReplyEmpty = values.text.length === 0;
 
-    if (values.text.length === 0) {
+    //if reply is empty and no checked box return
+    if (isReplyEmpty && !values.status) {
+      return;
+    }
+
+    if (isReplyEmpty) {
       formData.append('text', '(Resolved with no reply.)');
     } else {
       formData.append('text', values['text']);
@@ -72,6 +78,7 @@ export const TicketReplyForm: React.FC<{
       onSubmit={onSubmit}
     >
       {({ isSubmitting, isValid, dirty, values }) => {
+        const isReplyEmpty = values.text.length === 0;
         const isResolved = ticketStatus === 'resolved';
         const isChecked = values.status;
         const replyIsEmpty = !values.text;
@@ -108,23 +115,16 @@ export const TicketReplyForm: React.FC<{
               <label>Ticket Status</label>
               <menu>
                 <li>
-                  {!isResolved ? (
-                    <label>
-                      <Field type="checkbox" name="status" id="status" />
-                      My issue has been resolved
-                    </label>
-                  ) : (
-                    <label>
-                      <Field
-                        type="checkbox"
-                        name="status"
-                        id="status"
-                        checked
-                        disabled
-                      />
-                      My issue has been resolved
-                    </label>
-                  )}
+                  <label>
+                    <Field
+                      type="checkbox"
+                      name="status"
+                      id="status"
+                      checked={isResolved || values.status}
+                      disabled={isResolved}
+                    />
+                    My issue has been resolved
+                  </label>
                 </li>
               </menu>
               <div className="c-form__help">
@@ -137,7 +137,7 @@ export const TicketReplyForm: React.FC<{
               <Button
                 attr="submit"
                 type="primary"
-                disabled={values.text.length === 0 && !isChecked}
+                disabled={isReplyEmpty && !isChecked}
                 isLoading={isLoading}
               >
                 {buttonText}
