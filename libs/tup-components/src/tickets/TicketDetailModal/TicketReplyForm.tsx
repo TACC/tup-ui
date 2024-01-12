@@ -10,7 +10,7 @@ import './TicketModal.global.css';
 interface TicketReplyFormValues {
   text: string;
   files: File[];
-  status: boolean;
+  status: string;
 }
 
 /* This validates the form for the first textarea in the form.
@@ -25,15 +25,15 @@ const formSchema = Yup.object().shape({
 
 export const TicketReplyForm: React.FC<{
   ticketId: string;
-  ticketData?: Ticket;
-}> = ({ ticketId, ticketData }) => {
+  ticketStatus: string;
+}> = ({ ticketId, ticketStatus }) => {
   const mutation = useTicketReply(ticketId);
   const { mutate, isSuccess, isLoading, isError } = mutation;
 
   const defaultValues: TicketReplyFormValues = {
     text: '',
     files: [],
-    status: false,
+    status: '',
   };
 
   const onSubmit = (
@@ -72,13 +72,13 @@ export const TicketReplyForm: React.FC<{
       onSubmit={onSubmit}
     >
       {({ isSubmitting, isValid, dirty, values }) => {
-        console.log(values);
-        const isResolved = values.status;
+        const isResolved = ticketStatus === 'resolved';
+        const isChecked = values.status;
         const replyIsEmpty = !values.text;
 
         let buttonText = 'Reply';
 
-        if (isResolved) {
+        if (isChecked) {
           if (replyIsEmpty) {
             buttonText = 'Resolve';
           } else {
@@ -94,7 +94,7 @@ export const TicketReplyForm: React.FC<{
               label="Reply"
               description=""
               style={{ maxWidth: '100%' }}
-              required={!isResolved}
+              required={!isChecked}
             />
             <FormikFileInput
               name="files"
@@ -108,10 +108,10 @@ export const TicketReplyForm: React.FC<{
               <label>Ticket Status</label>
               <menu>
                 <li>
-                  {ticketData?.Status !== 'resolved' ? (
+                  {!isResolved ? (
                     <label>
-                      <Field type="checkbox" name="status" id="status" /> My
-                      issue has been resolved
+                      <Field type="checkbox" name="status" id="status" />
+                      My issue has been resolved
                     </label>
                   ) : (
                     <label>
@@ -121,7 +121,7 @@ export const TicketReplyForm: React.FC<{
                         id="status"
                         checked
                         disabled
-                      />{' '}
+                      />
                       My issue has been resolved
                     </label>
                   )}
@@ -137,9 +137,7 @@ export const TicketReplyForm: React.FC<{
               <Button
                 attr="submit"
                 type="primary"
-                disabled={
-                  !isValid || isSubmitting || isLoading || isError || !dirty
-                }
+                disabled={values.text.length === 0 && !isChecked}
                 isLoading={isLoading}
               >
                 {buttonText}
