@@ -41,8 +41,15 @@ export const TicketReplyForm: React.FC<{
     { resetForm }: FormikHelpers<TicketReplyFormValues>
   ) => {
     const formData = new FormData();
+    const isReplyEmpty = values.text.length === 0;
 
-    if (values.text.length === 0) {
+    //if reply is empty and no checked box return
+    if (isReplyEmpty && !values.status) {
+      console.log('aaa', isReplyEmpty, values.status)
+      return
+    }
+
+    if (isReplyEmpty) {
       formData.append('text', '(Resolved with no reply.)');
     } else {
       formData.append('text', values['text']);
@@ -72,6 +79,7 @@ export const TicketReplyForm: React.FC<{
       onSubmit={onSubmit}
     >
       {({ isSubmitting, isValid, dirty, values }) => {
+        const isReplyEmpty = values.text.length === 0;
         const isResolved = ticketStatus === 'resolved';
         const isChecked = values.status;
         const replyIsEmpty = !values.text;
@@ -106,29 +114,10 @@ export const TicketReplyForm: React.FC<{
             />
             <div className="status-wrapper">
               <label htmlFor="status"> Ticket Status</label>
-              {/* <div className="status-checkbox">
+              <div className="status-checkbox">
                 <Field type="checkbox" name="status" id="status" checked={isResolved  || values.status} disabled={isResolved}/>
                 My issue has been resolved
-              </div> */}
-
-              {!isResolved ? (
-                <div className="status-checkbox">
-                  <Field type="checkbox" name="status" id="status" />
-                  My issue has been resolved
-                </div>
-              ) : (
-                <div className="status-checkbox">
-                  <Field
-                    type="checkbox"
-                    name="status"
-                    id="status"
-                    checked
-                    disabled
-                  />
-                  My issue has been resolved
-                </div>
-              )}
-
+              </div>
               {isResolved ? (
                 <em>*Replying will reopen this ticket</em>
               ) : (
@@ -141,7 +130,7 @@ export const TicketReplyForm: React.FC<{
               <Button
                 attr="submit"
                 type="primary"
-                disabled={values.text.length === 0 && !isChecked}
+                disabled={isReplyEmpty && !isChecked}
                 isLoading={isLoading}
               >
                 {buttonText}

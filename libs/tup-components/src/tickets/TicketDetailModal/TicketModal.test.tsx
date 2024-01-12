@@ -142,9 +142,6 @@ describe('Ticket Modal', () => {
     const checkbox = getByRole('checkbox', {
       name: /ticket status/i,
     }) as HTMLInputElement;
-
-    console.log(checkbox);
-
     waitFor(() => {
       fireEvent.click(checkbox);
     });
