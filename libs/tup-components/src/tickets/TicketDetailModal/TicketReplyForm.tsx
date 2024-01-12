@@ -45,8 +45,7 @@ export const TicketReplyForm: React.FC<{
 
     //if reply is empty and no checked box return
     if (isReplyEmpty && !values.status) {
-      console.log('aaa', isReplyEmpty, values.status)
-      return
+      return;
     }
 
     if (isReplyEmpty) {
@@ -115,7 +114,13 @@ export const TicketReplyForm: React.FC<{
             <div className="status-wrapper">
               <label htmlFor="status"> Ticket Status</label>
               <div className="status-checkbox">
-                <Field type="checkbox" name="status" id="status" checked={isResolved  || values.status} disabled={isResolved}/>
+                <Field
+                  type="checkbox"
+                  name="status"
+                  id="status"
+                  checked={isResolved || values.status}
+                  disabled={isResolved}
+                />
                 My issue has been resolved
               </div>
               {isResolved ? (
