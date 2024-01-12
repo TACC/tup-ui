@@ -77,7 +77,7 @@ export const TicketReplyForm: React.FC<{
       initialValues={defaultValues}
       onSubmit={onSubmit}
     >
-      {({ isSubmitting, isValid, dirty, values }) => {
+      {({ values }) => {
         const isReplyEmpty = values.text.length === 0;
         const isResolved = ticketStatus === 'resolved';
         const isChecked = values.status;
