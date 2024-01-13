@@ -15,6 +15,11 @@ Local dev setup:
 - a) `docker exec -it tup_cms /bin/bash`
 - b) `python manage.py migrate`
 
+8.  (if CMS assets change) Collect updated CMS assets:
+
+- a) `docker exec -it tup_cms /bin/bash`
+- b) `python manage.py python manage.py collectstatic --ignore assets/*/font*.css`
+
 The TUP dashboard is accessed at http://localhost:8000/portal.
 To bring containers down after development, run `npx nx down tup-cms`.
 
