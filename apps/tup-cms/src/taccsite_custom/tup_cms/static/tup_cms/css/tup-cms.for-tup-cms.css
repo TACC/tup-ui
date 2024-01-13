@@ -9,7 +9,6 @@
 
 /* ELEMENTS */
 @import url("./for-tup-cms/elements/headings--cms.css") layer(project);
-@import url("./for-tup-cms/elements/mailto-link.css") layer(project);
 
 /* OBJECTS */
 @import url("./for-tup-cms/objects/o-section.css") layer(project);

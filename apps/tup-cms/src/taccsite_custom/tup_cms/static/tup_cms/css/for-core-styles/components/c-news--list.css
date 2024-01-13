@@ -1,9 +1,7 @@
-/* TODO: When integrated into Core-Styles, uncomment this *//*
-@import url("@tacc/core-styles/src/lib/_imports/tools/x-article-link.css");
-@import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
-
-@import url("_imports/tools/media-queries.css");
-*/
+/* TODO: When integrated into Core-Styles, import these */
+/* @tacc/core-styles/src/lib/_imports/tools/x-article-link.css */
+/* @tacc/core-styles/src/lib/_imports/tools/x-truncate.css */
+/* _imports/tools/media-queries.css */
 
 
 
