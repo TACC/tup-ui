@@ -17,7 +17,7 @@ make start
 ```
 
 > **Important**
-> If you must run `python manage.py collectstatic` locally, do so via `python manage.py collectstatic --ignore assets/*/font*.css` to avoid error.
+> If you must run `python manage.py collectstatic`, do so via `python manage.py collectstatic --ignore assets/*/font*.css` to avoid error.
 
 ## Based on Core CMS Custom
 
