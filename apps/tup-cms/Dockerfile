@@ -12,3 +12,5 @@ COPY dist/apps/tup-ui/assets/ /code/taccsite_cms/static/assets/
 
 COPY dist/apps/tup-cms-react/assets /code/taccsite_cms/static/cms-react/assets
 COPY /dist/apps/tup-cms-react/imports.html /code/taccsite_cms/templates/tup-cms-react.html
+
+RUN python manage.py collectstatic --no-input --clear --ignore assets/*/font*.css
