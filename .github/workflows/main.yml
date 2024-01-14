@@ -22,7 +22,6 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
 
       # Check linting/formatting of workspace files.
-      - run: npx nx workspace-lint
       - run: npx nx format:check
 
       # Lint/test/build any apps and libs that have been impacted by the diff.

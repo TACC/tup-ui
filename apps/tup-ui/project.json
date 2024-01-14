@@ -56,18 +56,15 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/tup-ui"],
+      "outputs": ["{workspaceRoot}/coverage/apps/tup-ui"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/tup-ui"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/tup-ui/**/*.{ts,tsx,js,jsx}"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     }
   },
   "tags": []
