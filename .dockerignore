@@ -1,4 +1,5 @@
 .git
+.nx
 .cache
 node_modules
 **/secrets.py

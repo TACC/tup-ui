@@ -4,6 +4,10 @@
   display: none;
 }
 
+.root button {
+  display: inline-block;
+}
+
 /* When (the only known) error would wrap, move all lines to one line */
 @media screen and (max-width: 435px) {
   .root :global(.c-form-errors) br { content: ""; } /* to remove new line */
