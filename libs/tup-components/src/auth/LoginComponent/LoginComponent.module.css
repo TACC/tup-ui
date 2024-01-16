@@ -4,8 +4,9 @@
   display: none;
 }
 
+# To fix CMD-74
 .root button {
-  display: inline-block;
+  display: unset;
 }
 
 /* When (the only known) error would wrap, move all lines to one line */
