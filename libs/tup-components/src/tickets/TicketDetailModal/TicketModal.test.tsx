@@ -140,7 +140,7 @@ describe('Ticket Modal', () => {
 
     //If checkbox is checked, button should be enabled
     const checkbox = getByRole('checkbox', {
-      name: /ticket status/i,
+      name: /My issue has been resolved/i,
     }) as HTMLInputElement;
     waitFor(() => {
       fireEvent.click(checkbox);
@@ -173,7 +173,7 @@ describe('Ticket Modal', () => {
     //If checkbox is checked, button should be enabled
     waitFor(() => {
       const checkbox = getByRole('checkbox', {
-        name: /ticket status/i,
+        name: /My issue has been resolved/i,
       }) as HTMLInputElement;
       fireEvent.click(checkbox);
     });
@@ -197,7 +197,7 @@ describe('Ticket Modal', () => {
 
     await waitFor(() => {
       const checkbox = getByRole('checkbox', {
-        name: /ticket status/i,
+        name: /My issue has been resolved/i,
       }) as HTMLInputElement;
 
       // Expect the checkbox to be checked

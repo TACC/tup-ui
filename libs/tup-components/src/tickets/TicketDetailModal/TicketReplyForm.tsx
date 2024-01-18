@@ -15,7 +15,7 @@ interface TicketReplyFormValues {
 
 /* This validates the form for the first textarea in the form.
 This will also show the red required text underneath the textarea.
-If this is implemented, you must also add the `validationSchema={formSchema}` attribute to the Formik component. 
+If this is implemented, you must also add the `validationSchema={formSchema}` attribute to the Formik component.
 ***
 const formSchema = Yup.object().shape({
    text: Yup.string().required('Required'),
@@ -77,7 +77,7 @@ export const TicketReplyForm: React.FC<{
       initialValues={defaultValues}
       onSubmit={onSubmit}
     >
-      {({ isSubmitting, isValid, dirty, values }) => {
+      {({ values }) => {
         const isReplyEmpty = values.text.length === 0;
         const isResolved = ticketStatus === 'resolved';
         const isChecked = values.status;
@@ -111,25 +111,27 @@ export const TicketReplyForm: React.FC<{
               maxSizeMessage="Max File Size: 3MB"
               maxSize={3145728}
             />
-            <div className="status-wrapper">
-              <label htmlFor="status"> Ticket Status</label>
-              <div className="status-checkbox">
-                <Field
-                  type="checkbox"
-                  name="status"
-                  id="status"
-                  checked={isResolved || values.status}
-                  disabled={isResolved}
-                />
-                My issue has been resolved
+            <div className="c-form__field">
+              <label>Ticket Status</label>
+              <menu>
+                <li>
+                  <label>
+                    <Field
+                      type="checkbox"
+                      name="status"
+                      id="status"
+                      checked={isResolved || values.status}
+                      disabled={isResolved}
+                    />
+                    My issue has been resolved
+                  </label>
+                </li>
+              </menu>
+              <div className="c-form__help">
+                {isResolved
+                  ? '* Replying will reopen this ticket'
+                  : 'This helps us determine which users still need assistance'}
               </div>
-              {isResolved ? (
-                <em>*Replying will reopen this ticket</em>
-              ) : (
-                <em>
-                  This helps us determine which users still need assistance
-                </em>
-              )}
             </div>
             <FormGroup className="ticket-reply-submission">
               <Button
