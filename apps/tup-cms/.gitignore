@@ -11,15 +11,12 @@ nohup.out
 /portal/.docs/build/
 
 # ignore local static and media folders
+src/media/
 server/static
 server/portal/static/vendor/lib/node_modules
 server/media
 server/cms
 server/docs
-
-# ignore local CMS data and media folders
-src/data/
-src/media/
 
 # Ignore local Django settings
 *secrets.py
