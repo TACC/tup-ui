@@ -2,6 +2,7 @@
 .nx
 .cache
 node_modules
+dist
 **/secrets.py
 **/settings_local.py
 
