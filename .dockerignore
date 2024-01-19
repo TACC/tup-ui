@@ -4,3 +4,7 @@
 node_modules
 **/secrets.py
 **/settings_local.py
+
+# ignore local CMS data and media folders
+apps/tup-cms/src/data/
+apps/tup-cms/src/media/
