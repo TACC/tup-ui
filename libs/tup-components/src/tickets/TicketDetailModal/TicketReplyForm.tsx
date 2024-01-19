@@ -81,17 +81,6 @@ export const TicketReplyForm: React.FC<{
         const isReplyEmpty = values.text.length === 0;
         const isResolved = ticketStatus === 'resolved';
         const isChecked = values.status;
-        const replyIsEmpty = !values.text;
-
-        let buttonText = 'Reply';
-
-        if (isChecked) {
-          if (replyIsEmpty) {
-            buttonText = 'Resolve';
-          } else {
-            buttonText = 'Resolve with Reply';
-          }
-        }
 
         return (
           <Form className="ticket-reply-form">
@@ -140,7 +129,12 @@ export const TicketReplyForm: React.FC<{
                 disabled={isReplyEmpty && !isChecked}
                 isLoading={isLoading}
               >
-                {buttonText}
+                {isChecked
+                  ? isReplyEmpty
+                    ? 'Resolve'
+                    : 'Resolve with Reply'
+                  : 'Reply'
+                }
               </Button>
               {isSuccess && (
                 <InlineMessage type="success">
