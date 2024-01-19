@@ -18,8 +18,8 @@ server/cms
 server/docs
 
 # ignore local CMS data and media folders
-apps/tup-cms/src/data/
-apps/tup-cms/src/media/
+src/data/
+src/media/
 
 # Ignore local Django settings
 *secrets.py
