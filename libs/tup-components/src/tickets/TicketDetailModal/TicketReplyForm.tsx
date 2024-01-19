@@ -4,7 +4,7 @@ import { Formik, Form, FormikHelpers, Field } from 'formik';
 import { FormikFileInput, FormikTextarea } from '@tacc/core-wrappers';
 import { FormGroup } from 'reactstrap';
 import { Button, InlineMessage } from '@tacc/core-components';
-import { Ticket, useTicketReply } from '@tacc/tup-hooks';
+import { useTicketReply } from '@tacc/tup-hooks';
 import './TicketModal.global.css';
 
 interface TicketReplyFormValues {
