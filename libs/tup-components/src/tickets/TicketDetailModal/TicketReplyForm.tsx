@@ -133,8 +133,7 @@ export const TicketReplyForm: React.FC<{
                   ? isReplyEmpty
                     ? 'Resolve'
                     : 'Resolve with Reply'
-                  : 'Reply'
-                }
+                  : 'Reply'}
               </Button>
               {isSuccess && (
                 <InlineMessage type="success">
