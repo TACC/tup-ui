@@ -7,3 +7,5 @@ apps/tup-cms/**/templates/**/*
 # do not format stylesheets until `nx format` ignores multiple blank lines
 # https://prettier.io/docs/en/rationale.html#empty-lines
 *.css
+
+/.nx/cache

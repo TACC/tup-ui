@@ -5,6 +5,7 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 import path from 'path';
 
 export default defineConfig({
+  root: __dirname,
   cacheDir: '../../node_modules/.vite/tup-ui',
 
   server: {
@@ -28,6 +29,9 @@ export default defineConfig({
   ],
 
   build: {
+    outDir: '../../dist/apps/tup-ui',
+    reportCompressedSize: true,
+    commonjsOptions: { transformMixedEsModules: true },
     rollupOptions: {
       input: {
         imports: path.resolve(__dirname, 'imports.html'),
@@ -36,6 +40,11 @@ export default defineConfig({
   },
 
   test: {
+    reporters: ['default'],
+    coverage: {
+      reportsDirectory: '../../coverage/apps/tup-ui',
+      provider: 'v8',
+    },
     globals: true,
     cache: {
       dir: '../../node_modules/.vitest',

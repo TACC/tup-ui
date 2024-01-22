@@ -6,15 +6,12 @@
   "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/tup-testing/**/*.{ts,tsx,js,jsx}"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/tup-testing"],
+      "outputs": ["{workspaceRoot}/coverage/libs/tup-testing"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/tup-testing"

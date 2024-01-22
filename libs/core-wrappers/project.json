@@ -6,15 +6,12 @@
   "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/core-wrappers/**/*.{ts,tsx,js,jsx}"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/core-wrappers"],
+      "outputs": ["{workspaceRoot}/coverage/libs/core-wrappers"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/core-wrappers"
