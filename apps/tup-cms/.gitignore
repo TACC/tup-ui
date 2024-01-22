@@ -4,6 +4,9 @@
 # macOS hidden files
 .DS_Store
 
+# ignore local static and media folders
+src/media/
+
 # ignore local Django settings
 *secrets.py
 *settings_secret.py

@@ -2,5 +2,9 @@
 .nx
 .cache
 node_modules
+dist
 **/secrets.py
 **/settings_local.py
+
+# ignore local CMS media folder
+apps/tup-cms/src/media/
