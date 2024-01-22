@@ -80,7 +80,7 @@ export const TicketReplyForm: React.FC<{
       {({ values }) => {
         const isReplyEmpty = values.text.length === 0;
         const isResolved = ticketStatus === 'resolved';
-        const isChecked = values.status;
+        const isCheckedForResolve = values.status;
 
         return (
           <Form className="ticket-reply-form">
@@ -90,7 +90,7 @@ export const TicketReplyForm: React.FC<{
               label="Reply"
               description=""
               style={{ maxWidth: '100%' }}
-              required={!isChecked}
+              required={!isCheckedForResolve}
             />
             <FormikFileInput
               name="files"
@@ -126,10 +126,10 @@ export const TicketReplyForm: React.FC<{
               <Button
                 attr="submit"
                 type="primary"
-                disabled={isReplyEmpty && !isChecked}
+                disabled={isReplyEmpty && !isCheckedForResolve}
                 isLoading={isLoading}
               >
-                {isChecked
+                {isCheckedForResolve
                   ? isReplyEmpty
                     ? 'Resolve'
                     : 'Resolve with Reply'
