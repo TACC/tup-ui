@@ -33,8 +33,9 @@
 
 .ticket-reply-submission {
   display: flex;
+  flex-direction: column;
   justify-content: right;
-  align-items: center;
+  align-items: end;
 }
 
 .ticket-model-content {
