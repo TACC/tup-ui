@@ -9,19 +9,29 @@ const Sidebar: React.FC = () => {
     <div className={styles['root']}>
       <Navbar>
         <NavItem end icon="dashboard" to={'/dashboard'}>
-          Dashboard
+          <span className='d-none d-md-inline'>
+            Dashboard
+          </span>
         </NavItem>
         <NavItem icon="allocations" to={'/projects'}>
-          Projects & Allocations
+          <span className="d-none d-md-inline">
+            Projects & Allocations
+          </span>
         </NavItem>
         <NavItem icon="multiple-coversation" to={'/tickets'}>
-          Tickets
+          <span className="d-none d-md-inline">
+            Tickets
+          </span>
         </NavItem>
         <NavItem icon="data-files" to={'/system-status'}>
-          System Status
+          <span className="d-none d-md-inline">
+            System Status
+          </span>
         </NavItem>
         <NavItem icon="user" to={'/account'}>
-          Manage Account
+          <span className="d-none d-md-inline">
+            Manage Account
+          </span>
         </NavItem>
       </Navbar>
     </div>
