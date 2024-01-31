@@ -40,5 +40,12 @@
 @media(max-width: 768px) {
   .nav-icon {
     margin-right: unset;
+    margin: .25em;
+  }
+
+  .nav-content {
+    flex-direction: column;
+    height: unset;
+    padding-block: .25em;
   }
 }
