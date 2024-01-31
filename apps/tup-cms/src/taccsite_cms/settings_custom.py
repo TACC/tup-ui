@@ -107,16 +107,15 @@ BRANDING = [ NSF_BRANDING, UTEXAS_BRANDING ]
 # TACC: LOGOS
 ########################
 
-LOGO = [
-    "tup",
-    "tup_cms/img/org_logos/tacc-logo-white.svg",
-    "tup",
-    "/",
-    "_self",
-    "TACC Logo",
-    "anonymous",
-    "True"
-]
+PORTAL_LOGO = {
+    "img_file_src": "tup_cms/img/org_logos/tacc-logo-white.svg",
+    "is_remote": False,
+    "img_class": "",
+    "link_href": "/",
+    "link_target": "_self",
+    "img_alt_text": "TACC Logo",
+    "img_crossorigin": "anonymous",
+} # To hide logo, set `PORTAL_LOGO = False`
 
 ########################
 # TACC: SEARCH
