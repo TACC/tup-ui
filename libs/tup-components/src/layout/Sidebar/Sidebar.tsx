@@ -9,19 +9,19 @@ const Sidebar: React.FC = () => {
     <div className={styles['root']}>
       <Navbar>
         <NavItem end icon="dashboard" to={'/dashboard'}>
-            Dashboard
+          Dashboard
         </NavItem>
         <NavItem icon="allocations" to={'/projects'}>
-            Projects & Allocations
+          Projects & Allocations
         </NavItem>
         <NavItem icon="multiple-coversation" to={'/tickets'}>
-            Tickets
+          Tickets
         </NavItem>
         <NavItem icon="data-files" to={'/system-status'}>
-            System Status
+          System Status
         </NavItem>
         <NavItem icon="user" to={'/account'}>
-            Manage Account
+          Manage Account
         </NavItem>
       </Navbar>
     </div>
