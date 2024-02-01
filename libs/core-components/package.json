@@ -1,0 +1,17 @@
+{
+  "name": "@tacc/core-components",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "TACC ACI WMA <wma-portals@gmail.com>",
+  "description": "React components for TACC portals.",
+  "files": [
+    "docs",
+    "src"
+  ],
+  "homepage": "https://github.com/TACC/tup-ui/tree/main/libs/tup-components",
+  "repository": {
+    "type": "git",
+    "URL": "git@github.com:TACC/tup-ui.git",
+    "directory": "libs/tup-components"
+  }
+}
