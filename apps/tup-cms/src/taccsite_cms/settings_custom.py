@@ -192,6 +192,8 @@ TACC_BLOG_SHOW_TAGS = False
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
 
+TACC_EXCLUDED_POST_NOMIAL_LIST = ["Jr", "Sr", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+
 ########################
 # TACC: CORE STYLES
 ########################
