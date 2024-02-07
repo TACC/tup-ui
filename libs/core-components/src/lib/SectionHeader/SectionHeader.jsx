@@ -57,7 +57,7 @@ function SectionHeader({
   styleName = styleNameList.join(' ');
 
   return (
-    <HeaderTagName className={`${className} ${styleName}`}>
+    <HeaderTagName className={`${className} ${styleName} ${styleNameList}`}>
       {children && (
         <HeadingTagName className={styles['heading']}>
           {children}

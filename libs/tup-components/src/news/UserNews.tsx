@@ -32,6 +32,7 @@ const ViewAllUpdates = () => (
     View all Updates
   </a>
 );
+
 const Manage = () => (
   <a
     href={`https://accounts.tacc.utexas.edu/subscriptions`}
@@ -52,10 +53,10 @@ const UserNews: React.FC = () => {
     <SectionTableWrapper
       header="User Updates"
       headerActions={
-        <nav className='c-nav c-nav--no-list c-nav--piped'>
+        <nav className="c-nav c-nav--no-list c-nav--piped">
           <ViewAllUpdates />
           <Manage />
-        </ nav>
+        </nav>
       }
       contentShouldScroll
     >
