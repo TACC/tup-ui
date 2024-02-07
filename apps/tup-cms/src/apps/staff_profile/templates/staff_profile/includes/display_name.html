@@ -1,7 +1,5 @@
 {% load post_nomials %}
 
-{% post_nomials_exclusion_list as post_nomials_exclusion_list %}
-
 {% if instance.post_nomials and instance.post_nomials not in post_nomials_exclusion_list %}
     {{ instance.first_name }} {{ instance.last_name }}, {{ instance.post_nomials }}
 {% else %}
