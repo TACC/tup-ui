@@ -1,8 +1,8 @@
 {% load post_nomials %}
 
-{% post_nomial_exclusions as post_nomial_exclusion_list %}
+{% post_nomials as post_nomials %}
 
-{% if instance.post_nomials and instance.post_nomials not in post_nomial_exclusion_list %}
+{% if instance.post_nomials and instance.post_nomials not in post_nomials %}
     {{ instance.first_name }} {{ instance.last_name }}, {{ instance.post_nomials }}
 {% else %}
   {{ instance.first_name }} {{ instance.last_name }} {{ instance.post_nomials }}
