@@ -25,11 +25,21 @@ const formatDateTime = (datestring: string): string => {
 const ViewAllUpdates = () => (
   <a
     href={`/news/user-updates/`}
-    className="c-button c-button--as-link"
+    className={`c-button c-button--as-link`}
     target="_blank"
     rel="noopener noreferrer"
   >
     View all Updates
+  </a>
+);
+const Manage = () => (
+  <a
+    href={`https://accounts.tacc.utexas.edu/subscriptions`}
+    className="c-button c-button--as-link"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Manage
   </a>
 );
 
@@ -41,7 +51,12 @@ const UserNews: React.FC = () => {
   return (
     <SectionTableWrapper
       header="User Updates"
-      headerActions={<ViewAllUpdates />}
+      headerActions={
+        <nav className='c-nav c-nav--no-list c-nav--piped'>
+          <ViewAllUpdates />
+          <Manage />
+        </ nav>
+      }
       contentShouldScroll
     >
       <div className={styles['news-list']}>
