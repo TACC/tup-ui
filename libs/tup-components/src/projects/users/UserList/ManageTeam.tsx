@@ -14,7 +14,7 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
     return (
       <div className={styles['user-navactions']}>
         <a
-          href="https://allocations.access-ci.org/user_management"
+          href="https://allocations.access-ci.org"
           target="_blank"
           rel="noreferrer"
         >
