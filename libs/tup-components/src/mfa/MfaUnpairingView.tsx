@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, useLocation, useSearchParams } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useConfig, useMfa, useProfile } from '@tacc/tup-hooks';
 import {
   Button,
