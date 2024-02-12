@@ -202,7 +202,7 @@ TACC_CORE_STYLES_VERSION = 2
 ########################
 # TACC: STAFF PROFILE
 ########################
-TACC_STAFF_PROFILE_POST_NOMIALS_EXCLUSION_LIST = ["Jr", "Sr", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+TACC_STAFF_PROFILE_POST_NOMIALS_EXCLUSION_LIST = ["Jr.", "Sr.", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 
 
 ########################
