@@ -5,6 +5,12 @@ from django.utils.translation import gettext_lazy as _
 from djangocms_text_ckeditor.widgets import TextEditorWidget
 
 from .models import StaffProfilePlugin
+from django.core.exceptions import ValidationError
+
+def validate_jr_and_sr(value):
+    if value.lower().endswith('jr') or value.lower().endswith('sr'):
+        if not value.endswith('.'):
+            raise ValidationError('Please use a period after Jr. or Sr.')
 
 class StaffProfilePluginForm(ModelForm):
     first_name = forms.CharField(
@@ -17,7 +23,8 @@ class StaffProfilePluginForm(ModelForm):
     post_nomials = forms.CharField(
         required=False,
         label=_('Post-nomials'),
-        help_text=_('E.g. Ph.D., B.S., M.B.A.')
+        help_text=_('E.g. Ph.D., B.S., M.B.A.'),
+        validators=[validate_jr_and_sr]
     )
     title = forms.CharField(
         required=True,
