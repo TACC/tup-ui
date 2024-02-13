@@ -90,18 +90,7 @@ UTEXAS_BRANDING = [
     "True"
 ]
 
-NSF_BRANDING = [
-    "nsf",
-    "site_cms/img/org_logos/nsf-white.png",
-    "branding-nsf",
-    "https://www.nsf.gov/",
-    "_blank",
-    "NSF Logo",
-    "anonymous",
-    "True"
-]
-
-BRANDING = [ NSF_BRANDING, UTEXAS_BRANDING ]
+BRANDING = [ UTEXAS_BRANDING ]
 
 ########################
 # TACC: LOGOS
