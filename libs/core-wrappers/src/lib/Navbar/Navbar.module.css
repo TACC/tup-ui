@@ -44,8 +44,13 @@
   }
 
   .nav-content {
+    text-align: center;
     flex-direction: column;
     height: unset;
     padding-block: .25em;
+  }
+
+  .nav-content > span {
+    width: min-content;
   }
 }
