@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import { useMfa } from '@tacc/tup-hooks';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useConfig, useMfa, useProfile } from '@tacc/tup-hooks';
 import {
   Button,
   InlineMessage,
@@ -16,6 +16,9 @@ import TicketCreateModal from '../tickets/TicketCreateModal';
 import styles from './Mfa.module.css';
 
 const MfaUnpairingView: React.FC = () => {
+  const { search } = useLocation();
+  const { data: profileData } = useProfile();
+  const unpairCode = new URLSearchParams(search).get('code');
   const [currentToken, setCurrentToken] = useState('');
   const { data, isLoading } = useMfa();
   const { mutate: unpairWithCode, isError, isSuccess } = useMfaDelete();
@@ -38,6 +41,28 @@ const MfaUnpairingView: React.FC = () => {
       otpcode: currentToken,
     });
   };
+  const { baseUrl } = useConfig();
+
+  if (unpairCode && profileData?.username)
+    return (
+      <>
+        <SectionMessage type="warning">
+          You are about to remove multifactor authentication from your account.
+        </SectionMessage>
+        <p className={styles['mfa-form']}>
+          {' '}
+          You are seeing this page because of a request we have received to
+          remove your multifactor authentication credential.
+        </p>
+        <p>
+          <a
+            href={`${baseUrl}/mfa/unpair/${profileData.username}/${unpairCode}`}
+          >
+            Click here to confirm removal of your MFA credential.
+          </a>
+        </p>
+      </>
+    );
 
   if (isLoading || !data) {
     return <LoadingSpinner />;
@@ -85,7 +110,7 @@ const MfaUnpairingView: React.FC = () => {
             </Button>
           </form>
 
-          {!sendChallengeSuccess && (
+          {!sendChallengeSuccess && !unpairCode && (
             <p className={styles['mfa-message']}>
               Alternatively,{' '}
               <Button type="link" onClick={() => unpairWithEmail(null)}>
