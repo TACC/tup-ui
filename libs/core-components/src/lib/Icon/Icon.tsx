@@ -1,13 +1,13 @@
 import React from 'react';
-
-export type sizes = 'xs' | 'sm' | 'md' | 'lg';
+import Sizes from '../../enums/Sizes';
+// type sizes = 'xs' | 'sm' | 'md' | 'lg';
 
 type IconProps = React.PropsWithChildren<{
   className?: string;
   dataTestid?: string;
   label?: string;
   name: string;
-  size?: sizes;
+  size?: Sizes;
 }>;
 
 const Icon: React.FC<IconProps> = ({
@@ -33,4 +33,4 @@ const Icon: React.FC<IconProps> = ({
   );
 };
 
-export default Icon;
+export { Icon };
