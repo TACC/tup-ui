@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type sizes = 'xs' | 'sm' | 'md' | 'lg';
+type sizes = 'xs' | 'sm' | 'md' | 'lg';
 
 type IconProps = React.PropsWithChildren<{
   className?: string;

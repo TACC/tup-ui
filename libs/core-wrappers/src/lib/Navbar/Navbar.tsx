@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Icon } from '@tacc/core-components';
-import { sizes } from 'libs/core-components/src/lib/Icon/Icon';
 import styles from './Navbar.module.css';
+
+type sizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export const NavItem: React.FC<
   React.PropsWithChildren<{
