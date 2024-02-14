@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Icon, Sizes } from '@tacc/core-components';
+import { Icon } from '@tacc/core-components';
+import { sizes } from 'libs/core-components/src/lib/Icon/Icon';
 import styles from './Navbar.module.css';
 
 export const NavItem: React.FC<
@@ -12,7 +13,7 @@ export const NavItem: React.FC<
   }>
 > = ({ to, icon, end, className, children }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [iconSize, setIconSize] = useState(Sizes.ExtraSmall);
+  const [iconSize, setIconSize] = useState('xs');
 
   const updateWindowWidth = () => {
     setWindowWidth(window.innerWidth);
@@ -30,9 +31,9 @@ export const NavItem: React.FC<
 
   useEffect(() => {
     if (windowWidth > 768) {
-      setIconSize(Sizes.ExtraSmall);
+      setIconSize('xs');
     } else {
-      setIconSize(Sizes.Medium);
+      setIconSize('md');
     }
   }, [windowWidth]);
 
@@ -45,7 +46,11 @@ export const NavItem: React.FC<
           }`}
         >
           {icon && (
-            <Icon name={icon} size={iconSize} className={styles['nav-icon']} />
+            <Icon
+              name={icon}
+              size={iconSize as sizes}
+              className={styles['nav-icon']}
+            />
           )}
           {/* we'll want to set name based on the app */}
           <span className={styles['nav-text']}>{children}</span>
@@ -65,13 +70,7 @@ export const AnchorNavItem: React.FC<
 > = ({ to, icon, end, className, children }) => (
   <a href={to} className={`${styles['nav-link']} ${className}`}>
     <div className={styles['nav-content']}>
-      {icon && (
-        <Icon
-          name={icon}
-          size={Sizes.ExtraSmall}
-          className={styles['nav-icon']}
-        />
-      )}
+      {icon && <Icon name={icon} size="xs" className={styles['nav-icon']} />}
       {/* we'll want to set name based on the app */}
       <span className={styles['nav-text']}>{children}</span>
     </div>
@@ -95,13 +94,7 @@ export const QueryNavItem: React.FC<
           active ? styles['nav-active'] : ''
         }`}
       >
-        {icon && (
-          <Icon
-            name={icon}
-            size={Sizes.ExtraSmall}
-            className={styles['nav-icon']}
-          />
-        )}
+        {icon && <Icon name={icon} size="xs" className={styles['nav-icon']} />}
         {/* we'll want to set name based on the app */}
         <span className={styles['nav-text']}>{children}</span>
       </div>
