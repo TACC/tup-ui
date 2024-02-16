@@ -64,10 +64,10 @@
 .c-feed-list > :is(div, article):last-of-type {
   border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--xx-dark);
 }
-.c-feed-list > :is(div, article) > time,
 .c-feed-list > :is(div, article) > p:has(time) { grid-area: time; }
 .c-feed-list > :is(div, article) > :is(h1, h2, h3, h4, h5, h6) { grid-area: name; }
 .c-feed-list > :is(div, article) > p:not(:has(time, a:only-child)) { grid-area: desc; }
+.c-feed-list > :is(div, article) > a:last-child,
 .c-feed-list > :is(div, article) > p:has(a:only-child) { grid-area: link; }
 
 .c-feed-list > :is(div, article) > :is(h1, h2, h3, h4, h5, h6) {
@@ -76,7 +76,6 @@
 }
 
 /* TODO: Share styles between c-news and c-feed-list (`time:not(…)`) */
-.c-feed-list > :is(div, article) > time:not(:is(h1, h2, h3, h4, h5, h6) *),
 .c-feed-list > :is(div, article) > p:has(time):not(:is(h1, h2, h3, h4, h5, h6) *) {
   color: var(--global-color-accent--secondary);
   font-weight: var(--medium);
@@ -86,7 +85,7 @@
   margin-bottom: 0;
 }
 
-.c-feed-list > :is(div, article) > p:not(:has(time)) {
+.c-feed-list > :is(div, article) > p:not(:has(time, a:only-child)) {
   /* WARNING: Value is guess-n-check; prevents unexplained visibile 3rd line */
   margin-bottom: 1.15rem;
 
@@ -97,6 +96,7 @@
   overflow: hidden;
   -webkit-line-clamp: var(--lines, 2);
 }
+.c-feed-list > :is(div, article) > a:last-child,
 .c-feed-list > :is(div, article) > p:has(a:only-child) {
   padding-inline: var(--global-space--unnamed);
 
@@ -106,6 +106,8 @@
 }
 
 /* Elements: Link */
+
+/* NOTE: `p:has(a:only-child)` is used, but `a:last-child` is desired, but not used until "Link" plugin instance supports an icon before the text. */
 
 .c-feed-list > a:last-child,
 .c-feed-list > p:has(a:only-child) {
