@@ -1,3 +1,6 @@
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
+
 .nav-link {
   text-decoration: none !important;
   min-width: var(--min-width);
@@ -37,7 +40,7 @@
   margin-right: 1rem;
 }
 
-@media(max-width: 768px) {
+@media(--narrow-and-below) {
   .nav-icon {
     margin-right: unset;
     margin: .25em;
