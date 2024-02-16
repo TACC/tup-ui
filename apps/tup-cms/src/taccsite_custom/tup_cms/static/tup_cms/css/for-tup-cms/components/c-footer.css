@@ -159,7 +159,7 @@ svg {
         background-color: var(--global-color-primary--x-dark);
     }
     html:not(#page-portal) .c-footer {
-        padding-right: revert; /* undo core-styles.cms.css */
+        padding-left: revert; /* undo core-styles.cms.css */
     }
     #cms-footer .c-pane--common {
         padding-inline: var(--pad-horz);
