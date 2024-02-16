@@ -99,6 +99,7 @@
 .c-feed-list > :is(div, article) > a:last-child,
 .c-feed-list > :is(div, article) > p:has(a:only-child) {
   padding-inline: var(--global-space--unnamed);
+  margin-bottom: unset;
 
   /* To vertically center content */
   display: flex;
@@ -111,7 +112,6 @@
 
 .c-feed-list > a:last-child,
 .c-feed-list > p:has(a:only-child) {
-  margin-bottom: unset;
   padding-top: 15px;
 
   /* TODO: When migrated to core-styles, use @extend instead */
