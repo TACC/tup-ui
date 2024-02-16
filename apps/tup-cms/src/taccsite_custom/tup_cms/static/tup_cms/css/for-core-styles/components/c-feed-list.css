@@ -82,7 +82,7 @@
   text-transform: uppercase;
 }
 .c-feed-list > :is(div, article) > p:has(time):not(:is(h1, h2, h3, h4, h5, h6) *) {
-  margin-bottom: 0;
+  margin-bottom: unset;
 }
 
 .c-feed-list > :is(div, article) > p:not(:has(time, a:only-child)) {
@@ -111,6 +111,7 @@
 
 .c-feed-list > a:last-child,
 .c-feed-list > p:has(a:only-child) {
+  margin-bottom: unset;
   padding-top: 15px;
 
   /* TODO: When migrated to core-styles, use @extend instead */
