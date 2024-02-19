@@ -1,3 +1,5 @@
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
 .account-layout{
     padding: var(--global-space--section);
     padding-right: 30px;
@@ -59,4 +61,16 @@
 
 .mfa-options {
     /* no styles needed yet */
+}
+
+@media (--narrow-and-below) {
+    .tap-separator {
+        display: none;
+    }
+
+    .account-body {
+        flex-direction: column;
+        gap: 20px;
+    }
+
 }
