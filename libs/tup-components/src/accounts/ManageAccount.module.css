@@ -69,6 +69,10 @@
 @media (--narrow-and-below) {
     .account-body {
         flex-direction: column-reverse;
-        gap: 10px;
+        gap: 20px;
+    }
+
+    .tap-separator {
+        display: none;
     }
 }
