@@ -54,23 +54,21 @@
     width: fit-content;
 }
 
-.tap-separator {
-    border-right: 1px solid #707070;
-    margin-top: 10px;
-}
-
 .mfa-options {
     /* no styles needed yet */
 }
 
-@media (--narrow-and-below) {
+@media (--narrow-and-above) {
     .tap-separator {
-        display: none;
+        border-right: 1px solid #707070;
+        margin-top: 10px;
     }
 
+}
+
+@media (--narrow-and-below) {
     .account-body {
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: column-reverse;
+        gap: 10px;
     }
-
 }
