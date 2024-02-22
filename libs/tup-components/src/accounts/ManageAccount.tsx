@@ -5,88 +5,47 @@ import { AccountMfa } from './ManageAccountMfa';
 import styles from './ManageAccount.module.css';
 
 const ManageUser = () => (
-  <>
-    <div className={styles['tap-header']}>
-      <strong>Edit User Information</strong>
-    </div>
-    <span className={styles['tap-description']}>
-      Your user account can be managed on the TACC Account Management (TAM)
-      portal.
-    </span>
-    <a
-      href="https://accounts.tacc.utexas.edu/profile"
-      target="_blank"
-      rel="noreferrer"
-      className={styles['tap-href']}
-    >
-      <Button className={styles['tap-button']} type="primary">
-        Edit User Profile
-      </Button>
-    </a>
-  </>
+  <a
+    href="https://accounts.tacc.utexas.edu/profile"
+    target="_blank"
+    rel="noreferrer"
+    className={styles['tap-href']}
+  >
+    Edit User Profile
+  </a>
 );
 
 const ManageDNs = () => (
-  <>
-    <div className={styles['tap-header']}>
-      <strong>Distinguished Names</strong>
-    </div>
-    <span className={styles['tap-description']}>
-      DNs are managed on the TACC Account Management (TAM) portal.
-    </span>
-    <a
-      href="https://accounts.tacc.utexas.edu/certificates"
-      target="_blank"
-      rel="noreferrer"
-      className={styles['tap-href']}
-    >
-      <Button className={styles['tap-button']} type="primary">
-        Manage DNs
-      </Button>
-    </a>
-  </>
+  <a
+    href="https://accounts.tacc.utexas.edu/certificates"
+    target="_blank"
+    rel="noreferrer"
+    className={styles['tap-href']}
+  >
+    Manage DNs
+  </a>
 );
 
 const ManagePassword = () => (
-  <>
-    <div className={styles['tap-header']}>
-      <strong>Password</strong>
-    </div>
-    <span className={styles['tap-description']}>
-      Passwords are managed on the TACC Account Management (TAM) portal.
-    </span>
-    <a
-      href="https://accounts.tacc.utexas.edu/change_password"
-      target="_blank"
-      rel="noreferrer"
-      className={styles['tap-href']}
-    >
-      <Button className={styles['tap-button']} type="primary">
-        Change Password
-      </Button>
-    </a>
-  </>
+  <a
+    href="https://accounts.tacc.utexas.edu/change_password"
+    target="_blank"
+    rel="noreferrer"
+    className={styles['tap-href']}
+  >
+    Change Password
+  </a>
 );
 
 const ManageUpload = () => (
-  <>
-    <div className={styles['tap-header']}>
-      <strong>Secure Upload</strong>
-    </div>
-    <span className={styles['tap-description']}>
-      Upload documents securely through Box.
-    </span>
-    <a
-      href="https://tacc.utexas.edu/secure-upload"
-      target="_blank"
-      rel="noreferrer"
-      className={styles['tap-href']}
-    >
-      <Button className={styles['tap-button']} type="primary">
-        Secure File Upload
-      </Button>
-    </a>
-  </>
+  <a
+    href="https://tacc.utexas.edu/secure-upload"
+    target="_blank"
+    rel="noreferrer"
+    className={styles['tap-href']}
+  >
+    Secure File Upload
+  </a>
 );
 
 const ManageAccount: React.FC = () => {
@@ -102,6 +61,12 @@ const ManageAccount: React.FC = () => {
         </SectionHeader>
         <div className={styles['account-body']}>
           <section>
+            <div className={styles['tap-header']}>
+              <strong>Account Managment</strong>
+            </div>
+            <p>
+              Account details are maanged by the TACC Account Management portal. Follow the links below to:
+            </p>
             <ManageUser />
             <ManagePassword />
             <ManageDNs />

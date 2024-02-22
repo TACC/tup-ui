@@ -21,12 +21,6 @@
     flex-direction: row;
     gap: 3%;
 }
-.account-body > section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    height: 100%;
-}
 .account-body > section:nth-of-type(1) {
     flex: 1.5;
 }
@@ -37,13 +31,16 @@
 .tap-header {
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-bottom: 1em;
     border-bottom: 1px solid #707070;
 }
+.tap-header + p {
+    margin-block: 1em;
+}
 
-.tap-description {
-    font-size: 1rem;
-    font-style: italic;
-    color: #484848;
+.tap-header ~ a:not(:last-of-type) {
+    display: inline-block;
+    margin-right: 1em;
 }
 
 .tap-button {
