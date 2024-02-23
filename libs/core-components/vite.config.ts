@@ -1,7 +1,9 @@
 /// <reference types="vitest" />
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+// import dts from 'vite-plugin-dts';
 import react from '@vitejs/plugin-react-swc';
+import { libInjectCss } from 'vite-plugin-lib-inject-css'
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
@@ -9,29 +11,32 @@ export default defineConfig({
 
   plugins: [
     react(),
+    // dts({ include: ['src/lib'] }),
+    libInjectCss(),
     viteTsConfigPaths({
       root: '../../',
     }),
   ],
 
   build: {
-    outDir: '../../dist/libs/core-components',
-    reportCompressedSize: true,
-    commonjsOptions: {
-      transformMixedEsModules: true,
-    },
+    // outDir: '../../dist/libs/core-components',
+    // reportCompressedSize: true,
+    // commonjsOptions: {
+    //   transformMixedEsModules: true,
+    // },
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'CoreComponents',
-      fileName: 'core-components',
+      formats: ['es'],
+      // name: 'CoreComponents',
+      // fileName: 'core-components',
     },
     rollupOptions: {
-      external: ['React'],
-      output: {
-        globals: {
-          vue: 'React',
-        },
-      },
+      external: ['react', 'react/jsx-runtime'],
+      // output: {
+      //   globals: {
+      //     vue: 'React',
+      //   },
+      // },
     },
   },
 
