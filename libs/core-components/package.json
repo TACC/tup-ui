@@ -8,5 +8,16 @@
     "dist"
   ],
   "homepage": "https://github.com/TACC/tup-ui/libs/core-components",
-  "repository": "git@github.com:TACC/tup-ui.git"
+  "repository": "git@github.com:TACC/tup-ui.git",
+  "peerDependencies": {
+    "@tacc/core-styles": "^2.23.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "formik": "^2.2.9",
+    "react-dom": "^14.2.3",
+    "react-resize-detector": "^7.1.2",
+    "react-table": "^7.8.0",
+    "reactstrap": "^9.1.5",
+    "uuid": "^8.3.2"
+  }
 }
