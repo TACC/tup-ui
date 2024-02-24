@@ -48,6 +48,8 @@
 
 /* Elements: Items */
 
+/* NOTE: `p:has(time)` styles CMS markup, but templates use `time` sans `<p>` */
+
 .c-feed-list > :is(div, article) {
   flex-grow: 1; /* to shrink feed title */
 
@@ -64,6 +66,7 @@
 .c-feed-list > :is(div, article):last-of-type {
   border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--xx-dark);
 }
+.c-feed-list > :is(div, article) > time,
 .c-feed-list > :is(div, article) > p:has(time) { grid-area: time; }
 .c-feed-list > :is(div, article) > :is(h1, h2, h3, h4, h5, h6) { grid-area: name; }
 .c-feed-list > :is(div, article) > p:not(:has(time, a:only-child)) { grid-area: desc; }
@@ -75,6 +78,7 @@
 }
 
 /* TODO: Share styles between c-news and c-feed-list (`time:not(…)`) */
+.c-feed-list > :is(div, article) > time:not(:is(h1, h2, h3, h4, h5, h6) *),
 .c-feed-list > :is(div, article) > p:has(time):not(:is(h1, h2, h3, h4, h5, h6) *) {
   color: var(--global-color-accent--secondary);
   font-weight: var(--medium);
