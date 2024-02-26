@@ -7,7 +7,7 @@
     "strict": true,
     "types": ["vite/client", "vitest"],
     "composite": true,
-    "declaration": true,
+    "declaration": true
   },
   "files": [],
   "include": ["src"],
