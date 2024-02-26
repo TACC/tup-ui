@@ -5,8 +5,7 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test",
-    "prepublishOnly": "npm run build"
+    "test": "nx test"
   },
   "private": true,
   "dependencies": {
@@ -86,12 +85,5 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "4.2.0",
     "vitest": "0.34.6"
-  },
-  "peerDependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "sideEffects": [
-    "libs/core-componets/**/*.css"
-  ]
+  }
 }
