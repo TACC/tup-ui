@@ -22,16 +22,10 @@ export default defineConfig({
   ],
 
   build: {
-    // outDir: '../../dist/libs/core-components',
-    // reportCompressedSize: true,
-    // commonjsOptions: {
-    //   transformMixedEsModules: true,
-    // },
+    reportCompressedSize: true,
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
-      // name: 'CoreComponents',
-      // fileName: 'core-components',
     },
     rollupOptions: {
       external: ['react', 'react/jsx-runtime'],
