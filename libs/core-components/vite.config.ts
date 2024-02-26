@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { glob } from 'glob';
 
 import { defineConfig } from 'vite';
-// import dts from 'vite-plugin-dts';
+import dts from 'vite-plugin-dts';
 import react from '@vitejs/plugin-react-swc';
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
 import viteTsConfigPaths from 'vite-tsconfig-paths';
@@ -27,7 +27,7 @@ export default defineConfig({
 
   plugins: [
     react(),
-    // dts({ include: ['src/lib'] }),
+    dts(),
     libInjectCss(),
     viteTsConfigPaths({
       root: '../../',
