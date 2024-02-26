@@ -9,19 +9,6 @@ import react from '@vitejs/plugin-react-swc';
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
-const globOutput = glob.sync(resolve(__dirname, 'src/**/!(*.test).{ts,tsx,js,jsx}')).map(file => [
-  // This removes `...src/` as well as the file extension from each
-  // file, so e.g. ...src/nested/foo.js becomes nested/foo
-  relative(
-    resolve(__dirname, 'src'),
-    file.slice(0, file.length - extname(file).length)
-  ),
-  // This expands the relative paths to absolute paths, so e.g.
-  // ...src/nested/foo becomes /project/src/nested/foo.js
-  fileURLToPath(new URL(file, import.meta.url))
-]);
-// console.log( globOutput );
-
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/core-components',
 
@@ -50,7 +37,17 @@ export default defineConfig({
       external: ['react', 'react/jsx-runtime'],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
-        globOutput
+        glob.sync(resolve(__dirname, 'src/**/!(*.test).{ts,tsx,js,jsx}')).map(file => [
+          // This removes `...src/` as well as the file extension from each
+          // file, so e.g. ...src/nested/foo.js becomes nested/foo
+          relative(
+            resolve(__dirname, 'src'),
+            file.slice(0, file.length - extname(file).length)
+          ),
+          // This expands the relative paths to absolute paths, so e.g.
+          // ...src/nested/foo becomes /project/src/nested/foo.js
+          fileURLToPath(new URL(file, import.meta.url))
+        ])
       ),
       output: {
         assetFileNames: 'assets/[name][extname]',
