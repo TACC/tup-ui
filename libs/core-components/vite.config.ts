@@ -32,7 +32,9 @@ export default defineConfig({
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
         glob
-          .sync(resolve(__dirname, 'src/**/!(*.test).{ts,tsx,js,jsx}'))
+          .sync(resolve(__dirname, 'src/**/!(*.test).{ts,tsx,js,jsx}'), {
+            ignore: resolve(__dirname, 'src/**/*.stories.tsx')
+          })
           .map((file) => [
             // This removes `...src/` as well as the file extension from each
             // file, so e.g. ...src/nested/foo.js becomes nested/foo
