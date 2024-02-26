@@ -9,7 +9,7 @@ import react from '@vitejs/plugin-react-swc';
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
-const globOutput = glob.sync(resolve(__dirname, 'src/**/*.{ts,tsx,js,jsx}')).map(file => [
+const globOutput = glob.sync(resolve(__dirname, 'src/**/!(*.test).{ts,tsx,js,jsx}')).map(file => [
   // This removes `...src/` as well as the file extension from each
   // file, so e.g. ...src/nested/foo.js becomes nested/foo
   relative(
