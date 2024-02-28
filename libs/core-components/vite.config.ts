@@ -33,7 +33,7 @@ export default defineConfig({
         // https://rollupjs.org/configuration-options/#input
         glob
           .sync(resolve(__dirname, 'src/**/!(*.test).{ts,tsx,js,jsx}'), {
-            ignore: resolve(__dirname, 'src/**/*.stories.tsx')
+            ignore: resolve(__dirname, 'src/**/*.stories.tsx'),
           })
           .map((file) => [
             // This removes `...src/` as well as the file extension from each
