@@ -10,9 +10,9 @@
     "dist"
   ],
   "scripts": {
-    "start": "cd ../../ && nx serve",
-    "build": "cd ../../ && nx build",
-    "test": "cd ../../ && nx test",
+    "start": "cd ../../ && nx serve core-components",
+    "build": "cd ../../ && nx build core-components",
+    "test": "cd ../../ && nx test core-components",
     "prepublishOnly": "npm run build"
   },
   "homepage": "https://github.com/TACC/tup-ui/libs/core-components",
