@@ -190,7 +190,6 @@ const SoftwareTable: React.FC = () => {
             <option value="">any</option>
             <option>Frontera</option>
             <option>Lonestar6</option>
-            <option>Longhorn</option>
             <option>Stampede2</option>
           </select>
         </label>

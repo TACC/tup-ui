@@ -10,7 +10,8 @@ nohup.out
 
 /portal/.docs/build/
 
-#ignore local static and media folders
+# ignore local static and media folders
+src/media/
 server/static
 server/portal/static/vendor/lib/node_modules
 server/media
