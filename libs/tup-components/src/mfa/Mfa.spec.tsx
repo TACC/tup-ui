@@ -8,7 +8,7 @@ import { enrolledToken } from '@tacc/tup-testing';
 describe('MFA Pairing component', () => {
   it('Should render selections if token is unenrolled.', async () => {
     testRender(<MfaWrapper>Pairing View</MfaWrapper>);
-    expect(screen.findByText('Pairing View')).toBeDefined();
+    expect(await screen.findByText('Pairing View')).toBeDefined();
   });
 
   it('Should render selections if no token exists', async () => {
@@ -18,7 +18,7 @@ describe('MFA Pairing component', () => {
       })
     );
     testRender(<MfaWrapper>Pairing View</MfaWrapper>);
-    expect(screen.findByText('Pairing View')).toBeDefined();
+    expect(await screen.findByText('Pairing View')).toBeDefined();
   });
 
   it('Should render a success view if a token is enrolled', async () => {
@@ -28,7 +28,7 @@ describe('MFA Pairing component', () => {
       })
     );
     testRender(<MfaWrapper>Pairing View</MfaWrapper>);
-    expect(screen.findByText(/Pairing Successful/)).toBeDefined();
+    expect(await screen.findByText(/Pairing successful/)).toBeDefined();
     expect(screen.queryByText('Pairing view')).toBeNull();
   });
 });
