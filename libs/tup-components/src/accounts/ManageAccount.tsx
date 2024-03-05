@@ -9,7 +9,6 @@ const ManageUser = () => (
     href="https://accounts.tacc.utexas.edu/profile"
     target="_blank"
     rel="noreferrer"
-    className={styles['tap-href']}
   >
     Edit User Profile
   </a>
@@ -20,7 +19,6 @@ const ManageDNs = () => (
     href="https://accounts.tacc.utexas.edu/certificates"
     target="_blank"
     rel="noreferrer"
-    className={styles['tap-href']}
   >
     Manage DNs
   </a>
@@ -31,7 +29,6 @@ const ManagePassword = () => (
     href="https://accounts.tacc.utexas.edu/change_password"
     target="_blank"
     rel="noreferrer"
-    className={styles['tap-href']}
   >
     Change Password
   </a>
@@ -42,7 +39,6 @@ const ManageUpload = () => (
     href="https://tacc.utexas.edu/secure-upload"
     target="_blank"
     rel="noreferrer"
-    className={styles['tap-href']}
   >
     Secure File Upload
   </a>
