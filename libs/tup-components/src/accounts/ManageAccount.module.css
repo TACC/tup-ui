@@ -39,8 +39,12 @@
 }
 
 .tap-header ~ a:not(:last-of-type) {
-    display: inline-block;
-    margin-right: 1em;
+    display: block;
+    margin-bottom: 1em;
+}
+
+.tap-button {
+    --max-width: 200px;
 }
 
 .mfa-options {
