@@ -32,7 +32,7 @@ Other useful commands:
 
 ## Contributing
 
-To contribute, first read [How to Contirbute][Contributing].
+To contribute, first read [How to Contirbute][./docs/contributing.md].
 
 ---
 
