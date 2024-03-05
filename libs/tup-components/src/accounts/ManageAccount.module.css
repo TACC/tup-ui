@@ -47,10 +47,6 @@
     --max-width: 200px;
 }
 
-.mfa-options {
-    /* no styles needed yet */
-}
-
 @media (--narrow-and-above) {
     .tap-separator {
         border-right: 1px solid #707070;
