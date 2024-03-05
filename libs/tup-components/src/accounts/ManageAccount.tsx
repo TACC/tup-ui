@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, /* Button, */ SectionHeader } from '@tacc/core-components';
+import { Icon, SectionHeader } from '@tacc/core-components';
 import { useProfile } from '@tacc/tup-hooks';
 import { AccountMfa } from './ManageAccountMfa';
 import styles from './ManageAccount.module.css';
