@@ -4,15 +4,11 @@ import { useProfile } from '@tacc/tup-hooks';
 import { AccountMfa } from './ManageAccountMfa';
 import styles from './ManageAccount.module.css';
 
-// HACK: Use global classes until `<Button>` can be rendered as an `<a>`
-const stylesGlobalButton = 'c-button c-button--secondary c-button--width-long';
-
 const ManageUser = () => (
   <a
     href="https://accounts.tacc.utexas.edu/profile"
     target="_blank"
     rel="noreferrer"
-    className={`${stylesGlobalButton} ${styles['tap-action']}`}
   >
     Edit User Profile
   </a>
@@ -23,7 +19,6 @@ const ManageDNs = () => (
     href="https://accounts.tacc.utexas.edu/certificates"
     target="_blank"
     rel="noreferrer"
-    className={`${stylesGlobalButton} ${styles['tap-action']}`}
   >
     Manage DNs
   </a>
@@ -34,7 +29,6 @@ const ManagePassword = () => (
     href="https://accounts.tacc.utexas.edu/change_password"
     target="_blank"
     rel="noreferrer"
-    className={`${stylesGlobalButton} ${styles['tap-action']}`}
   >
     Change Password
   </a>
@@ -45,7 +39,6 @@ const ManageUpload = () => (
     href="https://tacc.utexas.edu/secure-upload"
     target="_blank"
     rel="noreferrer"
-    className={`${stylesGlobalButton} ${styles['tap-action']}`}
   >
     Secure File Upload
   </a>

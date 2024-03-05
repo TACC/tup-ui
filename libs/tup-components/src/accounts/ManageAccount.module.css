@@ -43,10 +43,6 @@
     margin-bottom: 1em;
 }
 
-.tap-action {
-    --max-width: 200px;
-}
-
 @media (--narrow-and-above) {
     .tap-separator {
         border-right: 1px solid #707070;
