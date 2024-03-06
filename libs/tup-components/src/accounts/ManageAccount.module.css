@@ -27,6 +27,9 @@
 .account-body > section:nth-of-type(2) {
     flex: 1;
 }
+.account-body dfn {
+  font-style: normal;
+}
 
 .tap-header {
     padding-top: 10px;
