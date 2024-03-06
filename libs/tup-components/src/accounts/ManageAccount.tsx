@@ -10,8 +10,8 @@ const ManageUser = () => (
       <strong>Account Managment</strong>
     </div>
     <p className={styles['tap-description']}>
-      Account details are mananged by the TACC Account Management
-      portal. Follow the links below to:
+      Account details are mananged by the TACC Account Management portal. Follow
+      the links below to:
     </p>
     <a
       href="https://accounts.tacc.utexas.edu/profile"
@@ -40,13 +40,11 @@ const ManageDNs = () => (
   <>
     <div className={styles['tap-header']}>
       <strong>
-        <dfn id="dn">Distinguished Name</dfn> (<abbr>DN</abbr>)
-        Managment
+        <dfn id="dn">Distinguished Name</dfn> (<abbr>DN</abbr>) Managment
       </strong>
     </div>
     <p className={styles['tap-description']}>
-      Generate a <abbr>DN</abbr> to permit you to move data between
-      machines.{' '}
+      Generate a <abbr>DN</abbr> to permit you to move data between machines.{' '}
       <a
         href="https://docs.tacc.utexas.edu/basics/datatransfer/#step1"
         rel="noreferrer"
@@ -74,8 +72,8 @@ const ManageUpload = () => (
       <strong>Identity Management</strong>
     </div>
     <p className={styles['tap-description']}>
-      To confirm eligibility for access to a TACC account, you may be
-      requested to upload identifying documents.
+      To confirm eligibility for access to a TACC account, you may be requested
+      to upload identifying documents.
     </p>
     <a
       href="https://tacc.utexas.edu/secure-upload"
