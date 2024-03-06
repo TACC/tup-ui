@@ -1,7 +1,7 @@
 max_articles = 3
 
 urls = {
-  'base': 'news/user-updates/',
+  'base': 'news/latest-news',
   'base_parent': 'news/',
   'legacy': {
     'base': 'user-news/',
