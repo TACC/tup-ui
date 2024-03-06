@@ -68,8 +68,8 @@ const ManageAccount: React.FC = () => {
               <strong>Account Managment</strong>
             </div>
             <p>
-              Account details are mananged by the TACC Account Management portal.
-              Follow the links below to:
+              Account details are mananged by the TACC Account Management
+              portal. Follow the links below to:
             </p>
             <ManageUser />
             <ManagePassword />
