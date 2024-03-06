@@ -28,7 +28,7 @@
     flex: 1;
 }
 .account-body dfn {
-  font-style: normal;
+    font-style: normal;
 }
 
 .tap-header {
@@ -41,13 +41,17 @@
     margin-block: 1em;
 }
 
-.tap-header ~ a:not(:last-of-type) {
-    margin-right: 1em;
-    margin-bottom: 1em;
+.tap-button {
+    width: 200px;
 }
 
-.tap-action {
-    --max-width: 200px;
+.tap-href {
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 1em;
+
+    /* To fit link to width of button inside */
+    width: fit-content;
 }
 
 @media (--narrow-and-above) {
