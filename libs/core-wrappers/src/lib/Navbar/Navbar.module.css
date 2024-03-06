@@ -1,3 +1,6 @@
+@import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
+
+
 .nav-link {
   text-decoration: none !important;
   min-width: var(--min-width);
@@ -11,8 +14,8 @@
 .nav-content {
   height: 34px;
   text-decoration: none;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
   display: flex;
   align-items: center;
 }
@@ -35,4 +38,22 @@
 
 .nav-icon {
   margin-right: 1rem;
+}
+
+@media(--narrow-and-below) {
+  .nav-icon {
+    margin-right: unset;
+    margin: .25em;
+  }
+
+  .nav-content {
+    text-align: center;
+    flex-direction: column;
+    height: unset;
+    padding-block: .25em;
+  }
+
+  .nav-content > span {
+    width: min-content;
+  }
 }

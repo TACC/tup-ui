@@ -5,12 +5,11 @@ This project was generated using [Nx](https://nx.dev).
 Local dev setup:
 
 1.  `npm install` to install Javascript dependencies and the Nx build tool.
-2.  `npx nx build tup-css` to build the styles.
-3.  `npx nx build tup-ui` to build the TUP UI.
-4.  `npx nx build tup-cms` to build the CMS container.
-5.  `npx nx serve tup-cms` to serve the CMS backend.
-6.  `npx nx serve tup-ui` in another terminal tab to serve the React frontend.
-7.  Run Django migrations:
+2.  `npx nx build tup-ui` to build the TUP UI.
+3.  `npx nx build tup-cms` to build the CMS container.
+4.  `npx nx serve tup-cms` to serve the CMS backend.
+5.  `npx nx serve tup-ui` in another terminal tab to serve the React frontend.
+6.  Run Django migrations:
 
 - a) `docker exec -it tup_cms /bin/bash`
 - b) `python manage.py migrate`
@@ -23,9 +22,13 @@ Local dev setup:
 The TUP dashboard is accessed at http://localhost:8000/portal.
 To bring containers down after development, run `npx nx down tup-cms`.
 
+<!--
+
 Other useful commands:
 
 - `npx nx build core-components` to create a distributable library for the core components.
+
+-->
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 

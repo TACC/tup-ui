@@ -104,7 +104,6 @@ const ManageAccount: React.FC = () => {
           <section>
             <ManageUser />
             <ManagePassword />
-            <span />
             <ManageDNs />
             <ManageUpload />
           </section>
