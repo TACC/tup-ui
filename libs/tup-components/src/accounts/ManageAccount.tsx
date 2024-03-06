@@ -73,7 +73,29 @@ const ManageAccount: React.FC = () => {
             </p>
             <ManageUser />
             <ManagePassword />
+            <div className={styles['tap-header']}>
+              <strong>
+                <abbr>DN</abbr> (Distinguished Name) Managment
+              </strong>
+            </div>
+            <p>
+              Generate a <dfn id="dn">Distinguished Name</dfn> (<abbr>DN</abbr>)
+              to permit you to move data between machines.{' '}
+              <a
+                href="https://docs.tacc.utexas.edu/basics/datatransfer/#step1"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Learn more about DNs.
+              </a>
+            </p>
             <ManageDNs />
+            <div className={styles['tap-header']}>
+              <strong>Identity Management</strong>
+            </div>
+            <p>
+              To confirm eligibility for access to a TACC account, you may be requested to upload identifying documents.
+            </p>
             <ManageUpload />
           </section>
           <span className={styles['tap-separator']} />
