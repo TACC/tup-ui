@@ -9,7 +9,7 @@ const ManageUser = () => (
     <div className={styles['tap-header']}>
       <strong>Account Managment</strong>
     </div>
-    <p>
+    <p className={styles['tap-description']}>
       Account details are mananged by the TACC Account Management
       portal. Follow the links below to:
     </p>
@@ -44,7 +44,7 @@ const ManageDNs = () => (
         Managment
       </strong>
     </div>
-    <p>
+    <p className={styles['tap-description']}>
       Generate a <abbr>DN</abbr> to permit you to move data between
       machines.{' '}
       <a
@@ -73,7 +73,7 @@ const ManageUpload = () => (
     <div className={styles['tap-header']}>
       <strong>Identity Management</strong>
     </div>
-    <p>
+    <p className={styles['tap-description']}>
       To confirm eligibility for access to a TACC account, you may be
       requested to upload identifying documents.
     </p>

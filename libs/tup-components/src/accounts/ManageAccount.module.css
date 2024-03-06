@@ -37,7 +37,7 @@
     margin-bottom: 1em;
     border-bottom: 1px solid #707070;
 }
-.tap-header + p {
+.tap-description {
     margin-block: 1em;
 }
 
@@ -46,12 +46,13 @@
 }
 
 .tap-href {
+    /* To fit link to width of button inside */
+    width: fit-content;
+
+    /* To place actions inline and add space between them */
     display: inline-block;
     margin-right: 1em;
     margin-bottom: 1em;
-
-    /* To fit link to width of button inside */
-    width: fit-content;
 }
 
 @media (--narrow-and-above) {
