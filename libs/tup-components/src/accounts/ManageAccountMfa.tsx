@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 import styles from './ManageAccount.module.css';
 
 const MfaSectionHeader: React.FC = () => (
-  <div className={styles['tap-header']}>
-    <strong>MFA Pairing</strong>
-  </div>
+  <h2 className={styles['tap-header']}>MFA Pairing</h2>
 );
 
 export const AccountMfa: React.FC = () => {
