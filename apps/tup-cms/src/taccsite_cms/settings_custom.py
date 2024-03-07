@@ -198,6 +198,7 @@ PORTAL_BLOG_SHOW_TAGS = False
 PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
 PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'external'
 
+
 ########################
 # TACC: CORE STYLES
 ########################
