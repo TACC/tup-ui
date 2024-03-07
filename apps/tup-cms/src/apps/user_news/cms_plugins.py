@@ -35,9 +35,9 @@ class UserNewsListPlugin(CMSPluginBase):
 
 
 @plugin_pool.register_plugin
-class FullUserNewsListPlugin(CMSPluginBase):
+class UserUpdatesPlugin(CMSPluginBase):
     module = 'TUP CMS'
-    name = _('Full User News List')
+    name = _('User Updates')
     render_template = 'user_news/full_list.html'
 
     def render(self, context, instance, placeholder):
