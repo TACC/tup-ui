@@ -40,7 +40,7 @@ export const AccountMfa: React.FC = () => {
   }
   const hasPairing = data?.token?.rollout_state === 'enrolled';
   return (
-    <>
+    <article className={styles['tap-feature']}>
       <MfaSectionHeader />
       <p className={styles['tap-description']}>
         Set up multi-factor authentication using a token app or SMS.
@@ -60,6 +60,6 @@ export const AccountMfa: React.FC = () => {
           </Link>
         </div>
       )}
-    </>
+    </article>
   );
 };

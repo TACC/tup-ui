@@ -5,7 +5,7 @@ import { AccountMfa } from './ManageAccountMfa';
 import styles from './ManageAccount.module.css';
 
 const ManageUser = () => (
-  <>
+  <article className={styles['tap-feature']}>
     <div className={styles['tap-header']}>
       <strong>Account Managment</strong>
     </div>
@@ -17,27 +17,23 @@ const ManageUser = () => (
       href="https://accounts.tacc.utexas.edu/profile"
       target="_blank"
       rel="noreferrer"
-      className={styles['tap-href']}
+      className={styles['tap-action']}
     >
-      <Button className={styles['tap-button']} type="secondary">
-        Edit User Profile
-      </Button>
+      <Button type="secondary">Edit User Profile</Button>
     </a>
     <a
       href="https://accounts.tacc.utexas.edu/change_password"
       target="_blank"
       rel="noreferrer"
-      className={styles['tap-href']}
+      className={styles['tap-action']}
     >
-      <Button className={styles['tap-button']} type="secondary">
-        Change Password
-      </Button>
+      <Button type="secondary">Change Password</Button>
     </a>
-  </>
+  </article>
 );
 
 const ManageDNs = () => (
-  <>
+  <article className={styles['tap-feature']}>
     <div className={styles['tap-header']}>
       <strong>
         <dfn id="dn">Distinguished Name</dfn> (<abbr>DN</abbr>) Managment
@@ -57,17 +53,15 @@ const ManageDNs = () => (
       href="https://accounts.tacc.utexas.edu/certificates"
       target="_blank"
       rel="noreferrer"
-      className={styles['tap-href']}
+      className={styles['tap-action']}
     >
-      <Button className={styles['tap-button']} type="secondary">
-        Manage DNs
-      </Button>
+      <Button type="secondary">Manage DNs</Button>
     </a>
-  </>
+  </article>
 );
 
 const ManageUpload = () => (
-  <>
+  <article className={styles['tap-feature']}>
     <div className={styles['tap-header']}>
       <strong>Identity Management</strong>
     </div>
@@ -79,38 +73,34 @@ const ManageUpload = () => (
       href="https://tacc.utexas.edu/secure-upload"
       target="_blank"
       rel="noreferrer"
-      className={styles['tap-href']}
+      className={styles['tap-action']}
     >
-      <Button className={styles['tap-button']} type="secondary">
-        Secure File Upload
-      </Button>
+      <Button type="secondary">Secure File Upload</Button>
     </a>
-  </>
+  </article>
 );
 
 const ManageAccount: React.FC = () => {
   const { data } = useProfile();
   return (
-    <section>
-      <article className={styles['account-layout']}>
-        <SectionHeader className={styles['account-header']} isNestedHeader>
-          <Icon name="user" />
-          <span>
-            {data?.firstName} {data?.lastName}
-          </span>
-        </SectionHeader>
-        <div className={styles['account-body']}>
-          <section>
-            <ManageUser />
-            <ManageDNs />
-            <ManageUpload />
-          </section>
-          <span className={styles['tap-separator']} />
-          <section>
-            <AccountMfa />
-          </section>
-        </div>
-      </article>
+    <section className={styles['account-layout']}>
+      <SectionHeader className={styles['account-header']} isNestedHeader>
+        <Icon name="user" />
+        <span>
+          {data?.firstName} {data?.lastName}
+        </span>
+      </SectionHeader>
+      <div className={styles['account-body']}>
+        <section>
+          <ManageUser />
+          <ManageDNs />
+          <ManageUpload />
+        </section>
+        <span className={styles['tap-separator']} />
+        <section>
+          <AccountMfa />
+        </section>
+      </div>
     </section>
   );
 };
