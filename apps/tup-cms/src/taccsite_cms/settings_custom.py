@@ -106,16 +106,15 @@ BRANDING = [ UTEXAS_BRANDING ]
 # TACC: LOGOS
 ########################
 
-LOGO = [
-    "tup",
-    "tup_cms/img/org_logos/tacc-logo-white.svg",
-    "tup",
-    "/",
-    "_self",
-    "TACC Logo",
-    "anonymous",
-    "True"
-]
+PORTAL_LOGO = {
+    "img_file_src": "tup_cms/img/org_logos/tacc-logo-white.svg",
+    "is_remote": False,
+    "img_class": "",
+    "link_href": "/",
+    "link_target": "_self",
+    "img_alt_text": "TACC Logo",
+    "img_crossorigin": "anonymous",
+} # To hide logo, set `PORTAL_LOGO = False`
 
 ########################
 # TACC: SEARCH
@@ -143,6 +142,8 @@ LOGIN_URL = "/portal/login"
 INCLUDES_CORE_PORTAL = False
 INCLUDES_PORTAL_NAV = True
 INCLUDES_SEARCH_BAR = True
+
+PORTAL_NAV_WIDTH = 'lg'
 
 ########################
 # DJANGOCMS_BLOG
@@ -194,10 +195,10 @@ BLOG_ENABLE_COMMENTS = False
 # DJANGOCMS_BLOG: TACC
 ########################
 
-TACC_BLOG_SHOW_CATEGORIES = True
-TACC_BLOG_SHOW_TAGS = False
-TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
-TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
+PORTAL_BLOG_SHOW_CATEGORIES = True
+PORTAL_BLOG_SHOW_TAGS = False
+PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
+PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'external'
 
 
 ########################
