@@ -8,7 +8,7 @@ RUN npx nx build tup-ui
 RUN npx nx build tup-cms-react
 
 # TACC/Core-CMS#792 (v4.9.0 candidate)
-FROM taccwma/core-cms:1f2e9f84
+FROM taccwma/core-cms:92f57a30
 
 WORKDIR /code
 

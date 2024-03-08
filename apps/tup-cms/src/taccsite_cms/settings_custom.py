@@ -143,6 +143,8 @@ INCLUDES_CORE_PORTAL = False
 INCLUDES_PORTAL_NAV = True
 INCLUDES_SEARCH_BAR = True
 
+PORTAL_NAV_WIDTH = 'lg'
+
 ########################
 # DJANGOCMS_BLOG
 ########################
