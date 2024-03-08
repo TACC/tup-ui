@@ -145,6 +145,12 @@ INCLUDES_PORTAL_NAV = True
 INCLUDES_SEARCH_BAR = True
 
 ########################
+# TACC: SOCIAL MEDIA
+########################
+
+TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'email']
+
+########################
 # DJANGOCMS_BLOG
 ########################
 
