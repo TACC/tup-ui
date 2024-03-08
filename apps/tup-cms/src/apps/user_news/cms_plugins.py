@@ -13,7 +13,7 @@ from .utils import get_latest_articles
 class UserNewsListPlugin(CMSPluginBase):
     module = 'TUP CMS'
     name = _('User News List')
-    render_template = 'user_news/list_for_plugin.html'
+    render_template = 'user_news/list__short.html'
 
     cache = False
     text_enabled = False
@@ -38,7 +38,7 @@ class UserNewsListPlugin(CMSPluginBase):
 class FullUserNewsListPlugin(CMSPluginBase):
     module = 'TUP CMS'
     name = _('Full User News List')
-    render_template = 'user_news/full_list.html'
+    render_template = 'user_news/list__full.html'
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
