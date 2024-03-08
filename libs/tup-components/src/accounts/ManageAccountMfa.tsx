@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 import styles from './ManageAccount.module.css';
 
 const MfaSectionHeader: React.FC = () => (
-  <div className={styles['tap-header']}>
-    <strong>MFA Pairing</strong>
-  </div>
+  <h2 className={styles['tap-header']}>MFA Pairing</h2>
 );
 
 export const AccountMfa: React.FC = () => {
@@ -40,11 +38,11 @@ export const AccountMfa: React.FC = () => {
   }
   const hasPairing = data?.token?.rollout_state === 'enrolled';
   return (
-    <>
+    <article className={styles['tap-feature']}>
       <MfaSectionHeader />
-      <span className={styles['tap-description']}>
+      <p className={styles['tap-description']}>
         Set up multi-factor authentication using a token app or SMS.
-      </span>
+      </p>
       {!hasPairing && (
         <Link to="/mfa" className={styles['tap-href']}>
           <Button type="primary">Pair Device</Button>
@@ -60,6 +58,6 @@ export const AccountMfa: React.FC = () => {
           </Link>
         </div>
       )}
-    </>
+    </article>
   );
 };
