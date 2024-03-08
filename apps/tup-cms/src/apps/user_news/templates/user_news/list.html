@@ -4,9 +4,9 @@
 {% if articles %}
   {% for article in articles %}
     {% if is_for_short_list %}
-      {% include "./list_item_for_plugin.html" %}
+      {% include "./includes/list_item__short.html" %}
     {% else %}
-      {% include "./list_item.html" %}
+      {% include "./includes/list_item__full.html" %}
     {% endif %}
   {% endfor %}
 {% else %}
