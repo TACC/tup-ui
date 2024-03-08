@@ -1,9 +1,9 @@
-{# @var title_tag, subtitle_tag, is_for_plugin #}
+{# @var title_tag, subtitle_tag, is_for_short_list #}
 {% load i18n %}
 
 {% if articles %}
   {% for article in articles %}
-    {% if is_for_plugin %}
+    {% if is_for_short_list %}
       {% include "./list_item_for_plugin.html" %}
     {% else %}
       {% include "./list_item.html" %}
