@@ -32,3 +32,24 @@ class UserNewsListPlugin(CMSPluginBase):
             'urls': urls
         })
         return context
+
+
+@plugin_pool.register_plugin
+class FullUserNewsListPlugin(CMSPluginBase):
+    module = 'TUP CMS'
+    name = _('Full User News List')
+    render_template = 'user_news/full_list.html'
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        request = context['request']
+
+        should_sanitize = True
+        articles = get_latest_articles(None, should_sanitize)
+
+        context.update({
+            'articles': articles,
+            'has_markup_content': not should_sanitize,
+            'urls': urls
+        })
+        return context
