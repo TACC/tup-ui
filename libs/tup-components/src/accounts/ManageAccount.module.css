@@ -1,6 +1,6 @@
 @import url('@tacc/core-styles/src/lib/_imports/tools/media-queries.css');
 
-.account-layout{
+.account-layout {
     padding: var(--global-space--section);
     padding-right: 30px;
 }
@@ -16,16 +16,9 @@
 }
 
 .account-body {
-    padding-top: 10px;
     display: flex;
     flex-direction: row;
-    gap: 3%;
-}
-.account-body > section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    height: 100%;
+    gap: var(--global-space--section-left);
 }
 .account-body > section:nth-of-type(1) {
     flex: 1.5;
@@ -33,37 +26,41 @@
 .account-body > section:nth-of-type(2) {
     flex: 1;
 }
+.account-body dfn {
+    font-style: normal;
+}
+
+.tap-feature,
+.tap-separator {
+  margin-top: 1em;
+}
 
 .tap-header {
-    padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #707070;
 }
-
+.tap-header:is(h2) {
+    font-size: var(--global-font-size--small);
+}
 .tap-description {
-    font-size: 1rem;
-    font-style: italic;
-    color: #484848;
+    margin-block: 1em 1.5em;
 }
 
-.tap-button {
+.tap-action {
+    /* To place actions inline and add space between them */
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+.tap-action:is(button),
+.tap-action > button {
     width: 200px;
-}
-
-.tap-href {
-    width: fit-content;
-}
-
-.mfa-options {
-    /* no styles needed yet */
 }
 
 @media (--narrow-and-above) {
     .tap-separator {
         border-right: 1px solid #707070;
-        margin-top: 10px;
     }
-
 }
 
 @media (--narrow-and-below) {

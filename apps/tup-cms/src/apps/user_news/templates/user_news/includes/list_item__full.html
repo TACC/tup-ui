@@ -15,7 +15,7 @@
             {{ article.subtitle }}
         </{{ subtitle_tag|default:"h4" }}>
         {% endif %}
-        {% include './item_data.html' %}
+        {% include './metadata.html' %}
     </header>
     {% if has_markup_content %}
     <div class="c-news__abstract has-markup">{{ article.content|safe }}</div>
