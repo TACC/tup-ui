@@ -22,10 +22,10 @@
 .heading ~ * {
   max-height: 100%; /* (gently) force oversized elements to fit */
 }
-.heading ~ a {
+
+.root a {
   font-weight: var(--bold);
 }
-
 
 
 /* Modifiers */

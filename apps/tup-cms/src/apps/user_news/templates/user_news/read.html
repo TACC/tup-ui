@@ -5,9 +5,9 @@
 
 {% block content %}
 <div class="container">
-  {% include "./includes/list_item_breadcrumbs.html" with article=article urls=urls only %}
+  {% include "./includes/breadcrumbs.html" with article=article urls=urls only %}
   <section class="c-news c-news--read">
-    {% include './includes/content_styles.html' %}
+    {% include './includes/styles.html' %}
     {% include './includes/read_item.html' %}
   </section>
 </div>

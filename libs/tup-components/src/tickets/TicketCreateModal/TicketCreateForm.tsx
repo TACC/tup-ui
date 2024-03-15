@@ -102,14 +102,13 @@ export const TicketCreateForm: React.FC = () => {
           <FormikSelect name="resource" label="System/Resource" required>
             <option value="">Please Choose One</option>
             <option>Corral (corral-login.tacc.utexas.edu)</option>
-            <option>Corral iRODS(icat.corral.tacc.utexas.edu)</option>
             <option>Corral-Protected(corral-protected.tacc.utexas.edu)</option>
             <option>Frontera(frontera.tacc.utexas.edu)</option>
             <option>Jetstream(jetstream.tacc.utexas.edu)</option>
             <option>Lonestar6(lonestar6.tacc.utexas.edu)</option>
-            <option>Longhorn(longhorn.tacc.utexas.edu)</option>
             <option>Ranch(ranch.tacc.utexas.edu)</option>
             <option>Stampede2(stampede2.tacc.utexas.edu)</option>
+            <option>Stampede3(stampede3.tacc.utexas.edu)</option>
             <option>Vislab(stallion.tacc.utexas.edu)</option>
             <option>Cyclone(cyclone.tacc.utexas.edu)</option>
             <option>Cloud and Interactive Computing (Agave API)</option>
