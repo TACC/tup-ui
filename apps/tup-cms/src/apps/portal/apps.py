@@ -47,7 +47,7 @@ def send_confirmation_email(form_name, form_data):
     email_body = """
             <p>Greetings,</p>
             <p>
-                Your have successfully submitted a form on the TACC website. Thank you for your submission.
+                You have successfully submitted a form on the TACC website. Thank you for your submission.
             </p>
             <p>
                 Business hours are Monday - Friday, 8AM to 5PM Central. We will respond to your submission
