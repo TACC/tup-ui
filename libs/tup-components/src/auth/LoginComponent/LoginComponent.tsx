@@ -159,6 +159,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       </Formik>
       <div className="c-form__nav">
         <p>Having trouble logging in?</p>
+        {/* CAUTION: Do not exceed three links. If more needed, ask design. */}
         <AccountHelpLink />
         <ForgotPasswordLink />
         <ForgotUsernameLink />
