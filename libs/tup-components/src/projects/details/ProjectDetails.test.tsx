@@ -17,7 +17,8 @@ describe('Project Details Component', () => {
     expect(columnHeaders[0].textContent).toEqual('Systems');
     expect(columnHeaders[1].textContent).toEqual('Awarded');
     expect(columnHeaders[2].textContent).toEqual('Used');
-    expect(columnHeaders[3].textContent).toEqual('Expires');
+    expect(columnHeaders[3].textContent).toEqual('Status');
+    expect(columnHeaders[4].textContent).toEqual('Expires');
     expect(getByText('Lonestar6')).toBeDefined();
     expect(getByText('10 SU')).toBeDefined();
     expect(getByText('0 SU')).toBeDefined();
