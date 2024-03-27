@@ -73,7 +73,7 @@ const ForgotPasswordLink = () => (
 
 const ForgotUsernameLink = () => (
   <a
-    href="https://accounts.tacc.utexas.edu/forgot_password"
+    href="https://accounts.tacc.utexas.edu/forgot_username"
     target="_blank"
     rel="noreferrer"
   >
