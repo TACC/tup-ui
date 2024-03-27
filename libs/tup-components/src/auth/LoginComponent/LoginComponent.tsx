@@ -52,7 +52,11 @@ const CreateAccountLink = () => (
 );
 
 const AccountHelpLink = () => (
-  <a href="https://accounts.tacc.utexas.edu/login_support" target="_blank" rel="noreferrer">
+  <a
+    href="https://accounts.tacc.utexas.edu/login_support"
+    target="_blank"
+    rel="noreferrer"
+  >
     Account Help
   </a>
 );
