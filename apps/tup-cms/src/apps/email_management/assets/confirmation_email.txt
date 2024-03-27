@@ -1,0 +1,8 @@
+Greetings,
+
+You have successfully submitted a form on the {site_name} website. Thank you for your submission.
+
+Business hours are Monday - Friday, 8AM to 5PM Central. We will respond to your submission according to the information provided on the form webpage.
+
+Sincerely,
+{site_name} Communications
