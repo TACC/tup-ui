@@ -24,16 +24,15 @@ export const ProjectsListingAllocationTable: React.FC<{
         </tr>
       </thead>
       <tbody>
-        {allocations
-          .map((allocation) => (
-            <tr key={allocation.id}>
-              <td>{allocation.resource}</td>
-              <td>{allocation.total} SU</td>
-              <td>{allocation.used} SU</td>
-              <td>{allocation.status ?? '-'}</td>
-              <td>{formatDate(allocation.end)}</td>
-            </tr>
-          ))}
+        {allocations.map((allocation) => (
+          <tr key={allocation.id}>
+            <td>{allocation.resource}</td>
+            <td>{allocation.total} SU</td>
+            <td>{allocation.used} SU</td>
+            <td>{allocation.status ?? '-'}</td>
+            <td>{formatDate(allocation.end)}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
