@@ -73,7 +73,7 @@ const ForgotUsernameLink = () => (
     target="_blank"
     rel="noreferrer"
   >
-    Reset Password
+    Request Username
   </a>
 );
 
