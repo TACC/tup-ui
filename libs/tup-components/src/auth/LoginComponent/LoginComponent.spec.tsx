@@ -105,11 +105,11 @@ describe('LoginComponent', () => {
     expect(links[1].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/login_support'
     );
-    expect(getByText('Reset Password')).toBeDefined();
+    expect(getByText('Forgot Password')).toBeDefined();
     expect(links[2].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/forgot_password'
     );
-    expect(getByText('Request Username')).toBeDefined();
+    expect(getByText('Recover Username')).toBeDefined();
     expect(links[3].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/forgot_username'
     );
