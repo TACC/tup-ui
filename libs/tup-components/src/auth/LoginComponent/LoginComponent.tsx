@@ -67,7 +67,7 @@ const ForgotPasswordLink = () => (
     target="_blank"
     rel="noreferrer"
   >
-    Reset Password
+    Forgot Password
   </a>
 );
 
@@ -77,7 +77,7 @@ const ForgotUsernameLink = () => (
     target="_blank"
     rel="noreferrer"
   >
-    Request Username
+    Recover Username
   </a>
 );
 
