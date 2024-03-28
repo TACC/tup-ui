@@ -10,7 +10,11 @@ services:
     container_name: tup_cms
     hostname: tup_cms
     volumes:
-      - ./src/apps:/code/apps
+      - ./src/apps/portal:/code/apps/portal
+      - ./src/apps/portal_nav:/code/apps/portal_nav
+      - ./src/apps/staff_profile:/code/apps/staff_profile
+      - ./src/apps/user_news:/code/apps/user_news
+      - ./src/apps/email_management/assets:/code/apps/email_management/assets
       - ./src/media:/code/media
       - ./src/taccsite_custom:/code/taccsite_custom
       - ./src/taccsite_cms/custom_app_settings.py:/code/taccsite_cms/custom_app_settings.py
