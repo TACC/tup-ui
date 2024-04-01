@@ -155,7 +155,7 @@ TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'email']
 ########################
 
 PORTAL_SHOULD_SEND_CONF_EMAIL = True
-TEXT_CONFIRMATION_EMAIL = """
+PORTAL_CONF_EMAIL_TEXT = """
 Greetings,
 
 You have successfully submitted a form on the {site_name} website. Thank you for your submission.
@@ -165,7 +165,7 @@ Business hours are Monday - Friday, 8AM to 5PM Central. We will respond to your 
 Sincerely,
 {site_name} Communications
 """
-HTML_CONFIRMATION_EMAIL = """
+PORTAL_CONF_EMAIL_HTML = """
 <p>Greetings,</p>
 <p>
   You have successfully submitted a form on the {site_name} website. Thank you for your submission.

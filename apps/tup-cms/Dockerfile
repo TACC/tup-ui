@@ -8,7 +8,8 @@ RUN npx nx build tup-ui
 RUN npx nx build tup-cms-react
 
 # https://github.com/TACC/Core-CMS/pull/826
-FROM taccwma/core-cms:7a9df738
+# https://github.com/TACC/Core-CMS/pull/829
+FROM taccwma/core-cms:f805ee79
 
 WORKDIR /code
 
