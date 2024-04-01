@@ -18,7 +18,6 @@ services:
       - ./src/taccsite_cms/settings_custom.py:/code/taccsite_cms/settings_custom.py
       - ./src/taccsite_cms/settings_local.py:/code/taccsite_cms/settings_local.py
       - ./src/taccsite_cms/secrets.py:/code/taccsite_cms/secrets.py
-      - ./src/taccsite_cms/apps/email_management/assets:/code/taccsite_cms/apps/email_management/assets
       - ../../dist/apps/tup-ui/imports.html:/code/taccsite_cms/templates/imports.html
       - ../../apps/tup-ui/src/assets:/code/taccsite_cms/static/src/assets
       - ../../dist/apps/tup-cms-react/assets:/code/taccsite_cms/static/cms-react/assets

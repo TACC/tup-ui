@@ -151,6 +151,35 @@ INCLUDES_SEARCH_BAR = True
 TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'email']
 
 ########################
+# TACC: EMAIL
+########################
+
+PORTAL_SHOULD_SEND_CONF_EMAIL = True
+TEXT_CONFIRMATION_EMAIL = """
+Greetings,
+
+You have successfully submitted a form on the {site_name} website. Thank you for your submission.
+
+Business hours are Monday - Friday, 8AM to 5PM Central. We will respond to your submission according to the information provided on the form webpage.
+
+Sincerely,
+{site_name} Communications
+"""
+HTML_CONFIRMATION_EMAIL = """
+<p>Greetings,</p>
+<p>
+  You have successfully submitted a form on the {site_name} website. Thank you for your submission.
+</p>
+<p>
+  Business hours are Monday - Friday, 8AM to 5PM Central. We will respond to your submission according to the information provided on the form webpage.
+</p>
+<p>
+  Sincerely,<br />
+  {site_name} Communications
+</p>
+"""
+
+########################
 # DJANGOCMS_BLOG
 ########################
 
