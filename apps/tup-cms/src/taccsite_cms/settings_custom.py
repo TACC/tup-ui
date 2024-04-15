@@ -148,7 +148,7 @@ INCLUDES_SEARCH_BAR = True
 # TACC: SOCIAL MEDIA
 ########################
 
-TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'email']
+TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'bluesky', 'email']
 
 ########################
 # DJANGOCMS_BLOG

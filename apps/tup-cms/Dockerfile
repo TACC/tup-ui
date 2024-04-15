@@ -7,7 +7,7 @@ COPY . /code/
 RUN npx nx build tup-ui
 RUN npx nx build tup-cms-react
 
-FROM taccwma/core-cms:v4.10.2
+FROM taccwma/core-cms:v4.11.0
 
 WORKDIR /code
 
