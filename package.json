@@ -1,6 +1,8 @@
 {
   "name": "tacc",
-  "workspaces": ["@tacc/core-components"],
+  "workspaces": [
+    "libs/core-components"
+  ],
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -39,7 +41,6 @@
     "@nx/js": "17.2.8",
     "@nx/node": "17.2.8",
     "@nx/react": "17.2.8",
-    "@nx/storybook": "17.2.8",
     "@nx/vite": "17.2.8",
     "@nx/web": "17.2.8",
     "@nx/workspace": "17.2.8",
