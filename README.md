@@ -2,7 +2,7 @@
 
 This project was generated using [Nx](https://nx.dev).
 
-Local dev setup:
+## Local Dev Setup
 
 1.  `npm install` to install Javascript dependencies and the Nx build tool.
 2.  `npx nx build tup-ui` to build the TUP UI.
@@ -26,6 +26,12 @@ Other useful commands:
 
 - `npx nx serve core-components` to run a demo of the library for the core components.
 - `npx nx build core-components` to create a distributable library for the core components.
+
+## Contributing
+
+To contribute, first read [How to Contirbute](./docs/contributing.md).
+
+---
 
 <!-- NX -->
 
