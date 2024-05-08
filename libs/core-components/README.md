@@ -63,6 +63,15 @@ The components are [React components](https://react.dev/learn) that should be [w
 | `npm test` | execute unit tests | [Vitest](https://vitest.dev/) |
 | `npm run build` | build components | [Vite](https://vitejs.dev/)
 
+## Contributing
+
+### to the Demo
+
+| task | reference |
+| - | - |
+| add/edit component | https://storybook.js.org/docs/writing-stories |
+| change interaction | https://storybook.js.org/docs/essentials/controls |
+
 ## Testing
 
 ### Unit Tests
