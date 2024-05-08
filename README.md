@@ -1,8 +1,8 @@
-# Tacc
+# TACC
 
 This project was generated using [Nx](https://nx.dev).
 
-Local dev setup:
+## Local Dev Setup
 
 1.  `npm install` to install Javascript dependencies and the Nx build tool.
 2.  `npx nx build tup-ui` to build the TUP UI.
@@ -25,6 +25,12 @@ To bring containers down after development, run `npx nx down tup-cms`.
 Other useful commands:
 
 - `npx nx build core-components` to create a distributable library for the core components.
+
+## Contributing
+
+To contribute, first read [How to Contirbute](./docs/contributing.md).
+
+---
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 

@@ -1,0 +1,10 @@
+{% load i18n %}
+
+
+<section class="c-news c-news--list">
+  {% include './includes/styles.html' %}
+
+  {% with title_tag="h3" subtitle_tag="h4" %}
+  {% include './list.html' %}
+  {% endwith %}
+</section>
