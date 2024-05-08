@@ -1,5 +1,6 @@
 {
   "name": "tacc",
+  "workspaces": ["libs/core-components"],
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -38,13 +39,10 @@
     "@nx/js": "17.2.8",
     "@nx/node": "17.2.8",
     "@nx/react": "17.2.8",
-    "@nx/storybook": "^17.2.8",
+    "@nx/storybook": "17.2.8",
     "@nx/vite": "17.2.8",
     "@nx/web": "17.2.8",
     "@nx/workspace": "17.2.8",
-    "@storybook/addon-essentials": "^7.5.3",
-    "@storybook/core-server": "^7.5.3",
-    "@storybook/react-vite": "^7.5.3",
     "@tacc/core-styles": "^2.25.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",

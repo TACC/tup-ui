@@ -10,15 +10,19 @@
     "dist"
   ],
   "scripts": {
-    "start": "cd ../../ && nx serve core-components",
-    "build": "cd ../../ && nx build core-components",
-    "test": "cd ../../ && nx test core-components",
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test",
     "prepublishOnly": "npm run build"
   },
   "homepage": "https://github.com/TACC/tup-ui/libs/core-components",
   "repository": "git@github.com:TACC/tup-ui.git",
   "peerDependencies": {
-    "@tacc/core-styles": "^2.23.1",
+    "@nx/storybook": "17.2.8",
+    "@tacc/core-styles": "^2.25.1",
+    "@storybook/addon-essentials": "^7.5.3",
+    "@storybook/core-server": "^7.5.3",
+    "@storybook/react-vite": "^7.5.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
     "formik": "^2.2.9",
