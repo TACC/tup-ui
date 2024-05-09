@@ -20,13 +20,13 @@ Reusable components for TACC WMA Workspace Portals & Websites
 
 ## Project Architecture
 
-| directory | contents |
-| - | - |
+| directory | contents                     |
+| --------- | ---------------------------- |
 | `src/lib` | components, tests, [stories] |
 
 ## Prerequisites
 
-* [Node.js]
+- [Node.js]
 
 ## Getting Started
 
@@ -38,30 +38,30 @@ Set up a new local CMS instance.
 0. [Clone this Repository.](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 1. Enter the Repository Clone:
 
-    ```sh
-    cd tup-ui
-    ```
+   ```sh
+   cd tup-ui
+   ```
 
 2. Install Dependencies:
 
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
-2. Install Dependencies:
+3. Install Dependencies:
 
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
 ## Developing
 
 The components are [React components](https://react.dev/learn) that should be [written in TypeScript](https://react.dev/learn/typescript#typescript-with-react-components).
 
-| command | task | service |
-| - | - | - |
-| `npm test` | execute unit tests | [Vitest](https://vitest.dev/) |
-| `npm run build` | build components | [Vite](https://vitejs.dev/)
+| command         | task               | service                       |
+| --------------- | ------------------ | ----------------------------- |
+| `npm test`      | execute unit tests | [Vitest](https://vitest.dev/) |
+| `npm run build` | build components   | [Vite](https://vitejs.dev/)   |
 
 ## Testing
 
@@ -75,8 +75,6 @@ Perform manually by installing and testing the components in a separate resposit
 
 <!-- Link Aliases -->
 
-[Core Styles]: https://github.com/TACC/Core-Styles
-
-[Node.js]: https://nodejs.org/
-
+[core styles]: https://github.com/TACC/Core-Styles
+[node.js]: https://nodejs.org/
 [stories]: https://storybook.js.org/docs/get-started/whats-a-story
