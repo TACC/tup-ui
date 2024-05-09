@@ -17,4 +17,3 @@ export {
   FormikTextarea,
   FormikFileInput,
 } from './lib/FormikFieldWrapper';
-export { default as withBuilder } from './lib/utils/withBuilder';

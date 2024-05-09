@@ -18,3 +18,5 @@ export { default as HistoryBadge } from './lib/HistoryBadge';
 export { default as Collapse } from './lib/Collapse';
 export { default as TextCopyField } from './lib/TextCopyField';
 export * from './lib/Form';
+
+export { default as withBuilder } from './utils/withBuilder';
