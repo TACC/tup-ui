@@ -2,7 +2,7 @@
 import React from 'react';
 import { useField } from 'formik';
 import FileInputDropZone from './FileDropzone';
-import FieldWrapper from '../../FieldWrapperFormik';
+import FieldWrapper from '../../FormikFieldWrapper';
 
 interface FormikFileInputProps {
   name: string;
