@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Icon } from '@tacc/core-components';
+import { Icon } from '../..';
 import styles from './Navbar.module.css';
 
 type sizes = 'xs' | 'sm' | 'md' | 'lg';
