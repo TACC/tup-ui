@@ -1,6 +1,6 @@
 import React from 'react';
 import { useProjectUsers } from '@tacc/tup-hooks';
-import { NavItem } from '@tacc/core-wrappers';
+import { NavItem } from '@tacc/core-components';
 import styles from './UserList.module.css';
 import { LoadingSpinner } from '@tacc/core-components';
 import ManageTeam from './ManageTeam';

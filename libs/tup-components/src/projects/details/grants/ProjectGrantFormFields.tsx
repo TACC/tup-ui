@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useProjectScienceField } from '@tacc/tup-hooks';
-import { FormikInput, FormikSelect } from '@tacc/core-wrappers';
+import { FormikInput, FormikSelect } from '@tacc/core-components';
 import { LoadingSpinner } from '@tacc/core-components';
 
 import styles from './ProjectGrantForm.module.css';

@@ -7,7 +7,7 @@ import {
   FormikTextarea,
   FormikFileInput,
   FormikSelect,
-} from '@tacc/core-wrappers';
+} from '@tacc/core-components';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';

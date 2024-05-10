@@ -8,7 +8,7 @@
 import React, { useCallback, useMemo } from 'react';
 import useWizardValues, { UIWizardProvider } from './useWizardValues';
 import { UIWizardStep, UIWizardSchema, UIWizardExtra } from '.';
-import { Wizard, WizardStep } from '@tacc/core-wrappers';
+import { Wizard, WizardStep } from '@tacc/core-components';
 import wizardSteps from './steps';
 
 export const UIPatternsComplexWizardRender: React.FC<{
@@ -26,7 +26,7 @@ export const UIPatternsComplexWizardRender: React.FC<{
     [add]
   );
 
-  // Map Array of UIWizardSteps into an array of @tacc/core-wrappers/WizardStep
+  // Map Array of UIWizardSteps into an array of @tacc/core-components/WizardStep
   const steps: Array<WizardStep<UIWizardSchema>> = useMemo(() => {
     return wizardSteps.map((jobStep) => {
       const { generateInitialValues, validateThunk, ...stepProps } = jobStep;
