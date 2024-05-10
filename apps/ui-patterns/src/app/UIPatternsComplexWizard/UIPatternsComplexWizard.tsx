@@ -26,7 +26,7 @@ export const UIPatternsComplexWizardRender: React.FC<{
     [add]
   );
 
-  // Map Array of UIWizardSteps into an array of @tacc/core-components/WizardStep
+  // Map Array of `UIWizardSteps` into an array of `WizardStep`
   const steps: Array<WizardStep<UIWizardSchema>> = useMemo(() => {
     return wizardSteps.map((jobStep) => {
       const { generateInitialValues, validateThunk, ...stepProps } = jobStep;
