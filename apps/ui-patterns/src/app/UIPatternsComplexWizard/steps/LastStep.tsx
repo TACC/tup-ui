@@ -2,7 +2,7 @@ import React, { useCallback, useState, useMemo } from 'react';
 import * as Yup from 'yup';
 import { UIWizardStep, UIWizardSchema, InitialValueGenerator } from '..';
 import { Button } from '@tacc/core-components';
-import { SubmitWrapper } from '@tacc/core-wrappers';
+import { SubmitWrapper } from '@tacc/core-components';
 import { validationSchema as stepOneValidationSchema } from './StepOne';
 import { validationSchema as stepTwoValidationSchema } from './StepTwo';
 import { validationSchema as stepThreeValidationSchema } from './StepThree';
