@@ -67,9 +67,9 @@ The components are [React components](https://react.dev/learn) that should be [w
 
 ### to the Demo
 
-| task | reference |
-| - | - |
-| add/edit component | https://storybook.js.org/docs/writing-stories |
+| task               | reference                                         |
+| ------------------ | ------------------------------------------------- |
+| add/edit component | https://storybook.js.org/docs/writing-stories     |
 | change interaction | https://storybook.js.org/docs/essentials/controls |
 
 ## Testing
