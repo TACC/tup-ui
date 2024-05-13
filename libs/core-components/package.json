@@ -34,6 +34,20 @@
     "reactstrap": "^9.1.5",
     "uuid": "^8.3.2"
   },
+  "peerDependenciesMeta": {
+    "@nx/storybook": {
+      "optional": true
+    },
+    "@storybook/addon-essentials": {
+      "optional": true
+    },
+    "@storybook/core-server": {
+      "optional": true
+    },
+    "@storybook/react-vite": {
+      "optional": true
+    }
+  },
   "sideEffects": [
     "libs/core-componets/**/*.css"
   ]
