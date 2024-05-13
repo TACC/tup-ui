@@ -1,0 +1,26 @@
+<style id="css-homepage-2024-02">
+/* 1. To dynamically reduce height of banner */
+/* Change —
+    style="height: 550px"
+    — on banner image to —
+    style="height: 60vh; max-height: 550px; min-height: 230px;"
+*/
+
+/* 2. To make mobile menu button stand out */
+.navbar-dark .navbar-toggler {
+    border-color: var(--global-color-primary--normal);
+}
+
+/* 2. To make keyboard focus stand out on header */
+/*
+.nav-link:focus-visible,
+#header-logo:focus-visible,
+.navbar-dark .navbar-toggler:focus-visible {
+*/
+#s-header :focus,
+#header-branding a:focus,
+.s-search-bar::part(input):focus,
+.s-search-bar::part(button):focus {
+    outline-color: var(--global-color-primary--xx-light);
+}
+</style>
