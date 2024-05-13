@@ -1,0 +1,19 @@
+<style id="css-global-a11y">
+/* 1. To make mobile menu button stand out */
+.navbar-dark .navbar-toggler {
+    border-color: var(--global-color-primary--normal);
+}
+
+/* 2. To make keyboard focus stand out on header */
+/*
+.nav-link:focus-visible,
+#header-logo:focus-visible,
+.navbar-dark .navbar-toggler:focus-visible {
+*/
+#s-header :focus,
+#header-branding a:focus,
+.s-search-bar::part(input):focus,
+.s-search-bar::part(button):focus {
+    outline-color: var(--global-color-primary--xx-light);
+}
+</style>
