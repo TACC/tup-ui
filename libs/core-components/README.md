@@ -48,6 +48,13 @@ Set up a new local CMS instance.
    npm install
    ```
 
+3. Start demo:
+
+   ```sh
+   cd libs/core-components
+   make start
+   ```
+
 ## Developing
 
 The components are [React components](https://react.dev/learn) that should be [written in TypeScript](https://react.dev/learn/typescript#typescript-with-react-components).
