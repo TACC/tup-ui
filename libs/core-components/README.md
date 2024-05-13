@@ -51,8 +51,7 @@ Set up a new local CMS instance.
 3. Start demo:
 
    ```sh
-   cd libs/core-components
-   make start
+   npx nx serve core-components
    ```
 
 ## Developing
