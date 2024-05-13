@@ -45,7 +45,7 @@ Set up a new local CMS instance.
 2. Install Dependencies:
 
    ```sh
-   npm install
+   npm install --include=optional
    ```
 
 3. Start demo:
