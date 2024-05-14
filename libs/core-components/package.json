@@ -12,6 +12,7 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
+    "build:storbook": "nx build-storybook",
     "test": "nx test",
     "prepublishOnly": "npm run build"
   },
