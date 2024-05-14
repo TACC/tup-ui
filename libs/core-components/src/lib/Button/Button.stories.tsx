@@ -18,22 +18,26 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Types: Story = {
-  render: (args) => (
-    <>
-      <Button type="primary" {...args}>
-        Primary
-      </Button>
-      <Button type="secondary" {...args}>
-        Secondary
-      </Button>
-      <Button type="tertiary" {...args}>
-        Tertiary
-      </Button>
-      <Button type="link" {...args}>
-        as Link
-      </Button>
-    </>
-  ),
+  render: (args) => {
+    const { size, ...argsSansSize } = args;
+
+    return (
+      <>
+        <Button type="primary" {...args}>
+          Primary
+        </Button>
+        <Button type="secondary" {...args}>
+          Secondary
+        </Button>
+        <Button type="tertiary" {...args}>
+          Tertiary
+        </Button>
+        <Button type="link" {...argsSansSize}>
+          as Link
+        </Button>
+      </>
+    );
+  },
   args: {
     className: styles['button'] + ' ',
   },
