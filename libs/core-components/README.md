@@ -45,7 +45,13 @@ Set up a new local CMS instance.
 2. Install Dependencies:
 
    ```sh
-   npm install
+   npm install --include=optional --workspace=libs/core-components
+   ```
+
+3. Start demo:
+
+   ```sh
+   npx nx serve core-components
    ```
 
 ## Developing
@@ -56,6 +62,15 @@ The components are [React components](https://react.dev/learn) that should be [w
 | --------------- | ------------------ | ----------------------------- |
 | `npm test`      | execute unit tests | [Vitest](https://vitest.dev/) |
 | `npm run build` | build components   | [Vite](https://vitejs.dev/)   |
+
+## Contributing
+
+### to the Demo
+
+| task               | reference                                         |
+| ------------------ | ------------------------------------------------- |
+| add/edit component | https://storybook.js.org/docs/writing-stories     |
+| change interaction | https://storybook.js.org/docs/essentials/controls |
 
 ## Testing
 
