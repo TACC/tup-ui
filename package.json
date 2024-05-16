@@ -1,7 +1,7 @@
 {
   "name": "tacc",
   "workspaces": [
-    "@tacc/core-components"
+    "libs/core-components"
   ],
   "version": "0.0.0",
   "license": "MIT",
