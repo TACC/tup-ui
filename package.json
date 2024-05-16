@@ -1,5 +1,8 @@
 {
   "name": "tacc",
+  "workspaces": [
+    "@tacc/core-components"
+  ],
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -27,6 +30,7 @@
     "sass": "^1.64.0",
     "tslib": "^2.3.0",
     "uuid": "^8.3.2",
+    "vite-plugin-lib-inject-css": "^2.0.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

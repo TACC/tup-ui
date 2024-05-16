@@ -22,13 +22,9 @@ This project was generated using [Nx](https://nx.dev).
 The TUP dashboard is accessed at http://localhost:8000/portal.
 To bring containers down after development, run `npx nx down tup-cms`.
 
-<!--
-
 Other useful commands:
 
 - `npx nx build core-components` to create a distributable library for the core components.
-
--->
 
 ## Contributing
 
