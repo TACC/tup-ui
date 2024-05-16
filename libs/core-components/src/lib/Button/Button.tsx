@@ -1,6 +1,8 @@
 import React from 'react';
 import Icon from '../Icon';
 import LoadingSpinner from '../LoadingSpinner';
+
+import './Button.global.css';
 import styles from './Button.module.css';
 
 export const TYPE_MAP = {
