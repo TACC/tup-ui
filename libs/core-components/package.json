@@ -17,12 +17,7 @@
     "prepublishOnly": "npm run build"
   },
   "homepage": "https://github.com/TACC/tup-ui/libs/core-components",
-  "devDependencies": {
-    "@nx/vite": "^17.2.8",
-    "@tacc/core-styles": "^2.25.1",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^14.0.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
+  "dependencies": {
     "formik": "^2.2.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -31,6 +26,14 @@
     "react-step-wizard": "^5.3.11",
     "react-table": "^7.8.0",
     "reactstrap": "^9.1.5",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@nx/vite": "^17.2.8",
+    "@tacc/core-styles": "^2.25.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
     "uuid": "^8.3.2",
     "vite-plugin-dts": "^2.3.0",
     "vite-plugin-lib-inject-css": "^2.1.1",
