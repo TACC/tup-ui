@@ -2,7 +2,7 @@ import React from 'react';
 import { ErrorMessage } from 'formik';
 import { Badge } from 'reactstrap';
 
-import './FormikFieldWrapper.global.css';
+import './FieldWrapperFormik.global.css';
 
 export type FieldWrapperProps = {
   name: string;

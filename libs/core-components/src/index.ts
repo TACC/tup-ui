@@ -27,12 +27,12 @@ export { default as SubmitWrapper } from './lib/SubmitWrapper';
 export { default as Wizard, useWizard, WizardNavigation } from './lib/Wizard';
 export type WizardStep<T> = WizardStepType<T>;
 export {
-  FormikFieldWrapper,
+  FieldWrapperFormik,
   FormikInput,
   FormikSelect,
   FormikCheck,
   FormikTextarea,
   FormikFileInput,
-} from './lib/FormikFieldWrapper';
+} from './lib/FieldWrapperFormik';
 
 export { default as withBuilder } from './utils/withBuilder';

@@ -1,5 +1,5 @@
 import React from 'react';
-import FieldWrapper from '../FormikFieldWrapper';
+import FieldWrapper from '../FieldWrapperFormik';
 import { useField } from 'formik';
 import { FormikInputProps } from '.';
 
