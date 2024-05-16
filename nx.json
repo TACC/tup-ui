@@ -35,15 +35,6 @@
     "@nx/vite:test": {
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true
-    },
-    "build-storybook": {
-      "cache": true,
-      "inputs": [
-        "default",
-        "^production",
-        "{projectRoot}/.storybook/**/*",
-        "{projectRoot}/tsconfig.storybook.json"
-      ]
     }
   },
   "namedInputs": {
@@ -54,17 +45,7 @@
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-      "!{projectRoot}/.storybook/**/*",
-      "!{projectRoot}/tsconfig.storybook.json"
+      "!{projectRoot}/.eslintrc.json"
     ]
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "options": {
-        "cacheableOperations": ["build-storybook"]
-      }
-    }
   }
 }
