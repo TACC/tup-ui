@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { testRender } from '@tacc/tup-testing';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import FileDropzone from './FileDropzone';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -28,7 +29,7 @@ describe('dropzone', () => {
     const smallFile = new File(['file'], 'myfile.json', {
       type: 'application/json',
     });
-    testRender(<FileDropzoneWrapper maxSize={100000} />);
+    render(<FileDropzoneWrapper maxSize={100000} />);
     const input = screen.getByTestId('dropzone-input');
     await userEvent.upload(input, smallFile);
     expect(screen.getByText('myfile.json')).toBeDefined();
@@ -37,7 +38,7 @@ describe('dropzone', () => {
 
   it('Shows error when file is too big.', async () => {
     const bigFile = new File(['hi'], 'myfile', { type: 'image/jpeg' });
-    testRender(<FileDropzoneWrapper maxSize={0} />);
+    render(<FileDropzoneWrapper maxSize={0} />);
     const input = screen.getByTestId('dropzone-input');
     await userEvent.upload(input, bigFile);
     expect(screen.getByText(/Exceeds File Size Limit/)).toBeDefined();

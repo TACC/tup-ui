@@ -1,4 +1,4 @@
-export { default as FieldWrapperFormik } from './FieldWrapperFormik';
+export { default as FormikFieldWrapper } from './FormikFieldWrapper';
 export {
   FormikInput,
   FormikSelect,

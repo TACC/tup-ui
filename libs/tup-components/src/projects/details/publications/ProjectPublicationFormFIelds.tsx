@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'formik';
 //import ReCAPTCHA from 'react-google-recaptcha';
-import { FormikInput } from '@tacc/core-wrappers';
+import { FormikInput } from '@tacc/core-components';
 import styles from './ProjectPublicationForm.module.css';
 
 const ProjectPublicationFormFields: React.FC = () => {

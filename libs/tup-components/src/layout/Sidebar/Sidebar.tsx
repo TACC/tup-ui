@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, NavItem } from '@tacc/core-wrappers';
+import { Navbar, NavItem } from '@tacc/core-components';
 // import { useAuth } from '@tacc/tup-hooks';
 import styles from './Sidebar.module.css';
 

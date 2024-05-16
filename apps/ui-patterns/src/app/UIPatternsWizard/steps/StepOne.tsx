@@ -1,5 +1,5 @@
-import { FormikInput } from '@tacc/core-wrappers';
-import { WizardStep } from '@tacc/core-wrappers';
+import { FormikInput } from '@tacc/core-components';
+import { WizardStep } from '@tacc/core-components';
 import * as Yup from 'yup';
 import { useWizardValues, UIWizardSchema } from '..';
 
