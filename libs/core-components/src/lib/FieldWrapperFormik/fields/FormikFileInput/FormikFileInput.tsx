@@ -40,7 +40,7 @@ const FileInputDropZoneFormField: React.FC<FormikFileInputProps> = ({
   };
   return (
     <FieldWrapper
-      id={id}
+      id={id || field.name}
       label={label}
       required={required}
       description={description}

@@ -22,7 +22,7 @@ const FormikTextarea: React.FC<FormikSelectProps> = ({
       description={description}
       formik={{ field, form, meta }}
     >
-      <select {...field} {...props} id={id}>
+      <select {...field} {...props} id={id || field.name}>
         {children}
       </select>
     </FieldWrapper>

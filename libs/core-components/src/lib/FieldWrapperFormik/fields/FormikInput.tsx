@@ -21,7 +21,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
       description={description}
       formik={{ field, form, meta }}
     >
-      <input {...field} {...props} id={id} />
+      <input {...field} {...props} id={id || field.name} />
     </FieldWrapper>
   );
 };
