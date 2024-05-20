@@ -5,6 +5,7 @@ import { InlineMessage, Button } from '../../../..';
 import styles from './FileDropzone.module.css';
 
 interface FileInputDropzoneProps {
+  id: string;
   files: File[];
   onDrop: (files: File[]) => void;
   onRemoveFile: (index: number) => void;
@@ -18,6 +19,7 @@ interface FileInputDropzoneProps {
  * and user can manage (e.g. delete those files) directly in this component.
  */
 const FileInputDropZone: React.FC<FileInputDropzoneProps> = ({
+  id,
   files,
   onDrop,
   maxSize,
@@ -60,7 +62,7 @@ const FileInputDropZone: React.FC<FileInputDropzoneProps> = ({
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <div {...getRootProps()} className={styles['dropzone-area']}>
-      <input {...getInputProps()} data-testid="dropzone-input" />
+      <input {...getInputProps()} data-testid="dropzone-input" id={id} />
       {!showFileList && (
         <div className={styles['no-attachment-view']}>
           <i className="icon icon-upload" />

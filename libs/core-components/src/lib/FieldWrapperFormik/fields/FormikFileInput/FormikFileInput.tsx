@@ -1,27 +1,32 @@
 /* FP-993: Allow use by DataFilesUploadModal */
 import React from 'react';
-import { useField } from 'formik';
+import { useField, FieldProps } from 'formik';
 import FileInputDropZone from './FileDropzone';
 import FieldWrapper from '../../FieldWrapperFormik';
 
-interface FormikFileInputProps {
+interface FormikFileInputProps extends FieldProps {
+  id: string;
   name: string;
   label: string;
   required: boolean;
   description: string;
   maxSizeMessage: string;
   maxSize: number;
-}
+};
 
 const FileInputDropZoneFormField: React.FC<FormikFileInputProps> = ({
+  id,
   name,
   label,
   description,
   maxSizeMessage,
   maxSize,
   required,
+  field,
+  form,
+  meta,
 }) => {
-  const [field, , helpers] = useField<File[]>(name);
+  const [, , helpers] = useField<File[]>(name);
 
   const onSetFiles = (acceptedFiles: File[]) => {
     const newAcceptedFiles = acceptedFiles.filter(
@@ -35,12 +40,14 @@ const FileInputDropZoneFormField: React.FC<FormikFileInputProps> = ({
   };
   return (
     <FieldWrapper
-      name={name}
+      id={id}
       label={label}
       required={required}
       description={description}
+      formik={{field, form, meta}}
     >
       <FileInputDropZone
+        id={id}
         files={field.value}
         onDrop={onSetFiles}
         onRemoveFile={onRemoveFile}

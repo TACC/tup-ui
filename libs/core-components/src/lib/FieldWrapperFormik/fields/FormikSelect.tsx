@@ -1,25 +1,28 @@
 import React from 'react';
 import FieldWrapper from '../FieldWrapperFormik';
-import { useField } from 'formik';
 import { FormikSelectProps } from '.';
 
 const FormikTextarea: React.FC<FormikSelectProps> = ({
+  id,
   name,
   label,
   required,
   description,
   children,
+  field,
+  form,
+  meta,
   ...props
 }: FormikSelectProps) => {
-  const [field] = useField(name);
   return (
     <FieldWrapper
-      name={name}
+      id={id}
       label={label}
       required={required}
       description={description}
+      formik={{field, form, meta}}
     >
-      <select {...field} {...props} id={name}>
+      <select {...field} {...props} id={id}>
         {children}
       </select>
     </FieldWrapper>

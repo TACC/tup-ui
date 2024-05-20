@@ -1,24 +1,27 @@
 import React from 'react';
 import FieldWrapper from '../FieldWrapperFormik';
-import { useField } from 'formik';
 import { FormikInputProps } from '.';
 
 const FormikInput: React.FC<FormikInputProps> = ({
+  id,
   name,
   label,
   required,
   description,
+  field,
+  form,
+  meta,
   ...props
 }: FormikInputProps) => {
-  const [field] = useField(name);
   return (
     <FieldWrapper
-      name={name}
+      id={id}
       label={label}
       required={required}
       description={description}
+      formik={{field, form, meta}}
     >
-      <input {...field} {...props} id={name} />
+      <input {...field} {...props} id={id} />
     </FieldWrapper>
   );
 };
