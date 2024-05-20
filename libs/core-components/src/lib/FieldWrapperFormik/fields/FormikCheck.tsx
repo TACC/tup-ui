@@ -1,38 +1,34 @@
-import { FieldInputProps, Field, useField } from 'formik';
+import React from 'react';
+import FieldWrapper from '../FieldWrapperFormik';
 import { FormikInputProps } from '.';
-import { Input, FormText, FormGroup, Label } from 'reactstrap';
-import styles from './FormikCheck.module.css';
 
 const FormikCheck: React.FC<FormikInputProps> = ({
+  id,
   name,
   label,
   required,
   description,
+  field,
+  form,
+  meta,
   ...props
 }: FormikInputProps) => {
-  const [field] = useField(name);
   return (
-    <FormGroup check>
-      <Label check className={`form-field__label ${styles.nospace}`} size="sm">
-        <Field
-          name={name}
-          as={(formikProps: FieldInputProps<any>) => (
-            <Input
-              bsSize="sm"
-              {...field}
-              {...props}
-              {...formikProps}
-              type="checkbox"
-              checked={formikProps.value}
-            />
-          )}
-        />
-        {label}
-      </Label>
-      <FormText className={`form-field__help ${styles.nospace}`} color="muted">
-        {description}
-      </FormText>
-    </FormGroup>
+    <FieldWrapper
+      id={id}
+      label={label}
+      required={required}
+      description={description}
+      formik={{field, form, meta}}
+      className="has-type-check"
+    >
+      <input
+        {...field}
+        {...props}
+        type="checkbox"
+        checked={field.value}
+      />
+    </FieldWrapper>
   );
 };
 
