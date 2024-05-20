@@ -47,7 +47,7 @@ const FileInputDropZoneFormField: React.FC<FormikFileInputProps> = ({
       formik={{ field, form, meta }}
     >
       <FileInputDropZone
-        id={id}
+        id={id || field.name}
         files={field.value}
         onDrop={onSetFiles}
         onRemoveFile={onRemoveFile}

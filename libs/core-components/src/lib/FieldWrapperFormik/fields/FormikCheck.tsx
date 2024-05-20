@@ -27,7 +27,7 @@ const FormikCheck: React.FC<FormikInputProps> = ({
         {...props}
         type="checkbox"
         checked={field.value}
-        id={id}
+        id={id || field.name}
       />
     </FieldWrapper>
   );

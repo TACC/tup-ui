@@ -16,7 +16,7 @@ const FormikTextarea: React.FC<FormikSelectProps> = ({
 }: FormikSelectProps) => {
   return (
     <FieldWrapper
-      id={id}
+      id={id || field.name}
       label={label}
       required={required}
       description={description}
