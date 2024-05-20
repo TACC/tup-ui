@@ -7,19 +7,31 @@ import styles from './ProjectPublicationForm.module.css';
 const ProjectPublicationFormFields: React.FC = () => {
   return (
     <>
-      <FormikInput name="title" label="Publication Title" required />
-      <FormikInput
+      <Field
+        component={FormikInput}
+        name="title"
+        label="Publication Title"
+        required
+      />
+      <Field
+        component={FormikInput}
         name="authors"
         label="Authors"
         required
         description="Separate multiple authors with a comma"
       />
       <div className={styles['form-row']}>
-        <FormikInput name="yearPublished" label="Year Published" required />
-        <FormikInput name="publisher" label="Publisher" />
-        <FormikInput name="venue" label="Venue" />
+        <Field
+          component={FormikInput}
+          name="yearPublished"
+          label="Year Published"
+          required
+        />
+        <Field component={FormikInput} name="publisher" label="Publisher" />
+        <Field component={FormikInput} name="venue" label="Venue" />
       </div>
-      <FormikInput
+      <Field
+        component={FormikInput}
         name="url"
         label="URL"
         description="Provide a URL for the publication"
