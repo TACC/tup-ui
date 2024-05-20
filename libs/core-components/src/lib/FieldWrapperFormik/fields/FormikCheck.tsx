@@ -19,7 +19,7 @@ const FormikCheck: React.FC<FormikInputProps> = ({
       label={label}
       required={required}
       description={description}
-      formik={{field, form, meta}}
+      formik={{ field, form, meta }}
       className="has-type-check"
     >
       <input

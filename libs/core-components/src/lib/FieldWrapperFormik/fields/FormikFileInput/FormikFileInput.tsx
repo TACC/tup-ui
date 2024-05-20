@@ -12,7 +12,7 @@ interface FormikFileInputProps extends FieldProps {
   description: string;
   maxSizeMessage: string;
   maxSize: number;
-};
+}
 
 const FileInputDropZoneFormField: React.FC<FormikFileInputProps> = ({
   id,
@@ -44,7 +44,7 @@ const FileInputDropZoneFormField: React.FC<FormikFileInputProps> = ({
       label={label}
       required={required}
       description={description}
-      formik={{field, form, meta}}
+      formik={{ field, form, meta }}
     >
       <FileInputDropZone
         id={id}

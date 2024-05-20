@@ -19,7 +19,7 @@ const FormikTextarea: React.FC<FormikTextareaProps> = ({
       label={label}
       required={required}
       description={description}
-      formik={{field, form, meta}}
+      formik={{ field, form, meta }}
     >
       <textarea {...field} {...props} id={id} />
     </FieldWrapper>

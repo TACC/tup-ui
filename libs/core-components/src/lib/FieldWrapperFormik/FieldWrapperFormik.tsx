@@ -20,7 +20,7 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
   description,
   className,
   children,
-  formik: {field, form},
+  formik: { field, form },
 }) => {
   return (
     <div

@@ -5,21 +5,24 @@ export type FormikInputProps = {
   label: string;
   required?: boolean;
   description?: string;
-} & FieldProps & React.InputHTMLAttributes<HTMLInputElement>;
+} & FieldProps &
+  React.InputHTMLAttributes<HTMLInputElement>;
 
 export type FormikTextareaProps = {
   name: string;
   label: string;
   required?: boolean;
   description?: string;
-} & FieldProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+} & FieldProps &
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export type FormikSelectProps = {
   name: string;
   label: string;
   required?: boolean;
   description?: string;
-} & FieldProps & React.SelectHTMLAttributes<HTMLSelectElement>;
+} & FieldProps &
+  React.SelectHTMLAttributes<HTMLSelectElement>;
 
 export { default as FormikInput } from './FormikInput';
 export { default as FormikSelect } from './FormikSelect';
