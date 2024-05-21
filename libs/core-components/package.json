@@ -28,6 +28,7 @@
     "@tacc/core-styles": "^2.25.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "uuid": "^8.3.2",
     "vite-plugin-dts": "^2.3.0",
