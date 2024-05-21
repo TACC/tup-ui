@@ -7,7 +7,11 @@ import {
   useProjectScienceField,
   ProjectEditBody,
 } from '@tacc/tup-hooks';
-import { FormikInput, FormikSelect, FormikTextarea } from '@tacc/core-wrappers';
+import {
+  FormikInput,
+  FormikSelect,
+  FormikTextarea,
+} from '@tacc/core-components';
 import * as Yup from 'yup';
 import { ModalFooter } from 'reactstrap';
 import { Button, SectionMessage } from '@tacc/core-components';

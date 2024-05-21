@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useLocation, Location, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@tacc/tup-hooks';
 import { Formik, Form } from 'formik';
-import { FormikInput } from '@tacc/core-wrappers';
+import { FormikInput } from '@tacc/core-components';
 import { Button } from '@tacc/core-components';
 import styles from './LoginComponent.module.css';
 import { blackLogo } from '../../../assets';
