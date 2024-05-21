@@ -9,30 +9,30 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "build:storbook": "nx build-storybook",
-    "test": "nx test",
-    "prepublishOnly": "npm run build"
-  },
   "homepage": "https://github.com/TACC/tup-ui/libs/core-components",
-  "peerDependencies": {
-    "@nx/vite": "^17.2.8",
-    "@tacc/core-styles": "^2.25.1",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^14.0.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
+  "dependencies": {
     "formik": "^2.2.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-resize-detector": "^7.1.2",
     "react-router-dom": "6.11.2",
     "react-step-wizard": "^5.3.11",
     "react-table": "^7.8.0",
     "reactstrap": "^9.1.5",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@nx/react": "^17.2.8",
+    "@nx/vite": "^17.2.8",
+    "@tacc/core-styles": "^2.25.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@vitejs/plugin-react-swc": "^3.5.0",
     "uuid": "^8.3.2",
     "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-lib-inject-css": "^2.1.1",
     "vite-tsconfig-paths": "^4.2.0"
   },
   "sideEffects": [
@@ -43,8 +43,5 @@
     "@storybook/addon-essentials": "^7.6.19",
     "@storybook/core-server": "^7.6.19",
     "@storybook/react-vite": "^7.6.19"
-  },
-  "devDependencies": {
-    "vite-plugin-lib-inject-css": "^2.1.1"
   }
 }
