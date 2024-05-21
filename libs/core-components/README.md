@@ -30,29 +30,30 @@ The shared components for TACC WMA Workspace Portals & Websites
 
 1. Install with any package manager e.g.
 
-    - `npm install @tacc/core-styles`
-    - `yarn add @tacc/core-styles`
+   - `npm install @tacc/core-styles`
+   - `yarn add @tacc/core-styles`
 
 2. Import component(s) e.g.
 
-    ```ts
-    import { Button } from '@tacc/core-components';
-    ```
+   ```ts
+   import { Button } from '@tacc/core-components';
+   ```
 
-    ```ts
-    import {
-      FormikInput,
-      FormikTextarea,
-      FormikCheck
-    } from '@tacc/core-components';
-    ```
+   ```ts
+   import {
+     FormikInput,
+     FormikTextarea,
+     FormikCheck,
+   } from '@tacc/core-components';
+   ```
 
 3. Use component(s)…
 
-    > **Sorry.** Examples are limited and incomplete:
-    > - [TACC-Cloud/hazmapper#239](https://github.com/TACC-Cloud/hazmapper/pull/239/files)
-    > - [TACC/tup-ui#465](https://github.com/TACC/tup-ui/pull/465/files)
-    > - [TACC/tup-ui@ee5e73b:`/.../Button.stories.tsx`](https://github.com/TACC/tup-ui/blob/ee5e73b/libs/core-components/src/lib/Button/Button.stories.tsx#L26-L37)
+   > **Sorry.** Examples are limited and incomplete:
+   >
+   > - [TACC-Cloud/hazmapper#239](https://github.com/TACC-Cloud/hazmapper/pull/239/files)
+   > - [TACC/tup-ui#465](https://github.com/TACC/tup-ui/pull/465/files)
+   > - [TACC/tup-ui@ee5e73b:`/.../Button.stories.tsx`](https://github.com/TACC/tup-ui/blob/ee5e73b/libs/core-components/src/lib/Button/Button.stories.tsx#L26-L37)
 
 ## Developing
 
@@ -89,9 +90,9 @@ For more commands, see [Commands](#commands).
 
 0. Create or Improve a common component in a TACC repository e.g.
 
-    - https://github.com/TACC/tup-ui
-    - https://github.com/TACC/Core-Portal
-    - https://github.com/TACC-Cloud/hazmapper
+   - https://github.com/TACC/tup-ui
+   - https://github.com/TACC/Core-Portal
+   - https://github.com/TACC-Cloud/hazmapper
 
 1. Put your work in a branch in this repository.
 2. Open a [Pull Request](https://github.com/TACC/tup-ui/pulls).
