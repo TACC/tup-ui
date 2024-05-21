@@ -1,19 +1,22 @@
 import { FormikInput } from '@tacc/core-components';
 import * as Yup from 'yup';
 import { UIWizardStep, useWizardValues, InitialValueGenerator } from '..';
+import { Field } from 'formik';
 
 export const StepOne: React.FC = () => {
   const { extra } = useWizardValues();
   return (
     <div>
       <h2>Step One: Extra value two is {extra.extraTwo}</h2>
-      <FormikInput
+      <Field
+        component={FormikInput}
         name="fieldOne"
         required={true}
         label="Field One"
         description="The first form field"
       />
-      <FormikInput
+      <Field
+        component={FormikInput}
         name="fieldTwo"
         required={false}
         label="Field Two"

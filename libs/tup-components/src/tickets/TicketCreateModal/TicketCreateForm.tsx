@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Formik, Form, FormikHelpers } from 'formik';
+import { Formik, Form, FormikHelpers, Field } from 'formik';
 //import ReCAPTCHA from 'react-google-recaptcha';
 import { useProfile, useTicketCreate } from '@tacc/tup-hooks';
 import {
@@ -90,7 +90,12 @@ export const TicketCreateForm: React.FC = () => {
     >
       {({ isValid }) => (
         <Form className={styles['ticket-create-form']} id="ticket-create-form">
-          <FormikSelect name="category" label="Category" required>
+          <Field
+            component={FormikSelect}
+            name="category"
+            label="Category"
+            required
+          >
             <option value="">Please Choose One</option>
             <option>Allocations</option>
             <option>Running Jobs or Using TACC Resources</option>
@@ -98,8 +103,13 @@ export const TicketCreateForm: React.FC = () => {
             <option>Multi-factor Authentication</option>
             <option>Arecibo Data</option>
             <option>Other</option>
-          </FormikSelect>
-          <FormikSelect name="resource" label="System/Resource" required>
+          </Field>
+          <Field
+            component={FormikSelect}
+            name="resource"
+            label="System/Resource"
+            required
+          >
             <option value="">Please Choose One</option>
             <option>Corral (corral-login.tacc.utexas.edu)</option>
             <option>Corral-Protected(corral-protected.tacc.utexas.edu)</option>
@@ -115,9 +125,16 @@ export const TicketCreateForm: React.FC = () => {
             <option>Cloud and Interactive Computing (Abaco API)</option>
             <option>Cloud and Interactive Computing (JupyterHub)</option>
             <option>Other</option>
-          </FormikSelect>
-          <FormikInput name="subject" label="Subject" required description="" />
-          <FormikTextarea
+          </Field>
+          <Field
+            component={FormikInput}
+            name="subject"
+            label="Subject"
+            required
+            description=""
+          />
+          <Field
+            component={FormikTextarea}
             name="description"
             label="Problem Description"
             rows={4}
@@ -126,7 +143,8 @@ export const TicketCreateForm: React.FC = () => {
                   reports"
           />
 
-          <FormikFileInput
+          <Field
+            component={FormikFileInput}
             name="files"
             label="Attach Files"
             description="Error reports and screenshots can be helpful for diagnostics"
@@ -136,14 +154,16 @@ export const TicketCreateForm: React.FC = () => {
           />
 
           <div className={styles['form-row']}>
-            <FormikInput
+            <Field
+              component={FormikInput}
               name="first_name"
               label="First Name"
               required
               disabled={isAuthenticated}
               description=""
             />
-            <FormikInput
+            <Field
+              component={FormikInput}
               name="last_name"
               label="Last Name"
               required
@@ -152,7 +172,8 @@ export const TicketCreateForm: React.FC = () => {
             />
           </div>
           <div className={styles['form-row']}>
-            <FormikInput
+            <Field
+              component={FormikInput}
               name="email"
               label="Email"
               type="email"
@@ -161,7 +182,8 @@ export const TicketCreateForm: React.FC = () => {
               description=""
             />
 
-            <FormikInput
+            <Field
+              component={FormikInput}
               name="cc"
               label="Cc"
               required={false}

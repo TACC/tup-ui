@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useLocation, Location, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@tacc/tup-hooks';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { FormikInput } from '@tacc/core-components';
 import { Button } from '@tacc/core-components';
 import styles from './LoginComponent.module.css';
@@ -86,7 +86,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   // FAQ: To use inline messaging for required fields (instead of browser):
   //      1. Uncomment this constant definition
   //      2. Pass this constant to <Formik>; validationSchema={validationSchema}
-  //      3. Remove `required` attribute from <FormikInput>'s
+  //      3. Remove `required` attribute from <Field>s
   // const validationSchema = Yup.object({
   //   username: Yup.string().required(),
   //   password: Yup.string().required(),
@@ -116,14 +116,16 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form className="c-form">
           <LoginError status={status} isError={isError} />
-          <FormikInput
+          <Field
+            component={FormikInput}
             name="username"
             label="Username"
             type="text"
             autoComplete="username"
             required
           />
-          <FormikInput
+          <Field
+            component={FormikInput}
             name="password"
             label="Password"
             type="password"
