@@ -9,13 +9,6 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "build:storbook": "nx build-storybook",
-    "test": "nx test",
-    "prepublishOnly": "npm run build"
-  },
   "homepage": "https://github.com/TACC/tup-ui/libs/core-components",
   "dependencies": {
     "formik": "^2.2.9",

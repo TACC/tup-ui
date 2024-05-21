@@ -58,10 +58,10 @@ Set up a new local CMS instance.
 
 The components are [React components](https://react.dev/learn) that should be [written in TypeScript](https://react.dev/learn/typescript#typescript-with-react-components).
 
-| command         | task               | service                       |
-| --------------- | ------------------ | ----------------------------- |
-| `npm test`      | execute unit tests | [Vitest](https://vitest.dev/) |
-| `npm run build` | build components   | [Vite](https://vitejs.dev/)   |
+| command                        | task               | service                       |
+| ------------------------------ | ------------------ | ----------------------------- |
+| `npx nx test core-components`  | execute unit tests | [Vitest](https://vitest.dev/) |
+| `npx nx build core-components` | build components   | [Vite](https://vitejs.dev/)   |
 
 ## Contributing
 
