@@ -1,7 +1,8 @@
 <script type="module" id="js-prevent-ugly-urls-tup-715">
     const links = document.querySelectorAll('body > :is(header, main, footer) a[target="_blank"]');
 
-    [ ...links ].forEach( function tup715(link) {
+    /* To revert URL of links that Google changes on hover */
+    [ ...links ].forEach( function restorLinkHrefIfChangedOnHover(link) {
         const isTACC = document.location.host.includes('tacc.utexas.edu');
 
         if ( isTACC ) {
@@ -12,7 +13,6 @@
                 const originalHrefVal = link.getAttribute('data-original-href');
 
                 currentHrefVal = link.getAttribute('href');
-
                 if ( currentHrefVal !== originalHrefVal ) {
                     link.setAttribute('href', originalHrefVal );
                 }
