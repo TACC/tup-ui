@@ -1,7 +1,8 @@
 <script type="module" id="js-prevent-ugly-urls-tup-715">
     const links = document.querySelectorAll('body > :is(header, main, footer) a[target="_blank"]');
 
-    /* To revert URL of links that Google changes on hover */
+    /* HACK: To revert URL of links that Google changes on hover */
+    /* FAQ: Google Analytics settings interpret subdomain links as URLs to adjust so it can track navigation */
     [ ...links ].forEach( function restorLinkHrefIfChangedOnHover(link) {
         const isTACC = document.location.host.includes('tacc.utexas.edu');
 
