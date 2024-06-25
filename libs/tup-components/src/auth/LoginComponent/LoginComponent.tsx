@@ -29,7 +29,15 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
       <div className="c-form__errors">
         Sorry, we can't find an account matching those credentials.
         <br />
-        Please try again or <a href="/account/create">create a new account</a>.
+        Please try again or{' '}
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://accounts.tacc.utexas.edu/register"
+        >
+          create a new account
+        </a>
+        .
       </div>
     );
   }
