@@ -1,18 +1,16 @@
-{% extends "fullwidth.html" %}
+{# @var title_tag, subtitle_tag, is_for_short_list #}
 {% load i18n %}
 
-{% block content %}
-{% include 'djangocms_blog/tacc/layout-choice-form.html' with list_selector=".c-news--list" %}
-<div class="container">
-  {% include "nav_cms_breadcrumbs.html" %}
-  <section class="c-news c-news--list">
-    <h1 class="c-news__name">{% trans "User Updates" %}</h1>
-    {% include './includes/content_styles.html' %}
-
-    {% with title_tag="h3" subtitle_tag="h4" %}
-    {% include './includes/list.html' %}
-    {% endwith %}
-
-  </section>
-</div>
-{% endblock content %}
+{% if articles %}
+  {% for article in articles %}
+    {% if is_for_short_list %}
+      {% include "./includes/list_item__short.html" %}
+    {% else %}
+      {% include "./includes/list_item__full.html" %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <article>
+    <p>{% trans "No recent updates found." %}</p>
+  </article>
+{% endif %}
