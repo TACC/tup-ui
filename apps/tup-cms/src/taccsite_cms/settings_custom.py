@@ -143,13 +143,13 @@ PORTAL_IS_TACC_CORE_PORTAL = False
 PORTAL_HAS_LOGIN = True
 PORTAL_HAS_SEARCH = True
 
+PORTAL_NAV_WIDTH = 'lg'
+
 ########################
 # TACC: SOCIAL MEDIA
 ########################
 
 PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'email']
-
-PORTAL_NAV_WIDTH = 'lg'
 
 ########################
 # DJANGOCMS_BLOG
