@@ -140,15 +140,15 @@ LOGIN_URL = "/portal/login"
 # TACC: PORTAL
 ########################
 
-INCLUDES_CORE_PORTAL = False
-INCLUDES_PORTAL_NAV = True
-INCLUDES_SEARCH_BAR = True
+PORTAL_IS_TACC_CORE_PORTAL = False
+PORTAL_HAS_LOGIN = True
+PORTAL_HAS_SEARCH = True
 
 ########################
 # TACC: SOCIAL MEDIA
 ########################
 
-TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'email']
+PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'email']
 
 ########################
 # DJANGOCMS_BLOG
@@ -200,10 +200,10 @@ BLOG_ENABLE_COMMENTS = False
 # DJANGOCMS_BLOG: TACC
 ########################
 
-TACC_BLOG_SHOW_CATEGORIES = True
-TACC_BLOG_SHOW_TAGS = False
-TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
-TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
+PORTAL_BLOG_SHOW_CATEGORIES = True
+PORTAL_BLOG_SHOW_TAGS = False
+PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
+PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'external'
 
 
 ########################
