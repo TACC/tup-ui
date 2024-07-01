@@ -4,7 +4,7 @@
     /* HACK: To revert URL of links that Google changes on hover */
     /* FAQ: Google Analytics settings interpret subdomain links as URLs to adjust so it can track navigation */
     [ ...links ].forEach( function restoreLinkHrefChangedOnHover(link) {
-        const isTACC = document.location.host.includes('tacc.utexas.edu');
+        const isTACC = link.host.includes('tacc.utexas.edu');
 
         if ( isTACC ) {
             let currentHrefVal = link.getAttribute('href');
