@@ -60,18 +60,32 @@ const CreateAccountLink = () => (
 );
 
 const AccountHelpLink = () => (
-  <a href="/about/help/" target="_blank" rel="noreferrer">
+  <a
+    href="https://accounts.tacc.utexas.edu/login_support"
+    target="_blank"
+    rel="noreferrer"
+  >
     Account Help
   </a>
 );
 
-const ResetPasswordLink = () => (
+const ForgotPasswordLink = () => (
   <a
     href="https://accounts.tacc.utexas.edu/forgot_password"
     target="_blank"
     rel="noreferrer"
   >
-    Reset Password
+    Forgot Password
+  </a>
+);
+
+const ForgotUsernameLink = () => (
+  <a
+    href="https://accounts.tacc.utexas.edu/forgot_username"
+    target="_blank"
+    rel="noreferrer"
+  >
+    Recover Username
   </a>
 );
 
@@ -153,8 +167,10 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       </Formik>
       <div className="c-form__nav">
         <p>Having trouble logging in?</p>
-        <ResetPasswordLink />
+        {/* CAUTION: Do not exceed three links. If more needed, ask design. */}
         <AccountHelpLink />
+        <ForgotPasswordLink />
+        <ForgotUsernameLink />
       </div>
     </div>
   );
