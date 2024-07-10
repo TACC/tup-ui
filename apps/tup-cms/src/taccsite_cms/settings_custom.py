@@ -172,7 +172,7 @@ PORTAL_CONF_EMAIL_HTML = """
 </p>
 <p>
     <ul>
-        <li>For training registration requests, you will be contacted within one week to confirm registration. For additional help please contact Lauren Bruce (lbruce@tacc.utexas.edu).</li>
+        <li>For training registration requests, you will be contacted within one week to confirm registration. For additional help please contact Lauren Bruce (<a href="mailto:lbruce@tacc.utexas.edu">lbruce@tacc.utexas.edu</a>).</li>
         <li>For tour requests, a tour coordinator will contact you within two business days to complete your reservation. For additional assistance please reach out to info@tacc.utexas.edu.</li>
         <li>For all other issues, a TACC support person will be in contact shortly. For additional assistance please reach out to info@tacc.utexas.edu.</li>
     </ul>
