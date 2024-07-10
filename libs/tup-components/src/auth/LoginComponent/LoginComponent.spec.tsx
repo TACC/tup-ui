@@ -93,7 +93,7 @@ describe('LoginComponent', () => {
       ).toEqual(1)
     );
   });
-  it('should link to TAS Create Account if Create Account clicked', async () => {
+  it('should link to TAM', async () => {
     const { getByText, getAllByRole } = testRender(<LoginComponent />);
     await waitFor(() => getAllByRole('link'));
     const links: HTMLElement[] = getAllByRole('link');
@@ -101,11 +101,17 @@ describe('LoginComponent', () => {
     expect(links[0].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/register'
     );
-    expect(getByText('Reset Password')).toBeDefined();
+    expect(getByText('Account Help')).toBeDefined();
     expect(links[1].getAttribute('href')).toEqual(
+      'https://accounts.tacc.utexas.edu/login_support'
+    );
+    expect(getByText('Forgot Password')).toBeDefined();
+    expect(links[2].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/forgot_password'
     );
-    expect(getByText('Account Help')).toBeDefined();
-    expect(links[2].getAttribute('href')).toEqual('/about/help/');
+    expect(getByText('Recover Username')).toBeDefined();
+    expect(links[3].getAttribute('href')).toEqual(
+      'https://accounts.tacc.utexas.edu/forgot_username'
+    );
   });
 });
