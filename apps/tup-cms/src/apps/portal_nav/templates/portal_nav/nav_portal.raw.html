@@ -28,24 +28,24 @@
     aria-haspopup="true"
     aria-expanded="false"
   >
-    <i class="icon icon-user"></i>
+    <i class="icon icon-user" role="presentation"></i>
     <span>{{ user.get_username }}</span>
     <span class="sr-only">Toggle Dropdown</span>
   </a>
   <nav class="dropdown-menu dropdown-menu-right">
     <a class="dropdown-item" href="/portal">
-      <i class="icon icon-dashboard"></i> My Dashboard
+      <i class="icon icon-dashboard" role="presentation"></i> My Dashboard
     </a>
     <a class="dropdown-item" href="/portal/account">
-      <i class="icon icon-user"></i> Manage Account
+      <i class="icon icon-user" role="presentation"></i> Manage Account
     </a>
     {% if show_impersonation %}
     <a class="dropdown-item" href="/portal/impersonation">
-      <i class="icon icon-user"></i> Impersonate User
+      <i class="icon icon-user" role="presentation"></i> Impersonate User
     </a>
     {% endif %}
     <a class="dropdown-item" href="/portal/logout">
-      <i class="icon icon-exit"></i> Log Out
+      <i class="icon icon-exit" role="presentation"></i> Log Out
     </a>
   </nav>
 </li>
