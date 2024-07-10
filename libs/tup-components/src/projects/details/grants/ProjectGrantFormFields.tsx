@@ -5,6 +5,7 @@ import { FormikInput, FormikSelect } from '@tacc/core-components';
 import { LoadingSpinner } from '@tacc/core-components';
 
 import styles from './ProjectGrantForm.module.css';
+import { Field } from 'formik';
 
 const ProjectGrantFormFields: React.FC = () => {
   const scienceFields = useProjectScienceField().data ?? [];
@@ -12,33 +13,58 @@ const ProjectGrantFormFields: React.FC = () => {
   return (
     <>
       <div className={styles['title-row']}>
-        <FormikInput name="title" label="Title" required />
-        <FormikInput name="grantNumber" label="Grant Number" />
+        <Field component={FormikInput} name="title" label="Title" required />
+        <Field
+          component={FormikInput}
+          name="grantNumber"
+          label="Grant Number"
+        />
       </div>
-      <FormikInput name="piName" label="PI Name" required />
+      <Field component={FormikInput} name="piName" label="PI Name" required />
 
-      <FormikSelect label="Field of Science" name="fieldId" required>
+      <Field
+        component={FormikSelect}
+        label="Field of Science"
+        name="fieldId"
+        required
+      >
         {scienceFields.map((field) => (
           <option key={field.id} value={field.id}>
             {[...new Array(field.depth)].map((_) => '--- ')}
             {field.id === 1 ? 'Select Field of Science' : field.name}
           </option>
         ))}
-      </FormikSelect>
-      <FormikInput name="fundingAgency" label="Funding Agency" />
+      </Field>
+      <Field
+        component={FormikInput}
+        name="fundingAgency"
+        label="Funding Agency"
+      />
 
-      <FormikInput name="awardNumber" label="Award Number" />
-      <FormikInput
+      <Field component={FormikInput} name="awardNumber" label="Award Number" />
+      <Field
+        component={FormikInput}
         name="awardAmount"
         label="Award Amount"
         description="Please provide a number value; do not use commas.
                             This information will not be displayed publicly"
       />
       <div className={styles['date-row']}>
-        <FormikInput name="start" label="Start Date" type="date" />
-        <FormikInput name="end" label="End Date" type="date" />
+        <Field
+          component={FormikInput}
+          name="start"
+          label="Start Date"
+          type="date"
+        />
+        <Field
+          component={FormikInput}
+          name="end"
+          label="End Date"
+          type="date"
+        />
       </div>
-      <FormikInput
+      <Field
+        component={FormikInput}
         name="nsfStatusCode"
         label="NSF Status Code"
         description="Typical status codes are: Pending, Recommended,
