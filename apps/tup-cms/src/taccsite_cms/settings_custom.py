@@ -158,12 +158,14 @@ PORTAL_SHOULD_SEND_CONF_EMAIL = True
 PORTAL_CONF_EMAIL_TEXT = """
 Greetings,
 
-You have successfully submitted a form on the {site_name} website. Thank you for your submission.
+Thank you for reaching out to TACC and completing the {form_name}.
 
-Business hours are Monday - Friday, 8AM to 5PM Central. We will respond to your submission according to the information provided on the form webpage.
+- For training registration requests, you will be contacted within one week to confirm registration. For additional help please contact Lauren Bruce (lbruce@tacc.utexas.edu).
+- For tour requests, a tour coordinator will contact you within two business days to complete your reservation. For additional assistance please reach out to info@tacc.utexas.edu.
+- For all other issues, a TACC support person will be in contact shortly. For additional assistance please reach out to info@tacc.utexas.edu.
 
-Sincerely,
-{site_name} Communications
+Thank you for your time,
+TACC Support
 """
 PORTAL_CONF_EMAIL_HTML = """
 <p>Greetings,</p>
