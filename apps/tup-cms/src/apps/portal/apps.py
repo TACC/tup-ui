@@ -4,6 +4,7 @@ import requests
 from django.dispatch import receiver
 from djangocms_forms.signals import form_submission
 from django.conf import settings
+from django.core.mail import send_mail
 
 
 logger = logging.getLogger(f"portal.{__name__}")
@@ -42,10 +43,38 @@ def submit_ticket(form_data):
     requests.post(f"{service_url}/tickets/noauth", data=ticket_data, files=[])
 
 
+def send_confirmation_email(form_name, form_data):
+    email_body = f"""
+            <p>Greetings,</p>
+            <p>
+                Thank you for reaching out to TACC and completing the {form_name}.
+            </p>
+            <p>
+                <ul>
+                    <li>For training registration requests, you will be contacted within one week to confirm registration. For additional help please contact Lauren Bruce (lbruce@tacc.utexas.edu).</li>
+                    <li>For tour requests, a tour coordinator will contact you within two business days to complete your reservation. For additional assistance please reach out to info@tacc.utexas.edu.</li>
+                    <li>For all other issues, a TACC support person will be in contact shortly. For additional assistance please reach out to info@tacc.utexas.edu.</li>
+                </ul>
+            </p>
+            <p>
+            Thank you for your time,<br>
+            TACC Support
+            </p>
+            """
+    send_mail(
+    f"TACC Form Submission Received: {form_name}",
+    email_body,
+    "no-reply@tacc.utexas.edu",
+    [form_data["email"]],
+    html_message=email_body)
+
+
 def callback(form, cleaned_data, **kwargs):
     logger.debug(f"received submission from {form.name}")
     if form.name == 'rt-ticket-form':
         submit_ticket(cleaned_data)
+    elif ('email' in cleaned_data):
+        send_confirmation_email(form.name, cleaned_data)
 
 
 class PortalConfig(AppConfig):

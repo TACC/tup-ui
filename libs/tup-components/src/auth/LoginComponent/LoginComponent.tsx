@@ -29,7 +29,15 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
       <div className="c-form__errors">
         Sorry, we can't find an account matching those credentials.
         <br />
-        Please try again or <a href="/account/create">create a new account</a>.
+        Please try again or{' '}
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://accounts.tacc.utexas.edu/register"
+        >
+          create a new account
+        </a>
+        .
       </div>
     );
   }
@@ -52,18 +60,32 @@ const CreateAccountLink = () => (
 );
 
 const AccountHelpLink = () => (
-  <a href="/about/help/" target="_blank" rel="noreferrer">
+  <a
+    href="https://accounts.tacc.utexas.edu/login_support"
+    target="_blank"
+    rel="noreferrer"
+  >
     Account Help
   </a>
 );
 
-const ResetPasswordLink = () => (
+const ForgotPasswordLink = () => (
   <a
     href="https://accounts.tacc.utexas.edu/forgot_password"
     target="_blank"
     rel="noreferrer"
   >
-    Reset Password
+    Forgot Password
+  </a>
+);
+
+const ForgotUsernameLink = () => (
+  <a
+    href="https://accounts.tacc.utexas.edu/forgot_username"
+    target="_blank"
+    rel="noreferrer"
+  >
+    Recover Username
   </a>
 );
 
@@ -107,18 +129,18 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const status = (error as AxiosError)?.response?.status;
 
   return (
-    <div className={`c-form c-form--login ${styles.root} ${className}`}>
+    <div className={`c-form--login ${styles.root} ${className}`}>
       <h3 className="c-form__title">
         <img src={blackLogo} alt="TACC Logo" />
         <span>Log In</span>
       </h3>
       <p className="c-form__desc">to continue to the TACC User Portal</p>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form>
+        <Form className="c-form">
           <LoginError status={status} isError={isError} />
           <FormikInput
             name="username"
-            label="User Name"
+            label="Username"
             type="text"
             autoComplete="username"
             required
@@ -145,8 +167,10 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       </Formik>
       <div className="c-form__nav">
         <p>Having trouble logging in?</p>
-        <ResetPasswordLink />
+        {/* CAUTION: Do not exceed three links. If more needed, ask design. */}
         <AccountHelpLink />
+        <ForgotPasswordLink />
+        <ForgotUsernameLink />
       </div>
     </div>
   );

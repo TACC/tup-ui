@@ -5,115 +5,96 @@ import { AccountMfa } from './ManageAccountMfa';
 import styles from './ManageAccount.module.css';
 
 const ManageUser = () => (
-  <>
-    <div className={styles['tap-header']}>
-      <strong>Edit User Information</strong>
-    </div>
-    <span className={styles['tap-description']}>
-      Your user account can be managed on the TACC Account Management (TAM)
-      portal.
-    </span>
+  <article className={styles['tap-feature']}>
+    <h2 className={styles['tap-header']}>Account Managment</h2>
+    <p className={styles['tap-description']}>
+      Account details are mananged by the TACC Account Management portal. Follow
+      the links below to:
+    </p>
     <a
       href="https://accounts.tacc.utexas.edu/profile"
       target="_blank"
       rel="noreferrer"
-      className={styles['tap-href']}
+      className={styles['tap-action']}
     >
-      <Button className={styles['tap-button']} type="primary">
-        Edit User Profile
-      </Button>
+      <Button type="secondary">Edit User Profile</Button>
     </a>
-  </>
-);
-
-const ManageDNs = () => (
-  <>
-    <div className={styles['tap-header']}>
-      <strong>Distinguished Names</strong>
-    </div>
-    <span className={styles['tap-description']}>
-      DNs are managed on the TACC Account Management (TAM) portal.
-    </span>
-    <a
-      href="https://accounts.tacc.utexas.edu/certificates"
-      target="_blank"
-      rel="noreferrer"
-      className={styles['tap-href']}
-    >
-      <Button className={styles['tap-button']} type="primary">
-        Manage DNs
-      </Button>
-    </a>
-  </>
-);
-
-const ManagePassword = () => (
-  <>
-    <div className={styles['tap-header']}>
-      <strong>Password</strong>
-    </div>
-    <span className={styles['tap-description']}>
-      Passwords are managed on the TACC Account Management (TAM) portal.
-    </span>
     <a
       href="https://accounts.tacc.utexas.edu/change_password"
       target="_blank"
       rel="noreferrer"
-      className={styles['tap-href']}
+      className={styles['tap-action']}
     >
-      <Button className={styles['tap-button']} type="primary">
-        Change Password
-      </Button>
+      <Button type="secondary">Change Password</Button>
     </a>
-  </>
+  </article>
+);
+
+const ManageDNs = () => (
+  <article className={styles['tap-feature']}>
+    <h2 className={styles['tap-header']}>
+      <dfn id="dn">Distinguished Name</dfn> (<abbr>DN</abbr>) Managment
+    </h2>
+    <p className={styles['tap-description']}>
+      Generate a <abbr>DN</abbr> to permit you to move data between machines.{' '}
+      <a
+        href="https://docs.tacc.utexas.edu/basics/datatransfer/#step1"
+        rel="noreferrer"
+        target="_blank"
+      >
+        Learn more about DNs.
+      </a>
+    </p>
+    <a
+      href="https://accounts.tacc.utexas.edu/certificates"
+      target="_blank"
+      rel="noreferrer"
+      className={styles['tap-action']}
+    >
+      <Button type="secondary">Manage DNs</Button>
+    </a>
+  </article>
 );
 
 const ManageUpload = () => (
-  <>
-    <div className={styles['tap-header']}>
-      <strong>Secure Upload</strong>
-    </div>
-    <span className={styles['tap-description']}>
-      Upload documents securely through Box.
-    </span>
+  <article className={styles['tap-feature']}>
+    <h2 className={styles['tap-header']}>Identity Management</h2>
+    <p className={styles['tap-description']}>
+      To confirm eligibility for access to a TACC account, you may be requested
+      to upload identifying documents.
+    </p>
     <a
       href="https://tacc.utexas.edu/secure-upload"
       target="_blank"
       rel="noreferrer"
-      className={styles['tap-href']}
+      className={styles['tap-action']}
     >
-      <Button className={styles['tap-button']} type="primary">
-        Secure File Upload
-      </Button>
+      <Button type="secondary">Secure File Upload</Button>
     </a>
-  </>
+  </article>
 );
 
 const ManageAccount: React.FC = () => {
   const { data } = useProfile();
   return (
-    <section>
-      <article className={styles['account-layout']}>
-        <SectionHeader className={styles['account-header']} isNestedHeader>
-          <Icon name="user" />
-          <span>
-            {data?.firstName} {data?.lastName}
-          </span>
-        </SectionHeader>
-        <div className={styles['account-body']}>
-          <section>
-            <ManageUser />
-            <ManagePassword />
-            <span />
-            <ManageDNs />
-            <ManageUpload />
-          </section>
-          <span className={styles['tap-separator']} />
-          <section>
-            <AccountMfa />
-          </section>
-        </div>
-      </article>
+    <section className={styles['account-layout']}>
+      <SectionHeader className={styles['account-header']} isNestedHeader>
+        <Icon name="user" />
+        <span>
+          {data?.firstName} {data?.lastName}
+        </span>
+      </SectionHeader>
+      <div className={styles['account-body']}>
+        <section>
+          <ManageUser />
+          <ManageDNs />
+          <ManageUpload />
+        </section>
+        <span className={styles['tap-separator']} />
+        <section>
+          <AccountMfa />
+        </section>
+      </div>
     </section>
   );
 };

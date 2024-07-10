@@ -33,7 +33,9 @@
 
 .ticket-reply-submission {
   display: flex;
+  flex-direction: column;
   justify-content: right;
+  align-items: end;
 }
 
 .ticket-model-content {
@@ -130,4 +132,5 @@
 .ticket-reply-submission button {
   padding-left: 5rem;
   padding-right: 5rem;
+  margin-left: 1rem;
 }

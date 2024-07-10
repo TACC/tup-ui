@@ -1,11 +1,7 @@
-/* TODO: When integrated into Core-Styles, uncomment this *//*
-@import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
-*/
-/*
-@import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
-@import url("@tacc/core-styles/src/lib/_imports/tools/x-figure.css");
-@import url("@tacc/core-styles/src/lib/_imports/tools/x-blockquote.css");
-*/
+/* TODO: When integrated into Core-Styles, import these */
+/* @tacc/core-styles/src/lib/_imports/objects/o-offset-content.css */
+/* @tacc/core-styles/src/lib/_imports/tools/x-figure.css */
+/* @tacc/core-styles/src/lib/_imports/tools/x-blockquote.css */
 
 
 

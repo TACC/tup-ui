@@ -9,16 +9,14 @@ from django.utils.translation import gettext_lazy as _
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ########################
-# CORE CMS SETTINGS
-# FAQ: These are in future versions of Core-CMS
+# DJANGO
 ########################
 
-# NOTE: Already in Core-CMS v3.12.0-beta.2
-# whether the session cookie should be secure (https:// only)
 SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_AGE = 14400
 
 ########################
-# DJANGO CMS SETTINGS
+# STORAGE
 ########################
 
 DATABASES = {
@@ -32,7 +30,18 @@ DATABASES = {
     }
 }
 
-SESSION_COOKIE_AGE = 14400
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
+    },
+}
+
+########################
+# DJANGO_CMS
+########################
 
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
@@ -53,8 +62,16 @@ CMS_CACHE_DURATIONS = {
     'permissions': 0,
 }
 
+########################
+# DJANGO_RECAPTCHA
+########################
+
 RECAPTCHA_PRIVATE_KEY = ''
 RECAPTCHA_PUBLIC_KEY = ''
+
+########################
+# ELASTICSEARCH
+########################
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
 
@@ -70,6 +87,8 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: BRANDING
 ########################
 
+# NOTE: Variables NSF_BRANDING, TACC_BRANDING, and UTEXAS_BRANDING are duplicated from Core-CMS cuz current infrastructure lacks ability to reference default values.
+
 UTEXAS_BRANDING = [
     "utexas",
     "site_cms/img/org_logos/utaustin-white.png",
@@ -81,18 +100,7 @@ UTEXAS_BRANDING = [
     "True"
 ]
 
-NSF_BRANDING = [
-    "nsf",
-    "site_cms/img/org_logos/nsf-white.png",
-    "branding-nsf",
-    "https://www.nsf.gov/",
-    "_blank",
-    "NSF Logo",
-    "anonymous",
-    "True"
-]
-
-BRANDING = [ NSF_BRANDING, UTEXAS_BRANDING ]
+BRANDING = [ UTEXAS_BRANDING ]
 
 ########################
 # TACC: LOGOS
@@ -116,10 +124,15 @@ LOGO = [
 SEARCH_QUERY_PARAM_NAME = 'q'
 
 ########################
-# DJANGO
+# DJANGO: AUTH
 ########################
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'apps.portal.backend.TupServicesBackend']
+
+########################
+# TACC: AUTH
+########################
+
 TUP_SERVICES_URL = "https://tup-services.tacc.utexas.edu"
 LOGIN_URL = "/portal/login"
 
@@ -132,7 +145,13 @@ INCLUDES_PORTAL_NAV = True
 INCLUDES_SEARCH_BAR = True
 
 ########################
-# TACC: NEWS/BLOG
+# TACC: SOCIAL MEDIA
+########################
+
+TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'email']
+
+########################
+# DJANGOCMS_BLOG
 ########################
 
 from taccsite_cms.settings import INSTALLED_APPS
@@ -177,11 +196,15 @@ BLOG_AUTO_NAMESPACE = 'News'
 # Miscellaneous settings
 BLOG_ENABLE_COMMENTS = False
 
-# TACC settings
+########################
+# DJANGOCMS_BLOG: TACC
+########################
+
 TACC_BLOG_SHOW_CATEGORIES = True
 TACC_BLOG_SHOW_TAGS = False
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
+
 
 ########################
 # TACC: CORE STYLES
@@ -190,12 +213,25 @@ TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
 TACC_CORE_STYLES_VERSION = 2
 
 ########################
+# TACC: STAFF PROFILE
+########################
+
+TACC_STAFF_PROFILE_POST_NOMIALS_EXCLUSION_LIST = ["Jr.", "Sr.", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+
+
+########################
 # PLUGIN SETTINGS
 ########################
 
 # https://github.com/django-cms/django-filer/blob/2.0.2/docs/permissions.rst
 FILER_ENABLE_PERMISSIONS = True
 
+# https://github.com/django-cms/djangocms-text-ckeditor
+CKEDITOR_SETTINGS = {
+    'autoParagraph': True, # Core-CMS had set this to False
+    'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
+    'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
+}
 
 # DJANGOCMS_ICON SETTINGS
 # https://github.com/django-cms/djangocms-icon
