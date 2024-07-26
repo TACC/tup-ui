@@ -44,14 +44,15 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
   if (status === 451) {
     return (
       <div className="c-form__errors">
-        Your account is suspended.{' '}
+        Your account has been suspended. Please{' '}
         <a
           rel="noopener noreferrer"
           target="_blank"
           href="https://accounts.tacc.utexas.edu/login_support"
         >
-          Request account support.
+          request account support
         </a>
+        .
       </div>
     );
   }
