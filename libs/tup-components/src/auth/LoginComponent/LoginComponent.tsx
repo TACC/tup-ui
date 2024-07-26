@@ -44,8 +44,7 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
   if (status === 451) {
     return (
       <div className="c-form__errors">
-        Your account is suspended.
-        <br />
+        Your account is suspended.{' '}
         <a
           rel="noopener noreferrer"
           target="_blank"
