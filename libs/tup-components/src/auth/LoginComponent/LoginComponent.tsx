@@ -41,6 +41,23 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
       </div>
     );
   }
+  if (status === 451) {
+    return (
+      <div className="c-form__errors">
+        Sorry, you're account is currently unavailable.
+        <br />
+        Please try again or{' '}
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://accounts.tacc.utexas.edu/login_support"
+        >
+          check your account status
+        </a>
+        .
+      </div>
+    );
+  }
   return (
     <div className="c-form__errors">
       Sorry. Something went wrong while trying to log in. Please try again
