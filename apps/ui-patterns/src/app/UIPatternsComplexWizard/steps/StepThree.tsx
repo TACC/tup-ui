@@ -2,7 +2,7 @@ import React from 'react';
 import { FormGroup } from 'reactstrap';
 import { Collapse, Button } from '@tacc/core-components';
 import { FieldArray, useFormikContext, FieldArrayRenderProps } from 'formik';
-import { FormikInput, FormikCheck } from '@tacc/core-wrappers';
+import { FormikInput, FormikCheck } from '@tacc/core-components';
 import * as Yup from 'yup';
 import fieldArrayStyles from './FieldArray.module.css';
 import {

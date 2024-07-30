@@ -1,5 +1,5 @@
 import React from 'react';
-import { QueryNavItem } from '@tacc/core-wrappers';
+import { QueryNavItem } from '@tacc/core-components';
 import { useSystemMonitor } from '@tacc/tup-hooks';
 import { InlineMessage, LoadingSpinner } from '@tacc/core-components';
 import { SystemDetailProps } from '..';
