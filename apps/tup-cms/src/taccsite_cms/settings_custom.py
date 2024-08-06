@@ -151,6 +151,41 @@ INCLUDES_SEARCH_BAR = True
 TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'email']
 
 ########################
+# TACC: EMAIL
+########################
+
+PORTAL_SHOULD_SEND_CONF_EMAIL = True
+PORTAL_CONF_EMAIL_TEXT = """
+Greetings,
+
+Thank you for reaching out to TACC and completing the {form_name}.
+
+- For training registration requests, you will be contacted within one week to confirm registration. For additional help please contact Lauren Bruce (lbruce@tacc.utexas.edu).
+- For tour requests, a tour coordinator will contact you within two business days to complete your reservation. For additional assistance please reach out to info@tacc.utexas.edu.
+- For all other issues, a TACC support person will be in contact shortly. For additional assistance please reach out to info@tacc.utexas.edu.
+
+Thank you for your time,
+TACC Support
+"""
+PORTAL_CONF_EMAIL_HTML = """
+<p>Greetings,</p>
+<p>
+    Thank you for reaching out to TACC and completing the {form_name}.
+</p>
+<p>
+    <ul>
+        <li>For training registration requests, you will be contacted within one week to confirm registration. For additional help please contact Lauren Bruce (<a href="mailto:lbruce@tacc.utexas.edu">lbruce@tacc.utexas.edu</a>).</li>
+        <li>For tour requests, a tour coordinator will contact you within two business days to complete your reservation. For additional assistance please reach out to <a href="mailto:info@tacc.utexas.edu">info@tacc.utexas.edu</a>.</li>
+        <li>For all other issues, a TACC support person will be in contact shortly. For additional assistance please reach out to <a href="mailto:info@tacc.utexas.edu">info@tacc.utexas.edu</a>.</li>
+    </ul>
+</p>
+<p>
+Thank you for your time,<br>
+TACC Support
+</p>
+"""
+
+########################
 # DJANGOCMS_BLOG
 ########################
 
