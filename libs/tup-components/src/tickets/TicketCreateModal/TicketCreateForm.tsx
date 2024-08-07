@@ -107,8 +107,8 @@ export const TicketCreateForm: React.FC = () => {
             <option>Jetstream(jetstream.tacc.utexas.edu)</option>
             <option>Lonestar6(lonestar6.tacc.utexas.edu)</option>
             <option>Ranch(ranch.tacc.utexas.edu)</option>
-            <option>Stampede2(stampede2.tacc.utexas.edu)</option>
             <option>Stampede3(stampede3.tacc.utexas.edu)</option>
+            <option>Vista(vista.tacc.utexas.edu)</option>
             <option>Vislab(stallion.tacc.utexas.edu)</option>
             <option>Cyclone(cyclone.tacc.utexas.edu)</option>
             <option>Cloud and Interactive Computing (Agave API)</option>
