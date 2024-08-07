@@ -87,7 +87,6 @@ const ManageAccount: React.FC = () => {
       <div className={styles['account-body']}>
         <section>
           <ManageUser />
-          <ManageDNs />
           <ManageUpload />
         </section>
         <span className={styles['tap-separator']} />
