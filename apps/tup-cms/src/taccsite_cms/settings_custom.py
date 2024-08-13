@@ -205,6 +205,7 @@ TACC_BLOG_SHOW_TAGS = False
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
 
+TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
 
 ########################
 # TACC: CORE STYLES
