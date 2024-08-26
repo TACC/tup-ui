@@ -9,7 +9,7 @@ RUN npx nx build tup-cms-react
 
 # TACC/Core-CMS v4.15.0 candidate
 # FROM taccwma/core-cms:enhance-CMD-182-design-tokens
-FROM taccwma/core-cms:cd07e38f
+FROM taccwma/core-cms:ce5c3887
 
 WORKDIR /code
 
