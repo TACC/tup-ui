@@ -1,15 +1,4 @@
 <style id="css-button-color-in-dark-contexts">
-/* To ensure light context colors are still AFTER dark-context colors */
-/* FAQ: Copied from the 2nd ruleset of `dist/settings/color--demo.css` */
-/* https://github.com/TACC/Core-Styles/blob/enhance/CMD-182-design-tokens/dist/settings/color--demo.css */
-:is(:where(:is(.c-recognition--style-dark, :is(.o-section--style-dark, .section--dark)) :is(.c-recognition--style-light, :is(.o-section--style-muted, .section--muted), :is(.o-section--style-light, .section--dark), :is(.c-card--standard, .card--standard), :is(.c-card--standard-1, .c-card--standard-2, .c-card--standard-3), :is(.c-card--plain, .card--plain, [class*=card--plain-])))) {
-    --global-color-accent--xx-light: #f3faff;
-    --global-color-accent--x-light: #d2e4f0;
-    --global-color-accent--light: #b0cfe5;
-    --global-color-accent--normal: #78a5c3;
-    --global-color-accent--dark: #53809d;
-    --global-color-accent--x-dark: #204c68;
-    --global-color-accent--xx-dark: #003049;
-    --global-color-accent--xxx-dark: #000
-}
+/* Not necessary since Core-Styles v2.32.0 */
+/* https://github.com/TACC/Core-Styles/pull/372 */
 </style>
