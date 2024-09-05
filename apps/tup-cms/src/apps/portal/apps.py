@@ -64,7 +64,7 @@ def send_confirmation_email(form_name, form_data):
     send_mail(
     f"TACC Form Submission Received: {form_name}",
     email_body,
-    "no-reply@tacc.utexas.edu",
+    settings.DEFAULT_FROM_EMAIL,
     [form_data["email"]],
     html_message=email_body)
 
