@@ -87,20 +87,9 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: BRANDING
 ########################
 
-# NOTE: Variables NSF_BRANDING, TACC_BRANDING, and UTEXAS_BRANDING are duplicated from Core-CMS cuz current infrastructure lacks ability to reference default values.
+from taccsite_cms._settings.branding import *
 
-UTEXAS_BRANDING = [
-    "utexas",
-    "site_cms/img/org_logos/utaustin-white.png",
-    "branding-utaustin",
-    "https://www.utexas.edu/",
-    "_blank",
-    "University of Texas at Austin Logo",
-    "anonymous",
-    "True"
-]
-
-BRANDING = [ UTEXAS_BRANDING ]
+PORTAL_BRANDING = [ PORTAL_BRANDING_UTEXAS ]
 
 ########################
 # TACC: LOGOS
