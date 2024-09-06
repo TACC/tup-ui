@@ -7,8 +7,8 @@ COPY . /code/
 RUN npx nx build tup-ui
 RUN npx nx build tup-cms-react
 
-# TACC/Core-CMS v4.15.3 candidate
-FROM taccwma/core-cms:deps-core-styles-bump
+# TACC/Core-CMS#865 v4.15.3 candidate
+FROM taccwma/core-cms:906441d5
 
 WORKDIR /code
 
