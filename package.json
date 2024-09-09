@@ -40,7 +40,7 @@
     "@nx/vite": "17.2.8",
     "@nx/web": "17.2.8",
     "@nx/workspace": "17.2.8",
-    "@tacc/core-styles": "^2.33.0",
+    "@tacc/core-styles": "^2.33.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
