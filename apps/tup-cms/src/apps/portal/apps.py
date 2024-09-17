@@ -49,7 +49,8 @@ def send_confirmation_email(form_name, form_data):
     if form_name == "Tour Request Form":
         tour_receipt = "<p>A copy of your tour request is provided below for your records:</p>\n"
         for key in form_data:
-            tour_receipt += f"<p>{key}: {form_data[key]}</p>\n"
+            if not key.startswith('recaptcha_'):
+                tour_receipt += f"<p>{key}: {form_data[key]}</p>\n"
 
     email_body = f"""
             <p>Greetings,</p>
