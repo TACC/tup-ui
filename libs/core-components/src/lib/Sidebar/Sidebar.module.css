@@ -25,7 +25,7 @@
 .link:hover,
 .link--active:is(:link, :visited) {
   color: var(--global-color-primary--x-dark); /* to pass color contrast test */
-  background-color: var(--global-color-accent--weak);
+  background-color: var(--global-color-accent--xx-light);
 }
 .link:active,
 .link--active:is(:link, :visited) {

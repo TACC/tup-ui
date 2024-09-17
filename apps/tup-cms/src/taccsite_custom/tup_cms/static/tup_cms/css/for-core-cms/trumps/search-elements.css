@@ -65,7 +65,7 @@
 
     /* url under search result title */
     & .gs-webResult div.gs-visibleUrl {
-        color: var(--global-color-accent--secondary);
+        color: var(--global-color-secondary--normal);
     }
 
     /* search result titles */

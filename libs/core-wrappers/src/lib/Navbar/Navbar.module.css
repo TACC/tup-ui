@@ -21,11 +21,11 @@
 }
 
 .nav-content:hover {
-  background: var(--global-color-accent--weak);
+  background: var(--global-color-accent--xx-light);
 }
 
 .nav-active {
-  background: var(--global-color-accent--weak);
+  background: var(--global-color-accent--xx-light);
 }
 
 .nav-text {

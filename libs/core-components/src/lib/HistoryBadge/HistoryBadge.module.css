@@ -13,5 +13,5 @@
 }
 
 .disabled {
-  background-color: var(--global-color-accent--weak);
+  background-color: var(--global-color-accent--xx-light);
 }
