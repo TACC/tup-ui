@@ -44,6 +44,13 @@ def submit_ticket(form_data):
 
 
 def send_confirmation_email(form_name, form_data):
+
+    tour_receipt = ""
+    if form_name == "Tour Request Form":
+        tour_receipt = "<p>A copy of your tour request is provided below for your records:</p>\n"
+        for key in form_data:
+            tour_receipt += f"<p>{key}: {form_data[key]}</p>\n"
+
     email_body = f"""
             <p>Greetings,</p>
             <p>
@@ -51,11 +58,12 @@ def send_confirmation_email(form_name, form_data):
             </p>
             <p>
                 <ul>
-                    <li>For training registration requests, you will be contacted within one week to confirm registration. For additional help please contact Lauren Bruce (lbruce@tacc.utexas.edu).</li>
+                    <li>For information about training opportunities, please visit the <a href="https://tacc.utexas.edu/use-tacc/training/">Training page</a>, or contact Tabish Khan (tkhan@tacc.utexas.edu).</li>
                     <li>For tour requests, a tour coordinator will contact you within two business days to complete your reservation. For additional assistance please reach out to info@tacc.utexas.edu.</li>
-                    <li>For all other issues, a TACC support person will be in contact shortly. For additional assistance please reach out to info@tacc.utexas.edu.</li>
+                    <li>For additional assistance please reach out to info@tacc.utexas.edu.</li>
                 </ul>
             </p>
+            {tour_receipt}
             <p>
             Thank you for your time,<br>
             TACC Support
