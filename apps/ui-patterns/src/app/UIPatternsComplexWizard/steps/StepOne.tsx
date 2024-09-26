@@ -1,4 +1,4 @@
-import { FormikInput } from '@tacc/core-wrappers';
+import { FormikInput } from '@tacc/core-components';
 import * as Yup from 'yup';
 import { UIWizardStep, useWizardValues, InitialValueGenerator } from '..';
 

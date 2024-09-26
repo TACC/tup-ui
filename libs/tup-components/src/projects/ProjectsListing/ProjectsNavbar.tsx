@@ -1,5 +1,5 @@
 import React from 'react';
-import { QueryNavItem } from '@tacc/core-wrappers';
+import { QueryNavItem } from '@tacc/core-components';
 import { useLocation } from 'react-router-dom';
 import styles from './ProjectsListing.module.css';
 
