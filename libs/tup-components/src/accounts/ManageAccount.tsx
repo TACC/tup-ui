@@ -30,32 +30,6 @@ const ManageUser = () => (
   </article>
 );
 
-const ManageDNs = () => (
-  <article className={styles['tap-feature']}>
-    <h2 className={styles['tap-header']}>
-      <dfn id="dn">Distinguished Name</dfn> (<abbr>DN</abbr>) Managment
-    </h2>
-    <p className={styles['tap-description']}>
-      Generate a <abbr>DN</abbr> to permit you to move data between machines.{' '}
-      <a
-        href="https://docs.tacc.utexas.edu/basics/datatransfer/#step1"
-        rel="noreferrer"
-        target="_blank"
-      >
-        Learn more about DNs.
-      </a>
-    </p>
-    <a
-      href="https://accounts.tacc.utexas.edu/certificates"
-      target="_blank"
-      rel="noreferrer"
-      className={styles['tap-action']}
-    >
-      <Button type="secondary">Manage DNs</Button>
-    </a>
-  </article>
-);
-
 const ManageUpload = () => (
   <article className={styles['tap-feature']}>
     <h2 className={styles['tap-header']}>Identity Management</h2>
@@ -87,7 +61,6 @@ const ManageAccount: React.FC = () => {
       <div className={styles['account-body']}>
         <section>
           <ManageUser />
-          <ManageDNs />
           <ManageUpload />
         </section>
         <span className={styles['tap-separator']} />

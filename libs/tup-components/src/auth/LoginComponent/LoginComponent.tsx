@@ -41,6 +41,21 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
       </div>
     );
   }
+  if (status === 451) {
+    return (
+      <div className="c-form__errors">
+        Your account has been suspended. Please{' '}
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://accounts.tacc.utexas.edu/login_support"
+        >
+          request account support
+        </a>
+        .
+      </div>
+    );
+  }
   return (
     <div className="c-form__errors">
       Sorry. Something went wrong while trying to log in. Please try again
