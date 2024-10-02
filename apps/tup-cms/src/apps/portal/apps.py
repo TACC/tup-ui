@@ -5,7 +5,7 @@ from django.dispatch import receiver
 from djangocms_forms.signals import form_submission
 from django.conf import settings
 from django.core.mail import send_mail
-
+from .utils import reverse_slugify
 
 logger = logging.getLogger(f"portal.{__name__}")
 service_url = settings.TUP_SERVICES_URL
@@ -49,7 +49,10 @@ def send_confirmation_email(form_name, form_data):
     if form_name == "Tour Request Form":
         tour_receipt = "<p>A copy of your tour request is provided below for your records:</p>\n"
         for key in form_data:
-            tour_receipt += f"<p>{key}: {form_data[key]}</p>\n"
+            if not key.startswith('recaptcha_'):
+                label = reverse_slugify(key)
+                value = form_data[key]
+                tour_receipt += f"<p>{label}: {value}</p>\n"
 
     email_body = f"""
             <p>Greetings,</p>
