@@ -1,11 +1,10 @@
 """Utilities for Portal
 """
-import re
 
 def reverse_slugify(slug):
     """
 
-    :param str slug: A name that is title-cased and uses hyphens instead of spaces
+    :param str slug: A name that is lowercase and uses hyphens instead of spaces
     :rtype: str
 
     ..note:: Usage:
