@@ -5,7 +5,7 @@ import re
 def reverse_slugify(slug):
     """
 
-    :param str slug: A name that is lowercase and uses hyphens instead of spaces
+    :param str slug: A name that is title-cased and uses hyphens instead of spaces
     :rtype: str
 
     ..note:: Usage:
@@ -18,12 +18,7 @@ def reverse_slugify(slug):
 
     words_to_exclude = {'a', 'is', 'to', 'of', 'for', 'and', 'or', 'in'}
     words = slug.split('-')
-    words_capitalized = [
-      word.capitalize()
-      if word not in words_to_exclude
-      else word
-      for word in words
-    ]
-    text = ' '.join(words_capitalized).capitalize()
+    words_for_title = [ word if word.lower() in words_to_exclude else word.capitalize() for word in words ]
+    text = words_for_title.join(' ')
 
     return text
