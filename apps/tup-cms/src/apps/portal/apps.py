@@ -49,7 +49,7 @@ def send_confirmation_email(form_name, form_data):
     if form_name == "Tour Request Form":
         tour_receipt = "<p>A copy of your tour request is provided below for your records:</p>\n"
         for key in form_data:
-            if not key.startswith('recaptcha_'):
+            if not key.startswith('recaptcha_') and key != 'form_id':
                 label = reverse_slugify(key)
                 value = form_data[key]
                 tour_receipt += f"<p>{label}: {value}</p>\n"
