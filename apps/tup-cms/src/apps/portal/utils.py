@@ -19,6 +19,6 @@ def reverse_slugify(slug):
     words_to_exclude = {'a', 'is', 'to', 'of', 'for', 'and', 'or', 'in'}
     words = slug.split('-')
     words_for_title = [ word if word.lower() in words_to_exclude else word.capitalize() for word in words ]
-    text = words_for_title.join(' ')
+    text = ' '.join(words_for_title)
 
     return text
