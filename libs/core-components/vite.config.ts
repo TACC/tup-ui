@@ -22,13 +22,15 @@ export default defineConfig({
   ],
 
   build: {
+    sourcemap: true,
     reportCompressedSize: true,
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime'],
+      treeshake:true,
+      external: ['react', 'react-dom', 'react-router-dom', 'react-router', 'react/jsx-runtime'],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
         glob
@@ -48,6 +50,11 @@ export default defineConfig({
           ])
       ),
       output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          'react-router-dom': 'ReactRouterDOM',
+        },
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: '[name].js',
       },
