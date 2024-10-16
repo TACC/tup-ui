@@ -29,8 +29,14 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      treeshake:true,
-      external: ['react', 'react-dom', 'react-router-dom', 'react-router', 'react/jsx-runtime'],
+      treeshake: true,
+      external: [
+        'react',
+        'react-dom',
+        'react-router-dom',
+        'react-router',
+        'react/jsx-runtime',
+      ],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
         glob
