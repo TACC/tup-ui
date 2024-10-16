@@ -1,6 +1,6 @@
 {
   "name": "@tacc/core-components",
-  "version": "0.0.2",
+  "version": "0.0.3-beta.0",
   "license": "MIT",
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "description": "React component library for TACC applications.",
