@@ -51,7 +51,8 @@ def send_confirmation_email(form_name, form_data):
         for key in form_data:
             if not key.startswith('recaptcha_'):
                 label = reverse_slugify(key) if key != 'form_id' else 'Form ID'
-                tour_receipt += f"<p>{label}: {form_data[key]}</p>\n"
+                value = form_data[key]
+                tour_receipt += f"<p>{label}: {value}</p>\n"
 
     email_body = f"""
             <p>Greetings,</p>
