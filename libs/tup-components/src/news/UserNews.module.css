@@ -14,7 +14,7 @@
 }
 
 .posted-date {
-  color: var(--global-color-accent--secondary);
+  color: var(--global-color-secondary--normal);
   font-weight: var(--medium);
   text-transform: uppercase;
 }

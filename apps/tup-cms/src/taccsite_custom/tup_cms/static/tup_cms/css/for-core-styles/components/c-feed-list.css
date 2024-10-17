@@ -80,7 +80,7 @@
 /* TODO: Share styles between c-news and c-feed-list (`time:not(…)`) */
 .c-feed-list > :is(div, article) > time:not(:is(h1, h2, h3, h4, h5, h6) *),
 .c-feed-list > :is(div, article) > p:has(time):not(:is(h1, h2, h3, h4, h5, h6) *) {
-  color: var(--global-color-accent--secondary);
+  color: var(--global-color-secondary--normal);
   font-weight: var(--medium);
   text-transform: uppercase;
 }
