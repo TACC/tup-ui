@@ -1,4 +1,4 @@
-FROM node:20 as node_build
+FROM --platform=linux/amd64 node:20 as node_build
 COPY package.json package-lock.json /code/
 WORKDIR /code
 RUN npm ci
