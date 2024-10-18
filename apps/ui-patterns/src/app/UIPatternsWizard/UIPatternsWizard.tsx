@@ -8,7 +8,7 @@
 import React, { useCallback } from 'react';
 import { UIWizardSchema } from '.';
 import { UIWizardProvider, useWizardValues } from '.';
-import { Wizard } from '@tacc/core-wrappers';
+import { Wizard } from '@tacc/core-components';
 import wizardSteps from './steps';
 
 const UIPatternsWizardRender: React.FC = () => {
