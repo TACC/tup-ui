@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Formik, Form, FormikHelpers } from 'formik';
+import { Formik, Form, FormikHelpers, Field } from 'formik';
 //import ReCAPTCHA from 'react-google-recaptcha';
 import {
   useProjects,
@@ -71,28 +71,36 @@ export const ProjectAbstractEditForm: React.FC<{
     >
       {({ isValid }) => (
         <Form>
-          <FormikInput
+          <Field
+            component={FormikInput}
             style={{ maxWidth: '100%' }}
             name="title"
             label="Title"
             required
           />
-          <FormikTextarea
+          <Field
+            component={FormikTextarea}
             rows={5}
             style={{ maxWidth: '100%', resize: 'none' }}
             name="description"
             label="Description"
             required
           />
-          <FormikSelect label="Field of Science" name="fieldId" required>
+          <Field
+            component={FormikSelect}
+            label="Field of Science"
+            name="fieldId"
+            required
+          >
             {scienceFields.map((field) => (
               <option key={field.id} value={field.id}>
                 {[...new Array(field.depth)].map((_) => '--- ')}
                 {field.id === 1 ? 'Select Field of Science' : field.name}
               </option>
             ))}
-          </FormikSelect>
-          <FormikSelect
+          </Field>
+          <Field
+            component={FormikSelect}
             label="Secondary Field of Science"
             name="secondaryFieldId"
           >
@@ -104,8 +112,9 @@ export const ProjectAbstractEditForm: React.FC<{
                   : field.name}
               </option>
             ))}
-          </FormikSelect>
-          <FormikInput
+          </Field>
+          <Field
+            component={FormikInput}
             name="chargeCode"
             label="Charge Code"
             description="Project Charge Code cannot be changed."

@@ -84,7 +84,8 @@ export const TicketReplyForm: React.FC<{
 
         return (
           <Form className="ticket-reply-form">
-            <FormikTextarea
+            <Field
+              component={FormikTextarea}
               rows={4}
               name="text"
               label="Reply"
@@ -92,7 +93,8 @@ export const TicketReplyForm: React.FC<{
               style={{ maxWidth: '100%' }}
               required={!isCheckedForResolve}
             />
-            <FormikFileInput
+            <Field
+              component={FormikFileInput}
               name="files"
               required={false}
               label="Upload Files"

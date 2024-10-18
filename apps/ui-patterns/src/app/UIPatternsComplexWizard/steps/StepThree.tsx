@@ -1,7 +1,12 @@
 import React from 'react';
 import { FormGroup } from 'reactstrap';
 import { Collapse, Button } from '@tacc/core-components';
-import { FieldArray, useFormikContext, FieldArrayRenderProps } from 'formik';
+import {
+  FieldArray,
+  useFormikContext,
+  FieldArrayRenderProps,
+  Field,
+} from 'formik';
 import { FormikInput, FormikCheck } from '@tacc/core-components';
 import * as Yup from 'yup';
 import fieldArrayStyles from './FieldArray.module.css';
@@ -34,13 +39,15 @@ const UIWizardComplexFieldRender: React.FC<UIWizardComplexFieldRenderProps> = ({
       note="more values inside"
       className={fieldArrayStyles.item}
     >
-      <FormikInput
+      <Field
+        component={FormikInput}
         name={`${innerKey}.name`}
         label="Name"
         required={true}
         description="Name field of this object"
       />
-      <FormikCheck
+      <Field
+        component={FormikCheck}
         name={`${innerKey}.include`}
         label="Include"
         required={false}
@@ -114,7 +121,8 @@ const OuterItemRender: React.FC<FieldArrayOfArraysRenderProps> = ({
       title={`Field Array ${outerIndex}`}
       className={fieldArrayStyles.item}
     >
-      <FormikInput
+      <Field
+        component={FormikInput}
         name={`fieldArrayOfArrays.${outerIndex}.name`}
         label="Name"
         required={true}

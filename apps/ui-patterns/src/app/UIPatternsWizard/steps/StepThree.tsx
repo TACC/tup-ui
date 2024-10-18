@@ -2,12 +2,14 @@ import { FormikInput } from '@tacc/core-components';
 import { WizardStep } from '@tacc/core-components';
 import * as Yup from 'yup';
 import { useWizardValues, UIWizardSchema } from '..';
+import { Field } from 'formik';
 
 export const StepThree: React.FC = () => {
   return (
     <div>
       <h2>Step Three</h2>
-      <FormikInput
+      <Field
+        component={FormikInput}
         name="fieldFour"
         required={true}
         label="Field Four"
