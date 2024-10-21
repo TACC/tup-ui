@@ -2,6 +2,14 @@
 
 The shared components for TACC WMA Workspace Portals & Websites
 
+## Known Clients
+
+- [TUP UI], the client code for TACC User Portal
+- [Hazmapper], a TACC application for geospatial data
+
+[tup ui]: https://github.com/TACC/tup-ui
+[hazmapper]: https://github.com/TACC-Cloud/hazmapper
+
 ## Table of Contents
 
 - [Related Repositories](#related-repositories)
