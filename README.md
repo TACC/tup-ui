@@ -22,19 +22,18 @@ This project was generated using [Nx](https://nx.dev).
 The TUP dashboard is accessed at http://localhost:8000/portal.
 To bring containers down after development, run `npx nx down tup-cms`.
 
-<!--
-
 Other useful commands:
 
+- `npx nx serve core-components` to run a demo of the library for the core components.
 - `npx nx build core-components` to create a distributable library for the core components.
-
--->
 
 ## Contributing
 
 To contribute, first read [How to Contirbute](./docs/contributing.md).
 
 ---
+
+<!-- NX -->
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
