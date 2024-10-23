@@ -155,9 +155,9 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
           <LoginError status={status} isError={isError} />
           <FormikInput
             name="username"
-            label="Username"
+            label="Username or Email"
             type="text"
-            autoComplete="username"
+            autoComplete="username email"
             required
           />
           <FormikInput
