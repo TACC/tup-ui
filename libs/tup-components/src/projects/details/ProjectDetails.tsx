@@ -82,7 +82,7 @@ const IncreaseAllocation: React.FC<{ chargeCode: string }> = ({
 }) => {
   const href = chargeCode.startsWith('TG-')
     ? 'https://allocations.access-ci.org/requests'
-    : 'https://submit-tacc.xras.org/';
+    : 'https://submit-tacc.xras.org/requests';
   return (
     <a href={href} target="_blank" rel="noreferrer">
       <Button type="link">Increase Existing Allocation</Button>
