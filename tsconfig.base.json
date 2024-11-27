@@ -19,7 +19,6 @@
     "noImplicitAny": false,
     "paths": {
       "@tacc/core-components": ["libs/core-components/src/index.ts"],
-      "@tacc/core-wrappers": ["libs/core-wrappers/src/index.ts"],
       "@tacc/tup-components": ["libs/tup-components/src/index.ts"],
       "@tacc/tup-hooks": ["libs/tup-hooks/src/index.ts"],
       "@tacc/tup-testing": ["libs/tup-testing/src/index.ts"]
