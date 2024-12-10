@@ -126,6 +126,10 @@ label.qr-code-alt-label {
     .mfa-message {
         width: max-content;
     }
+    
+    .mfa-unpair-message {
+        font-size: var(--global-font-size--medium)
+    }
 
     /* HACK: Position .mfa-message at the bottom and "outside" of the panels */
     .pairing-container *:not(:only-child) .mfa-message {
