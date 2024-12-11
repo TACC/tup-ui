@@ -8,7 +8,7 @@
 
 import React, { useContext } from 'react';
 import { UIWizardSchema, UIWizardExtra } from '.';
-import { withBuilder } from '@tacc/core-wrappers';
+import { withBuilder } from '@tacc/core-components';
 
 // A React context for the external values
 const UIWizardContext = React.createContext<UIWizardExtra>({

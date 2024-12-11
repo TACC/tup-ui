@@ -5,7 +5,7 @@
  */
 
 import { UIWizardSchema } from '.';
-import { withBuilder } from '@tacc/core-wrappers';
+import { withBuilder } from '@tacc/core-components';
 
 // Use the withBuilder Higher Order Component to generate a context and provider
 const { useBuilderContext, Provider } = withBuilder<UIWizardSchema>();
