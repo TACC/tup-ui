@@ -111,7 +111,9 @@ const MfaUnpairingView: React.FC = () => {
           </form>
 
           {!sendChallengeSuccess && !unpairCode && (
-            <p className={styles['mfa-message']}>
+            <p
+              className={`${styles['mfa-message']} ${styles['mfa-unpair-message']}`}
+            >
               Alternatively,{' '}
               <Button type="link" onClick={() => unpairWithEmail(null)}>
                 unpair via email
