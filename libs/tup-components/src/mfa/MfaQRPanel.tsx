@@ -59,7 +59,6 @@ const MfaQRPanel: React.FC = () => {
               id="text"
               value={data.otpkey.value_b32}
               buttonClassName="s-affixed-input-wrapper__prepend"
-              firstElement="input"
             />
           </div>
         </p>

@@ -34,7 +34,7 @@ export type InitialValueGenerator = (hookValues: {
   extra: UIWizardExtra;
 }) => Partial<UIWizardSchema>;
 
-// An adapter type for mapping additional values to @tacc/core-wrappers/Wizard
+// An adapter type for mapping additional values to @tacc/core-coponents/Wizard
 export type UIWizardStep = {
   id: string;
   name: string;

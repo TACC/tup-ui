@@ -8,8 +8,13 @@ import React from 'react';
 import { Button } from '@tacc/core-components';
 import fieldArrayStyles from './FieldArray.module.css';
 import { Collapse } from '@tacc/core-components';
-import { FieldArray, useFormikContext, FieldArrayRenderProps } from 'formik';
-import { FormikInput, FormikCheck } from '@tacc/core-wrappers';
+import {
+  FieldArray,
+  useFormikContext,
+  FieldArrayRenderProps,
+  Field,
+} from 'formik';
+import { FormikInput, FormikCheck } from '@tacc/core-components';
 import {
   UIWizardStep,
   UIWizardComplexField,
@@ -37,13 +42,15 @@ const UIWizardComplexFieldRender: React.FC<UIWizardComplexFieldProps> = ({
       note="more values inside"
       className={fieldArrayStyles.item}
     >
-      <FormikInput
+      <Field
+        component={FormikInput}
         name={`fieldArray.${index}.name`}
         label="Name"
         required={true}
         description="Name field of this object"
       />
-      <FormikCheck
+      <Field
+        component={FormikCheck}
         name={`fieldArray.${index}.include`}
         label="Include"
         required={false}
