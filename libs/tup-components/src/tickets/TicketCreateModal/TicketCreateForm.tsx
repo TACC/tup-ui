@@ -97,6 +97,7 @@ export const TicketCreateForm: React.FC = () => {
             <option>Login Issues</option>
             <option>Multi-factor Authentication</option>
             <option>Arecibo Data</option>
+            <option>Security Incident</option>
             <option>Other</option>
           </FormikSelect>
           <FormikSelect name="resource" label="System/Resource" required>
