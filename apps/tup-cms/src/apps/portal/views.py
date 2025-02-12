@@ -27,7 +27,7 @@ def LoginView(request):
         if auth_request.status_code == 200:
             auth_jwt = auth_request.json()["jwt"]
             resp = redirect(request.GET.get('next', '/portal'))
-            resp.set_cookie("x_tup_token", auth_jwt, httponly=True)
+            resp.set_cookie("x_tup_token", auth_jwt, httponly=True, max_age=14400)
             return resp
         else:
             resp = HttpResponse(template.render({'baseUrl': settings.TUP_SERVICES_URL,
@@ -70,8 +70,8 @@ def ImpersonateView(request):
                                        headers=headers,
                                        json=data)
     user_jwt = impersonation_resp.json()['jwt']
-    resp.set_cookie("x_tup_token", user_jwt, secure=True)
-    resp.set_cookie("x_tup_token__pre_impersonate", impersonator_jwt, secure=True)
+    resp.set_cookie("x_tup_token", user_jwt, secure=True, max_age=14400)
+    resp.set_cookie("x_tup_token__pre_impersonate", impersonator_jwt, secure=True, max_age=14400)
     return resp
 
 
@@ -79,7 +79,7 @@ def StopImpersonateView(request):
     resp = HttpResponseRedirect("/portal/dashboard")
     old_jwt = request.COOKIES.get("x_tup_token__pre_impersonate")
     resp.delete_cookie("x_tup_token__pre_impersonate")
-    resp.set_cookie("x_tup_token", old_jwt, secure=True)
+    resp.set_cookie("x_tup_token", old_jwt, secure=True, max_age=14400)
     return resp
 
 
