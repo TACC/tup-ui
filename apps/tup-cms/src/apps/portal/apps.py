@@ -9,9 +9,6 @@ from .utils import reverse_slugify
 
 logger = logging.getLogger(f"portal.{__name__}")
 service_url = settings.TUP_SERVICES_URL
-if settings.DEBUG:
-    service_url = service_url.replace("localhost", "host.docker.internal")
-
 
 QUEUE_MAP = {
     "Allocations": "Allocations",

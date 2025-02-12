@@ -115,7 +115,7 @@ AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'apps.po
 # TACC: AUTH
 ########################
 
-TUP_SERVICES_URL = "https://tup-services.tacc.utexas.edu"
+TUP_SERVICES_URL = "/tup-api"
 LOGIN_URL = "/portal/login"
 
 ########################

@@ -3,6 +3,8 @@ declare global {
   interface Window {
     __TUP_CONFIG__: {
       baseUrl: string;
+      authenticated: string;
+      httpStatus: string;
     };
   }
 }

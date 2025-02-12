@@ -44,6 +44,11 @@
       <i class="icon icon-user" role="presentation"></i> Impersonate User
     </a>
     {% endif %}
+    {% if show_stop_impersonation %}
+    <a class="dropdown-item" href="/portal/stop-impersonate">
+      <i class="icon icon-user" role="presentation"></i> Stop Impersonating {{user.get_username}}
+    </a>
+    {% endif %}
     <a class="dropdown-item" href="/portal/logout">
       <i class="icon icon-exit" role="presentation"></i> Log Out
     </a>
