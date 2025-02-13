@@ -8,7 +8,9 @@ from django.contrib.auth import authenticate, login, logout
 import requests
 from apps.portal.decorators import tup_login_required
 
-tup_services_url = settings.TUP_SERVICES_URL
+service_url = settings.TUP_SERVICES_URL
+if settings.DEBUG:
+    service_url = service_url.replace("localhost", "host.docker.internal")
 tup_proxy_url = "/tup-api"
 
 def LoginView(request):
@@ -22,7 +24,7 @@ def LoginView(request):
         username = body.get("username", "")
         password = body.get("password", "")
 
-        auth_request: requests.Response = requests.post(f"{tup_services_url}/auth",
+        auth_request: requests.Response = requests.post(f"{service_url}/auth",
                                      json={"username": username, 
                                            "password": password})
         if auth_request.status_code == 200:
@@ -67,7 +69,7 @@ def ImpersonateView(request):
     headers = {"x-tup-token": settings.TUP_SERVICES_ADMIN_JWT}
     data = {"username": request.GET.get("username")}
 
-    impersonation_resp = requests.post(f"{tup_services_url}/auth/impersonate",
+    impersonation_resp = requests.post(f"{service_url}/auth/impersonate",
                                        headers=headers,
                                        json=data)
     user_jwt = impersonation_resp.json()['jwt']
