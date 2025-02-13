@@ -8,7 +8,7 @@ from django.conf import settings
 from .defaults import max_articles
 
 
-service_url = "http://nginx:80/tup-api"
+service_url = settings.TUP_SERVICES_URL
 
 
 def get_articles(sanitize = True):

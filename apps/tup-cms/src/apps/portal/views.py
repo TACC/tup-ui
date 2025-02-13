@@ -8,7 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 import requests
 from apps.portal.decorators import tup_login_required
 
-service_url = settings.TUP_SERVICES_URL
+tup_services_url = settings.TUP_SERVICES_URL
+tup_proxy_url = "/tup-api"
 
 def LoginView(request):
     if settings.DEBUG:
@@ -21,7 +22,7 @@ def LoginView(request):
         username = body.get("username", "")
         password = body.get("password", "")
 
-        auth_request: requests.Response = requests.post("http://nginx:80/tup-api/auth",
+        auth_request: requests.Response = requests.post(f"{tup_services_url}/auth",
                                      json={"username": username, 
                                            "password": password})
         if auth_request.status_code == 200:
@@ -30,7 +31,7 @@ def LoginView(request):
             resp.set_cookie("x_tup_token", auth_jwt, httponly=True, max_age=14400)
             return resp
         else:
-            resp = HttpResponse(template.render({'baseUrl': settings.TUP_SERVICES_URL,
+            resp = HttpResponse(template.render({'baseUrl': tup_proxy_url,
                                                  'is_login_view': True,
                                                  'httpStatus': auth_request.status_code}, request))
             return resp
@@ -41,7 +42,7 @@ def LoginView(request):
         login(request, user)
         return redirect(request.GET.get('next', '/portal'))
 
-    resp = HttpResponse(template.render({'baseUrl': settings.TUP_SERVICES_URL, 'is_login_view': True}, request))
+    resp = HttpResponse(template.render({'baseUrl': tup_proxy_url, 'is_login_view': True}, request))
     return resp
 
 
@@ -66,7 +67,7 @@ def ImpersonateView(request):
     headers = {"x-tup-token": settings.TUP_SERVICES_ADMIN_JWT}
     data = {"username": request.GET.get("username")}
 
-    impersonation_resp = requests.post("http://nginx:80/tup-api/auth/impersonate",
+    impersonation_resp = requests.post(f"{tup_services_url}/auth/impersonate",
                                        headers=headers,
                                        json=data)
     user_jwt = impersonation_resp.json()['jwt']
@@ -89,5 +90,5 @@ def PortalView(request):
         template = loader.get_template('portal/portal.debug.html')
     else:
         template = loader.get_template('portal/portal.html')
-    resp = HttpResponse(template.render({'baseUrl': settings.TUP_SERVICES_URL, 'authenticated': request.user.is_authenticated}, request))
+    resp = HttpResponse(template.render({'baseUrl': tup_proxy_url, 'authenticated': request.user.is_authenticated}, request))
     return resp
