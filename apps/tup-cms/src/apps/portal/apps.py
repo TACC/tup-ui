@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from .utils import reverse_slugify
 
 logger = logging.getLogger(f"portal.{__name__}")
-service_url = settings.TUP_SERVICES_URL
+service_url = "http://nginx:80/tup-api"
 
 QUEUE_MAP = {
     "Allocations": "Allocations",
