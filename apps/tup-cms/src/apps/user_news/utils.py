@@ -9,6 +9,8 @@ from .defaults import max_articles
 
 
 service_url = settings.TUP_SERVICES_URL
+if settings.DEBUG:
+    service_url = service_url.replace('localhost', 'host.docker.internal')
 
 
 def get_articles(sanitize = True):
