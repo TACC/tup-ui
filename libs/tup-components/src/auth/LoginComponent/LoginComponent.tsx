@@ -56,6 +56,35 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
       </div>
     );
   }
+  if (status === 452) {
+    return (
+      <div className="c-form__errors">
+        <h4>
+          <strong>Action Required to Activate Your Account:</strong>
+        </h4>
+        <br />
+        Please follow the link below to login, then review and update your
+        account profile information to activate your account. We will send you
+        an email with a verification link to reactivate your account after you
+        update it.
+        <br />
+        <br />
+        <div>
+          <h5>
+            <strong>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://accounts.tacc.utexas.edu/edit_profile"
+              >
+                Update Your Account
+              </a>
+            </strong>
+          </h5>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="c-form__errors">
       Sorry. Something went wrong while trying to log in. Please try again
