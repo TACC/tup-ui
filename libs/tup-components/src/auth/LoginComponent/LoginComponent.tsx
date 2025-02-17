@@ -63,10 +63,10 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
           <strong>Action Required to Activate Your Account:</strong>
         </h4>
         <br />
-        Please follow the link below to login, then review and update your
-        account profile information to activate your account. We will send you
-        an email with a verification link to reactivate your account after you
-        update it.
+        Please follow the link below to the TACC Accounts Portal, then review
+        and update your account profile information to activate your account. We
+        will send you an email with a verification link to reactivate your
+        account after you update it.
         <br />
         <br />
         <div>
