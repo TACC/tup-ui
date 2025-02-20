@@ -67,6 +67,7 @@ RECAPTCHA_PUBLIC_KEY = ''
 # ELASTICSEARCH
 ########################
 
+PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
 
 ########################
