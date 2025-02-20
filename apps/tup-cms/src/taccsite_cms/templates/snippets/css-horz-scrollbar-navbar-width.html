@@ -5,21 +5,17 @@
         display: none;
     }
 }
-/* To remove min-width that forced CMS nav to start at the same location regardless of the width of short logos */
+/* To align first CMS nav with "Dashbaord" heading in Portal */
 .s-header .navbar-brand {
-    /* Core-Styles v2.37 (and before) */
-    min-width: unset;
-    /* Core-Styles v2.38 (and after) */
-    flex-basis: unset;
+    flex-basis: 136px;
 }
-/* To reduce with of the logo, but still let width be dynamic */
-/* FAQ: Yes, this is also a design change of smaller height logo */
+/* To give CMS nav more room by reducing size of logo */
 .portal-logo {
-    height: 30px; /* FAQ: aspect ratio mantained, so width changes */
+    height: 30px;
 }
-/* To maintain alignment of logo since Core-Styles v2.38 (and after) */
+/* To vertically center the logo which was shrunk */
 .s-header .navbar-brand {
-    display: grid;
-    align-items: center;
+    display: flex;
+    align-content: center;
 }
 </style>
