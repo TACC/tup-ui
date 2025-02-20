@@ -1,0 +1,25 @@
+<style id="css-horz-scrollbar-navbar-width">
+/* To hide username on Portal dropdown when it shrinks the rest of the header "too much"*/
+@media (min-width: 992px) and (max-width: 1199px) {
+    .s-portal-nav .dropdown-toggle span {
+        display: none;
+    }
+}
+/* To remove min-width that forced CMS nav to start at the same location regardless of the width of short logos */
+.s-header .navbar-brand {
+    /* Core-Styles v2.37 (and before) */
+    min-width: unset;
+    /* Core-Styles v2.38 (and after) */
+    flex-basis: unset;
+}
+/* To reduce with of the logo, but still let width be dynamic */
+/* FAQ: Yes, this is also a design change of smaller height logo */
+.portal-logo {
+    height: 30px; /* FAQ: aspect ratio mantained, so width changes */
+}
+/* To maintain alignment of logo since Core-Styles v2.38 (and after) */
+.s-header .navbar-brand {
+    display: grid;
+    align-items: center;
+}
+</style>
