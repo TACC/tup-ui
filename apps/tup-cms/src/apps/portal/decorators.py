@@ -16,7 +16,7 @@ def tup_login_required(login_url="/portal/login"):
 
             if user is None:
                 from_path = urllib.parse.quote(request.get_full_path())
-                return redirect(f'{login_url}?from={from_path}')
+                return redirect(f'{login_url}?next={from_path}')
 
             login(request, user)
             return view_func(request, *args, **kwargs)
