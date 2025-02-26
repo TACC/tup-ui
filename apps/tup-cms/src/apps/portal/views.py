@@ -15,7 +15,7 @@ def LoginView(request):
     user = authenticate(request)
     if user:
         login(request, user)
-        return redirect(request.GET.get('from', '/portal'))
+        return redirect(request.GET.get('next', '/portal'))
 
     if settings.DEBUG:
         template = loader.get_template('portal/portal.debug.html')
