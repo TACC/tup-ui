@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+from django.http import HttpResponseRedirect
 import logging
 import requests
 from django.dispatch import receiver
@@ -11,7 +12,7 @@ logger = logging.getLogger(f"portal.{__name__}")
 service_url = settings.TUP_SERVICES_URL
 if settings.DEBUG:
     service_url = service_url.replace("localhost", "host.docker.internal")
-
+hetdex_allocation = 66657
 
 QUEUE_MAP = {
     "Allocations": "Allocations",
@@ -79,11 +80,21 @@ def send_confirmation_email(form_name, form_data):
     [form_data["email"]],
     html_message=email_body)
 
+def add_user_hetdex_allocation(request):
+    headers = {"x-tup-token": settings.TUP_SERVICES_ADMIN_JWT}
+    data = {"username": request.user.username}
+    admin_params = {"username": "admin"}
+    requests.post(f"{service_url}/projects/{hetdex_allocation}/users",
+                                       headers=headers,
+                                       json=data,
+                                       params=admin_params)
 
-def callback(form, cleaned_data, **kwargs):
-    logger.debug(f"received submission from {form.name}")
+def callback(form, cleaned_data, request, **kwargs):
+    logger.debug(f"received submission from {form.name} for user {request.user}")
     if form.name == 'rt-ticket-form':
         submit_ticket(cleaned_data)
+    if form.name == 'HETDEX Public JupyterHub Access Request':
+        add_user_hetdex_allocation(request)
     elif ('email' in cleaned_data):
         send_confirmation_email(form.name, cleaned_data)
 
