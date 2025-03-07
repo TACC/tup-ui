@@ -92,7 +92,7 @@ def callback(form, cleaned_data, request, **kwargs):
     logger.debug(f"received submission from {form.name} for user {request.user}")
     if form.name == 'rt-ticket-form':
         submit_ticket(cleaned_data)
-    if form.name == 'HETDEX Public JupyterHub Access Request':
+    if form.name == 'hetdex-request-form':
         add_user_hetdex_allocation(request)
     elif ('email' in cleaned_data):
         send_confirmation_email(form.name, cleaned_data)
