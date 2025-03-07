@@ -105,7 +105,7 @@
 }
 
 /* To style tags as "pills" (the UI pattern) */
-.c-news__tags .tags a {
+.c-news__tags a {
   /* TODO: When available in Core-Styles, uncomment this */
   /* @extend :--c-pill; */
 
