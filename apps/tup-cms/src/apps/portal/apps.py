@@ -1,5 +1,4 @@
 from django.apps import AppConfig
-from django.http import HttpResponseRedirect
 import logging
 import requests
 from django.dispatch import receiver
