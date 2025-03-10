@@ -6,6 +6,7 @@ from djangocms_forms.signals import form_submission
 from django.conf import settings
 from django.core.mail import send_mail
 from .utils import reverse_slugify
+from datetime import datetime
 
 logger = logging.getLogger(f"portal.{__name__}")
 service_url = settings.TUP_SERVICES_URL
@@ -79,21 +80,59 @@ def send_confirmation_email(form_name, form_data):
     [form_data["email"]],
     html_message=email_body)
 
-def add_user_hetdex_allocation(request):
+def add_user_hetdex_allocation(form_data, request):
     headers = {"x-tup-token": settings.TUP_SERVICES_ADMIN_JWT}
     data = {"username": request.user.username}
     admin_params = {"username": "admin"}
-    requests.post(f"{service_url}/projects/{hetdex_allocation}/users",
-                                       headers=headers,
-                                       json=data,
-                                       params=admin_params)
+    response = requests.post(f"{service_url}/projects/{hetdex_allocation}/users",
+                           headers=headers,
+                           json=data,
+                           params=admin_params)
+    
+    email_body = f"""
+            <p>Greetings,</p>
+            <p>
+                User {request.user.username} submitted a request to access the HETDEX Public JupyterHub.
+            </p>
+            <p>
+            <b>Form information:</b>
+            <p><b>Date:</b> {datetime.now().strftime('%B %d, %Y %H:%M')}</p>
+            </p>"""
+    for key in form_data:
+        if not key.startswith('recaptcha_'):
+            label = reverse_slugify(key) if key != 'form_id' else 'Form ID'
+            value = form_data[key]
+            email_body += f"<p><b>{label}</b>: {value}</p>\n"
+    
+    if response.status_code != 200:
+        # Add error information to the email body
+        email_body += f"""
+            <h4><b>There was an error adding this user to the project:</b></h4>
+            <p>Status Code: {response.status_code}</p>
+            <p>Response Text: {response.text}</p>
+            """
+        
+        # Send email with "ATTENTION REQUIRED" subject line
+        send_mail(
+            f"ATTENTION REQUIRED: HETDEX JupyterHub Access Request Failed",
+            email_body,
+            settings.DEFAULT_FROM_EMAIL,
+            [settings.HETDEX_ADMIN_EMAIL],
+            html_message=email_body)
+    else:
+        send_mail(
+            f"HETDEX JupyterHub Access Request Successful",
+            email_body,
+            settings.DEFAULT_FROM_EMAIL,
+            [settings.HETDEX_ADMIN_EMAIL],
+            html_message=email_body)
 
 def callback(form, cleaned_data, request, **kwargs):
     logger.debug(f"received submission from {form.name} for user {request.user}")
     if form.name == 'rt-ticket-form':
         submit_ticket(cleaned_data)
     if form.name == 'hetdex-request-form':
-        add_user_hetdex_allocation(request)
+        add_user_hetdex_allocation(cleaned_data, request)
     elif ('email' in cleaned_data):
         send_confirmation_email(form.name, cleaned_data)
 
