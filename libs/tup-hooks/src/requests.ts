@@ -1,5 +1,4 @@
 import useConfig from './useConfig';
-import useJwt from './auth/useJwt';
 import axios from 'axios';
 import { AxiosError, AxiosRequestHeaders } from 'axios';
 import {
@@ -28,13 +27,9 @@ export function useGet<ResponseType>({
 }: UseGetParams<ResponseType>) {
   const client = axios;
   const { baseUrl } = useConfig();
-  const { jwt } = useJwt();
   const getUtil = async () => {
     const request = await client.get<ResponseType>(
-      `${alternateBaseUrl ?? baseUrl}${endpoint}`,
-      {
-        headers: { 'x-tup-token': jwt ?? '' },
-      }
+      `${alternateBaseUrl ?? baseUrl}${endpoint}`
     );
     return request.data;
   };
@@ -56,13 +51,11 @@ export function usePost<BodyType, ResponseType>({
 }: UsePostParams<BodyType, ResponseType>) {
   const client = axios;
   const { baseUrl } = useConfig();
-  const { jwt } = useJwt();
   const postUtil = async (body: BodyType) => {
     const response = await client.post<ResponseType>(
       `${alternateBaseUrl ?? baseUrl}${endpoint}`,
       body,
       {
-        headers: { 'x-tup-token': jwt ?? '' },
         timeout,
       }
     );
@@ -92,13 +85,9 @@ export function useDelete<ResponseType>({
 }: UseDeleteParams<ResponseType>) {
   const client = axios;
   const { baseUrl } = useConfig();
-  const { jwt } = useJwt();
   const deleteUtil = async (body?: AxiosRequestHeaders) => {
     const response = await client.delete<ResponseType>(
-      `${alternateBaseUrl ?? baseUrl}${endpoint}`,
-      {
-        headers: { 'x-tup-token': jwt ?? '', ...(body ?? {}) },
-      }
+      `${alternateBaseUrl ?? baseUrl}${endpoint}`
     );
     return response.data;
   };
@@ -123,14 +112,10 @@ export function usePut<BodyType, ResponseType>({
 }: UsePutParams<BodyType, ResponseType>) {
   const client = axios;
   const { baseUrl } = useConfig();
-  const { jwt } = useJwt();
   const putUtil = async (body: BodyType) => {
     const response = await client.put<ResponseType>(
       `${alternateBaseUrl ?? baseUrl}${endpoint}`,
-      body,
-      {
-        headers: { 'x-tup-token': jwt ?? '' },
-      }
+      body
     );
     return response.data;
   };
