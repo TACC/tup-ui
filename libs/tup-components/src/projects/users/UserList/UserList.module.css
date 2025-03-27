@@ -25,7 +25,8 @@
 
 .separator {
     border-top: 1px solid  #C7C7C7;
-    margin: 5px;
+    margin-left: var(--global-space--section-left);
+    margin-bottom: var(--global-space--normal);
 }
 
 .loading-placeholder {
