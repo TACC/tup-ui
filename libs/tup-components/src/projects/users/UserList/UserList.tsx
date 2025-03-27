@@ -18,7 +18,7 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
       return 1;
     }
     return 0;
-  })
+  });
   const pi = data.find((user) => user.role === 'PI');
   const delegate = data.find((user) => user.role === 'Delegate');
 
@@ -39,9 +39,11 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           className={styles['user-navitem']}
         >
           <span style={{ fontWeight: 'normal' }}>Principal Investigator</span>
-          <h4>{pi.lastName}{', '}
+          <h4>
+            {pi.lastName}
+            {', '}
             <span style={{ fontWeight: 'normal' }}>{pi.firstName}</span>
-          </h4> 
+          </h4>
           <span className={styles['user-navitem-username']}>
             ({pi.username})
           </span>
@@ -54,9 +56,11 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           className={styles['user-navitem']}
         >
           <span style={{ fontWeight: 'normal' }}>Allocation Manager</span>
-          <h4>{delegate?.lastName}{', '} 
+          <h4>
+            {delegate?.lastName}
+            {', '}
             <span style={{ fontWeight: 'normal' }}>{delegate?.firstName}</span>
-          </h4> 
+          </h4>
           <span className={styles['user-navitem-username']}>
             ({delegate.username})
           </span>
@@ -70,15 +74,17 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           className={styles['user-navitem']}
           key={user.username}
         >
-          <h5>{user.lastName}{', '}
-            <span style={{fontWeight: "normal"}}>{user.firstName}</span>
+          <h5>
+            {user.lastName}
+            {', '}
+            <span style={{ fontWeight: 'normal' }}>{user.firstName}</span>
           </h5>
           <span className={styles['user-navitem-username']}>
             ({user.username})
           </span>
         </NavItem>
       ))}
-      </div>
+    </div>
   );
 };
 
