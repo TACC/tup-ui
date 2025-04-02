@@ -1,3 +1,4 @@
+import { useMemo} from 'react';
 import { useQueryClient, UseQueryResult } from '@tanstack/react-query';
 import { ProjectUser } from '.';
 import { useDelete, useGet, usePost } from '../requests';
@@ -9,7 +10,18 @@ const useProjectUsers = (id: number): UseQueryResult<ProjectUser[]> => {
     endpoint: `/projects/${id}/users`,
     key: ['projectUsers', id],
   });
-  return query;
+  const sortedUsers = useMemo(() => {
+    const collator = new Intl.Collator('en', {numeric: true, sensitivity: 'base' });
+    if (!query.data) return undefined;
+    return [...query.data].sort((a, b) => 
+      collator.compare(a.lastName, b.lastName)
+    );
+  }, [query.data]);
+  
+  return {
+    ...query,
+    data: sortedUsers
+  } as UseQueryResult<ProjectUser[]>;
 };
 
 export const useRoleForUser = (projectId: number, username: string) => {
