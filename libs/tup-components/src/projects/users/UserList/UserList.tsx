@@ -8,17 +8,6 @@ import ManageTeam from './ManageTeam';
 const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
   const projectUsers = useProjectUsers(projectId);
   const data = projectUsers.data ?? [];
-  data.sort((a, b) => {
-    const userA = a.lastName.toUpperCase();
-    const userB = b.lastName.toUpperCase();
-    if (userA < userB) {
-      return -1;
-    }
-    if (userA > userB) {
-      return 1;
-    }
-    return 0;
-  });
   const pi = data.find((user) => user.role === 'PI');
   const delegate = data.find((user) => user.role === 'Delegate');
 
