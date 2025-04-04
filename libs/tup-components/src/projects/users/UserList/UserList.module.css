@@ -5,8 +5,13 @@
 }
 
 .user-navitem > div {
-    height: 25px;
+    height: 100%;
     padding-left: var(--global-space--section-left);
+    margin-bottom: var(--global-space--normal);
+}
+
+.user-navitem-username {
+    color: var(--global-color-primary--normal);
 }
 
 .user-navactions {
@@ -20,7 +25,8 @@
 
 .separator {
     border-top: 1px solid  #C7C7C7;
-    margin: 5px;
+    margin-left: var(--global-space--section-left);
+    margin-bottom: var(--global-space--normal);
 }
 
 .loading-placeholder {
