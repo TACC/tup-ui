@@ -1,7 +1,6 @@
 import React from 'react';
 import { Icon, Button, SectionHeader } from '@tacc/core-components';
 import { useProfile } from '@tacc/tup-hooks';
-import { AccountMfa } from './ManageAccountMfa';
 import styles from './ManageAccount.module.css';
 
 const ManageUser = () => (
@@ -26,6 +25,13 @@ const ManageUser = () => (
       className={styles['tap-action']}
     >
       <Button type="secondary">Change Password</Button>
+    </a>
+    <a
+      href="https://accounts.tacc.utexas.edu/mfa"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <Button type="secondary">Manage Multi-factor Authentication</Button>
     </a>
   </article>
 );
@@ -62,10 +68,6 @@ const ManageAccount: React.FC = () => {
         <section>
           <ManageUser />
           <ManageUpload />
-        </section>
-        <span className={styles['tap-separator']} />
-        <section>
-          <AccountMfa />
         </section>
       </div>
     </section>
