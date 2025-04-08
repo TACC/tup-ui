@@ -1,17 +1,10 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useLocation, Location, useSearchParams } from 'react-router-dom';
-import { useAuth } from '@tacc/tup-hooks';
-import { Formik, Form } from 'formik';
-import { FormikInput } from '@tacc/core-wrappers';
 import { Button } from '@tacc/core-components';
 import styles from './LoginComponent.module.css';
 import { blackLogo } from '../../../assets';
-import { AxiosError } from 'axios';
-
-type LoginInfo = {
-  username: string;
-  password: string;
-};
+import Cookies from 'js-cookie';
+import { useConfig } from '@tacc/tup-hooks';
 
 type LoginProps = {
   className?: string;
@@ -144,11 +137,6 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
     from = searchParams.get('next') ?? '/portal';
   } else from = `/portal${from}`;
 
-  const authCallback = useCallback(() => {
-    window.location.replace(from);
-  }, [from]);
-  const { login, data, error, isLoading, isError } = useAuth();
-
   // FAQ: To use inline messaging for required fields (instead of browser):
   //      1. Uncomment this constant definition
   //      2. Pass this constant to <Formik>; validationSchema={validationSchema}
@@ -158,19 +146,8 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   //   password: Yup.string().required(),
   // });
 
-  const initialValues: LoginInfo = {
-    username: '',
-    password: '',
-  };
-
-  const onSubmit = useCallback(
-    ({ username, password }: LoginInfo) => {
-      login({ username, password }, { onSuccess: authCallback });
-    },
-    [login, authCallback]
-  );
-
-  const status = (error as AxiosError)?.response?.status;
+  const csrfcookie = Cookies.get('csrftoken');
+  const loginStatus = parseInt(useConfig().httpStatus || '200');
 
   return (
     <div className={`c-form--login ${styles.root} ${className}`}>
@@ -179,36 +156,40 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
         <span>Log In</span>
       </h3>
       <p className="c-form__desc">to continue to the TACC User Portal</p>
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form className="c-form">
-          <LoginError status={status} isError={isError} />
-          <FormikInput
+      <form action="/portal/login" method="POST" className="c-form">
+        <LoginError status={loginStatus} isError={loginStatus !== 200} />
+        <input
+          type="hidden"
+          name="csrfmiddlewaretoken"
+          value={csrfcookie}
+        ></input>
+        <div className="c-form__field has-required">
+          <label htmlFor="input-username">Username or Email</label>
+          <input
             name="username"
-            label="Username or Email"
+            id="input-username"
             type="text"
             autoComplete="username email"
             required
           />
-          <FormikInput
+        </div>
+        <div className="c-form__field has-required">
+          <label htmlFor="input-username">Password</label>
+          <input
             name="password"
-            label="Password"
+            id="input-password"
             type="password"
             autoComplete="current-password"
             required
           />
-          <div className="c-form__buttons">
-            <CreateAccountLink />
-            <Button
-              type="primary"
-              attr="submit"
-              size="long"
-              isLoading={isLoading || !!data}
-            >
-              Log In
-            </Button>
-          </div>
-        </Form>
-      </Formik>
+        </div>
+        <div className="c-form__buttons">
+          <CreateAccountLink />
+          <Button type="primary" attr="submit" size="long">
+            Log In
+          </Button>
+        </div>
+      </form>
       <div className="c-form__nav">
         <p>Having trouble logging in?</p>
         {/* CAUTION: Do not exceed three links. If more needed, ask design. */}
