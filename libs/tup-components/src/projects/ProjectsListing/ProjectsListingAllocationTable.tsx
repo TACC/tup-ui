@@ -14,7 +14,6 @@ export const ProjectsListingAllocationTable: React.FC<{
 
   const location = useLocation();
   const projectStatusNav = new URLSearchParams(location.search).get('show');
-  console.log(projectStatusNav)
   const sortedAllocationSystems = useMemo(() => {
       const allocations = project.allocations || [];
       return allocations.sort((a, b) => {
