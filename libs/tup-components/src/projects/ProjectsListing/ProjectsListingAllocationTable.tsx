@@ -1,4 +1,5 @@
-import React, {useMemo, useState} from 'react';
+import React, { useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ProjectsRawSystem } from '@tacc/tup-hooks';
 import styles from './ProjectsListing.module.css';
 
@@ -11,6 +12,9 @@ export const ProjectsListingAllocationTable: React.FC<{
   project: ProjectsRawSystem;
 }> = ({ project }) => {
 
+  const location = useLocation();
+  const projectStatusNav = new URLSearchParams(location.search).get('show');
+  console.log(projectStatusNav)
   const sortedAllocationSystems = useMemo(() => {
       const allocations = project.allocations || [];
       return allocations.sort((a, b) => {
@@ -21,8 +25,12 @@ export const ProjectsListingAllocationTable: React.FC<{
       });
     }, [project.allocations]);
 
-    const filteredAllocationSystems = sortedAllocationSystems
-      ?.filter(allocation => allocation.status && typeof allocation.status == 'string' && allocation?.status?.toLowerCase() === 'active')
+    const filteredAllocationSystems = useMemo(() => {
+      if (projectStatusNav === 'active' || projectStatusNav === null)
+         return sortedAllocationSystems
+      ?.filter(allocation => allocation.status && typeof allocation.status == 'string' && allocation?.status?.toLowerCase() === 'active') 
+      return sortedAllocationSystems.reverse()
+    }, [projectStatusNav, sortedAllocationSystems])
 
 
   return (
