@@ -9,10 +9,12 @@
   #page-scivis-gallery *,
   #page-all-systems *,
   #page-stampede2 *, /* IMPORTANT: Added on 2023-10-13 */
-  :has(h1:only-child) /* /research/tacc-software/, /use-tacc/software-list/ */
+  :has(h1:only-child), /* /research/tacc-software/, /use-tacc/software-list/ */
+  #page-weteachcs * /* 2024-10-03 *//* /education/educators/weteachcs/ */
 ),
 .col:not(
   [class*="col-"],
+  [class*="banner-cell"], /* homepage banner */
   :last-child
 ) {
   margin-bottom: 4rem;
