@@ -14,6 +14,6 @@
 .s-abbr-list span.abbr,
 .abbr-list abbr,
 .abbr-list span.abbr {
-    color: var(--global-color-accent--secondary);
+    color: var(--global-color-secondary--normal);
     font-weight: var(--bold);
 }

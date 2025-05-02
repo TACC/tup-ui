@@ -7,8 +7,9 @@ plugins:
     features:
       custom-media-queries: true
       media-query-ranges: true
-      custom-selectors: true
       nesting-rules: true
+      custom-selectors: true
+      relative-color-syntax: true
   postcss-replace:
     # @tacc/core-styles: 'dist/' uses `../../fonts/`
     pattern: fonts/

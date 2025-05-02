@@ -1,7 +1,6 @@
 import React from 'react';
 import { Icon, Button, SectionHeader } from '@tacc/core-components';
 import { useProfile } from '@tacc/tup-hooks';
-import { AccountMfa } from './ManageAccountMfa';
 import styles from './ManageAccount.module.css';
 
 const ManageUser = () => (
@@ -27,31 +26,12 @@ const ManageUser = () => (
     >
       <Button type="secondary">Change Password</Button>
     </a>
-  </article>
-);
-
-const ManageDNs = () => (
-  <article className={styles['tap-feature']}>
-    <h2 className={styles['tap-header']}>
-      <dfn id="dn">Distinguished Name</dfn> (<abbr>DN</abbr>) Managment
-    </h2>
-    <p className={styles['tap-description']}>
-      Generate a <abbr>DN</abbr> to permit you to move data between machines.{' '}
-      <a
-        href="https://docs.tacc.utexas.edu/basics/datatransfer/#step1"
-        rel="noreferrer"
-        target="_blank"
-      >
-        Learn more about DNs.
-      </a>
-    </p>
     <a
-      href="https://accounts.tacc.utexas.edu/certificates"
+      href="https://accounts.tacc.utexas.edu/mfa"
       target="_blank"
       rel="noreferrer"
-      className={styles['tap-action']}
     >
-      <Button type="secondary">Manage DNs</Button>
+      <Button type="secondary">Manage Multi-factor Authentication</Button>
     </a>
   </article>
 );
@@ -87,12 +67,7 @@ const ManageAccount: React.FC = () => {
       <div className={styles['account-body']}>
         <section>
           <ManageUser />
-          <ManageDNs />
           <ManageUpload />
-        </section>
-        <span className={styles['tap-separator']} />
-        <section>
-          <AccountMfa />
         </section>
       </div>
     </section>

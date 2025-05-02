@@ -41,6 +41,50 @@ const LoginError: React.FC<{ status?: number; isError: boolean }> = ({
       </div>
     );
   }
+  if (status === 451) {
+    return (
+      <div className="c-form__errors">
+        Your account has been suspended. Please{' '}
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://accounts.tacc.utexas.edu/login_support"
+        >
+          request account support
+        </a>
+        .
+      </div>
+    );
+  }
+  if (status === 452) {
+    return (
+      <div className="c-form__errors">
+        <h4>
+          <strong>Action Required to Activate Your Account:</strong>
+        </h4>
+        <br />
+        Please follow the link below to the TACC Accounts Portal, then review
+        and update your account profile information to activate your account. We
+        will send you an email with a verification link to reactivate your
+        account after you update it.
+        <br />
+        <br />
+        <div>
+          <h5>
+            <strong>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://accounts.tacc.utexas.edu/edit_profile"
+              >
+                Update Your Account
+              </a>
+            </strong>
+          </h5>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="c-form__errors">
       Sorry. Something went wrong while trying to log in. Please try again
@@ -97,7 +141,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   // parameter, 3) dashboard base route
   let from = (location.state as { from?: Location })?.from?.pathname ?? '';
   if (!from) {
-    from = searchParams.get('from') ?? '/portal';
+    from = searchParams.get('next') ?? '/portal';
   } else from = `/portal${from}`;
 
   const authCallback = useCallback(() => {
@@ -140,9 +184,9 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
           <LoginError status={status} isError={isError} />
           <FormikInput
             name="username"
-            label="Username"
+            label="Username or Email"
             type="text"
-            autoComplete="username"
+            autoComplete="username email"
             required
           />
           <FormikInput

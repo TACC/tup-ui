@@ -27,8 +27,15 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           end
           className={styles['user-navitem']}
         >
-          <span style={{ fontWeight: 'normal' }}>PI</span>: {pi.firstName}{' '}
-          {pi.lastName} ({pi.username})
+          <span style={{ fontWeight: 'normal' }}>Principal Investigator</span>
+          <h4>
+            {pi.lastName}
+            {', '}
+            <span style={{ fontWeight: 'normal' }}>{pi.firstName}</span>
+          </h4>
+          <span className={styles['user-navitem-username']}>
+            ({pi.username})
+          </span>
         </NavItem>
       )}
       {delegate && (
@@ -37,8 +44,15 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           end
           className={styles['user-navitem']}
         >
-          <span style={{ fontWeight: 'normal' }}>Allocation Manager</span>:{' '}
-          {delegate?.firstName} {delegate?.lastName} ({delegate.username})
+          <span style={{ fontWeight: 'normal' }}>Allocation Manager</span>
+          <h4>
+            {delegate?.lastName}
+            {', '}
+            <span style={{ fontWeight: 'normal' }}>{delegate?.firstName}</span>
+          </h4>
+          <span className={styles['user-navitem-username']}>
+            ({delegate.username})
+          </span>
         </NavItem>
       )}
       <div className={styles['separator']}></div>
@@ -49,7 +63,14 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           className={styles['user-navitem']}
           key={user.username}
         >
-          {user.firstName} {user.lastName} ({user.username})
+          <h5>
+            {user.lastName}
+            {', '}
+            <span style={{ fontWeight: 'normal' }}>{user.firstName}</span>
+          </h5>
+          <span className={styles['user-navitem-username']}>
+            ({user.username})
+          </span>
         </NavItem>
       ))}
     </div>

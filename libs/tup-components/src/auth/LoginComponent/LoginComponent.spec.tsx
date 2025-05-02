@@ -27,7 +27,7 @@ describe('LoginComponent', () => {
       value: { replace: mockNavigate },
     });
     const { getByLabelText, getByRole } = testRender(<LoginComponent />);
-    const username = getByLabelText(/Username/);
+    const username = getByLabelText(/Username or Email/);
     const password = getByLabelText(/Password/);
     const submit = getByRole('button');
     await act(async () => {

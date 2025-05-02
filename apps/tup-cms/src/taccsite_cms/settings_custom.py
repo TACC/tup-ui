@@ -46,12 +46,6 @@ STORAGES = {
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
-
-    ('guide.html', 'Guide'),
-    ('guides/getting_started.html', 'Guide: Getting Started'),
-    ('guides/data_transfer.html', 'Guide: Data Transfer'),
-    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
 )
 
 CMS_PERMISSIONS = True
@@ -73,6 +67,7 @@ RECAPTCHA_PUBLIC_KEY = ''
 # ELASTICSEARCH
 ########################
 
+PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
 
 ########################
@@ -87,35 +82,23 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: BRANDING
 ########################
 
-# NOTE: Variables NSF_BRANDING, TACC_BRANDING, and UTEXAS_BRANDING are duplicated from Core-CMS cuz current infrastructure lacks ability to reference default values.
+from taccsite_cms._settings.branding import *
 
-UTEXAS_BRANDING = [
-    "utexas",
-    "site_cms/img/org_logos/utaustin-white.png",
-    "branding-utaustin",
-    "https://www.utexas.edu/",
-    "_blank",
-    "University of Texas at Austin Logo",
-    "anonymous",
-    "True"
-]
-
-BRANDING = [ UTEXAS_BRANDING ]
+PORTAL_BRANDING = [ PORTAL_BRANDING_UTEXAS ]
 
 ########################
 # TACC: LOGOS
 ########################
 
-LOGO = [
-    "tup",
-    "tup_cms/img/org_logos/tacc-logo-white.svg",
-    "tup",
-    "/",
-    "_self",
-    "TACC Logo",
-    "anonymous",
-    "True"
-]
+PORTAL_LOGO = {
+    "img_file_src": "tup_cms/img/org_logos/tacc-logo-white.svg",
+    "is_remote": False,
+    "img_class": "",
+    "link_href": "/",
+    "link_target": "_self",
+    "img_alt_text": "TACC Logo",
+    "img_crossorigin": "anonymous",
+} # To hide logo, set `PORTAL_LOGO = False`
 
 ########################
 # TACC: SEARCH
@@ -140,15 +123,17 @@ LOGIN_URL = "/portal/login"
 # TACC: PORTAL
 ########################
 
-INCLUDES_CORE_PORTAL = False
-INCLUDES_PORTAL_NAV = True
-INCLUDES_SEARCH_BAR = True
+PORTAL_IS_TACC_CORE_PORTAL = False
+PORTAL_HAS_LOGIN = True
+PORTAL_HAS_SEARCH = True
+
+PORTAL_NAV_WIDTH = 'lg'
 
 ########################
 # TACC: SOCIAL MEDIA
 ########################
 
-TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'email']
+PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'bluesky', 'facebook', 'email']
 
 ########################
 # DJANGOCMS_BLOG
@@ -200,11 +185,12 @@ BLOG_ENABLE_COMMENTS = False
 # DJANGOCMS_BLOG: TACC
 ########################
 
-TACC_BLOG_SHOW_CATEGORIES = True
-TACC_BLOG_SHOW_TAGS = False
-TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
-TACC_BLOG_SHOW_ABSTRACT_TAG = 'external'
+PORTAL_BLOG_SHOW_CATEGORIES = True
+PORTAL_BLOG_SHOW_TAGS = False
+PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
+PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'external'
 
+TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
 
 ########################
 # TACC: CORE STYLES
