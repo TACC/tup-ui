@@ -47,7 +47,7 @@ CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
 
-    ('bare.html', 'Bare'), # for TACC/Core-CMS-Plugin-Remote-Content
+    ('plain.html', 'Plain'), # for TACC/Core-CMS-Plugin-Remote-Content
 )
 
 CMS_PERMISSIONS = True
