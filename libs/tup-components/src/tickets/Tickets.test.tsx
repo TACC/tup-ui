@@ -2,14 +2,20 @@ import React from 'react';
 import Tickets from './Tickets';
 import { testRender } from '@tacc/tup-testing';
 import { waitFor } from '@testing-library/react';
-import jsCookie from 'js-cookie';
-import { vi, Mock } from 'vitest';
+import { vi } from 'vitest';
 
 vi.mock('js-cookie');
 
 describe('Tickets Component', () => {
   beforeEach(() => {
-    (jsCookie.get as Mock).mockReturnValue('badjwt');
+    vi.stubGlobal('__TUP_CONFIG__', {
+      authenticated: 'True',
+      baseUrl: 'http://localhost:8001',
+      httpStatus: '200',
+    });
+  });
+  afterEach(() => {
+    vi.unstubAllGlobals();
   });
   it('should render SectionTableWrapper and Table components', async () => {
     const { getByText } = testRender(<Tickets />);

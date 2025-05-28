@@ -4,6 +4,7 @@ import { AuthResponse, AuthBody } from '.';
 import Cookies from 'js-cookie';
 import { usePost } from '../requests';
 import useJwt from './useJwt';
+import useConfig from '../useConfig';
 
 // Mutation to POST credentials to tup-services and retrieve the user's JWT.
 const useAuth = () => {
@@ -44,7 +45,7 @@ const useAuth = () => {
   const { mutate: login, ...extra } = mutation;
 
   // Derive the loggedIn state from the JWT cookie
-  const loggedIn = !!jwt;
+  const loggedIn = useConfig().authenticated === 'True';
 
   // Return
   return {

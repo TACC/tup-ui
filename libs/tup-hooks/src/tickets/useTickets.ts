@@ -2,7 +2,6 @@ import { UseQueryResult, useQueryClient } from '@tanstack/react-query';
 import { useGet, usePost } from '../requests';
 import { Ticket, TicketHistory } from '.';
 import { useConfig } from '..';
-import { useJwt } from '../auth';
 
 import axios from 'axios';
 
@@ -40,13 +39,11 @@ export const useGetTicketHistory = (
 const downloadAttachment = async (
   ticketId: string,
   attachmentId: number,
-  baseUrl: string,
-  jwt?: string
+  baseUrl: string
 ) => {
   const response = await axios({
     method: 'get',
     url: `${baseUrl}/tickets/${ticketId}/attachment/${attachmentId}`,
-    headers: { 'x-tup-token': jwt ?? '' },
     responseType: 'blob',
   });
 
@@ -68,11 +65,10 @@ export const useGetFileAttachment = (
   ticketId: string
 ): { download: (attachmentId: number) => Promise<void> } => {
   const { baseUrl } = useConfig();
-  const { jwt } = useJwt();
 
   return {
     download: (attachmentId: number) =>
-      downloadAttachment(ticketId, attachmentId, baseUrl, jwt),
+      downloadAttachment(ticketId, attachmentId, baseUrl),
   };
 };
 
