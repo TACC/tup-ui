@@ -112,9 +112,10 @@ export const TicketCreateForm: React.FC = () => {
             <option>Vislab (stallion.tacc.utexas.edu)</option>
             <option>Cyclone (cyclone.tacc.utexas.edu)</option>
             <option>Cloud and Interactive Computing (Tapis API)</option>
+            <option>Cloud and Interactive Computing (Abaco API)</option>
             <option>Cloud and Interactive Computing (JupyterHub)</option>
             <option>Cloud and Interactive Computing (Other)</option>
-            <option>Other</option>
+            <option>Other / None</option>
           </FormikSelect>
           <FormikInput name="subject" label="Subject" required description="" />
           <FormikTextarea
