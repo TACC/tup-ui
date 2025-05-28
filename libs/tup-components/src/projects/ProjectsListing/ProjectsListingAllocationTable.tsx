@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ProjectsRawSystem } from '@tacc/tup-hooks';
 import styles from './ProjectsListing.module.css';
 
@@ -10,7 +11,28 @@ const formatDate = (datestring: string): string => {
 export const ProjectsListingAllocationTable: React.FC<{
   project: ProjectsRawSystem;
 }> = ({ project }) => {
-  const allocations = project.allocations || [];
+  const location = useLocation();
+  const projectStatusNav = new URLSearchParams(location.search).get('show');
+  const sortedAllocationSystems = useMemo(() => {
+    const allocations = project.allocations || [];
+    return allocations.sort((a, b) => {
+      if (!a?.end || typeof a.end !== 'string') return -1;
+      if (!b?.end || typeof b.end !== 'string') return 1;
+
+      return new Date(a?.end).getTime() - new Date(b?.end).getTime();
+    });
+  }, [project.allocations]);
+
+  const filteredAllocationSystems = useMemo(() => {
+    if (projectStatusNav === 'active' || projectStatusNav === null)
+      return sortedAllocationSystems?.filter(
+        (allocation) =>
+          allocation.status &&
+          typeof allocation.status == 'string' &&
+          allocation?.status?.toLowerCase() === 'active'
+      );
+    return sortedAllocationSystems.reverse();
+  }, [projectStatusNav, sortedAllocationSystems]);
 
   return (
     <table className={styles['allocations-table']}>
@@ -24,7 +46,7 @@ export const ProjectsListingAllocationTable: React.FC<{
         </tr>
       </thead>
       <tbody>
-        {allocations.map((allocation) => (
+        {filteredAllocationSystems.map((allocation) => (
           <tr key={allocation.id}>
             <td>{allocation.resource}</td>
             <td>{allocation.total} SU</td>
