@@ -10,6 +10,7 @@
 
 {% block content %}
 <div id="root" class="o-site"></div>
+{% csrf_token %}
 {% include "imports.html" %}
 <script>
   window.__TUP_CONFIG__ = {
