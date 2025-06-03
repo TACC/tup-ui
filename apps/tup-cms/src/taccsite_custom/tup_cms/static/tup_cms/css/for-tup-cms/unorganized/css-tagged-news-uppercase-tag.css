@@ -1,7 +1,5 @@
-<style id="css-tagged-news-uppercase-tag">
-    /* To uppercase tag name on /news/…/tag/… */
-    /* CAVEAT: Uppercases category name on /news/…/category/… */
-    .blog-list h1 > span + em {
-        text-transform: uppercase;
-    }
-</style>
+/* To uppercase tag name on /news/…/tag/… */
+/* CAVEAT: Uppercases category name on /news/…/category/… */
+.blog-list h1 > span + em {
+    text-transform: uppercase;
+}
