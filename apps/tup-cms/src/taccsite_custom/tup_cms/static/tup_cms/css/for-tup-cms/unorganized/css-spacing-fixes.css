@@ -1,7 +1,5 @@
-<style id="css-spacing-fixes">
-/* HELP: Is this ready for tup-cms CSS? */
-/* FAQ: It seems too messy for core-cms */
-
+/* To add extra space under columns on specific pages */
+/* HELP: How can we apply and maintian this better? */
 /* FAQ: Columns that explcitely or automatically span 12, get margin bottom */
 .col-12:not(
   :last-child,
@@ -20,4 +18,3 @@
 ) {
   margin-bottom: 4rem;
 }
-</style>
