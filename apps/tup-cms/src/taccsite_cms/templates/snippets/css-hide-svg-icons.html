@@ -1,0 +1,10 @@
+<style id="css-hide-svg-icons">
+/* to hide from everyone */
+& .has-svg use {
+    display: none !important;
+}
+/* to show to editors */
+[class*="cms-structure-mode-"] /* TACC/Core-Styles :--django-cms-edit-mode */ {
+    & .has-svg use { display: revert !important; }
+}
+</style>
