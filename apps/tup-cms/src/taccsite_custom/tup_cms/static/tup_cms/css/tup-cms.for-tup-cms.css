@@ -31,3 +31,16 @@
 /* TRUMPS */
 @import url("./for-tup-cms/trumps/s-abbr-list.css") layer(project);
 @import url("./for-tup-cms/trumps/s-breadcrumbs.css") layer(project);
+
+/* UNORGANIZED */
+/* FAQ: Not imported into 'project' layer cuz these came from anonymous layer */
+@import url("./for-tup-cms/unorganized/css-fix-news-hr-behind-offset-image.css");
+@import url("./for-tup-cms/unorganized/css-hide-svg-icons.css");
+@import url("./for-tup-cms/unorganized/css-trumps-has-decal.css");
+@import url("./for-tup-cms/unorganized/css-spacing-fixes.css");
+@import url("./for-tup-cms/unorganized/css-scrolling-fixes.css");
+@import url("./for-tup-cms/unorganized/css-global-a11y.css");
+@import url("./for-tup-cms/unorganized/css-tup-730-drop-cap-and-fix-has-blog-tag-no-drop-cap.css");
+@import url("./for-tup-cms/unorganized/css-c-feed-list-tweaks.css");
+@import url("./for-tup-cms/unorganized/css-navbar-width-horz-scrollbar.css");
+@import url("./for-tup-cms/unorganized/css-tagged-news-uppercase-tag.css");
