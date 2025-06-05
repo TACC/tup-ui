@@ -1,9 +1,136 @@
-…
+## Overview
+
+Consolidate global snippets into a few files now loaded via CDN.
+
+## Status
+
+- [x] **Change** [global JS snippet to load from CDN](https://tacc.utexas.edu/admin/djangocms_snippet/snippet/150/change).
+- [x] **Test** that global JS.
+- [x] **Add** [one global CSS snippet that loads from CDN](https://tacc.utexas.edu/admin/djangocms_snippet/snippet/167/change/).
+- [ ] **Document** test steps.
+- [ ] **Test** _all_ that global CSS.
+- [ ] **Delete** migrated snippets.
+
+## Related
+
+- new [snippet #167](https://tacc.utexas.edu/admin/djangocms_snippet/snippet/167/change/)
+- new [snippet #168](https://tacc.utexas.edu/admin/djangocms_snippet/snippet/167/change/)
+
+## Changes
+
+- **Added** unsaved snippets.
+- **Updated** snippets with latest content from prod.
+- **Changed** CSS snippets from `.html` to `.css`
+- **Moved** CSS snippets to CSS
+- **Changed** JS snippets from `.html` to `.js`
+- **Moved** CSS snippets to CSS
 
 ## Testing
 
-- Verify `<hr>` on https://tacc.utexas.edu/news/supplemental/2024/02/22/black-history-month-spotlight-cosby/ does not flow behind floated image.
+<details><summary><code>fix-news-hr-behind-offset-image.css</code></summary>
 
-- Load homepage without ad/tracking/fingerprint/etc blockers. Scroll to footer. Hover over "Request an Account" button/link. Hover off. Hover back over. See markup (or browser tooltip for URL, at bottom-left of window) and verify link `href` has long query parameter added to it. _Refresh page and keep trying until it does._ Click on button/link; new window opens. Return to TACC homepage in previous window. Verify link `href` now does **not** have long query parameter.
+1. Open https://tacc.utexas.edu/news/supplemental/2024/02/22/black-history-month-spotlight-cosby/.
+2. See horizontal line (`<hr>`) before first instance of "WeTeach_CS/TACC".
+
+Verify horizontal line does **not** flow behind floated image.
+
+</details>
+<details><summary><code>hide-svg-icons.css</code></summary>
+
+0. Be logged in as an editor.
+1. Open https://tacc.utexas.edu/use-tacc/allocations/?edit.
+
+Verify giant paperclip design **is** visible.
+
+2. Open https://tacc.utexas.edu/use-tacc/allocations/?preview.
+
+Verify giant paperclip design is **not** visible.
+
+</details>
+<details><summary><code>trumps-has-decal.css</code></summary>
+
+0. Be logged in as an editor.
+1. Open https://tacc.utexas.edu/?edit.
+2. Use your browser Developer Tools to search markup for `has-decal`.
+3. Select the element that has such a class.
+
+Verify that element **is** styled via a `.has-decal…` rule.
+
+</details>
+<details><summary><code>spacing-fixes.css</code></summary>
+
+1. Open https://tacc.utexas.edu/use-tacc/allocations/.
+2. Scroll toward "TACC's Acceptable Use Policies".
+
+Verify **much** space above the gray cards (`60px` not `20px`).
+
+</details>
+<details><summary><code>podcast-embeds.css</code></summary>
+
+1. Open https://tacc.utexas.edu/news/latest-news/2025/06/05/How-Public-Investment-in-HPC-Sparked-AI-Boom/.
+2. Scroll to the embedded podcast.
+
+Verify the podcast player does **not** have a scrollbar.
+
+</details>
+<details><summary><code>scrolling-fixes.css</code></summary>
+
+1. Open https://tacc.utexas.edu/.
+2. Ensure browser window width is **<** 1500px and **>** 290px wide
+
+Verify page does **not** have a _horizontal_ scrollbar.
+
+</details>
+<details><summary><code>global-a11y.css</code></summary>
+
+1. …
+
+Verify …
+
+</details>
+<details><summary><code>tup-730-drop-cap-and-fix-has-blog-tag-no-drop-cap.css</code></summary>
+
+1. …
+
+Verify …
+
+</details>
+<details><summary><code>c-feed-list-tweaks.css</code></summary>
+
+1. …
+
+Verify …
+
+</details>
+<details><summary><code>navbar-width-horz-scrollbar.css</code></summary>
+
+1. …
+
+Verify …
+
+</details>
+<details><summary><code>tagged-news-uppercase-tag.css</code></summary>
+
+1. …
+
+Verify …
+
+</details>
+<details><summary><code>prevent-ugly-urls.js</code></summary>
+
+0. Turn off ad/tracking/fingerprint/etc blockers.
+1. Open [tacc.utexas.edu](http://tacc.utexas.edu/).
+2. In page nav, click "Use TACC" > "Documentation".
+
+Verify URL does **not** have a string of query parameters.
+
+3. Scroll to footer.
+4. Under Quick Links, click "Create an Account".
+
+Verify URL does **not** have a string of query parameters.
+
+</details>
+
+## UI
 
 …
