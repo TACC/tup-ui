@@ -1,1 +1,1 @@
-import './adhoc/prevent-ugly-urls.js';
+import './ad-hoc/prevent-ugly-urls.js';
