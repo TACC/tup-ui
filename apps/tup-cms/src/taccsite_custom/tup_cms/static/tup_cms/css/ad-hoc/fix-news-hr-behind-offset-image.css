@@ -1,4 +1,6 @@
 /* TODO: add to Core-Styles */
-hr {
-    overflow: unset; /* undo Bootstrap 4 hr { overflow: visible; } */
+@layer foundation {
+    hr {
+        overflow: revert; /* undo Bootstrap 4 _reboot's `overflow: visible` */
+    }
 }
