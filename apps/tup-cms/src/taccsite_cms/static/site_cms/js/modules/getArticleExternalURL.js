@@ -1,3 +1,5 @@
+/* TODO: Use Core-CMS v4.30 code instead */
+/* SEE: https://github.com/TACC/Core-CMS/pull/868/files */
 /**
  * Get URL of external web article of which internal news article represents
  * @param {HTMLElement} article - The article within which to find external URL
