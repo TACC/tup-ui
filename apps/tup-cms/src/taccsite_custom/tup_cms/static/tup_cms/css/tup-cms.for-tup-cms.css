@@ -31,7 +31,3 @@
 /* TRUMPS */
 @import url("./for-tup-cms/trumps/s-abbr-list.css") layer(project);
 @import url("./for-tup-cms/trumps/s-breadcrumbs.css") layer(project);
-
-/* UNORGANIZED */
-/* FAQ: Not imported into 'project' layer cuz these came from anonymous layer */
-@import url("./for-tup-cms/unorganized.css");
