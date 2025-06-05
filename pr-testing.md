@@ -7,7 +7,7 @@ Consolidate global snippets into a few files now loaded via CDN.
 - [x] **Change** [global JS snippet to load from CDN](https://tacc.utexas.edu/admin/djangocms_snippet/snippet/150/change).
 - [x] **Test** that global JS.
 - [x] **Add** [one global CSS snippet that loads from CDN](https://tacc.utexas.edu/admin/djangocms_snippet/snippet/167/change/).
-- [ ] **Document** test steps.
+- [x] **Document** test steps.
 - [ ] **Test** _all_ that global CSS.
 - [ ] **Delete** migrated snippets.
 
@@ -76,44 +76,60 @@ Verify the podcast player does **not** have a scrollbar.
 <details><summary><code>scrolling-fixes.css</code></summary>
 
 1. Open https://tacc.utexas.edu/.
-2. Ensure browser window width is **<** 1500px and **>** 290px wide
+2. Ensure browser window width is **`<`** 1500px and **`>`** 290px.
 
 Verify page does **not** have a _horizontal_ scrollbar.
 
 </details>
 <details><summary><code>global-a11y.css</code></summary>
 
-1. …
+1. Open any TACC page e.g. https://tacc.utexas.edu/.
+2. Click empty black space left of UTexas logo.
+3. Cycle focus through header elements.
+    <sup>(I.e. Press <kbd>tab</kbd> key several times.)</sub>
 
-Verify …
+Verify highlight on focused element is **thick white outline**.
+
+4. Make window narrow enough to trigger mobile navbar.
+
+Verify menu toggle icon has a **thin gray border**.
 
 </details>
 <details><summary><code>tup-730-drop-cap-and-fix-has-blog-tag-no-drop-cap.css</code></summary>
 
-1. …
-
-Verify …
+Nothing to test. This code is commented out.
 
 </details>
 <details><summary><code>c-feed-list-tweaks.css</code></summary>
 
-1. …
+> [!NOTE]
+> I don't know what this does. Whether it works will be irrellevant after #115.
 
-Verify …
+1. Open https://tacc.utexas.edu/#training-events.
+2. Use your browser Developer Tools.
+3. Select any `<article>` within the "Training Events" list.
+
+Verify `flex-grow: unset;` is applied.
 
 </details>
 <details><summary><code>navbar-width-horz-scrollbar.css</code></summary>
 
-1. …
+0. Be logged in to Portal.
+1. Open https://tacc.utexas.edu/.
+2. Ensure browser window width is **`<`** 1130px and **`>`** 992px.
 
-Verify …
+Verify header does **not** show username.
+
+3. Make browser window width **`>`** 1130px.
+
+Verify header **does** show username.
 
 </details>
 <details><summary><code>tagged-news-uppercase-tag.css</code></summary>
 
-1. …
+1. Open https://tacc.utexas.edu/news/latest-news/tag/lccf/.
 
-Verify …
+Verify page title is "**LATEST NEWS — LCCF**" (not "LATEST NEWS — Lccf")
 
 </details>
 <details><summary><code>prevent-ugly-urls.js</code></summary>
