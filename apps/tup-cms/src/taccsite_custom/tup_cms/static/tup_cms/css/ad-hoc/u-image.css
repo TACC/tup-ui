@@ -1,0 +1,8 @@
+/* to crop any "Meet the Interns Cohort N" to match "… Cohort 1" */
+/* https://tacc.utexas.edu/about/internships/lccf/ */
+.u-image--meet-the-interns {
+    width: 100%;
+    aspect-ratio: 5 / 1;
+    object-fit: cover;
+    object-position: center 30%;
+}
