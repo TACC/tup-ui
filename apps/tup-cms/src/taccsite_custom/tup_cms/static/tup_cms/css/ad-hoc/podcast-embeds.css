@@ -1,0 +1,5 @@
+/* to remove scrollbar on embedded podcast audio */
+iframe[src*="rss.com"] {
+    /* FAQ: for wide screen, 200px; for narrow screen, 202px */
+    height: 202px;
+}
