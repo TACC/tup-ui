@@ -10,10 +10,13 @@
 
 {% block content %}
 <div id="root" class="o-site"></div>
+{% csrf_token %}
 {% include "imports.html" %}
 <script>
   window.__TUP_CONFIG__ = {
     baseUrl: '{{baseUrl}}',
+    httpStatus: '{{httpStatus}}',
+    authenticated: '{{authenticated}}'
   };
 </script>
 {% endblock %}

@@ -19,6 +19,7 @@ describe('Tickets Table Component', () => {
     expect(getByText('Feedback for CEP')).toBeDefined();
     expect(getByText('10/13/2022')).toBeDefined();
     expect(getByText('Resolved')).toBeDefined();
+    expect(await findAllByTestId('attachment-icon')).toHaveLength(1);
     expect(await findAllByTestId('attachment-icon')).toHaveLength(2);
   });
   it('should render message when there are no tickets to show', async () => {

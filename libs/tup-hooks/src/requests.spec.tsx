@@ -29,9 +29,7 @@ describe('requests', () => {
       }
     );
     await waitFor(() => expect(result.current.data).toEqual('response'));
-    expect(axios.get).toHaveBeenCalledWith('http://localhost:8001/endpoint', {
-      headers: { 'x-tup-token': 'abc123' },
-    });
+    expect(axios.get).toHaveBeenCalledWith('http://localhost:8001/endpoint');
   });
   it('should render the mock post component', async () => {
     (useJwt as Mock).mockReturnValue({
@@ -53,7 +51,7 @@ describe('requests', () => {
     expect(axios.post).toHaveBeenCalledWith(
       'http://localhost:8001/endpoint',
       'body',
-      { headers: { 'x-tup-token': 'abc123' } }
+      { timeout: undefined }
     );
   });
 });

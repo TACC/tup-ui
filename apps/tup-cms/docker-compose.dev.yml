@@ -5,8 +5,8 @@ services:
       context: ../../
       dockerfile: apps/tup-cms/Dockerfile
     ports:
-      - 127.0.0.1:8000:8000
-    command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
+      - 127.0.0.1:9000:9000
+    command: ['python3', 'manage.py', 'runserver', '0.0.0.0:9000']
     container_name: tup_cms
     hostname: tup_cms
     volumes:
@@ -22,6 +22,19 @@ services:
       - ../../apps/tup-ui/src/assets:/code/taccsite_cms/static/src/assets
       - ../../dist/apps/tup-cms-react/assets:/code/taccsite_cms/static/cms-react/assets
       - ../../apps/tup-cms-react/imports.debug.html:/code/taccsite_cms/templates/tup-cms-react.html
+    networks:
+      - tup_cms_net
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.debug.conf:/etc/nginx/nginx.conf
+    links:
+      - cms:cms
+    ports:
+      - 127.0.0.1:8000:80
+    container_name: tup_nginx
+    hostname: tup_nginx
     networks:
       - tup_cms_net
 

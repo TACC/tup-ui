@@ -1,6 +1,5 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import useConfig from '../useConfig';
-import useJwt from '../auth/useJwt';
 import useProjects from './useProjects';
 import axios from 'axios';
 import { ProjectsAllocations, AllocationUsage, UsagePerResource } from '.';
@@ -9,14 +8,10 @@ const useProjectUsage = (
   projectId: number
 ): UseQueryResult<AllocationUsage[], Error> => {
   const { baseUrl } = useConfig();
-  const { jwt } = useJwt();
   const { data } = useProjects();
   const getUtil = async (projectId: number, allocationId: number) => {
     const request = await axios.get<AllocationUsage>(
-      `${baseUrl}/projects/${projectId}/allocations/${allocationId}/usage`,
-      {
-        headers: { 'x-tup-token': jwt ?? '' },
-      }
+      `${baseUrl}/projects/${projectId}/allocations/${allocationId}/usage`
     );
     return request.data;
   };
