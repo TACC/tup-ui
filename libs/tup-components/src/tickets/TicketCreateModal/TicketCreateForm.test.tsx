@@ -18,7 +18,7 @@ describe('TicketCreateForm Component', () => {
     await user.type(subject, 'test');
     await user.type(description, 'test');
     await user.selectOptions(category, 'Allocations');
-    await user.selectOptions(resource, 'Other');
+    await user.selectOptions(resource, 'Other / None');
 
     const submit = screen.getByRole('button', { name: /add ticket/i });
     expect(submit.getAttribute('disabled')).toBe(null);
@@ -47,7 +47,7 @@ describe('TicketCreateForm Component', () => {
     await user.type(subject, 'test');
     await user.type(description, 'test');
     await user.selectOptions(category, 'Allocations');
-    await user.selectOptions(resource, 'Other');
+    await user.selectOptions(resource, 'Other / None');
 
     const submit = screen.getByRole('button', { name: /add ticket/i });
     expect(submit.getAttribute('disabled')).toBe(null);

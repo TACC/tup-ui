@@ -1,4 +1,3 @@
-<style id="css-trumps-has-decal">
 /* To restrict movement & visibility of background decal icons with a section */
 .has-decal,
 [class*="has-decal--"] {
@@ -13,4 +12,3 @@
 .has-decal--clip-y {
     overflow-y: clip;
 }
-</style>
