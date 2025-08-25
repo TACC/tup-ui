@@ -1,16 +1,15 @@
-<style id="css-spacing-fixes">
-/* HELP: Is this ready for tup-cms CSS? */
-/* FAQ: It seems too messy for core-cms */
-
+/* To add extra space under columns on specific pages */
+/* HELP: How can we apply and maintian this better? */
 /* FAQ: Columns that explcitely or automatically span 12, get margin bottom */
 .col-12:not(
   :last-child,
   [class*="banner-cell"],
   #page-scivis-gallery *,
   #page-all-systems *,
-  #page-stampede2 *, /* IMPORTANT: Added on 2023-10-13 */
+  #page-stampede2 *, /* 2023-10-13 *//* /systems/stampede2/ */
   :has(h1:only-child), /* /research/tacc-software/, /use-tacc/software-list/ */
   #page-weteachcs * /* 2024-10-03 *//* /education/educators/weteachcs/ */
+  #page-training * /* 2025-04-02 *//* /use-tacc/training/ */
 ),
 .col:not(
   [class*="col-"],
@@ -19,4 +18,3 @@
 ) {
   margin-bottom: 4rem;
 }
-</style>

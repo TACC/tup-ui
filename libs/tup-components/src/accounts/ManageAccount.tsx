@@ -5,7 +5,7 @@ import styles from './ManageAccount.module.css';
 
 const ManageUser = () => (
   <article className={styles['tap-feature']}>
-    <h2 className={styles['tap-header']}>Account Managment</h2>
+    <h2 className={styles['tap-header']}>Account Management</h2>
     <p className={styles['tap-description']}>
       Account details are mananged by the TACC Account Management portal. Follow
       the links below to:

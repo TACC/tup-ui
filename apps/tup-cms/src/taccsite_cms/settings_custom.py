@@ -46,6 +46,8 @@ STORAGES = {
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
+
+    ('plain.html', 'Plain'), # for TACC/Core-CMS-Plugin-Remote-Content
 )
 
 CMS_PERMISSIONS = True

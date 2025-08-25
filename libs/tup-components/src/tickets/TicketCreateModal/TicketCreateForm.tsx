@@ -90,13 +90,20 @@ export const TicketCreateForm: React.FC = () => {
     >
       {({ isValid }) => (
         <Form className={styles['ticket-create-form']} id="ticket-create-form">
-          <FormikSelect name="category" label="Category" required>
+          <FormikSelect
+            name="category"
+            label="Category"
+            required
+            description='For issues with MFA or CoC, choose "Multi-factor
+            Authentication" or "Other" respectively'
+          >
             <option value="">Please Choose One</option>
             <option>Allocations</option>
             <option>Running Jobs or Using TACC Resources</option>
             <option>Login Issues</option>
             <option>Multi-factor Authentication</option>
             <option>Arecibo Data</option>
+            <option>Security Incident</option>
             <option>Other</option>
           </FormikSelect>
           <FormikSelect name="resource" label="System/Resource" required>
@@ -114,7 +121,7 @@ export const TicketCreateForm: React.FC = () => {
             <option>Cloud and Interactive Computing (Tapis API)</option>
             <option>Cloud and Interactive Computing (JupyterHub)</option>
             <option>Cloud and Interactive Computing (Other)</option>
-            <option>Other</option>
+            <option>Other / None</option>
           </FormikSelect>
           <FormikInput name="subject" label="Subject" required description="" />
           <FormikTextarea
