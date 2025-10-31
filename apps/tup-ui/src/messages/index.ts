@@ -1,5 +1,3 @@
 import { ProjectsMessage } from './Messages';
 
-export {
-  ProjectsMessage
-};
+export { ProjectsMessage };
