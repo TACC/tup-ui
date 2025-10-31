@@ -1,0 +1,33 @@
+<script id="js-move-to" type="module">
+function processMoveToElements() {
+  const alerts = document.querySelectorAll('[data-move-to]');
+
+  [ ...alerts ].forEach(function(alert) {
+      const targetSelector = alert.dataset.moveTo;
+      const requiredPath = alert.dataset.moveIf;
+      const shouldMove = ( !requiredPath || window.location.pathname.includes(requiredPath) );
+      const targetElement = document.querySelector(targetSelector);
+
+      console.debug('[data-move-to]', {shouldMove, requiredPath, alert, targetElement});
+
+      if (shouldMove) {
+          targetElement?.prepend(alert);
+
+          if (alert.style.display === 'none') {
+              alert.style.removeProperty('display');
+          }
+      } else {
+            alert.style.setProperty('display', 'none');
+      }
+  });
+}
+processMoveToElements();
+
+// To trigger on React navigation
+const originalPushState = history.pushState;
+const originalReplaceState = history.replaceState;
+history.pushState = function() {
+    originalPushState.apply(this, arguments);
+    processMoveToElements();
+};
+</script>
