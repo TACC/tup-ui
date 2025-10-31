@@ -23,10 +23,30 @@ import {
   Impersonate,
   Systems,
 } from './pages';
+import { ProjectsMessage } from './messages';
 
 const AppLayout = () => {
   return <PageLayout left={<Sidebar />} right={<Outlet />} />;
 };
+const AppPageWithMessage = ({
+  MessageComponent,
+  PageComponent,
+  showMessage
+}: {
+  MessageComponent: React.ComponentType;
+  PageComponent: React.ComponentType;
+  showMessage: boolean
+}) => {
+  return (
+    <>
+      {showMessage && <MessageComponent />}
+      <PageComponent />
+    </>
+  );
+};
+
+console.log('VITE_FEATURE_PROJECTS_ENABLED:', import.meta.env.VITE_FEATURE_PROJECTS_ENABLED);
+
 function App() {
   return (
     <Routes>
@@ -44,8 +64,20 @@ function App() {
             element={<TicketDetail baseRoute="/tickets" />}
           />
         </Route>
-        <Route path="projects" element={<Projects />}></Route>
-        <Route path="projects/active" element={<Projects />}></Route>
+        <Route path="projects" element={
+          <AppPageWithMessage
+            PageComponent={Projects}
+            MessageComponent={ProjectsMessage}
+            showMessage={import.meta.env.VITE_FEATURE_PROJECTS_ENABLED !== 'true'}
+          />
+        }></Route>
+        <Route path="projects/active" element={
+          <AppPageWithMessage
+            PageComponent={Projects}
+            MessageComponent={ProjectsMessage}
+            showMessage={import.meta.env.VITE_FEATURE_PROJECTS_ENABLED !== 'true'}
+          />
+        }></Route>
         <Route path="projects/:projectId" element={<ProjectView />}>
           <Route path="" element={<ProjectDetail />}></Route>
           <Route path=":username" element={<ProjectMember />}></Route>
