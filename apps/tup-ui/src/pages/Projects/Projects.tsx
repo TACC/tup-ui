@@ -28,7 +28,7 @@ const Layout: React.FC = () => {
             </SectionHeader>
             {import.meta.env.VITE_FEATURE_PROJECTS_ENABLED &&
               <SectionMessage type="error">
-                Maintenance, <time>November 4, 9AM - 1PM Central</time>: Projects & Allocations are not available.
+                Project Mainteance is <time>Tues Nov 4, 9AM - 1PM CT</time>. You will be unable to manage your project users during this time. See <a href="https://tacc.utexas.edu/news/user-updates/107601/" rel="noreferrer" target="_blank">tacc.utexas.edu/news/user-updates/107601</a>.
               </SectionMessage>
             }
           </>
