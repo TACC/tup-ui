@@ -5,7 +5,7 @@ import {
   ProjectsNavbar,
   ProjectsListing,
 } from '@tacc/tup-components';
-import { SectionHeader, Button } from '@tacc/core-components';
+import { SectionHeader, SectionMessage, Button } from '@tacc/core-components';
 import styles from './Projects.module.css';
 
 const NewProject = () => (
@@ -22,9 +22,31 @@ const Layout: React.FC = () => {
       <section className={styles['project-section']}>
         <PageLayout
           top={
-            <SectionHeader actions={<NewProject />} isNestedHeader>
-              Projects & Allocations
-            </SectionHeader>
+            <>
+              <SectionHeader actions={<NewProject />} isNestedHeader>
+                Projects & Allocations
+              </SectionHeader>
+              <SectionHeader>
+                {import.meta.env.VITE_FEATURE_PROJECTS_ENABLED && (
+                  <SectionMessage
+                    type="error"
+                    className={styles['banner-message']}
+                  >
+                    Project Maintenance is <time>Tues Nov 4, 9AM - 1PM CT</time>
+                    . You will be unable to manage your project users during
+                    this time. See{' '}
+                    <a
+                      href="https://tacc.utexas.edu/news/user-updates/107601/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      tacc.utexas.edu/news/user-updates/107601
+                    </a>
+                    .
+                  </SectionMessage>
+                )}
+              </SectionHeader>
+            </>
           }
           left={<ProjectsNavbar />}
           right={<ProjectsListing />}
