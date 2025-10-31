@@ -18,3 +18,7 @@
 .project-section > div > div {
     padding: var(--global-space--section);
 }
+
+.banner-message {
+    margin-right: var(--global-space--section-right)
+}
