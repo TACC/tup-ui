@@ -1,0 +1,5 @@
+.message {
+    margin-top: var(--global-space--section-top) !important;
+    margin-left: var(--global-space--section-left);
+    margin-right: var(--global-space--section-right);
+}
