@@ -7,6 +7,7 @@ import path from 'path';
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/tup-ui',
+  // envPrefix: 'VITE_',
 
   server: {
     port: 3000,
