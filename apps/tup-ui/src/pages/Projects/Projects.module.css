@@ -19,7 +19,6 @@
     padding: var(--global-space--section);
 }
 
-.banner-message {
-    margin-right: var(--global-space--section-right);
-    font-size: var(--global-font-size--medium);
+.banner-message[class*="is-scope-section"] {
+    margin-bottom: var(--global-space--section-top);
 }

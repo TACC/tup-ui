@@ -23,30 +23,27 @@ const Layout: React.FC = () => {
         <PageLayout
           top={
             <>
+              {import.meta.env.VITE_FEATURE_PROJECTS_ENABLED && (
+                <SectionMessage
+                  type="error"
+                  className={styles['banner-message']}
+                >
+                  Project Maintenance is scheduled for{' '}
+                  <time>Tues Nov 4, 9AM - 1PM CT</time>. You will be unable to
+                  manage your project users during this time. See{' '}
+                  <a
+                    href="https://tacc.utexas.edu/news/user-updates/107601/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    tacc.utexas.edu/news/user-updates/107601
+                  </a>
+                  .
+                </SectionMessage>
+              )}
               <SectionHeader actions={<NewProject />} isNestedHeader>
                 Projects & Allocations
               </SectionHeader>
-              {import.meta.env.VITE_FEATURE_PROJECTS_ENABLED && (
-                <>
-                  <SectionMessage
-                    type="error"
-                    className={styles['banner-message']}
-                  >
-                    Project Maintenance is scheduled for{' '}
-                    <time>Tues Nov 4, 9AM - 1PM CT</time>. You will be unable to
-                    manage your project users during this time. See{' '}
-                    <a
-                      href="https://tacc.utexas.edu/news/user-updates/107601/"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      tacc.utexas.edu/news/user-updates/107601
-                    </a>
-                    .
-                  </SectionMessage>
-                  <hr />
-                </>
-              )}
             </>
           }
           left={<ProjectsNavbar />}
