@@ -20,5 +20,6 @@
 }
 
 .banner-message {
-    margin-right: var(--global-space--section-right)
+    margin-right: var(--global-space--section-right);
+    font-size: var(--global-font-size--medium);
 }
