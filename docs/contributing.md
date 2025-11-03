@@ -40,7 +40,7 @@ Only appointed team members may release versions.
    | type        | use case        | tag format                                                                                    | example                                                                               |
    | ----------- | --------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
    | release     | deploy to prod. | `vA.B.C` following [SemVer](https://semver.org/)                                              | `v1.1.3`                                                                              |
-   | pre-release | deploy to dev.  | `vA.B.C-YYYYMMZZ`<br /><sub>Where `ZZ` is the _number_ of pre-releases since `vA.B.C`.</sub> | `v1.1.3-20231203`<br /><sub>Where `03` is the _third_ pre-release of December.</sub> |
+   | pre-release | deploy to dev.  | `vA.B.C-YYYYMMNN`<br /><sub>Where `NN` is the _Nth_ pre-release since `vA.B.C`.</sub> | `v1.1.3-20231203`<br /><sub>Where `03` is the _third_ pre-release of December.</sub> |
 
 2. If a **pre-release** is off of a branch other than `main`, i.e. has code from branches of un-merged PRs, then add those PRs to the changelog e.g.
 
