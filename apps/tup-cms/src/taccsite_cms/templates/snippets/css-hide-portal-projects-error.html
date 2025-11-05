@@ -1,3 +1,5 @@
+{% load sekizai_tags %}
+{% addtoblock "css" %}
 <style id="css-hide-portal-projects-error">
 #page-portal
 p[class*="banner-message"]:has(
@@ -6,3 +8,4 @@ p[class*="banner-message"]:has(
     display: none;
 }
 </style>
+{% endaddtoblock %}
