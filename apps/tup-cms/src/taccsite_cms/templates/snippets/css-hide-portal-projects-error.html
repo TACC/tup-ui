@@ -1,0 +1,11 @@
+{% load sekizai_tags %}
+{% addtoblock "css" %}
+<style id="css-hide-portal-projects-error">
+#page-portal
+p[class*="banner-message"]:has(
+  a[href*="user-updates/107601"]
+) {
+    display: none;
+}
+</style>
+{% endaddtoblock %}
