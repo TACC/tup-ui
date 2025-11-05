@@ -5,7 +5,7 @@ import {
   ProjectsNavbar,
   ProjectsListing,
 } from '@tacc/tup-components';
-import { SectionHeader, SectionMessage, Button } from '@tacc/core-components';
+import { SectionHeader, Button } from '@tacc/core-components';
 import styles from './Projects.module.css';
 
 const NewProject = () => (
