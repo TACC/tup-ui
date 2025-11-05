@@ -23,7 +23,7 @@ const Layout: React.FC = () => {
         <PageLayout
           top={
             <>
-              {import.meta.env.VITE_FEATURE_PROJECTS_ENABLED && (
+              {import.meta.env.VITE_FEATURE_PROJECTS_ENABLED !== 'true' && (
                 <SectionMessage
                   type="error"
                   className={styles['banner-message']}
