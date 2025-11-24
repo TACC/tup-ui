@@ -1,4 +1,2 @@
-/* AFTER Core-CMS has Core-Styles#508 */
-/* @import url("{% static 'site_cms/css/build/core-styles.theme.default.css' %}") layer(base); */
-/* BEFORE Core-CMS has Core-Styles#508 */
+/* TODO: Update tup-cms to v4.33+, then DELETE THIS: */
 @import url('https://cdn.jsdelivr.net/gh/TACC/Core-Styles@8711794/dist/components/c-feed-list.css');
