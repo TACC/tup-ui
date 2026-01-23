@@ -24,7 +24,7 @@ const FieldWrapper: React.FC<React.PropsWithChildren<FieldWrapperProps>> = ({
       className={`c-form__field ${required ? 'has-required' : ''} ${className}`}
     >
       <label htmlFor={name}>
-        {label}
+        {label}{' '}
         {required && <Badge color="danger">Required</Badge>}
       </label>
       {children}
