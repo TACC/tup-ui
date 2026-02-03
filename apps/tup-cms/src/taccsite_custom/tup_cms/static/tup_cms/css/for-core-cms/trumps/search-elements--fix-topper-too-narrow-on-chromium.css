@@ -1,0 +1,12 @@
+#tacc-google-search {
+    /* … */
+
+    /* Table containing search stats and sorting selection options */
+    /* remove border from search analytics, add gray background */
+    & .gsc-above-wrapper-area {
+        max-width: unset;
+        /* … */
+    }
+
+    /* … */
+}
