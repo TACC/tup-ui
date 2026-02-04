@@ -12,5 +12,5 @@
   --size: calc(100% + 105px);
   width: var(--size);
   height: var(--size);
-  object-fit: cover;
+  object-fit: cover; /* to retain aspect ratio */
 }
