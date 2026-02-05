@@ -18,7 +18,3 @@
 .project-section > div > div {
     padding: var(--global-space--section);
 }
-
-.banner-message[class*="is-scope-section"] {
-    margin-bottom: var(--global-space--section-top);
-}
