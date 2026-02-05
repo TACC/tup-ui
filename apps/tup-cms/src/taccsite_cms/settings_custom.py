@@ -138,6 +138,25 @@ PORTAL_NAV_WIDTH = 'lg'
 PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'bluesky', 'facebook', 'email']
 
 ########################
+# TACC: STYLES
+########################
+
+PORTAL_STYLES = [
+    {
+        "is_remote": False,
+        "path": "/static/tup_cms/css/tup-cms.for-core-styles.css"
+    },
+    {
+        "is_remote": False,
+        "path": "/static/tup_cms/css/tup-cms.for-core-cms.css"
+    },
+    {
+        "is_remote": False,
+        "path": "/static/tup_cms/css/tup-cms.for-tup-cms.css"
+    },
+]
+
+########################
 # DJANGOCMS_BLOG
 ########################
 
