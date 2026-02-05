@@ -27,10 +27,3 @@ FAQ: IF a script or style is better cached with markup, THEN:
 <link rel="stylesheet" href="{% if style.is_remote %}{{ style.path }}{% else %}{% static style.path %}{% endif %}" />
 {% endfor %}
 {% endwith %}
-
-
-
-{# NEW CODE #}
-
-<!-- TUP CMS UX Scripts -->
-<script src="{% static 'tup_cms/js/modules/breadcrumbs.js' %}" type="module"></script>
