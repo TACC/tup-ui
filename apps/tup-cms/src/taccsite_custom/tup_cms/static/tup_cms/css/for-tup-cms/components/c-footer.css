@@ -95,15 +95,14 @@ svg {
 }
 
 /* To skin social media logo links */
-/* WARNING: Developer styles */
 .c-footer .logos--social a {
-    padding: 1rem; /* rem, because any em value is 0 because font-size: 0 */
+    padding: 0.5em;
 }
 .c-footer .logos--social a:hover {
     background-color: var(--global-color-primary--x-dark);
 }
 .c-footer .logos--social svg {
-    font-size: 2.5rem; /* rem, so it scales like text */
+    font-size: 2.5rem;
 }
 
 
