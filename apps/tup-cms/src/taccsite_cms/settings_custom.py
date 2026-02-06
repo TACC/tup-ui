@@ -227,21 +227,27 @@ TACC_STAFF_PROFILE_POST_NOMIALS_EXCLUSION_LIST = ["Jr.", "Sr.", "I", "II", "III"
 
 
 ########################
-# PLUGIN SETTINGS
+# DJANGO_FILER
 ########################
 
 # https://github.com/django-cms/django-filer/blob/2.0.2/docs/permissions.rst
 FILER_ENABLE_PERMISSIONS = True
 
+########################
+# CKEDITOR
 # https://github.com/django-cms/djangocms-text-ckeditor
+########################
+
 CKEDITOR_SETTINGS = {
     'autoParagraph': True, # Core-CMS had set this to False
     'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
     'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
 }
 
-# DJANGOCMS_ICON SETTINGS
+########################
+# DJANGOCMS_ICON
 # https://github.com/django-cms/djangocms-icon
+########################
 
 from taccsite_cms.settings import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
 
