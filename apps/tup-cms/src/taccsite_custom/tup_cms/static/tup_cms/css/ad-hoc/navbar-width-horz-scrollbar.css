@@ -25,9 +25,8 @@
 }
 
 
-/* TO MAKE HEADER FONT CONSISTENT ON CMS & PORTAL */
-
-/* TODO: Remove after TACC/Core-CMS#v4.25.1 */
+/* To reduce width of text in CMS nav */
 .s-header {
+    /* FAQ: Roboto is narrower than Benton Sans */
     font-family: var(--global-font-family--sans--portal);
 }
