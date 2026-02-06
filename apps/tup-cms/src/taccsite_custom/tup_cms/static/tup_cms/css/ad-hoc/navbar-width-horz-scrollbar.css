@@ -23,10 +23,3 @@
 .c-footer .logos--social a {
     padding: 0.5em;
 }
-
-
-/* To reduce width of text in CMS nav */
-.s-header {
-    /* FAQ: Roboto is narrower than Benton Sans */
-    font-family: var(--global-font-family--sans--portal);
-}
