@@ -249,9 +249,8 @@ DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup_cms', 'static', 
 with open(DECAL_ICONFILE, 'r') as fh:
     DECAL_ICONS = fh.read()
 
-# HELP: Icon dropdown sometimes does not show active icon selected.
-#       The position of DECAL_ICONS in this array affects the bug.
-# SEE: https://github.com/django-cms/djangocms-icon/issues/9
 DJANGOCMS_ICON_SETS = [
+    # IMPORTANT: Load CORECMS_ICON_SETS set last
+    # https://github.com/TACC/Core-CMS/blob/v4.37.1/taccsite_cms/_settings/djangocms_plugins.py#L203-L210
     (DECAL_ICONS, '', _('TACC Decal SVGs')),
 ] + CORECMS_ICON_SETS
