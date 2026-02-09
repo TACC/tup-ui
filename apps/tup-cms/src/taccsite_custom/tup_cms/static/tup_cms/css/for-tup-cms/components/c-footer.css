@@ -1,16 +1,3 @@
-/* SVGs */
-
-/* To mimic Bootstrap _reboot img { vertical-align: middle } */
-/* TODO: Consider for Core-CMS */
-/* TODO: Decide whether this is only for footer */
-svg {
-    vertical-align: middle;
-}
-
-
-
-
-
 /* BUTTONS */
 
 /* To style buttons differently than in body */
