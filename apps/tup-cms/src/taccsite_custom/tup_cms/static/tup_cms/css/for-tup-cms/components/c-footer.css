@@ -16,8 +16,6 @@ svg {
 /* To style buttons differently than in body */
 .c-footer .c-button,
 .c-footer [class*="button--"] {
-    --max-width: auto; /* override core-styles.base.css */
-
     & small {
         font-size: var(--global-font-size--x-small);
     }
