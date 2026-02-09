@@ -14,8 +14,3 @@
 .portal-logo {
     height: 30px;
 }
-/* To vertically center the logo which was shrunk */
-.s-header .navbar-brand {
-    display: grid;
-    align-items: center;
-}
