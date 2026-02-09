@@ -98,8 +98,21 @@ svg {
 .c-footer .logos--social a {
     padding: 0.5em;
 }
+.c-footer .logos--social a:hover {
+    color: inherit;
+    border-bottom: var(--global-border-width--normal) solid white;
+}
 .c-footer .logos--social svg {
     font-size: 2.5rem;
+}
+
+/* HACK: To undo tricky Instagram hover color */
+.c-footer .logos--social a.logos__instagram:hover {
+    mask: unset;
+    background: unset;
+}
+.c-footer .logos--social a.logos__instagram:hover svg {
+  visibility: visible;
 }
 
 
