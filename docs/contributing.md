@@ -40,9 +40,9 @@ Only appointed team members may release versions.
 
 If a **pre-release** is off of a branch other than `main`, i.e. has code from branches of un-merged PRs, then add those PRs to the changelog e.g.
 
-   ```markdown
-   - feat: TUP-631 migrate blog page css to core-cms by @wesleyboar in #385 at b7f6651
-   - TUP-609 Improve feedback when users reply to tickets by @sophia-massie in #382 at 53cd648
-   ```
+```markdown
+- feat: TUP-631 migrate blog page css to core-cms by @wesleyboar in #385 at b7f6651
+- TUP-609 Improve feedback when users reply to tickets by @sophia-massie in #382 at 53cd648
+```
 
-   (The `at 123abc0` refers to the commit at which the PR's branch was merged.)
+(The `at 123abc0` refers to the commit at which the PR's branch was merged.)
