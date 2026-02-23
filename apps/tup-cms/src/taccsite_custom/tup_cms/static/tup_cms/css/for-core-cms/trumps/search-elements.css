@@ -48,6 +48,13 @@
     /* Suggestion phrase after "Did you mean:" */
     & .gs-spelling a {
         color: var(--global-color-accent--normal);
+
+        /* to undo core-styles.base */
+        /* https://github.com/TACC/Core-Styles/blob/8ab89d3/src/lib/_imports/elements/links.css */
+        &:not([href]) {
+            opacity: 1;
+            pointer-events: auto;
+        }
     }
 
     & .gs-spelling {
