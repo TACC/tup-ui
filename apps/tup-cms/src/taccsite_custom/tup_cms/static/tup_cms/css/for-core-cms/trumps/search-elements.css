@@ -132,6 +132,9 @@
         text-decoration-thickness: var(--global-border-width--normal);
         text-underline-offset: 0.2em;
     }
+    svg.gcsc-find-more-on-google-magnifier {
+        fill: currentColor;
+    }
 
     & .gcsc-find-more-on-google:hover {
         text-decoration-line: underline;
