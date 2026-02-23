@@ -47,7 +47,7 @@
 
     /* Suggestion phrase after "Did you mean:" */
     & .gs-spelling a {
-        color: var(--global-color-accent--normal);
+        color: var(--global-color-accent--light);
 
         /* to undo core-styles.base */
         /* https://github.com/TACC/Core-Styles/blob/8ab89d3/src/lib/_imports/elements/links.css */
@@ -83,7 +83,7 @@
         text-decoration: auto;
     }
     & a.gs-title:link {
-        color: var(--global-color-accent--normal);
+        color: var(--global-color-accent--light);
         text-decoration: none;
         text-decoration-thickness: var(--global-border-width--normal);
         text-underline-offset: 0.2em;
@@ -113,7 +113,7 @@
     }
 
     & .gsc-cursor-current-page {
-        color: var(--global-color-accent--normal);
+        color: var(--global-color-accent--light);
         text-decoration: none;
         text-decoration-thickness: var(--global-border-width--normal);
         text-underline-offset: 0.2em;
@@ -130,7 +130,7 @@
 
     /* adjusts google branding */
     & .gcsc-find-more-on-google {
-        color: var(--global-color-accent--normal);
+        color: var(--global-color-accent--light);
         text-decoration: none;
         text-decoration-thickness: var(--global-border-width--normal);
         text-underline-offset: 0.2em;
