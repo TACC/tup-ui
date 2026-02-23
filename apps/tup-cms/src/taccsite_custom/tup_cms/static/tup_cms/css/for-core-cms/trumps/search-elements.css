@@ -92,6 +92,9 @@
         text-decoration-line: underline;
         text-decoration-style: solid;
     }
+    & a.gs-title b {
+        color: currentColor;
+    }
 
     /* push search-result description to right */
     & .gs-image-box {
