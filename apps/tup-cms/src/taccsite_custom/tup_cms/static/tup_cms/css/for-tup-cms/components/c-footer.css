@@ -101,7 +101,7 @@ svg {
     padding: 1rem; /* rem, because any em value is 0 because font-size: 0 */
 }
 .c-footer .logos--social a:hover {
-    background-color: var(--global-color-primary--x-dark);
+    background-color: var(--global-color-primary--xx-dark);
 }
 .c-footer .logos--social svg {
     height: 2.5rem; /* rem, so it scales like text */
