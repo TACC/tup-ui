@@ -6,7 +6,6 @@
   min-width: var(--min-width);
   border: none;
   padding-left: var(--horizontal-buffer);
-  color: #707070;
   cursor: pointer;
   display: block;
 }
@@ -32,7 +31,7 @@
   font-size: 1.2rem;
   font-weight: 500;
   pointer-events: none;
-  color: var(--global-color-primary--x-dark);
+  color: var(--global-color-primary--xx-dark);
   text-decoration: none;
 }
 
