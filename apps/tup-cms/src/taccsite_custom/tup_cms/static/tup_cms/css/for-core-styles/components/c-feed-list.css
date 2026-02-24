@@ -126,11 +126,3 @@
   font-weight: var(--bold);
   font-size: var(--global-font-size--medium)
 }
-.o-section--style-dark .c-feed-list > a:last-child,
-.o-section--style-light .c-feed-list > p:has(a:only-child) {
-  color: var(--global-color-primary--xx-light);
-}
-.o-section--style-light .c-feed-list > a:last-child,
-.o-section--style-light .c-feed-list > p:has(a:only-child) {
-  color: var(--global-color-primary--xx-dark);
-}
