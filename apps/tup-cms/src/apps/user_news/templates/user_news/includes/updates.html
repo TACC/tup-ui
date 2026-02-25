@@ -4,7 +4,10 @@
   <aside class="c-update">
     <header class="c-update__header">
       <h3 class="c-update__title">
-        <span class="c-pill c-pill--is-updated">Update</span>&nbsp;
+        <span
+          class="c-pill c-pill--is-updated"
+            aria-label="This was updated since it was first published."
+        >Update</span>&nbsp;
       </h3>
       <span>{% trans "Published" %}</span>&nbsp;
       <time datetime="{{ update.postDateTime }}">

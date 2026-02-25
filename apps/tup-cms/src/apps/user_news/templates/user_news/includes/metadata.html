@@ -12,7 +12,10 @@
         <span>{% trans "Published" %}</span>&nbsp;
         <time datetime="{{ article.postDateTime }}">{{ article.postDate }}</time>
         {% if article.updates %}
-        <span class="c-pill c-pill--is-updated">Update</span>
+        <span
+          class="c-pill c-pill--is-updated"
+          aria-label="This was updated since it was first published."
+        >Update</span>
         {% endif %}
     </li>
     {% endif %}
