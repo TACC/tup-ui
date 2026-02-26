@@ -67,9 +67,11 @@ const UserNews: React.FC = () => {
               <time
                 className={styles['posted-date']}
                 data-prefix="Published:"
+                aria-label={`Published ${formatDate(newsItem.PostedDate)}`}
                 dateTime={formatDateTime(newsItem.PostedDate)}
               >
                 {formatDate(newsItem.PostedDate)}
+
                 {newsItem.Updates && (
                   <Pill type="updated" className={styles['status-pill']}>
                     Update

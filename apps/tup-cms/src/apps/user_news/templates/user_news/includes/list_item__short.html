@@ -2,8 +2,13 @@
 
   <article class="{% if article.updates %}has-update{% endif %}">
   {% spaceless %}
-    <time data-prefix="Published:" datetime="{{ article.postDateTime }}">
+    <time
+      data-prefix="Published:"
+      aria-label="Published {{ article.postDate }}"
+      datetime="{{ article.postDateTime }}"
+    >
       {{ article.postDate }}
+
       {% if article.updates %}
         <span
           class="c-pill c-pill--is-updated"
