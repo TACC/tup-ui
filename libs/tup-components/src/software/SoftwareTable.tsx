@@ -40,7 +40,13 @@ const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
   );
   return (
     <>
-      <Button type="link" onClick={() => toggle()}>
+      <Button
+        type="link"
+        onClick={() => toggle()}
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
+        aria-controls="software-table-modal"
+      >
         Version Documentation
       </Button>
       <Modal
@@ -49,9 +55,15 @@ const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
         toggle={toggle}
         size="lg"
         id="software-table-modal"
+        labelledBy="software-table-modal-title"
       >
-        <ModalHeader toggle={toggle} close={closeBtn}>
-          {pkg.package}
+        <ModalHeader
+          toggle={toggle}
+          close={closeBtn}
+        >
+          <span id="software-table-modal-title">
+            {pkg.package}
+          </span>
         </ModalHeader>
         <ModalBody className={styles['modal-body']}>
           <p className={styles['package-desc']}>{data?.description}</p>
