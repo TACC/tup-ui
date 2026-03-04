@@ -57,13 +57,8 @@ const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
         id="software-table-modal"
         labelledBy="software-table-modal-title"
       >
-        <ModalHeader
-          toggle={toggle}
-          close={closeBtn}
-        >
-          <span id="software-table-modal-title">
-            {pkg.package}
-          </span>
+        <ModalHeader toggle={toggle} close={closeBtn}>
+          <span id="software-table-modal-title">{pkg.package}</span>
         </ModalHeader>
         <ModalBody className={styles['modal-body']}>
           <p className={styles['package-desc']}>{data?.description}</p>
