@@ -161,6 +161,7 @@ const SoftwareTable: React.FC = () => {
           />
           <input
             type="search"
+            required
             placeholder="Search for package"
             autoComplete="off"
             minLength={3}
