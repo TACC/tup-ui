@@ -160,29 +160,6 @@ PORTAL_STYLES = [
 # DJANGOCMS_BLOG
 ########################
 
-from taccsite_cms.settings import INSTALLED_APPS
-
-# News must be installed BEFORE our CMS app; reason unknown
-# https://github.com/TACC/Core-CMS-Resources/pull/127/commits/0b09af6cb0ae6dd630f9ca94bf36ca9e042a5d81
-tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
-INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
-    # 'filer',              # already in Core
-    # 'easy_thumbnails',    # already in Core
-    'parler',
-    'taggit',
-    'taggit_autosuggest',
-    # 'meta',               # already in Core
-    'sortedm2m',
-    'djangocms_blog',
-]
-# REQ: 'taggit_autosuggest' requires the following is added to `urls.py`
-"""
-urlpatterns += [
-    # Support `taggit_autosuggest` (from `djangocms-blog`)
-    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
-]
-"""
-
 # Paths for alternate templates that user can choose for blog-specific plugin
 # - Devs can customize core templates at `templates/djangocms_blog/`.
 # - Users can choose alt. templates from `templates/djangocms_blog/plugins/*`.
