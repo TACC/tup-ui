@@ -226,7 +226,7 @@ CKEDITOR_SETTINGS = {
 # https://github.com/django-cms/djangocms-icon
 ########################
 
-from taccsite_cms.settings import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
+from taccsite_cms._settings.djangocms_plugins import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
 
 DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup_cms', 'static', 'tup_cms', 'img', 'icons', 'decals.json')
 with open(DECAL_ICONFILE, 'r') as fh:
