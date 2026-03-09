@@ -4,7 +4,7 @@ CUSTOM_APPS = [
   'apps.portal_nav',
   'apps.portal.apps.PortalConfig',
   'apps.user_news',
-  'apps.staff_profile'
+  'apps.staff_profile',
 
   # DJANGOCMS_BLOG
   'parler',
