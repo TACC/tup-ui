@@ -5,7 +5,6 @@ from apps.user_news.urls import urls as user_news_urls
 from django.views.generic.base import RedirectView
 
 custom_urls = [
-    path('core/markup/nav/', include('apps.portal_nav.urls', namespace='portal_nav')),
     path('logout/', RedirectView.as_view(url="/portal/logout"), name='logout'),
     path('login/', RedirectView.as_view(url="/portal/login"), name='login'),
     path('portal/', include('apps.portal.urls', namespace='portal')),
