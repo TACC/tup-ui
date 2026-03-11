@@ -126,6 +126,11 @@ LOGIN_URL = "/portal/login"
 ########################
 
 PORTAL_IS_TACC_CORE_PORTAL = False
+
+# IMPORTANT: Requires https://github.com/TACC/Core-CMS/pull/1117
+PORTAL_HOSTS_NAV = True
+PORTAL_LOADS_NAV = False
+
 PORTAL_HAS_LOGIN = True
 PORTAL_HAS_SEARCH = True
 
