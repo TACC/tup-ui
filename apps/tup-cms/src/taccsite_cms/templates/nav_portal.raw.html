@@ -1,7 +1,6 @@
 {# @var user #}
 {# WARNING: Some markup is duplicated in other repositories: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
-<!-- FAQ: This template loads independently at a unique url (see `urls.py`)
-          so CMS and User Guide can render this markup into their markup. -->
+{# FAQ: Template (and user var) is included into TACC/Core-CMS nav_portal.html #}
 
 {# GH-101: Remove style tag i.e. rely only on `site.header.css` #}
 <style type="text/css">
@@ -39,11 +38,13 @@
     <a class="dropdown-item" href="/portal/account">
       <i class="icon icon-user" role="presentation"></i> Manage Account
     </a>
-    {% if show_impersonation %}
+    {% for group in user.groups.all %}
+    {% if group.name == 'Impersonator' %}
     <a class="dropdown-item" href="/portal/impersonation">
       <i class="icon icon-user" role="presentation"></i> Impersonate User
     </a>
     {% endif %}
+    {% endfor %}
     <a class="dropdown-item" href="/portal/logout">
       <i class="icon icon-exit" role="presentation"></i> Log Out
     </a>
