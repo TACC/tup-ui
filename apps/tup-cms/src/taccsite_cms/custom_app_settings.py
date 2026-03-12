@@ -1,7 +1,6 @@
 CUSTOM_APPS = [
 
   # TUP CMS
-  'apps.portal_nav',
   'apps.portal.apps.PortalConfig',
   'apps.user_news',
   'apps.staff_profile',
