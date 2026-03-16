@@ -10,10 +10,7 @@
     {% if article.postDateTime %}
     <li class="c-news__date">
         <span>{% trans "Published" %}</span>&nbsp;
-        <time
-          aria-label="Published {{ article.postDate }}"
-          datetime="{{ article.postDateTime }}"
-        >{{ article.postDate }}</time>
+        <time datetime="{{ article.postDateTime }}">{{ article.postDate }}</time>
         {% if article.updates %}
         <span class="c-pill c-pill--is-updated" >
           Updated
