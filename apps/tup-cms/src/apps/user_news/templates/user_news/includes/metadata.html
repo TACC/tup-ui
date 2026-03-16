@@ -15,11 +15,8 @@
           datetime="{{ article.postDateTime }}"
         >{{ article.postDate }}</time>
         {% if article.updates %}
-        <span
-          class="c-pill c-pill--is-updated"
-          aria-label="This was updated since it was first published."
-        >
-          Update
+        <span class="c-pill c-pill--is-updated" >
+          Updated
         </span>
         {% endif %}
     </li>
@@ -33,11 +30,8 @@
 <ul class="c-news__data c-news__tags">{% spaceless %}
     {% comment %}
     {% if article.updates %}
-    <li
-        class="c-pill c-pill--is-updated"
-        aria-label="This was updated since it was first published."
-    >
-        Update
+    <li class="c-pill c-pill--is-updated" >
+        Updated
     </li>
     {% endif %}
     {% endcomment %}
