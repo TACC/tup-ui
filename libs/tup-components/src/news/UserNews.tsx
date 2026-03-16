@@ -74,7 +74,7 @@ const UserNews: React.FC = () => {
 
                 {newsItem.Updates && (
                   <Pill type="updated" className={styles['status-pill']}>
-                    Update
+                    Updated
                   </Pill>
                 )}
               </time>
