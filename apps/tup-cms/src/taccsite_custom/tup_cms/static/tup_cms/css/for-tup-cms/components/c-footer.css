@@ -88,6 +88,10 @@
 .c-footer .logos--social svg {
     font-size: 2.5rem;
 }
+.c-footer .logos--social a:hover svg {
+    color: var(--global-color-accent--light-alt);
+}
+
 
 /* HACK: To undo tricky Instagram hover color */
 .c-footer .logos--social a.logos__instagram:hover {
