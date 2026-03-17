@@ -231,3 +231,12 @@ html#page-portal .c-footer p {
 #cms-footer .c-pane--common a {
     color: var(--global-color-primary--xx-light);
 }
+#cms-footer .c-pane--common a {
+    text-decoration-line: underline;
+    text-decoration-color: var(--global-color-primary--dark);
+
+    &:hover {
+      text-decoration-color: inherit;
+    }
+}
+
