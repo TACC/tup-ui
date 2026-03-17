@@ -144,15 +144,15 @@ PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'bluesky', 'facebook', 'email']
 PORTAL_STYLES = [
     {
         "is_remote": False,
-        "path": "/static/tup_cms/css/tup-cms.for-core-styles.css"
+        "path": "tup_cms/css/tup-cms.for-core-styles.css"
     },
     {
         "is_remote": False,
-        "path": "/static/tup_cms/css/tup-cms.for-core-cms.css"
+        "path": "tup_cms/css/tup-cms.for-core-cms.css"
     },
     {
         "is_remote": False,
-        "path": "/static/tup_cms/css/tup-cms.for-tup-cms.css"
+        "path": "tup_cms/css/tup-cms.for-tup-cms.css"
     },
 ]
 
