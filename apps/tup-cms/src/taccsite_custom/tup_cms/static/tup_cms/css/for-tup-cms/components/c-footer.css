@@ -43,18 +43,14 @@
 }
 
 /* For independent logo sizes */
-.c-footer .logos__tacc svg {
+.c-footer .logos--branding svg {
   height: 55%;
-
+}
+.c-footer .logos__tacc svg {
   /* To vertically align center as if small text was not present */
   transform: translateY(5%);
 }
-.c-footer .logos__nsf svg {
-  height: 100%;
-}
 .c-footer .logos__ut svg {
-  height: 66.67%;
-
   /* To vertically align center as if small text was not present */
   transform: translateY(5%);
 }
@@ -78,18 +74,25 @@
 }
 
 /* To skin logo links */
-.c-footer [class*="logos--"] a:hover {
-    color: inherit;
-    opacity: 0.75;
+.c-footer [class*="logos--"] a {
+    &:hover {
+        color: inherit;
+    }
+    &:hover svg {
+        color: currentColor;
+        outline: var(--global-border-width--normal) solid currentColor;
+        outline-offset: 5px;
+        border-radius: var(--global-border-width--normal);
+    }
+    &:active svg {
+        outline-style: dotted;
+    }
 }
 .c-footer .logos--social a {
     padding: 0.5em;
 }
 .c-footer .logos--social svg {
     font-size: 2.5rem;
-}
-.c-footer .logos--social a:hover svg {
-    color: var(--global-color-accent--light-old);
 }
 
 
@@ -230,4 +233,12 @@ html#page-portal .c-footer p {
 #cms-footer .c-pane--common,
 #cms-footer .c-pane--common a {
     color: var(--global-color-primary--xx-light);
+}
+#cms-footer .c-pane--common a {
+    text-decoration-line: underline;
+    text-decoration-color: var(--global-color-primary--dark);
+
+    &:hover {
+      text-decoration-color: inherit;
+    }
 }
