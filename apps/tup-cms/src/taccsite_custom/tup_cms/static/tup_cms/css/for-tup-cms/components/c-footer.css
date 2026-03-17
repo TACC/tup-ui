@@ -1,27 +1,10 @@
-/* SVGs */
-
-/* To mimic Bootstrap _reboot img { vertical-align: middle } */
-/* TODO: Consider for Core-CMS */
-/* TODO: Decide whether this is only for footer */
-svg {
-    vertical-align: middle;
-}
-
-
-
-
-
 /* BUTTONS */
 
 /* To style buttons differently than in body */
 .c-footer .c-button,
 .c-footer [class*="button--"] {
-    --max-width: auto; /* override core-styles.base.css */
-    font-size: var(--global-font-size--x-small); /* mimic Botstrap .small and <small> */
-
-    /* TODO: (1) Remove <small> from footer buttons (2) Remove this font-size */
     & small {
-        font-size: inherit; /* gracefully deprecate use of <small> */
+        font-size: var(--global-font-size--x-small);
     }
 }
 
@@ -94,17 +77,25 @@ svg {
   cursor: default;
 }
 
-/* To skin social media logo links */
-/* WARNING: Developer styles */
-.c-footer .logos--social a {
-    display: inline-block;
-    padding: 1rem; /* rem, because any em value is 0 because font-size: 0 */
+/* To skin logo links */
+.c-footer [class*="logos--"] a:hover {
+    color: inherit;
+    opacity: 0.75;
 }
-.c-footer .logos--social a:hover {
-    background-color: var(--global-color-primary--xx-dark);
+.c-footer .logos--social a {
+    padding: 0.5em;
 }
 .c-footer .logos--social svg {
-    height: 2.5rem; /* rem, so it scales like text */
+    font-size: 2.5rem;
+}
+
+/* HACK: To undo tricky Instagram hover color */
+.c-footer .logos--social a.logos__instagram:hover {
+    mask: unset;
+    background: unset;
+}
+.c-footer .logos--social a.logos__instagram:hover svg {
+  visibility: visible;
 }
 
 
