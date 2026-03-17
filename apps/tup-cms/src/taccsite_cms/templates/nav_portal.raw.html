@@ -27,33 +27,33 @@
     aria-haspopup="true"
     aria-expanded="false"
   >
-    <i class="icon icon-user" role="presentation"></i>
+    <i class="icon icon-user" aria-hidden="true"></i>
     <span>{{ user.get_username }}</span>
     <span class="sr-only">Toggle Dropdown</span>
   </a>
   <nav class="dropdown-menu dropdown-menu-right">
     <a class="dropdown-item" href="/portal">
-      <i class="icon icon-dashboard" role="presentation"></i> My Dashboard
+      <i class="icon icon-dashboard" aria-hidden="true"></i> My Dashboard
     </a>
     <a class="dropdown-item" href="/portal/account">
-      <i class="icon icon-user" role="presentation"></i> Manage Account
+      <i class="icon icon-user" aria-hidden="true"></i> Manage Account
     </a>
     {% for group in user.groups.all %}
     {% if group.name == 'Impersonator' %}
     <a class="dropdown-item" href="/portal/impersonation">
-      <i class="icon icon-user" role="presentation"></i> Impersonate User
+      <i class="icon icon-user" aria-hidden="true"></i> Impersonate User
     </a>
     {% endif %}
     {% endfor %}
     <a class="dropdown-item" href="/portal/logout">
-      <i class="icon icon-exit" role="presentation"></i> Log Out
+      <i class="icon icon-exit" aria-hidden="true"></i> Log Out
     </a>
   </nav>
 </li>
 {% else %}
 <li class="nav-item">
   <a class="nav-link" href="/portal/login">
-    <i class="icon icon-user" role="presentation"></i> Log in
+    <i class="icon icon-user" aria-hidden="true"></i> Log in
   </a>
 </li>
 {% endif %}
