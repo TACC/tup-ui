@@ -30,7 +30,7 @@ const ManageUser = () => (
       href="https://accounts.tacc.utexas.edu/mfa"
       target="_blank"
       rel="noreferrer"
-      className={`c-button c-button--secondary`}
+      className={`${styles['tap-action']} c-button c-button--secondary`}
     >
       Manage Multi-factor Authentication
     </a>
@@ -48,9 +48,9 @@ const ManageUpload = () => (
       href="https://tacc.utexas.edu/secure-upload"
       target="_blank"
       rel="noreferrer"
-      className={styles['tap-action']}
+      className={`${styles['tap-action']} c-button c-button--secondary`}
     >
-      <Button type="secondary">Secure File Upload</Button>
+      Secure File Upload
     </a>
   </article>
 );
