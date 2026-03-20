@@ -10,30 +10,36 @@ const ManageUser = () => (
       Account details are mananged by the TACC Account Management portal. Follow
       the links below to:
     </p>
-    <a
+    <Button
+      as="a"
       href="https://accounts.tacc.utexas.edu/profile"
       target="_blank"
       rel="noreferrer"
-      className={`${styles['tap-action']} c-button c-button--secondary`}
+      className={styles['tap-action']}
+      type="secondary"
     >
       Edit User Profile
-    </a>
-    <a
+    </Button>
+    <Button
+      as="a"
       href="https://accounts.tacc.utexas.edu/change_password"
       target="_blank"
       rel="noreferrer"
-      className={`${styles['tap-action']} c-button c-button--secondary`}
+      className={styles['tap-action']}
+      type="secondary"
     >
       Change Password
-    </a>
-    <a
+    </Button>
+    <Button
+      as="a"
       href="https://accounts.tacc.utexas.edu/mfa"
       target="_blank"
       rel="noreferrer"
-      className={`${styles['tap-action']} c-button c-button--secondary`}
+      className={styles['tap-action']}
+      type="secondary"
     >
       Manage Multi-factor Authentication
-    </a>
+    </Button>
   </article>
 );
 
@@ -44,14 +50,16 @@ const ManageUpload = () => (
       To confirm eligibility for access to a TACC account, you may be requested
       to upload identifying documents.
     </p>
-    <a
+    <Button
+      as="a"
       href="https://tacc.utexas.edu/secure-upload"
       target="_blank"
       rel="noreferrer"
-      className={`${styles['tap-action']} c-button c-button--secondary`}
+      className={styles['tap-action']}
+      type="secondary"
     >
       Secure File Upload
-    </a>
+    </Button>
   </article>
 );
 
