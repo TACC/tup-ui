@@ -44,18 +44,28 @@ export const AccountMfa: React.FC = () => {
         Set up multi-factor authentication using a token app or SMS.
       </p>
       {!hasPairing && (
-        <Link to="/mfa" className={styles['tap-href']}>
-          <Button type="primary">Pair Device</Button>
-        </Link>
+        <Button
+          as={Link}
+          to="/mfa"
+          className={styles['tap-href']}
+          type="primary"
+        >
+          Pair Device
+        </Button>
       )}
       {hasPairing && data.token && (
         <div className={styles['mfa-options']}>
           <p>
             {TOKEN_TYPE[data.token.tokentype]} ({data.token.serial})
           </p>
-          <Link to="/mfa/unpair" className={styles['tap-href']}>
-            <Button type="secondary">Unpair</Button>
-          </Link>
+          <Button
+            as={Link}
+            to="/mfa/unpair"
+            className={styles['tap-href']}
+            type="secondary"
+          >
+            Unpair
+          </Button>
         </div>
       )}
     </article>
