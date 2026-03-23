@@ -10,7 +10,7 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
 
   if (!['PI', 'Delegate'].includes(currentUserRole) || !chargeCode) return null;
 
-   if (chargeCode.startsWith('TG-NAIRR')) {
+  if (chargeCode.startsWith('TG-NAIRR')) {
     return (
       <div className={styles['user-navactions']}>
         <a
