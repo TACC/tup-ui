@@ -14,25 +14,24 @@ const ManageUser = () => (
       href="https://accounts.tacc.utexas.edu/profile"
       target="_blank"
       rel="noreferrer"
-      className={`${styles['tap-action']} c-button c-button--secondary`}
+      className={styles['tap-action']}
     >
-      Edit User Profile
+      <Button type="secondary">Edit User Profile</Button>
     </a>
     <a
       href="https://accounts.tacc.utexas.edu/change_password"
       target="_blank"
       rel="noreferrer"
-      className={`${styles['tap-action']} c-button c-button--secondary`}
+      className={styles['tap-action']}
     >
-      Change Password
+      <Button type="secondary">Change Password</Button>
     </a>
     <a
       href="https://accounts.tacc.utexas.edu/mfa"
       target="_blank"
       rel="noreferrer"
-      className={`c-button c-button--secondary`}
     >
-      Manage Multi-factor Authentication
+      <Button type="secondary">Manage Multi-factor Authentication</Button>
     </a>
   </article>
 );
