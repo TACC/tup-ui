@@ -138,10 +138,7 @@ const Button = (props: ButtonProps) => {
 
   return (
     <button
-      {...(rest as Omit<
-        React.ButtonHTMLAttributes<HTMLButtonElement>,
-        'type'
-      >)}
+      {...(rest as Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'>)}
       className={rootClassName}
       disabled={disabled || isLoading}
       type={attr}
@@ -171,18 +168,18 @@ type ButtonAsButtonProps = SharedProps & {
   attr?: 'button' | 'submit' | 'reset';
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 } & Omit<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  'type' | 'disabled' | 'onClick'
->;
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    'type' | 'disabled' | 'onClick'
+  >;
 
 type ButtonAsAnchorProps = SharedProps & {
   as: 'a';
   href: string;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 } & Omit<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>,
-  'type' | 'className' | 'children' | 'disabled' | 'onClick' | 'href'
->;
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    'type' | 'className' | 'children' | 'disabled' | 'onClick' | 'href'
+  >;
 
 type RouterLinkProps = React.ComponentPropsWithoutRef<typeof Link>;
 
@@ -190,9 +187,9 @@ type ButtonAsRouterLinkProps = SharedProps & {
   as: typeof Link;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 } & Omit<
-  RouterLinkProps,
-  'className' | 'children' | 'disabled' | 'onClick' | 'type'
->;
+    RouterLinkProps,
+    'className' | 'children' | 'disabled' | 'onClick' | 'type'
+  >;
 
 export type ButtonProps =
   | ButtonAsButtonProps
