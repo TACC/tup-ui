@@ -71,15 +71,9 @@ const NewAllocation: React.FC<{ chargeCode: string }> = ({ chargeCode }) => {
     ? 'https://allocations.access-ci.org/requests'
     : 'https://submit-tacc.xras.org/';
   return (
-    <Button
-      as="a"
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      type="link"
-    >
-      + Add New Allocation
-    </Button>
+    <a href={href} target="_blank" rel="noreferrer">
+      <Button type="link">+ Add New Allocation</Button>
+    </a>
   );
 };
 
@@ -101,15 +95,9 @@ const AbstractGrants: React.FC<{ chargeCode: string }> = ({ chargeCode }) => {
     ? 'https://allocations.access-ci.org/requests'
     : 'https://submit-tacc.xras.org/';
   return (
-    <Button
-      as="a"
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      type="link"
-    >
-      Edit Project
-    </Button>
+    <a href={href} target="_blank" rel="noreferrer">
+      <Button type="link">Edit Project</Button>
+    </a>
   );
 };
 

@@ -13,15 +13,13 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
   if (chargeCode.startsWith('TG-')) {
     return (
       <div className={styles['user-navactions']}>
-        <Button
-          as="a"
+        <a
           href="https://allocations.access-ci.org"
           target="_blank"
           rel="noreferrer"
-          type="primary"
         >
-          Manage Team on ACCESS
-        </Button>
+          <Button type="primary">Manage Team on ACCESS</Button>
+        </a>
       </div>
     );
   }

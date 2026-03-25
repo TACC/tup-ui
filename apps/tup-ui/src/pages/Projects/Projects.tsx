@@ -9,16 +9,11 @@ import { SectionHeader, Button } from '@tacc/core-components';
 import styles from './Projects.module.css';
 
 const NewProject = () => (
-  <Button
-    as="a"
-    href="https://submit-tacc.xras.org/"
-    target="_blank"
-    rel="noreferrer"
-    type="primary"
-    size="small"
-  >
-    + New Project
-  </Button>
+  <a href="https://submit-tacc.xras.org/" target="_blank" rel="noreferrer">
+    <Button type="primary" size="small">
+      + New Project
+    </Button>
+  </a>
 );
 
 const Layout: React.FC = () => {

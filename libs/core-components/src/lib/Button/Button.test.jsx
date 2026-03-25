@@ -2,7 +2,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { Link, MemoryRouter } from 'react-router-dom';
 import Button, * as BTN from './Button';
 
 const TEST_TEXT = '…';
@@ -105,50 +104,6 @@ describe('Button', () => {
       );
       const el = queryByText('Loading Button').closest('button');
       expect(el).toBeDisabled();
-    });
-    it('sets disabled on anchor when loading', () => {
-      const { getByRole } = render(
-        <Button as="a" href="#" isLoading={true}>
-          Loading Link
-        </Button>
-      );
-      const el = getByRole('link');
-      expect(el).toHaveAttribute('disabled');
-    });
-  });
-
-  describe('as anchor', () => {
-    it('renders a link with href', () => {
-      const { getByRole } = render(
-        <Button as="a" href="/x" type="primary">
-          Go
-        </Button>
-      );
-      const el = getByRole('link');
-      expect(el).toHaveAttribute('href', '/x');
-      expect(el.textContent).toMatch('Go');
-    });
-    it('sets disabled on anchor when disabled', () => {
-      const { getByRole } = render(
-        <Button as="a" href="#" disabled>
-          Nope
-        </Button>
-      );
-      expect(getByRole('link')).toHaveAttribute('disabled');
-    });
-  });
-
-  describe('as Link', () => {
-    it('renders router link with to', () => {
-      const { getByRole } = render(
-        <MemoryRouter>
-          <Button as={Link} to="/mfa" type="secondary">
-            MFA
-          </Button>
-        </MemoryRouter>
-      );
-      const el = getByRole('link');
-      expect(el.getAttribute('href')).toMatch('/mfa');
     });
   });
 });
