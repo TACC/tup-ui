@@ -31,12 +31,6 @@
 .c-feed-list > :is(h1, h2, h3, h4, h5, h6) {
   margin-top: 0;
   margin-bottom: 10px;
-
-  /* TODO: When migrated to core-styles, use @extend instead */
-  /* @extend .x-truncate--one-line; */
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 /* To style "Update" pill in title */
