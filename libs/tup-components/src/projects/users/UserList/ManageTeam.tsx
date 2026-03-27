@@ -10,6 +10,20 @@ const ManageTeam: React.FC<{ projectId: number }> = ({ projectId }) => {
 
   if (!['PI', 'Delegate'].includes(currentUserRole) || !chargeCode) return null;
 
+  if (chargeCode.startsWith('TG-NAIRR')) {
+    return (
+      <div className={styles['user-navactions']}>
+        <a
+          href="https://submit-nairr.xras.org/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Button type="primary">Manage Team on NAIRR</Button>
+        </a>
+      </div>
+    );
+  }
+
   if (chargeCode.startsWith('TG-')) {
     return (
       <div className={styles['user-navactions']}>
