@@ -31,12 +31,6 @@
 .c-feed-list > :is(h1, h2, h3, h4, h5, h6) {
   margin-top: 0;
   margin-bottom: 10px;
-
-  /* TODO: When migrated to core-styles, use @extend instead */
-  /* @extend .x-truncate--one-line; */
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 /* To style "Update" pill in title */
@@ -116,21 +110,6 @@
 .c-feed-list > p:has(a:only-child) {
   padding-top: 15px;
 
-  /* TODO: When migrated to core-styles, use @extend instead */
-  /* @extend .x-truncate--one-line; */
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  /* max-width: 100%; /* SEE: https://stackoverflow.com/a/44521595 */
-
   font-weight: var(--bold);
   font-size: var(--global-font-size--medium)
-}
-.o-section--style-dark .c-feed-list > a:last-child,
-.o-section--style-light .c-feed-list > p:has(a:only-child) {
-  color: var(--global-color-primary--xx-light);
-}
-.o-section--style-light .c-feed-list > a:last-child,
-.o-section--style-light .c-feed-list > p:has(a:only-child) {
-  color: var(--global-color-primary--xx-dark);
 }

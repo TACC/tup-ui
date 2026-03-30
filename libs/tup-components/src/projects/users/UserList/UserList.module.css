@@ -17,6 +17,7 @@
 .user-navactions {
     margin-left: var(--global-space--section-left);
     margin-right: var(--global-space--section-right);
+    margin-bottom: 1em;
 }
 .user-navactions button {
     margin-bottom: 5px;
@@ -58,7 +59,7 @@
 }
 
 .radio-group input {
-    accent-color: var(--global-color-accent--normal);
+    accent-color: var(--global-color-accent--light);
 }
 
 .radio-group label {
