@@ -11,7 +11,14 @@
   margin-bottom: 0; /* override core-styles */
 }
 .form .search-field {
+  margin-right: 1em;
+}
+.results-count {
   margin-right: auto;
+}
+.form small {
+  align-self: center;
+  font-size: var(--global-font-size--small);
 }
 .form .filter-field {
   margin-left: 2rem;

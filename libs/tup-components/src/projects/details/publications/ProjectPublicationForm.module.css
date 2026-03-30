@@ -24,7 +24,7 @@
 .checkbox-wrapper input {
     height: 1.5rem;
     width: 1.5rem;
-    accent-color: var(--global-color-accent--normal)
+    accent-color: var(--global-color-accent--light)
 }
 .checkbox-wrapper label {
     margin-bottom: 0px;

@@ -44,7 +44,8 @@ type ButtonProps = React.PropsWithChildren<{
   attr?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
 }> &
-  (ButtonTypeLinkSize | ButtonTypeOtherSize);
+  (ButtonTypeLinkSize | ButtonTypeOtherSize) &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'>;
 
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -59,6 +60,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   attr = 'button',
   isLoading = false,
+  ...rest
 }) => {
   function onclick(e: React.MouseEvent<HTMLButtonElement>) {
     if (disabled) {
@@ -72,6 +74,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      {...rest}
       id={id}
       className={`
         ${styles['root']}
