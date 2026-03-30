@@ -19,10 +19,6 @@
     display: grid;
     align-items: center;
 }
-/* To reduce width of social media icon links */
-.c-footer .logos--social a {
-    padding: 0.5em;
-}
 
 
 /* TO MAKE HEADER FONT CONSISTENT ON CMS & PORTAL */
