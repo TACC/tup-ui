@@ -97,6 +97,7 @@ PORTAL_LOGO = {
     "is_remote": False,
     "img_class": "",
     "link_href": "/",
+    "link_name": "TACC Homepage",
     "link_target": "_self",
     "img_alt_text": "TACC Logo",
     "img_crossorigin": "anonymous",

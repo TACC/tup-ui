@@ -40,7 +40,13 @@ const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
   );
   return (
     <>
-      <Button type="link" onClick={() => toggle()}>
+      <Button
+        type="link"
+        onClick={() => toggle()}
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
+        aria-controls="software-table-modal"
+      >
         Version Documentation
       </Button>
       <Modal
@@ -49,9 +55,10 @@ const SoftwareModal: React.FC<{ pkg: SoftwareResult }> = ({ pkg }) => {
         toggle={toggle}
         size="lg"
         id="software-table-modal"
+        labelledBy="software-table-modal-title"
       >
         <ModalHeader toggle={toggle} close={closeBtn}>
-          {pkg.package}
+          <span id="software-table-modal-title">{pkg.package}</span>
         </ModalHeader>
         <ModalBody className={styles['modal-body']}>
           <p className={styles['package-desc']}>{data?.description}</p>
@@ -144,7 +151,15 @@ const SoftwareTable: React.FC = () => {
   }
   return (
     <>
-      <form className={styles.form}>
+      <form
+        id="st-form"
+        className={styles.form}
+        aria-describedby="st-form-desc"
+        aria-controls="st-table"
+      >
+        <small id="st-form-desc" className="sr-only">
+          Software results in table update as you type or select filters
+        </small>
         <label className={styles['search-field']}>
           <Icon
             name="search"
@@ -160,6 +175,9 @@ const SoftwareTable: React.FC = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </label>
+        <small className={styles['results-count']} aria-live="polite">
+          {filteredData?.length ?? 0} results
+        </small>
         <label className={styles['filter-field']}>
           <span>Topic</span>
           <select onChange={(e) => setFilterTopic(e.target.value)}>
@@ -195,7 +213,11 @@ const SoftwareTable: React.FC = () => {
           </select>
         </label>
       </form>
-      <div className={`${styles['table-wrap']}`}>
+      <section
+        id="st-table"
+        className={`${styles['table-wrap']}`}
+        aria-label="Software results"
+      >
         <table className="o-fixed-header-table">
           <thead>
             <tr>
@@ -227,7 +249,7 @@ const SoftwareTable: React.FC = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </section>
     </>
   );
 };
