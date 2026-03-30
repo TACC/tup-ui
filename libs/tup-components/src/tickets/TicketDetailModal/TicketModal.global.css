@@ -71,7 +71,7 @@
 }
 
 .ticket-model-content .ticket-responder {
-  color: var(--global-color-accent--normal);
+  color: var(--global-color-accent--light);
 }
 
 .ticket-model-content .ticket-history-error {
@@ -83,7 +83,7 @@
 
 .ticket-model-content .btn-primary {
   border: none;
-  background-color: var(--global-color-accent--normal);
+  background-color: var(--global-color-accent--light);
   min-width: 100px;
   min-height: 25px;
   font-size: 0.75rem;
@@ -120,12 +120,11 @@
 }
 
 .ticket-model-content .link {
-  color: var(--global-color-accent--normal);
+  color: var(--global-color-accent--light);
   margin-right: 20px;
 }
 
 .ticket-model-content .link:hover {
-  color: var(--global-color-accent--normal);
   text-decoration: underline;
 }
 

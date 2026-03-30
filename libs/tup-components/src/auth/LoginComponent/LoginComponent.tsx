@@ -186,7 +186,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
             name="username"
             label="Username or Email"
             type="text"
-            autoComplete="username email"
+            autoComplete="username"
             required
           />
           <FormikInput

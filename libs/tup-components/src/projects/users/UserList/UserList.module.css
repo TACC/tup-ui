@@ -59,7 +59,7 @@
 }
 
 .radio-group input {
-    accent-color: var(--global-color-accent--normal);
+    accent-color: var(--global-color-accent--light);
 }
 
 .radio-group label {
