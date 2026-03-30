@@ -1,27 +1,10 @@
-/* SVGs */
-
-/* To mimic Bootstrap _reboot img { vertical-align: middle } */
-/* TODO: Consider for Core-CMS */
-/* TODO: Decide whether this is only for footer */
-svg {
-    vertical-align: middle;
-}
-
-
-
-
-
 /* BUTTONS */
 
 /* To style buttons differently than in body */
 .c-footer .c-button,
 .c-footer [class*="button--"] {
-    --max-width: auto; /* override core-styles.base.css */
-    font-size: var(--global-font-size--x-small); /* mimic Botstrap .small and <small> */
-
-    /* TODO: (1) Remove <small> from footer buttons (2) Remove this font-size */
     & small {
-        font-size: inherit; /* gracefully deprecate use of <small> */
+        font-size: var(--global-font-size--x-small);
     }
 }
 
@@ -60,18 +43,14 @@ svg {
 }
 
 /* For independent logo sizes */
-.c-footer .logos__tacc svg {
+.c-footer .logos--branding svg {
   height: 55%;
-
+}
+.c-footer .logos__tacc svg {
   /* To vertically align center as if small text was not present */
   transform: translateY(5%);
 }
-.c-footer .logos__nsf svg {
-  height: 100%;
-}
 .c-footer .logos__ut svg {
-  height: 66.67%;
-
   /* To vertically align center as if small text was not present */
   transform: translateY(5%);
 }
@@ -94,17 +73,36 @@ svg {
   cursor: default;
 }
 
-/* To skin social media logo links */
-/* WARNING: Developer styles */
-.c-footer .logos--social a {
-    display: inline-block;
-    padding: 1rem; /* rem, because any em value is 0 because font-size: 0 */
+/* To skin logo links */
+.c-footer [class*="logos--"] a {
+    &:hover {
+        color: inherit;
+    }
+    &:hover svg {
+        color: currentColor;
+        outline: var(--global-border-width--normal) solid currentColor;
+        outline-offset: 5px;
+        border-radius: var(--global-border-width--normal);
+    }
+    &:active svg {
+        outline-style: dotted;
+    }
 }
-.c-footer .logos--social a:hover {
-    background-color: var(--global-color-primary--x-dark);
+.c-footer .logos--social a {
+    padding: 0.5em;
 }
 .c-footer .logos--social svg {
-    height: 2.5rem; /* rem, so it scales like text */
+    font-size: 2.5rem;
+}
+
+
+/* HACK: To undo tricky Instagram hover color */
+.c-footer .logos--social a.logos__instagram:hover {
+    mask: unset;
+    background: unset;
+}
+.c-footer .logos--social a.logos__instagram:hover svg {
+  visibility: visible;
 }
 
 
@@ -235,4 +233,12 @@ html#page-portal .c-footer p {
 #cms-footer .c-pane--common,
 #cms-footer .c-pane--common a {
     color: var(--global-color-primary--xx-light);
+}
+#cms-footer .c-pane--common a {
+    text-decoration-line: underline;
+    text-decoration-color: var(--global-color-primary--dark);
+
+    &:hover {
+      text-decoration-color: inherit;
+    }
 }
