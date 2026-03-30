@@ -1,6 +1,6 @@
-<template id="css-banner-tacc--notes">
+{% comment %}
 <!-- TO DYNAMICALL REDUCE HEIGHT OF BANNER: NO NEED to edit this stylesheet. Edit banner "Picture / Image" on CMS. Set `style="height: 60vh; max-height: 550px; min-height: 230px;"`. To use static height, set `style="height: 550px"` instead. -->
-</template>
+{% endcomment %}
 <style id="css-banner-tacc">
 /* To limit width of title on wide screens */
 @media (width >= 992px) {
@@ -40,4 +40,7 @@
 
 /* To make image not look cut-off on wide screen __IF__ it is too narrow */
 .banner-cell--major figure { background-color: black; }
+
+/* To undo Core-CMS assumption of simple muted figure captions (tup-ui#537) */
+:is(.banner-cell--major, .banner-cell--minor) figcaption { opacity: 1; }
 </style>

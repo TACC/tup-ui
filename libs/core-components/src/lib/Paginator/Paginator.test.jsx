@@ -4,7 +4,9 @@ import Paginator from './Paginator';
 
 describe('Paginator', () => {
   it('renders pages', () => {
-    const { getAllByText } = render(<Paginator pages={20} current={11} />);
+    const { getAllByText } = render(
+      <Paginator pages={20} current={11} callback={() => null} />
+    );
     expect(getAllByText('1').length).toEqual(1);
     expect(getAllByText('9').length).toEqual(1);
     expect(getAllByText('10').length).toEqual(1);
@@ -17,7 +19,7 @@ describe('Paginator', () => {
 
   it('renders 2 pages only', () => {
     const { getAllByText, queryByText } = render(
-      <Paginator pages={2} current={1} spread={5} />
+      <Paginator pages={2} current={1} spread={5} callback={() => null} />
     );
     expect(getAllByText('1').length).toEqual(1);
     expect(getAllByText('2').length).toEqual(1);

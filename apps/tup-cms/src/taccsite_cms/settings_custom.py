@@ -97,6 +97,7 @@ PORTAL_LOGO = {
     "is_remote": False,
     "img_class": "",
     "link_href": "/",
+    "link_name": "TACC Homepage",
     "link_target": "_self",
     "img_alt_text": "TACC Logo",
     "img_crossorigin": "anonymous",
@@ -140,29 +141,6 @@ PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'bluesky', 'facebook', 'email']
 ########################
 # DJANGOCMS_BLOG
 ########################
-
-from taccsite_cms.settings import INSTALLED_APPS
-
-# News must be installed BEFORE our CMS app; reason unknown
-# https://github.com/TACC/Core-CMS-Resources/pull/127/commits/0b09af6cb0ae6dd630f9ca94bf36ca9e042a5d81
-tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
-INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
-    # 'filer',              # already in Core
-    # 'easy_thumbnails',    # already in Core
-    'parler',
-    'taggit',
-    'taggit_autosuggest',
-    # 'meta',               # already in Core
-    'sortedm2m',
-    'djangocms_blog',
-]
-# REQ: 'taggit_autosuggest' requires the following is added to `urls.py`
-"""
-urlpatterns += [
-    # Support `taggit_autosuggest` (from `djangocms-blog`)
-    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
-]
-"""
 
 # Paths for alternate templates that user can choose for blog-specific plugin
 # - Devs can customize core templates at `templates/djangocms_blog/`.
@@ -224,7 +202,7 @@ CKEDITOR_SETTINGS = {
 # DJANGOCMS_ICON SETTINGS
 # https://github.com/django-cms/djangocms-icon
 
-from taccsite_cms.settings import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
+from taccsite_cms._settings.djangocms_plugins import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
 
 DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup_cms', 'static', 'tup_cms', 'img', 'icons', 'decals.json')
 with open(DECAL_ICONFILE, 'r') as fh:
