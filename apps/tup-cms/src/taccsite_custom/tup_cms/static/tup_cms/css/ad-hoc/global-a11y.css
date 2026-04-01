@@ -11,3 +11,8 @@
 .navbar-dark .navbar-toggler {
     border-color: var(--global-color-primary--normal);
 }
+
+/* 3. Unset color that is so light it makes links in a lead undistinguishable */
+:is(:is(.blog-list) article) .blog-lead {
+  color: unset;
+}
