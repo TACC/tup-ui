@@ -10,29 +10,36 @@ const ManageUser = () => (
       Account details are mananged by the TACC Account Management portal. Follow
       the links below to:
     </p>
-    <a
+    <Button
+      as="a"
       href="https://accounts.tacc.utexas.edu/profile"
       target="_blank"
       rel="noreferrer"
       className={styles['tap-action']}
+      type="secondary"
     >
-      <Button type="secondary">Edit User Profile</Button>
-    </a>
-    <a
+      Edit User Profile
+    </Button>
+    <Button
+      as="a"
       href="https://accounts.tacc.utexas.edu/change_password"
       target="_blank"
       rel="noreferrer"
       className={styles['tap-action']}
+      type="secondary"
     >
-      <Button type="secondary">Change Password</Button>
-    </a>
-    <a
+      Change Password
+    </Button>
+    <Button
+      as="a"
       href="https://accounts.tacc.utexas.edu/mfa"
       target="_blank"
       rel="noreferrer"
+      className={styles['tap-action']}
+      type="secondary"
     >
-      <Button type="secondary">Manage Multi-factor Authentication</Button>
-    </a>
+      Manage Multi-factor Authentication
+    </Button>
   </article>
 );
 
@@ -43,14 +50,16 @@ const ManageUpload = () => (
       To confirm eligibility for access to a TACC account, you may be requested
       to upload identifying documents.
     </p>
-    <a
+    <Button
+      as="a"
       href="https://tacc.utexas.edu/secure-upload"
       target="_blank"
       rel="noreferrer"
       className={styles['tap-action']}
+      type="secondary"
     >
-      <Button type="secondary">Secure File Upload</Button>
-    </a>
+      Secure File Upload
+    </Button>
   </article>
 );
 
