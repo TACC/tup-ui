@@ -139,6 +139,25 @@ PORTAL_NAV_WIDTH = 'lg'
 PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'bluesky', 'facebook', 'email']
 
 ########################
+# TACC: STYLES
+########################
+
+PORTAL_STYLES = [
+    {
+        "is_remote": False,
+        "path": "tup_cms/css/tup-cms.for-core-styles.css"
+    },
+    {
+        "is_remote": False,
+        "path": "tup_cms/css/tup-cms.for-core-cms.css"
+    },
+    {
+        "is_remote": False,
+        "path": "tup_cms/css/tup-cms.for-tup-cms.css"
+    },
+]
+
+########################
 # DJANGOCMS_BLOG
 ########################
 
@@ -186,21 +205,27 @@ TACC_STAFF_PROFILE_POST_NOMIALS_EXCLUSION_LIST = ["Jr.", "Sr.", "I", "II", "III"
 
 
 ########################
-# PLUGIN SETTINGS
+# DJANGO_FILER
 ########################
 
 # https://github.com/django-cms/django-filer/blob/2.0.2/docs/permissions.rst
 FILER_ENABLE_PERMISSIONS = True
 
+########################
+# CKEDITOR
 # https://github.com/django-cms/djangocms-text-ckeditor
+########################
+
 CKEDITOR_SETTINGS = {
     'autoParagraph': True, # Core-CMS had set this to False
     'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
     'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
 }
 
-# DJANGOCMS_ICON SETTINGS
+########################
+# DJANGOCMS_ICON
 # https://github.com/django-cms/djangocms-icon
+########################
 
 from taccsite_cms._settings.djangocms_plugins import DJANGOCMS_ICON_SETS as CORECMS_ICON_SETS
 
@@ -208,9 +233,8 @@ DECAL_ICONFILE = os.path.join(BASE_DIR, 'taccsite_custom', 'tup_cms', 'static', 
 with open(DECAL_ICONFILE, 'r') as fh:
     DECAL_ICONS = fh.read()
 
-# HELP: Icon dropdown sometimes does not show active icon selected.
-#       The position of DECAL_ICONS in this array affects the bug.
-# SEE: https://github.com/django-cms/djangocms-icon/issues/9
 DJANGOCMS_ICON_SETS = [
+    # IMPORTANT: Load CORECMS_ICON_SETS set last
+    # https://github.com/TACC/Core-CMS/blob/v4.37.1/taccsite_cms/_settings/djangocms_plugins.py#L203-L210
     (DECAL_ICONS, '', _('TACC Decal SVGs')),
 ] + CORECMS_ICON_SETS
