@@ -8,8 +8,10 @@
   #page-all-systems *,
   #page-stampede2 *, /* 2023-10-13 *//* /systems/stampede2/ */
   :has(h1:only-child), /* /research/tacc-software/, /use-tacc/software-list/ */
-  #page-weteachcs * /* 2024-10-03 *//* /education/educators/weteachcs/ */
-  #page-training * /* 2025-04-02 *//* /use-tacc/training/ */
+  #page-weteachcs *, /* 2024-10-03 *//* /education/educators/weteachcs/ */
+  #page-training *, /* 2025-04-02 *//* /use-tacc/training/ */
+  #page-about-tours *, /* 2026-03-16 *//* /about/tours/ */
+  #page-request-tour * /* 2026-03-16 *//* /about/tours/request/ */
 ),
 .col:not(
   [class*="col-"],
