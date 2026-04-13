@@ -23,6 +23,7 @@ QUEUE_MAP = {
     "Running Jobs or Using TACC Resources": "High Performance Computing",
     "Security Incident": "NSO",
     "Arecibo Data": "High Performance Computing",
+    "Texas Institute for Electronics (TIE)": "tie",
     "Other": "High Performance Computing"
 }
 
