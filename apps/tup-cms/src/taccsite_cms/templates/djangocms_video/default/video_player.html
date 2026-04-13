@@ -1,0 +1,13 @@
+{# https://github.com/TACC/Core-CMS/blob/v4.38.0/taccsite_cms/templates/djangocms_video/default/video_player.html #}
+{% extends "djangocms_video/default/video_player_base.html" %}
+{% load cms_tags %}
+
+{% block video_iframe_title %}
+{% if "title" not in instance.attributes_str %}
+  {% if "supersized-science" in instance.embed_link_with_parameters %}
+  title='"Supersized Science" Podcast Episode for this Article'
+  {% else %}
+  {{ block.super }}
+  {% endif %}
+{% endif %}
+{% endblock video_iframe_title %}

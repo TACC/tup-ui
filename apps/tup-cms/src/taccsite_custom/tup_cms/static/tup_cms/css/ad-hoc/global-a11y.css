@@ -12,15 +12,8 @@
     border-color: var(--global-color-primary--normal);
 }
 
-/* 2. To make keyboard focus stand out on header */
-/*
-.nav-link:focus-visible,
-#header-logo:focus-visible,
-.navbar-dark .navbar-toggler:focus-visible {
-*/
-#s-header :focus,
-#header-branding a:focus,
-.s-search-bar::part(input):focus,
-.s-search-bar::part(button):focus {
-    outline-color: var(--global-color-primary--xx-light);
+/* 3. Unset color that is so light it makes links in a lead undistinguishable */
+/* TODO: Delete this after TUP-CMS uses Core-CMS since TACC/Core-CMS#1141 */
+:is(:is(.blog-list) article) .blog-lead {
+  color: unset;
 }

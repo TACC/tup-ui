@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from django.urls import re_path as url
+from django.urls import re_path
 from apps.user_news.urls import urls as user_news_urls
 from django.views.generic.base import RedirectView
 
@@ -14,5 +14,5 @@ custom_urls = [
     path(user_news_urls['legacy']['base'], include('apps.user_news.urls', namespace='user_news_legacy')),
 
     # To support `taggit_autosuggest` (from `djangocms-blog`)
-    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+    re_path(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
 ]
