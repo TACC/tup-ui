@@ -28,37 +28,55 @@ def _oauth_redirect_uri(request):
     return f"{protocol}://{request.get_host()}{reverse('portal:login_callback')}"
 
 
-def _resolve_tapis_username(access_token):
-    # Access token is a JWT. Prefer username from claims to avoid extra API calls.
-    # Tapis tokens include `tapis/username` in claims.
+def _extract_user_data(payload):
+    return {
+        "username": (
+            payload.get("username")
+            or payload.get("tapis/username")
+            or payload.get("preferred_username")
+            or payload.get("sub")
+        ),
+        "first_name": (
+            payload.get("firstName")
+            or payload.get("first_name")
+            or payload.get("given_name")
+            or ""
+        ),
+        "last_name": (
+            payload.get("lastName")
+            or payload.get("last_name")
+            or payload.get("family_name")
+            or ""
+        ),
+        "email": payload.get("email") or "",
+    }
+
+
+def _resolve_tapis_user_data(access_token):
+    # Prefer userinfo so Tapis validates token signature/claims server-side.
+    try:
+        userinfo_resp = requests.get(
+            f"{settings.TAPIS_TENANT_BASEURL}/v3/oauth2/userinfo",
+            headers={"X-Tapis-Token": access_token},
+            timeout=30,
+        )
+        userinfo_resp.raise_for_status()
+        userinfo = userinfo_resp.json().get("result", userinfo_resp.json())
+        user_data = _extract_user_data(userinfo)
+        if user_data["username"]:
+            return user_data
+    except Exception:
+        logger.exception("Unable to resolve Tapis username via /userinfo")
+
+    # Fallback to direct claim read to tolerate temporary userinfo failures.
     try:
         payload_b64 = access_token.split(".")[1]
         payload_b64 += "=" * (-len(payload_b64) % 4)
         claims = json.loads(base64.urlsafe_b64decode(payload_b64.encode()).decode())
-        username = (
-            claims.get("tapis/username")
-            or claims.get("username")
-            or claims.get("preferred_username")
-            or claims.get("sub")
-        )
-        if username:
-            return username
+        return _extract_user_data(claims)
     except Exception:
         logger.exception("Unable to decode Tapis access token claims for username")
-
-    # Fallback to userinfo endpoint.
-    userinfo_resp = requests.get(
-        f"{settings.TAPIS_TENANT_BASEURL}/v3/oauth2/userinfo",
-        headers={"X-Tapis-Token": access_token},
-        timeout=30,
-    )
-    userinfo_resp.raise_for_status()
-    userinfo = userinfo_resp.json().get("result", userinfo_resp.json())
-    return (
-        userinfo.get("username")
-        or userinfo.get("preferred_username")
-        or userinfo.get("sub")
-    )
+        return {}
 
 
 def LoginView(request):
@@ -67,6 +85,8 @@ def LoginView(request):
         login(request, user)
         return redirect(request.GET.get('next', '/portal'))
 
+    # Temporary fallback for environments not yet configured for Tapis OAuth/MFA.
+    # Remove this block after production fully switches to Tapis/MFA login.
     if not all(
         [
             getattr(settings, "TAPIS_TENANT_BASEURL", ""),
@@ -136,24 +156,32 @@ def LoginCallbackView(request):
         if not access_token:
             raise ValueError("Missing access token in Tapis token response")
 
-        username = _resolve_tapis_username(access_token)
+        user_data = _resolve_tapis_user_data(access_token)
+        username = user_data.get("username")
         if not username:
             raise ValueError("Missing username in Tapis userinfo response")
 
-        impersonation_resp = requests.post(
+        jwt_mint_resp = requests.post(
             f"{service_url}/auth/impersonate",
             headers={"x-tup-token": settings.TUP_SERVICES_ADMIN_JWT},
             json={"username": username},
             timeout=30,
         )
-        impersonation_resp.raise_for_status()
-        tup_jwt = impersonation_resp.json()["jwt"]
+        jwt_mint_resp.raise_for_status()
+        tup_jwt = jwt_mint_resp.json()["jwt"]
     except Exception:
         logger.exception("OAuth callback failed")
         return HttpResponseRedirect(reverse("portal:logout"))
 
     user_model = get_user_model()
-    user, _ = user_model.objects.get_or_create(username=username)
+    user, _ = user_model.objects.get_or_create(
+        username=username,
+        defaults={
+            "first_name": user_data.get("first_name", ""),
+            "last_name": user_data.get("last_name", ""),
+            "email": user_data.get("email", ""),
+        },
+    )
     login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
     request.session.pop("auth_state", None)
