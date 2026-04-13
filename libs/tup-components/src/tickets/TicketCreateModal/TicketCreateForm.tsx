@@ -65,8 +65,8 @@ export const TicketCreateForm: React.FC = () => {
     messageBody += `${values.description}`;
 
     const queueSelection =
-      (values.category && QUEUE_MAP[values.category]) ??
-      (values.resource && QUEUE_MAP[values.resource]);
+      (values.resource && QUEUE_MAP[values.resource]) ??
+      (values.category && QUEUE_MAP[values.category]);
 
     const formData = new FormData();
     formData.append('email', values['email']);
