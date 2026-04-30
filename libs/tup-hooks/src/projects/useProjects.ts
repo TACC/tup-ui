@@ -60,7 +60,10 @@ export const useSetProjectDelegate = (projectId: number) => {
   return mutation;
 };
 
-export const useRemoveProjectDelegate = (projectId: number, username: string) => {
+export const useRemoveProjectDelegate = (
+  projectId: number,
+  username: string
+) => {
   const queryClient = useQueryClient();
   const mutation = useDelete<string>({
     endpoint: `/projects/${projectId}/delegate/${username}`,
