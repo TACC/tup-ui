@@ -75,7 +75,9 @@ const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
       >
         <option value={'Standard'}>Standard User</option>
         <option value={'Delegate'} disabled={!canPromoteToDelegate}>
-          Allocation Manager
+          {canPromoteToDelegate
+            ? 'Allocation Manager'
+            : 'Allocation Manager (remove an existing manager to add another)'}
         </option>
       </select>{' '}
       {selectedUserRole !== user.role && (
