@@ -21,9 +21,17 @@ const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
 }) => {
   const currentUserRole = useRoleForCurrentUser(projectId) ?? '';
   const { mutate: mutateSetDelegate } = useSetProjectDelegate(projectId);
-  const { mutate: mutateRemoveDelegate } = useRemoveProjectDelegate(projectId);
+  const { mutate: mutateRemoveDelegate } = useRemoveProjectDelegate(
+    projectId,
+    user.username
+  );
   const { data: project, isLoading: isLoadingProject } = useProject(projectId);
+  const { data: projectUsers } = useProjectUsers(projectId);
   const isAccess = project?.chargeCode.startsWith('TG-');
+  const delegateCount =
+    projectUsers?.filter((projectUser) => projectUser.role === 'Delegate')
+      .length ?? 0;
+  const canPromoteToDelegate = user.role === 'Delegate' || delegateCount < 2;
 
   const [selectedUserRole, setSelectedUserRole] = useState<string>(
     user.role ?? ''
@@ -66,7 +74,11 @@ const UserRoleSelector: React.FC<{ projectId: number; user: ProjectUser }> = ({
         id="user-role-select"
       >
         <option value={'Standard'}>Standard User</option>
-        <option value={'Delegate'}>Allocation Manager</option>
+        <option value={'Delegate'} disabled={!canPromoteToDelegate}>
+          {canPromoteToDelegate
+            ? 'Allocation Manager'
+            : 'Allocation Manager (remove an existing manager to add another)'}
+        </option>
       </select>{' '}
       {selectedUserRole !== user.role && (
         <Button className={styles['link-button']} type="link" attr="submit">

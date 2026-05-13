@@ -9,7 +9,7 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
   const projectUsers = useProjectUsers(projectId);
   const data = projectUsers.data ?? [];
   const pi = data.find((user) => user.role === 'PI');
-  const delegate = data.find((user) => user.role === 'Delegate');
+  const delegates = data.filter((user) => user.role === 'Delegate');
 
   if (projectUsers.isLoading)
     return (
@@ -38,11 +38,12 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
           </span>
         </NavItem>
       )}
-      {delegate && (
+      {delegates.map((delegate) => (
         <NavItem
           to={`/projects/${projectId}/${delegate?.username}`}
           end
           className={styles['user-navitem']}
+          key={`delegate-${delegate.username}`}
         >
           <span style={{ fontWeight: 'normal' }}>Allocation Manager</span>
           <h4>
@@ -54,7 +55,7 @@ const UserList: React.FC<{ projectId: number }> = ({ projectId }) => {
             ({delegate.username})
           </span>
         </NavItem>
-      )}
+      ))}
       <div className={styles['separator']}></div>
       {data.map((user) => (
         <NavItem
