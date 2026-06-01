@@ -16,7 +16,7 @@ We are shipping **manual Django CMS pages** for TACC **Research & Software proje
 
 ## Workspace roots
 
-- **tup-ui** — snippet, staging copies, GOAL
+- **tup-ui** — snippet, GOAL
 - **Core-CMS** — `site_cms/js/modules/`, templates, Docker image
 - **Core-Styles** — bootstrap4 bridge CSS, objects, dist/npm release
 
@@ -32,14 +32,13 @@ We are shipping **manual Django CMS pages** for TACC **Research & Software proje
 
 ---
 
-## Already staged in tup-ui (upstream these)
+## tup-ui (snippet only)
 
-| Work | tup-ui location | Upstream target |
-|------|-----------------|-----------------|
-| Sortable table JS | `apps/tup-cms/src/taccsite_cms/static/site_cms/js/modules/sortableTable.js` | Core-CMS same path |
-| Sortable table CSS | `apps/tup-cms/src/taccsite_custom/tup_cms/static/tup_cms/css/for-core-styles/objects/o-sortable-table.css` | Core-Styles `objects/o-sortable-table.css` (+ pattern lib if needed) |
-| Bootstrap alert → c-message | `core-styles-staging/src/lib/_imports/bootstrap4/components/alert.css` and `alert/` | Core-Styles same paths (mirror **btn.css** / **btn/**) |
-| Phase B snippet | `apps/tup-cms/src/taccsite_cms/templates/snippets/research-projects-assets.html` | Register in CMS admin; update CDN pins after releases |
+| Work | Location |
+|------|----------|
+| Phase B snippet | `apps/tup-cms/src/taccsite_cms/templates/snippets/research-projects-assets.html` (jsDelivr → Core-Styles / Core-CMS commits) |
+
+Sortable JS/CSS and alert bridge live in **Core-CMS** and **Core-Styles** (see open PRs); do not duplicate them in tup-ui.
 
 **Deleted / do not reintroduce:** `bootstrapAlertAsCMessage.js` or any JS that maps Bootstrap alert types to `c-message--type-*`.
 

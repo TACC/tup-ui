@@ -32,7 +32,7 @@ Use the **Bootstrap 4 Alert** plugin ([Bootstrap 4.6 alerts](https://getbootstra
 
 `c-message c-message--scope-section c-message--type-warning`
 
-**Styles:** Core-Styles `bootstrap4/components/alert.css` (pattern library under [`core-styles-staging/.../alert/`](core-styles-staging/src/lib/_imports/bootstrap4/components/alert/)) imports `c-message` and undoes Bootstrap alert chrome when `.c-message` is on the same node—same approach as [`bootstrap4/components/btn.css`](https://github.com/TACC/Core-Styles/blob/main/src/lib/_imports/bootstrap4/components/btn.css). Editors must add full `c-message` classes (including `--type-*`) in the Alert plugin **Classes** field.
+**Styles:** Core-Styles `bootstrap4/components/alert.css` (see [Core-Styles alert pattern](https://github.com/TACC/Core-Styles/tree/main/src/lib/_imports/bootstrap4/components/alert)) imports `c-message` and undoes Bootstrap alert chrome when `.c-message` is on the same node. Editors must add full `c-message` classes (including `--type-*`) in the Alert plugin **Classes** field.
 
 ## Out of scope
 
@@ -42,10 +42,10 @@ Use the **Bootstrap 4 Alert** plugin ([Bootstrap 4.6 alerts](https://getbootstra
 
 ## Multi-repo workflow
 
-Open a **multi-root workspace** with tup-ui, Core-CMS, and Core-Styles. Copy staging files from this repo into upstream paths, open PRs, release Core-Styles, bump Core-CMS Docker/static, then update snippet CDN pins.
+Open a **multi-root workspace** with tup-ui, Core-CMS, and Core-Styles when changing upstream assets or snippet CDN pins.
 
 ## Upstream PR checklist
 
-1. **Core-Styles:** `bootstrap4/components/alert.css` + `alert/` from [`core-styles-staging/`](core-styles-staging/); `objects/o-sortable-table` from tup-ui staging; release.
-2. **Core-CMS:** JS modules from [`apps/tup-cms/src/taccsite_cms/static/site_cms/js/modules/`](apps/tup-cms/src/taccsite_cms/static/site_cms/js/modules/); bump Core-Styles; optional global init in `assets_core_delayed.html`.
-3. **tup-ui:** update snippet pins; remove redundant staging copies when upstream tags are live.
+1. **Core-Styles:** alert bridge + `objects/o-sortable-table` (PR merged → bump snippet commit SHA if needed).
+2. **Core-CMS:** `sortableTable.js` + delayed init (PR merged → bump snippet commit SHA; later drop snippet script when tup CMS image includes it).
+3. **tup-ui:** snippet + GOAL only; assets via jsDelivr, not copied into this repo.
