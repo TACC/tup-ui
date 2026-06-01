@@ -18,13 +18,13 @@ Add Django CMS snippet **research-projects-assets** ([`research-projects-assets.
 
 Snippet loads via [jsDelivr](https://www.jsdelivr.com/):
 
-| Asset | Source (interim → target) |
+| Asset | jsDelivr (snippet pins) |
 |-------|-------------------------|
-| Sortable table JS | [Core-CMS](https://github.com/TACC/Core-CMS) `site_cms/js/modules/sortableTable.js` — staged in [tup-ui `apps/tup-cms/.../modules/`](apps/tup-cms/src/taccsite_cms/static/site_cms/js/modules/) until upstream tag |
-| Sortable table CSS | Core-Styles `objects/o-sortable-table` — staged in [`for-core-styles/objects/`](apps/tup-cms/src/taccsite_custom/tup_cms/static/tup_cms/css/for-core-styles/objects/o-sortable-table.css) until upstream release |
-| Bootstrap alert + c-message CSS | Core-Styles `dist/bootstrap4/components/alert.css` via jsDelivr `gh/TACC/Core-Styles@<tag>` (source in [`core-styles-staging/`](core-styles-staging/) until tag; not wired through `tup-cms.for-tup-cms.css`) |
+| Sortable table CSS | `gh/TACC/Core-Styles@31e62d5/dist/objects/o-sortable-table.css` |
+| Bootstrap alert + c-message CSS | `gh/TACC/Core-Styles@31e62d5/dist/bootstrap4/components/alert.css` |
+| Sortable table JS | `gh/TACC/Core-CMS@1fe2544/taccsite_cms/static/site_cms/js/modules/sortableTable.js` |
 
-Pin commit/tag refs in the snippet after each merge. Later: init JS in Core-CMS [`assets_core_delayed.html`](https://github.com/TACC/Core-CMS/blob/main/taccsite_cms/templates/assets_core_delayed.html) and drop the per-page snippet when ready.
+Bump commit SHAs in the snippet after upstream PR merges. Later: drop snippet JS when tup CMS uses Core-CMS [`assets_core_delayed.html`](https://github.com/TACC/Core-CMS/blob/main/taccsite_cms/templates/assets_core_delayed.html) sort init.
 
 ## Archive banner (detail pages)
 

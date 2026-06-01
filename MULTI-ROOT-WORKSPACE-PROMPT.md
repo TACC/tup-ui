@@ -73,11 +73,11 @@ We are shipping **manual Django CMS pages** for TACC **Research & Software proje
 
 ## Snippet behavior today
 
-`research-projects-assets.html` loads:
+`research-projects-assets.html` loads (jsDelivr gh commit pins):
 
-- Sortable CSS from jsDelivr `gh/TACC/tup-ui@main/.../o-sortable-table.css` (interim)
-- `alert.css` from `gh/TACC/Core-Styles@<tag>/dist/bootstrap4/components/alert.css` (interim: tup-ui `core-styles-staging` path on jsDelivr)
-- `sortableTable.js` from jsDelivr `gh/TACC/tup-ui@main/...` (interim)
+- `gh/TACC/Core-Styles@31e62d5/dist/objects/o-sortable-table.css`
+- `gh/TACC/Core-Styles@31e62d5/dist/bootstrap4/components/alert.css`
+- `gh/TACC/Core-CMS@1fe2544/taccsite_cms/static/site_cms/js/modules/sortableTable.js`
 
 ---
 
