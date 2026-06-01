@@ -1,23 +1,20 @@
-{% comment %}
-Research / Software pages (Phase B): sortable table + archive alert CSS.
-
-- https://cdn.jsdelivr.net/gh/TACC/Core-Styles@31e62d5/dist/bootstrap4/components/alert.css
-- https://cdn.jsdelivr.net/gh/TACC/Core-CMS@<commit>/taccsite_cms/static/site_cms/css/modules/sortableTable.css
-- https://cdn.jsdelivr.net/gh/TACC/Core-CMS@<commit>/taccsite_cms/static/site_cms/js/modules/sortableTable.js
-
-Table: `o-fixed-header-table is-sortable`. Drop snippet when tup CMS image includes assets_core_delayed (PR 557 separate).
-{% endcomment %}
+{# Shortcut to implement RT #42216 before a new Core-CMS version #}
+{# https://tickets.tacc.utexas.edu/Ticket/Display.html?id=42216 #}
 
 <link
   rel="stylesheet"
+  id="research-projects-assets-alert-css"
   href="https://cdn.jsdelivr.net/gh/TACC/Core-Styles@31e62d5/dist/bootstrap4/components/alert.css"
 />
 <link
   rel="stylesheet"
+  id="research-projects-assets-table-css"
   href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@cda57a3d/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
 />
-
-<script type="module">
+<script
+  type="module"
+  id="research-projects-assets-table-js"
+>
   import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@cda57a3d/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
 
   sortableTable({ scopeElement: document.getElementById('cms-content') });
