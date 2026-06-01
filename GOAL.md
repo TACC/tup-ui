@@ -8,7 +8,7 @@ Editors build a normal HTML table with four columns: Name, Description, Umbrella
 
 **Classes**
 
-- Table: `o-fixed-header-table o-sortable-table` (wrap in `o-table-wrap` if needed).
+- Table: `o-fixed-header-table is-sortable` (wrap in `o-table-wrap` if needed).
 - Non-sortable Description column: `th.is-not-sortable`.
 - Default sort: first sortable column, Name A→Z (applied by script on load).
 
@@ -20,9 +20,8 @@ Snippet loads via [jsDelivr](https://www.jsdelivr.com/):
 
 | Asset | jsDelivr (snippet pins) |
 |-------|-------------------------|
-| Sortable table CSS | `gh/TACC/Core-Styles@31e62d5/dist/objects/o-sortable-table.css` |
+| Sortable table CSS + JS | Core-CMS `site_cms/css/modules/sortableTable.css` and `.../js/modules/sortableTable.js` (load both; see module README) |
 | Bootstrap alert + c-message CSS | `gh/TACC/Core-Styles@31e62d5/dist/bootstrap4/components/alert.css` |
-| Sortable table JS | `gh/TACC/Core-CMS@1fe2544/taccsite_cms/static/site_cms/js/modules/sortableTable.js` |
 
 Bump commit SHAs in the snippet after upstream PR merges. Later: drop snippet JS when tup CMS uses Core-CMS [`assets_core_delayed.html`](https://github.com/TACC/Core-CMS/blob/main/taccsite_cms/templates/assets_core_delayed.html) sort init.
 
@@ -46,6 +45,6 @@ Open a **multi-root workspace** with tup-ui, Core-CMS, and Core-Styles when chan
 
 ## Upstream PR checklist
 
-1. **Core-Styles:** alert bridge + `objects/o-sortable-table` (PR merged → bump snippet commit SHA if needed).
-2. **Core-CMS:** `sortableTable.js` + delayed init (PR merged → bump snippet commit SHA; later drop snippet script when tup CMS image includes it).
+1. **Core-Styles:** alert bridge (PR merged → bump snippet commit SHA if needed).
+2. **Core-CMS:** `sortableTable.css` + `sortableTable.js` + delayed init (PR merged → bump snippet SHAs; later drop snippet assets when tup CMS image includes them).
 3. **tup-ui:** snippet + GOAL only; assets via jsDelivr, not copied into this repo.
