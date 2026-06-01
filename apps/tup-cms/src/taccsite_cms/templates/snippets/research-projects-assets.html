@@ -1,0 +1,27 @@
+{% comment %}
+Research / Software pages (Phase B): sortable table + archive alert CSS.
+
+After Core-Styles git tag (jsDelivr gh, no npm):
+- Sortable CSS → https://cdn.jsdelivr.net/gh/TACC/Core-Styles@REPLACE_WITH_CORE_STYLES_TAG/dist/objects/o-sortable-table.css
+- Alert CSS → https://cdn.jsdelivr.net/gh/TACC/Core-Styles@REPLACE_WITH_CORE_STYLES_TAG/dist/bootstrap4/components/alert.css
+
+Sort JS: Core-CMS assets_core_delayed.html once tup CMS uses an image that includes
+sortableTable.js. Until then, keep the script below on listing pages.
+
+Separate from tup-ui v4.40.0 / PR 557 (CMS Dockerfile bump).
+{% endcomment %}
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/TACC/tup-ui@main/apps/tup-cms/src/taccsite_custom/tup_cms/static/tup_cms/css/for-core-styles/objects/o-sortable-table.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/TACC/tup-ui@main/core-styles-staging/src/lib/_imports/bootstrap4/components/alert.css"
+/>
+
+<script type="module">
+  import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/tup-ui@main/apps/tup-cms/src/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
+
+  sortableTable({ scopeElement: document.getElementById('cms-content') });
+</script>

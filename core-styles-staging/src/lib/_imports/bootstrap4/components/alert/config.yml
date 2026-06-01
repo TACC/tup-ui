@@ -1,0 +1,34 @@
+label: Alerts
+context:
+  shouldLoadBootstrap: true
+  shouldLoadCMS: true
+  groups:
+    - title: Bootstrap (default)
+      types:
+        - type: primary
+          content: A simple primary alert.
+        - type: secondary
+          content: A simple secondary alert.
+        - type: success
+          content: A simple success alert.
+        - type: danger
+          content: A simple danger alert.
+        - type: warning
+          content: A simple warning alert.
+        - type: info
+          content: A simple info alert.
+        - type: light
+          content: A simple light alert.
+        - type: dark
+          content: A simple dark alert.
+    - title: Dismissible
+      types:
+        - type: warning
+          dismissible: true
+          content: Holy guacamole! You should check in on some of those fields below.
+    - title: CMS Alert plugin + c-message (archive banner)
+      types:
+        - type: warning
+          dismissible: true
+          cMessageClasses: c-message c-message--scope-section c-message--type-warning
+          content: <p>This project is archived.</p>

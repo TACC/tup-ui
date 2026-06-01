@@ -1,0 +1,30 @@
+/* FAQ: c-message.css also styles Bootstrap alert when `.c-message` is present */
+@import url("../../components/c-message.css");
+
+.alert.c-message {
+  border-radius: unset; /* to undo bootstrap */
+  border: unset;
+  background-color: unset;
+  color: unset;
+}
+
+.alert.c-message hr {
+  border-top-color: unset;
+}
+
+.alert.c-message .alert-link {
+  font-weight: unset;
+  color: unset;
+}
+
+.alert.c-message.alert-dismissible {
+  padding-right: unset;
+}
+
+.alert.c-message.alert-dismissible .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.75rem 1.25rem;
+  color: inherit;
+}
