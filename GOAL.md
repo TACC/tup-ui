@@ -21,9 +21,9 @@ Snippet loads via [jsDelivr](https://www.jsdelivr.com/):
 | Asset | jsDelivr (snippet pins) |
 |-------|-------------------------|
 | Sortable table CSS + JS | Core-CMS `site_cms/css/modules/sortableTable.css` and `.../js/modules/sortableTable.js` (load both; see module README) |
-| Bootstrap alert + c-message CSS | `gh/TACC/Core-Styles@31e62d5/dist/bootstrap4/components/alert.css` |
+| Bootstrap alert + c-message CSS | `gh/TACC/Core-Styles@v2.57.0-rc3/dist/bootstrap4/components/alert.css` |
 
-Bump commit SHAs in the snippet after upstream PR merges. Later: drop snippet JS when tup CMS uses Core-CMS [`assets_core_delayed.html`](https://github.com/TACC/Core-CMS/blob/main/taccsite_cms/templates/assets_core_delayed.html) sort init.
+Bump Core-Styles tag (or Core-CMS commit) in the snippet when releases change. Later: drop snippet JS when tup CMS uses Core-CMS [`assets_core_delayed.html`](https://github.com/TACC/Core-CMS/blob/main/taccsite_cms/templates/assets_core_delayed.html) sort init.
 
 ## Archive banner (detail pages)
 
@@ -45,6 +45,6 @@ Open a **multi-root workspace** with tup-ui, Core-CMS, and Core-Styles when chan
 
 ## Upstream PR checklist
 
-1. **Core-Styles:** alert bridge (PR merged → bump snippet commit SHA if needed).
+1. **Core-Styles:** alert bridge (pinned in snippet at `v2.57.0-rc3` on jsDelivr).
 2. **Core-CMS:** `sortableTable.css` + `sortableTable.js` + delayed init (PR merged → bump snippet SHAs; later drop snippet assets when tup CMS image includes them).
 3. **tup-ui:** snippet + GOAL only; assets via jsDelivr, not copied into this repo.
