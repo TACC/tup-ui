@@ -9,13 +9,16 @@
 <link
   rel="stylesheet"
   id="research-projects-assets-table-css"
-  href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@cda57a3d/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
+  href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@3e6c06d0/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
 />
 <script
   type="module"
   id="research-projects-assets-table-js"
 >
-  import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@cda57a3d/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
+  import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@3e6c06d0/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
 
-  sortableTable({ scopeElement: document.getElementById('cms-content') });
+  sortableTable({
+    scopeElement: document.getElementById('cms-content'),
+    buttonClass: 'btn btn-link',
+  });
 </script>
