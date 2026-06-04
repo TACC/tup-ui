@@ -8,9 +8,9 @@ Editors build a normal HTML table with four columns: Name, Description, Umbrella
 
 **Classes**
 
-- Table: `o-fixed-header-table is-sortable` (wrap in `o-table-wrap` if needed).
-- Non-sortable Description column: `th.is-not-sortable`.
-- Default sort: first sortable column, Name A→Z (applied by script on load).
+- Table: `o-fixed-header-table js-sortable` (wrap in `o-table-wrap` if needed).
+- Non-sortable Description column: `th.not-sortable`.
+- Sort order: CMS row order until a user clicks a column header (no sort on load).
 
 **Assets (Phase B)**
 
