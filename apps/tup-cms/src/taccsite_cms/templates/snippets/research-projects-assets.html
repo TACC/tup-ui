@@ -9,7 +9,7 @@
 <link
   rel="stylesheet"
   id="research-projects-assets-table-css"
-  href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@b48e5c43/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
+  href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@58e0875e/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
 />
 <script
   src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js"
@@ -20,7 +20,17 @@
   type="module"
   id="research-projects-assets-table-js"
 >
-  import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@b48e5c43/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
+  import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@58e0875e/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
+
+  /* HACK: Replace [data-aria-*] with [aria-*] (WYSIWYG editor strips [aria-]) */
+  [...document.querySelector('.js-sortable-filter-list').querySelectorAll('*')].forEach(el => {
+    [...el.attributes]
+      .filter(attr => attr.name.startsWith('data-aria-'))
+      .forEach(attr => el.setAttribute(
+        'aria-' + attr.name.slice('data-aria-'.length),
+        attr.value
+      ));
+  });
 
   sortableTable({
     scopeElement: document.getElementById('cms-content'),
