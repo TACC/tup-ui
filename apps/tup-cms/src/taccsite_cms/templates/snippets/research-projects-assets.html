@@ -1,15 +1,17 @@
 {# Shortcut to implement RT #42216 before a new Core-CMS version #}
 {# https://tickets.tacc.utexas.edu/Ticket/Display.html?id=42216 #}
 
+{% include "includes/sortable_table_filter_templates.html" %}
+
 <link
   rel="stylesheet"
   id="research-projects-assets-alert-css"
-  href="https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2.57.0-rc3/dist/bootstrap4/components/alert.css"
+  href="https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2.57.0/dist/bootstrap4/components/alert.css"
 />
 <link
   rel="stylesheet"
   id="research-projects-assets-table-css"
-  href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@f252a3f1/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
+  href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.40.0-rc6/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
 />
 <script
   src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js"
@@ -20,14 +22,11 @@
   type="module"
   id="research-projects-assets-table-js"
 >
-  import promoteDataAriaAttributes from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@main/generic_assets/js/promote-data-aria-attributes.js';
-  import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@f252a3f1/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
-
-  const scopeElement = document.getElementById('cms-content');
-  promoteDataAriaAttributes(scopeElement);
+  {# sortableTable.js: branch until Core-CMS release after https://github.com/TACC/Core-CMS/pull/1178 #}
+  import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@feat/sortableTable-auto-filter/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
 
   sortableTable({
-    scopeElement,
+    scopeElement: document.getElementById('cms-content'),
     buttonClass: 'btn btn-link',
   });
 </script>
