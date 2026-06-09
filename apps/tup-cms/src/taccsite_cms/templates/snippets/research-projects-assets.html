@@ -2,7 +2,7 @@
 {# https://tickets.tacc.utexas.edu/Ticket/Display.html?id=42216 #}
 {# https://github.com/TACC/Core-CMS/pull/1178 #}
 
-{# https://github.com/TACC/Core-CMS/blob/feat/sortableTable-auto-filter/taccsite_cms/templates/includes/sortable_table_filter_templates.html #}
+{# https://github.com/TACC/Core-CMS/blob/b13909f4/taccsite_cms/templates/includes/sortable_table_filter_templates.html #}
 <template id="sortable-table-filters">
   <fieldset class="js-sortable-filter-list sortable-filter-list">
     <legend class="sr-only">Results in the table update as you type or select filters</legend>
@@ -44,7 +44,8 @@
   type="module"
   id="research-projects-assets-table-js"
 >
-  import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@feat/sortableTable-auto-filter/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
+  {# sortableTable.js: Core-CMS@b13909f4 until release after https://github.com/TACC/Core-CMS/pull/1178 #}
+  import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@b13909f4/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
 
   sortableTable({
     scopeElement: document.getElementById('cms-content'),
