@@ -1,7 +1,29 @@
 {# Shortcut to implement RT #42216 before a new Core-CMS version #}
 {# https://tickets.tacc.utexas.edu/Ticket/Display.html?id=42216 #}
+{# https://github.com/TACC/Core-CMS/pull/1178 #}
 
-{% include "includes/sortable_table_filter_templates.html" %}
+{# https://github.com/TACC/Core-CMS/blob/feat/sortableTable-auto-filter/taccsite_cms/templates/includes/sortable_table_filter_templates.html #}
+<template id="sortable-table-filters">
+  <fieldset class="js-sortable-filter-list sortable-filter-list">
+    <legend class="sr-only">Results in the table update as you type or select filters</legend>
+
+    <label class="sortable-filter mr-auto">
+      <input
+        type="search"
+        class="sortable-filter__input"
+        placeholder="Search…"
+      />
+      <output class="js-sortable-total text-truncate" aria-atomic="true"></output>
+    </label>
+
+    <label class="sortable-filter">
+      <span class="sortable-filter__label"></span>
+      <select class="sortable-filter__input">
+        <option value="">any</option>
+      </select>
+    </label>
+  </fieldset>
+</template>
 
 <link
   rel="stylesheet"
@@ -22,7 +44,6 @@
   type="module"
   id="research-projects-assets-table-js"
 >
-  {# sortableTable.js: branch until Core-CMS release after https://github.com/TACC/Core-CMS/pull/1178 #}
   import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@feat/sortableTable-auto-filter/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
 
   sortableTable({
