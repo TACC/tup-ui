@@ -10,8 +10,7 @@
 }
 
 .mfa-banner {
-  box-sizing: border-box;
-  width: 100%;
+  composes: c-message c-message--type-warning c-message--scope-section from '@tacc/core-styles/dist/components/c-message.css';
   margin-bottom: 2rem;
 }
 

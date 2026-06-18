@@ -8,7 +8,6 @@ import {
   UserNews,
 } from '@tacc/tup-components';
 
-import '@tacc/core-styles/dist/components/c-message.css';
 import './Dashboard.css';
 import styles from './Dashboard.module.css';
 import { Outlet } from 'react-router-dom';
@@ -28,7 +27,7 @@ const Layout: React.FC = () => {
     <RequireAuth>
       <section className={`c-page ${styles.section}`}>
         <SectionMessage
-          className={`c-message c-message--scope-section c-message--type-warning ${styles['mfa-banner']}`}
+          className={styles['mfa-banner']}
           type="warning"
           canDismiss
         >
@@ -37,7 +36,7 @@ const Layout: React.FC = () => {
           <a
             href="https://docs.tacc.utexas.edu/basics/mfa/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener"
           >
             set up your MFA
           </a>{' '}

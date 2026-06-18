@@ -4,7 +4,6 @@ import { useAuth } from '@tacc/tup-hooks';
 import { Formik, Form } from 'formik';
 import { FormikInput } from '@tacc/core-wrappers';
 import { Button } from '@tacc/core-components';
-import '@tacc/core-styles/dist/components/c-message.css';
 import styles from './LoginComponent.module.css';
 import { blackLogo } from '../../../assets';
 import { AxiosError } from 'axios';
@@ -135,15 +134,13 @@ const ForgotUsernameLink = () => (
 );
 
 const MfaBanner = () => (
-  <div
-    className={`c-message c-message--scope-section c-message--type-warning ${styles['mfa-banner']}`}
-  >
+  <div className={styles['mfa-banner']}>
     The portal will require Multi-Factor Authentication (MFA) beginning{' '}
     <strong>August 18, 2026</strong>. Please{' '}
     <a
       href="https://docs.tacc.utexas.edu/basics/mfa/"
       target="_blank"
-      rel="noreferrer"
+      rel="noopener"
     >
       set up your MFA
     </a>{' '}
