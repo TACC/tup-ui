@@ -39,10 +39,18 @@
 .panels > :nth-child(2) { grid-area: systems; }
 .panels > :nth-child(3) { grid-area: projects_tickets; }
 
+.mfa-banner {
+  margin-bottom: 1.5rem;
+  font-size: var(--global-font-size--medium);
+}
+
+.dashboard-title {
+  margin-top: 2.5rem;
+}
 
 .section {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   padding: var(--global-space--section)
 }
 

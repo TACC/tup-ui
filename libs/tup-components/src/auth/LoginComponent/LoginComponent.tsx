@@ -4,6 +4,7 @@ import { useAuth } from '@tacc/tup-hooks';
 import { Formik, Form } from 'formik';
 import { FormikInput } from '@tacc/core-wrappers';
 import { Button } from '@tacc/core-components';
+import '@tacc/core-styles/dist/components/c-message.css';
 import styles from './LoginComponent.module.css';
 import { blackLogo } from '../../../assets';
 import { AxiosError } from 'axios';
@@ -133,6 +134,23 @@ const ForgotUsernameLink = () => (
   </a>
 );
 
+const MfaBanner = () => (
+  <div
+    className={`c-message c-message--scope-section c-message--type-warning ${styles['mfa-banner']}`}
+  >
+    The portal will require Multi-Factor Authentication (MFA) beginning{' '}
+    <strong>August 18, 2026</strong>. Please{' '}
+    <a
+      href="https://docs.tacc.utexas.edu/basics/mfa/"
+      target="_blank"
+      rel="noreferrer"
+    >
+      set up your MFA
+    </a>{' '}
+    to avoid disruption in access.
+  </div>
+);
+
 const LoginComponent: React.FC<LoginProps> = ({ className }) => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
@@ -182,6 +200,7 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form className="c-form">
           <LoginError status={status} isError={isError} />
+          <MfaBanner />
           <FormikInput
             name="username"
             label="Username or Email"

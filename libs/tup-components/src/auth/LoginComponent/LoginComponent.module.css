@@ -9,6 +9,12 @@
   display: unset;
 }
 
+.mfa-banner {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
 /* When (the only known) error would wrap, move all lines to one line */
 @media screen and (max-width: 435px) {
   .root :global(.c-form-errors) br { content: ""; } /* to remove new line */

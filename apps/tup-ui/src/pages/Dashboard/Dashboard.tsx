@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { SectionHeader } from '@tacc/core-components';
+import { SectionHeader, SectionMessage } from '@tacc/core-components';
 import {
   RequireAuth,
   SystemMonitor,
@@ -8,6 +8,7 @@ import {
   UserNews,
 } from '@tacc/tup-components';
 
+import '@tacc/core-styles/dist/components/c-message.css';
 import './Dashboard.css';
 import styles from './Dashboard.module.css';
 import { Outlet } from 'react-router-dom';
@@ -26,7 +27,25 @@ const Layout: React.FC = () => {
   return (
     <RequireAuth>
       <section className={`c-page ${styles.section}`}>
-        <SectionHeader>Dashboard</SectionHeader>
+        <SectionMessage
+          className={`c-message c-message--scope-section c-message--type-warning ${styles['mfa-banner']}`}
+          type="warning"
+          canDismiss
+        >
+          The portal will require Multi-Factor Authentication (MFA) beginning{' '}
+          <strong>August 18, 2026</strong>. Please{' '}
+          <a
+            href="https://docs.tacc.utexas.edu/basics/mfa/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            set up your MFA
+          </a>{' '}
+          to avoid disruption in access.
+        </SectionMessage>
+        <SectionHeader className={styles['dashboard-title']}>
+          Dashboard
+        </SectionHeader>
         <main className={styles.panels}>
           <UserNews />
           <SystemMonitor />
