@@ -143,8 +143,8 @@ const ProjectDetails: React.FC<{ projectId: number }> = ({ projectId }) => {
       >
         {canManage && (
           <span>
-            To set an Allocation Manager, please select a user in the menu to
-            the left.
+            To set Allocation Managers, please select a user in the menu to the
+            left. Up to two Allocation Managers may be assigned per project.
             <br />
             <br />
           </span>
