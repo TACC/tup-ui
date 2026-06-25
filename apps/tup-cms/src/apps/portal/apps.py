@@ -48,8 +48,11 @@ def submit_ticket(form_data):
 def send_confirmation_email(form_name, form_data):
 
     tour_receipt = ""
-    if form_name == "Tour Request Form":
-        tour_receipt = "<p>A copy of your tour request is provided below for your records:</p>\n"
+    if form_name in (
+      "Tour Request Form",
+      "Request to Film Form")
+    :
+        tour_receipt = "<p>A copy of your request is provided below for your records:</p>\n"
         for key in form_data:
             if not key.startswith('recaptcha_'):
                 label = reverse_slugify(key) if key != 'form_id' else 'Form ID'
