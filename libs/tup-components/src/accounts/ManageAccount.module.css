@@ -51,10 +51,8 @@
     display: inline-block;
     margin-right: 1em;
     margin-bottom: 1em;
-}
-.tap-action:is(button),
-.tap-action > button {
-    width: 200px;
+
+    min-width: 200px;
 }
 
 @media (--narrow-and-above) {
