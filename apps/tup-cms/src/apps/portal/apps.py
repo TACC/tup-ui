@@ -89,7 +89,6 @@ def add_user_hetdex_allocation(form_data, request):
                            headers=headers,
                            json=data,
                            params=admin_params)
-    
     email_body = f"""
             <p>Greetings,</p>
             <p>
@@ -104,7 +103,6 @@ def add_user_hetdex_allocation(form_data, request):
             label = reverse_slugify(key) if key != 'form_id' else 'Form ID'
             value = form_data[key]
             email_body += f"<p><b>{label}</b>: {value}</p>\n"
-    
     if response.status_code != 200:
         # Add error information to the email body
         email_body += f"""
@@ -112,20 +110,19 @@ def add_user_hetdex_allocation(form_data, request):
             <p>Status Code: {response.status_code}</p>
             <p>Response Text: {response.text}</p>
             """
-        
         # Send email with "ATTENTION REQUIRED" subject line
         send_mail(
             f"ATTENTION REQUIRED: HETDEX JupyterHub Access Request Failed",
             email_body,
             settings.DEFAULT_FROM_EMAIL,
-            [settings.HETDEX_ADMIN_EMAIL],
+            settings.HETDEX_ADMIN_EMAIL,
             html_message=email_body)
     else:
         send_mail(
             f"HETDEX JupyterHub Access Request Successful",
             email_body,
             settings.DEFAULT_FROM_EMAIL,
-            [settings.HETDEX_ADMIN_EMAIL],
+            settings.HETDEX_ADMIN_EMAIL,
             html_message=email_body)
 
 def callback(form, cleaned_data, request, **kwargs):
