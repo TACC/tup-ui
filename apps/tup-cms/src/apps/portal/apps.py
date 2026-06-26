@@ -52,7 +52,6 @@ def submit_ticket(form_data):
 def send_confirmation_email(form_name, form_data):
     form_display_name = FORM_DISPLAY_NAMES.get(form_name, form_name)
 
-
     tour_receipt = ""
     if form_name in (
             "Tour Request Form",
