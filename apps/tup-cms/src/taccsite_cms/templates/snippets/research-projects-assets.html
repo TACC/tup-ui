@@ -1,0 +1,54 @@
+{# Shortcut to implement RT #42216 before a new Core-CMS version #}
+{# https://tickets.tacc.utexas.edu/Ticket/Display.html?id=42216 #}
+{# https://github.com/TACC/Core-CMS/pull/1178 #}
+
+{# https://github.com/TACC/Core-CMS/blob/b13909f4/taccsite_cms/templates/includes/sortable_table_filter_templates.html #}
+<template id="sortable-table-filters">
+  <fieldset class="js-sortable-filter-list sortable-filter-list">
+    <legend class="sr-only">Results in the table update as you type or select filters</legend>
+
+    <label class="sortable-filter mr-auto">
+      <input
+        type="search"
+        class="sortable-filter__input"
+        placeholder="Search…"
+      />
+      <output class="js-sortable-total text-truncate" aria-atomic="true"></output>
+    </label>
+
+    <label class="sortable-filter">
+      <span class="sortable-filter__label"></span>
+      <select class="sortable-filter__input">
+        <option value="">any</option>
+      </select>
+    </label>
+  </fieldset>
+</template>
+
+<link
+  rel="stylesheet"
+  id="research-projects-assets-alert-css"
+  href="https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2.57.0/dist/bootstrap4/components/alert.css"
+/>
+<link
+  rel="stylesheet"
+  id="research-projects-assets-table-css"
+  href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.40.0-rc6/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js"
+  integrity="sha384-FhEOA/pIE4BfDuwGksHaZD8ms5j+dfB9QIWo7naDMzAVoCE1My4G2iu8/n/R3AAH"
+  crossorigin="anonymous"
+></script>
+<script
+  type="module"
+  id="research-projects-assets-table-js"
+>
+  {# sortableTable.js: Core-CMS@b13909f4 until release after https://github.com/TACC/Core-CMS/pull/1178 #}
+  import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@b13909f4/taccsite_cms/static/site_cms/js/modules/sortableTable.js';
+
+  sortableTable({
+    scopeElement: document.getElementById('cms-content'),
+    buttonClass: 'btn btn-link',
+  });
+</script>
