@@ -14,6 +14,10 @@ if settings.DEBUG:
     service_url = service_url.replace("localhost", "host.docker.internal")
 hetdex_allocation = 66657
 
+FORM_DISPLAY_NAMES = {
+    "film-request-form": "Request to Film Form",
+}
+
 QUEUE_MAP = {
     "Allocations": "Allocations",
     "Login Issues": "Accounts",
@@ -46,6 +50,8 @@ def submit_ticket(form_data):
 
 
 def send_confirmation_email(form_name, form_data):
+    form_display_name = FORM_DISPLAY_NAMES.get(form_name, form_name)
+
 
     tour_receipt = ""
     if form_name in (
@@ -61,7 +67,7 @@ def send_confirmation_email(form_name, form_data):
     email_body = f"""
             <p>Greetings,</p>
             <p>
-                Thank you for reaching out to TACC and completing the {form_name}.
+                Thank you for reaching out to TACC and completing the {form_display_name}.
             </p>
             <p>
                 <ul>
@@ -77,7 +83,7 @@ def send_confirmation_email(form_name, form_data):
             </p>
             """
     send_mail(
-    f"TACC Form Submission Received: {form_name}",
+    f"TACC Form Submission Received: {form_display_name}",
     email_body,
     settings.DEFAULT_FROM_EMAIL,
     [form_data["email"]],
