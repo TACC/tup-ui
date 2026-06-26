@@ -15,7 +15,7 @@ if settings.DEBUG:
 hetdex_allocation = 66657
 
 FORM_DISPLAY_NAMES = {
-    "film-request-form": "Request to Film Form",
+    "film-request-form": "Request to Film form",
 }
 
 QUEUE_MAP = {
