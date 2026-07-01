@@ -11,3 +11,9 @@
 .navbar-dark .navbar-toggler {
     border-color: var(--global-color-primary--normal);
 }
+
+/* 3. Unset color that is so light it makes links in a lead undistinguishable */
+/* TODO: Delete this after TUP-CMS uses Core-CMS since TACC/Core-CMS#1141 */
+:is(:is(.blog-list) article) .blog-lead {
+  color: unset;
+}

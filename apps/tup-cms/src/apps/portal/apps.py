@@ -14,6 +14,10 @@ if settings.DEBUG:
     service_url = service_url.replace("localhost", "host.docker.internal")
 hetdex_allocation = 66657
 
+FORM_DISPLAY_NAMES = {
+    "film-request-form": "Request to Film form",
+}
+
 QUEUE_MAP = {
     "Allocations": "Allocations",
     "Login Issues": "Accounts",
@@ -23,6 +27,7 @@ QUEUE_MAP = {
     "Running Jobs or Using TACC Resources": "High Performance Computing",
     "Security Incident": "NSO",
     "Arecibo Data": "High Performance Computing",
+    "Texas Institute for Electronics (TIE)": "tie",
     "Other": "High Performance Computing"
 }
 
@@ -45,10 +50,13 @@ def submit_ticket(form_data):
 
 
 def send_confirmation_email(form_name, form_data):
+    form_display_name = FORM_DISPLAY_NAMES.get(form_name, form_name)
 
     tour_receipt = ""
-    if form_name == "Tour Request Form":
-        tour_receipt = "<p>A copy of your tour request is provided below for your records:</p>\n"
+    if form_name in (
+            "Tour Request Form",
+            "film-request-form"):
+        tour_receipt = "<p>A copy of your request is provided below for your records:</p>\n"
         for key in form_data:
             if not key.startswith('recaptcha_'):
                 label = reverse_slugify(key) if key != 'form_id' else 'Form ID'
@@ -58,7 +66,7 @@ def send_confirmation_email(form_name, form_data):
     email_body = f"""
             <p>Greetings,</p>
             <p>
-                Thank you for reaching out to TACC and completing the {form_name}.
+                Thank you for reaching out to TACC and completing the {form_display_name}.
             </p>
             <p>
                 <ul>
@@ -74,7 +82,7 @@ def send_confirmation_email(form_name, form_data):
             </p>
             """
     send_mail(
-    f"TACC Form Submission Received: {form_name}",
+    f"TACC Form Submission Received: {form_display_name}",
     email_body,
     settings.DEFAULT_FROM_EMAIL,
     [form_data["email"]],
@@ -88,7 +96,6 @@ def add_user_hetdex_allocation(form_data, request):
                            headers=headers,
                            json=data,
                            params=admin_params)
-    
     email_body = f"""
             <p>Greetings,</p>
             <p>
@@ -103,7 +110,6 @@ def add_user_hetdex_allocation(form_data, request):
             label = reverse_slugify(key) if key != 'form_id' else 'Form ID'
             value = form_data[key]
             email_body += f"<p><b>{label}</b>: {value}</p>\n"
-    
     if response.status_code != 200:
         # Add error information to the email body
         email_body += f"""
@@ -111,20 +117,19 @@ def add_user_hetdex_allocation(form_data, request):
             <p>Status Code: {response.status_code}</p>
             <p>Response Text: {response.text}</p>
             """
-        
         # Send email with "ATTENTION REQUIRED" subject line
         send_mail(
             f"ATTENTION REQUIRED: HETDEX JupyterHub Access Request Failed",
             email_body,
             settings.DEFAULT_FROM_EMAIL,
-            [settings.HETDEX_ADMIN_EMAIL],
+            settings.HETDEX_ADMIN_EMAIL,
             html_message=email_body)
     else:
         send_mail(
             f"HETDEX JupyterHub Access Request Successful",
             email_body,
             settings.DEFAULT_FROM_EMAIL,
-            [settings.HETDEX_ADMIN_EMAIL],
+            settings.HETDEX_ADMIN_EMAIL,
             html_message=email_body)
 
 def callback(form, cleaned_data, request, **kwargs):
