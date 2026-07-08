@@ -64,12 +64,16 @@ export const TicketCreateForm: React.FC = () => {
     messageBody += `Requestor: ${values.first_name} ${values.last_name} (${values.email})\n\n`;
     messageBody += `${values.description}`;
 
+    const queueSelection =
+      (values.resource && QUEUE_MAP[values.resource]) ??
+      (values.category && QUEUE_MAP[values.category]);
+
     const formData = new FormData();
     formData.append('email', values['email']);
     formData.append('subject', values['subject']);
     formData.append('description', messageBody);
     formData.append('cc', values['cc']);
-    formData.append('queue', values.category && QUEUE_MAP[values.category]);
+    formData.append('queue', queueSelection);
     if (values.files) {
       values.files.forEach((file) => formData.append('files', file));
     }
@@ -104,7 +108,6 @@ export const TicketCreateForm: React.FC = () => {
             <option>Multi-factor Authentication</option>
             <option>Arecibo Data</option>
             <option>Security Incident</option>
-            <option>Texas Institute for Electronics (TIE)</option>
             <option>Other</option>
           </FormikSelect>
           <FormikSelect name="resource" label="System/Resource" required>
@@ -122,6 +125,7 @@ export const TicketCreateForm: React.FC = () => {
             <option>Cloud and Interactive Computing (Tapis API)</option>
             <option>Cloud and Interactive Computing (JupyterHub)</option>
             <option>Cloud and Interactive Computing (Other)</option>
+            <option>Texas Institute for Electronics (TIE)</option>
             <option>Other / None</option>
           </FormikSelect>
           <FormikInput name="subject" label="Subject" required description="" />
