@@ -12,6 +12,7 @@
   #page-training *, /* 2025-04-02 *//* /use-tacc/training/ */
   #page-about-tours *, /* 2026-03-16 *//* /about/tours/ */
   #page-request-tour * /* 2026-03-16 *//* /about/tours/request/ */
+  #page-acsc *, /* 2026-04-21 *//* /education/undergraduates-graduates/acsc/ */
 ),
 .col:not(
   [class*="col-"],

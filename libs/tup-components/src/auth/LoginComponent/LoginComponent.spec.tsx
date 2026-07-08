@@ -97,20 +97,24 @@ describe('LoginComponent', () => {
     const { getByText, getAllByRole } = testRender(<LoginComponent />);
     await waitFor(() => getAllByRole('link'));
     const links: HTMLElement[] = getAllByRole('link');
-    expect(getByText('Create Account')).toBeDefined();
+    expect(getByText('set up your MFA')).toBeDefined();
     expect(links[0].getAttribute('href')).toEqual(
+      'https://docs.tacc.utexas.edu/basics/mfa/'
+    );
+    expect(getByText('Create Account')).toBeDefined();
+    expect(links[1].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/register'
     );
     expect(getByText('Account Help')).toBeDefined();
-    expect(links[1].getAttribute('href')).toEqual(
+    expect(links[2].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/login_support'
     );
     expect(getByText('Forgot Password')).toBeDefined();
-    expect(links[2].getAttribute('href')).toEqual(
+    expect(links[3].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/forgot_password'
     );
     expect(getByText('Recover Username')).toBeDefined();
-    expect(links[3].getAttribute('href')).toEqual(
+    expect(links[4].getAttribute('href')).toEqual(
       'https://accounts.tacc.utexas.edu/forgot_username'
     );
   });
