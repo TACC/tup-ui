@@ -7,11 +7,11 @@
   id="research-projects-assets-alert-css"
   href="https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2.57.0/dist/bootstrap4/components/alert.css"
 />
-{# @tacc/sort-table: wesleyboar/sort-table@ad788927 until 0.1.0 release #}
+{# @tacc/filter-sort: wesleyboar/sort-table@0b828008 until 0.1.0 release #}
 <link
   rel="stylesheet"
   id="research-projects-assets-table-css"
-  href="https://cdn.jsdelivr.net/gh/wesleyboar/sort-table@ad788927/src/sortableTable.css"
+  href="https://cdn.jsdelivr.net/gh/wesleyboar/sort-table@0b828008/src/filtersort.css"
 />
 <script
   src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js"
@@ -22,9 +22,9 @@
   type="module"
   id="research-projects-assets-table-js"
 >
-  import sortableTable from 'https://cdn.jsdelivr.net/gh/wesleyboar/sort-table@ad788927/src/sortableTable.js';
+  import filtersort from 'https://cdn.jsdelivr.net/gh/wesleyboar/sort-table@0b828008/src/filtersort.js';
 
-  sortableTable({
+  filtersort({
     scopeElement: document.getElementById('cms-content'),
     buttonClass: 'btn btn-link',
     searchIconClass: 'icon icon-search icon-md',
