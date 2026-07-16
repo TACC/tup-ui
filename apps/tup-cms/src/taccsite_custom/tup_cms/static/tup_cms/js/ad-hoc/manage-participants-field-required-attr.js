@@ -6,12 +6,18 @@ document.addEventListener('DOMContentLoaded', function () {
 		return;
 	}
 
+	var textAreaWrapper = textArea.closest('.field-wrapper');
+	var fileUploadWrapper = fileUpload.closest('.field-wrapper');
+
 	function updateRequired() {
 		const hasText = textArea.value.trim() !== '';
 		const hasFile = fileUpload.value !== '';
 
 		textArea.required = !hasFile;
 		fileUpload.required = !hasText;
+
+		textAreaWrapper.classList.toggle('required', !hasFile);
+		fileUploadWrapper.classList.toggle('required', !hasText);
 	}
 
 	textArea.addEventListener('input', updateRequired);
