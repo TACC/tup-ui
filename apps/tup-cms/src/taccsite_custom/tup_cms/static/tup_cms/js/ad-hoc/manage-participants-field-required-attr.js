@@ -1,3 +1,4 @@
+/* Do not let both "Participants" fields of any form be required at once */
 document.addEventListener('DOMContentLoaded', function () {
   var textArea = document.getElementById('participants');
   var fileUpload = document.getElementById('participants_via_file_upload');
