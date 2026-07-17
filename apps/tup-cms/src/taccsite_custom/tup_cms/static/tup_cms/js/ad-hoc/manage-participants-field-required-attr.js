@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  /* to indicate an un-required field is "(alternative)" (not "(important)") */
+  /* https://github.com/TACC/Core-Styles/blob/v2.57.3/src/lib/_imports/components/c-form.css#L98-L104 */
+  var style = document.createElement('style');
+  style.textContent = `
+    .field-wrapper:not(.required) label[for*="participants"] .asterisk:after {
+      content: "(alternative)";
+    }
+  `;
+  document.head.appendChild(style);
+
   var textAreaWrapper = textArea.closest('.field-wrapper');
   var fileUploadWrapper = fileUpload.closest('.field-wrapper');
 
