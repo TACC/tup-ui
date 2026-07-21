@@ -37,7 +37,14 @@
 </script>
 <style id="research-projects-assets-table-css">
   @layer base {
-    dt { font-weight: revert-layer; }
+    dt {
+      font-weight: revert-layer;
+    }
   }
-  dd { margin-left: revert; }
+  dd {
+    margin-left: revert;
+  }
+  tr:has([title="to be decided"]) td {
+    background-color: var(--global-color-warning--light);
+  }
 </style>
