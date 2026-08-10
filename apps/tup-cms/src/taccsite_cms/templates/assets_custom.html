@@ -18,9 +18,9 @@
 
 {# NEW CODE #}
 
-<!-- TUP CMS UX Scripts -->
-<script src="{% static 'tup_cms/js/modules/breadcrumbs.js' %}" type="module"></script>
+{# NOTE: 2nd-breadcrumb de-linking no longer needs a dedicated script — #}
+{# Core-CMS's nav_cms_breadcrumbs.html already handles it #}
 
 <!-- TUP CMS UI Styles -->
 <link rel="stylesheet" href="{% static 'tup_cms/css/tup-cms.for-core-cms.css' %}" />
-<link rel="stylesheet" href="{% static 'tup_cms/css/tup-cms.for-tup-cms.css' %}" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@v1/tup/css/cms.css" />
