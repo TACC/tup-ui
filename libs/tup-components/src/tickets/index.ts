@@ -11,6 +11,7 @@ export const QUEUE_MAP = {
   'Running Jobs or Using TACC Resources': 'High Performance Computing',
   'Arecibo Data': 'High Performance Computing',
   'Security Incident': 'NSO',
+  'Texas Institute for Electronics (TIE)': 'tie',
   Other: 'High Performance Computing',
 };
 
