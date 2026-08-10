@@ -19,9 +19,13 @@ const Impersonate: React.FC = () => {
         ></input>
       </div>
       <div>
-        <a href={`/portal/impersonate?username=${username}`}>
-          <Button type="primary">Impersonate User</Button>
-        </a>
+        <Button
+          as="a"
+          href={`/portal/impersonate?username=${username}`}
+          type="primary"
+        >
+          Impersonate User
+        </Button>
       </div>
     </div>
   );
