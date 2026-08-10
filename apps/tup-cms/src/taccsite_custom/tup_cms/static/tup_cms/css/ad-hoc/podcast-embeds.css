@@ -1,4 +1,0 @@
-/* to remove extra height embedded podcast audio, but not cause scrollbar */
-iframe[src*="rss.com"] {
-    height: 152px;
-}

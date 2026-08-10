@@ -93,8 +93,8 @@ PORTAL_BRANDING = [ PORTAL_BRANDING_UTEXAS ]
 ########################
 
 PORTAL_LOGO = {
-    "img_file_src": "tup_cms/img/org_logos/tacc-logo-white-25years--cropped.svg",
-    "is_remote": False,
+    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@v1/tup/img/logo-white-25years--cropped.svg",
+    "is_remote": True,
     "img_class": "",
     "link_href": "/",
     "link_name": "TACC Homepage",
