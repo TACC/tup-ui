@@ -9,6 +9,11 @@
   display: unset;
 }
 
+.mfa-banner {
+  composes: c-message c-message--type-warning c-message--scope-section from '@tacc/core-styles/dist/components/c-message.css';
+  margin-bottom: 2rem;
+}
+
 /* When (the only known) error would wrap, move all lines to one line */
 @media screen and (max-width: 435px) {
   .root :global(.c-form-errors) br { content: ""; } /* to remove new line */
