@@ -12,7 +12,7 @@ import {
   useRoleForCurrentUser,
 } from '@tacc/tup-hooks';
 import styles from './ProjectDetails.module.css';
-import { Link } from 'react-router-dom';
+import { toExternalUrl } from '../../utils/externalUrl';
 import {
   ProjectPublicationEditModal,
   ProjectPublicationCreateModal,
@@ -25,6 +25,8 @@ const Publication: React.FC<{
   pub: ProjectPublication;
   canManage: boolean;
 }> = ({ pub, projectId, canManage }) => {
+  const pubUrl = toExternalUrl(pub.url);
+
   return (
     <div>
       <div className={styles['pub-grants-edit-link']}>
@@ -61,7 +63,14 @@ const Publication: React.FC<{
           {pub.venue || '(N/A)'}
         </span>
       </div>
-      {pub.url && <Link to={pub.url}>{pub.url}</Link>}
+      {pub.url &&
+        (pubUrl ? (
+          <a href={pubUrl} target="_blank" rel="noreferrer">
+            {pub.url}
+          </a>
+        ) : (
+          <span>{pub.url}</span>
+        ))}
     </div>
   );
 };
