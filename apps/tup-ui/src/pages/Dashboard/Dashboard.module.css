@@ -39,10 +39,6 @@
 .panels > :nth-child(2) { grid-area: systems; }
 .panels > :nth-child(3) { grid-area: projects_tickets; }
 
-.mfa-banner {
-  font-size: var(--global-font-size--medium);
-}
-
 .dashboard-title {
   margin-top: 2.5rem;
 }
@@ -52,11 +48,6 @@
   grid-template-rows: auto 1fr;
   padding: var(--global-space--section)
 }
-
-.section:has(.mfa-banner) {
-  grid-template-rows: auto auto 1fr;
-}
-
 
 .project-ticket-grid {
   display: grid;
