@@ -1,10 +1,18 @@
-from django.urls import re_path
-from .views import LoginView, PortalView, LogoutView, ImpersonateView
+from django.urls import path, re_path
+from .views import (
+    LoginView,
+    LoginCallbackView,
+    PortalView,
+    LogoutView,
+    ImpersonateView,
+)
 
 app_name = 'portal'
 urlpatterns = [
-    re_path('login', LoginView, name='login'),
-    re_path('logout', LogoutView, name='logout'),
-    re_path('impersonate', ImpersonateView, name='impersonate'),
-    re_path('', PortalView, name='index'),
+    path('login', LoginView, name='login'),
+    path('login/callback', LoginCallbackView, name='login_callback'),
+    path('login/callback/', LoginCallbackView),
+    path('logout', LogoutView, name='logout'),
+    path('impersonate', ImpersonateView, name='impersonate'),
+    re_path(r'^.*$', PortalView, name='index'),
 ]
