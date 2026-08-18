@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { SectionHeader } from '@tacc/core-components';
+import { SectionHeader, SectionMessage } from '@tacc/core-components';
 import {
   RequireAuth,
   SystemMonitor,
