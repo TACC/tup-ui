@@ -197,7 +197,6 @@ const LoginComponent: React.FC<LoginProps> = ({ className }) => {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form className="c-form">
           <LoginError status={status} isError={isError} />
-          <MfaBanner />
           <FormikInput
             name="username"
             label="Username or Email"
