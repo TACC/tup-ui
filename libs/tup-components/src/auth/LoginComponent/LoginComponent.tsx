@@ -136,7 +136,7 @@ const ForgotUsernameLink = () => (
 const MfaBanner = () => (
   <div className={styles['mfa-banner']}>
     The portal will require Multi-Factor Authentication (MFA) beginning{' '}
-    <strong>August 18, 2026</strong>. Please{' '}
+    <strong>August 25, 2026</strong>. Please{' '}
     <a
       href="https://docs.tacc.utexas.edu/basics/mfa/"
       target="_blank"
