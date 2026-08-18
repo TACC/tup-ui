@@ -192,8 +192,17 @@ def LoginCallbackView(request):
 
 
 def LogoutView(request):
+    token = request.user.tapis_oauth.access_token
+    logger.info(
+            'The user %s is attempting to logout via Tapis with token "%s"',
+            request.user.username,
+            token[:8].ljust(len(token), "-"),
+        )
+
+    logout_endpoint = f"{settings.TAPIS_TENANT_BASEURL}/v3/oauth2/logout?redirect_url=https://{request.get_host()}{settings.LOGOUT_REDIRECT_URL}"
+
     logout(request)
-    resp = HttpResponseRedirect("/login")
+    resp = HttpResponseRedirect(logout_endpoint)
     resp.set_cookie("x-tup-token", "")
     return resp
 
