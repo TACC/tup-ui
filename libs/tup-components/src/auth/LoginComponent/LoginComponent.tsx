@@ -140,7 +140,7 @@ const MfaBanner = () => (
     <a
       href="https://docs.tacc.utexas.edu/basics/mfa/"
       target="_blank"
-      rel="noopener"
+      rel="noreferrer"
     >
       set up your MFA
     </a>{' '}
