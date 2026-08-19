@@ -19,7 +19,7 @@ class LogoutViewTests(SimpleTestCase):
         TAPIS_TENANT_BASEURL="https://portals.tapis.io/",
         TAPIS_CLIENT_ID="client-id",
         TAPIS_CLIENT_KEY="client-key",
-        LOGOUT_REDIRECT_URL="/",
+        LOGOUT_REDIRECT_URL="https://tacc.utexas.edu/",
     )
     @patch("apps.portal.views.logout")
     def test_redirects_through_tapis_logout(self, mock_logout):
@@ -29,7 +29,7 @@ class LogoutViewTests(SimpleTestCase):
         self.assertEqual(
             response.url,
             "https://portals.tapis.io/v3/oauth2/logout"
-            "?redirect_url=http%3A%2F%2Ftestserver%2F",
+            "?redirect_url=https%3A%2F%2Ftacc.utexas.edu%2F",
         )
         self.assertEqual(response.cookies["x-tup-token"]["max-age"], 0)
         mock_logout.assert_called_once()
@@ -38,13 +38,13 @@ class LogoutViewTests(SimpleTestCase):
         TAPIS_TENANT_BASEURL="https://portals.tapis.io",
         TAPIS_CLIENT_ID="",
         TAPIS_CLIENT_KEY="",
-        LOGOUT_REDIRECT_URL="/",
+        LOGOUT_REDIRECT_URL="https://tacc.utexas.edu/",
     )
     @patch("apps.portal.views.logout")
     def test_redirects_locally_without_tapis_config(self, mock_logout):
         response = LogoutView(self._request())
 
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, "/")
+        self.assertEqual(response.url, "https://tacc.utexas.edu/")
         self.assertEqual(response.cookies["x-tup-token"]["max-age"], 0)
         mock_logout.assert_called_once()
