@@ -136,7 +136,7 @@ PORTAL_NAV_WIDTH = 'lg'
 # TACC: SOCIAL MEDIA
 ########################
 
-PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'bluesky', 'facebook', 'email']
+PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'bluesky', 'email']
 
 ########################
 # DJANGOCMS_BLOG
