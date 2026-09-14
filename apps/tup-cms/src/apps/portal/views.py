@@ -28,6 +28,16 @@ def _oauth_redirect_uri(request):
     return f"{protocol}://{request.get_host()}{reverse('portal:login_callback')}"
 
 
+def _tapis_oauth_configured():
+    return all(
+        [
+            getattr(settings, "TAPIS_TENANT_BASEURL", ""),
+            getattr(settings, "TAPIS_CLIENT_ID", ""),
+            getattr(settings, "TAPIS_CLIENT_KEY", ""),
+        ]
+    )
+
+
 def _extract_user_data(payload):
     return {
         "username": (
@@ -87,13 +97,7 @@ def LoginView(request):
 
     # Temporary fallback for environments not yet configured for Tapis OAuth/MFA.
     # Remove this block after production fully switches to Tapis/MFA login.
-    if not all(
-        [
-            getattr(settings, "TAPIS_TENANT_BASEURL", ""),
-            getattr(settings, "TAPIS_CLIENT_ID", ""),
-            getattr(settings, "TAPIS_CLIENT_KEY", ""),
-        ]
-    ):
+    if not _tapis_oauth_configured():
         if settings.DEBUG:
             template = loader.get_template('portal/portal.debug.html')
         else:
@@ -192,10 +196,21 @@ def LoginCallbackView(request):
 
 
 def LogoutView(request):
+    redirect_target = getattr(settings, "LOGOUT_REDIRECT_URL", "/")
+
+    if _tapis_oauth_configured():
+        redirect_uri = request.build_absolute_uri(redirect_target)
+        query = urlencode({"redirect_url": redirect_uri})
+        tapis_base_url = settings.TAPIS_TENANT_BASEURL.rstrip("/")
+        redirect_target = f"{tapis_base_url}/v3/oauth2/logout?{query}"
+
+        username = request.user.get_username() or "anonymous"
+        logger.info("User %s is logging out via Tapis", username)
+
     logout(request)
-    resp = HttpResponseRedirect("/login")
-    resp.set_cookie("x-tup-token", "")
-    return resp
+    response = HttpResponseRedirect(redirect_target)
+    response.delete_cookie("x-tup-token", path="/")
+    return response
 
 
 def ImpersonateView(request):

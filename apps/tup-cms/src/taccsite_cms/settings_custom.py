@@ -121,6 +121,7 @@ AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend', 'apps.po
 
 TUP_SERVICES_URL = "https://tup-services.tacc.utexas.edu"
 LOGIN_URL = "/portal/login"
+LOGOUT_REDIRECT_URL = "/"
 
 ########################
 # TACC: PORTAL
