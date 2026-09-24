@@ -38,6 +38,40 @@ def _tapis_oauth_configured():
     )
 
 
+def _begin_tapis_oauth_session(request):
+    next_path = request.GET.get("next")
+    if next_path:
+        request.session["next"] = next_path
+
+    state = secrets.token_urlsafe(32)
+    request.session["auth_state"] = state
+    return state
+
+
+def _tapis_login_iframe_url(request, state):
+    params = urlencode(
+        {
+            "client_id": settings.TAPIS_CLIENT_ID,
+            "response_type": "code",
+            "redirect_uri": _oauth_redirect_uri(request),
+            "state": state,
+        }
+    )
+    tapis_base_url = settings.TAPIS_TENANT_BASEURL.rstrip("/")
+    return f"{tapis_base_url}/v3/oauth2/login?{params}"
+
+
+def _top_level_redirect(url):
+    """Navigate the top window (used after OAuth in a login iframe)."""
+    safe_url = json.dumps(url)
+    html = (
+        "<!DOCTYPE html><html><head><meta charset=\"utf-8\">"
+        f"<script>window.top.location.replace({safe_url});</script>"
+        "</head><body></body></html>"
+    )
+    return HttpResponse(html)
+
+
 def _extract_user_data(payload):
     return {
         "username": (
@@ -108,22 +142,18 @@ def LoginView(request):
             )
         )
 
-    next_path = request.GET.get("next")
-    if next_path:
-        request.session["next"] = next_path
-
-    state = secrets.token_urlsafe(32)
-    request.session["auth_state"] = state
-
-    params = urlencode(
-        {
-            "client_id": settings.TAPIS_CLIENT_ID,
-            "response_type": "code",
-            "redirect_uri": _oauth_redirect_uri(request),
-            "state": state,
-        }
+    state = _begin_tapis_oauth_session(request)
+    login_iframe_url = _tapis_login_iframe_url(request, state)
+    template = loader.get_template("portal/tapis_login.html")
+    return HttpResponse(
+        template.render(
+            {
+                "login_iframe_url": login_iframe_url,
+                "is_login_view": True,
+            },
+            request,
+        )
     )
-    return redirect(f"{settings.TAPIS_TENANT_BASEURL}/v3/oauth2/authorize?{params}")
 
 
 def LoginCallbackView(request):
@@ -140,7 +170,7 @@ def LoginCallbackView(request):
     code = request.GET.get("code")
     if not code:
         logger.warning("Authorization failed: %s", request.GET.get("error", "no_code"))
-        return HttpResponseRedirect(reverse("portal:logout"))
+        return _top_level_redirect(reverse("portal:logout"))
 
     try:
         token_resp = requests.post(
@@ -175,7 +205,7 @@ def LoginCallbackView(request):
         tup_jwt = jwt_mint_resp.json()["jwt"]
     except Exception:
         logger.exception("OAuth callback failed")
-        return HttpResponseRedirect(reverse("portal:logout"))
+        return _top_level_redirect(reverse("portal:logout"))
 
     user_model = get_user_model()
     user, _ = user_model.objects.get_or_create(
@@ -190,7 +220,7 @@ def LoginCallbackView(request):
 
     request.session.pop("auth_state", None)
     redirect_path = request.session.pop("next", "/portal")
-    response = HttpResponseRedirect(redirect_path)
+    response = _top_level_redirect(redirect_path)
     response.set_cookie("x-tup-token", tup_jwt, secure=not settings.DEBUG)
     return response
 

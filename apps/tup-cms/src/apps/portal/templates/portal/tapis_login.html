@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block html_page_id %}page-portal{% endblock %}
+
+{% block title %}Log In{% endblock %}
+
+{% block assets_project %}
+{% include './assets.html' %}
+{% endblock %}
+
+{% block content %}
+{% with login_iframe_url as URL %}
+
+<iframe src="{{ URL }}">
+    <script>window.location="{{ URL }}";</script>
+    <noscript>
+        <p>Please <a href="{{ URL }}">login via TACC system login form</a>.</p>
+        <p><small>You are receiving this message because both <code>&lt;iframe&gt;</code>s and <code>&lt;script&gt;</code>s seem to be disabled in your browser.</small></p>
+    </noscript>
+</iframe>
+
+{% endwith %}
+{% endblock %}
