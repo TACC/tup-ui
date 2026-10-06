@@ -115,6 +115,7 @@ export const TicketCreateForm: React.FC = () => {
             <option>Corral (corral-login.tacc.utexas.edu)</option>
             <option>Corral-Protected (corral-protected.tacc.utexas.edu)</option>
             <option>Frontera (frontera.tacc.utexas.edu)</option>
+            <option>Horizon (horizon.tacc.utexas.edu)</option>
             <option>Jetstream (jetstream.tacc.utexas.edu)</option>
             <option>Lonestar6 (lonestar6.tacc.utexas.edu)</option>
             <option>Ranch (ranch.tacc.utexas.edu)</option>
