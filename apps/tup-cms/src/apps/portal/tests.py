@@ -3,7 +3,41 @@ from unittest.mock import patch
 from django.contrib.auth.models import AnonymousUser
 from django.test import RequestFactory, SimpleTestCase, override_settings
 
-from apps.portal.views import LogoutView
+from apps.portal.views import LoginView, LogoutView
+
+
+class LoginViewTests(SimpleTestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def _request(self, path="/portal/login"):
+        request = self.factory.get(path)
+        request.user = AnonymousUser()
+        request.session = {}
+        return request
+
+    @override_settings(
+        TAPIS_TENANT_BASEURL="https://portals.tapis.io",
+        TAPIS_CLIENT_ID="client-id",
+        TAPIS_CLIENT_KEY="client-key",
+        TAPIS_REDIRECT_URI="https://portal.example/portal/login/callback",
+        TUP_SERVICES_URL="http://localhost:8001",
+    )
+    @patch("apps.portal.views.authenticate", return_value=None)
+    def test_renders_tapis_login_iframe(self, _mock_authenticate):
+        request = self._request()
+        response = LoginView(request)
+
+        self.assertEqual(response.status_code, 200)
+        content = response.content.decode()
+        self.assertIn("login via TACC system login form", content)
+        self.assertIn("https://portals.tapis.io/v3/oauth2/login?", content)
+        self.assertIn("client_id=client-id", content)
+        self.assertIn(
+            "redirect_uri=https%3A%2F%2Fportal.example%2Fportal%2Flogin%2Fcallback",
+            content,
+        )
+        self.assertIn("auth_state", request.session)
 
 
 class LogoutViewTests(SimpleTestCase):
