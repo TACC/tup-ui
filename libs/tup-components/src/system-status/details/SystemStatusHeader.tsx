@@ -8,7 +8,7 @@ import {
 import { SystemDetailProps } from '..';
 
 export const SystemStatusHeader: React.FC<SystemDetailProps> = ({
-  tas_name = 'frontera',
+  tas_name = 'stampede3',
 }) => {
   const { data, isLoading, error } = useSystemMonitor();
   const dataBySystem = data?.find((system) => system.tas_name === tas_name);
