@@ -6,7 +6,7 @@ import { SystemDetailProps } from '..';
 
 export const SystemNavBar: React.FC<SystemDetailProps> = ({
   // To set default prop for system if none selected
-  tas_name = 'stampede3',
+  tas_name = 'Stampede3',
 }) => {
   const { data, error, isLoading } = useSystemMonitor();
 
