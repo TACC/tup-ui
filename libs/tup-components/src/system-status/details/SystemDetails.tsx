@@ -12,7 +12,7 @@ import { SystemMonitor } from '../SystemMonitor';
 import { SystemDetailProps } from '..';
 
 const SystemQueueTable: React.FC<SystemDetailProps> = ({
-  tas_name = 'stampede3',
+  tas_name = 'Stampede3',
 }) => {
   const { data: systemData, isLoading } = useSystemQueue(tas_name);
   const system: JobsQueue[] =
@@ -94,7 +94,7 @@ const SystemQueueTable: React.FC<SystemDetailProps> = ({
 };
 
 export const SystemDetails: React.FC<SystemDetailProps> = ({
-  tas_name = 'stampede3',
+  tas_name = 'Stampede3',
 }) => {
   return (
     <div className={styles['panels']}>
