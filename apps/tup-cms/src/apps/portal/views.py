@@ -113,7 +113,7 @@ def LoginView(request):
         request.session["next"] = next_path
 
     state = secrets.token_urlsafe(32)
-    request.session["auth_state"] = state
+    request.session["auth_state"] = request.session.get("auth_state", state)
 
     params = urlencode(
         {
