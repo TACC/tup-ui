@@ -113,14 +113,14 @@ def LoginView(request):
         request.session["next"] = next_path
 
     state = secrets.token_urlsafe(32)
-    request.session["auth_state"] = state
+    request.session["auth_state"] = request.session.get("auth_state", state)
 
     params = urlencode(
         {
             "client_id": settings.TAPIS_CLIENT_ID,
             "response_type": "code",
             "redirect_uri": _oauth_redirect_uri(request),
-            "state": state,
+            "state": request.session["auth_state"],
         }
     )
     return redirect(f"{settings.TAPIS_TENANT_BASEURL}/v3/oauth2/authorize?{params}")
