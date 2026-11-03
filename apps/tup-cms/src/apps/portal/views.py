@@ -13,6 +13,7 @@ from django.urls import reverse
 from apps.portal.decorators import tup_login_required
 
 logger = logging.getLogger(f"portal.{__name__}")
+AUTH_STATE_COOKIE_NAME = "tup_auth_state"
 
 service_url = settings.TUP_SERVICES_URL
 if settings.DEBUG:
@@ -112,23 +113,28 @@ def LoginView(request):
     if next_path:
         request.session["next"] = next_path
 
-    state = secrets.token_urlsafe(32)
-    request.session["auth_state"] = request.session.get("auth_state", state)
+    state = request.COOKIES.get(AUTH_STATE_COOKIE_NAME, secrets.token_urlsafe(32))
 
     params = urlencode(
         {
             "client_id": settings.TAPIS_CLIENT_ID,
             "response_type": "code",
             "redirect_uri": _oauth_redirect_uri(request),
-            "state": request.session["auth_state"],
+            "state": state
         }
     )
-    return redirect(f"{settings.TAPIS_TENANT_BASEURL}/v3/oauth2/authorize?{params}")
+    resp = redirect(f"{settings.TAPIS_TENANT_BASEURL}/v3/oauth2/authorize?{params}")
+    resp.set_cookie(AUTH_STATE_COOKIE_NAME,
+                    state, httponly=True,
+                    secure=(not settings.DEBUG),
+                    samesite='Lax',
+                    max_age=600)
+    return resp
 
 
 def LoginCallbackView(request):
     returned_state = request.GET.get("state")
-    expected_state = request.session.get("auth_state")
+    expected_state = request.COOKIES.get(AUTH_STATE_COOKIE_NAME)
 
     if not expected_state:
         failure_reason = "missing_expected_state"
@@ -210,6 +216,7 @@ def LoginCallbackView(request):
     redirect_path = request.session.pop("next", "/portal")
     response = HttpResponseRedirect(redirect_path)
     response.set_cookie("x-tup-token", tup_jwt, secure=not settings.DEBUG)
+    response.delete_cookie(AUTH_STATE_COOKIE_NAME)
     return response
 
 
@@ -217,7 +224,10 @@ def RestartLoginView(request):
     """Discard an incomplete OAuth flow and begin a new login."""
     request.session.pop("auth_state", None)
     request.session.pop("next", None)
-    return redirect(reverse("portal:login"))
+
+    response = redirect(reverse("portal:login"))
+    response.delete_cookie(AUTH_STATE_COOKIE_NAME)
+    return response
 
 
 def LogoutView(request):
