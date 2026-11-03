@@ -124,7 +124,11 @@ def LoginView(request):
         }
     )
     resp = redirect(f"{settings.TAPIS_TENANT_BASEURL}/v3/oauth2/authorize?{params}")
-    resp.set_cookie(AUTH_STATE_COOKIE_NAME, state, httponly=True)
+    resp.set_cookie(AUTH_STATE_COOKIE_NAME,
+                    state, httponly=True,
+                    secure=(not settings.DEBUG),
+                    samesite='Lax',
+                    max_age=600)
     return resp
 
 
