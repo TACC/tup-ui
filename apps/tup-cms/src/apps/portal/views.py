@@ -4,10 +4,10 @@ import json
 import secrets
 import logging
 import requests
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.template import loader
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.urls import reverse
 from apps.portal.decorators import tup_login_required
@@ -114,7 +114,6 @@ def LoginView(request):
         request.session["next"] = next_path
 
     state = request.COOKIES.get(AUTH_STATE_COOKIE_NAME, secrets.token_urlsafe(32))
-    # request.session["auth_state"] = request.session.get("auth_state", state)
 
     params = urlencode(
         {
@@ -132,13 +131,31 @@ def LoginView(request):
 def LoginCallbackView(request):
     returned_state = request.GET.get("state")
     expected_state = request.COOKIES.get(AUTH_STATE_COOKIE_NAME)
-    if expected_state != returned_state:
+
+    if not expected_state:
+        failure_reason = "missing_expected_state"
+    elif not returned_state:
+        failure_reason = "missing_returned_state"
+    elif not secrets.compare_digest(expected_state, returned_state):
+        failure_reason = "state_mismatch"
+    else:
+        failure_reason = None
+
+    if failure_reason:
+        reference_id = secrets.token_hex(8)
         logger.warning(
-            "OAuth state mismatch: expected=%s returned=%s",
-            expected_state,
-            returned_state,
+            "OAuth callback rejected: reason=%s reference_id=%s "
+            "session_cookie_present=%s",
+            failure_reason,
+            reference_id,
+            settings.SESSION_COOKIE_NAME in request.COOKIES,
         )
-        return HttpResponseBadRequest("Authorization State Failed")
+        return render(
+            request,
+            "portal/oauth_error.html",
+            {"reference_id": reference_id},
+            status=400,
+        )
 
     code = request.GET.get("code")
     if not code:
@@ -195,6 +212,16 @@ def LoginCallbackView(request):
     redirect_path = request.session.pop("next", "/portal")
     response = HttpResponseRedirect(redirect_path)
     response.set_cookie("x-tup-token", tup_jwt, secure=not settings.DEBUG)
+    response.delete_cookie(AUTH_STATE_COOKIE_NAME)
+    return response
+
+
+def RestartLoginView(request):
+    """Discard an incomplete OAuth flow and begin a new login."""
+    request.session.pop("auth_state", None)
+    request.session.pop("next", None)
+
+    response = redirect(reverse("portal:login"))
     response.delete_cookie(AUTH_STATE_COOKIE_NAME)
     return response
 
