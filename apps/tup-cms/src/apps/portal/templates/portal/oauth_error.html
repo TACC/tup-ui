@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block html_page_id %}page-portal{% endblock %}
+
+{% block title %}Login Could Not Be Completed{% endblock %}
+
+{% block content %}
+<div class="container">
+  <section class="o-section" aria-labelledby="oauth-error-title">
+    <h1 id="oauth-error-title">We couldn’t complete your login</h1>
+    <p>
+      Your login session may have changed or expired. Close any other TUP login
+      tabs, then restart the login process.
+    </p>
+    <p>
+      You do not need to reset your password or reconfigure multi-factor
+      authentication (MFA).
+    </p>
+    <p>
+      <a class="c-button c-button--primary" href="{% url 'portal:login_restart' %}">
+        Restart login
+      </a>
+    </p>
+    <p>
+      If the problem continues, visit
+      <a href="https://tacc.utexas.edu/about/help/">Account Help</a> and include
+      reference <strong>{{ reference_id }}</strong>. Do not include your password
+      or MFA code.
+    </p>
+  </section>
+</div>
+{% endblock %}
