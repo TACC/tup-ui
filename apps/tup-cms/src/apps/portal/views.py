@@ -114,6 +114,7 @@ def LoginView(request):
         request.session["next"] = next_path
 
     state = request.COOKIES.get(AUTH_STATE_COOKIE_NAME, secrets.token_urlsafe(32))
+    logger.info("using state token %s", state)
 
     params = urlencode(
         {
@@ -133,6 +134,17 @@ def LoginView(request):
 
 
 def LoginCallbackView(request):
+
+    # If user is already authenticated, pass them through without checking state/code
+    if request.user.is_authenticated:
+        try:
+            _resolve_tapis_user_data(request.COOKIES.get("x-tup-token"))
+            redirect_path = request.session.pop("next", "/portal")
+            return HttpResponseRedirect(redirect_path)
+        except Exception:
+            logger.exception("User's Tapis token could not be resolved, proceeding with OAuth")
+
+
     returned_state = request.GET.get("state")
     expected_state = request.COOKIES.get(AUTH_STATE_COOKIE_NAME)
 
@@ -142,6 +154,8 @@ def LoginCallbackView(request):
         failure_reason = "missing_returned_state"
     elif not secrets.compare_digest(expected_state, returned_state):
         failure_reason = "state_mismatch"
+    elif not request.GET.get("code"):
+        failure_reason="missing_code"
     else:
         failure_reason = None
 
@@ -162,10 +176,6 @@ def LoginCallbackView(request):
         )
 
     code = request.GET.get("code")
-    if not code:
-        logger.warning("Authorization failed: %s", request.GET.get("error", "no_code"))
-        return HttpResponseRedirect(reverse("portal:logout"))
-
     try:
         token_resp = requests.post(
             f"{settings.TAPIS_TENANT_BASEURL}/v3/oauth2/tokens",
@@ -199,7 +209,13 @@ def LoginCallbackView(request):
         tup_jwt = jwt_mint_resp.json()["jwt"]
     except Exception:
         logger.exception("OAuth callback failed")
-        return HttpResponseRedirect(reverse("portal:logout"))
+        reference_id = secrets.token_hex(8)
+        return render(
+            request,
+            "portal/oauth_error.html",
+            {"reference_id": reference_id},
+            status=400,
+        )
 
     user_model = get_user_model()
     user, _ = user_model.objects.get_or_create(
@@ -212,17 +228,14 @@ def LoginCallbackView(request):
     )
     login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
-    request.session.pop("auth_state", None)
     redirect_path = request.session.pop("next", "/portal")
     response = HttpResponseRedirect(redirect_path)
     response.set_cookie("x-tup-token", tup_jwt, secure=not settings.DEBUG)
-    response.delete_cookie(AUTH_STATE_COOKIE_NAME)
     return response
 
 
 def RestartLoginView(request):
     """Discard an incomplete OAuth flow and begin a new login."""
-    request.session.pop("auth_state", None)
     request.session.pop("next", None)
 
     response = redirect(reverse("portal:login"))
