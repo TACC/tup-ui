@@ -138,6 +138,7 @@ def LoginCallbackView(request):
     # If user is already authenticated, pass them through without checking state/code
     if request.user.is_authenticated:
         try:
+            logger.info("using existing session for user %s", request.user.username)
             _resolve_tapis_user_data(request.COOKIES.get("x-tup-token"))
             redirect_path = request.session.pop("next", "/portal")
             return HttpResponseRedirect(redirect_path)
