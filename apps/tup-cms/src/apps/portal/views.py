@@ -208,8 +208,8 @@ def LoginCallbackView(request):
         jwt_mint_resp.raise_for_status()
         tup_jwt = jwt_mint_resp.json()["jwt"]
     except Exception:
-        logger.exception("OAuth callback failed")
         reference_id = secrets.token_hex(8)
+        logger.exception("OAuth callback failed, reference_id=%s", reference_id)
         return render(
             request,
             "portal/oauth_error.html",
